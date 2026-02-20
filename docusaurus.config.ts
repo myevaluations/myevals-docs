@@ -12,6 +12,14 @@ const config: Config = {
   projectName: 'myevals-docs',
 
   onBrokenLinks: 'warn',
+  noIndex: true,
+
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: { name: 'robots', content: 'noindex, nofollow' },
+    },
+  ],
 
   i18n: {
     defaultLocale: 'en',
