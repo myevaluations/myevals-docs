@@ -3,6 +3,6 @@ build
 .docusaurus
 .git
 .repos
-generated
+generated/ai-enriched
 *.log
 .env*
