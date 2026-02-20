@@ -1,0 +1,78 @@
+{
+  "projectName": "MyEvaluations.Business.MyHelp",
+  "parsedAt": "2026-02-20T14:23:23.336Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 3,
+  "classes": [
+    {
+      "name": "HelpGroupManager",
+      "namespace": "MyEvaluations.Business.MyHelp",
+      "baseClass": "Manager",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetListOfHelpSectionsDetails",
+        "GetHelpSectionInfoBySecID",
+        "DeleteHelpSectionInfoBySecID",
+        "AddHelpSections",
+        "GetHelpUserAccessList",
+        "GetListOfHelpChapters",
+        "AddHelpChapters",
+        "DeleteHelpChaptersByContentID",
+        "GetHelpChapterInfoByContentID",
+        "DeleteHelpPageByContentID",
+        "AddHelpPageContents",
+        "MovingPagesOrChapters",
+        "GetHelpSearchResult",
+        "GetHelpIndexResult",
+        "GetHelpInfoByKey",
+        "GetHelpInfoByKeyID",
+        "GetHelpContentsByKeyIDs",
+        "GetHelpSections",
+        "GetKeyValueBySectionID",
+        "UpdateKeySectionByKeyID"
+      ],
+      "filePath": "MyEvaluations.Business.MyHelp/HelpGroupManager.cs"
+    },
+    {
+      "name": "SectionInfo",
+      "namespace": "MyEvaluations.Business.MyHelp",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.MyHelp/SectionInfo.cs"
+    },
+    {
+      "name": "SectionsGroupManager",
+      "namespace": "MyEvaluations.Business.MyHelp",
+      "baseClass": "Manager",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetListOfHelpSections",
+        "DeleteMyHelpSection",
+        "AddMyHelpSection",
+        "UpdateMyHelpSection",
+        "GetHelpSectionDetails",
+        "GetChaptersTreeView",
+        "GetChaptersTreeViewOnView"
+      ],
+      "filePath": "MyEvaluations.Business.MyHelp/SectionsGroupManager.cs"
+    }
+  ],
+  "managerClasses": [
+    "HelpGroupManager",
+    "SectionsGroupManager"
+  ],
+  "infoCounterparts": {}
+}

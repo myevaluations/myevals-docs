@@ -5,8 +5,8 @@ node_modules/
 build/
 .docusaurus/
 
-# Generated (rebuilt from source repos)
-generated/
+# Generated AI enrichment cache (large, rebuild on demand)
+generated/ai-enriched/
 
 # Cloned source repos (for doc generation)
 .repos/

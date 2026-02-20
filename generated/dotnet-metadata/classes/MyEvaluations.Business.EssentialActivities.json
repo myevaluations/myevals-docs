@@ -1,0 +1,133 @@
+{
+  "projectName": "MyEvaluations.Business.EssentialActivities",
+  "parsedAt": "2026-02-20T14:23:23.109Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 9,
+  "classes": [
+    {
+      "name": "AddDNPEssentials",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/AddDNPData.cs"
+    },
+    {
+      "name": "AddDNPData",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/AddDNPData.cs"
+    },
+    {
+      "name": "AddDNPManager",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetCourseDetails",
+        "SaveDNPInfo"
+      ],
+      "filePath": "MyEvaluations.Business.EssentialActivities/AddDNPManager.cs"
+    },
+    {
+      "name": "DNPLog",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/DNPLog.cs"
+    },
+    {
+      "name": "DevManager",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "DEV_GetFNPUsersBySessionsAndCourses",
+        "DEV_GetFNPStudentDetailsLogs",
+        "DEV_GetSessionsForReport",
+        "DEV_GetFNPClinicalLogReview",
+        "DEV_GetFNPCourseInfo"
+      ],
+      "filePath": "MyEvaluations.Business.EssentialActivities/DevManager.cs"
+    },
+    {
+      "name": "FNPAutomaticEvaluationAssignments",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "AutomaticFNPEvaluationAssignments",
+        "GetLastUpdatedDatesForFNPSchedules"
+      ],
+      "filePath": "MyEvaluations.Business.EssentialActivities/FNPAutomaticEvaluationAssignments.cs"
+    },
+    {
+      "name": "FNPLogData",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/FNPLogData.cs"
+    },
+    {
+      "name": "LinkBSNEvaluationtoCoursesEntity",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/LinkBSNEvaluationtoCoursesEntity.cs"
+    },
+    {
+      "name": "LinkEvaluationtoCoursesEntity",
+      "namespace": "MyEvaluations.Business.EssentialActivities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.EssentialActivities/LinkEvaluationtoCoursesEntity.cs"
+    }
+  ],
+  "managerClasses": [
+    "AddDNPManager",
+    "DevManager"
+  ],
+  "infoCounterparts": {}
+}

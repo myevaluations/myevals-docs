@@ -1,0 +1,58 @@
+{
+  "projectName": "MyEvaluations.Business.ICC",
+  "parsedAt": "2026-02-20T14:23:23.271Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 4,
+  "classes": [
+    {
+      "name": "NAGProgram",
+      "namespace": "MyEvaluations.Business.ICC",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.ICC/NAGProgram.cs"
+    },
+    {
+      "name": "Nag_ICC",
+      "namespace": "MyEvaluations.Business.ICC",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.ICC/Nag_ICC.cs"
+    },
+    {
+      "name": "NagICCWarning",
+      "namespace": "MyEvaluations.Business.ICC",
+      "baseClass": "Exception",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.ICC/Nag_ICC.cs"
+    },
+    {
+      "name": "NagICCError",
+      "namespace": "MyEvaluations.Business.ICC",
+      "baseClass": "Exception",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.ICC/Nag_ICC.cs"
+    }
+  ],
+  "managerClasses": [],
+  "infoCounterparts": {}
+}

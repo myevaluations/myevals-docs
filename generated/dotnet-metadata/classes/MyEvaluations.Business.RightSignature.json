@@ -1,0 +1,136 @@
+{
+  "projectName": "MyEvaluations.Business.RightSignature",
+  "parsedAt": "2026-02-20T14:23:23.669Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 10,
+  "classes": [
+    {
+      "name": "ApiHelper",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/ApiHelper.cs"
+    },
+    {
+      "name": "Class1",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/Class1.cs"
+    },
+    {
+      "name": "SignatureConfiguration",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/Configuration.cs"
+    },
+    {
+      "name": "DocumentApi",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [
+        "IDocument"
+      ],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/DocumentApi.cs"
+    },
+    {
+      "name": "Structs",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/Structs.cs"
+    },
+    {
+      "name": "TemplateApi",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [
+        "ITemplate"
+      ],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/TemplateApi.cs"
+    },
+    {
+      "name": "oAuthBase",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/oAuthBase.cs"
+    },
+    {
+      "name": "QueryParameter",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/oAuthBase.cs"
+    },
+    {
+      "name": "QueryParameterComparer",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": null,
+      "interfaces": [
+        "IComparer<QueryParameter>"
+      ],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/oAuthBase.cs"
+    },
+    {
+      "name": "OAuthRightSignature",
+      "namespace": "MyEvaluations.Business.RightSignature",
+      "baseClass": "oAuthBase",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.RightSignature/oAuthRightSignature.cs"
+    }
+  ],
+  "managerClasses": [],
+  "infoCounterparts": {}
+}

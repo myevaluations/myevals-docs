@@ -1,0 +1,22 @@
+{
+  "projectName": "MyEvaluations.Business.NurseNotifyService",
+  "parsedAt": "2026-02-20T14:23:23.339Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 1,
+  "classes": [
+    {
+      "name": "NurseActions",
+      "namespace": "MyEvaluations.Business.NurseNotifyService",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.NurseNotifyService/NurseActions.cs"
+    }
+  ],
+  "managerClasses": [],
+  "infoCounterparts": {}
+}

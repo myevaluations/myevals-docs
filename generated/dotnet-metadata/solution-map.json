@@ -1,0 +1,686 @@
+{
+  "solutionFile": "MyEvaluations2009.sln",
+  "parsedAt": "2026-02-20T14:25:32.536Z",
+  "projectCount": 31,
+  "projects": [
+    {
+      "name": "Web",
+      "relativePath": "Web/",
+      "guid": "{D891FC95-71B9-4FAD-84CC-474B7DCD6F8D}",
+      "typeGuid": "{E24C65DC-7377-472B-9ABA-BC803B73C61A}",
+      "typeName": "Web Site",
+      "group": "Web"
+    },
+    {
+      "name": "MyEvaluations.Business.Security",
+      "relativePath": "MyEvaluations.Business.Security/MyEvaluations.Business.Security.csproj",
+      "guid": "{63F411AF-4133-412F-8A99-8DD4D1CA956E}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.DataAccess.SQL",
+      "relativePath": "MyEvaluations.DataAccess.SQL/MyEvaluations.DataAccess.SQL.csproj",
+      "guid": "{300CD00E-A0E3-4AAA-BD76-B828EFEE221E}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "DataAccess"
+    },
+    {
+      "name": "MyEvaluations.Business.Common",
+      "relativePath": "MyEvaluations.Business.Common/MyEvaluations.Business.Common.csproj",
+      "guid": "{159D6E1C-60FB-451C-9E8D-9E71781AE792}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.TimeSheet",
+      "relativePath": "MyEvaluations.Business.TimeSheet/MyEvaluations.Business.TimeSheet.csproj",
+      "guid": "{17CBCADD-3217-49AE-8A9B-8E10339C1222}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.DutyHours",
+      "relativePath": "MyEvaluations.Business.DutyHours/MyEvaluations.Business.DutyHours.csproj",
+      "guid": "{C025ECFE-DE0C-444F-8DB0-A5A798822C6A}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Procedures",
+      "relativePath": "MyEvaluations.Business.Procedures/MyEvaluations.Business.Procedures.csproj",
+      "guid": "{BFC5558C-FC4B-4073-BC2C-3383AFD583F2}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.PatientLog",
+      "relativePath": "MyEvaluations.Business.PatientLog/MyEvaluations.Business.PatientLog.csproj",
+      "guid": "{96D12832-F00F-4C7D-8F6C-9021C95BC518}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.LearningAssignment",
+      "relativePath": "MyEvaluations.Business.LearningAssignment/MyEvaluations.Business.LearningAssignment.csproj",
+      "guid": "{2C01BCD0-9947-4A4A-910C-A777682A6C19}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Evaluations",
+      "relativePath": "MyEvaluations.Business.Evaluations/MyEvaluations.Business.Evaluations.csproj",
+      "guid": "{333F1739-B157-45BE-BADA-7E456BD22740}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Utilities",
+      "relativePath": "MyEvaluations.Business.Utilities/MyEvaluations.Business.Utilities.csproj",
+      "guid": "{2BC6A9D0-2C81-4C9C-BE0C-82B15B582AAD}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.CMETracking",
+      "relativePath": "MyEvaluations.Business.CMETracking/MyEvaluations.Business.CMETracking.csproj",
+      "guid": "{FD4D28E6-3F2D-47CF-9F06-6FF9BC1E6F00}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Portfolio",
+      "relativePath": "MyEvaluations.Business.Portfolio/MyEvaluations.Business.Portfolio.csproj",
+      "guid": "{C136676E-D1E9-4D88-B39D-9C1EF7EC1855}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Quiz",
+      "relativePath": "MyEvaluations.Business.Quiz/MyEvaluations.Business.Quiz.csproj",
+      "guid": "{C4773FCA-39CC-45AD-905F-2A9F4F90D224}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.Mail",
+      "relativePath": "MyEvaluations.Business.Mail/MyEvaluations.Business.Mail.csproj",
+      "guid": "{08FC8DBC-EA64-428F-B4E5-8BA647E592FC}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "FileUploadService",
+      "relativePath": "FileUploadService/",
+      "guid": "{BD000F5F-A618-49E0-9156-BFF2F951B4F9}",
+      "typeGuid": "{E24C65DC-7377-472B-9ABA-BC803B73C61A}",
+      "typeName": "Web Site",
+      "group": "WindowsServices"
+    },
+    {
+      "name": "MyEvaluations.Business.MyHelp",
+      "relativePath": "MyEvaluations.Business.MyHelp/MyEvaluations.Business.MyHelp.csproj",
+      "guid": "{55CD6B4B-3224-4418-8F17-00F1C71EC2D8}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "FusionChartLibrary",
+      "relativePath": "FusionChartLibrary/FusionChartLibrary.csproj",
+      "guid": "{04B331F4-FAAE-4D5E-A490-E4A98BBAE01F}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Other"
+    },
+    {
+      "name": "MyEvaluations.Logging",
+      "relativePath": "MyEvaluations.Logging/MyEvaluations.Logging.csproj",
+      "guid": "{1E179EA4-EC22-4240-B283-312757813CE6}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Infrastructure"
+    },
+    {
+      "name": "TangierScheduleUpdater",
+      "relativePath": "TangierScheduleUpdater/TangierScheduleUpdater.csproj",
+      "guid": "{8B652CB3-8BB4-4703-BD71-32B0C513B439}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Other"
+    },
+    {
+      "name": "SAMLServiceProvider",
+      "relativePath": "SAMLServiceProvider/SAMLServiceProvider.csproj",
+      "guid": "{758105BC-51CE-48AD-A9B8-F44D9F701587}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "WindowsServices"
+    },
+    {
+      "name": "MyEvalsExportImportService",
+      "relativePath": "MyEvalsExportImportService/",
+      "guid": "{A93443A0-CBA2-47AC-A44A-A4B355C4EBC0}",
+      "typeGuid": "{E24C65DC-7377-472B-9ABA-BC803B73C61A}",
+      "typeName": "Web Site",
+      "group": "WindowsServices"
+    },
+    {
+      "name": "MyEvaluations.Business.ERAS",
+      "relativePath": "MyEvaluations.Business.ERAS/MyEvaluations.Business.ERAS.csproj",
+      "guid": "{B594F706-0E5B-4C4B-80C7-6D284A5EA1E7}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.RightSignature",
+      "relativePath": "MyEvaluations.Business.RightSignature/MyEvaluations.Business.RightSignature.csproj",
+      "guid": "{316465E0-676A-4713-8FD2-6FD0F8C024FD}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.ICC",
+      "relativePath": "MyEvaluations.Business.ICC/MyEvaluations.Business.ICC.csproj",
+      "guid": "{70AA8B0E-93D4-456D-8F72-E0A82DBCCCFB}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.MailGunService",
+      "relativePath": "MyEvaluations.Business.MailGunService/MyEvaluations.Business.MailGunService.csproj",
+      "guid": "{031A674C-AA0A-4A93-867A-0DC59F1AA03C}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.HelloSign",
+      "relativePath": "MyEvaluations.Business.HelloSign/MyEvaluations.Business.HelloSign.csproj",
+      "guid": "{6BC3DE4A-11D6-48D3-872A-DEC759FEFFE2}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "MyEvaluations.Business.EssentialActivities",
+      "relativePath": "MyEvaluations.Business.EssentialActivities/MyEvaluations.Business.EssentialActivities.csproj",
+      "guid": "{6161830F-6440-431F-8E77-0AFD0453DA4D}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    },
+    {
+      "name": "GoogleConsole",
+      "relativePath": "GoogleConsole/GoogleConsole.csproj",
+      "guid": "{3957C882-4892-48AE-A315-DDF63344C15A}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Other"
+    },
+    {
+      "name": "MyEvaluations.Web",
+      "relativePath": "MyEvaluations.Web/MyEvaluations.Web.csproj",
+      "guid": "{95A8003B-074B-40A7-A8E5-B49F40DCFAF9}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Web"
+    },
+    {
+      "name": "MyEvaluations.Business.NurseNotifyService",
+      "relativePath": "MyEvaluations.Business.NurseNotifyService/MyEvaluations.Business.NurseNotifyService.csproj",
+      "guid": "{9F856D7C-6035-4884-9879-9872FA970B6E}",
+      "typeGuid": "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+      "typeName": "C#",
+      "group": "Business"
+    }
+  ],
+  "groups": {
+    "Web": [
+      "Web",
+      "MyEvaluations.Web"
+    ],
+    "Business": [
+      "MyEvaluations.Business.Security",
+      "MyEvaluations.Business.Common",
+      "MyEvaluations.Business.TimeSheet",
+      "MyEvaluations.Business.DutyHours",
+      "MyEvaluations.Business.Procedures",
+      "MyEvaluations.Business.PatientLog",
+      "MyEvaluations.Business.LearningAssignment",
+      "MyEvaluations.Business.Evaluations",
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.CMETracking",
+      "MyEvaluations.Business.Portfolio",
+      "MyEvaluations.Business.Quiz",
+      "MyEvaluations.Business.Mail",
+      "MyEvaluations.Business.MyHelp",
+      "MyEvaluations.Business.ERAS",
+      "MyEvaluations.Business.RightSignature",
+      "MyEvaluations.Business.ICC",
+      "MyEvaluations.Business.MailGunService",
+      "MyEvaluations.Business.HelloSign",
+      "MyEvaluations.Business.EssentialActivities",
+      "MyEvaluations.Business.NurseNotifyService"
+    ],
+    "DataAccess": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "WindowsServices": [
+      "FileUploadService",
+      "SAMLServiceProvider",
+      "MyEvalsExportImportService"
+    ],
+    "Other": [
+      "FusionChartLibrary",
+      "TangierScheduleUpdater",
+      "GoogleConsole"
+    ],
+    "Infrastructure": [
+      "MyEvaluations.Logging"
+    ]
+  },
+  "dependencies": [
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "SAMLServiceProvider"
+    },
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "MyEvaluations.Business.MailGunService"
+    },
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Security",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Common",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.TimeSheet",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.TimeSheet",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.TimeSheet",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.TimeSheet",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.Business.TimeSheet"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.DutyHours",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Procedures",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Procedures",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.Procedures",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Procedures",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Procedures",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.PatientLog",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.PatientLog",
+      "to": "MyEvaluations.Business.Procedures"
+    },
+    {
+      "from": "MyEvaluations.Business.PatientLog",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.PatientLog",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.PatientLog",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.Business.Quiz"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.LearningAssignment",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.Business.DutyHours"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Evaluations",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Utilities",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Utilities",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Utilities",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.Business.DutyHours"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.CMETracking",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.LearningAssignment"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.Procedures"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.Quiz"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Portfolio",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "FusionChartLibrary"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.Business.DutyHours"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Quiz",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.MailGunService"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.Portfolio"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.Quiz"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.Mail",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Business.MyHelp",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.MyHelp",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.MyHelp",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.MyHelp",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "TangierScheduleUpdater",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "TangierScheduleUpdater",
+      "to": "MyEvaluations.Business.DutyHours"
+    },
+    {
+      "from": "TangierScheduleUpdater",
+      "to": "MyEvaluations.Business.TimeSheet"
+    },
+    {
+      "from": "TangierScheduleUpdater",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.ERAS",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.ERAS",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.ERAS",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.HelloSign",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.HelloSign",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.EssentialActivities",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Business.EssentialActivities",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Business.EssentialActivities",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Business.EssentialActivities",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Business.EssentialActivities",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.Business.Common"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.Business.Evaluations"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.Business.Security"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.Business.Utilities"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.DataAccess.SQL"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "MyEvaluations.Logging"
+    },
+    {
+      "from": "MyEvaluations.Web",
+      "to": "SAMLServiceProvider"
+    }
+  ]
+}

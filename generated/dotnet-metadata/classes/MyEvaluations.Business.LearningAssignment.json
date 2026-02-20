@@ -1,0 +1,182 @@
+{
+  "projectName": "MyEvaluations.Business.LearningAssignment",
+  "parsedAt": "2026-02-20T14:23:23.305Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 12,
+  "classes": [
+    {
+      "name": "AssignmentCommentInfo",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/AssignmentCommentInfo.cs"
+    },
+    {
+      "name": "LearningAssignmentAdminInfo",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentAdminInfo.cs"
+    },
+    {
+      "name": "LearningAssignmentAdminManager",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": "Manager",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetLAAdmins",
+        "GetLAAdminByDepartment",
+        "AddLAAdmin",
+        "DeleteLAAdmin"
+      ],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentAdminManager.cs"
+    },
+    {
+      "name": "LearningAssignmentInfo",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentInfo.cs"
+    },
+    {
+      "name": "UserLearningAssignmentInfo",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentInfo.cs"
+    },
+    {
+      "name": "LearningAssignmentReportFilter",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentReportFilter.cs"
+    },
+    {
+      "name": "LearningAssignmentReportManager",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": "Manager",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetLearningAssignmentLedgerReport",
+        "GetDetailedLearningAssignmentReport"
+      ],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentReportManager.cs"
+    },
+    {
+      "name": "LearningAssignmentSearchCriteria",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LearningAssignmentSearchCriteria.cs"
+    },
+    {
+      "name": "LiteratureInfo",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LiteratureInfo.cs"
+    },
+    {
+      "name": "LiteratureManager",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": "Manager",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "GetLiteratureInfo",
+        "GetLiteratureInfoByIDs",
+        "GetLearningAssignmentLiteratureList",
+        "DoesLiteratureExits",
+        "AddLiterature",
+        "UpdateLiterature",
+        "DeleteLiterature",
+        "UpdateNonVoluntaryLearningModule",
+        "DeleteLearningModuleDocument",
+        "GetVideoTitle",
+        "GetLearningModules",
+        "GetLearningAssignmentLiteratureList_Voluntary"
+      ],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LiteratureManager.cs"
+    },
+    {
+      "name": "LiteratureSearchCriteria",
+      "namespace": "MyEvaluations.Business.LearningAssignment",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/LiteratureSearchCriteria.cs"
+    },
+    {
+      "name": "Settings",
+      "namespace": "MyEvaluations.Business.LearningAssignment.Properties",
+      "baseClass": "global::System.Configuration.ApplicationSettingsBase",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.LearningAssignment/Properties/Settings.Designer.cs"
+    }
+  ],
+  "managerClasses": [
+    "LearningAssignmentAdminManager",
+    "LearningAssignmentReportManager",
+    "LiteratureManager"
+  ],
+  "infoCounterparts": {
+    "LearningAssignmentAdminManager": "LearningAssignmentAdminInfo",
+    "LiteratureManager": "LiteratureInfo"
+  }
+}

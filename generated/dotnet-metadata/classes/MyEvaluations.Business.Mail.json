@@ -1,0 +1,46 @@
+{
+  "projectName": "MyEvaluations.Business.Mail",
+  "parsedAt": "2026-02-20T14:23:23.322Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 3,
+  "classes": [
+    {
+      "name": "Settings",
+      "namespace": "MyEvaluations.Business.Mail.Properties",
+      "baseClass": "global::System.Configuration.ApplicationSettingsBase",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Mail/Properties/Settings.Designer.cs"
+    },
+    {
+      "name": "TrainingEventsInfo",
+      "namespace": "MyEvaluations.Business.Mail",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Mail/TrainingEventsInfo.cs"
+    },
+    {
+      "name": "TrainingSeminarInfo",
+      "namespace": "MyEvaluations.Business.Mail",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Mail/TrainingSeminarInfo.cs"
+    }
+  ],
+  "managerClasses": [],
+  "infoCounterparts": {}
+}

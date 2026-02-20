@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-02-20T14:24:12.729Z",
+  "openApiSpec": {
+    "found": false,
+    "sourcePath": null,
+    "outputPath": null,
+    "endpointCount": 0
+  },
+  "modules": [
+    {
+      "name": "api",
+      "path": "src/api",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "auth",
+      "path": "src/auth",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "common",
+      "path": "src/common",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": true,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "config",
+      "path": "src/config",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "domains",
+      "path": "src/domains",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "health",
+      "path": "src/health",
+      "hasController": true,
+      "hasService": false,
+      "hasModule": true,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "main",
+      "path": "src/main",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": true,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "mssql",
+      "path": "src/mssql",
+      "hasController": false,
+      "hasService": true,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "postgres",
+      "path": "src/postgres",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    },
+    {
+      "name": "test",
+      "path": "src/test",
+      "hasController": false,
+      "hasService": false,
+      "hasModule": false,
+      "hasEntities": false,
+      "hasDtos": false
+    }
+  ]
+}

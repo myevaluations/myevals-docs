@@ -1,0 +1,208 @@
+{
+  "projectName": "MyEvaluations.Business.Utilities",
+  "parsedAt": "2026-02-20T14:23:24.003Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 16,
+  "classes": [
+    {
+      "name": "ApplicationEmailSchedule",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [
+        "InsertApplicationEmailSchedules",
+        "GetApplicationEmailSend",
+        "UpdateApplicationEmailSend"
+      ],
+      "filePath": "MyEvaluations.Business.Utilities/ApplicationEmailSchedule.cs"
+    },
+    {
+      "name": "CSVExporter",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/CSVExporter.cs"
+    },
+    {
+      "name": "CommonFunctions",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/CommonFunctions.cs"
+    },
+    {
+      "name": "EmailClientSettings",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/EmailClientSettings.cs"
+    },
+    {
+      "name": "EmailSendEntities",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/EmailClientSettings.cs"
+    },
+    {
+      "name": "EmailModel",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/EmailModel.cs"
+    },
+    {
+      "name": "EncryptKeyGen",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/EncryptKeyGen.cs"
+    },
+    {
+      "name": "Factory",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/Factory.cs"
+    },
+    {
+      "name": "FileManager",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/FileManager.cs"
+    },
+    {
+      "name": "PersistComponent",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/PersistComponent.cs"
+    },
+    {
+      "name": "Settings",
+      "namespace": "MyEvaluations.Business.Utilities.Properties",
+      "baseClass": "global::System.Configuration.ApplicationSettingsBase",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/Properties/Settings.Designer.cs"
+    },
+    {
+      "name": "RequestRateLimitExceededException",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": "Exception",
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/RequestRateLimiter.cs"
+    },
+    {
+      "name": "RequestRateLimiter",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/RequestRateLimiter.cs"
+    },
+    {
+      "name": "SearchCriteria",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/SearchCriteria.cs"
+    },
+    {
+      "name": "TelnyxSmsService",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/TelnyxSmsService.cs"
+    },
+    {
+      "name": "ZipUtil",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.Utilities/ZipUtil.cs"
+    }
+  ],
+  "managerClasses": [
+    "FileManager"
+  ],
+  "infoCounterparts": {}
+}

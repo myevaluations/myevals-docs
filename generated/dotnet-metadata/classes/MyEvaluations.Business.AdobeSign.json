@@ -1,0 +1,108 @@
+{
+  "projectName": "MyEvaluations.Business.AdobeSign",
+  "parsedAt": "2026-02-20T14:23:22.663Z",
+  "parserUsed": "tree-sitter",
+  "classCount": 8,
+  "classes": [
+    {
+      "name": "AdobeJwtHelper",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeJwtHelper.cs"
+    },
+    {
+      "name": "AdobeTokenResponse",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeOAuthHelper.cs"
+    },
+    {
+      "name": "AdobeOAuthHelper",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeOAuthHelper.cs"
+    },
+    {
+      "name": "AdobeSignAgreements",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeSignAgreements.cs"
+    },
+    {
+      "name": "AdobeSignClient",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": false,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeSignClient.cs"
+    },
+    {
+      "name": "AdobeSignTokenStore",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeSignTokenStore.cs"
+    },
+    {
+      "name": "AdobeTemplateLogger",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeTemplateLogger.cs"
+    },
+    {
+      "name": "AdobeTokenManager",
+      "namespace": "MyEvaluations.Business.AdobeSign",
+      "baseClass": null,
+      "interfaces": [],
+      "isAbstract": false,
+      "isStatic": true,
+      "methods": [],
+      "properties": [],
+      "storedProcedureCalls": [],
+      "filePath": "MyEvaluations.Business.AdobeSign/AdobeTokenManager.cs"
+    }
+  ],
+  "managerClasses": [
+    "AdobeTokenManager"
+  ],
+  "infoCounterparts": {}
+}
