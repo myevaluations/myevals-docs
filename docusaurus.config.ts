@@ -34,8 +34,8 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/myevaluations/myevals-docs/tree/main/',
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          showLastUpdateTime: !process.env.DOCKER_BUILD,
+          showLastUpdateAuthor: !process.env.DOCKER_BUILD,
         },
         blog: false,
         theme: {

@@ -13,8 +13,9 @@ RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 # Copy source
 COPY . .
 
-# Build Docusaurus static site
+# Build Docusaurus static site (DOCKER_BUILD disables git-dependent features)
 ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV DOCKER_BUILD=true
 RUN npm run build
 
 # Production: serve static files with nginx
