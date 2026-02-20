@@ -23,8 +23,12 @@ interface DependencyGraphProps {
 const GROUP_COLORS: Record<string, string> = {
   Business: '#1a73e8',
   DataAccess: '#28a745',
+  Infrastructure: '#28a745',
   Web: '#fd7e14',
   Services: '#6f42c1',
+  WindowsServices: '#6f42c1',
+  Common: '#1a73e8',
+  Other: '#6c757d',
 };
 
 const DEFAULT_COLOR = '#6c757d';

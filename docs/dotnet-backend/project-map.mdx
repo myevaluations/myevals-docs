@@ -5,106 +5,30 @@ description: Visual project dependency map for the MyEvaluations .NET solution, 
 ---
 
 import DependencyGraph from '@site/src/components/DependencyGraph';
+import solutionMap from '@site/generated/dotnet-metadata/solution-map.json';
+
+export const graphData = {
+  nodes: solutionMap.projects.map(p => ({
+    id: p.name,
+    group: p.group,
+    label: p.name.replace('MyEvaluations.', '')
+  })),
+  links: solutionMap.dependencies.map(d => ({
+    source: d.from,
+    target: d.to
+  }))
+};
 
 # Project Map
 
-The `MyEvaluations2009.sln` solution contains **27 main projects** plus **70+ scheduler service projects**. This page provides a visual dependency map and categorized listing of all projects.
+The `MyEvaluations2009.sln` solution contains **{solutionMap.projectCount} projects** with **{solutionMap.dependencies.length} dependency edges**. This page provides a visual dependency map and categorized listing of all projects.
 
 ## Interactive Dependency Graph
 
-<DependencyGraph data={{
-  nodes: [
-    { id: "Common", group: "Business", label: "Common" },
-    { id: "Evaluations", group: "Business", label: "Evaluations" },
-    { id: "DutyHours", group: "Business", label: "DutyHours" },
-    { id: "CMETracking", group: "Business", label: "CMETracking" },
-    { id: "PatientLog", group: "Business", label: "PatientLog" },
-    { id: "Procedures", group: "Business", label: "Procedures" },
-    { id: "Portfolio", group: "Business", label: "Portfolio" },
-    { id: "LearningAssignment", group: "Business", label: "LearningAssignment" },
-    { id: "Quiz", group: "Business", label: "Quiz" },
-    { id: "Mail", group: "Business", label: "Mail" },
-    { id: "Security", group: "Business", label: "Security" },
-    { id: "ICC", group: "Business", label: "ICC" },
-    { id: "EssentialActivities", group: "Business", label: "EssentialActivities" },
-    { id: "NurseNotify", group: "Business", label: "NurseNotifyService" },
-    { id: "TimeSheet", group: "Business", label: "TimeSheet" },
-    { id: "HelloSign", group: "Business", label: "HelloSign" },
-    { id: "ERAS", group: "Business", label: "ERAS" },
-    { id: "DataAccess", group: "DataAccess", label: "DataAccess.SQL" },
-    { id: "Logging", group: "DataAccess", label: "Logging" },
-    { id: "Utilities", group: "DataAccess", label: "Utilities" },
-    { id: "Web", group: "Web", label: "Web (App)" },
-    { id: "WebLib", group: "Web", label: "Web (Library)" },
-    { id: "SAML", group: "DataAccess", label: "SAMLServiceProvider" },
-    { id: "FusionChart", group: "DataAccess", label: "FusionChartLibrary" },
-    { id: "Amion", group: "DataAccess", label: "AmionScheduleUpdater" },
-    { id: "Schedulers", group: "Services", label: "Schedulers (70+)" }
-  ],
-  links: [
-    { source: "Common", target: "DataAccess" },
-    { source: "Common", target: "Logging" },
-    { source: "Evaluations", target: "Common" },
-    { source: "Evaluations", target: "DataAccess" },
-    { source: "Evaluations", target: "Utilities" },
-    { source: "DutyHours", target: "Common" },
-    { source: "DutyHours", target: "DataAccess" },
-    { source: "CMETracking", target: "Common" },
-    { source: "CMETracking", target: "DataAccess" },
-    { source: "PatientLog", target: "Common" },
-    { source: "PatientLog", target: "DataAccess" },
-    { source: "Procedures", target: "Common" },
-    { source: "Procedures", target: "DataAccess" },
-    { source: "Portfolio", target: "Common" },
-    { source: "Portfolio", target: "DataAccess" },
-    { source: "LearningAssignment", target: "Common" },
-    { source: "LearningAssignment", target: "DataAccess" },
-    { source: "Quiz", target: "Common" },
-    { source: "Quiz", target: "DataAccess" },
-    { source: "Mail", target: "Common" },
-    { source: "Mail", target: "DataAccess" },
-    { source: "Mail", target: "Utilities" },
-    { source: "Security", target: "Common" },
-    { source: "Security", target: "DataAccess" },
-    { source: "ICC", target: "Common" },
-    { source: "ICC", target: "DataAccess" },
-    { source: "EssentialActivities", target: "Common" },
-    { source: "EssentialActivities", target: "DataAccess" },
-    { source: "TimeSheet", target: "Common" },
-    { source: "TimeSheet", target: "DataAccess" },
-    { source: "HelloSign", target: "Common" },
-    { source: "HelloSign", target: "Utilities" },
-    { source: "ERAS", target: "Common" },
-    { source: "ERAS", target: "DataAccess" },
-    { source: "NurseNotify", target: "Common" },
-    { source: "Web", target: "Evaluations" },
-    { source: "Web", target: "DutyHours" },
-    { source: "Web", target: "CMETracking" },
-    { source: "Web", target: "PatientLog" },
-    { source: "Web", target: "Procedures" },
-    { source: "Web", target: "Portfolio" },
-    { source: "Web", target: "LearningAssignment" },
-    { source: "Web", target: "Quiz" },
-    { source: "Web", target: "Mail" },
-    { source: "Web", target: "Security" },
-    { source: "Web", target: "Common" },
-    { source: "Web", target: "WebLib" },
-    { source: "Web", target: "SAML" },
-    { source: "Web", target: "FusionChart" },
-    { source: "Web", target: "Utilities" },
-    { source: "WebLib", target: "Common" },
-    { source: "WebLib", target: "Security" },
-    { source: "Schedulers", target: "Common" },
-    { source: "Schedulers", target: "Evaluations" },
-    { source: "Schedulers", target: "DutyHours" },
-    { source: "Schedulers", target: "Mail" },
-    { source: "Schedulers", target: "DataAccess" },
-    { source: "Schedulers", target: "Utilities" }
-  ]
-}} />
+<DependencyGraph data={graphData} />
 
 :::tip Interactive Graph
-The graph above is interactive. You can drag nodes to rearrange them, scroll to zoom, and hover over nodes to see details. Color coding: **Blue** = Business, **Green** = DataAccess/Infrastructure, **Orange** = Web, **Purple** = Services.
+The graph above is auto-generated from `MyEvaluations2009.sln` ({solutionMap.projectCount} projects, {solutionMap.dependencies.length} dependency edges). Drag nodes to rearrange, scroll to zoom, hover for details. Color coding: **Blue** = Business, **Green** = DataAccess/Infrastructure, **Orange** = Web, **Purple** = Services.
 :::
 
 ## Project Listing by Category

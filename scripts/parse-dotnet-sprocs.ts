@@ -231,6 +231,8 @@ async function main(): Promise<void> {
       name.startsWith('DataAccess.') ||
       name.startsWith('Business.') ||
       name.startsWith('Data.') ||
+      name.includes('.DataAccess.') ||
+      name.includes('.Business.') ||
       name.toLowerCase().includes('dal') ||
       name.toLowerCase().includes('repository')
     ) {
@@ -245,7 +247,9 @@ async function main(): Promise<void> {
         if (
           sub.name.startsWith('DataAccess.') ||
           sub.name.startsWith('Business.') ||
-          sub.name.startsWith('Data.')
+          sub.name.startsWith('Data.') ||
+          sub.name.includes('.DataAccess.') ||
+          sub.name.includes('.Business.')
         ) {
           dirsToScan.push(path.join(DOTNET_REPO, name, sub.name));
         }

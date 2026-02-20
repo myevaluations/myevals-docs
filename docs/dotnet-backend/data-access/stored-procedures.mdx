@@ -6,14 +6,20 @@ description: Catalog of SQL Server stored procedures used by the MyEvaluations .
 
 # Stored Procedures Catalog
 
-The MyEvaluations SQL Server database contains **3,000+ stored procedures** that implement the core data operations for the platform. All database reads and writes in the .NET backend go through stored procedures -- there is no inline SQL in the application code.
+The MyEvaluations SQL Server database contains **{sprocData.totalUniqueProcedures.toLocaleString()}+ stored procedures** referenced across **{sprocData.totalReferences.toLocaleString()} call sites** in the .NET backend. All database reads and writes go through stored procedures -- there is no inline SQL in the application code.
 
 :::note Auto-Generated Content
-This catalog is a placeholder that will be auto-populated by the `parse:dotnet:sprocs` script. Run `npm run parse:dotnet:sprocs` to refresh the stored procedure data from the database.
+This catalog is populated by the `parse:dotnet:sprocs` script which scans C# source code for stored procedure references. Run `npm run parse:dotnet:sprocs` to refresh.
 :::
 
-{/* import SprocMap from '@site/src/components/SprocMap'; */}
-{/* <SprocMap /> */}
+import SprocMap from '@site/src/components/SprocMap';
+import sprocData from '@site/generated/dotnet-metadata/stored-procedures.json';
+
+<SprocMap mappings={sprocData.procedures.slice(0, 50)} />
+
+:::info
+Showing top 50 most-referenced stored procedures out of **{sprocData.totalUniqueProcedures}** total unique procedures ({sprocData.totalReferences} total references across the codebase). Run `npm run parse:dotnet:sprocs` to refresh.
+:::
 
 ## Naming Conventions
 

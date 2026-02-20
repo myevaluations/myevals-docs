@@ -5,6 +5,7 @@ description: Comprehensive catalog of all 70+ Windows Service schedulers in the 
 ---
 
 import SchedulerCatalog from '@site/src/components/SchedulerCatalog';
+import schedulerData from '@site/generated/dotnet-metadata/schedulers.json';
 
 # Scheduler Overview
 
@@ -72,7 +73,7 @@ Use the interactive table below to search, filter, and explore all schedulers ac
 This catalog is populated by the `parse:dotnet:schedulers` script. Run `npm run parse:dotnet:schedulers` to refresh the data from the source code.
 :::
 
-<SchedulerCatalog />
+<SchedulerCatalog schedulers={schedulerData.schedulers} />
 
 ## Common Scheduler Architecture
 

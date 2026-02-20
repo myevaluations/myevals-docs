@@ -117,8 +117,12 @@ function computeSummary(features: MigrationFeature[]) {
   return { total, complete, inProgress, notStarted, avgPercent };
 }
 
-export default function MigrationTracker(): React.JSX.Element {
-  const features = SAMPLE_DATA;
+interface MigrationTrackerProps {
+  features?: MigrationFeature[];
+}
+
+export default function MigrationTracker({ features: featuresProp }: MigrationTrackerProps): React.JSX.Element {
+  const features = featuresProp ?? SAMPLE_DATA;
   const summary = computeSummary(features);
 
   return (

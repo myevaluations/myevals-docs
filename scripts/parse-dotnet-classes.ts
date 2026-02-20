@@ -423,7 +423,7 @@ async function main(): Promise<void> {
   // Find Business.* directories
   const repoEntries = await fs.readdir(DOTNET_REPO, { withFileTypes: true });
   const businessDirs = repoEntries
-    .filter((e) => e.isDirectory() && e.name.startsWith('Business.'))
+    .filter((e) => e.isDirectory() && (e.name.startsWith('Business.') || e.name.includes('.Business.')))
     .map((e) => e.name);
 
   // Also look in subdirectories one level deep for Business.* projects
@@ -432,7 +432,7 @@ async function main(): Promise<void> {
       try {
         const subEntries = await fs.readdir(path.join(DOTNET_REPO, entry.name), { withFileTypes: true });
         for (const sub of subEntries) {
-          if (sub.isDirectory() && sub.name.startsWith('Business.')) {
+          if (sub.isDirectory() && (sub.name.startsWith('Business.') || sub.name.includes('.Business.'))) {
             businessDirs.push(path.join(entry.name, sub.name));
           }
         }

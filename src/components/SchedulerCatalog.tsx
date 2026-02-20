@@ -9,8 +9,37 @@ interface Scheduler {
   status: string;
 }
 
+/** Raw format from parse-dotnet-schedulers.ts */
+interface RawScheduler {
+  name: string;
+  className: string;
+  description: string;
+  schedulePattern: string;
+  domain: string;
+  filePath: string;
+  projectName: string;
+  serviceType: string;
+  methods: string[];
+}
+
 interface SchedulerCatalogProps {
-  schedulers?: Scheduler[];
+  schedulers?: (Scheduler | RawScheduler)[];
+}
+
+function normalizeScheduler(s: Scheduler | RawScheduler): Scheduler {
+  // If already normalized (has 'frequency' field), return as-is
+  if ('frequency' in s && 'type' in s && 'status' in s) {
+    return s as Scheduler;
+  }
+  const raw = s as RawScheduler;
+  return {
+    name: raw.name,
+    domain: raw.domain || 'Unknown',
+    frequency: raw.schedulePattern || 'Unknown',
+    description: raw.description || `${raw.className} in ${raw.projectName}`,
+    type: raw.serviceType === 'Unknown' ? '.NET' : raw.serviceType,
+    status: 'Active',
+  };
 }
 
 const PLACEHOLDER_SCHEDULERS: Scheduler[] = [
@@ -119,7 +148,7 @@ function getTypeBadge(type: string): React.JSX.Element {
 }
 
 export default function SchedulerCatalog({ schedulers }: SchedulerCatalogProps): React.JSX.Element {
-  const items = schedulers ?? PLACEHOLDER_SCHEDULERS;
+  const items = (schedulers ?? PLACEHOLDER_SCHEDULERS).map(normalizeScheduler);
 
   const [searchText, setSearchText] = useState('');
   const [domainFilter, setDomainFilter] = useState('All');

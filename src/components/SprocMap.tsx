@@ -11,8 +11,38 @@ interface SprocMapping {
   calledBy: CalledByEntry[];
 }
 
+/** Raw format from parse-dotnet-sprocs.ts (procedures[] array) */
+interface RawSprocProcedure {
+  procedureName: string;
+  callCount: number;
+  calledBy: {
+    className: string;
+    methodName: string;
+    filePath: string;
+  }[];
+}
+
 interface SprocMapProps {
-  mappings?: SprocMapping[];
+  mappings?: (SprocMapping | RawSprocProcedure)[];
+}
+
+function extractProject(filePath: string): string {
+  // Extract project from path like "MyEvaluations.Business.Security/UserManager.cs"
+  const parts = filePath.split('/');
+  return parts[0] || filePath;
+}
+
+function normalizeSprocMapping(m: SprocMapping | RawSprocProcedure): SprocMapping {
+  if ('sproc' in m) return m as SprocMapping;
+  const raw = m as RawSprocProcedure;
+  return {
+    sproc: raw.procedureName,
+    calledBy: raw.calledBy.map((cb) => ({
+      class: cb.className,
+      method: cb.methodName,
+      project: extractProject(cb.filePath),
+    })),
+  };
 }
 
 const PLACEHOLDER_MAPPINGS: SprocMapping[] = [
@@ -74,7 +104,7 @@ const PLACEHOLDER_MAPPINGS: SprocMapping[] = [
 ];
 
 export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element {
-  const items = mappings ?? PLACEHOLDER_MAPPINGS;
+  const items = (mappings ?? PLACEHOLDER_MAPPINGS).map(normalizeSprocMapping);
 
   const [searchText, setSearchText] = useState('');
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());

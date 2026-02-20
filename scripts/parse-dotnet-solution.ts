@@ -57,9 +57,10 @@ function classifyProject(name: string, relativePath: string): string {
   const lower = name.toLowerCase();
   const pathLower = relativePath.toLowerCase();
 
-  if (lower.startsWith('business.')) return 'Business';
-  if (lower.startsWith('dataaccess.') || lower.startsWith('data.')) return 'DataAccess';
+  if (lower.includes('.business.') || lower.startsWith('business.')) return 'Business';
+  if (lower.includes('.dataaccess.') || lower.startsWith('dataaccess.') || lower.startsWith('data.')) return 'DataAccess';
   if (lower.startsWith('info.') || lower.startsWith('model')) return 'Models';
+  if (lower.includes('.logging') || lower.includes('logging')) return 'Infrastructure';
   if (pathLower.includes('web') || lower.includes('website') || lower.includes('webapp')) return 'Web';
   if (pathLower.includes('service') || lower.includes('service')) return 'WindowsServices';
   if (pathLower.includes('scheduler') || lower.includes('scheduler')) return 'Schedulers';

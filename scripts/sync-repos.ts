@@ -43,7 +43,7 @@ function exec(cmd: string, cwd?: string): string {
       cwd,
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
-      timeout: 120_000, // 2 minute timeout per operation
+      timeout: 600_000, // 10 minute timeout per operation
     }).trim();
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
