@@ -1,0 +1,176 @@
+---
+sidebar_position: 8
+title: Learning Assignments
+description: Learning module assignment management in the MyEvaluations .NET backend. Assignment creation, tracking, completion monitoring, and quiz integration.
+---
+
+# Learning Assignments
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Learning Assignments module manages the distribution and tracking of educational content to trainees and faculty. Programs assign learning materials -- such as articles, videos, policy documents, online modules, and quizzes -- to users with due dates and completion tracking. This module supports mandatory compliance training (e.g., HIPAA, safety), program-specific curriculum delivery, and self-directed learning.
+
+### Key Responsibilities
+
+- **Assignment Creation**: Create and distribute learning materials with configurable due dates, target audiences, and completion criteria
+- **Completion Tracking**: Monitor assignment completion status with timestamps, attempts, and scores
+- **Due Date Management**: Configurable due dates with automated reminders at multiple intervals
+- **Curriculum Management**: Group assignments into curricula or learning paths for structured training
+- **Quiz Integration**: Link assignments to quiz assessments for knowledge verification
+- **Compliance Reporting**: Track mandatory training completion rates for compliance audits
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `LearningAssignmentManager` | `MyEvaluations.Business.Learning` | Core assignment CRUD, distribution, and completion tracking. |
+| `LearningContentManager` | `MyEvaluations.Business.Learning` | Learning content management: upload, categorize, version, and retrieve materials. |
+| `LearningCurriculumManager` | `MyEvaluations.Business.Learning` | Curriculum/learning path definition and sequencing. |
+| `LearningComplianceManager` | `MyEvaluations.Business.Learning` | Compliance tracking and reporting for mandatory training requirements. |
+| `LearningReminderManager` | `MyEvaluations.Business.Learning` | Automated reminder scheduling and escalation logic. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `LearningAssignmentInfo` | Assignment record: content, assignee, assigner, due date, status, completion date, attempts. |
+| `LearningContentInfo` | Content item: title, type (article/video/document/module), URL or file path, duration, version. |
+| `LearningCurriculumInfo` | Curriculum: name, description, ordered list of content items, prerequisites, target audience. |
+| `LearningCompletionInfo` | Completion record: user, assignment, completion timestamp, score (if quiz), certificate generated. |
+| `LearningComplianceReportInfo` | Compliance report: requirement, user group, completion rate, overdue count, non-compliant users. |
+
+## Business Workflows
+
+### Assignment Distribution
+
+```mermaid
+sequenceDiagram
+    participant Admin as Program Admin
+    participant LAM as LearningAssignmentManager
+    participant LRM as LearningReminderManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Admin->>LAM: CreateAssignment(contentId, targetUsers[], dueDate)
+    LAM->>DB: sp_Learning_InsertAssignment
+    LAM->>DB: sp_Learning_BulkInsertUserAssignments
+
+    LAM->>MAIL: SendAssignmentNotification(users[], contentTitle, dueDate)
+    LAM->>LRM: ScheduleReminders(assignmentId, reminderIntervals[])
+    LRM->>DB: sp_Learning_InsertReminders
+
+    Note over LRM,DB: Reminder intervals: 7 days before,<br/>3 days before, 1 day before, overdue
+```
+
+### Assignment Completion Flow
+
+```mermaid
+sequenceDiagram
+    participant User as Trainee
+    participant LAM as LearningAssignmentManager
+    participant QM as QuizManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    User->>LAM: StartAssignment(assignmentId)
+    LAM->>DB: sp_Learning_UpdateStatus("In Progress")
+    LAM->>DB: sp_Learning_GetContent(contentId)
+    DB-->>LAM: Content details + URL
+    LAM-->>User: Learning content
+
+    alt Has Quiz Component
+        User->>QM: TakeQuiz(quizId)
+        QM-->>User: Quiz questions
+        User->>QM: SubmitQuiz(answers[])
+        QM->>QM: GradeQuiz(answers)
+        QM-->>LAM: QuizResult(score, passed)
+
+        alt Passed
+            LAM->>DB: sp_Learning_MarkComplete(assignmentId, score)
+        else Failed
+            LAM->>DB: sp_Learning_UpdateStatus("Retry Required")
+            LAM-->>User: Retry instructions
+        end
+    else No Quiz (completion on view)
+        User->>LAM: MarkComplete(assignmentId)
+        LAM->>DB: sp_Learning_MarkComplete(assignmentId)
+    end
+
+    LAM->>MAIL: SendCompletionConfirmation(userId, contentTitle)
+```
+
+### Compliance Monitoring
+
+```mermaid
+sequenceDiagram
+    participant Scheduler as Windows Service
+    participant LCM as LearningComplianceManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Scheduler->>LCM: RunComplianceCheck()
+    LCM->>DB: sp_Learning_GetMandatoryRequirements
+    DB-->>LCM: Mandatory training requirements
+
+    loop For each requirement
+        LCM->>DB: sp_Learning_GetCompletionStatus
+        DB-->>LCM: Completion status per user
+
+        loop For each overdue user
+            LCM->>MAIL: SendOverdueNotice(user, requirement)
+        end
+
+        alt Escalation threshold reached
+            LCM->>MAIL: SendEscalation(programDirector, overdueUsers[])
+        end
+    end
+
+    LCM->>DB: sp_Learning_UpdateComplianceSnapshot
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_Learning_InsertAssignment` | Create new learning assignment |
+| `sp_Learning_BulkInsertUserAssignments` | Assign content to multiple users |
+| `sp_Learning_InsertReminders` | Schedule reminder notifications |
+| `sp_Learning_UpdateStatus` | Update assignment status |
+| `sp_Learning_GetContent` | Retrieve learning content details |
+| `sp_Learning_MarkComplete` | Mark assignment as completed |
+| `sp_Learning_GetMandatoryRequirements` | Retrieve mandatory training requirements |
+| `sp_Learning_GetCompletionStatus` | Retrieve completion status for users |
+| `sp_Learning_UpdateComplianceSnapshot` | Update compliance tracking data |
+| `sp_Learning_GetAssignments` | Retrieve assignments for a user |
+| `sp_Learning_GetCurriculum` | Retrieve curriculum with ordered content |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    LA[Learning Assignments]
+    SEC[Security]
+    MAIL[Mail]
+    QUIZ[Quiz]
+    CME[CME Tracking]
+
+    LA --> SEC
+    LA --> MAIL
+    LA --> QUIZ
+    CME -.->|learning-based CME| LA
+
+    style LA fill:#1abc9c,color:#fff,stroke:#16a085
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for assignment creation, content management, and compliance reporting |
+| Depends on | Mail | Assignment notifications, reminders, completion confirmations, and escalations |
+| Depends on | Quiz | Quiz assessments linked to learning assignments for knowledge verification |
+| Related to | CME Tracking | Completed learning activities may award CME credits |

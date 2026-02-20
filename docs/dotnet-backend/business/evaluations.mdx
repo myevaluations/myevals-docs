@@ -1,0 +1,205 @@
+---
+sidebar_position: 2
+title: Evaluations
+description: Core evaluation engine for MyEvaluations. 35+ classes handling the complete evaluation lifecycle from template creation through signing and filing.
+---
+
+# Evaluations
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Evaluations module is the primary product feature of MyEvaluations and the most heavily used component of the platform. It manages the complete lifecycle of trainee evaluations across GME residency programs, CME activities, nursing programs, and PA programs. With 35+ classes, this module handles everything from evaluation template design and assignment through notification, submission, review, signing, and permanent filing.
+
+Evaluation types include attending-of-resident, resident-of-attending, resident-of-rotation, 360-degree (multi-source), self-evaluations, milestone evaluations, and custom institutional forms. The module supports configurable question types, competency mapping to ACGME core competencies and milestones, automated distribution scheduling, and multi-level approval workflows.
+
+### Key Responsibilities
+
+- **Template Management**: Design evaluation forms with configurable question types, scoring scales, and competency mappings
+- **Assignment Engine**: Automatically assign evaluations based on rotation schedules, faculty assignments, and program rules
+- **Notification Lifecycle**: Send reminders at configurable intervals until evaluation completion or expiration
+- **Submission & Review**: Collect responses, calculate scores, route for review and co-signatures
+- **Signing & Filing**: Electronic signature capture, final review, and permanent filing to trainee record
+- **Reporting**: Aggregate scores, trend analysis, competency dashboards, and ACGME milestone reporting
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `EvaluationManager` | `MyEvaluations.Business.Evaluations` | Core evaluation CRUD, assignment, submission, and retrieval logic. |
+| `EvaluationTemplateManager` | `MyEvaluations.Business.Evaluations` | Template creation, versioning, question management, and competency mapping. |
+| `EvaluationAssignmentManager` | `MyEvaluations.Business.Evaluations` | Automated and manual evaluation assignment based on rotation schedules and rules. |
+| `EvaluationNotificationManager` | `MyEvaluations.Business.Evaluations` | Reminder scheduling, escalation logic, and notification tracking. |
+| `EvaluationScoringManager` | `MyEvaluations.Business.Evaluations` | Score calculation, competency aggregation, and statistical analysis. |
+| `EvaluationSignatureManager` | `MyEvaluations.Business.Evaluations` | Electronic signature workflow for evaluation sign-off. |
+| `EvaluationReportManager` | `MyEvaluations.Business.Evaluations` | Report generation: individual, aggregate, trend, and ACGME milestone reports. |
+| `MilestoneManager` | `MyEvaluations.Business.Evaluations` | ACGME milestone mapping, level assessment, and CCC reporting integration. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `EvaluationInfo` | Complete evaluation record: ID, template, evaluator, subject, status, scores, dates, comments. |
+| `EvaluationTemplateInfo` | Template definition: ID, name, version, institution, program, question list, competency mappings. |
+| `EvaluationQuestionInfo` | Individual question: ID, text, type (Likert, free-text, checkbox, ranking), required flag, competency link. |
+| `EvaluationAssignmentInfo` | Assignment record: evaluator, subject, template, due date, rotation, status. |
+| `EvaluationResponseInfo` | Individual question response: question ID, answer value, comment, timestamp. |
+| `EvaluationScoreInfo` | Calculated score: overall, per-competency, percentile, comparison to program average. |
+| `CompetencyMappingInfo` | Maps questions to ACGME competencies (Patient Care, Medical Knowledge, etc.). |
+| `MilestoneInfo` | ACGME milestone definition: competency, sub-competency, level descriptors. |
+
+## Business Workflows
+
+### Evaluation Lifecycle
+
+```mermaid
+sequenceDiagram
+    participant Admin as Program Admin
+    participant ETM as EvaluationTemplateManager
+    participant EAM as EvaluationAssignmentManager
+    participant ENM as EvaluationNotificationManager
+    participant EM as EvaluationManager
+    participant ESM as EvaluationScoringManager
+    participant SIG as EvaluationSignatureManager
+    participant DB as SQL Server
+
+    Note over Admin,DB: Phase 1 - Template Setup
+    Admin->>ETM: CreateTemplate(templateInfo)
+    ETM->>DB: sp_Evaluation_InsertTemplate
+    Admin->>ETM: AddQuestions(templateId, questions[])
+    ETM->>DB: sp_Evaluation_InsertQuestions
+    Admin->>ETM: MapCompetencies(templateId, mappings[])
+    ETM->>DB: sp_Evaluation_InsertCompetencyMappings
+
+    Note over Admin,DB: Phase 2 - Assignment
+    EAM->>DB: sp_Evaluation_GetRotationSchedule
+    DB-->>EAM: Current rotations + faculty
+    EAM->>EAM: Apply assignment rules
+    EAM->>DB: sp_Evaluation_BulkInsertAssignments
+    EAM->>ENM: QueueInitialNotifications(assignments[])
+    ENM->>DB: sp_Mail_InsertBatch
+
+    Note over Admin,DB: Phase 3 - Completion
+    ENM->>DB: sp_Evaluation_GetPendingReminders
+    ENM->>DB: sp_Mail_InsertBatch (reminders)
+
+    Note over Admin,DB: Phase 4 - Submission
+    EM->>DB: sp_Evaluation_SaveResponses
+    EM->>ESM: CalculateScores(evaluationId)
+    ESM->>DB: sp_Evaluation_GetResponses
+    ESM->>ESM: Apply scoring algorithm
+    ESM->>DB: sp_Evaluation_SaveScores
+
+    Note over Admin,DB: Phase 5 - Review & Sign
+    SIG->>DB: sp_Evaluation_GetPendingSignatures
+    SIG->>DB: sp_Evaluation_RecordSignature
+    SIG->>DB: sp_Evaluation_FileEvaluation
+```
+
+### 360-Degree Evaluation Flow
+
+```mermaid
+sequenceDiagram
+    participant Admin as Program Admin
+    participant EAM as EvaluationAssignmentManager
+    participant EM as EvaluationManager
+    participant ESM as EvaluationScoringManager
+    participant DB as SQL Server
+
+    Admin->>EAM: Create360Assignment(subjectId, evaluatorIds[])
+    Note right of EAM: Evaluators include: attending,<br/>peers, nurses, patients, self
+    EAM->>DB: sp_Evaluation_Insert360Group
+    EAM->>DB: sp_Evaluation_BulkInsertAssignments
+
+    loop For each evaluator
+        EM->>DB: sp_Evaluation_SaveResponses
+    end
+
+    Note over ESM,DB: Aggregation (anonymized)
+    ESM->>DB: sp_Evaluation_Get360Responses
+    ESM->>ESM: Aggregate by evaluator category
+    ESM->>ESM: Apply anonymization rules (min 3 per category)
+    ESM->>DB: sp_Evaluation_Save360Summary
+    ESM-->>Admin: 360 Summary Report (anonymized)
+```
+
+### Milestone Assessment Flow
+
+```mermaid
+sequenceDiagram
+    participant CCC as CCC Committee
+    participant MM as MilestoneManager
+    participant ESM as EvaluationScoringManager
+    participant DB as SQL Server
+
+    CCC->>MM: GetMilestoneData(residentId, period)
+    MM->>DB: sp_Evaluation_GetMilestoneScores
+    DB-->>MM: Evaluation scores by competency
+    MM->>ESM: AggregateMilestones(scores)
+    ESM-->>MM: Milestone levels (1-5) per sub-competency
+
+    CCC->>MM: SetMilestoneLevels(residentId, levels[])
+    MM->>DB: sp_Milestone_SaveAssessment
+    MM->>DB: sp_Milestone_GenerateACGMEReport
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_Evaluation_InsertTemplate` | Create new evaluation template |
+| `sp_Evaluation_InsertQuestions` | Add questions to a template |
+| `sp_Evaluation_InsertCompetencyMappings` | Map questions to ACGME competencies |
+| `sp_Evaluation_GetRotationSchedule` | Retrieve current rotation schedule for assignment |
+| `sp_Evaluation_BulkInsertAssignments` | Create evaluation assignments in bulk |
+| `sp_Evaluation_GetPendingReminders` | Retrieve evaluations needing reminder notifications |
+| `sp_Evaluation_SaveResponses` | Save evaluator responses |
+| `sp_Evaluation_GetResponses` | Retrieve responses for scoring |
+| `sp_Evaluation_SaveScores` | Store calculated scores |
+| `sp_Evaluation_RecordSignature` | Record electronic signature on evaluation |
+| `sp_Evaluation_FileEvaluation` | Mark evaluation as permanently filed |
+| `sp_Evaluation_Insert360Group` | Create a 360-degree evaluation group |
+| `sp_Evaluation_Get360Responses` | Retrieve anonymized 360 responses |
+| `sp_Evaluation_Save360Summary` | Store aggregated 360 summary |
+| `sp_Evaluation_GetMilestoneScores` | Retrieve scores for milestone assessment |
+| `sp_Milestone_SaveAssessment` | Save CCC milestone level assignments |
+| `sp_Milestone_GenerateACGMEReport` | Generate ACGME milestone reporting data |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    EVAL[Evaluations]
+    SEC[Security]
+    MAIL[Mail]
+    DH[Duty Hours]
+    PROC[Procedures]
+    ICC[ICC]
+    PORT[Portfolio]
+    HS[HelloSign]
+
+    EVAL --> SEC
+    EVAL --> MAIL
+    EVAL --> HS
+    ICC --> EVAL
+    PORT --> EVAL
+    PROC -.->|competency data| EVAL
+    DH -.->|rotation context| EVAL
+
+    style EVAL fill:#3498db,color:#fff,stroke:#2980b9
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for who can evaluate whom, role-based routing |
+| Depends on | Mail | Notification delivery for assignment, reminders, and completion alerts |
+| Depends on | HelloSign | E-signature integration for evaluation sign-off (when configured) |
+| Depended on by | ICC | CCC committees consume evaluation data for milestone reviews |
+| Depended on by | Portfolio | Portfolio includes evaluation summaries and scores |
+| Related to | Procedures | Competency data shared between procedure tracking and evaluations |
+| Related to | Duty Hours | Rotation schedule context used for evaluation assignment |

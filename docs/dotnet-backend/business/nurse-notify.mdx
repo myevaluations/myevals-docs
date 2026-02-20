@@ -1,0 +1,182 @@
+---
+sidebar_position: 16
+title: Nurse Notify
+description: Nursing program notification system in the MyEvaluations .NET backend. Clinical placement alerts, compliance notifications, and nursing program-specific communication.
+---
+
+# Nurse Notify
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Nurse Notify module provides a specialized notification system for nursing education programs. While the general Mail module handles platform-wide email delivery, Nurse Notify addresses the unique communication needs of nursing programs: clinical placement alerts, preceptor notifications, compliance document reminders, clinical site communications, and program-specific announcements.
+
+Nursing programs have distinct notification requirements compared to GME programs. They coordinate with external clinical sites, manage student-preceptor assignments, track compliance documents (immunizations, background checks, drug screens, CPR certification), and communicate with clinical site coordinators who may not have MyEvaluations accounts.
+
+### Key Responsibilities
+
+- **Clinical Placement Alerts**: Notify students, preceptors, and clinical sites about placement assignments and changes
+- **Compliance Document Reminders**: Track and alert on expiring compliance documents (immunizations, certifications, background checks)
+- **Preceptor Communication**: Notify preceptors about student assignments, evaluation requests, and schedule changes
+- **Clinical Site Coordination**: Communicate with clinical site coordinators about student schedules and requirements
+- **Program Announcements**: Broadcast program-specific messages to student cohorts
+- **Escalation Workflows**: Automated escalation for overdue compliance items and unresponsive recipients
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `NurseNotifyManager` | `MyEvaluations.Business.NurseNotify` | Core nursing notification operations: create, schedule, and track notifications. |
+| `NurseNotifyPlacementManager` | `MyEvaluations.Business.NurseNotify` | Clinical placement notification workflows. |
+| `NurseNotifyComplianceManager` | `MyEvaluations.Business.NurseNotify` | Compliance document expiration tracking and reminders. |
+| `NurseNotifyPreceptorManager` | `MyEvaluations.Business.NurseNotify` | Preceptor-specific communication management. |
+| `NurseNotifySiteManager` | `MyEvaluations.Business.NurseNotify` | Clinical site coordinator communication. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `NurseNotificationInfo` | Notification record: type, recipients, message, status, sent date, delivery tracking. |
+| `ClinicalPlacementAlertInfo` | Placement alert: student, clinical site, preceptor, start date, end date, shift details. |
+| `ComplianceDocumentInfo` | Compliance document: type (immunization/background/CPR/drug screen), expiration date, status, student. |
+| `PreceptorNotificationInfo` | Preceptor notification: preceptor, students assigned, evaluation due dates, site details. |
+| `ClinicalSiteContactInfo` | Site contact: name, email, phone, clinical site, role, notification preferences. |
+| `NurseNotifyEscalationInfo` | Escalation record: original notification, escalation level, escalated to, escalation date. |
+
+## Business Workflows
+
+### Clinical Placement Notification
+
+```mermaid
+sequenceDiagram
+    participant Admin as Nursing Program Admin
+    participant NPM as NurseNotifyPlacementManager
+    participant NNM as NurseNotifyManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Admin->>NPM: CreatePlacement(student, site, preceptor, dates)
+    NPM->>DB: sp_NurseNotify_InsertPlacement
+
+    NPM->>NNM: NotifyStudent(student, placementDetails)
+    NNM->>MAIL: SendNotification(student, "Placement Assignment")
+
+    NPM->>NNM: NotifyPreceptor(preceptor, studentInfo, dates)
+    NNM->>MAIL: SendNotification(preceptor, "Student Assignment")
+
+    NPM->>NNM: NotifySiteCoordinator(siteContact, studentInfo, dates)
+    NNM->>MAIL: SendNotification(siteContact, "Incoming Student")
+
+    NPM->>DB: sp_NurseNotify_UpdateNotificationStatus
+```
+
+### Compliance Document Monitoring
+
+```mermaid
+sequenceDiagram
+    participant Scheduler as Windows Service
+    participant NCM as NurseNotifyComplianceManager
+    participant NNM as NurseNotifyManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Scheduler->>NCM: CheckExpiringDocuments()
+    NCM->>DB: sp_NurseNotify_GetExpiringDocuments
+    DB-->>NCM: Documents expiring within 30/60/90 days
+
+    loop For each expiring document
+        alt 90 days out (first warning)
+            NCM->>NNM: SendExpirationWarning(student, document, 90)
+            NNM->>MAIL: SendNotification(student, "Document Expiring - 90 Days")
+        else 30 days out (urgent)
+            NCM->>NNM: SendUrgentReminder(student, document, 30)
+            NNM->>MAIL: SendNotification(student, "Document Expiring - URGENT")
+            NCM->>NNM: NotifyProgramAdmin(student, document)
+        else Expired
+            NCM->>NNM: SendExpiredNotice(student, document)
+            NNM->>MAIL: SendNotification(student, "Document EXPIRED")
+            NCM->>NNM: NotifyProgramAdmin(student, document)
+            NCM->>DB: sp_NurseNotify_FlagNonCompliant(studentId, documentType)
+            Note right of NCM: May trigger clinical<br/>placement hold
+        end
+    end
+
+    NCM->>DB: sp_NurseNotify_UpdateComplianceStatus
+```
+
+### Preceptor Communication Workflow
+
+```mermaid
+sequenceDiagram
+    participant Admin as Nursing Program Admin
+    participant NPM as NurseNotifyPreceptorManager
+    participant NNM as NurseNotifyManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Note over Admin,DB: Beginning of rotation
+    Admin->>NPM: SendPreceptorPackage(preceptorId, students[], rotationInfo)
+    NPM->>DB: sp_NurseNotify_GetPreceptorDetails
+    NPM->>NPM: BuildPreceptorPackage(students, evaluationDates, siteInfo)
+    NPM->>MAIL: SendNotification(preceptor, "Student Rotation Package")
+
+    Note over Admin,DB: Mid-rotation evaluation reminder
+    NPM->>DB: sp_NurseNotify_GetPendingEvaluations
+    DB-->>NPM: Overdue preceptor evaluations
+
+    loop For each overdue evaluation
+        NPM->>MAIL: SendEvaluationReminder(preceptor, student, dueDate)
+        NPM->>DB: sp_NurseNotify_InsertReminder
+
+        alt No response after 2 reminders
+            NPM->>NNM: EscalateToAdmin(preceptor, student, evaluation)
+            NNM->>DB: sp_NurseNotify_InsertEscalation
+            NNM->>MAIL: SendNotification(programAdmin, "Preceptor Non-Response")
+        end
+    end
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_NurseNotify_InsertPlacement` | Record clinical placement |
+| `sp_NurseNotify_UpdateNotificationStatus` | Update notification delivery status |
+| `sp_NurseNotify_GetExpiringDocuments` | Retrieve documents approaching expiration |
+| `sp_NurseNotify_FlagNonCompliant` | Flag student as non-compliant for expired documents |
+| `sp_NurseNotify_UpdateComplianceStatus` | Update compliance tracking |
+| `sp_NurseNotify_GetPreceptorDetails` | Retrieve preceptor contact and assignment info |
+| `sp_NurseNotify_GetPendingEvaluations` | Retrieve overdue preceptor evaluations |
+| `sp_NurseNotify_InsertReminder` | Record sent reminder |
+| `sp_NurseNotify_InsertEscalation` | Record escalation event |
+| `sp_NurseNotify_GetSiteContacts` | Retrieve clinical site coordinator contacts |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    NN[Nurse Notify]
+    SEC[Security]
+    MAIL[Mail]
+    EVAL[Evaluations]
+    EA[Essential Activities]
+
+    NN --> SEC
+    NN --> MAIL
+    NN -.->|evaluation reminders| EVAL
+    NN -.->|activity alerts| EA
+
+    style NN fill:#e91e63,color:#fff,stroke:#c2185b
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for notification management and compliance monitoring |
+| Depends on | Mail | All notifications ultimately delivered through the Mail module's Mailgun integration |
+| Related to | Evaluations | Preceptor evaluation reminders are triggered based on evaluation assignment status |
+| Related to | Essential Activities | Essential activity completion reminders may be routed through nursing-specific notification workflows |

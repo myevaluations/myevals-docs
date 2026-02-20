@@ -1,0 +1,187 @@
+---
+sidebar_position: 12
+title: E-Signatures
+description: E-signature integrations in the MyEvaluations .NET backend. HelloSign, AdobeSign, and RightSignature integration for document signing workflows.
+---
+
+# E-Signatures (HelloSign / AdobeSign / RightSignature)
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The E-Signatures module provides electronic signature capabilities for documents that require formal sign-off within the MyEvaluations platform. This includes evaluation sign-offs, training agreements, remediation plans, and other compliance documents. The module integrates with multiple e-signature providers (HelloSign, AdobeSign, and RightSignature) and manages the full document signing lifecycle.
+
+The platform is currently in the process of migrating from HelloSign (now Dropbox Sign) to AdobeSign as the primary e-signature provider, with RightSignature supported as a legacy integration for some institutions.
+
+### Key Responsibilities
+
+- **Document Signing Workflows**: Create, send, and track signature requests for training documents
+- **Multi-Provider Support**: Abstract integration layer supporting HelloSign, AdobeSign, and RightSignature
+- **Webhook Processing**: Handle real-time events from signature providers (signed, declined, expired)
+- **Template Management**: Manage reusable document templates with signature fields and pre-fill data
+- **Audit Trail**: Maintain complete signing history for compliance and legal purposes
+- **Provider Migration**: Support gradual migration from HelloSign to AdobeSign
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `SignatureManager` | `MyEvaluations.Business.Signature` | Provider-agnostic signature operations: create request, check status, download signed document. |
+| `HelloSignManager` | `MyEvaluations.Business.Signature` | HelloSign (Dropbox Sign) API integration. |
+| `AdobeSignManager` | `MyEvaluations.Business.Signature` | AdobeSign API integration. |
+| `RightSignatureManager` | `MyEvaluations.Business.Signature` | RightSignature API integration (legacy). |
+| `SignatureTemplateManager` | `MyEvaluations.Business.Signature` | Document template management with signature field definitions. |
+| `SignatureWebhookManager` | `MyEvaluations.Business.Signature` | Webhook event processing from all providers. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `SignatureRequestInfo` | Signature request: document, signers list, status, provider, created date, completed date. |
+| `SignerInfo` | Individual signer: name, email, role, signing order, status (pending/signed/declined). |
+| `SignatureTemplateInfo` | Template: name, provider template ID, fields, pre-fill mappings, institution. |
+| `SignatureEventInfo` | Webhook event: event type, request ID, signer, timestamp, provider-specific data. |
+| `SignedDocumentInfo` | Completed document: download URL, signed date, certificate of completion, audit trail. |
+| `SignatureProviderConfigInfo` | Provider configuration: API key, callback URL, default settings, per institution. |
+
+## Business Workflows
+
+### Document Signing Request
+
+```mermaid
+sequenceDiagram
+    participant Module as Calling Module
+    participant SM as SignatureManager
+    participant Provider as E-Signature Provider
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Module->>SM: CreateSignatureRequest(document, signers[])
+    SM->>DB: sp_Signature_GetProviderConfig(institutionId)
+    DB-->>SM: SignatureProviderConfigInfo
+
+    alt HelloSign
+        SM->>Provider: POST /signature_request/send
+    else AdobeSign
+        SM->>Provider: POST /api/rest/v6/agreements
+    else RightSignature
+        SM->>Provider: POST /api/documents
+    end
+
+    Provider-->>SM: Provider request ID
+    SM->>DB: sp_Signature_InsertRequest
+    SM->>MAIL: NotifySigners(signers[], documentTitle)
+    SM-->>Module: SignatureRequestInfo
+```
+
+### Webhook Event Processing
+
+```mermaid
+sequenceDiagram
+    participant Provider as E-Signature Provider
+    participant API as Web API Handler
+    participant SWM as SignatureWebhookManager
+    participant SM as SignatureManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Provider->>API: POST /api/signature/webhook
+    API->>SWM: ProcessWebhook(payload, provider)
+    SWM->>SWM: VerifyWebhookAuthenticity(signature)
+    SWM->>SWM: ParseProviderEvent(payload)
+
+    alt Event: signature_request_signed (one signer)
+        SWM->>DB: sp_Signature_UpdateSignerStatus("Signed")
+        SWM->>SM: CheckAllSignersComplete(requestId)
+
+        alt All signers complete
+            SM->>Provider: GET /signature_request/{id}/files
+            Provider-->>SM: Signed PDF
+            SM->>DB: sp_Signature_SaveDocument(pdf)
+            SM->>DB: sp_Signature_UpdateRequest("Complete")
+            SM->>MAIL: NotifyAllParties(requestId, "Complete")
+        else More signers pending
+            SWM->>MAIL: NotifyNextSigner(nextSigner)
+        end
+    else Event: signature_request_declined
+        SWM->>DB: sp_Signature_UpdateSignerStatus("Declined")
+        SWM->>DB: sp_Signature_UpdateRequest("Declined")
+        SWM->>MAIL: NotifyRequestor(requestId, "Declined")
+    else Event: signature_request_expired
+        SWM->>DB: sp_Signature_UpdateRequest("Expired")
+        SWM->>MAIL: NotifyRequestor(requestId, "Expired")
+    end
+```
+
+### Provider Migration (HelloSign to AdobeSign)
+
+```mermaid
+sequenceDiagram
+    participant Admin as System Admin
+    participant SM as SignatureManager
+    participant HSM as HelloSignManager
+    participant ASM as AdobeSignManager
+    participant DB as SQL Server
+
+    Admin->>SM: MigrateInstitution(institutionId, targetProvider="AdobeSign")
+    SM->>DB: sp_Signature_GetPendingRequests(institutionId, "HelloSign")
+    DB-->>SM: Pending HelloSign requests
+
+    Note right of SM: Pending requests continue<br/>on HelloSign until completed
+
+    SM->>DB: sp_Signature_GetTemplates(institutionId, "HelloSign")
+    DB-->>SM: HelloSign templates
+
+    loop For each template
+        SM->>HSM: GetTemplateDefinition(templateId)
+        HSM-->>SM: Template fields + layout
+        SM->>ASM: CreateTemplate(converted fields)
+        ASM-->>SM: AdobeSign template ID
+        SM->>DB: sp_Signature_MapTemplate(oldId, newId)
+    end
+
+    SM->>DB: sp_Signature_UpdateProviderConfig(institutionId, "AdobeSign")
+    Note right of SM: New requests now<br/>use AdobeSign
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_Signature_GetProviderConfig` | Retrieve e-signature provider config for institution |
+| `sp_Signature_InsertRequest` | Create signature request record |
+| `sp_Signature_UpdateSignerStatus` | Update individual signer status |
+| `sp_Signature_UpdateRequest` | Update overall request status |
+| `sp_Signature_SaveDocument` | Store signed document |
+| `sp_Signature_GetPendingRequests` | Retrieve pending requests for institution/provider |
+| `sp_Signature_GetTemplates` | Retrieve document templates |
+| `sp_Signature_MapTemplate` | Map template IDs during provider migration |
+| `sp_Signature_UpdateProviderConfig` | Update provider configuration |
+| `sp_Signature_GetAuditTrail` | Retrieve signing audit trail |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    HS[E-Signatures]
+    SEC[Security]
+    MAIL[Mail]
+    EVAL[Evaluations]
+
+    HS --> SEC
+    HS --> MAIL
+    EVAL -.->|evaluation sign-off| HS
+
+    style HS fill:#e67e22,color:#fff,stroke:#d35400
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for signature request creation and template management |
+| Depends on | Mail | Signer notifications and completion alerts |
+| Depended on by | Evaluations | Evaluation sign-off workflow can use e-signatures (when configured by institution) |

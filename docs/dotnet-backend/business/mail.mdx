@@ -1,0 +1,218 @@
+---
+sidebar_position: 10
+title: Mail & Notifications
+description: Email and notification system in the MyEvaluations .NET backend. Template-based email, notification preferences, Mailgun integration, and batch email processing.
+---
+
+# Mail & Notifications
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Mail module is the centralized email and notification system for the MyEvaluations platform. Nearly every other module depends on it for user communication -- evaluation reminders, duty hour violation alerts, learning assignment notifications, compliance warnings, and administrative messages all flow through this module.
+
+The module uses a template-based email system with support for dynamic content, personalization, and institutional branding. Emails are sent via Mailgun API integration, with batch processing for high-volume sends and comprehensive delivery tracking.
+
+### Key Responsibilities
+
+- **Email Template System**: Configurable email templates with dynamic placeholders, institutional branding, and multi-language support
+- **Notification Preferences**: User-configurable notification preferences (email, digest, opt-out for non-mandatory)
+- **Mailgun Integration**: Email delivery via Mailgun API with delivery tracking, bounce handling, and unsubscribe management
+- **Batch Processing**: High-volume email batching for scheduled sends (evaluation reminders, compliance notifications)
+- **Delivery Tracking**: Track sent, delivered, opened, bounced, and failed emails
+- **Notification Queue**: Database-backed queue for reliable, ordered notification delivery
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `MailManager` | `MyEvaluations.Business.Mail` | Core email operations: compose, queue, send, and delivery tracking. |
+| `MailTemplateManager` | `MyEvaluations.Business.Mail` | Template CRUD, placeholder resolution, and institutional customization. |
+| `MailPreferenceManager` | `MyEvaluations.Business.Mail` | User notification preference management and opt-out handling. |
+| `MailBatchManager` | `MyEvaluations.Business.Mail` | Batch email processing: chunking, throttling, and retry logic. |
+| `MailgunManager` | `MyEvaluations.Business.Mail` | Mailgun API integration: sending, webhook processing, and bounce management. |
+| `MailQueueManager` | `MyEvaluations.Business.Mail` | Database-backed notification queue management. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `MailInfo` | Email record: to, from, subject, body (HTML), template ID, status, sent timestamp, delivery status. |
+| `MailTemplateInfo` | Template: name, subject template, body template, placeholders, category, institution override. |
+| `MailPreferenceInfo` | User preferences: notification category, delivery method (immediate/digest/none), frequency. |
+| `MailBatchInfo` | Batch record: batch ID, total count, sent count, failed count, start time, completion time. |
+| `MailDeliveryInfo` | Delivery tracking: message ID, Mailgun ID, status (sent/delivered/opened/bounced/failed), timestamp. |
+| `MailQueueItemInfo` | Queue entry: priority, created timestamp, recipient, template, data payload, retry count, status. |
+
+## Business Workflows
+
+### Email Sending Flow
+
+```mermaid
+sequenceDiagram
+    participant Module as Calling Module
+    participant MM as MailManager
+    participant MTM as MailTemplateManager
+    participant MPM as MailPreferenceManager
+    participant MQM as MailQueueManager
+    participant MGM as MailgunManager
+    participant DB as SQL Server
+
+    Module->>MM: SendNotification(userId, templateCode, data)
+    MM->>MPM: GetPreference(userId, templateCategory)
+    MPM->>DB: sp_Mail_GetUserPreference
+    DB-->>MPM: PreferenceInfo
+
+    alt User opted out (non-mandatory)
+        MPM-->>MM: OptedOut
+        MM-->>Module: Skipped (user preference)
+    end
+
+    MM->>MTM: ResolveTemplate(templateCode, institutionId, data)
+    MTM->>DB: sp_Mail_GetTemplate
+    DB-->>MTM: MailTemplateInfo
+    MTM->>MTM: ResolvePlaceholders(template, data)
+    MTM->>MTM: ApplyInstitutionBranding(content, institutionId)
+    MTM-->>MM: Resolved email (subject + body)
+
+    MM->>MQM: Enqueue(mailInfo)
+    MQM->>DB: sp_Mail_InsertQueueItem
+    MQM-->>MM: Queued
+
+    Note over MQM,MGM: Queue Processor (Windows Service)
+    MQM->>DB: sp_Mail_DequeueBatch(batchSize)
+    DB-->>MQM: List<MailQueueItemInfo>
+
+    loop For each queued email
+        MQM->>MGM: SendEmail(mailInfo)
+        MGM->>MGM: POST /messages (Mailgun API)
+        MGM-->>MQM: Mailgun message ID
+        MQM->>DB: sp_Mail_UpdateStatus("Sent", mailgunId)
+    end
+```
+
+### Batch Email Processing
+
+```mermaid
+sequenceDiagram
+    participant Scheduler as Windows Service
+    participant MBM as MailBatchManager
+    participant MM as MailManager
+    participant MGM as MailgunManager
+    participant DB as SQL Server
+
+    Scheduler->>MBM: ProcessPendingBatches()
+    MBM->>DB: sp_Mail_GetPendingBatches
+    DB-->>MBM: List<MailBatchInfo>
+
+    loop For each batch
+        MBM->>DB: sp_Mail_GetBatchRecipients(batchId)
+        DB-->>MBM: Recipients + data
+
+        MBM->>MBM: ChunkRecipients(recipients, chunkSize=100)
+
+        loop For each chunk
+            MBM->>MGM: SendBatch(chunk, template)
+            MGM->>MGM: POST /messages (Mailgun batch)
+
+            alt Send failure
+                MBM->>MBM: RetryWithBackoff(chunk)
+                MBM->>DB: sp_Mail_UpdateBatchErrors
+            end
+
+            MBM->>MBM: ThrottleDelay(rateLimitMs)
+        end
+
+        MBM->>DB: sp_Mail_UpdateBatchStatus("Complete")
+    end
+```
+
+### Mailgun Webhook Processing
+
+```mermaid
+sequenceDiagram
+    participant Mailgun as Mailgun Webhook
+    participant API as Web API Handler
+    participant MGM as MailgunManager
+    participant DB as SQL Server
+
+    Mailgun->>API: POST /api/mail/webhook
+    API->>MGM: ProcessWebhook(event)
+    MGM->>MGM: VerifyWebhookSignature(signature)
+
+    alt Event: delivered
+        MGM->>DB: sp_Mail_UpdateDelivery("Delivered")
+    else Event: opened
+        MGM->>DB: sp_Mail_UpdateDelivery("Opened")
+    else Event: bounced
+        MGM->>DB: sp_Mail_UpdateDelivery("Bounced")
+        MGM->>DB: sp_Mail_HandleBounce(email, bounceType)
+        Note right of MGM: Permanent bounce:<br/>mark email invalid
+    else Event: complained
+        MGM->>DB: sp_Mail_UpdateDelivery("Complained")
+        MGM->>DB: sp_Mail_OptOutUser(email)
+    end
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_Mail_GetUserPreference` | Retrieve notification preferences for user and category |
+| `sp_Mail_GetTemplate` | Retrieve email template by code and institution |
+| `sp_Mail_InsertQueueItem` | Add email to send queue |
+| `sp_Mail_DequeueBatch` | Retrieve batch of queued emails for processing |
+| `sp_Mail_UpdateStatus` | Update email send status |
+| `sp_Mail_InsertBatch` | Create email batch record |
+| `sp_Mail_GetPendingBatches` | Retrieve unprocessed batches |
+| `sp_Mail_GetBatchRecipients` | Retrieve recipients for a batch |
+| `sp_Mail_UpdateBatchStatus` | Update batch completion status |
+| `sp_Mail_UpdateBatchErrors` | Record batch send errors |
+| `sp_Mail_UpdateDelivery` | Update delivery tracking from webhook |
+| `sp_Mail_HandleBounce` | Process email bounce |
+| `sp_Mail_OptOutUser` | Opt out user from email (spam complaint) |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    MAIL[Mail & Notifications]
+    SEC[Security]
+    EVAL[Evaluations]
+    DH[Duty Hours]
+    CME[CME Tracking]
+    LA[Learning Assignments]
+    QUIZ[Quiz]
+    ICC[ICC]
+    HS[HelloSign]
+    NN[Nurse Notify]
+
+    EVAL --> MAIL
+    DH --> MAIL
+    CME --> MAIL
+    LA --> MAIL
+    QUIZ --> MAIL
+    ICC --> MAIL
+    HS --> MAIL
+    NN --> MAIL
+    MAIL --> SEC
+
+    style MAIL fill:#e74c3c,color:#fff,stroke:#c0392b
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | User email retrieval, institution context, permission checks for template management |
+| Depended on by | Evaluations | Evaluation assignment notifications, reminders, and completion alerts |
+| Depended on by | Duty Hours | Violation notifications and compliance alerts |
+| Depended on by | CME Tracking | Compliance reminders and certificate delivery |
+| Depended on by | Learning Assignments | Assignment notifications, reminders, and completion confirmations |
+| Depended on by | Quiz | Quiz assignment notifications and score delivery |
+| Depended on by | ICC | Committee review notifications and meeting reminders |
+| Depended on by | HelloSign | Signature request notifications |
+| Depended on by | Nurse Notify | Nursing program notifications routed through mail system |

@@ -1,0 +1,193 @@
+---
+sidebar_position: 14
+title: ICC (Clinical Competency Committee)
+description: In-Training and Clinical Competency Committee support in the MyEvaluations .NET backend. Committee review workflows, milestone assessments, and semi-annual review processes.
+---
+
+# ICC (In-Training / Clinical Competency Committee)
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The ICC module supports Clinical Competency Committee (CCC) operations, which are required by the ACGME for all residency and fellowship programs. The CCC is responsible for reviewing trainee performance data at least semi-annually and making recommendations about trainee progression, including milestone assessments, remediation plans, and promotion or dismissal decisions.
+
+This module aggregates data from evaluations, procedures, duty hours, and portfolios to present a comprehensive trainee profile to committee members. It manages the committee meeting workflow, milestone level assignments, and formal documentation of CCC decisions.
+
+### Key Responsibilities
+
+- **Committee Management**: Define CCC membership, meeting schedules, and quorum requirements
+- **Data Aggregation**: Pull trainee performance data from all relevant modules for committee review
+- **Milestone Assessment**: Facilitate semi-annual milestone level assignments by CCC members
+- **Meeting Workflow**: Structured meeting process with resident review, discussion, and voting
+- **Decision Documentation**: Record CCC recommendations (advancement, remediation, probation, dismissal)
+- **ACGME Reporting**: Generate milestone data for ACGME WebADS submission
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `ICCManager` | `MyEvaluations.Business.ICC` | Core CCC operations: committee setup, meeting management, and decision recording. |
+| `ICCReviewManager` | `MyEvaluations.Business.ICC` | Individual trainee review workflow within CCC meetings. |
+| `ICCMilestoneManager` | `MyEvaluations.Business.ICC` | Milestone level assessment and tracking during CCC reviews. |
+| `ICCDataAggregator` | `MyEvaluations.Business.ICC` | Aggregates trainee data from evaluations, procedures, duty hours, and portfolios. |
+| `ICCReportManager` | `MyEvaluations.Business.ICC` | CCC meeting minutes, decision reports, and ACGME WebADS milestone exports. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `ICCReviewInfo` | Review record: trainee, committee, review date, milestone assessments, recommendation, comments. |
+| `ICCMeetingInfo` | Meeting record: date, committee members present, trainees reviewed, quorum status. |
+| `ICCCommitteeInfo` | Committee definition: program, members (roles), chair, meeting schedule, quorum rules. |
+| `ICCMilestoneAssessmentInfo` | Milestone assessment: competency, sub-competency, assigned level (1-5), evidence, assessor notes. |
+| `ICCDecisionInfo` | Formal decision: trainee, recommendation type, effective date, conditions, follow-up date. |
+| `ICCTraineeSummaryInfo` | Aggregated trainee data: evaluation scores, procedure counts, duty hour compliance, portfolio highlights. |
+
+## Business Workflows
+
+### Semi-Annual CCC Review
+
+```mermaid
+sequenceDiagram
+    participant Chair as CCC Chair
+    participant ICCM as ICCManager
+    participant IDA as ICCDataAggregator
+    participant IRM as ICCReviewManager
+    participant IMM as ICCMilestoneManager
+    participant DB as SQL Server
+
+    Note over Chair,DB: Phase 1 - Meeting Preparation
+    Chair->>ICCM: PrepareMeeting(programId, meetingDate)
+    ICCM->>DB: sp_ICC_GetTraineesForReview
+    DB-->>ICCM: Trainees due for review
+
+    loop For each trainee
+        ICCM->>IDA: AggregateTraineeData(traineeId, reviewPeriod)
+        IDA->>DB: sp_Evaluation_GetSummary (evaluations)
+        IDA->>DB: sp_Procedure_GetSummary (procedures)
+        IDA->>DB: sp_DutyHours_GetCompliance (duty hours)
+        IDA->>DB: sp_Portfolio_GetHighlights (portfolio)
+        IDA-->>ICCM: ICCTraineeSummaryInfo
+    end
+
+    ICCM->>DB: sp_ICC_InsertMeeting
+    ICCM->>DB: sp_ICC_InsertReviewItems
+
+    Note over Chair,DB: Phase 2 - Committee Meeting
+    Chair->>ICCM: StartMeeting(meetingId)
+    ICCM->>DB: sp_ICC_RecordAttendance(members[])
+
+    loop For each trainee
+        Chair->>IRM: BeginTraineeReview(traineeId)
+        IRM->>DB: sp_ICC_GetTraineeSummary
+        DB-->>IRM: Aggregated trainee data
+
+        Note right of IRM: Committee discusses<br/>trainee performance
+
+        Chair->>IMM: AssignMilestoneLevels(traineeId, milestones[])
+        IMM->>DB: sp_ICC_InsertMilestoneAssessments
+
+        Chair->>IRM: RecordDecision(traineeId, decision)
+        IRM->>DB: sp_ICC_InsertDecision
+    end
+
+    Chair->>ICCM: CloseMeeting(meetingId)
+    ICCM->>DB: sp_ICC_UpdateMeetingStatus("Complete")
+```
+
+### Milestone Level Assignment
+
+```mermaid
+sequenceDiagram
+    participant CCC as CCC Members
+    participant IMM as ICCMilestoneManager
+    participant DB as SQL Server
+
+    CCC->>IMM: GetMilestoneFramework(programId)
+    IMM->>DB: sp_ICC_GetMilestoneDefinitions
+    DB-->>IMM: Competencies + sub-competencies + level descriptors
+
+    CCC->>IMM: GetPreviousAssessments(traineeId)
+    IMM->>DB: sp_ICC_GetMilestoneHistory
+    DB-->>IMM: Previous milestone levels over time
+
+    CCC->>IMM: AssignLevels(traineeId, assessments[])
+    Note right of IMM: Each assessment includes:<br/>- Sub-competency<br/>- Level (1-5)<br/>- Supporting evidence<br/>- Committee notes
+
+    IMM->>DB: sp_ICC_InsertMilestoneAssessments
+    IMM->>IMM: CalculateTrajectory(history + current)
+    IMM->>DB: sp_ICC_UpdateMilestoneTrajectory
+```
+
+### ACGME WebADS Export
+
+```mermaid
+sequenceDiagram
+    participant PD as Program Director
+    participant IRM as ICCReportManager
+    participant DB as SQL Server
+
+    PD->>IRM: GenerateWebADSExport(programId, reportingPeriod)
+    IRM->>DB: sp_ICC_GetMilestonesByTrainee
+    DB-->>IRM: Milestone levels per trainee per sub-competency
+
+    IRM->>IRM: TransformToWebADSFormat()
+    IRM->>IRM: ValidateRequiredFields()
+    IRM->>IRM: GenerateCSV(webADSSchema)
+
+    IRM-->>PD: WebADS milestone CSV file
+    Note right of PD: Upload to ACGME<br/>WebADS portal
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_ICC_GetTraineesForReview` | Retrieve trainees due for semi-annual review |
+| `sp_ICC_InsertMeeting` | Create CCC meeting record |
+| `sp_ICC_InsertReviewItems` | Create review agenda items |
+| `sp_ICC_RecordAttendance` | Record committee member attendance |
+| `sp_ICC_GetTraineeSummary` | Retrieve aggregated trainee data for review |
+| `sp_ICC_InsertMilestoneAssessments` | Save milestone level assignments |
+| `sp_ICC_InsertDecision` | Record CCC recommendation/decision |
+| `sp_ICC_UpdateMeetingStatus` | Update meeting status (in progress/complete) |
+| `sp_ICC_GetMilestoneDefinitions` | Retrieve milestone framework for program |
+| `sp_ICC_GetMilestoneHistory` | Retrieve historical milestone assessments |
+| `sp_ICC_UpdateMilestoneTrajectory` | Update milestone trajectory analysis |
+| `sp_ICC_GetMilestonesByTrainee` | Retrieve milestone data for ACGME export |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    ICC[ICC / CCC]
+    SEC[Security]
+    EVAL[Evaluations]
+    PROC[Procedures]
+    DH[Duty Hours]
+    PORT[Portfolio]
+    MAIL[Mail]
+
+    ICC --> SEC
+    ICC --> EVAL
+    ICC --> PROC
+    ICC --> DH
+    ICC --> PORT
+    ICC --> MAIL
+
+    style ICC fill:#c0392b,color:#fff,stroke:#922b21
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Committee membership verification, permission checks for milestone assignment |
+| Depends on | Evaluations | Evaluation summaries and scores are primary data for CCC review |
+| Depends on | Procedures | Procedure counts and competency milestones inform CCC assessment |
+| Depends on | Duty Hours | Compliance data reviewed during CCC meetings |
+| Depends on | Portfolio | Portfolio data provides comprehensive trainee context |
+| Depends on | Mail | Meeting notifications, decision communications, and reminder alerts |

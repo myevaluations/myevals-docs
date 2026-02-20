@@ -1,0 +1,80 @@
+:root {
+  --ifm-color-primary: #1a73e8;
+  --ifm-color-primary-dark: #1565d8;
+  --ifm-color-primary-darker: #125ec9;
+  --ifm-color-primary-darkest: #0f4fa6;
+  --ifm-color-primary-light: #3182eb;
+  --ifm-color-primary-lighter: #4090ee;
+  --ifm-color-primary-lightest: #6aacf3;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4da3ff;
+  --ifm-color-primary-dark: #2e93ff;
+  --ifm-color-primary-darker: #1f8bff;
+  --ifm-color-primary-darkest: #006fdf;
+  --ifm-color-primary-light: #6cb3ff;
+  --ifm-color-primary-lighter: #7bbbff;
+  --ifm-color-primary-lightest: #b3d9ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Project status badges */
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 1;
+}
+.badge--legacy { background: #fef3cd; color: #856404; }
+.badge--modern { background: #d4edda; color: #155724; }
+.badge--migrating { background: #cce5ff; color: #004085; }
+.badge--critical { background: #f8d7da; color: #721c24; }
+
+/* Scheduler catalog table */
+.scheduler-table th,
+.scheduler-table td {
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+.scheduler-table tr:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+/* Dependency graph container */
+.dependency-graph {
+  width: 100%;
+  min-height: 400px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Migration tracker progress bars */
+.migration-progress {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+.migration-progress__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.migration-progress__fill--complete { background: #28a745; }
+.migration-progress__fill--partial { background: #ffc107; }
+.migration-progress__fill--none { background: #dc3545; }
+
+/* Sproc map highlights */
+.sproc-highlight {
+  background: rgba(26, 115, 232, 0.1);
+  border-left: 3px solid var(--ifm-color-primary);
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0 4px 4px 0;
+}

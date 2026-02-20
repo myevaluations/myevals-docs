@@ -1,0 +1,173 @@
+---
+sidebar_position: 15
+title: Essential Activities
+description: Essential activities tracking in the MyEvaluations .NET backend. Activities tracking for nursing and PA programs, competency mapping, and requirements compliance.
+---
+
+# Essential Activities
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Essential Activities module tracks required clinical and educational activities for nursing and physician assistant (PA) programs. Unlike the ACGME-focused procedures and milestones modules used by GME programs, essential activities are tailored to the competency frameworks and accreditation requirements of nursing (AACN/CCNE standards) and PA (ARC-PA standards) education programs.
+
+Essential activities encompass clinical skills demonstrations, simulation lab completions, community health activities, interprofessional education experiences, and program-specific requirements that students must complete before graduation or clinical placement.
+
+### Key Responsibilities
+
+- **Activity Definition**: Define program-specific essential activities with competency mappings and completion criteria
+- **Progress Tracking**: Monitor student progress toward completing all required activities
+- **Competency Mapping**: Map activities to nursing/PA competency frameworks (AACN Essentials, ARC-PA competencies)
+- **Verification Workflows**: Faculty verification and sign-off on activity completion
+- **Requirements Compliance**: Track completion against program graduation requirements
+- **Reporting**: Program-level compliance reports and individual student progress dashboards
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `EssentialActivityManager` | `MyEvaluations.Business.EssentialActivities` | Core activity definition, assignment, and tracking operations. |
+| `EssentialActivityCompletionManager` | `MyEvaluations.Business.EssentialActivities` | Completion recording, verification, and sign-off workflows. |
+| `EssentialActivityCompetencyManager` | `MyEvaluations.Business.EssentialActivities` | Competency framework management and activity-to-competency mapping. |
+| `EssentialActivityRequirementManager` | `MyEvaluations.Business.EssentialActivities` | Program requirement definitions and compliance tracking. |
+| `EssentialActivityReportManager` | `MyEvaluations.Business.EssentialActivities` | Progress reports, compliance dashboards, and accreditation exports. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `EssentialActivityInfo` | Activity definition: name, description, category, competency mappings, verification requirements. |
+| `ActivityCompletionInfo` | Completion record: student, activity, completion date, evidence, verifier, sign-off status. |
+| `ActivityCompetencyInfo` | Competency mapping: competency framework, domain, sub-domain, activity linkage. |
+| `ActivityRequirementInfo` | Requirement: program, activity set, minimum completions, deadline, graduation prerequisite flag. |
+| `ActivityProgressInfo` | Progress summary: student, total required, completed, pending verification, percentage complete. |
+
+## Business Workflows
+
+### Activity Definition and Assignment
+
+```mermaid
+sequenceDiagram
+    participant Admin as Program Director
+    participant EAM as EssentialActivityManager
+    participant EACM as EssentialActivityCompetencyManager
+    participant DB as SQL Server
+
+    Admin->>EAM: DefineActivity(activityInfo)
+    EAM->>DB: sp_EssentialActivity_Insert
+    DB-->>EAM: activityId
+
+    Admin->>EACM: MapCompetencies(activityId, competencies[])
+    EACM->>DB: sp_EssentialActivity_InsertCompetencyMappings
+
+    Admin->>EAM: AssignToProgram(activityId, programId, requirements)
+    EAM->>DB: sp_EssentialActivity_InsertRequirement
+
+    Admin->>EAM: AssignToStudents(activityId, studentIds[])
+    EAM->>DB: sp_EssentialActivity_BulkAssign
+```
+
+### Activity Completion and Verification
+
+```mermaid
+sequenceDiagram
+    participant Student
+    participant EAM as EssentialActivityManager
+    participant EACM as CompletionManager
+    participant Faculty
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Student->>EAM: SubmitActivityCompletion(activityId, evidence)
+    EAM->>DB: sp_EssentialActivity_InsertCompletion
+    EAM->>MAIL: NotifyFaculty(facultyId, activityId, studentId)
+
+    Faculty->>EACM: ReviewCompletion(completionId)
+    EACM->>DB: sp_EssentialActivity_GetCompletionDetail
+    DB-->>EACM: Completion details + evidence
+
+    alt Approved
+        Faculty->>EACM: VerifyCompletion(completionId, comments)
+        EACM->>DB: sp_EssentialActivity_UpdateCompletion("Verified")
+        EACM->>MAIL: NotifyStudent(studentId, "Activity Verified")
+    else Needs Revision
+        Faculty->>EACM: ReturnForRevision(completionId, feedback)
+        EACM->>DB: sp_EssentialActivity_UpdateCompletion("Revision Required")
+        EACM->>MAIL: NotifyStudent(studentId, "Revision Needed", feedback)
+    end
+```
+
+### Requirements Compliance Monitoring
+
+```mermaid
+sequenceDiagram
+    participant Scheduler as Windows Service
+    participant EARM as RequirementManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    Scheduler->>EARM: CheckComplianceStatus()
+    EARM->>DB: sp_EssentialActivity_GetRequirements
+    DB-->>EARM: Program requirements
+
+    loop For each student
+        EARM->>DB: sp_EssentialActivity_GetStudentProgress
+        DB-->>EARM: ActivityProgressInfo
+
+        alt Below threshold at checkpoint
+            EARM->>MAIL: SendProgressAlert(student, deficits[])
+            EARM->>MAIL: SendProgressAlert(advisor, student, deficits[])
+        end
+
+        alt Approaching graduation with incomplete activities
+            EARM->>MAIL: SendGraduationRiskNotice(student, programDirector)
+        end
+    end
+
+    EARM->>DB: sp_EssentialActivity_UpdateComplianceSnapshot
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_EssentialActivity_Insert` | Create activity definition |
+| `sp_EssentialActivity_InsertCompetencyMappings` | Map activities to competencies |
+| `sp_EssentialActivity_InsertRequirement` | Define program requirement |
+| `sp_EssentialActivity_BulkAssign` | Assign activities to student group |
+| `sp_EssentialActivity_InsertCompletion` | Record activity completion submission |
+| `sp_EssentialActivity_GetCompletionDetail` | Retrieve completion for review |
+| `sp_EssentialActivity_UpdateCompletion` | Update completion status |
+| `sp_EssentialActivity_GetRequirements` | Retrieve program requirements |
+| `sp_EssentialActivity_GetStudentProgress` | Retrieve student progress summary |
+| `sp_EssentialActivity_UpdateComplianceSnapshot` | Update compliance tracking data |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    EA[Essential Activities]
+    SEC[Security]
+    MAIL[Mail]
+    EVAL[Evaluations]
+    NN[Nurse Notify]
+
+    EA --> SEC
+    EA --> MAIL
+    EVAL -.->|assessment context| EA
+    NN -.->|activity alerts| EA
+
+    style EA fill:#2ecc71,color:#fff,stroke:#27ae60
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for activity definition, verification, and reporting |
+| Depends on | Mail | Progress notifications, verification alerts, and compliance warnings |
+| Related to | Evaluations | Clinical evaluations may reference essential activity completion as evidence |
+| Related to | Nurse Notify | Nursing-specific notifications may include essential activity reminders |

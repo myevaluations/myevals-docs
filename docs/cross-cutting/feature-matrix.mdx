@@ -1,0 +1,115 @@
+---
+sidebar_position: 2
+title: Feature Matrix
+description: Comprehensive feature matrix showing which features exist in each MyEvaluations system -- .NET backend, Node.js backend, React frontend, and MAUI mobile app.
+---
+
+# Feature Matrix
+
+This matrix shows which features are available in each MyEvaluations system. Use it to understand where functionality lives and which system to work in for a given feature.
+
+## Legend
+
+| Symbol | Meaning |
+|--------|---------|
+| **Full** | Feature is fully implemented in this system |
+| **Partial** | Feature is partially implemented or in progress |
+| **Read** | System can read/display data but cannot create or modify |
+| **--** | Feature does not exist in this system |
+
+## Core Features
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **Authentication & SSO** | Full | Full (shared auth) | -- (delegated) | Full |
+| **User Management** | Full | Full | Partial | Read |
+| **Role-Based Access Control** | Full | Full (shared) | -- (enforced by API) | -- (enforced by API) |
+
+## Clinical & Academic
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **Evaluations** | Full | Partial | Partial | Full |
+| **Duty Hours (ACGME)** | Full | Partial | Partial | Full |
+| **Patient Log** | Full | Partial | Partial | Full |
+| **Procedures** | Full | Partial | -- | Partial |
+| **Goals & Milestones** | Full | Partial | Partial | Read |
+| **CME Tracking** | Full | -- | -- | -- |
+| **Portfolio** | Full | -- | -- | -- |
+| **Learning Assignments** | Full | -- | -- | -- |
+| **Quiz / Assessments** | Full | -- | -- | -- |
+| **Essential Activities** | Full | -- | -- | -- |
+| **ICC (Competency Committee)** | Full | -- | -- | -- |
+
+## New Features (Node.js Only)
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **APE (Annual Program Evaluation)** | -- | Full | Full | -- |
+| **CAW (Clinical Activity Worksheet)** | -- | Full | Full | -- |
+| **Performance Reviews** | -- | Full | Full | -- |
+| **Onboarding Workflows** | -- | Full | Full | -- |
+| **Posts / Announcements** | -- | Full | Full | Read |
+| **SIMPL** | -- | Full | Full | -- |
+
+## Administrative
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **Program Management** | Full | Partial | -- | -- |
+| **Institution Management** | Full | Partial | -- | -- |
+| **Scheduling / Rotations** | Full | -- | -- | Read |
+| **Reports & Analytics** | Full | Partial | -- | -- |
+| **Accreditation Management** | Full | -- | -- | -- |
+| **Conference Management** | Full | -- | -- | -- |
+| **Timesheets** | Full | -- | -- | -- |
+
+## Communication
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **Email Notifications** | Full (Mailgun) | Partial (BullMQ) | -- | -- |
+| **Push Notifications** | -- | Full (Firebase) | -- | Full |
+| **In-App Notifications** | Partial | Partial | Partial | Full |
+
+## Integrations
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **ERAS (Residency Applications)** | Full | -- | -- | -- |
+| **Amion / QGenda (Schedules)** | Full | -- | -- | -- |
+| **HelloSign (E-Signatures)** | Full | -- | -- | -- |
+| **Banner (University Data)** | Full | -- | -- | -- |
+| **Salesforce** | Full | -- | -- | -- |
+| **Google APIs** | Full | Partial | -- | -- |
+| **Azure Blob Storage** | Full | Full | -- | -- |
+
+## Mobile-Specific Features
+
+| Feature | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|---------|:------------|:----------------|:---------------|:---------|
+| **Offline Mode** | -- | -- | -- | Full (Realm) |
+| **MyQuickPass (Geofencing)** | -- | Full (API) | -- | Full |
+| **QR Code Scanning** | -- | Full (API) | -- | Full |
+| **Biometric Auth** | -- | -- | -- | Full |
+| **Background Sync** | -- | -- | -- | Full |
+
+## Infrastructure
+
+| Capability | .NET Backend | Node.js Backend | React Frontend | MAUI App |
+|------------|:------------|:----------------|:---------------|:---------|
+| **CI/CD** | Manual (VS Publish) | GitHub Actions | GitHub Actions | GitHub Actions |
+| **Monitoring** | -- | New Relic + Sentry | -- | App Center |
+| **Health Checks** | -- | `/api/health` | -- | -- |
+| **Logging** | Enterprise Library | Winston / Pino | Browser console | App Center |
+
+## Reading This Matrix
+
+- If a feature shows **Full** in .NET and **Partial** in Node.js, the migration is in progress
+- If a feature shows **--** in .NET and **Full** in Node.js, it is a new feature built on the modern stack
+- If a feature only shows **Full** in .NET, it has not been migrated yet
+- The MAUI app primarily consumes the Node.js API, falling back to .NET for unmigrated features
+
+For migration timelines, see the [Migration Status](/docs/cross-cutting/migration-status) page.
+
+<!-- AUTO-GENERATED: Feature availability details will be enriched from repo-sync scripts -->

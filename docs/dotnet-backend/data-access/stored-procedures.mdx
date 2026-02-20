@@ -1,0 +1,183 @@
+---
+sidebar_position: 2
+title: Stored Procedures
+description: Catalog of SQL Server stored procedures used by the MyEvaluations .NET backend, organized by domain and naming convention.
+---
+
+# Stored Procedures Catalog
+
+The MyEvaluations SQL Server database contains **3,000+ stored procedures** that implement the core data operations for the platform. All database reads and writes in the .NET backend go through stored procedures -- there is no inline SQL in the application code.
+
+:::note Auto-Generated Content
+This catalog is a placeholder that will be auto-populated by the `parse:dotnet:sprocs` script. Run `npm run parse:dotnet:sprocs` to refresh the stored procedure data from the database.
+:::
+
+{/* import SprocMap from '@site/src/components/SprocMap'; */}
+{/* <SprocMap /> */}
+
+## Naming Conventions
+
+Stored procedures follow several naming patterns, reflecting the system's evolution over 25+ years:
+
+| Prefix | Convention | Era | Example |
+|--------|-----------|-----|---------|
+| `sp_` | Legacy prefix | Pre-2010 | `sp_GetEvaluations` |
+| `usp_` | User stored procedure (recommended) | 2010+ | `usp_GetEvaluationsByProgram` |
+| `spGet_` | Read operations | Various | `spGet_UserProfile` |
+| `spInsert_` | Create operations | Various | `spInsert_Evaluation` |
+| `spUpdate_` | Update operations | Various | `spUpdate_EvaluationStatus` |
+| `spDelete_` | Delete operations | Various | `spDelete_DraftEvaluation` |
+| `rpt_` | Report queries | Various | `rpt_EvaluationSummary` |
+
+:::warning Naming Inconsistency
+Due to the system's long history, naming conventions are not 100% consistent. Some stored procedures use `sp_` (which is reserved by SQL Server for system procedures), and some use camelCase while others use PascalCase or underscore_separated names. New procedures should follow the `usp_` prefix convention.
+:::
+
+## Categories
+
+Stored procedures are organized by functional domain:
+
+### Evaluation Domain (~400 procedures)
+
+Handles evaluation form creation, distribution, completion, scoring, and reporting.
+
+**Key Procedures:**
+
+| Procedure | Purpose | Parameters |
+|-----------|---------|------------|
+| `usp_GetEvaluation` | Retrieve a single evaluation by ID | `@EvaluationID int` |
+| `usp_GetEvaluationsByProgram` | List evaluations for a program | `@ProgramID int, @StartDate datetime, @EndDate datetime` |
+| `usp_InsertEvaluation` | Create a new evaluation | `@FormID, @EvaluatorID, @SubjectID, @DueDate, @NewEvaluationID OUTPUT` |
+| `usp_UpdateEvaluationStatus` | Update evaluation status | `@EvaluationID int, @Status varchar(20)` |
+| `usp_GetEvaluationResponses` | Get all responses for an evaluation | `@EvaluationID int` |
+| `usp_SaveEvaluationResponse` | Save a response to a question | `@EvaluationID, @QuestionID, @Response, @Score` |
+| `usp_GetEvaluationSummaryReport` | Aggregate evaluation data for reporting | `@ProgramID, @StartDate, @EndDate, @GroupBy` |
+
+### Duty Hours Domain (~150 procedures)
+
+Manages duty hour logging, compliance checking, and reporting.
+
+**Key Procedures:**
+
+| Procedure | Purpose | Parameters |
+|-----------|---------|------------|
+| `usp_GetDutyHourEntries` | Retrieve duty hour entries | `@ResidentID, @StartDate, @EndDate` |
+| `usp_InsertDutyHourEntry` | Log a duty hour entry | `@ResidentID, @StartTime, @EndTime, @Type` |
+| `usp_CheckACGME80HourRule` | Check 80-hour compliance | `@ResidentID, @AsOfDate` |
+| `usp_GetDutyHourViolations` | List violations for a resident | `@ResidentID, @StartDate, @EndDate` |
+| `usp_GenerateWeeklyDutyHourReport` | Create weekly compliance report | `@ProgramID, @WeekEndDate` |
+
+### User Management Domain (~200 procedures)
+
+Handles user accounts, roles, permissions, and institutional hierarchy.
+
+**Key Procedures:**
+
+| Procedure | Purpose | Parameters |
+|-----------|---------|------------|
+| `usp_GetUserByID` | Retrieve user profile | `@UserID int` |
+| `usp_AuthenticateUser` | Validate login credentials | `@Username, @PasswordHash` |
+| `usp_GetUserRoles` | Get roles for a user | `@UserID int` |
+| `usp_GetInstitutionUsers` | List users in an institution | `@InstitutionID, @RoleFilter, @ActiveOnly` |
+| `usp_UpdateUserProfile` | Update user profile data | `@UserID, @FirstName, @LastName, @Email, ...` |
+
+### Clinical Domain (~300 procedures)
+
+Patient logs, case logs, procedures, rotations, and clinical competency tracking.
+
+**Key Procedures:**
+
+| Procedure | Purpose | Parameters |
+|-----------|---------|------------|
+| `usp_InsertPatientLog` | Create a patient encounter record | `@ResidentID, @Date, @Diagnosis, @Procedures, ...` |
+| `usp_GetCaseLogsByResident` | List case logs for a resident | `@ResidentID, @StartDate, @EndDate` |
+| `usp_AggregateProcedureCounts` | Calculate procedure totals | `@ResidentID, @AcademicYear` |
+| `usp_GetRotationSchedule` | Get rotation assignments | `@ProgramID, @StartDate, @EndDate` |
+
+### CME Domain (~100 procedures)
+
+Continuing Medical Education credit tracking, events, and compliance.
+
+**Key Procedures:**
+
+| Procedure | Purpose | Parameters |
+|-----------|---------|------------|
+| `usp_GetCMECredits` | Retrieve CME credits for a user | `@UserID, @StartDate, @EndDate` |
+| `usp_InsertCMECredit` | Record a CME credit | `@UserID, @ActivityName, @Credits, @Date, @Category` |
+| `usp_GetCMEComplianceStatus` | Check CME compliance | `@UserID, @CycleEndDate` |
+| `usp_GetExpiringCMECredits` | List credits nearing expiration | `@ExpirationWindow int` |
+
+### Integration Domain (~200 procedures)
+
+Data synchronization with external systems (Amion, QGenda, ERAS, Banner, etc.).
+
+### Reporting Domain (~300 procedures)
+
+Complex aggregate queries for dashboards, reports, and data exports.
+
+### Administration Domain (~150 procedures)
+
+System configuration, audit logging, scheduler management, and maintenance.
+
+## Stored Procedure Pattern
+
+Most stored procedures follow a consistent structure:
+
+```sql
+CREATE PROCEDURE [dbo].[usp_GetEvaluationsByProgram]
+    @ProgramID INT,
+    @StartDate DATETIME = NULL,
+    @EndDate DATETIME = NULL,
+    @Status VARCHAR(20) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        e.EvaluationID,
+        e.FormID,
+        e.EvaluatorID,
+        e.SubjectID,
+        e.Status,
+        e.DueDate,
+        e.CompletedDate,
+        u1.FirstName + ' ' + u1.LastName AS EvaluatorName,
+        u2.FirstName + ' ' + u2.LastName AS SubjectName,
+        f.FormName
+    FROM Evaluation e
+    INNER JOIN Users u1 ON e.EvaluatorID = u1.UserID
+    INNER JOIN Users u2 ON e.SubjectID = u2.UserID
+    INNER JOIN EvaluationForm f ON e.FormID = f.FormID
+    WHERE e.ProgramID = @ProgramID
+        AND (@StartDate IS NULL OR e.DueDate >= @StartDate)
+        AND (@EndDate IS NULL OR e.DueDate <= @EndDate)
+        AND (@Status IS NULL OR e.Status = @Status)
+    ORDER BY e.DueDate DESC;
+END
+```
+
+## Performance Considerations
+
+- **Indexed stored procedures:** Critical procedures have supporting indexes documented in their headers
+- **Parameter sniffing:** Some high-volume procedures use `OPTION (RECOMPILE)` or local variable assignment to avoid parameter sniffing issues
+- **Execution plans:** Long-running report procedures often have plan guides or forced plans
+- **Transaction handling:** Write procedures use explicit transactions with error handling via `TRY/CATCH`
+
+## How to Find a Stored Procedure
+
+1. **By feature:** Search the Manager class for the feature area -- the SP name will be in the `DBDataAccess` or `CustomCommand` call
+2. **By name:** Use SQL Server Management Studio to search `sys.procedures`
+3. **By table:** Query `sys.sql_dependencies` to find procedures that reference a specific table
+4. **By text:** Full-text search across procedure definitions:
+
+```sql
+SELECT OBJECT_NAME(object_id) AS ProcedureName
+FROM sys.sql_modules
+WHERE definition LIKE '%search_term%'
+ORDER BY OBJECT_NAME(object_id);
+```
+
+## Related Documentation
+
+- [Data Access Overview](./overview) -- How the DAL calls stored procedures
+- [Connection Management](./connection-management) -- Database connection configuration

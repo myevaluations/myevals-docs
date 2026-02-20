@@ -1,0 +1,440 @@
+---
+sidebar_position: 4
+title: Authentication & Authorization
+description: Authentication flows across the MyEvaluations platform including .NET session auth, SAML SSO, JWT tokens, shared auth via stored procedures, and mobile app authentication.
+---
+
+# Authentication & Authorization
+
+MyEvaluations supports multiple authentication mechanisms across its four systems. The .NET backend is the source of truth for authentication, with other systems reading from its session/auth infrastructure via stored procedures.
+
+## Authentication Overview
+
+```mermaid
+graph TB
+    subgraph "Auth Methods"
+        Credentials["Username/Password"]
+        SAML["SAML SSO<br/>(Institutional IdP)"]
+        MFA["MFA<br/>(SMS / Email)"]
+        Biometric["Biometric<br/>(Mobile Only)"]
+    end
+
+    subgraph ".NET Backend (Source of Truth)"
+        Login["Login.aspx"]
+        SAMLHandler["SAMLServiceProvider"]
+        SessionMgr["Session Manager"]
+        AuthSPs["Auth Stored Procedures"]
+        Cookies["Session Cookie<br/>(ASP.NET_SessionId)"]
+    end
+
+    subgraph "Node.js Backend"
+        JWTAuth["JWT Authentication"]
+        AuthGuard["NestJS Auth Guard"]
+        SPReader["SP Reader<br/>(GetLoggedInUserInfo)"]
+    end
+
+    subgraph "Mobile App"
+        FirebaseAuth["Firebase Auth"]
+        JWTMobile["JWT Token"]
+        BiometricAuth["Biometric / PIN"]
+        RealmCache["Realm<br/>(Cached Credentials)"]
+    end
+
+    subgraph "SQL Server"
+        UserTable["Users Table"]
+        RoleTable["Roles / Privileges"]
+        SessionTable["Session Data"]
+    end
+
+    Credentials --> Login
+    SAML --> SAMLHandler
+    SAMLHandler --> Login
+    Login --> MFA
+    MFA --> SessionMgr
+    Login --> SessionMgr
+    SessionMgr --> Cookies
+    SessionMgr --> AuthSPs
+    AuthSPs --> UserTable
+    AuthSPs --> RoleTable
+    AuthSPs --> SessionTable
+
+    JWTAuth --> AuthGuard
+    AuthGuard --> SPReader
+    SPReader --> AuthSPs
+
+    Biometric --> BiometricAuth
+    BiometricAuth --> FirebaseAuth
+    FirebaseAuth --> JWTMobile
+    JWTMobile --> AuthGuard
+    RealmCache --> BiometricAuth
+```
+
+## .NET Session-Based Authentication
+
+The .NET backend uses classic ASP.NET session-based authentication with server-side session state.
+
+### Login Flow
+
+```mermaid
+sequenceDiagram
+    participant User as User (Browser)
+    participant Login as Login.aspx
+    participant Security as SecurityManager
+    participant DAL as DataAccess
+    participant SQL as SQL Server
+    participant Session as ASP.NET Session
+
+    User->>Login: Enter credentials
+    Login->>Security: ValidateUser(username, password)
+    Security->>DAL: Execute SP: usp_ValidateLogin
+    DAL->>SQL: EXEC usp_ValidateLogin<br/>@Username, @PasswordHash
+    SQL-->>DAL: User record + roles
+    DAL-->>Security: UserInfo object
+
+    alt Valid Credentials
+        Security->>Security: Check MFA requirement
+        alt MFA Required
+            Security-->>Login: Redirect to MFA page
+            Login-->>User: Enter MFA code
+            User->>Login: Submit MFA code
+            Login->>Security: ValidateMFA(code)
+        end
+        Security->>Session: Store user data in session
+        Session->>Session: Set ASP.NET_SessionId cookie
+        Security-->>Login: Authentication success
+        Login-->>User: Redirect to Home page
+    else Invalid Credentials
+        Security-->>Login: Authentication failed
+        Login-->>User: Show error message
+    end
+```
+
+### Session Data Structure
+
+The .NET session stores the following user information after successful authentication:
+
+<!-- AUTO-GENERATED: Specific session keys will be enriched from .NET backend analysis -->
+
+| Session Key | Type | Description |
+|-------------|------|-------------|
+| `UserID` | `int` | Primary user identifier |
+| `UserName` | `string` | Login username |
+| `InstitutionID` | `int` | User's institution |
+| `RoleID` | `int` | Primary role identifier |
+| `Privileges` | `List<string>` | Granted privileges/permissions |
+| `ProgramIDs` | `List<int>` | Associated program IDs |
+| `IsAdmin` | `bool` | Administrative access flag |
+| `IsSSOUser` | `bool` | Whether user authenticated via SSO |
+
+### Session Configuration
+
+```xml
+<!-- Web.config session settings -->
+<sessionState
+  mode="InProc"
+  timeout="60"
+  cookieless="false"
+  cookieName="ASP.NET_SessionId" />
+```
+
+- **Mode:** InProc (in-process, stored in IIS worker process memory)
+- **Timeout:** 60 minutes of inactivity
+- **Cookie:** `ASP.NET_SessionId` (HTTP-only, secure in production)
+
+## SAML SSO Integration
+
+MyEvaluations supports SAML 2.0 Single Sign-On for institutional authentication, allowing users to log in via their institution's Identity Provider (IdP).
+
+### SAML Flow
+
+```mermaid
+sequenceDiagram
+    participant User as User (Browser)
+    participant SP as MyEvaluations<br/>(Service Provider)
+    participant IdP as Institution IdP<br/>(e.g., Okta, Azure AD)
+    participant Security as SecurityManager
+    participant Session as ASP.NET Session
+
+    User->>SP: Click "SSO Login" for institution
+    SP->>SP: Generate SAML AuthnRequest
+    SP->>IdP: HTTP Redirect with<br/>SAML AuthnRequest
+
+    IdP->>IdP: Authenticate user<br/>(institution credentials)
+    IdP->>SP: HTTP POST with<br/>SAML Response + Assertion
+
+    SP->>SP: SAMLServiceProvider validates<br/>response signature & assertion
+    SP->>Security: LookupUserBySAML(nameID, attributes)
+    Security->>Security: Match to MyEvaluations user<br/>(by email or institution ID)
+
+    alt User Found
+        Security->>Session: Create session
+        Session-->>User: Redirect to Home
+    else User Not Found
+        Security-->>User: Show "Account not linked" error
+    end
+```
+
+### SAML Configuration
+
+Each institution can have its own SAML IdP configuration stored in the database:
+
+| Field | Description |
+|-------|-------------|
+| `InstitutionID` | Links to institution record |
+| `IdPEntityID` | Identity Provider Entity ID |
+| `IdPSSOUrl` | IdP Single Sign-On URL |
+| `IdPCertificate` | IdP X.509 signing certificate |
+| `SPEntityID` | MyEvaluations Service Provider Entity ID |
+| `NameIDFormat` | Expected NameID format (email, persistent, etc.) |
+| `AttributeMapping` | Maps SAML attributes to MyEvaluations fields |
+
+### SAMLServiceProvider Project
+
+The `SAMLServiceProvider` project in the .NET solution handles:
+
+- SAML AuthnRequest generation
+- SAML Response parsing and validation
+- XML signature verification
+- Assertion extraction and attribute mapping
+- IdP metadata parsing
+
+<!-- AUTO-GENERATED: Specific class names and methods will be enriched from .NET backend parsing -->
+
+## JWT Tokens (Node.js Backend)
+
+The Node.js backend uses JWT (JSON Web Tokens) for stateless API authentication.
+
+### JWT Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant Client as Client<br/>(React / Mobile)
+    participant API as NestJS API
+    participant Guard as AuthGuard
+    participant AuthService as AuthService
+    participant MSSQL as SQL Server<br/>(Shared Auth SPs)
+
+    Client->>API: Request with JWT<br/>(Authorization: Bearer <token>)
+    API->>Guard: AuthGuard intercepts
+    Guard->>Guard: Verify JWT signature
+    Guard->>Guard: Check token expiry
+
+    alt Token Valid
+        Guard->>AuthService: GetUserContext(userId)
+        AuthService->>MSSQL: EXEC GetLoggedInUserInfo<br/>@UserID
+        MSSQL-->>AuthService: User data + privileges
+        AuthService->>MSSQL: EXEC GetPrivilegesForRole<br/>@RoleID
+        MSSQL-->>AuthService: Role permissions
+        AuthService-->>Guard: UserContext object
+        Guard->>API: Attach user to request
+        API-->>Client: Response (200)
+    else Token Invalid/Expired
+        Guard-->>Client: 401 Unauthorized
+    end
+```
+
+### JWT Token Structure
+
+```json
+{
+  "sub": "12345",
+  "username": "john.doe",
+  "institutionId": 67,
+  "roleId": 3,
+  "iat": 1700000000,
+  "exp": 1700086400
+}
+```
+
+### Key Stored Procedures for Auth Sharing
+
+The Node.js backend calls these .NET stored procedures to share authentication state:
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `GetLoggedInUserInfo` | Retrieves user profile, institution, and basic permissions |
+| `GetPrivilegesForRole` | Returns all privileges/permissions for a given role |
+| `ValidateSessionToken` | Validates an existing .NET session token |
+| `GetUserInstitutions` | Returns institutions a user has access to |
+
+This approach ensures that both backends enforce the same authorization rules and that permission changes take effect immediately across both systems.
+
+## How Auth State Is Shared Between Backends
+
+```mermaid
+graph LR
+    subgraph ".NET Backend"
+        DotNetSession["ASP.NET Session<br/>(In-Process)"]
+        DotNetAuth["Auth Stored Procs<br/>(Source of Truth)"]
+    end
+
+    subgraph "SQL Server"
+        Users["Users Table"]
+        Roles["Roles Table"]
+        Privileges["Privileges Table"]
+        UserRoles["UserRoles Table"]
+    end
+
+    subgraph "Node.js Backend"
+        JWTService["JWT Service"]
+        SPCaller["Stored Proc Caller"]
+    end
+
+    DotNetSession -->|"Read/Write"| DotNetAuth
+    DotNetAuth -->|"Read/Write"| Users
+    DotNetAuth -->|"Read"| Roles
+    DotNetAuth -->|"Read"| Privileges
+    DotNetAuth -->|"Read/Write"| UserRoles
+
+    SPCaller -->|"Call same SPs"| DotNetAuth
+    JWTService --> SPCaller
+
+    style DotNetAuth fill:#fff3e0,stroke:#e65100
+```
+
+### Shared Auth Contract
+
+The "contract" between the two backends is the set of stored procedures that manage authentication and authorization. Both systems:
+
+1. **Read user data** from the same `Users` table
+2. **Check permissions** using the same `Privileges` and `Roles` tables
+3. **Call the same stored procedures** for permission lookups
+4. **Respect the same RBAC model** (roles, privileges, program-level access)
+
+### Role-Based Access Control (RBAC)
+
+MyEvaluations uses a hierarchical RBAC model:
+
+```mermaid
+graph TD
+    Admin["System Admin"]
+    InstAdmin["Institution Admin"]
+    ProgDirector["Program Director"]
+    Faculty["Faculty / Evaluator"]
+    Resident["Resident / Trainee"]
+    Coordinator["Program Coordinator"]
+
+    Admin --> InstAdmin
+    InstAdmin --> ProgDirector
+    InstAdmin --> Coordinator
+    ProgDirector --> Faculty
+    ProgDirector --> Resident
+    Coordinator --> Faculty
+    Coordinator --> Resident
+```
+
+<!-- AUTO-GENERATED: Specific role names and privilege lists will be enriched from database analysis -->
+
+| Role Level | Description | Typical Privileges |
+|------------|-------------|-------------------|
+| System Admin | MyEvaluations staff | Full system access, institution management |
+| Institution Admin | Hospital/school admin | Manage all programs, users, and settings within their institution |
+| Program Director | Residency/program director | Manage evaluations, rotations, milestones for their program |
+| Program Coordinator | Administrative coordinator | Manage schedules, compliance, reports for their program |
+| Faculty | Attending physician/instructor | Complete evaluations, view assigned trainees |
+| Resident/Trainee | Medical resident, student | Submit duty hours, complete self-evaluations, view feedback |
+
+## Mobile App Authentication
+
+The MAUI mobile app uses Firebase Authentication combined with JWT tokens for API access.
+
+### Mobile Auth Flow
+
+```mermaid
+sequenceDiagram
+    participant User as User (Mobile)
+    participant App as MAUI App
+    participant Firebase as Firebase Auth
+    participant API as NestJS API
+    participant SQL as SQL Server
+
+    User->>App: Open app
+
+    alt First Login
+        App->>App: Show login screen
+        User->>App: Enter credentials
+        App->>API: POST /api/auth/login
+        API->>SQL: Validate credentials
+        SQL-->>API: User data
+        API->>API: Generate JWT
+        API-->>App: JWT + Refresh Token
+        App->>Firebase: Register device token<br/>(for push notifications)
+        App->>App: Store tokens securely<br/>(Keychain / Keystore)
+    else Returning User (Biometric)
+        App->>App: Prompt biometric<br/>(Face ID / Fingerprint)
+        App->>App: Retrieve stored tokens
+        alt Token Valid
+            App->>API: Request with JWT
+        else Token Expired
+            App->>API: POST /api/auth/refresh
+            API-->>App: New JWT
+        end
+    end
+
+    App->>API: API requests with JWT
+    API-->>App: Responses
+```
+
+### Mobile Security Features
+
+| Feature | Implementation |
+|---------|---------------|
+| Token Storage | iOS Keychain / Android Keystore |
+| Biometric Auth | Face ID, Touch ID, Fingerprint |
+| PIN Fallback | 4-6 digit PIN as biometric alternative |
+| Session Timeout | Configurable inactivity timeout |
+| Push Notifications | Firebase Cloud Messaging (FCM) |
+| Offline Access | Realm local database with cached credentials |
+| Certificate Pinning | SSL certificate pinning for API requests |
+
+## Multi-Factor Authentication (MFA)
+
+MFA can be enabled per institution or per user in MyEvaluations.
+
+### MFA Methods
+
+| Method | Details |
+|--------|---------|
+| SMS | One-time code sent via SMS (Twilio) |
+| Email | One-time code sent to registered email |
+| Authenticator App | TOTP-compatible (Google Authenticator, Authy) |
+
+### MFA Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Login as Login.aspx
+    participant MFA as MFA Handler
+    participant SMS as SMS Provider<br/>(Twilio)
+    participant Email as Email Provider<br/>(Mailgun)
+
+    User->>Login: Valid username/password
+    Login->>Login: Check MFA requirement<br/>(institution or user setting)
+
+    alt MFA Required
+        Login->>MFA: Generate OTP code
+        MFA->>MFA: Store code + expiry in session
+
+        alt SMS Method
+            MFA->>SMS: Send code via SMS
+        else Email Method
+            MFA->>Email: Send code via email
+        end
+
+        MFA-->>User: Redirect to MFA input page
+        User->>MFA: Enter code
+        MFA->>MFA: Validate code + check expiry
+
+        alt Code Valid
+            MFA-->>Login: MFA verified
+            Login-->>User: Redirect to Home
+        else Code Invalid/Expired
+            MFA-->>User: Show error, allow retry
+        end
+    else MFA Not Required
+        Login-->>User: Redirect to Home
+    end
+```
+
+<!-- AUTO-GENERATED: Specific MFA configuration options and institution settings will be enriched from .NET backend analysis -->

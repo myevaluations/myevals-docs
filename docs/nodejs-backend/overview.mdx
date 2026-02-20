@@ -1,0 +1,199 @@
+---
+sidebar_position: 1
+title: Node.js Backend Overview
+description: Overview of the MyEvaluations NestJS 10 backend -- architecture, domain modules, BullMQ workers, database strategy, and deployment on Azure Docker Swarm.
+---
+
+# Node.js Backend Overview
+
+The Node.js backend (`myevals-nodejs-backend`) is the modern replacement for the legacy .NET monolith, built on **NestJS 10** with **MikroORM** for database access. It runs on Azure Docker Swarm and progressively takes over functionality from the .NET backend via the Strangler Fig pattern.
+
+:::info Repository
+**GitHub:** `github.com/myevaluations/myevals-nodejs-backend`
+**Branch:** `main`
+**PRs:** 2,581+
+**Language:** TypeScript
+:::
+
+## Technology Stack
+
+| Component | Technology | Version |
+|-----------|-----------|---------|
+| Runtime | Node.js | 20 LTS |
+| Framework | NestJS | 10.x |
+| Language | TypeScript | 5.x |
+| ORM | MikroORM | 6.x |
+| Databases | SQL Server + PostgreSQL | Dual |
+| Queue | BullMQ + Redis | 5.x |
+| Auth | JWT + Shared MSSQL stored procs | -- |
+| API Docs | Swagger (OpenAPI) | 3.0 |
+| Testing | Jest | 29.x |
+| Logging | Winston + Pino | -- |
+| APM | New Relic | -- |
+| Error Tracking | Sentry | -- |
+| Deployment | Docker Swarm (Azure VMs) | -- |
+| CI/CD | GitHub Actions | -- |
+
+## Architecture
+
+```mermaid
+graph TB
+    subgraph "API Layer"
+        Controllers["80+ Controllers<br/>(REST endpoints)"]
+        Guards["Auth Guards<br/>(JWT + RBAC)"]
+        Pipes["Validation Pipes<br/>(class-validator)"]
+    end
+
+    subgraph "Service Layer"
+        Services["200+ Services<br/>(Business Logic)"]
+        Events["Event Emitters<br/>(Domain Events)"]
+    end
+
+    subgraph "Data Layer"
+        MikroORM_MSSQL["MikroORM<br/>(MSSQL Driver)"]
+        MikroORM_PG["MikroORM<br/>(PostgreSQL Driver)"]
+        Redis["Redis<br/>(Cache + Queue)"]
+    end
+
+    subgraph "Worker Layer"
+        BullMQ["29 BullMQ Workers"]
+        Cron["Cron Jobs"]
+    end
+
+    subgraph "Databases"
+        MSSQL["SQL Server<br/>(Shared with .NET)"]
+        PostgreSQL["PostgreSQL<br/>(New features only)"]
+    end
+
+    Controllers --> Guards
+    Guards --> Pipes
+    Pipes --> Services
+    Services --> Events
+    Services --> MikroORM_MSSQL
+    Services --> MikroORM_PG
+    Services --> Redis
+    BullMQ --> Services
+    Cron --> Services
+    MikroORM_MSSQL --> MSSQL
+    MikroORM_PG --> PostgreSQL
+    BullMQ --> Redis
+
+    style MSSQL fill:#e3f2fd
+    style PostgreSQL fill:#e8f5e9
+```
+
+## Domain Modules (~28)
+
+The backend is organized into domain-driven NestJS modules:
+
+| Module | Description | Database |
+|--------|-------------|----------|
+| `auth` | Authentication, JWT tokens, SSO | MSSQL (shared) |
+| `users` | User management, profiles, roles | MSSQL (shared) |
+| `evaluations` | Evaluation forms, distribution, completion | MSSQL (shared) |
+| `duty-hours` | ACGME duty hour tracking, violations | MSSQL (shared) |
+| `patient-log` | Patient encounter logging | MSSQL (shared) |
+| `procedures` | Clinical procedure tracking | MSSQL (shared) |
+| `goals` | Goals and milestones tracking | MSSQL (shared) |
+| `notifications` | Email and push notification dispatch | MSSQL + PostgreSQL |
+| `ape` | Annual Program Evaluation | PostgreSQL |
+| `caw` | Clinical Activity Worksheet | PostgreSQL |
+| `performance` | Performance reviews | PostgreSQL |
+| `onboarding` | New resident onboarding workflows | PostgreSQL |
+| `posts` | Posts and announcements | PostgreSQL |
+| `simpl` | SIMPL procedure assessment | PostgreSQL |
+| `programs` | Program and institution management | MSSQL (shared) |
+| `reports` | Report generation and export | MSSQL (shared) |
+| `files` | File upload and Azure Blob Storage | Both |
+| `scheduling` | Rotation and block scheduling | MSSQL (shared) |
+| `mobile` | MAUI mobile app API endpoints | Both |
+| `admin` | System administration | Both |
+| `health` | Health check endpoints | -- |
+| `config` | Dynamic configuration | PostgreSQL |
+| `audit` | Audit logging | PostgreSQL |
+| `integrations` | Third-party integrations | Both |
+
+## BullMQ Workers (29)
+
+Background job processing is handled by BullMQ workers running as separate Docker Swarm services:
+
+| Worker | Description | Schedule |
+|--------|-------------|----------|
+| `evaluation-reminder` | Send evaluation completion reminders | Every 6 hours |
+| `evaluation-auto-file` | Auto-file overdue evaluations | Daily |
+| `duty-hour-reminder` | Remind residents to log duty hours | Weekly |
+| `notification-email` | Process email notification queue | Real-time |
+| `notification-push` | Process push notification queue | Real-time |
+| `report-generator` | Generate large reports asynchronously | On demand |
+| `data-import` | Process bulk data imports | On demand |
+| `file-processor` | Process uploaded files (PDF, images) | Real-time |
+| `audit-log` | Write audit events asynchronously | Real-time |
+| `cache-invalidation` | Invalidate stale cache entries | Periodic |
+
+:::note
+The 29 BullMQ workers are progressively replacing the 70+ .NET Windows Services. See the [Migration Status](/docs/dotnet-backend/migration/status) for which schedulers have been migrated.
+:::
+
+## Authentication Flow
+
+The Node.js backend shares authentication with the .NET backend through MSSQL stored procedures:
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant NodeJS as Node.js API
+    participant MSSQL as SQL Server
+    participant Redis
+
+    Client->>NodeJS: POST /auth/login (credentials)
+    NodeJS->>MSSQL: EXEC GetLoggedInUserInfo @username, @password
+    MSSQL-->>NodeJS: User record + session token
+    NodeJS->>MSSQL: EXEC GetPrivilegesForRole @roleId
+    MSSQL-->>NodeJS: Role permissions
+    NodeJS->>Redis: Cache user session
+    NodeJS-->>Client: JWT token (HttpOnly cookie)
+
+    Note over Client,Redis: Subsequent requests
+    Client->>NodeJS: GET /api/evaluations (JWT in cookie)
+    NodeJS->>Redis: Validate session
+    Redis-->>NodeJS: Session valid
+    NodeJS->>MSSQL: Query evaluation data
+    MSSQL-->>NodeJS: Results
+    NodeJS-->>Client: JSON response
+```
+
+## Dual Database Strategy
+
+The backend connects to two databases simultaneously:
+
+- **MSSQL**: All legacy data shared with the .NET backend. Used for features being migrated or features that need access to legacy data.
+- **PostgreSQL**: All new features built exclusively on Node.js. Used for APE, CAW, Performance, Onboarding, and other features that never existed in .NET.
+
+See [Shared Database](/docs/dotnet-backend/migration/shared-database) for rules about schema changes and coexistence.
+
+## Deployment
+
+| Environment | Infrastructure | Replicas |
+|-------------|---------------|----------|
+| Development | Azure VM (Docker Swarm) | 1 server, 1 worker |
+| Staging | Azure VM (Docker Swarm) | 1 server, 2 workers |
+| Production | Azure VM (Docker Swarm) | 2 servers, 4 workers |
+
+Deployment is managed via GitHub Actions:
+- Push to `main` auto-deploys to the development environment
+- Production deployments are triggered manually via GitHub Actions workflow dispatch
+- Infrastructure is managed with CDKTF (Terraform CDK)
+
+## Key Metrics
+
+| Metric | Value |
+|--------|-------|
+| Pull Requests | 2,581+ |
+| Controllers | 80+ |
+| Services | 200+ |
+| BullMQ Workers | 29 |
+| Domain Modules | ~28 |
+| MikroORM Entities | 150+ |
+| Test Coverage | Growing |
+
+<!-- AUTO-GENERATED: Module counts, endpoint counts, and worker details will be enriched from repo-sync scripts -->

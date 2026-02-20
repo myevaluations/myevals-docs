@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build
+build/
+.docusaurus/
+
+# Generated (rebuilt from source repos)
+generated/
+
+# Cloned source repos (for doc generation)
+.repos/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

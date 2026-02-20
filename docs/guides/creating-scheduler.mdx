@@ -1,0 +1,295 @@
+---
+sidebar_position: 3
+title: Creating a Scheduler
+description: How to create a new scheduler or background job in MyEvaluations -- Windows Service template for .NET, BullMQ worker template for Node.js.
+---
+
+# Creating a Scheduler
+
+MyEvaluations uses two different systems for background job processing depending on the backend:
+
+| System | Technology | Use When |
+|--------|-----------|----------|
+| .NET Backend | Windows Services | Only for fixing bugs in existing schedulers |
+| Node.js Backend | BullMQ Workers | All new background jobs |
+
+:::info
+**New schedulers should always be BullMQ workers.** Only create a new Windows Service if you are fixing or maintaining an existing .NET scheduler that has not been migrated yet.
+:::
+
+## Creating a BullMQ Worker (Node.js)
+
+### Step 1: Define the Queue
+
+Create a queue constant in the shared queue configuration:
+
+```typescript
+// src/common/queues/queue-names.ts
+export const QUEUE_NAMES = {
+  // ... existing queues
+  MY_FEATURE_QUEUE: 'my-feature-queue',
+} as const;
+```
+
+### Step 2: Create the Job Data Interface
+
+```typescript
+// src/workers/my-feature/my-feature.types.ts
+export interface MyFeatureJobData {
+  featureId: number;
+  userId: number;
+  scheduledAt: string;
+}
+
+export enum MyFeatureJobType {
+  SEND_REMINDER = 'send-reminder',
+  PROCESS_BATCH = 'process-batch',
+}
+```
+
+### Step 3: Create the Worker Processor
+
+```typescript
+// src/workers/my-feature/my-feature.processor.ts
+import { Processor, Process, OnQueueError } from '@nestjs/bullmq';
+import { Job } from 'bullmq';
+import { Logger } from '@nestjs/common';
+
+@Processor(QUEUE_NAMES.MY_FEATURE_QUEUE)
+export class MyFeatureProcessor {
+  private readonly logger = new Logger(MyFeatureProcessor.name);
+
+  constructor(
+    private readonly myFeatureService: MyFeatureService,
+  ) {}
+
+  @Process(MyFeatureJobType.SEND_REMINDER)
+  async handleReminder(job: Job<MyFeatureJobData>): Promise<void> {
+    this.logger.log(`Processing reminder for feature ${job.data.featureId}`);
+
+    try {
+      await this.myFeatureService.sendReminder(job.data);
+      this.logger.log(`Reminder sent for feature ${job.data.featureId}`);
+    } catch (error) {
+      this.logger.error(`Failed to send reminder: ${error.message}`, error.stack);
+      throw error; // BullMQ will retry based on configuration
+    }
+  }
+
+  @Process(MyFeatureJobType.PROCESS_BATCH)
+  async handleBatch(job: Job<MyFeatureJobData>): Promise<void> {
+    this.logger.log(`Processing batch for feature ${job.data.featureId}`);
+    await this.myFeatureService.processBatch(job.data);
+  }
+
+  @OnQueueError()
+  onError(error: Error): void {
+    this.logger.error(`Queue error: ${error.message}`, error.stack);
+  }
+}
+```
+
+### Step 4: Register the Queue and Processor
+
+```typescript
+// src/workers/my-feature/my-feature-worker.module.ts
+import { Module } from '@nestjs/common';
+import { BullModule } from '@nestjs/bullmq';
+
+@Module({
+  imports: [
+    BullModule.registerQueue({
+      name: QUEUE_NAMES.MY_FEATURE_QUEUE,
+      defaultJobOptions: {
+        attempts: 3,
+        backoff: {
+          type: 'exponential',
+          delay: 5000,
+        },
+        removeOnComplete: 100,
+        removeOnFail: 500,
+      },
+    }),
+  ],
+  providers: [MyFeatureProcessor],
+  exports: [BullModule],
+})
+export class MyFeatureWorkerModule {}
+```
+
+### Step 5: Add a Cron Trigger (If Scheduled)
+
+For jobs that run on a schedule:
+
+```typescript
+// src/workers/my-feature/my-feature.cron.ts
+import { Injectable } from '@nestjs/common';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { InjectQueue } from '@nestjs/bullmq';
+import { Queue } from 'bullmq';
+
+@Injectable()
+export class MyFeatureCron {
+  constructor(
+    @InjectQueue(QUEUE_NAMES.MY_FEATURE_QUEUE)
+    private readonly queue: Queue,
+  ) {}
+
+  // Run every day at 8:00 AM
+  @Cron(CronExpression.EVERY_DAY_AT_8AM)
+  async scheduleDailyReminders(): Promise<void> {
+    // Query for items that need reminders
+    const items = await this.getItemsNeedingReminder();
+
+    for (const item of items) {
+      await this.queue.add(MyFeatureJobType.SEND_REMINDER, {
+        featureId: item.id,
+        userId: item.userId,
+        scheduledAt: new Date().toISOString(),
+      });
+    }
+  }
+}
+```
+
+### Step 6: Enqueue Jobs from API (If Real-Time)
+
+For jobs triggered by user actions:
+
+```typescript
+// In the feature's service
+@Injectable()
+export class MyFeatureService {
+  constructor(
+    @InjectQueue(QUEUE_NAMES.MY_FEATURE_QUEUE)
+    private readonly queue: Queue,
+  ) {}
+
+  async triggerProcessing(featureId: number, userId: number): Promise<void> {
+    await this.queue.add(MyFeatureJobType.PROCESS_BATCH, {
+      featureId,
+      userId,
+      scheduledAt: new Date().toISOString(),
+    });
+  }
+}
+```
+
+### Step 7: Write Tests
+
+```typescript
+describe('MyFeatureProcessor', () => {
+  let processor: MyFeatureProcessor;
+  let myFeatureService: jest.Mocked<MyFeatureService>;
+
+  beforeEach(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MyFeatureProcessor,
+        { provide: MyFeatureService, useValue: { sendReminder: jest.fn() } },
+      ],
+    }).compile();
+
+    processor = module.get(MyFeatureProcessor);
+    myFeatureService = module.get(MyFeatureService);
+  });
+
+  it('should process a reminder job', async () => {
+    const job = { data: { featureId: 1, userId: 2, scheduledAt: '2025-01-01' } } as Job;
+    await processor.handleReminder(job);
+    expect(myFeatureService.sendReminder).toHaveBeenCalledWith(job.data);
+  });
+});
+```
+
+## Maintaining a .NET Windows Service (Legacy)
+
+:::warning
+Only modify existing Windows Services for bug fixes. Do not create new Windows Services.
+:::
+
+### Understanding the Windows Service Template
+
+Each Windows Service in the `Schedulers/` directory follows this pattern:
+
+```
+Schedulers/
+└── MySchedulerService/
+    ├── MySchedulerService.csproj
+    ├── Program.cs              # Entry point
+    ├── MySchedulerWorker.cs    # Main logic
+    ├── App.config              # Configuration (connection strings, intervals)
+    └── ProjectInstaller.cs     # Windows Service installer
+```
+
+### Key Files
+
+```csharp
+// Program.cs - Entry point
+static class Program
+{
+    static void Main()
+    {
+        ServiceBase[] ServicesToRun = new ServiceBase[]
+        {
+            new MySchedulerService()
+        };
+        ServiceBase.Run(ServicesToRun);
+    }
+}
+
+// MySchedulerWorker.cs - Main logic
+public class MySchedulerWorker
+{
+    private Timer _timer;
+
+    public void Start()
+    {
+        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromHours(6));
+    }
+
+    private void DoWork(object state)
+    {
+        // Business logic here
+        var manager = new EvaluationsManager();
+        var pendingEvals = manager.GetPendingEvaluations();
+        // Process each evaluation...
+    }
+}
+```
+
+### Debugging a Windows Service
+
+1. In the service's `Program.cs`, add a debug mode:
+   ```csharp
+   #if DEBUG
+       var worker = new MySchedulerWorker();
+       worker.Start();
+       Console.ReadLine();
+   #else
+       ServiceBase.Run(ServicesToRun);
+   #endif
+   ```
+2. Set the service project as the startup project in Visual Studio
+3. Press **F5** to debug
+
+### Deployment
+
+Windows Services are deployed manually:
+1. Build the service in Release mode
+2. Copy the output to the production server
+3. Install or restart the Windows Service via `sc` command or Services MMC
+
+## Migration Path: Windows Service to BullMQ
+
+When migrating an existing Windows Service to a BullMQ worker:
+
+1. Read and understand the existing Windows Service code
+2. Map the business logic to a NestJS service
+3. Create a BullMQ worker that calls the NestJS service
+4. Set up the same schedule (cron) as the Windows Service
+5. Run both in parallel for a validation period
+6. Disable the Windows Service after validation
+7. Remove the Windows Service project after a cool-down period
+
+See the [Migration Strategy](/docs/dotnet-backend/migration/strategy) for more details on the process.

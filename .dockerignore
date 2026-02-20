@@ -1,0 +1,8 @@
+node_modules
+build
+.docusaurus
+.git
+.repos
+generated
+*.log
+.env*

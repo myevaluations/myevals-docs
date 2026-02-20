@@ -1,0 +1,269 @@
+---
+sidebar_position: 1
+title: Architecture Overview
+description: High-level architecture of the MyEvaluations platform showing all four core systems, their interactions, database architecture, and the Strangler Fig migration pattern.
+---
+
+# Architecture Overview
+
+MyEvaluations is a multi-system platform that has evolved over 25+ years from a classic ASP.NET WebForms monolith into a hybrid architecture where modern Node.js and React layers progressively replace legacy functionality.
+
+## System Landscape
+
+The platform consists of four core systems that work together to serve healthcare education institutions:
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        Browser["Web Browser"]
+        Mobile["MAUI Mobile App<br/>(iOS + Android)"]
+    end
+
+    subgraph "Frontend Layer"
+        CDN["Azure CDN<br/>(frontend.myevaluations.com)"]
+        ReactApp["React HTML Partials<br/>(Next.js 13.5 + Plasmic)"]
+    end
+
+    subgraph "Backend Layer"
+        DotNet[".NET Backend<br/>(ASP.NET WebForms 4.6.1)<br/>IIS"]
+        NodeJS["Node.js Backend<br/>(NestJS 10)<br/>Docker Swarm"]
+        Workers["BullMQ Workers<br/>(29 workers)"]
+    end
+
+    subgraph "Data Layer"
+        MSSQL["SQL Server<br/>(Shared Database)"]
+        PostgreSQL["PostgreSQL<br/>(Node.js Only)"]
+        Redis["Redis<br/>(Queue + Cache)"]
+        BlobStorage["Azure Blob Storage<br/>(Documents, Images)"]
+    end
+
+    subgraph "External Services"
+        SAML["SAML IdP<br/>(SSO)"]
+        Firebase["Firebase<br/>(Push Notifications)"]
+        Mailgun["Mailgun<br/>(Email)"]
+        NewRelic["New Relic<br/>(APM)"]
+        Sentry["Sentry<br/>(Error Tracking)"]
+    end
+
+    Browser --> DotNet
+    Browser --> CDN
+    CDN --> ReactApp
+    ReactApp -->|"API calls via<br/>ApiHandler.ashx"| DotNet
+    ReactApp -->|"REST API"| NodeJS
+    Mobile -->|"REST API"| NodeJS
+    Mobile -->|"Legacy API"| DotNet
+
+    DotNet --> MSSQL
+    DotNet --> BlobStorage
+    DotNet --> SAML
+    DotNet --> Mailgun
+
+    NodeJS --> MSSQL
+    NodeJS --> PostgreSQL
+    NodeJS --> Redis
+    NodeJS --> BlobStorage
+    Workers --> Redis
+    Workers --> MSSQL
+    Workers --> PostgreSQL
+
+    NodeJS --> Sentry
+    NodeJS --> NewRelic
+    Mobile --> Firebase
+```
+
+## How the Systems Interact
+
+### .NET Backend (Legacy Monolith)
+
+The .NET backend is the original system and still handles the majority of traffic. It serves WebForms pages directly and acts as a JSON API router for the React frontend via `ApiHandler.ashx`. Key characteristics:
+
+- **27 projects** in a single Visual Studio solution (`MyEvaluations2009.sln`)
+- **70+ Windows Services** (schedulers) running evaluation reminders, data integrations, and compliance workflows
+- **Stored procedures** for all data access via ADO.NET
+- **Session-based authentication** with SAML SSO support
+- Hosts the shell page that embeds React HTML partials
+
+### Node.js Backend (Modern Replacement)
+
+The NestJS backend progressively replaces .NET functionality using the Strangler Fig pattern:
+
+- **80+ controllers**, **200+ services**, **29 BullMQ workers**
+- Reads from .NET's MSSQL stored procedures for authentication (`GetLoggedInUserInfo`, `GetPrivilegesForRole`)
+- New features (APE, CAW, Performance, Onboarding) built exclusively here
+- Dual database: MSSQL (shared legacy data) + PostgreSQL (new feature data)
+
+### React Frontend (Modern UI)
+
+The React frontend replaces WebForms pages one at a time:
+
+- Built with Next.js 13.5 and Plasmic visual builder (500+ auto-generated components)
+- Dual build output: standalone Next.js app + esbuild HTML partials
+- HTML partials are fetched by `NewFrontend.cs` in the .NET backend and embedded in the WebForms shell
+- Approximately 20+ pages have been migrated to React
+
+### MAUI Mobile App
+
+Cross-platform mobile app providing field access:
+
+- .NET MAUI 9 targeting iOS and Android
+- MVVM architecture with Realm local database
+- Features: evaluations, clinical hours, geofencing (MyQuickPass), QR codes
+- Communicates primarily with the Node.js backend
+
+## Database Architecture
+
+```mermaid
+graph LR
+    subgraph "SQL Server (Shared)"
+        direction TB
+        MSSQL_Core["Core Tables<br/>(Users, Evaluations, Programs,<br/>DutyHours, PatientLog, etc.)"]
+        MSSQL_SPs["Stored Procedures<br/>(1000+)"]
+        MSSQL_Auth["Auth Tables<br/>(Sessions, Roles, Privileges)"]
+    end
+
+    subgraph "PostgreSQL (Node.js Only)"
+        direction TB
+        PG_New["New Feature Tables<br/>(APE, CAW, Performance,<br/>Onboarding, Posts, SIMPL)"]
+        PG_Queue["Queue Metadata<br/>(BullMQ job history)"]
+    end
+
+    DotNet[".NET Backend"] -->|"ADO.NET +<br/>Stored Procs"| MSSQL_Core
+    DotNet --> MSSQL_SPs
+    DotNet --> MSSQL_Auth
+
+    NodeJS["Node.js Backend"] -->|"MikroORM"| MSSQL_Core
+    NodeJS -->|"MikroORM"| PG_New
+    NodeJS --> MSSQL_Auth
+
+    style MSSQL_Core fill:#e3f2fd
+    style MSSQL_SPs fill:#e3f2fd
+    style MSSQL_Auth fill:#e3f2fd
+    style PG_New fill:#e8f5e9
+    style PG_Queue fill:#e8f5e9
+```
+
+**Key principle:** The MSSQL database is the single source of truth for all legacy data. Both backends read and write to it. PostgreSQL is used exclusively by the Node.js backend for new features that have no .NET dependency.
+
+## The Strangler Fig Migration Pattern
+
+MyEvaluations follows the [Strangler Fig](https://martinfowler.com/bliki/StranglerFigApplication.html) pattern to incrementally replace the .NET monolith without a risky full rewrite.
+
+```mermaid
+graph TB
+    subgraph "Phase 1: Coexistence (Current)"
+        direction LR
+        User1["User Request"] --> Router1["IIS / Routing"]
+        Router1 -->|"Legacy pages"| DotNet1[".NET WebForms"]
+        Router1 -->|"New pages"| React1["React (via CDN)"]
+        React1 -->|"API calls"| DotNet1
+        React1 -->|"New API"| Node1["Node.js"]
+        DotNet1 --> DB1["MSSQL"]
+        Node1 --> DB1
+        Node1 --> PG1["PostgreSQL"]
+    end
+
+    subgraph "Phase 2: Progressive Replacement"
+        direction LR
+        User2["User Request"] --> Router2["Routing Layer"]
+        Router2 -->|"Shrinking"| DotNet2[".NET<br/>(fewer pages)"]
+        Router2 -->|"Growing"| React2["React<br/>(more pages)"]
+        React2 --> Node2["Node.js<br/>(more endpoints)"]
+        DotNet2 --> DB2["MSSQL"]
+        Node2 --> DB2
+        Node2 --> PG2["PostgreSQL<br/>(more data)"]
+    end
+
+    subgraph "Phase 3: Future Target"
+        direction LR
+        User3["User Request"] --> React3["React SPA"]
+        React3 --> Node3["Node.js<br/>(all endpoints)"]
+        Node3 --> DB3["MSSQL + PostgreSQL"]
+    end
+
+    style DotNet1 fill:#ffcdd2
+    style DotNet2 fill:#ffcdd2,stroke-dasharray: 5 5
+    style Node1 fill:#c8e6c9
+    style Node2 fill:#c8e6c9
+    style Node3 fill:#c8e6c9
+    style React1 fill:#bbdefb
+    style React2 fill:#bbdefb
+    style React3 fill:#bbdefb
+```
+
+### Migration Rules
+
+1. **New features** are built exclusively on Node.js + PostgreSQL
+2. **Migrated features** keep reading from MSSQL (shared data) but move business logic to Node.js
+3. **Authentication** is shared -- Node.js reads from .NET's MSSQL auth stored procedures
+4. **UI migration** happens page-by-page -- React partials replace individual WebForms pages
+5. The .NET backend is **never modified** for new features; it only receives bug fixes
+
+## Azure Infrastructure
+
+```mermaid
+graph TB
+    subgraph "Azure Cloud"
+        subgraph "Compute"
+            VM_Server["Azure VMs<br/>(Node.js Docker Swarm)"]
+            VM_Worker["Worker VMs<br/>(BullMQ processors)"]
+        end
+
+        subgraph "Storage"
+            Blob["Azure Blob Storage<br/>(Documents, React builds)"]
+            CDN_Azure["Azure CDN<br/>(frontend.myevaluations.com)"]
+        end
+
+        subgraph "Data"
+            KeyVault["Azure Key Vault<br/>(Secrets)"]
+        end
+
+        subgraph "Monitoring"
+            NR["New Relic APM"]
+            Sen["Sentry"]
+            Prom["Prometheus"]
+        end
+    end
+
+    subgraph "On-Premises / Hosted"
+        IIS_Server["IIS Server<br/>(.NET Backend)"]
+        SQLServer["SQL Server<br/>(Primary Database)"]
+    end
+
+    CDN_Azure --> Blob
+    VM_Server --> SQLServer
+    VM_Server --> KeyVault
+    VM_Worker --> SQLServer
+    IIS_Server --> SQLServer
+
+    style VM_Server fill:#e3f2fd
+    style VM_Worker fill:#e3f2fd
+    style IIS_Server fill:#ffcdd2
+    style SQLServer fill:#fff3e0
+```
+
+### Infrastructure Details
+
+| Component | Technology | Details |
+|-----------|-----------|---------|
+| .NET Hosting | IIS on Windows Server | Manual deployment via Visual Studio publish |
+| Node.js Hosting | Docker Swarm on Azure VMs | 2 server replicas, 4 worker replicas |
+| Frontend Hosting | Azure Blob + CDN | Static files at `frontend.myevaluations.com` |
+| Infrastructure as Code | CDKTF (Terraform CDK) | Azure VMs, PostgreSQL, Blob Storage, Key Vault |
+| CI/CD (.NET) | None | Manual Visual Studio publish |
+| CI/CD (Node.js) | GitHub Actions | Auto-deploy `main` to dev, manual to prod |
+| CI/CD (React) | GitHub Actions | Auto-deploy `main` to dev, manual to prod |
+| CI/CD (MAUI) | GitHub Actions | TestFlight (iOS), GitHub Releases (Android) |
+
+## Key Architectural Decisions
+
+1. **Shared MSSQL Database:** Both backends share the same SQL Server database. This enables incremental migration but requires careful coordination to avoid data conflicts.
+
+2. **Stored Procedures as API Contract:** The .NET backend's stored procedures effectively serve as an API contract between the two backends. Node.js calls the same stored procs for authentication and legacy data access.
+
+3. **React-in-WebForms Embedding:** Rather than running React as a standalone SPA, HTML partials are embedded within the .NET WebForms shell page. This preserves the existing navigation, session management, and authentication flow.
+
+4. **Dual Database Strategy:** New features use PostgreSQL (via MikroORM) to avoid coupling to the legacy MSSQL schema, while shared/migrated features continue using MSSQL.
+
+5. **No .NET CI/CD:** The .NET backend is deployed manually via Visual Studio publish. This is a known limitation but reflects the system's stability and the focus on migrating away from it rather than modernizing its deployment.
+
+<!-- AUTO-GENERATED: This section will be enriched with specific counts and metrics from the parse-dotnet scripts -->

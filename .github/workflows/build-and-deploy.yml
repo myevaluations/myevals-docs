@@ -1,0 +1,96 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [docs-rebuild]
+
+# Prevent parallel deployments - queue newer runs, cancel in-progress
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy to Coolify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "build" ] || [ -z "$(ls -A build)" ]; then
+            echo "::error::Build directory is empty or missing"
+            exit 1
+          fi
+          echo "Build output size: $(du -sh build | cut -f1)"
+          echo "File count: $(find build -type f | wc -l)"
+
+      - name: Deploy to Coolify
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          COOLIFY_APP_UUID: ${{ secrets.COOLIFY_APP_UUID }}
+        run: |
+          # Setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H 194.195.112.179 >> ~/.ssh/known_hosts 2>/dev/null
+
+          # Trigger Coolify deployment via artisan tinker
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no root@194.195.112.179 \
+            "docker exec coolify php artisan tinker --execute=\"\\\$app = App\\\Models\\\Application::where('uuid', '${COOLIFY_APP_UUID}')->first(); if(!\\\$app) { echo 'App not found'; exit(1); } queue_application_deployment(application: \\\$app, deployment_uuid: (string) \\\Illuminate\\\Support\\\Str::uuid(), force_rebuild: true); echo 'Deployment queued';\""
+
+          echo "Deployment triggered successfully"
+
+      - name: Wait for deployment
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          echo "Waiting 30s for deployment to start..."
+          sleep 30
+
+          # Check deployment status (poll up to 5 minutes)
+          for i in $(seq 1 10); do
+            STATUS=$(ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no root@194.195.112.179 \
+              "docker exec coolify php artisan tinker --execute=\"\\\$d = App\\\Models\\\ApplicationDeploymentQueue::latest()->first(); echo \\\$d->status;\"" 2>/dev/null || echo "unknown")
+
+            echo "Attempt $i/10 - Deployment status: $STATUS"
+
+            if echo "$STATUS" | grep -qi "finished"; then
+              echo "Deployment completed successfully"
+              exit 0
+            elif echo "$STATUS" | grep -qi "failed"; then
+              echo "::error::Deployment failed"
+              exit 1
+            fi
+
+            sleep 30
+          done
+
+          echo "::warning::Deployment status check timed out - verify manually in Coolify"
+
+      - name: Cleanup SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

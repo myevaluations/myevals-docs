@@ -1,0 +1,304 @@
+---
+sidebar_position: 2
+title: Data Flow
+description: Data flow diagrams showing how requests traverse the MyEvaluations platform, including .NET request handling, React embedding, Node.js coexistence, and background job processing.
+---
+
+# Data Flow
+
+This page documents how data flows through the MyEvaluations platform in common scenarios: legacy .NET request handling, React frontend embedding, dual-backend coexistence, and background job processing.
+
+## .NET Backend Request Flow
+
+The .NET WebForms backend handles requests through IIS with session-based authentication and stored procedure data access.
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant IIS as IIS Server
+    participant ASPX as WebForms Page<br/>(.aspx)
+    participant Manager as Business Manager<br/>(e.g., EvaluationsManager)
+    participant DAL as DataAccess.SQL<br/>(DBDataAccess)
+    participant SP as SQL Server<br/>(Stored Procedure)
+
+    Browser->>IIS: HTTP Request
+    IIS->>IIS: Check Session Cookie
+    alt Session Valid
+        IIS->>ASPX: Route to .aspx page
+        ASPX->>ASPX: Page_Load / Event Handler
+        ASPX->>Manager: Call business method
+        Manager->>DAL: Execute stored procedure
+        DAL->>SP: SqlCommand.ExecuteReader()
+        SP-->>DAL: DataSet / DataReader
+        DAL-->>Manager: Info object(s)
+        Manager-->>ASPX: Processed result
+        ASPX-->>Browser: Rendered HTML
+    else Session Invalid
+        IIS-->>Browser: Redirect to Login.aspx
+    end
+```
+
+### Key Classes in the Flow
+
+| Layer | Class | Role |
+|-------|-------|------|
+| Web | `*.aspx` + `*.aspx.cs` | WebForms page + code-behind |
+| Business | `*Manager.cs` | Service/business logic (e.g., `EvaluationsManager`) |
+| DTO | `*Info.cs` | Data Transfer Object (e.g., `EvaluationsInfo`) |
+| Data Access | `DBDataAccess.cs` | ADO.NET wrapper for stored procedure execution |
+| Data Access | `CustomCommand.cs` | SqlCommand builder with parameter handling |
+| Database | Stored Procedures | All data operations (SELECT, INSERT, UPDATE, DELETE) |
+
+## React Frontend Embedding in .NET Shell
+
+The React frontend is served as HTML partials via Azure CDN and embedded within the .NET WebForms shell page. This allows progressive page-by-page migration.
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant IIS as IIS / .NET Backend
+    participant NewFrontend as NewFrontend.cs
+    participant CDN as Azure CDN<br/>(frontend.myevaluations.com)
+    participant ReactBuild as React Build<br/>(esbuild HTML partials)
+    participant ApiHandler as ApiHandler.ashx
+
+    Browser->>IIS: Navigate to /New/PageName
+    IIS->>NewFrontend: Route to NewFrontend handler
+    NewFrontend->>CDN: Fetch HTML partial<br/>(GET /partials/PageName.html)
+    CDN->>ReactBuild: Serve static file
+    ReactBuild-->>CDN: HTML + JS + CSS
+    CDN-->>NewFrontend: HTML partial content
+    NewFrontend->>NewFrontend: Inject into WebForms shell<br/>(Master page, nav, session)
+    NewFrontend-->>Browser: Complete page<br/>(.NET shell + React content)
+
+    Note over Browser,ApiHandler: React component makes API calls
+
+    Browser->>ApiHandler: XHR/Fetch to /New/Api.ashx<br/>(JSON payload)
+    ApiHandler->>ApiHandler: Route to appropriate Manager
+    ApiHandler-->>Browser: JSON response
+```
+
+### The Embedding Mechanism
+
+1. **NewFrontend.cs** in the .NET backend fetches pre-built HTML partials from Azure CDN
+2. The HTML is injected into the WebForms master page, preserving navigation, header, and session context
+3. React components within the partial make API calls back to `ApiHandler.ashx` on the .NET backend
+4. After a new React build is deployed, `/New/Revalidate.ashx` is called to clear the .NET-side cache
+
+### Build Pipeline
+
+```mermaid
+flowchart LR
+    subgraph "React Build (CI/CD)"
+        Plasmic["Plasmic Studio<br/>(Visual Builder)"]
+        NextJS["Next.js 13.5<br/>(Pages Router)"]
+        ESBuild["esbuild<br/>(HTML Partials)"]
+    end
+
+    subgraph "Deployment"
+        Blob["Azure Blob Storage"]
+        CDN["Azure CDN"]
+    end
+
+    subgraph ".NET Consumption"
+        NewFrontend["NewFrontend.cs"]
+        Shell["WebForms Shell Page"]
+    end
+
+    Plasmic -->|"Auto-generated<br/>components"| NextJS
+    NextJS -->|"Static export"| ESBuild
+    ESBuild -->|"HTML partials"| Blob
+    Blob --> CDN
+    CDN -->|"HTTP GET"| NewFrontend
+    NewFrontend -->|"Inject HTML"| Shell
+```
+
+## Dual-Backend Coexistence on MSSQL
+
+Both the .NET and Node.js backends operate on the same MSSQL database. This diagram shows how they coexist without conflicts.
+
+```mermaid
+graph TB
+    subgraph "Authentication Flow (Shared)"
+        Login["User Login<br/>(either backend)"]
+        AuthSP["MSSQL Stored Procs<br/>GetLoggedInUserInfo<br/>GetPrivilegesForRole"]
+        Session[".NET Session"]
+        JWT["JWT Token<br/>(Node.js)"]
+    end
+
+    subgraph ".NET Backend Path"
+        DotNetAPI[".NET API / WebForms"]
+        DotNetManagers["Business Managers"]
+        DotNetDAL["ADO.NET + Stored Procs"]
+    end
+
+    subgraph "Node.js Backend Path"
+        NodeAPI["NestJS Controllers"]
+        NodeServices["NestJS Services"]
+        MikroORM["MikroORM<br/>(MSSQL + PostgreSQL)"]
+    end
+
+    subgraph "Databases"
+        MSSQL["SQL Server<br/>(Shared Tables)"]
+        PostgreSQL["PostgreSQL<br/>(New Features Only)"]
+    end
+
+    Login --> AuthSP
+    AuthSP --> Session
+    AuthSP --> JWT
+
+    DotNetAPI --> DotNetManagers
+    DotNetManagers --> DotNetDAL
+    DotNetDAL --> MSSQL
+
+    NodeAPI --> NodeServices
+    NodeServices --> MikroORM
+    MikroORM --> MSSQL
+    MikroORM --> PostgreSQL
+
+    style MSSQL fill:#fff3e0,stroke:#e65100
+    style PostgreSQL fill:#e8f5e9,stroke:#2e7d32
+```
+
+### Coexistence Rules
+
+| Rule | Details |
+|------|---------|
+| **Shared tables** | Both backends read/write to legacy MSSQL tables (users, evaluations, programs, etc.) |
+| **New tables** | Node.js creates new tables in PostgreSQL only; never adds tables to MSSQL |
+| **Stored procedures** | .NET uses stored procs for all operations; Node.js uses MikroORM queries for most operations but calls auth stored procs |
+| **Transactions** | Each backend manages its own transactions; no cross-backend transactions |
+| **Schema changes** | MSSQL schema changes require coordination between both teams |
+| **Auth contract** | Node.js reads .NET session data via stored procedures (`GetLoggedInUserInfo`) |
+
+## BullMQ Worker Job Flow
+
+The Node.js backend uses BullMQ with Redis for asynchronous job processing. There are 29 workers handling various background tasks.
+
+```mermaid
+sequenceDiagram
+    participant API as NestJS API<br/>(Controller/Service)
+    participant Queue as BullMQ Queue<br/>(Redis)
+    participant Worker as BullMQ Worker<br/>(29 workers)
+    participant MSSQL as SQL Server
+    participant PG as PostgreSQL
+    participant External as External Service<br/>(Email, Notifications)
+
+    API->>Queue: Add job to queue<br/>(e.g., send-evaluation-reminder)
+    Note over Queue: Job stored in Redis<br/>with retry policy
+
+    Queue->>Worker: Dequeue job
+    Worker->>Worker: Process job logic
+
+    alt Database operation
+        Worker->>MSSQL: Read/write legacy data
+        MSSQL-->>Worker: Result
+        Worker->>PG: Write new feature data
+        PG-->>Worker: Result
+    end
+
+    alt External integration
+        Worker->>External: Send email / push notification
+        External-->>Worker: Delivery confirmation
+    end
+
+    alt Job succeeds
+        Worker->>Queue: Mark complete
+    else Job fails
+        Worker->>Queue: Mark failed<br/>(retry with backoff)
+        Queue->>Worker: Retry attempt
+    end
+```
+
+### Worker Categories
+
+<!-- AUTO-GENERATED: This section will be enriched with actual worker names from the Node.js backend parsing scripts -->
+
+| Category | Examples | Database |
+|----------|----------|----------|
+| Evaluation Processing | Evaluation reminders, auto-filing, scoring | MSSQL |
+| Notifications | Email digests, push notifications | MSSQL + External |
+| Data Sync | Schedule imports, integration syncs | MSSQL + PostgreSQL |
+| Report Generation | PDF reports, export jobs | MSSQL + Blob Storage |
+| Onboarding | New user setup, credential verification | PostgreSQL |
+
+## Request Routing Overview
+
+This diagram shows how incoming requests are routed to the appropriate backend based on the URL pattern.
+
+```mermaid
+flowchart TB
+    Request["Incoming HTTP Request"]
+
+    Request --> URLCheck{URL Pattern?}
+
+    URLCheck -->|"/New/*"| NewFrontend["NewFrontend.cs<br/>(React partial embedding)"]
+    URLCheck -->|"/New/Api.ashx"| ApiHandler["ApiHandler.ashx<br/>(JSON API for React)"]
+    URLCheck -->|"*.aspx"| WebForms["WebForms Page<br/>(Legacy UI)"]
+    URLCheck -->|"/api/*"| NodeJS["NestJS API<br/>(Node.js backend)"]
+    URLCheck -->|"Static files"| IISStatic["IIS Static File Handler"]
+
+    NewFrontend --> CDN["Fetch from Azure CDN"]
+    ApiHandler --> Managers["Business Managers"]
+    WebForms --> Managers
+    Managers --> MSSQL["SQL Server"]
+    NodeJS --> MikroORM["MikroORM"]
+    MikroORM --> MSSQL
+    MikroORM --> PostgreSQL["PostgreSQL"]
+
+    style NewFrontend fill:#bbdefb
+    style ApiHandler fill:#bbdefb
+    style WebForms fill:#ffcdd2
+    style NodeJS fill:#c8e6c9
+```
+
+## Data Flow for Common Operations
+
+### Completing an Evaluation
+
+```mermaid
+sequenceDiagram
+    participant User as User (Browser)
+    participant React as React Component
+    participant Api as ApiHandler.ashx
+    participant EM as EvaluationsManager
+    participant DAL as DBDataAccess
+    participant SQL as SQL Server
+
+    User->>React: Fill out evaluation form
+    React->>Api: POST /New/Api.ashx<br/>{ action: "SaveEvaluation", data: {...} }
+    Api->>EM: SaveEvaluation(evaluationInfo)
+    EM->>EM: Validate business rules
+    EM->>DAL: Execute SP: usp_SaveEvaluation
+    DAL->>SQL: EXEC usp_SaveEvaluation @params
+    SQL-->>DAL: Success + EvaluationID
+    DAL-->>EM: Result
+    EM->>EM: Trigger notifications if needed
+    EM-->>Api: Success response
+    Api-->>React: { success: true, id: 12345 }
+    React-->>User: Show confirmation
+```
+
+### Duty Hours Logging (Mobile)
+
+```mermaid
+sequenceDiagram
+    participant App as MAUI App
+    participant Realm as Realm (Local DB)
+    participant API as NestJS API
+    participant MSSQL as SQL Server
+
+    App->>Realm: Save duty hours locally<br/>(offline support)
+
+    alt Online
+        App->>API: POST /api/duty-hours
+        API->>MSSQL: Insert via MikroORM
+        MSSQL-->>API: Saved
+        API-->>App: 201 Created
+        App->>Realm: Mark as synced
+    else Offline
+        Note over App,Realm: Stored locally,<br/>synced when online
+    end
+```
+
+<!-- AUTO-GENERATED: Additional data flow diagrams will be generated based on specific module analysis from parse scripts -->

@@ -1,0 +1,176 @@
+---
+sidebar_position: 11
+title: Timesheet
+description: Timesheet management in the MyEvaluations .NET backend. Time entry, approval workflows, pay period management, and reporting.
+---
+
+# Timesheet
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Timesheet module provides time tracking and approval workflows for healthcare trainees and staff. While related to the Duty Hours module (which focuses on ACGME compliance), the Timesheet module addresses administrative time tracking for payroll, leave management, and institutional reporting purposes.
+
+This module supports configurable pay periods, multi-level approval workflows, leave type categorization, and integration with institutional payroll systems. It is particularly important for programs where trainees are employed by the institution and must submit timesheets for compensation.
+
+### Key Responsibilities
+
+- **Time Entry**: Clock-in/clock-out and manual time entry with activity categorization
+- **Pay Period Management**: Configurable pay periods (weekly, bi-weekly, semi-monthly, monthly)
+- **Approval Workflows**: Multi-level approval chains (supervisor, program director, department)
+- **Leave Management**: Vacation, sick, conference, and other leave type tracking
+- **Reporting**: Individual timesheet reports, payroll summaries, and leave balance reports
+- **Payroll Integration**: Export data in formats compatible with institutional payroll systems
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `TimeSheetManager` | `MyEvaluations.Business.Timesheet` | Core timesheet operations: time entry CRUD, period management, and summary calculations. |
+| `TimeSheetApprovalManager` | `MyEvaluations.Business.Timesheet` | Multi-level approval workflow management. |
+| `TimeSheetLeaveManager` | `MyEvaluations.Business.Timesheet` | Leave request, approval, and balance tracking. |
+| `TimeSheetReportManager` | `MyEvaluations.Business.Timesheet` | Reporting: payroll exports, leave summaries, and utilization reports. |
+| `TimeSheetPayPeriodManager` | `MyEvaluations.Business.Timesheet` | Pay period definition, calendar management, and period locking. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `TimeSheetInfo` | Timesheet record: user, pay period, entries, total hours, status (draft/submitted/approved/rejected). |
+| `TimeSheetEntryInfo` | Individual entry: date, start time, end time, activity type, hours, description. |
+| `TimeSheetApprovalInfo` | Approval record: approver, action (approve/reject/return), comments, timestamp, level. |
+| `TimeSheetLeaveInfo` | Leave record: type (vacation/sick/conference/other), start date, end date, hours, status. |
+| `PayPeriodInfo` | Pay period: start date, end date, type, locked flag, submission deadline. |
+| `TimeSheetSummaryInfo` | Summary: total hours worked, leave hours by type, overtime hours, regular hours. |
+
+## Business Workflows
+
+### Timesheet Submission and Approval
+
+```mermaid
+sequenceDiagram
+    participant User as Trainee
+    participant TSM as TimeSheetManager
+    participant TAM as TimeSheetApprovalManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    User->>TSM: GetCurrentPayPeriod()
+    TSM->>DB: sp_Timesheet_GetCurrentPeriod
+    DB-->>TSM: PayPeriodInfo
+
+    User->>TSM: AddEntry(entryInfo)
+    TSM->>DB: sp_Timesheet_InsertEntry
+    Note right of TSM: Repeat for each<br/>day in pay period
+
+    User->>TSM: SubmitTimesheet(payPeriodId)
+    TSM->>TSM: ValidateEntries(totalHours, overlaps)
+    TSM->>DB: sp_Timesheet_UpdateStatus("Submitted")
+
+    TSM->>TAM: InitiateApproval(timesheetId)
+    TAM->>DB: sp_Timesheet_GetApprovalChain
+    DB-->>TAM: Approval chain (Level 1: supervisor, Level 2: PD)
+    TAM->>MAIL: NotifyApprover(level1Approver, timesheetId)
+
+    Note over TAM,DB: Level 1 Approval
+    TAM->>DB: sp_Timesheet_InsertApproval("Approved", level=1)
+
+    alt Multi-level approval
+        TAM->>MAIL: NotifyApprover(level2Approver, timesheetId)
+        TAM->>DB: sp_Timesheet_InsertApproval("Approved", level=2)
+    end
+
+    TAM->>DB: sp_Timesheet_UpdateStatus("Approved")
+    TAM->>MAIL: NotifyUser(userId, "Timesheet Approved")
+```
+
+### Leave Request Flow
+
+```mermaid
+sequenceDiagram
+    participant User as Trainee
+    participant TLM as TimeSheetLeaveManager
+    participant TAM as TimeSheetApprovalManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    User->>TLM: SubmitLeaveRequest(leaveInfo)
+    TLM->>DB: sp_Timesheet_GetLeaveBalance
+    DB-->>TLM: Available balance by type
+
+    alt Insufficient balance
+        TLM-->>User: Insufficient leave balance
+    end
+
+    TLM->>DB: sp_Timesheet_InsertLeaveRequest
+    TLM->>MAIL: NotifyApprover(supervisor, leaveRequest)
+
+    TAM->>DB: sp_Timesheet_ApproveLeave(leaveId, "Approved")
+    TAM->>DB: sp_Timesheet_DeductLeaveBalance(userId, type, hours)
+    TAM->>MAIL: NotifyUser(userId, "Leave Approved")
+
+    TLM->>DB: sp_Timesheet_InsertLeaveEntries(payPeriodId, leaveDates)
+    Note right of TLM: Auto-populate timesheet<br/>with leave entries
+```
+
+### Payroll Export
+
+```mermaid
+sequenceDiagram
+    participant Admin as Payroll Admin
+    participant TRM as TimeSheetReportManager
+    participant DB as SQL Server
+
+    Admin->>TRM: GeneratePayrollExport(payPeriodId, department)
+    TRM->>DB: sp_Timesheet_GetApprovedTimesheets
+    DB-->>TRM: Approved timesheets for period
+
+    TRM->>TRM: CalculatePayrollHours(regular, overtime, leave)
+    TRM->>TRM: FormatForPayrollSystem(institutionFormat)
+    TRM->>DB: sp_Timesheet_SaveExportRecord
+    TRM-->>Admin: Payroll export file (CSV/Excel)
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_Timesheet_GetCurrentPeriod` | Retrieve current pay period |
+| `sp_Timesheet_InsertEntry` | Add time entry |
+| `sp_Timesheet_UpdateStatus` | Update timesheet status |
+| `sp_Timesheet_GetApprovalChain` | Retrieve approval chain for user |
+| `sp_Timesheet_InsertApproval` | Record approval decision |
+| `sp_Timesheet_GetLeaveBalance` | Retrieve leave balances |
+| `sp_Timesheet_InsertLeaveRequest` | Create leave request |
+| `sp_Timesheet_ApproveLeave` | Approve/reject leave request |
+| `sp_Timesheet_DeductLeaveBalance` | Deduct leave balance after approval |
+| `sp_Timesheet_InsertLeaveEntries` | Populate timesheet with leave entries |
+| `sp_Timesheet_GetApprovedTimesheets` | Retrieve approved timesheets for payroll |
+| `sp_Timesheet_SaveExportRecord` | Record payroll export metadata |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    TS[Timesheet]
+    SEC[Security]
+    MAIL[Mail]
+    DH[Duty Hours]
+
+    TS --> SEC
+    TS --> MAIL
+    DH -.->|time data| TS
+
+    style TS fill:#34495e,color:#fff,stroke:#2c3e50
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for time entry, approval authority, and payroll access |
+| Depends on | Mail | Approval notifications, submission confirmations, and leave request alerts |
+| Related to | Duty Hours | Both track time but for different purposes (payroll vs ACGME compliance); data may overlap |

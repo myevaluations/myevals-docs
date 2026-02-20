@@ -1,0 +1,343 @@
+---
+sidebar_position: 3
+title: Deployment Architecture
+description: Deployment pipelines and infrastructure for all four MyEvaluations systems including .NET manual publish, Node.js Docker Swarm, React CDN, and MAUI app store releases.
+---
+
+# Deployment Architecture
+
+Each of the four MyEvaluations systems has its own deployment pipeline, reflecting the platform's evolutionary architecture. The .NET backend uses manual deployment, while the modern systems use GitHub Actions CI/CD.
+
+## Deployment Overview
+
+```mermaid
+graph TB
+    subgraph "Source Control"
+        GH["GitHub<br/>(myevaluations org)"]
+    end
+
+    subgraph ".NET Backend"
+        VS["Visual Studio 2019"]
+        IIS["IIS Server<br/>(Windows)"]
+    end
+
+    subgraph "Node.js Backend"
+        GHA_Node["GitHub Actions"]
+        Docker["Docker Build"]
+        Swarm["Azure Docker Swarm<br/>(2 server + 4 worker replicas)"]
+    end
+
+    subgraph "React Frontend"
+        GHA_React["GitHub Actions"]
+        ESBuild["esbuild + Next.js"]
+        Blob["Azure Blob Storage"]
+        CDN["Azure CDN<br/>(frontend.myevaluations.com)"]
+    end
+
+    subgraph "MAUI Mobile"
+        GHA_MAUI["GitHub Actions"]
+        TestFlight["TestFlight (iOS)"]
+        PlayStore["Google Play Store"]
+        GHRelease["GitHub Releases<br/>(APK/AAB)"]
+    end
+
+    GH -->|"No CI/CD"| VS
+    VS -->|"VS Publish"| IIS
+
+    GH -->|"Push to main"| GHA_Node
+    GHA_Node --> Docker
+    Docker --> Swarm
+
+    GH -->|"Push to main"| GHA_React
+    GHA_React --> ESBuild
+    ESBuild --> Blob
+    Blob --> CDN
+
+    GH -->|"Push to main"| GHA_MAUI
+    GHA_MAUI --> TestFlight
+    GHA_MAUI --> GHRelease
+    GHRelease -->|"Manual upload"| PlayStore
+
+    style VS fill:#ffcdd2
+    style IIS fill:#ffcdd2
+    style GHA_Node fill:#c8e6c9
+    style GHA_React fill:#bbdefb
+    style GHA_MAUI fill:#e1bee7
+```
+
+## .NET Backend Deployment
+
+The .NET backend has **no CI/CD pipeline**. Deployment is a manual process using Visual Studio's publish feature.
+
+### Deployment Process
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant VS as Visual Studio 2019
+    participant Build as MSBuild
+    participant IIS as IIS Server<br/>(Production)
+
+    Dev->>VS: Open MyEvaluations2009.sln
+    Dev->>VS: Set Configuration = Release
+    Dev->>Build: Build Solution
+    Build->>Build: Compile 27 projects
+    Build-->>VS: Build Succeeded
+
+    Dev->>VS: Right-click Web project<br/>→ Publish
+    VS->>VS: Select publish profile<br/>(File System or Web Deploy)
+    VS->>IIS: Copy compiled files<br/>(DLLs, ASPX, configs)
+    IIS->>IIS: Application pool recycles
+    IIS-->>Dev: Site is live
+
+    Note over Dev,IIS: No automated tests run<br/>No rollback mechanism
+```
+
+### Prerequisites
+
+| Requirement | Details |
+|-------------|---------|
+| IDE | Visual Studio 2019 (Professional or Enterprise) |
+| Framework | .NET Framework 4.6.1 Targeting Pack |
+| Database | SQL Server connection (VPN required for production) |
+| Publish Profile | Pre-configured `.pubxml` file in the Web project |
+| Access | Windows credentials for IIS server |
+
+### Post-Deployment
+
+After publishing to IIS:
+
+1. The IIS application pool recycles automatically
+2. Sessions are invalidated (users must re-login)
+3. Verify the site loads at the production URL
+4. Check Windows Event Viewer for startup errors
+5. Monitor New Relic for error spikes
+
+### Key Files Not in Source Control
+
+These files must exist on the server but are never committed to git:
+
+- `key.txt` -- Encryption key
+- `Encryptkey.txt` -- Secondary encryption key
+- `Vectorkey.txt` -- Encryption initialization vector
+- `Web.config` connection strings (production values)
+
+## Node.js Backend Deployment
+
+The Node.js backend uses GitHub Actions for CI/CD with Docker Swarm for orchestration.
+
+### CI/CD Pipeline
+
+```mermaid
+flowchart LR
+    subgraph "GitHub"
+        Push["Push to main"]
+        PR["Pull Request"]
+        Manual["Manual Trigger"]
+    end
+
+    subgraph "GitHub Actions"
+        Lint["Lint + Type Check"]
+        Test["Unit Tests"]
+        Build["Docker Build"]
+        Push_Image["Push to Registry"]
+    end
+
+    subgraph "Azure"
+        Registry["Container Registry"]
+        Swarm["Docker Swarm"]
+        Server1["Server Replica 1"]
+        Server2["Server Replica 2"]
+        Worker1["Worker 1-2"]
+        Worker2["Worker 3-4"]
+    end
+
+    PR --> Lint
+    PR --> Test
+    Push --> Lint
+    Push --> Test
+    Lint --> Build
+    Test --> Build
+    Build --> Push_Image
+    Push_Image --> Registry
+    Manual -->|"Deploy to prod"| Registry
+    Registry --> Swarm
+    Swarm --> Server1
+    Swarm --> Server2
+    Swarm --> Worker1
+    Swarm --> Worker2
+
+    style Push fill:#c8e6c9
+    style Manual fill:#fff3e0
+```
+
+### Deployment Environments
+
+| Environment | Trigger | Branch | Details |
+|-------------|---------|--------|---------|
+| Development | Automatic | `main` | Auto-deploy on merge |
+| Production | Manual | `main` | Requires manual GitHub Actions workflow dispatch |
+
+### Docker Swarm Configuration
+
+```
+Docker Swarm Cluster (Azure VMs)
+├── Manager Node
+├── Server Service (2 replicas)
+│   ├── NestJS API server
+│   └── Health check: GET /api/health
+└── Worker Service (4 replicas)
+    ├── BullMQ job processors (29 workers)
+    └── Redis connection for queue management
+```
+
+### Infrastructure as Code
+
+The Node.js infrastructure is managed with **CDKTF** (Terraform CDK):
+
+| Resource | Provider | Details |
+|----------|----------|---------|
+| Azure VMs | `azurerm` | Docker Swarm nodes |
+| PostgreSQL | `azurerm` | Managed PostgreSQL instance |
+| Blob Storage | `azurerm` | Document and file storage |
+| Key Vault | `azurerm` | Secrets management |
+| Networking | `azurerm` | VNet, subnets, NSGs |
+
+## React Frontend Deployment
+
+The React frontend has a dual build process and deploys to Azure Blob Storage with CDN.
+
+### Build and Deploy Pipeline
+
+```mermaid
+flowchart TB
+    subgraph "Source"
+        Plasmic["Plasmic Studio<br/>(Visual components)"]
+        Code["Custom Code Components<br/>(AuthContext, Charts, etc.)"]
+    end
+
+    subgraph "Build"
+        NextBuild["Next.js Static Export"]
+        ESBuild["esbuild<br/>(HTML Partials)"]
+    end
+
+    subgraph "Deploy"
+        Blob["Azure Blob Storage"]
+        CDN["Azure CDN"]
+        Revalidate["POST /New/Revalidate.ashx<br/>(Clear .NET cache)"]
+    end
+
+    subgraph "Consumption"
+        Direct["Direct Access<br/>(standalone pages)"]
+        Embedded["Embedded in .NET Shell<br/>(via NewFrontend.cs)"]
+    end
+
+    Plasmic --> NextBuild
+    Code --> NextBuild
+    NextBuild --> ESBuild
+    ESBuild -->|"Upload static files"| Blob
+    Blob --> CDN
+    CDN --> Direct
+    CDN -->|"HTML partials fetched<br/>at runtime"| Embedded
+    ESBuild -->|"After deploy"| Revalidate
+
+    style Plasmic fill:#e1bee7
+    style ESBuild fill:#bbdefb
+```
+
+### Deployment Steps
+
+1. **Plasmic sync** -- Pull latest visual components from Plasmic Studio
+2. **Next.js build** -- Static export of all pages
+3. **esbuild** -- Generate HTML partials for .NET embedding
+4. **Upload** -- Push to Azure Blob Storage
+5. **CDN purge** -- Invalidate CDN cache
+6. **Revalidate** -- Call `/New/Revalidate.ashx` on .NET backend to clear its local cache of HTML partials
+
+### CDN Configuration
+
+| Setting | Value |
+|---------|-------|
+| Origin | Azure Blob Storage |
+| Domain | `frontend.myevaluations.com` |
+| Caching | Standard CDN rules with query string caching |
+| SSL | Azure-managed certificate |
+| Compression | Enabled for HTML, CSS, JS |
+
+## MAUI Mobile App Deployment
+
+The .NET MAUI app deploys through GitHub Actions to TestFlight (iOS) and GitHub Releases (Android).
+
+### Release Pipeline
+
+```mermaid
+flowchart LR
+    subgraph "Build"
+        GHA["GitHub Actions"]
+        iOS_Build["iOS Build<br/>(net9.0-ios)"]
+        Android_Build["Android Build<br/>(net9.0-android)"]
+    end
+
+    subgraph "Distribution"
+        TestFlight["Apple TestFlight"]
+        GHRelease["GitHub Releases<br/>(APK + AAB)"]
+        PlayStore["Google Play Store<br/>(Manual Upload)"]
+    end
+
+    subgraph "Users"
+        iOS_Users["iOS Users"]
+        Android_Users["Android Users"]
+    end
+
+    GHA --> iOS_Build
+    GHA --> Android_Build
+    iOS_Build --> TestFlight
+    Android_Build --> GHRelease
+    GHRelease -->|"Manual"| PlayStore
+    TestFlight --> iOS_Users
+    PlayStore --> Android_Users
+```
+
+### Release Details
+
+| Platform | Format | Distribution | Version |
+|----------|--------|-------------|---------|
+| iOS | IPA | TestFlight (automatic via CI) | v5.5.7 (build 265) |
+| Android | APK + AAB | GitHub Releases, then manual Play Store upload | v5.5.7 (build 265) |
+
+### Release Cadence
+
+- Multiple releases per week during active development
+- 2 primary developers (vitalii-smal, yaroslav-tsapiv)
+- Version bumped in `Directory.Build.props`
+
+## Environment Management
+
+### Environment Variables
+
+| System | Secret Storage | Details |
+|--------|---------------|---------|
+| .NET Backend | `Web.config` (on server, not in git) | Connection strings, API keys |
+| Node.js Backend | Azure Key Vault | Accessed via CDKTF-managed identity |
+| React Frontend | Build-time `.env` files | Public-only variables embedded in build |
+| MAUI App | Build-time secrets | Firebase config, API endpoints |
+
+### Monitoring and Observability
+
+| System | Monitoring | Error Tracking | APM |
+|--------|-----------|---------------|-----|
+| .NET Backend | Windows Event Viewer | New Relic | New Relic |
+| Node.js Backend | Docker logs, Prometheus | Sentry | New Relic |
+| React Frontend | Browser console | Sentry (client-side) | -- |
+| MAUI App | Firebase Crashlytics | Firebase Crashlytics | -- |
+
+## Rollback Procedures
+
+| System | Rollback Method |
+|--------|----------------|
+| .NET Backend | Re-publish previous version from Visual Studio (or restore from file backup) |
+| Node.js Backend | `docker service rollback` on Swarm, or redeploy previous Docker image tag |
+| React Frontend | Redeploy previous build to Blob Storage, purge CDN |
+| MAUI App | Submit hotfix build; cannot rollback app store releases |
+
+<!-- AUTO-GENERATED: Specific GitHub Actions workflow details will be enriched from the Node.js and React repo analysis -->

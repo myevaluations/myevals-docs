@@ -1,0 +1,172 @@
+---
+sidebar_position: 5
+title: Patient Log
+description: HIPAA-compliant patient encounter logging in the MyEvaluations .NET backend. 20+ classes for de-identified encounter recording, procedure logging, and case log requirements.
+---
+
+# Patient Log
+
+<!-- Content will be enriched by AI parsing scripts -->
+
+## Overview
+
+The Patient Log module provides HIPAA-compliant patient encounter logging for medical trainees. Residents and fellows record their clinical encounters in a de-identified format to track procedural experience, diagnostic breadth, and case volume requirements mandated by residency review committees and specialty boards.
+
+With 20+ classes, this module handles encounter entry (including diagnosis codes, procedures performed, patient demographics without PHI), case log requirement tracking per specialty, and reporting for program accreditation. All data is de-identified at the point of entry -- no patient names, MRNs, or other protected health information is stored.
+
+### Key Responsibilities
+
+- **Encounter Recording**: Log patient encounters with de-identified demographics, diagnoses (ICD-10), procedures, and clinical settings
+- **Case Log Requirements**: Track minimum case volume requirements per specialty board and program
+- **Procedure Tracking**: Record procedures performed or observed, linking to competency milestones
+- **Diagnosis Code Management**: Maintain ICD-10 code sets and map diagnoses to specialty-specific categories
+- **Reporting**: Generate case log reports for residency review committees, specialty boards, and ACGME
+- **HIPAA Compliance**: Enforce de-identification at entry; no PHI stored in the system
+
+## Key Classes
+
+### Manager Classes
+
+| Class | Namespace | Purpose |
+|-------|-----------|---------|
+| `PatientLogManager` | `MyEvaluations.Business.PatientLog` | Core encounter CRUD, search, and summary operations. |
+| `PatientLogDiagnosisManager` | `MyEvaluations.Business.PatientLog` | ICD-10 code management, diagnosis search, and category mapping. |
+| `PatientLogProcedureManager` | `MyEvaluations.Business.PatientLog` | Procedure recording linked to encounters, CPT code management. |
+| `PatientLogRequirementManager` | `MyEvaluations.Business.PatientLog` | Case log requirement definitions per specialty and tracking against minimums. |
+| `PatientLogReportManager` | `MyEvaluations.Business.PatientLog` | Case log reports, procedure summaries, and board-specific exports. |
+
+### Info (DTO) Classes
+
+| Class | Purpose |
+|-------|---------|
+| `PatientLogInfo` | Encounter record: date, setting (inpatient/outpatient/ED), de-identified demographics (age range, gender), role (primary/consultant), supervising attending. |
+| `DiagnosisInfo` | Diagnosis entry: ICD-10 code, description, category, primary/secondary flag. |
+| `PatientLogProcedureInfo` | Procedure performed: CPT code, description, role (performed/assisted/observed), supervision level. |
+| `CaseRequirementInfo` | Requirement definition: specialty, procedure/diagnosis category, minimum count, time period. |
+| `CaseLogSummaryInfo` | Summary statistics: category, count logged, minimum required, percentage complete. |
+| `PatientLogSearchInfo` | Search criteria: date range, diagnosis, procedure, setting, attending. |
+
+## Business Workflows
+
+### Patient Encounter Logging
+
+```mermaid
+sequenceDiagram
+    participant Resident
+    participant PLM as PatientLogManager
+    participant DM as DiagnosisManager
+    participant PM as ProcedureManager
+    participant DB as SQL Server
+
+    Resident->>PLM: CreateEncounter(encounterInfo)
+    PLM->>PLM: ValidateDeIdentification(encounterInfo)
+    Note right of PLM: Ensure no PHI fields<br/>contain identifiable data
+    PLM->>DB: sp_PatientLog_InsertEncounter
+    DB-->>PLM: encounterId
+
+    Resident->>DM: SearchDiagnosis("chest pain")
+    DM->>DB: sp_PatientLog_SearchICD10
+    DB-->>DM: List<DiagnosisInfo>
+    Resident->>DM: AddDiagnosis(encounterId, icd10Code, isPrimary)
+    DM->>DB: sp_PatientLog_InsertDiagnosis
+
+    Resident->>PM: AddProcedure(encounterId, procedureInfo)
+    PM->>DB: sp_PatientLog_InsertProcedure
+
+    PLM->>PLM: UpdateCaseLogCounts(residentId)
+    PLM->>DB: sp_PatientLog_RefreshCaseCounts
+```
+
+### Case Log Requirement Tracking
+
+```mermaid
+sequenceDiagram
+    participant PD as Program Director
+    participant PRM as RequirementManager
+    participant PLM as PatientLogManager
+    participant MAIL as MailManager
+    participant DB as SQL Server
+
+    PD->>PRM: DefineRequirements(programId, requirements[])
+    PRM->>DB: sp_PatientLog_InsertRequirements
+
+    Note over PRM,DB: Periodic compliance check (scheduler)
+    PRM->>DB: sp_PatientLog_GetResidentCaseCounts
+    DB-->>PRM: Counts by category per resident
+    PRM->>DB: sp_PatientLog_GetRequirements
+    DB-->>PRM: Minimum requirements by category
+
+    loop For each resident
+        PRM->>PRM: Compare counts vs requirements
+        alt Below minimum at milestone date
+            PRM->>MAIL: SendCaseLogDeficiencyNotice(resident, deficits[])
+            PRM->>MAIL: SendCaseLogDeficiencyNotice(programDirector, deficits[])
+        end
+    end
+
+    PRM->>DB: sp_PatientLog_UpdateComplianceStatus
+```
+
+### Case Log Reporting
+
+```mermaid
+sequenceDiagram
+    participant Admin as Program Admin
+    participant PRM as PatientLogReportManager
+    participant DB as SQL Server
+
+    Admin->>PRM: GenerateCaseLogReport(residentId, dateRange)
+    PRM->>DB: sp_PatientLog_GetEncounterSummary
+    DB-->>PRM: Encounters by category
+    PRM->>DB: sp_PatientLog_GetProcedureSummary
+    DB-->>PRM: Procedures by type and role
+    PRM->>DB: sp_PatientLog_GetDiagnosisSummary
+    DB-->>PRM: Diagnoses by ICD-10 category
+    PRM->>PRM: Format report (tabular + charts)
+    PRM-->>Admin: Case Log Report (PDF/Excel)
+```
+
+## Stored Procedure References
+
+| Stored Procedure | Purpose |
+|-----------------|---------|
+| `sp_PatientLog_InsertEncounter` | Create new patient encounter record |
+| `sp_PatientLog_UpdateEncounter` | Update existing encounter |
+| `sp_PatientLog_SearchICD10` | Search ICD-10 codes by keyword |
+| `sp_PatientLog_InsertDiagnosis` | Add diagnosis to encounter |
+| `sp_PatientLog_InsertProcedure` | Add procedure to encounter |
+| `sp_PatientLog_RefreshCaseCounts` | Recalculate case counts after new entry |
+| `sp_PatientLog_InsertRequirements` | Define case log requirements |
+| `sp_PatientLog_GetResidentCaseCounts` | Retrieve case counts by category |
+| `sp_PatientLog_GetRequirements` | Retrieve case log requirements |
+| `sp_PatientLog_UpdateComplianceStatus` | Update case log compliance status |
+| `sp_PatientLog_GetEncounterSummary` | Summary data for reporting |
+| `sp_PatientLog_GetProcedureSummary` | Procedure summary for reporting |
+| `sp_PatientLog_GetDiagnosisSummary` | Diagnosis summary for reporting |
+
+## Cross-Module Dependencies
+
+```mermaid
+graph TD
+    PL[Patient Log]
+    SEC[Security]
+    PROC[Procedures]
+    PORT[Portfolio]
+    EVAL[Evaluations]
+
+    PL --> SEC
+    PROC -.->|shared procedure data| PL
+    PORT -.->|case log data| PL
+    EVAL -.->|clinical context| PL
+
+    style PL fill:#8e44ad,color:#fff,stroke:#6c3483
+```
+
+### Dependency Details
+
+| Direction | Module | Relationship |
+|-----------|--------|-------------|
+| Depends on | Security | Permission checks for encounter entry, report access, requirement management |
+| Related to | Procedures | Shared procedure/competency taxonomy; procedures logged here contribute to procedure module totals |
+| Depended on by | Portfolio | Case log summaries are included in resident portfolios |
+| Related to | Evaluations | Clinical encounter context informs evaluation assignments |

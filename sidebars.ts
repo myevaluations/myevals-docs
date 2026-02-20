@@ -1,0 +1,171 @@
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+
+const sidebars: SidebarsConfig = {
+  mainSidebar: [
+    'intro',
+    {
+      type: 'category',
+      label: 'Architecture',
+      collapsed: false,
+      items: [
+        'architecture/overview',
+        'architecture/data-flow',
+        'architecture/deployment',
+        'architecture/authentication',
+        'architecture/database-schema',
+      ],
+    },
+    {
+      type: 'category',
+      label: '.NET Backend',
+      collapsed: false,
+      link: { type: 'doc', id: 'dotnet-backend/overview' },
+      items: [
+        'dotnet-backend/getting-started',
+        'dotnet-backend/project-map',
+        {
+          type: 'category',
+          label: 'Patterns',
+          items: [
+            'dotnet-backend/patterns/manager-info',
+            'dotnet-backend/patterns/data-access',
+            'dotnet-backend/patterns/caching',
+            'dotnet-backend/patterns/authentication',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Business Modules',
+          collapsed: true,
+          items: [
+            'dotnet-backend/business/security',
+            'dotnet-backend/business/evaluations',
+            'dotnet-backend/business/duty-hours',
+            'dotnet-backend/business/cme-tracking',
+            'dotnet-backend/business/patient-log',
+            'dotnet-backend/business/procedures',
+            'dotnet-backend/business/portfolio',
+            'dotnet-backend/business/learning-assignment',
+            'dotnet-backend/business/quiz',
+            'dotnet-backend/business/mail',
+            'dotnet-backend/business/timesheet',
+            'dotnet-backend/business/hellosign',
+            'dotnet-backend/business/eras',
+            'dotnet-backend/business/icc',
+            'dotnet-backend/business/essential-activities',
+            'dotnet-backend/business/nurse-notify',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Schedulers',
+          collapsed: true,
+          items: [
+            'dotnet-backend/schedulers/index',
+            'dotnet-backend/schedulers/evaluation-schedulers',
+            'dotnet-backend/schedulers/clinical-schedulers',
+            'dotnet-backend/schedulers/duty-hours-schedulers',
+            'dotnet-backend/schedulers/learning-schedulers',
+            'dotnet-backend/schedulers/license-schedulers',
+            'dotnet-backend/schedulers/communication-schedulers',
+            'dotnet-backend/schedulers/data-integration-schedulers',
+            'dotnet-backend/schedulers/admin-schedulers',
+            'dotnet-backend/schedulers/conference-schedulers',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Data Access',
+          items: [
+            'dotnet-backend/data-access/overview',
+            'dotnet-backend/data-access/stored-procedures',
+            'dotnet-backend/data-access/connection-management',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Web Application',
+          items: [
+            'dotnet-backend/web/structure',
+            'dotnet-backend/web/api-handler',
+            'dotnet-backend/web/new-frontend',
+            'dotnet-backend/web/user-controls',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Integrations',
+          items: [
+            'dotnet-backend/integrations/eras',
+            'dotnet-backend/integrations/amion-qgenda',
+            'dotnet-backend/integrations/mailgun',
+            'dotnet-backend/integrations/e-signatures',
+            'dotnet-backend/integrations/google-apis',
+            'dotnet-backend/integrations/salesforce',
+            'dotnet-backend/integrations/banner',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Migration (.NET → Node.js)',
+          items: [
+            'dotnet-backend/migration/status',
+            'dotnet-backend/migration/strategy',
+            'dotnet-backend/migration/shared-database',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Node.js Backend',
+      collapsed: true,
+      link: { type: 'doc', id: 'nodejs-backend/overview' },
+      items: [
+        'nodejs-backend/getting-started',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'React Frontend',
+      collapsed: true,
+      link: { type: 'doc', id: 'react-frontend/overview' },
+      items: [
+        'react-frontend/getting-started',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'MAUI Mobile App',
+      collapsed: true,
+      link: { type: 'doc', id: 'maui-app/overview' },
+      items: [
+        'maui-app/getting-started',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Cross-Cutting',
+      collapsed: true,
+      items: [
+        'cross-cutting/migration-status',
+        'cross-cutting/feature-matrix',
+        'cross-cutting/coding-standards',
+        'cross-cutting/onboarding',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      collapsed: true,
+      items: [
+        'guides/debugging',
+        'guides/adding-new-feature',
+        'guides/creating-scheduler',
+        'guides/common-bugs',
+      ],
+    },
+  ],
+};
+
+export default sidebars;

@@ -1,0 +1,246 @@
+---
+sidebar_position: 3
+title: Coding Standards
+description: Coding standards and conventions for each technology stack in MyEvaluations -- C# (.NET), TypeScript (Node.js), React/TSX (frontend), and C# (.NET MAUI).
+---
+
+# Coding Standards
+
+This page documents the coding standards for each technology stack in the MyEvaluations platform. Consistent coding standards reduce cognitive load when switching between projects and make code reviews more efficient.
+
+## C# -- .NET Backend
+
+The .NET backend follows conventions established over 15+ years. Standards are partially enforced via `.editorconfig`.
+
+### Naming Conventions
+
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Classes | PascalCase | `EvaluationsManager` |
+| Interfaces | IPascalCase | `IEvaluationService` |
+| Methods | PascalCase | `GetEvaluationById` |
+| Properties | PascalCase | `EvaluationId` |
+| Local variables | camelCase | `evaluationCount` |
+| Private fields | _camelCase | `_connectionString` |
+| Constants | PascalCase | `MaxRetryCount` |
+| Parameters | camelCase | `evaluationId` |
+| Namespaces | PascalCase | `MyEvaluations.Evaluations` |
+
+### File Organization
+
+```csharp
+// 1. Usings (System first, then project-specific)
+using System;
+using System.Collections.Generic;
+using MyEvaluations.Common;
+
+// 2. Namespace
+namespace MyEvaluations.Evaluations
+{
+    // 3. Class declaration
+    public class EvaluationsManager
+    {
+        // 4. Private fields
+        private readonly string _connectionString;
+
+        // 5. Constructor
+        public EvaluationsManager() { }
+
+        // 6. Public methods
+        public EvaluationsInfo GetEvaluation(int evaluationId) { }
+
+        // 7. Private methods
+        private DataSet ExecuteQuery(CustomCommand cmd) { }
+    }
+}
+```
+
+### Key Patterns
+
+- **Manager/Info pattern** -- Business logic in `*Manager.cs`, DTOs in `*Info.cs`
+- **Stored procedures for all data access** -- No inline SQL
+- **CustomCommand for parameter building** -- Prevents SQL injection
+- **4-space indentation** (C#/ASPX), 2-space (XML/JSON)
+- **UTF-8 with BOM** encoding
+- **LF** line endings
+
+### What to Avoid
+
+- Do not add new features to the .NET backend (new features go to Node.js)
+- Do not create new stored procedures unless fixing a .NET-only bug
+- Do not refactor large sections of legacy code -- the investment is better spent on migration
+
+## TypeScript -- Node.js Backend
+
+The Node.js backend follows NestJS conventions with MikroORM.
+
+### Naming Conventions
+
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Classes | PascalCase | `EvaluationService` |
+| Interfaces | PascalCase (no `I` prefix) | `EvaluationFilter` |
+| Functions | camelCase | `getEvaluationById` |
+| Variables | camelCase | `evaluationCount` |
+| Constants | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT` |
+| Enums | PascalCase (members too) | `EvaluationStatus.Completed` |
+| Files | kebab-case | `evaluation.service.ts` |
+| Directories | kebab-case | `duty-hours/` |
+
+### NestJS File Naming
+
+```
+evaluation.module.ts       # NestJS module
+evaluation.controller.ts   # REST controller
+evaluation.service.ts      # Business logic service
+evaluation.entity.ts       # MikroORM entity
+evaluation.dto.ts          # Data transfer objects
+evaluation.guard.ts        # Auth/permission guard
+evaluation.spec.ts         # Unit test
+```
+
+### Code Style
+
+```typescript
+// Controller
+@Controller('evaluations')
+export class EvaluationController {
+  constructor(private readonly evaluationService: EvaluationService) {}
+
+  @Get(':id')
+  @UseGuards(JwtAuthGuard)
+  async getEvaluation(@Param('id') id: number): Promise<EvaluationDto> {
+    return this.evaluationService.findById(id);
+  }
+}
+
+// Service
+@Injectable()
+export class EvaluationService {
+  constructor(
+    @InjectRepository(Evaluation)
+    private readonly evaluationRepo: EntityRepository<Evaluation>,
+  ) {}
+
+  async findById(id: number): Promise<EvaluationDto> {
+    const evaluation = await this.evaluationRepo.findOneOrFail(id);
+    return EvaluationDto.fromEntity(evaluation);
+  }
+}
+```
+
+### Key Rules
+
+- **Strict TypeScript** -- `strict: true` in `tsconfig.json`
+- **No `any` types** unless absolutely necessary (with a comment explaining why)
+- **DTOs for all API responses** -- Never expose entities directly
+- **Dependency injection** via NestJS container
+- **Validation pipes** (`class-validator`) on all controller inputs
+- **2-space indentation**
+- **Single quotes** for strings
+
+## React / TSX -- Frontend
+
+The React frontend follows Next.js conventions with Plasmic-specific patterns.
+
+### Naming Conventions
+
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Components | PascalCase | `EvaluationForm` |
+| Hooks | camelCase with `use` prefix | `useEvaluation` |
+| Files (components) | PascalCase | `EvaluationForm.tsx` |
+| Files (utils) | camelCase | `apiClient.ts` |
+| CSS Modules | camelCase | `styles.formContainer` |
+| Props interfaces | PascalCase + `Props` suffix | `EvaluationFormProps` |
+
+### Component Structure
+
+```tsx
+// 1. Imports
+import React, { useState, useEffect } from 'react';
+import { useEvaluation } from '../hooks/useEvaluation';
+import styles from './EvaluationForm.module.css';
+
+// 2. Props interface
+interface EvaluationFormProps {
+  evaluationId: number;
+  onSubmit: (data: EvaluationData) => void;
+}
+
+// 3. Component (named export for non-page components)
+export function EvaluationForm({ evaluationId, onSubmit }: EvaluationFormProps) {
+  const { evaluation, isLoading } = useEvaluation(evaluationId);
+
+  if (isLoading) return <Spinner />;
+
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      {/* Form fields */}
+    </form>
+  );
+}
+```
+
+### Key Rules
+
+- **Functional components only** -- No class components
+- **Custom hooks for data fetching** -- Use SWR or custom hooks, not `useEffect` for data
+- **Plasmic components are read-only** -- Do not manually edit Plasmic-generated files
+- **Custom logic in wrapper components** -- Wrap Plasmic components with logic as needed
+- **Prop drilling limited to 2 levels** -- Use Context for deeper passing
+
+## C# -- MAUI App
+
+The MAUI app follows modern .NET MAUI and MVVM conventions.
+
+### Naming Conventions
+
+Same as .NET backend conventions (PascalCase for types/methods, camelCase for locals, _camelCase for private fields).
+
+### MVVM Structure
+
+```csharp
+// ViewModel
+public partial class EvaluationViewModel : ObservableObject
+{
+    [ObservableProperty]
+    private bool _isLoading;
+
+    [ObservableProperty]
+    private EvaluationModel _evaluation;
+
+    [RelayCommand]
+    private async Task LoadEvaluationAsync(int id)
+    {
+        IsLoading = true;
+        Evaluation = await _evaluationService.GetByIdAsync(id);
+        IsLoading = false;
+    }
+}
+```
+
+### Key Rules
+
+- **MVVM pattern** -- Views (XAML), ViewModels (C#), Models (C#), Services (C#)
+- **CommunityToolkit.Mvvm** for ObservableObject, RelayCommand
+- **Refit interfaces for API calls** -- Type-safe HTTP client
+- **Realm for offline storage** -- All offline-capable data goes through Realm
+- **Platform-specific code in `Platforms/`** -- Conditional compilation for iOS/Android differences
+- **Dependency injection** via `MauiProgram.cs`
+
+## Cross-Stack Standards
+
+These standards apply across all projects:
+
+| Standard | Rule |
+|----------|------|
+| Line endings | LF everywhere |
+| Encoding | UTF-8 |
+| Branch naming | `feature/description`, `fix/description`, `chore/description` |
+| Commit messages | Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`) |
+| PR titles | Descriptive, under 72 characters |
+| PR reviews | At least 1 approval required |
+| Secrets | Never committed -- use environment variables or Azure Key Vault |
+
+<!-- AUTO-GENERATED: Linting rules and editorconfig details will be enriched from repo-sync scripts -->

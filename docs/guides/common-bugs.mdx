@@ -1,0 +1,283 @@
+---
+sidebar_position: 4
+title: Common Bugs & Gotchas
+description: Common bugs, known gotchas, and their fixes across all MyEvaluations systems -- .NET backend, Node.js backend, React frontend, and MAUI mobile app.
+---
+
+# Common Bugs & Gotchas
+
+This page documents recurring issues, known gotchas, and their solutions across the MyEvaluations platform. If you encounter a problem, check here before diving into deep debugging.
+
+## .NET Backend
+
+### Session Timeout Mid-Operation
+
+**Symptom:** Users report losing work when submitting a form after being idle.
+
+**Cause:** IIS session timeout (default 20 minutes). If a user takes a long time to fill out a form, the session expires before submission.
+
+**Fix:** The session timeout is configured in `Web.config`. Ensure the timeout is sufficient for the longest expected user workflow:
+
+```xml
+<sessionState timeout="60" />
+```
+
+### Stored Procedure Parameter Mismatch
+
+**Symptom:** `SqlException: Procedure or function expects parameter '@ParamName' which was not supplied.`
+
+**Cause:** A stored procedure was updated to add a new parameter, but the calling `CustomCommand` code was not updated (or vice versa).
+
+**Fix:** Compare the `CustomCommand` parameters in the Manager class with the stored procedure definition:
+
+```sql
+EXEC sp_helptext 'usp_ProcedureName'
+```
+
+Ensure every required parameter is added via `cmd.AddParameter()`.
+
+### ViewState Corruption
+
+**Symptom:** `ViewState is invalid for this page` error on postback.
+
+**Cause:** The WebForms ViewState has grown too large or the machine key has changed.
+
+**Fix:**
+- Check if the page has excessive data in ViewState (use browser DevTools to inspect the `__VIEWSTATE` hidden field size)
+- Ensure `enableViewState="false"` is set on controls that do not need it
+- Verify the machine key in `Web.config` matches across all servers in a farm
+
+### Encryption Key File Missing
+
+**Symptom:** `FileNotFoundException` or decryption errors on startup.
+
+**Cause:** The encryption key files (`key.txt`, `Encryptkey.txt`, `Vectorkey.txt`) are not present on the machine. These are not in source control.
+
+**Fix:** Obtain the key files from the team lead and place them in the expected directory. See the [.NET Getting Started](/docs/dotnet-backend/getting-started) guide for details.
+
+### Windows Service Stops Silently
+
+**Symptom:** A scheduler stops running but no error appears in the event log.
+
+**Cause:** An unhandled exception in the timer callback kills the service thread without propagating to the service control manager.
+
+**Fix:** Wrap the main worker logic in a try/catch and log all exceptions:
+
+```csharp
+private void DoWork(object state)
+{
+    try
+    {
+        // Business logic
+    }
+    catch (Exception ex)
+    {
+        Logger.LogError("Scheduler error", ex);
+        // Do NOT rethrow -- let the timer fire again
+    }
+}
+```
+
+## Node.js Backend
+
+### MikroORM Entity Not Found After Save
+
+**Symptom:** `EntityNotFoundError` when querying an entity immediately after persisting it.
+
+**Cause:** MikroORM uses an identity map (Unit of Work pattern). If you create an entity in one request context and query it in another, the identity map may not be synced.
+
+**Fix:** Ensure you call `em.flush()` after persisting, and use the same entity manager context for related operations:
+
+```typescript
+await this.em.persistAndFlush(entity);
+// Now it's safe to query
+const found = await this.em.findOne(MyEntity, entity.id);
+```
+
+### MSSQL DateTime Timezone Issues
+
+**Symptom:** Dates are off by several hours when reading from or writing to MSSQL.
+
+**Cause:** MSSQL `datetime` columns do not store timezone information. MikroORM and the Node.js runtime may interpret dates differently than the .NET backend.
+
+**Fix:** Always store and read dates in UTC. Convert to the user's timezone only at the presentation layer:
+
+```typescript
+// When writing
+entity.createdAt = new Date(); // UTC by default in Node.js
+
+// When reading for display
+const localTime = utcDate.toLocaleString('en-US', { timeZone: userTimezone });
+```
+
+### BullMQ Job Stuck in "Active" State
+
+**Symptom:** A job appears as "active" in the BullMQ dashboard but the worker is not processing it.
+
+**Cause:** The worker process crashed while processing the job, leaving it in an inconsistent state.
+
+**Fix:**
+- Check if the worker process is running
+- If the job is truly stuck, use the BullMQ dashboard or CLI to move it back to "waiting":
+  ```bash
+  # Via Bull Board or programmatically
+  await queue.getJob(jobId).moveToFailed(new Error('Manual retry'), true);
+  ```
+- Increase the `lockDuration` if jobs are legitimately long-running
+
+### Redis Connection Refused in Docker
+
+**Symptom:** `ECONNREFUSED` when the Node.js container tries to connect to Redis.
+
+**Cause:** Docker networking issue -- the container is using `localhost` instead of the Docker service name or network IP.
+
+**Fix:** Ensure the `REDIS_HOST` environment variable uses the Docker service name (e.g., `redis`) or the correct network IP, not `localhost`.
+
+## React Frontend
+
+### Plasmic Component Hydration Mismatch
+
+**Symptom:** Console warning: `Hydration failed because the server rendered HTML didn't match the client.`
+
+**Cause:** Plasmic-generated components render differently on the server (SSR) vs the client, often due to dynamic content or browser-only APIs.
+
+**Fix:**
+- Wrap browser-only logic in `useEffect` or check `typeof window !== 'undefined'`
+- Use `dynamic(() => import(...), { ssr: false })` for components that cannot be server-rendered
+
+### HTML Partial Not Updating in .NET Shell
+
+**Symptom:** After deploying a new React build, the .NET shell still shows the old version.
+
+**Cause:** The Azure CDN is serving a cached version of the HTML partial.
+
+**Fix:**
+- Purge the Azure CDN cache for the affected file
+- The CI/CD pipeline should do this automatically; if it did not, trigger a manual purge
+- Verify the CDN is returning the correct version by checking the `ETag` or `Last-Modified` header
+
+### API Call Goes to Wrong Backend
+
+**Symptom:** An API call returns unexpected data or a 404.
+
+**Cause:** The API utility function is routing the request to the .NET backend (`ApiHandler.ashx`) instead of the Node.js backend (or vice versa).
+
+**Fix:** Check the API client configuration and ensure the correct base URL is being used for the endpoint:
+
+```typescript
+// Correct: Node.js backend
+const response = await nodeApiClient.get('/api/evaluations/1');
+
+// Incorrect: This would go to .NET
+const response = await dotnetApiClient.get('/New/Api.ashx?action=GetEvaluation&id=1');
+```
+
+### Stale SWR Cache
+
+**Symptom:** Data displayed is outdated even after a mutation.
+
+**Cause:** SWR's cache is serving stale data.
+
+**Fix:** Mutate the SWR cache after a write operation:
+
+```typescript
+import { mutate } from 'swr';
+
+// After updating an evaluation
+await updateEvaluation(id, data);
+mutate(`/api/evaluations/${id}`); // Revalidate the cache
+```
+
+## MAUI Mobile App
+
+### Realm Migration Required
+
+**Symptom:** App crashes on launch with `RealmMigrationNeededException`.
+
+**Cause:** The Realm schema has changed (new property, renamed property, etc.) but the schema version was not incremented.
+
+**Fix:** Increment the Realm schema version and add a migration handler:
+
+```csharp
+var config = new RealmConfiguration
+{
+    SchemaVersion = 5, // Increment this
+    MigrationCallback = (migration, oldSchemaVersion) =>
+    {
+        // Handle specific version migrations
+    }
+};
+```
+
+### Push Notifications Not Received
+
+**Symptom:** Push notifications do not arrive on the device.
+
+**Cause:** Multiple potential causes:
+- Firebase configuration files missing or outdated
+- App notification permissions not granted
+- FCM token not registered with the backend
+
+**Fix:**
+1. Verify `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) are up to date
+2. Check device notification settings
+3. Verify the FCM token is being sent to the backend on app startup
+4. Test with Firebase Console's "Send test message" feature
+
+### Background Sync Fails Silently
+
+**Symptom:** Data entered offline is not synced when the device comes back online.
+
+**Cause:** The background sync service may have been killed by the OS (especially on iOS which aggressively limits background processing).
+
+**Fix:**
+- On iOS, use `BGAppRefreshTask` and `BGProcessingTask` with appropriate scheduling
+- On Android, use `WorkManager` with constraints (requires network)
+- Add user-facing UI to show pending sync items and allow manual sync
+
+### Geofencing Not Triggering
+
+**Symptom:** MyQuickPass geofence events are not firing.
+
+**Cause:** Location permissions may have been downgraded (e.g., "While Using" instead of "Always"), or the geofence radius is too small.
+
+**Fix:**
+- Check location permission status at runtime and prompt for "Always" if needed
+- Ensure geofence radius is at least 100 meters (smaller radii are unreliable)
+- On Android, check that battery optimization is disabled for the app
+
+## Cross-System Issues
+
+### Authentication Token Mismatch
+
+**Symptom:** User is authenticated in one system but gets a 401 in another.
+
+**Cause:** The .NET session and Node.js JWT are separate. If one expires, the other may still be valid, leading to inconsistent auth state.
+
+**Fix:** Ensure both systems share the same session/token lifecycle. The React frontend should handle 401 responses by redirecting to the login page.
+
+### Data Inconsistency Between Backends
+
+**Symptom:** The same record shows different data when accessed through .NET vs Node.js.
+
+**Cause:** One backend may be caching data, or there is a race condition where both backends write to the same MSSQL row.
+
+**Fix:**
+- Check for caching in both systems (Redis in Node.js, in-memory in .NET)
+- Use SQL Server Profiler to trace the exact queries from both backends
+- If both backends write to the same row, ensure they use the same transaction isolation level
+
+### CDN Returns Old React Build
+
+**Symptom:** New React pages show old content even after deployment.
+
+**Cause:** Azure CDN cache has not been purged.
+
+**Fix:**
+- The GitHub Actions deployment workflow should purge the CDN cache
+- If it did not, manually purge via Azure Portal or CLI:
+  ```bash
+  az cdn endpoint purge --resource-group <rg> --profile-name <profile> --name <endpoint> --content-paths '/*'
+  ```
+
+<!-- AUTO-GENERATED: Known issues and recent bugs will be enriched from GitHub issue tracking -->
