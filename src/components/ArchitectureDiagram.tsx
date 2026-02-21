@@ -16,6 +16,7 @@ function MermaidRenderer({ chart }: { chart: string }): React.JSX.Element {
     const Mermaid = require('@docusaurus/theme-mermaid/lib/theme/Mermaid').default;
     return <Mermaid value={chart} />;
   } catch {
+    console.warn('ArchitectureDiagram: @docusaurus/theme-mermaid not available, falling back to code block');
     // Mermaid theme not available - render as code block fallback
     return (
       <div>

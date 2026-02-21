@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
-const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
+import { GITHUB_BASE } from '../utils/github';
 
 interface WebCaller {
   fileName: string;

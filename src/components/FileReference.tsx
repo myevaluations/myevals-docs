@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
-const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
+import { GITHUB_BASE } from '../utils/github';
 
 interface FileEntry {
   filePath: string;
@@ -35,6 +35,9 @@ function formatMethod(m: string | { name: string; description: string }): string
   if (typeof m === 'string') return m;
   return m.description ? `${m.name} - ${m.description}` : m.name;
 }
+
+const COMPLEXITY_ORDER = ['trivial', 'simple', 'moderate', 'complex', 'very-complex'];
+const MIGRATION_ORDER = ['none', 'low', 'medium', 'high'];
 
 const COMPLEXITY_COLORS: Record<string, string> = {
   'trivial': '#22c55e',
@@ -197,7 +200,7 @@ function FileDetailRow({ file, isExpanded, onToggle }: {
                     <strong>Key Methods:</strong>
                     <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '0.85rem' }}>
                       {file.keyMethods.slice(0, 8).map((m, i) => (
-                        <li key={i}>{formatMethod(m)}</li>
+                        <li key={`${file.filePath}-m-${i}`}>{formatMethod(m)}</li>
                       ))}
                       {file.keyMethods.length > 8 && (
                         <li style={{ fontStyle: 'italic' }}>+{file.keyMethods.length - 8} more</li>
@@ -265,9 +268,6 @@ export default function FileReference({
     });
   };
 
-  const complexityOrder = ['trivial', 'simple', 'moderate', 'complex', 'very-complex'];
-  const migrationOrder = ['none', 'low', 'medium', 'high'];
-
   const filtered = useMemo(() => {
     let result = data.filter((f) => {
       const matchesSearch =
@@ -288,10 +288,10 @@ export default function FileReference({
           cmp = a.fileName.localeCompare(b.fileName);
           break;
         case 'complexity':
-          cmp = complexityOrder.indexOf(a.complexity) - complexityOrder.indexOf(b.complexity);
+          cmp = COMPLEXITY_ORDER.indexOf(a.complexity) - COMPLEXITY_ORDER.indexOf(b.complexity);
           break;
         case 'migrationRelevance':
-          cmp = migrationOrder.indexOf(a.migrationRelevance) - migrationOrder.indexOf(b.migrationRelevance);
+          cmp = MIGRATION_ORDER.indexOf(a.migrationRelevance) - MIGRATION_ORDER.indexOf(b.migrationRelevance);
           break;
         case 'lineCount':
           cmp = a.lineCount - b.lineCount;
@@ -337,22 +337,21 @@ export default function FileReference({
   const sortIndicator = (field: typeof sortField) =>
     sortField === field ? (sortDir === 'asc' ? ' ↑' : ' ↓') : '';
 
-  // Summary stats
-  const totalLines = data.reduce((s, f) => s + f.lineCount, 0);
-
-  // Complexity distribution counts
-  const complexityDist = complexityOrder.map((c) => ({
-    label: c,
-    count: data.filter((f) => f.complexity === c).length,
-    color: COMPLEXITY_COLORS[c],
-  })).filter((d) => d.count > 0);
-
-  // Migration distribution counts
-  const migrationDist = ['high', 'medium', 'low', 'none'].map((m) => ({
-    label: m,
-    count: data.filter((f) => f.migrationRelevance === m).length,
-    color: MIGRATION_COLORS[m],
-  })).filter((d) => d.count > 0);
+  // Summary stats (memoised — data only changes on prop change)
+  const { totalLines, complexityDist, migrationDist } = useMemo(() => {
+    const totalLines = data.reduce((s, f) => s + f.lineCount, 0);
+    const complexityDist = COMPLEXITY_ORDER.map((c) => ({
+      label: c,
+      count: data.filter((f) => f.complexity === c).length,
+      color: COMPLEXITY_COLORS[c],
+    })).filter((d) => d.count > 0);
+    const migrationDist = ['high', 'medium', 'low', 'none'].map((m) => ({
+      label: m,
+      count: data.filter((f) => f.migrationRelevance === m).length,
+      color: MIGRATION_COLORS[m],
+    })).filter((d) => d.count > 0);
+    return { totalLines, complexityDist, migrationDist };
+  }, [data]);
 
   const enrichedDate = generatedAt ? new Date(generatedAt) : null;
   const enrichedLabel = enrichedDate

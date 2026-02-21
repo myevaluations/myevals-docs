@@ -9,7 +9,7 @@
  * needed in browser bundle — avoids bundle size issues).
  */
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 interface Message {
@@ -95,6 +95,11 @@ export default function AskTheDocs(): React.JSX.Element | null {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  const systemPrompt = useMemo(
+    () => buildSystemPrompt(docsIndex || { totalFiles: 2422, directories: {}, moduleDependencies: {} }),
+    [docsIndex],
+  );
+
   // Load compact docs index on first open
   useEffect(() => {
     if (isOpen && !docsIndex) {
@@ -108,7 +113,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
           setDocsIndex({ totalFiles: 2422, directories: {}, moduleDependencies: {} });
         });
     }
-  }, [isOpen, docsIndex]);
+  }, [isOpen]); // docsIndex intentionally omitted — guard prevents re-fetch
 
   // Scroll to bottom on new messages
   useEffect(() => {
@@ -128,15 +133,16 @@ export default function AskTheDocs(): React.JSX.Element | null {
     async (userMessage: string) => {
       if (!userMessage.trim() || isLoading) return;
 
-      const newMessages: Message[] = [...messages, { id: ++msgIdRef.current, role: 'user', content: userMessage }];
-      setMessages(newMessages);
+      let newMessages: Message[] = [];
+      setMessages((prev) => {
+        newMessages = [...prev, { id: ++msgIdRef.current, role: 'user', content: userMessage }];
+        return newMessages;
+      });
       setInput('');
       setIsLoading(true);
       setError(null);
 
       try {
-        const systemPrompt = buildSystemPrompt(docsIndex || { totalFiles: 2422, directories: {}, moduleDependencies: {} });
-
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: {
@@ -167,14 +173,14 @@ export default function AskTheDocs(): React.JSX.Element | null {
         };
         const assistantMessage = data.choices[0]?.message?.content || 'No response.';
 
-        setMessages([...newMessages, { id: ++msgIdRef.current, role: 'assistant', content: assistantMessage }]);
+        setMessages((prev) => [...prev, { id: ++msgIdRef.current, role: 'assistant', content: assistantMessage }]);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to get response');
       } finally {
         setIsLoading(false);
       }
     },
-    [messages, isLoading, apiKey, docsIndex],
+    [isLoading, apiKey, systemPrompt],
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

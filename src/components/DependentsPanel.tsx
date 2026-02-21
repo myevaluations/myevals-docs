@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { GITHUB_BASE } from '../utils/github';
 
 interface DependentFile {
   fileName: string;
@@ -20,8 +21,6 @@ interface DependentsPanelProps {
   /** Module name (e.g., "Evaluations") — fetches /reverse-deps/{module}.json */
   module: string;
 }
-
-const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
 
 function FileLink({ file }: { file: DependentFile }) {
   return (
