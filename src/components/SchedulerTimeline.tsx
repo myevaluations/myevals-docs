@@ -152,7 +152,7 @@ function Grid24Hour({ schedulers }: { schedulers: SchedulerRecord[] }) {
                 {DOMAIN_LABELS[domain]}
               </text>
               {/* Scheduler dots */}
-              {rowSchedulers.map((s, i) => {
+              {rowSchedulers.map((s) => {
                 const cx = hourToX(s.hour, s.minute);
                 const cy = rowY + GRID_H_PER_ROW / 2;
                 return (
@@ -164,9 +164,13 @@ function Grid24Hour({ schedulers }: { schedulers: SchedulerRecord[] }) {
                       fill={DOMAIN_COLORS[s.domain] || '#6b7280'}
                       opacity={0.85}
                       style={{ cursor: 'pointer' }}
-                      onMouseMove={(e) => setTooltip({ visible: true, x: e.clientX, y: e.clientY, scheduler: s })}
+                      tabIndex={0}
+                      role="button"
+                      aria-label={`${s.name} — ${s.timeLabel}`}
+                      onMouseEnter={(e) => setTooltip({ visible: true, x: e.clientX, y: e.clientY, scheduler: s })}
                       onMouseLeave={() => setTooltip((t) => ({ ...t, visible: false }))}
                       onClick={() => { window.location.href = s.docUrl; }}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') window.location.href = s.docUrl; }}
                     />
                   </g>
                 );

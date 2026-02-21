@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface FileRecord {
   n: string;   // fileName
@@ -52,6 +52,18 @@ function jitter(seed: string, axis: string, range: number): number {
   return ((h % (range * 2 + 1)) + (range * 2 + 1)) % (range * 2 + 1) - range;
 }
 
+function getBubbleX(f: FileRecord): number {
+  return X_POSITIONS[f.r] + jitter(f.p, 'x', 35);
+}
+
+function getBubbleY(f: FileRecord): number {
+  return Y_POSITIONS[f.c] + jitter(f.p, 'y', 35);
+}
+
+function getBubbleR(f: FileRecord): number {
+  return Math.max(2, Math.min(12, Math.sqrt(f.lc) / 5));
+}
+
 interface TooltipState {
   visible: boolean;
   x: number;
@@ -69,7 +81,6 @@ export default function TechDebtRadar() {
   });
   const [minMigration, setMinMigration] = useState(0);
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, x: 0, y: 0, file: null });
-  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -105,30 +116,6 @@ export default function TechDebtRadar() {
   }
 
   const visible = files.filter((f) => layers[f.la] && f.r >= minMigration);
-
-  function getBubbleX(f: FileRecord): number {
-    return X_POSITIONS[f.r] + jitter(f.p, 'x', 35);
-  }
-
-  function getBubbleY(f: FileRecord): number {
-    return Y_POSITIONS[f.c] + jitter(f.p, 'y', 35);
-  }
-
-  function getBubbleR(f: FileRecord): number {
-    return Math.max(2, Math.min(12, Math.sqrt(f.lc) / 5));
-  }
-
-  function handleMouseMove(e: React.MouseEvent<SVGCircleElement>, file: FileRecord) {
-    setTooltip({ visible: true, x: e.clientX, y: e.clientY, file });
-  }
-
-  function handleMouseLeave() {
-    setTooltip((t) => ({ ...t, visible: false }));
-  }
-
-  function handleClick(file: FileRecord) {
-    window.location.href = file.u;
-  }
 
   return (
     <div style={{ fontFamily: 'var(--ifm-font-family-base)', position: 'relative' }}>
@@ -184,7 +171,6 @@ export default function TechDebtRadar() {
 
       {/* SVG chart */}
       <svg
-        ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
         style={{ width: '100%', height: 'auto', display: 'block', maxHeight: '600px' }}
         aria-label="Tech Debt Radar scatter plot"
@@ -247,9 +233,13 @@ export default function TechDebtRadar() {
             fill={LAYER_COLORS[file.la] || '#6b7280'}
             opacity={0.7}
             style={{ cursor: 'pointer' }}
-            onMouseMove={(e) => handleMouseMove(e, file)}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick(file)}
+            tabIndex={0}
+            role="button"
+            aria-label={`${file.n} — ${COMPLEXITY_LABELS[file.c]} complexity, ${MIGRATION_LABELS[file.r]} migration`}
+            onMouseEnter={(e) => setTooltip({ visible: true, x: e.clientX, y: e.clientY, file })}
+            onMouseLeave={() => setTooltip((t) => ({ ...t, visible: false }))}
+            onClick={() => { window.location.href = file.u; }}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') window.location.href = file.u; }}
           />
         ))}
 

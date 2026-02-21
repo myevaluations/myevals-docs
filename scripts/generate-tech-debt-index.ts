@@ -52,17 +52,21 @@ function migrationToNumber(m: string): number {
 }
 
 function buildDocUrl(layer: string, jsonBasename: string): string {
-  const slug = slugify(jsonBasename.replace(/\.json$/, ''));
   switch (layer) {
-    case 'web':
+    case 'web': {
+      const slug = slugify(jsonBasename.replace(/\.json$/, ''));
       return `/docs/dotnet-backend/web/pages/${slug}`;
-    case 'business':
+    }
+    case 'business': {
+      const slug = slugify(jsonBasename.replace(/\.json$/, ''));
       return `/docs/dotnet-backend/business/files/${slug}`;
+    }
     case 'scheduler':
-    case 'schedulers':
       return `/docs/dotnet-backend/schedulers/files/schedulers`;
-    case 'supporting':
+    case 'supporting': {
+      const slug = slugify(jsonBasename.replace(/\.json$/, ''));
       return `/docs/dotnet-backend/supporting/${slug}`;
+    }
     default:
       return `/docs/dotnet-backend/file-index`;
   }
@@ -130,8 +134,9 @@ async function main() {
     }
   }
 
-  await fs.writeFile(OUTPUT_FILE, JSON.stringify(records));
-  const sizeMB = (JSON.stringify(records).length / 1024 / 1024).toFixed(2);
+  const output = JSON.stringify(records);
+  await fs.writeFile(OUTPUT_FILE, output);
+  const sizeMB = (output.length / 1024 / 1024).toFixed(2);
   console.log(`✅ Wrote ${records.length} records to static/tech-debt-data.json (${sizeMB} MB)`);
 }
 

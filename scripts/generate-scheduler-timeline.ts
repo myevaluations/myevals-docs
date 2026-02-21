@@ -20,7 +20,7 @@ const MODULE_TO_DOMAIN: Record<string, string> = {
   // Evaluations
   'Scheduler - APE (Annual Program Evaluation)': 'evaluations',
   'Scheduler - Auto-File Evaluations': 'evaluations',
-  'Scheduler - CME Evaluation Reminder': 'evaluations',
+  'Scheduler - CME Evaluation Reminder': 'learning',
   'Scheduler - Conference Evaluation Emails': 'evaluations',
   'Scheduler - Evaluation Reminder (Core)': 'evaluations',
   'Scheduler - FNP Evaluation Assignments': 'evaluations',
@@ -106,6 +106,13 @@ const DOMAIN_TO_DOC_URL: Record<string, string> = {
   admin: '/docs/dotnet-backend/schedulers/admin-schedulers',
 };
 
+interface TimingInfo {
+  frequency: string;
+  timeLabel: string;
+  hour: number;
+  minute: number;
+}
+
 // Manual timing overrides for schedulers whose names don't fuzzy-match MDX entries
 // These are sourced directly from the scheduler MDX timing tables
 const MANUAL_TIMING: Record<string, TimingInfo> = {
@@ -124,7 +131,7 @@ const MANUAL_TIMING: Record<string, TimingInfo> = {
   'Scheduler - Certificate Expiration Reminder': { frequency: 'weekly', timeLabel: 'Weekly (Monday 7:00 AM)', hour: 7, minute: 0 },
   'Scheduler - LiabilityInsReminder': { frequency: 'weekly', timeLabel: 'Weekly (Monday 7:00 AM)', hour: 7, minute: 0 },
   // Data Integration
-  'Scheduler - AmionScheduleUpdater': { frequency: 'interval', timeLabel: 'Every 6 hours', hour: 0, minute: 0 },
+  'Scheduler - AmionScheduleUpdater': { frequency: 'interval', timeLabel: 'Every 6 hours', hour: -1, minute: 0 },
   'Scheduler - TangierScheduleSync': { frequency: 'daily-am', timeLabel: 'Daily at 1:00 AM', hour: 1, minute: 0 },
   'Scheduler - SalesForceIntegration': { frequency: 'daily-am', timeLabel: 'Daily at 2:00 AM', hour: 2, minute: 0 },
   'Scheduler - FNPSalesForceIntegration': { frequency: 'daily-am', timeLabel: 'Daily at 2:00 AM', hour: 2, minute: 0 },
@@ -146,13 +153,6 @@ const MANUAL_TIMING: Record<string, TimingInfo> = {
   'Scheduler - SSNEncryption': { frequency: 'daily-am', timeLabel: 'Daily at 3:00 AM', hour: 3, minute: 0 },
   'Scheduler - User Data Encryption': { frequency: 'daily-am', timeLabel: 'Daily at 3:00 AM', hour: 3, minute: 0 },
 };
-
-interface TimingInfo {
-  frequency: string;
-  timeLabel: string;
-  hour: number;
-  minute: number;
-}
 
 function normalize(s: string): string {
   return s

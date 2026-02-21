@@ -1,21 +1,5 @@
 [
   {
-    "name": "AmionScheduleUpdater",
-    "module": "Scheduler - AmionScheduleUpdater",
-    "domain": "data-integration",
-    "frequency": "interval",
-    "hour": 0,
-    "minute": 0,
-    "timeLabel": "Every 6 hours",
-    "purpose": "Sync resident on-call schedules from Amion and QGenda (Momentum, Lightning Bolt) into the platform database for auto-assignment processing.",
-    "complexity": "moderate",
-    "migrationRelevance": "high",
-    "fileCount": 1,
-    "lineCount": 180,
-    "docUrl": "/docs/dotnet-backend/schedulers/data-integration-schedulers",
-    "timingSource": "mdx-table"
-  },
-  {
     "name": "TangierScheduleSync",
     "module": "Scheduler - TangierScheduleSync",
     "domain": "data-integration",
@@ -226,7 +210,7 @@
   {
     "name": "CME Evaluation Reminder",
     "module": "Scheduler - CME Evaluation Reminder",
-    "domain": "evaluations",
+    "domain": "learning",
     "frequency": "daily-am",
     "hour": 6,
     "minute": 0,
@@ -236,7 +220,7 @@
     "migrationRelevance": "high",
     "fileCount": 2,
     "lineCount": 215,
-    "docUrl": "/docs/dotnet-backend/schedulers/evaluation-schedulers",
+    "docUrl": "/docs/dotnet-backend/schedulers/learning-schedulers",
     "timingSource": "mdx-table"
   },
   {
@@ -558,6 +542,22 @@
     "lineCount": 315,
     "docUrl": "/docs/dotnet-backend/schedulers/admin-schedulers",
     "timingSource": "unknown"
+  },
+  {
+    "name": "AmionScheduleUpdater",
+    "module": "Scheduler - AmionScheduleUpdater",
+    "domain": "data-integration",
+    "frequency": "interval",
+    "hour": -1,
+    "minute": 0,
+    "timeLabel": "Every 6 hours",
+    "purpose": "Sync resident on-call schedules from Amion and QGenda (Momentum, Lightning Bolt) into the platform database for auto-assignment processing.",
+    "complexity": "moderate",
+    "migrationRelevance": "high",
+    "fileCount": 1,
+    "lineCount": 180,
+    "docUrl": "/docs/dotnet-backend/schedulers/data-integration-schedulers",
+    "timingSource": "mdx-table"
   },
   {
     "name": "ApplicationEmails",
