@@ -10,6 +10,7 @@
  */
 
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import ReactDOM from 'react-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 interface Message {
@@ -85,6 +86,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
   const apiKey = (siteConfig.customFields?.openaiApiKey as string) || '';
 
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const msgIdRef = React.useRef(0);
@@ -94,6 +96,8 @@ export default function AskTheDocs(): React.JSX.Element | null {
   const [docsIndex, setDocsIndex] = useState<DocsIndex | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => { setMounted(true); }, []);
 
   const systemPrompt = useMemo(
     () => buildSystemPrompt(docsIndex || { totalFiles: 2422, directories: {}, moduleDependencies: {} }),
@@ -195,10 +199,10 @@ export default function AskTheDocs(): React.JSX.Element | null {
     setError(null);
   };
 
-  // Don't render if no API key (must be after all hooks)
-  if (!apiKey) return null;
+  // Don't render if no API key or before client mount (must be after all hooks)
+  if (!apiKey || !mounted) return null;
 
-  return (
+  return ReactDOM.createPortal(
     <>
       {/* Floating chat panel */}
       {isOpen && (
@@ -469,6 +473,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
       >
         {isOpen ? '✕' : '🤖'}
       </button>
-    </>
+    </>,
+    document.body,
   );
 }

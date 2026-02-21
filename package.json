@@ -58,6 +58,7 @@
     "@types/d3": "^7.4.3",
     "@types/node": "^22.10.0",
     "@types/react": "^18.3.12",
+    "@types/react-dom": "^19.2.3",
     "d3": "^7.9.0",
     "tree-sitter": "^0.21.1",
     "tree-sitter-c-sharp": "^0.23.1",
