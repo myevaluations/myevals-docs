@@ -4,18 +4,18 @@
 
 | # | Enhancement | Status | Commit |
 |---|------------|--------|--------|
-| 1 | GitHub source deep-links | PENDING | — |
-| 2 | Sprint export button | PENDING | — |
-| 3 | Stale documentation badge | PENDING | — |
-| 4 | Feature-to-files index | PENDING | — |
-| 5 | Reverse dependency panel | PENDING | — |
-| 6 | 3-tier sproc cross-reference | PENDING | — |
-| 7 | Evaluations migration runbook | PENDING | — |
-| 8 | Module health dashboard | PENDING | — |
-| 9 | Onboarding learning path | PENDING | — |
+| 1 | GitHub source deep-links | DONE | 996e011 |
+| 2 | Sprint export button | DONE | 996e011 |
+| 3 | Stale documentation badge | DONE | 996e011 |
+| 4 | Feature-to-files index | DONE | cc7368e |
+| 5 | Reverse dependency panel | DONE | ac2221f |
+| 6 | 3-tier sproc cross-reference | DONE | 844b930 |
+| 7 | Evaluations migration runbook | DONE | 83f1a80 |
+| 8 | Module health dashboard | DONE | 010471f |
+| 9 | Onboarding learning path | DONE | a8fb858 |
 | 10 | Tech debt radar | PENDING | — |
 | 11 | Scheduler timeline | PENDING | — |
-| 12 | "Ask the Docs" chat (OpenAI GPT-4o) | PENDING | — |
+| 12 | "Ask the Docs" chat (OpenAI GPT-4o) | DONE | 1596e55 |
 
 ---
 
