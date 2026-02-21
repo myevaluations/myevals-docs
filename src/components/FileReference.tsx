@@ -318,6 +318,9 @@ export default function FileReference({
     navigator.clipboard.writeText(text).then(() => {
       setExportCopied(true);
       setTimeout(() => setExportCopied(false), 2000);
+    }).catch(() => {
+      // Clipboard API unavailable (e.g. non-HTTPS or blocked by browser)
+      setExportCopied(false);
     });
   };
 

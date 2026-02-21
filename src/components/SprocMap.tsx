@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
 
@@ -120,15 +120,29 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
   const [webCallersExpanded, setWebCallersExpanded] = useState<Set<string>>(new Set());
   const [webCallers, setWebCallers] = useState<Record<string, WebCaller[]> | null>(null);
 
-  // Lazy-load 3-tier web callers data
-  useEffect(() => {
+  // Fetch 3-tier web callers data lazily — only on first user interaction
+  function fetchWebCallers(thenExpandSproc?: string) {
     fetch('/sproc-web-callers.json')
       .then((r) => r.json())
-      .then((data: Record<string, WebCaller[]>) => setWebCallers(data))
+      .then((data: Record<string, WebCaller[]>) => {
+        setWebCallers(data);
+        if (thenExpandSproc) {
+          setWebCallersExpanded((prev) => {
+            const next = new Set(prev);
+            next.add(thenExpandSproc);
+            return next;
+          });
+        }
+      })
       .catch(() => setWebCallers({}));
-  }, []);
+  }
 
   function toggleWebCallers(sproc: string) {
+    if (webCallers === null) {
+      // First interaction — fetch data, then expand this sproc
+      fetchWebCallers(sproc);
+      return;
+    }
     setWebCallersExpanded((prev) => {
       const next = new Set(prev);
       if (next.has(sproc)) next.delete(sproc);
@@ -276,27 +290,27 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
                                 ({m.calledBy.length} callers)
                               </span>
                             )}
-                            {webCallers !== null && (
-                              <div style={{ marginTop: '4px' }}>
-                                <button
-                                  onClick={() => toggleWebCallers(m.sproc)}
-                                  style={{
-                                    background: 'none',
-                                    border: `1px solid ${webCallersForSp.length > 0 ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-300)'}`,
-                                    borderRadius: '4px',
-                                    cursor: webCallersForSp.length > 0 ? 'pointer' : 'default',
-                                    fontSize: '0.7rem',
-                                    color: webCallersForSp.length > 0 ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-400)',
-                                    padding: '1px 6px',
-                                    lineHeight: 1.4,
-                                  }}
-                                  title={webCallersForSp.length > 0 ? 'Show web page callers' : 'No web page chain data'}
-                                  disabled={webCallersForSp.length === 0}
-                                >
-                                  {showWebCallers ? '▲' : '▶'} {webCallersForSp.length} web pages
-                                </button>
-                              </div>
-                            )}
+                            <div style={{ marginTop: '4px' }}>
+                              <button
+                                onClick={() => toggleWebCallers(m.sproc)}
+                                style={{
+                                  background: 'none',
+                                  border: `1px solid ${webCallers !== null && webCallersForSp.length === 0 ? 'var(--ifm-color-emphasis-300)' : 'var(--ifm-color-primary)'}`,
+                                  borderRadius: '4px',
+                                  cursor: webCallers !== null && webCallersForSp.length === 0 ? 'default' : 'pointer',
+                                  fontSize: '0.7rem',
+                                  color: webCallers !== null && webCallersForSp.length === 0 ? 'var(--ifm-color-emphasis-400)' : 'var(--ifm-color-primary)',
+                                  padding: '1px 6px',
+                                  lineHeight: 1.4,
+                                }}
+                                title={webCallers === null ? 'Load web page caller chain' : webCallersForSp.length > 0 ? 'Show web page callers' : 'No web page chain data'}
+                                disabled={webCallers !== null && webCallersForSp.length === 0}
+                              >
+                                {webCallers === null
+                                  ? '▶ web callers'
+                                  : `${showWebCallers ? '▲' : '▶'} ${webCallersForSp.length >= 20 ? '20+' : webCallersForSp.length} web pages`}
+                              </button>
+                            </div>
                           </td>
                         ) : null}
 

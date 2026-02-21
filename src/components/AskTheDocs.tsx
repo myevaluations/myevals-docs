@@ -93,9 +93,6 @@ export default function AskTheDocs(): React.JSX.Element | null {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Don't render if no API key
-  if (!apiKey) return null;
-
   // Load compact docs index on first open
   useEffect(() => {
     if (isOpen && !docsIndex) {
@@ -189,6 +186,9 @@ export default function AskTheDocs(): React.JSX.Element | null {
     setMessages([]);
     setError(null);
   };
+
+  // Don't render if no API key (must be after all hooks)
+  if (!apiKey) return null;
 
   return (
     <>
