@@ -13,11 +13,12 @@
 | 7 | Evaluations migration runbook | DONE | 83f1a80 |
 | 8 | Module health dashboard | DONE | 010471f |
 | 9 | Onboarding learning path | DONE | a8fb858 |
-| 10 | Tech debt radar | PENDING | — |
-| 11 | Scheduler timeline | PENDING | — |
+| 10 | Tech debt radar | DONE | 2dfcfca |
+| 11 | Scheduler timeline | DONE | 2dfcfca |
 | 12 | "Ask the Docs" chat (OpenAI GPT-4o) | DONE | 1596e55 |
 | — | Code review fixes (hooks, lazy fetch, clipboard, sidebar, dead link) | DONE | 5b16546 |
 | — | Code review fixes round 2 (DependentsPanel lazy fetch, a11y, keys, types, fabricated SPs) | DONE | 8b3d308 |
+| — | User Guide page (site navigation reference) | DONE | 2dfcfca |
 
 ---
 
