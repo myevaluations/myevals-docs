@@ -1,0 +1,130 @@
+---
+sidebar_position: 4
+title: Module Health Dashboard
+description: "Risk assessment and migration complexity for all 22 .NET business modules — ranked by web page dependents, file complexity, stored procedure count, and migration priority."
+---
+
+# Module Health Dashboard
+
+> **Before migrating any module:** This dashboard shows blast radius, complexity, and coupling depth for all 22 business modules — generated from enrichment data across 2,422 files.
+
+**Color guide:** 🔴 Critical (highest risk/effort) · 🟠 High · 🟡 Moderate · 🟢 Low
+
+---
+
+## Risk Ranking — by Downstream Impact
+
+Ranked by number of web pages + schedulers that reference each module's classes. The higher the count, the more files will need to be updated during migration.
+
+| # | Module | Files | Lines | Web Pages | Schedulers | SPs | Complex Files | Migration Priority Files | Risk |
+|---|--------|------:|------:|----------:|----------:|----:|-------------:|------------------------:|------|
+| 1 | [Security](./business/security) | 128 | 81,451 | 829 | 0 | 427 | 23 | 28 | 🔴 |
+| 2 | [Evaluations](./business/evaluations) | 47 | 68,093 | 415 | 2 | 105 | 10 | 23 | 🔴 |
+| 3 | [DutyHours](./business/duty-hours) | 76 | 29,667 | 258 | 1 | 357 | 20 | 16 | 🔴 |
+| 4 | [Procedures](./business/procedures) | 51 | 11,882 | 134 | 6 | 210 | 11 | 10 | 🟠 |
+| 5 | [Portfolio](./business/portfolio) | 11 | 77,671 | 124 | 0 | 14 | 3 | 7 | 🟠 |
+| 6 | [EssentialActivities](./business/essential-activities) | 13 | 13,303 | 95 | 2 | 40 | 4 | 8 | 🟠 |
+| 7 | [CMETracking](./business/cme-tracking) | 42 | 15,790 | 58 | 0 | 65 | 9 | 19 | 🟠 |
+| 8 | [Quiz](./business/quiz) | 24 | 16,545 | 54 | 0 | 156 | 11 | 9 | 🟡 |
+| 9 | [MyHelp](./business/myhelp) | 4 | 2,298 | 44 | 0 | 14 | 2 | 0 | 🟡 |
+| 10 | [Mail](./business/mail) | 6 | 15,427 | 35 | 0 | 16 | 4 | 4 | 🟡 |
+| 11 | [PatientLog](./business/patient-log) | 29 | 7,623 | 37 | 0 | 61 | 5 | 15 | 🟡 |
+| 12 | [Common](./business/common) | 12 | 2,301 | 31 | 4 | 4 | 3 | 2 | 🟡 |
+| 13 | [Utilities](./business/utilities) | 18 | 9,220 | 21 | 11 | 3 | 5 | 3 | 🟡 |
+| 14 | [LearningAssignment](./business/learning-assignment) | 12 | 4,323 | 22 | 0 | 13 | 4 | 5 | 🟢 |
+| 15 | [AdobeSign](./business/common) | 8 | 2,732 | 7 | 0 | 0 | 2 | 4 | 🟢 |
+| 16 | [TimeSheet](./business/timesheet) | 28 | 5,805 | 6 | 1 | 8 | 2 | 9 | 🟢 |
+| 17 | [MailGunService](./business/mailgun-service) | 1 | 585 | 1 | 2 | 0 | 1 | 0 | 🟢 |
+| 18 | [ERAS](./business/eras) | 3 | 1,870 | 1 | 0 | 5 | 2 | 0 | 🟢 |
+| 19 | [HelloSign](./business/hellosign) | 30 | 2,513 | 0 | 0 | 0 | 1 | 1 | 🟢 |
+| 20 | [ICC](./business/icc) | 2 | 432 | 0 | 0 | 0 | 0 | 0 | 🟢 |
+| 21 | [NurseNotifyService](./business/nurse-notify) | 1 | 57 | 0 | 0 | 0 | 0 | 0 | 🟢 |
+| 22 | [RightSignature](./business/utilities) | 10 | 1,438 | 0 | 0 | 0 | 2 | 0 | 🟢 |
+
+**Column definitions:**
+- **Web Pages**: Number of web layer files with `businessManagersUsed[]` referencing this module's classes
+- **Schedulers**: Number of scheduler files referencing this module
+- **SPs**: Total stored procedure calls documented in enrichment data
+- **Complex Files**: Files with complexity = `complex` or `very-complex`
+- **Migration Priority Files**: Files with `migrationRelevance = high`
+
+---
+
+## Spotlight: The Top 3 🔴 Critical Modules
+
+### Security — 829 Web Page Dependencies
+
+Every page that checks "can this user do this?" calls `SecurityManager`. Security is effectively a cross-cutting concern woven into the entire codebase.
+
+**Migration implication**: Security must be migrated first, or migrated incrementally with a compatibility shim. Every other module migration is blocked until auth is stable in Node.js.
+
+**Key stats**: 128 files · 81,451 lines · 427 stored procedures · largest class = 21,190 lines
+
+→ See [Security module](./business/security) with full dependency list (829 web pages listed)
+
+---
+
+### Evaluations — 415 Web Page Dependencies + 2 Schedulers
+
+The core product. 415 web pages (out of 1,644 total = **25% of the entire web layer**) reference Evaluations classes.
+
+**Migration implication**: Can't be migrated until Security is stable. Has its own dedicated [migration runbook](./migration/evaluations-runbook).
+
+**Key stats**: 47 files · 68,093 lines · 105 SPs · largest class = `EvaluationsTemplateManager` at 12,531 lines
+
+→ See [Evaluations module](./business/evaluations) and [migration runbook](./migration/evaluations-runbook)
+
+---
+
+### DutyHours — 258 Web Page Dependencies + 357 Stored Procedures
+
+High web dependency count AND the second-highest stored procedure count. DutyHours has deep SQL Server coupling — the business logic is distributed between C# and stored procedures.
+
+**Migration implication**: 357 SPs must be ported to PostgreSQL equivalents. This is schema-level work, not just API work. Plan for significant database migration time.
+
+**Key stats**: 76 files · 29,667 lines · 357 stored procedures
+
+→ See [DutyHours module](./business/duty-hours) with 258 dependent web pages listed
+
+---
+
+## Outliers to Watch
+
+| Issue | Module | Detail |
+|-------|--------|--------|
+| 🔴 Largest single file | Portfolio | One file is **38,000 lines** (largest in the entire codebase) — almost certainly needs to be split |
+| 🔴 Highest SP count | Security | 427 stored procedures — high DB coupling, migration requires careful SP-by-SP porting |
+| 🔴 High SP count | DutyHours | 357 stored procedures — significant schema migration work |
+| 🟠 High SP count | Procedures | 210 stored procedures — moderate DB coupling |
+| 🟠 High complexity avg | Mail | Average complexity 3.2/4 (highest in codebase) — 6 files but very dense logic |
+| 🟡 Many files, low deps | HelloSign | 30 files but 0 web dependencies — may be dead code or internal-only |
+| 🟡 Large for its dep count | Quiz | 24 files, 156 SPs but only 54 web deps — DB-heavy module |
+
+---
+
+## Migration Order Recommendation
+
+Based on dependency analysis, the recommended migration sequence is:
+
+```
+1. Security (prerequisite for everything else)
+2. Mail (prerequisite for Evaluations notifications)
+3. DutyHours (prerequisite for evaluation assignment context)
+   ↓
+4. Evaluations (largest + most complex — use the runbook)
+5. Procedures + Portfolio (parallel — few cross-dependencies)
+   ↓
+6. EssentialActivities, CMETracking, Quiz (medium priority)
+7. PatientLog, Utilities, Common (supporting modules)
+   ↓
+8. Everything else (low impact, migrate as needed)
+```
+
+---
+
+## Quick Links
+
+- [Feature → Code Map](./feature-map) — Find which files to change for a given feature
+- [Evaluations Runbook](./migration/evaluations-runbook) — Detailed phased plan for the largest module
+- [Migration Strategy](./migration/strategy) — Strangler fig pattern overview
+- [File Reference Index](./file-index) — Search all 2,422 documented files

@@ -24,6 +24,7 @@ const sidebars: SidebarsConfig = {
         'dotnet-backend/getting-started',
         'dotnet-backend/project-map',
         'dotnet-backend/feature-map',
+        'dotnet-backend/module-health',
         {
           type: 'category',
           label: 'Patterns',
