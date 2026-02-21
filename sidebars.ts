@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
   mainSidebar: [
     'intro',
     'onboarding-path',
+    'user-guide',
     {
       type: 'category',
       label: 'Architecture',
@@ -26,6 +27,7 @@ const sidebars: SidebarsConfig = {
         'dotnet-backend/project-map',
         'dotnet-backend/feature-map',
         'dotnet-backend/module-health',
+        'dotnet-backend/tech-debt-radar',
         {
           type: 'category',
           label: 'Patterns',
@@ -80,6 +82,7 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             'dotnet-backend/schedulers/index',
+            'dotnet-backend/schedulers/timeline',
             'dotnet-backend/schedulers/evaluation-schedulers',
             'dotnet-backend/schedulers/clinical-schedulers',
             'dotnet-backend/schedulers/duty-hours-schedulers',

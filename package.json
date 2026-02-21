@@ -31,6 +31,8 @@
     "enrich:merge": "tsx scripts/merge-enrichment-batches.ts",
     "enrich:pages": "tsx scripts/generate-file-reference-pages.ts",
     "enrich:build": "npm run enrich:merge && npm run enrich:pages",
+    "generate:tech-debt": "tsx scripts/generate-tech-debt-index.ts",
+    "generate:scheduler-timeline": "tsx scripts/generate-scheduler-timeline.ts",
     "generate:reverse-deps": "tsx scripts/generate-reverse-deps.ts && tsx scripts/inject-dependents-panel.ts",
     "prebuild:full": "npm run sync-repos && npm run generate:all",
     "build:full": "npm run prebuild:full && npm run build"

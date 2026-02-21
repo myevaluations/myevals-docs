@@ -1,0 +1,17 @@
+---
+title: Tech Debt Radar
+description: Interactive scatter plot of all 2,422 .NET files by complexity × migration priority. Click any bubble to open that file's documentation.
+sidebar_position: 5
+---
+
+import TechDebtRadar from '@site/src/components/TechDebtRadar';
+
+# Tech Debt Radar
+
+> Bubble chart of all 2,422 .NET source files. **X = migration relevance**, **Y = complexity**, **size = lines of code**. Click any bubble to open that file's documentation.
+
+**Reading the chart:** Top-right = migration priority; Bottom-right = quick wins; Top-left = high complexity / low urgency; Bottom-left = stable, low-risk code.
+
+Filter by layer or minimum migration relevance to focus on specific areas. Security and Evaluations web files tend to dominate the top-right quadrant.
+
+<TechDebtRadar />
