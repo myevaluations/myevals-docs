@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 
+const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
+
 interface FileEntry {
   filePath: string;
   fileName: string;
@@ -25,6 +27,8 @@ interface FileReferenceProps {
   /** @deprecated — workflows are now rendered in MDX body, not inside the component */
   keyWorkflows?: (string | { name: string; description?: string; [key: string]: unknown })[];
   showExpandedDetails?: boolean;
+  /** ISO timestamp from enrichment JSON generatedAt field */
+  generatedAt?: string;
 }
 
 function formatMethod(m: string | { name: string; description: string }): string {
@@ -129,6 +133,22 @@ function FileDetailRow({ file, isExpanded, onToggle }: {
         <td style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>
           <span style={{ marginRight: '4px' }}>{isExpanded ? '▼' : '▶'}</span>
           {file.fileName}
+          <a
+            href={`${GITHUB_BASE}${file.filePath}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="View on GitHub"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              marginLeft: '6px',
+              color: 'var(--ifm-color-emphasis-500)',
+              fontSize: '0.75rem',
+              textDecoration: 'none',
+              verticalAlign: 'middle',
+            }}
+          >
+            ↗
+          </a>
         </td>
         <td>
           <Badge
@@ -219,6 +239,7 @@ export default function FileReference({
   directoryOverview,
   keyWorkflows,
   showExpandedDetails = false,
+  generatedAt,
 }: FileReferenceProps) {
   const data = files && files.length > 0 ? files : PLACEHOLDER_FILES;
   const isPlaceholder = !files || files.length === 0;
@@ -230,6 +251,7 @@ export default function FileReference({
   const [filterComplexity, setFilterComplexity] = useState<string>('all');
   const [filterMigration, setFilterMigration] = useState<string>('all');
   const [expandedFiles, setExpandedFiles] = useState<Set<string>>(new Set());
+  const [exportCopied, setExportCopied] = useState(false);
 
   const toggleExpand = (filePath: string) => {
     setExpandedFiles((prev) => {
@@ -285,6 +307,20 @@ export default function FileReference({
   const complexities = [...new Set(data.map((f) => f.complexity))];
   const migrations = [...new Set(data.map((f) => f.migrationRelevance))];
 
+  const handleExport = () => {
+    const module = filtered.length > 0 ? filtered[0].module : 'Files';
+    const lines = [
+      `## Files to Review — ${module} (${filtered.length} files)`,
+      '',
+      ...filtered.map((f) => `- [ ] ${f.fileName} (${f.complexity}) — ${f.summary}`),
+    ];
+    const text = lines.join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      setExportCopied(true);
+      setTimeout(() => setExportCopied(false), 2000);
+    });
+  };
+
   const handleSort = (field: typeof sortField) => {
     if (sortField === field) {
       setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
@@ -314,8 +350,33 @@ export default function FileReference({
     color: MIGRATION_COLORS[m],
   })).filter((d) => d.count > 0);
 
+  const enrichedDate = generatedAt ? new Date(generatedAt) : null;
+  const enrichedLabel = enrichedDate
+    ? enrichedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    : null;
+
   return (
     <div>
+      {enrichedLabel && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '8px' }}>
+          <span
+            title={`AI enrichment generated on ${enrichedLabel}`}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 10px',
+              borderRadius: '12px',
+              fontSize: '0.72rem',
+              backgroundColor: 'var(--ifm-color-emphasis-100)',
+              color: 'var(--ifm-color-emphasis-600)',
+              border: '1px solid var(--ifm-color-emphasis-200)',
+            }}
+          >
+            🕒 Last enriched: {enrichedLabel}
+          </span>
+        </div>
+      )}
       {isPlaceholder && (
         <div
           style={{
@@ -430,6 +491,23 @@ export default function FileReference({
             <option key={m} value={m}>{m}</option>
           ))}
         </select>
+        <button
+          onClick={handleExport}
+          title="Copy filtered files as a Markdown checklist to clipboard"
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid var(--ifm-color-emphasis-300)',
+            fontSize: '0.85rem',
+            cursor: 'pointer',
+            backgroundColor: exportCopied ? '#22c55e20' : 'var(--ifm-background-color)',
+            color: exportCopied ? '#16a34a' : 'var(--ifm-font-color-base)',
+            transition: 'background-color 0.2s',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {exportCopied ? '✓ Copied!' : '📋 Export Checklist'}
+        </button>
       </div>
 
       {/* Table */}

@@ -140,6 +140,7 @@ ${overviewMdx}
 ${workflowsMdx}
 <FileReference
   files={${JSON.stringify(data.files, null, 2)}}
+  generatedAt="${data.generatedAt}"
 />
 `;
 }
