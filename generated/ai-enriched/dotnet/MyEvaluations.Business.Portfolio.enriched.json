@@ -1,0 +1,55 @@
+{
+  "module": "MyEvaluations.Business.Portfolio",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": false,
+  "overview": "The Portfolio module manages trainee and resident personal portfolio data within MyEvaluations. With 9 classes, it provides a comprehensive personal information management system covering demographics, academic credentials (degrees, post-graduation), professional licenses, military service records, tax information, and employment contracts. The module centers on a LookUpTables manager that serves as the primary data access layer, retrieving reference data from 24 stored procedures spanning departments, users, specialties, programs, certificates, competencies, and document access levels.",
+  "architecture": "## Overview\n\nThe Portfolio module manages trainee and resident personal portfolio data within MyEvaluations. With 9 classes, it provides a comprehensive personal information management system covering demographics, academic credentials (degrees, post-graduation), professional licenses, military service records, tax information, and employment contracts. The module centers on a LookUpTables manager that serves as the primary data access layer, retrieving reference data from 24 stored procedures spanning departments, users, specialties, programs, certificates, competencies, and document access levels.\n\n## Key Classes\n\n- **LookUpTables** (extends Manager): The central data access manager for portfolio-related reference data. Calls 24 stored procedures covering organizational hierarchy, user roles, competencies, and document access.\n- **ContractsEntity**: Entity class for trainee employment/training contracts.\n- **MyPortfolioGeneralDemogrpahicsEntity**: General demographic information entity (note: legacy typo).\n- **MyPortfolioDegreeEntity**: Academic degree records.\n- **MyPortfolioPostGraduationEntity**: Post-graduation training and education records.\n- **MyPortfolioLicencesEntity**: Professional license and certification records.\n- **MyPortfolioUserMilitaryEntity**: Military service history records.\n- **MyPortfolioTaxEntity**: Tax-related information for trainees.\n\n## Patterns\n\n- **Manager/Info pattern detected**: LookUpTables extends the base Manager class, though it deviates from naming conventions.\n- **Entity-based data model**: Uses \"Entity\" suffix rather than \"Info\" suffix.\n- **Reference data hub**: LookUpTables serves as a centralized reference data provider with 24 stored procedures.\n- **Document access control**: Role-based document visibility tied to PGY levels.\n\n## Notes\n\n- LookUpTables has 24 stored procedures, one of the most database-coupled classes in the system.\n- The \"Demogrpahics\" typo is a legacy artifact preserved for compatibility.\n- Portfolio covers sensitive personal information requiring careful security during migration.\n- Image handling suggests profile photo management is part of the portfolio feature.",
+  "managerPattern": "Manager/Info pattern detected",
+  "storedProcedures": "GetListOfDepartments, GetUserInfoByDepartmentID, GetImageInfoByUserID, GetSpecialtyNameBySpecialtyCode, GetUserTitleByUserID, GetRolePreceptorIDs, GetPFDocumentAccessLevel, GetCompetency, GetRoleIDByUserID, GetSpecialtyList, GetProgramList, GetDepartmentIDByProgramID, GetProgramDepartments, GetMaxPGYByUserIDOrDepartmentID, GetCertificateList, GetUserTypeByID, GetDependentType, GetUniformType, GetLevelList, GetInstitutionName, GetTrainingGapType, GetUserProgramList, GetInstitutionEmployerNames, GetDepartmentInfo, GetPFDocumentSettMaxPgyByID, GetUserImageFileName",
+  "keyClasses": [
+    {
+      "name": "LookUpTables",
+      "purpose": "Central data access manager for portfolio reference data with 24 stored procedures covering org hierarchy, roles, and document access",
+      "keyMethods": []
+    },
+    {
+      "name": "ContractsEntity",
+      "purpose": "Entity class for trainee employment and training contract records",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioGeneralDemogrpahicsEntity",
+      "purpose": "General demographic information entity for portfolio holders",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioDegreeEntity",
+      "purpose": "Academic degree records for portfolio holders",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioPostGraduationEntity",
+      "purpose": "Post-graduation training and education records",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioLicencesEntity",
+      "purpose": "Professional license and certification records",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioUserMilitaryEntity",
+      "purpose": "Military service history records for portfolio holders",
+      "keyMethods": []
+    },
+    {
+      "name": "MyPortfolioTaxEntity",
+      "purpose": "Tax-related information for trainees",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [],
+  "migrationNotes": [],
+  "mermaidDiagram": null,
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.Portfolio\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.Portfolio module\"\nsidebar_label: \"Portfolio\"\ntags: [dotnet, business-layer]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Overview\n\nThe Portfolio module manages trainee and resident personal portfolio data within MyEvaluations. With 9 classes, it provides a comprehensive personal information management system covering demographics, academic credentials (degrees, post-graduation), professional licenses, military service records, tax information, and employment contracts. The module centers on a LookUpTables manager that serves as the primary data access layer, retrieving reference data from 24 stored procedures spanning departments, users, specialties, programs, certificates, competencies, and document access levels.\n\n## Key Classes\n\n- **LookUpTables** (extends Manager): The central data access manager for portfolio-related reference data. Despite its name, it functions as the primary Portfolio manager, calling 24 stored procedures: `GetListOfDepartments`, `GetUserInfoByDepartmentID`, `GetImageInfoByUserID`, `GetSpecialtyNameBySpecialtyCode`, `GetUserTitleByUserID`, `GetRolePreceptorIDs`, `GetPFDocumentAccessLevel`, `GetCompetency`, `GetRoleIDByUserID`, `GetSpecialtyList`, `GetProgramList`, `GetDepartmentIDByProgramID`, `GetProgramDepartments`, `GetMaxPGYByUserIDOrDepartmentID`, `GetCertificateList`, `GetUserTypeByID`, `GetDependentType`, `GetUniformType`, `GetLevelList`, `GetInstitutionName`, `GetTrainingGapType`, `GetUserProgramList`, `GetInstitutionEmployerNames`, `GetDepartmentInfo`, `GetPFDocumentSettMaxPgyByID`, `GetUserImageFileName`.\n- **ContractsEntity**: Entity class for trainee employment/training contracts.\n- **MyPortfolioGeneralDemogrpahicsEntity**: General demographic information entity (note: legacy typo \"Demogrpahics\").\n- **MyPortfolioDegreeEntity**: Academic degree records for portfolio holders.\n- **MyPortfolioPostGraduationEntity**: Post-graduation training and education records.\n- **MyPortfolioLicencesEntity**: Professional license and certification records.\n- **MyPortfolioUserMilitaryEntity**: Military service history records.\n- **MyPortfolioTaxEntity**: Tax-related information for trainees.\n\n## Patterns\n\n- **Manager/Info pattern detected**: LookUpTables extends the base Manager class, though it deviates from naming conventions by being named as a lookup utility rather than following the typical \"[Domain]Manager\" pattern. The entity classes use an \"Entity\" suffix rather than the typical \"Info\" suffix.\n- **Entity-based data model**: Uses \"Entity\" suffix classes (ContractsEntity, MyPortfolioDegreeEntity, etc.) rather than the more common \"Info\" suffix found in other modules, suggesting this module may have been developed at a different time or by a different team.\n- **Reference data hub**: LookUpTables serves as a centralized reference data provider with 24 stored procedures covering organizational hierarchy (departments, programs, specialties), user roles, competencies, and document access.\n- **Document access control**: `GetPFDocumentAccessLevel` and `GetPFDocumentSettMaxPgyByID` indicate role-based document visibility tied to PGY levels.\n\n## Notes\n\n- The LookUpTables class has 24 stored procedures, making it one of the most database-coupled classes in the system. During migration, these should be split into focused NestJS service methods.\n- The \"Demogrpahics\" typo in MyPortfolioGeneralDemogrpahicsEntity is a legacy artifact preserved for backward compatibility.\n- No explicit portfolio CRUD manager was detected -- the LookUpTables class handles reads while create/update/delete operations may reside in another module or use a different pattern.\n- The portfolio data model covers sensitive personal information (military records, tax data, licenses) requiring careful security considerations during migration.\n- Image handling (`GetImageInfoByUserID`, `GetUserImageFileName`) suggests profile photo management is part of the portfolio feature.\n- PGY-level document access (`GetPFDocumentSettMaxPgyByID`, `GetMaxPGYByUserIDOrDepartmentID`) enforces training-year-based visibility rules.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*"
+}

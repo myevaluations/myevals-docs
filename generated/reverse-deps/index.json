@@ -1,0 +1,112 @@
+[
+  {
+    "module": "Security",
+    "web": 829,
+    "schedulers": 0
+  },
+  {
+    "module": "Evaluations",
+    "web": 415,
+    "schedulers": 2
+  },
+  {
+    "module": "DutyHours",
+    "web": 258,
+    "schedulers": 1
+  },
+  {
+    "module": "Procedures",
+    "web": 134,
+    "schedulers": 6
+  },
+  {
+    "module": "Portfolio",
+    "web": 124,
+    "schedulers": 0
+  },
+  {
+    "module": "EssentialActivities",
+    "web": 95,
+    "schedulers": 2
+  },
+  {
+    "module": "CMETracking",
+    "web": 58,
+    "schedulers": 0
+  },
+  {
+    "module": "Quiz",
+    "web": 54,
+    "schedulers": 0
+  },
+  {
+    "module": "MyHelp",
+    "web": 44,
+    "schedulers": 0
+  },
+  {
+    "module": "PatientLog",
+    "web": 37,
+    "schedulers": 0
+  },
+  {
+    "module": "Common",
+    "web": 31,
+    "schedulers": 4
+  },
+  {
+    "module": "Mail",
+    "web": 35,
+    "schedulers": 0
+  },
+  {
+    "module": "Utilities",
+    "web": 21,
+    "schedulers": 11
+  },
+  {
+    "module": "LearningAssignment",
+    "web": 22,
+    "schedulers": 0
+  },
+  {
+    "module": "AdobeSign",
+    "web": 7,
+    "schedulers": 0
+  },
+  {
+    "module": "TimeSheet",
+    "web": 6,
+    "schedulers": 1
+  },
+  {
+    "module": "MailGunService",
+    "web": 1,
+    "schedulers": 2
+  },
+  {
+    "module": "ERAS",
+    "web": 1,
+    "schedulers": 0
+  },
+  {
+    "module": "HelloSign",
+    "web": 0,
+    "schedulers": 0
+  },
+  {
+    "module": "ICC",
+    "web": 0,
+    "schedulers": 0
+  },
+  {
+    "module": "NurseNotifyService",
+    "web": 0,
+    "schedulers": 0
+  },
+  {
+    "module": "RightSignature",
+    "web": 0,
+    "schedulers": 0
+  }
+]

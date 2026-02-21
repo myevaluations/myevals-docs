@@ -1,0 +1,666 @@
+{
+  "directory": "Web/Quiz",
+  "layer": "web",
+  "generatedAt": "2026-02-21T00:00:00.000Z",
+  "fileCount": 32,
+  "files": [
+    {
+      "filePath": "Web/Quiz/AssignQuiz.aspx.cs",
+      "fileName": "AssignQuiz.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_AssignQuiz",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Multi-step wizard (5 steps) for creating and editing quiz assignments. Handles assignment configuration including user selection, time zones, quiz parameters, and onboarding-related assignments.",
+      "businessPurpose": "Allows administrators to assign quizzes to users with configurable parameters including scheduling, user groups, and assignment periods.",
+      "keyMethods": [
+        "Page_Load - Initializes multi-step assignment wizard with permission checks and time zone setup",
+        "CheckForPermissions - Validates QuizAssignments module privileges",
+        "InitTimeZone - Sets up time zone configuration for scheduling"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["AssignmentBussiness", "AssignmentUsersManager", "GetDetailsManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core quiz assignment workflow with multi-step wizard. Complex state management across steps needs careful redesign.",
+      "complexity": "complex",
+      "lineCount": 435
+    },
+    {
+      "filePath": "Web/Quiz/CompletedQuizAssignments.aspx.cs",
+      "fileName": "CompletedQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_CompletedQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Displays a list of completed quiz assignments for the current user. Initializes grid via business layer delegation.",
+      "businessPurpose": "Shows users their completed quiz assignments with status and results information.",
+      "keyMethods": [
+        "Page_Load - Initializes completed quiz grid via ManageQuizAssignmentsBusiness",
+        "CheckForPermissions - Validates CompletedQuiz view privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simple list page. Migrate to React data table with API endpoint.",
+      "complexity": "simple",
+      "lineCount": 164
+    },
+    {
+      "filePath": "Web/Quiz/DesignQuiz.aspx.cs",
+      "fileName": "DesignQuiz.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_DesignQuiz",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Multi-step quiz design/creation form. Supports add and edit modes with encrypted quiz ID handling and step navigation control.",
+      "businessPurpose": "Enables administrators to design new quizzes or modify existing ones through a guided multi-step interface.",
+      "keyMethods": [
+        "Page_Load - Initializes quiz design wizard with encrypted ID support",
+        "BindTotalQuestionCount - Displays total question count for the quiz"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness"],
+      "migrationRelevance": "high",
+      "migrationNote": "Quiz builder interface needs significant redesign for React. Consider modern quiz builder patterns.",
+      "complexity": "complex",
+      "lineCount": 396
+    },
+    {
+      "filePath": "Web/Quiz/ImportQuizQuestions.aspx.cs",
+      "fileName": "ImportQuizQuestions.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ImportQuizQuestions",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Multi-step import wizard for bulk importing quiz questions from external files. Validates and processes imported question data.",
+      "businessPurpose": "Allows administrators to bulk-import quiz questions from files, reducing manual question entry for large question banks.",
+      "keyMethods": [
+        "Page_Load - Initializes import wizard with permission checks",
+        "btnStep1Next_Click - Processes step 1 and advances to field mapping"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "File import wizard. Should be reimplemented with modern file upload and parsing APIs.",
+      "complexity": "complex",
+      "lineCount": 401
+    },
+    {
+      "filePath": "Web/Quiz/IntegratedOnCallQuizAssignmentMenu.aspx.cs",
+      "fileName": "IntegratedOnCallQuizAssignmentMenu.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_IntegratedOnCallQuizAssignmentMenu",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Menu page for integrated on-call quiz assignments. Links the on-call scheduling system with quiz assignment functionality.",
+      "businessPurpose": "Provides an interface for creating quiz assignments tied to on-call schedules, integrating duty hours with learning assessments.",
+      "keyMethods": [
+        "Page_Load - Initializes on-call quiz assignment menu",
+        "btnCancel_Click - Redirects back to QuizMain"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["IntegratedOnCallQuizAssignmentBusiness", "AssignmentUsersManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Integration point between on-call scheduling and quiz modules. Cross-module dependency needs consideration.",
+      "complexity": "simple",
+      "lineCount": 124
+    },
+    {
+      "filePath": "Web/Quiz/ManageQuizAssignmentUsers.aspx.cs",
+      "fileName": "ManageQuizAssignmentUsers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ManageQuizAssignmentUsers",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Manages users assigned to a specific quiz assignment. Shows assignment details and user list with audit trail support for tracking changes.",
+      "businessPurpose": "Allows administrators to view and manage the list of users assigned to a particular quiz, including audit trail review of assignment history.",
+      "keyMethods": [
+        "Page_Load - Initializes user list with assignment details and audit trail support",
+        "CheckForPermissions - Validates OnboardingCredentialingAssign/CmeAssignments privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Assignment user management with audit trail. Standard migration to React list view.",
+      "complexity": "complex",
+      "lineCount": 437
+    },
+    {
+      "filePath": "Web/Quiz/ManageQuizAssignments.aspx.cs",
+      "fileName": "ManageQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ManageQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Central management page for quiz assignments with grid operations including delete, restore, pending/completed status tracking, and user assignment management.",
+      "businessPurpose": "Provides the primary administrative interface for managing all quiz assignments across the organization, with status tracking and user management.",
+      "keyMethods": [
+        "grdDeletedQuizUser_RowDataBound - Handles grid row rendering with delete/restore logic",
+        "Page_Load - Initializes assignment management grid"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "DutyHoursManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core assignment management page. Complex grid operations with Obout.Grid component need replacement.",
+      "complexity": "very-complex",
+      "lineCount": 797
+    },
+    {
+      "filePath": "Web/Quiz/ManageQuizQuestion.aspx.cs",
+      "fileName": "ManageQuizQuestion.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ManageQuizQuestion",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Management page for quiz questions organized by specialty and topic. Supports question grid binding, topic selection highlighting, and delete status checking.",
+      "businessPurpose": "Allows administrators to manage quiz questions organized by specialty areas and topics, with grid-based question listing and editing.",
+      "keyMethods": [
+        "Page_Load - Initializes question management with specialty/topic navigation",
+        "HighlightListItems - Highlights selected specialty and topic in navigation",
+        "CheckForPermissions - Validates ManageQuizQuestions add/edit privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness", "DesignQuizManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Question bank management interface. Consider a modern tree-based navigation pattern for specialty/topic hierarchy.",
+      "complexity": "complex",
+      "lineCount": 653
+    },
+    {
+      "filePath": "Web/Quiz/ModifyQuiz.aspx.cs",
+      "fileName": "ModifyQuiz.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ModifyQuiz",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Quiz list/modification page showing available quizzes with publish, voluntary/non-voluntary status toggle, and navigation to quiz designer.",
+      "businessPurpose": "Provides an overview of all quizzes with quick actions to modify quiz settings like publish status and voluntary designation.",
+      "keyMethods": [
+        "Page_Load - Initializes quiz listing",
+        "btnQuizDesign_Click - Navigates to quiz designer for new quiz creation",
+        "lbtnUpdate_Click - Updates quiz settings (voluntary/publish status)"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Quiz listing with inline status updates. Standard migration pattern.",
+      "complexity": "moderate",
+      "lineCount": 340
+    },
+    {
+      "filePath": "Web/Quiz/Pages/QuizAnalysis.aspx.cs",
+      "fileName": "QuizAnalysis.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_Pages_QuizAnalysis",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Quiz analysis filter page for generating various quiz performance reports. Supports department-level analysis with user type filtering and personal data restrictions.",
+      "businessPurpose": "Provides filter criteria for comprehensive quiz analysis reports, enabling administrators to evaluate quiz effectiveness across users and departments.",
+      "keyMethods": [
+        "Page_Load - Initializes analysis filter with role-based access and personal data controls",
+        "CheckForPermissions - Validates quiz analysis module access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SessionManager", "DutyHoursManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page. Follows standard report filter pattern.",
+      "complexity": "complex",
+      "lineCount": 778
+    },
+    {
+      "filePath": "Web/Quiz/Pages/QuizAnalysisReport.aspx.cs",
+      "fileName": "QuizAnalysisReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "QuizAnalysisReport",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Massive report rendering page supporting 5+ report types (Item Analysis, Respondent Tabulations, High/Low Score, Mean/Median/Range, etc.) with FusionCharts integration for data visualization.",
+      "businessPurpose": "Generates comprehensive quiz analysis reports with charts and data tables covering item analysis, score distributions, and performance metrics.",
+      "keyMethods": [
+        "Page_Load - Routes to different report types via switch statement and generates HTML with charts",
+        "CheckForPermissions - Validates report access privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["GetQuizReportData", "AssignmentInfoManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Very large report page (5664 lines) with FusionCharts integration. Needs complete redesign with modern charting library (Chart.js, Recharts).",
+      "complexity": "very-complex",
+      "lineCount": 5664
+    },
+    {
+      "filePath": "Web/Quiz/PendingQuizAssignments.aspx.cs",
+      "fileName": "PendingQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_PendingQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Displays pending quiz assignments for the current user with auto-launch support via encrypted query parameters and timezone-aware date handling.",
+      "businessPurpose": "Shows users their pending quiz assignments and supports direct quiz launch with encrypted parameter passing for security.",
+      "keyMethods": [
+        "Page_Load - Initializes pending quizzes grid with auto-launch support via encrypted URL parameters",
+        "CheckForPermissions - Validates pending quiz view privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "User-facing pending assignments list. Critical for learner experience. Auto-launch mechanism needs redesign.",
+      "complexity": "moderate",
+      "lineCount": 227
+    },
+    {
+      "filePath": "Web/Quiz/QuizAccessLogDetails.aspx.cs",
+      "fileName": "QuizAccessLogDetails.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizAccessLogDetails",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Quiz",
+      "summary": "Simple detail view for quiz assignment access logs showing who accessed a specific quiz assignment and when.",
+      "businessPurpose": "Provides audit trail information about quiz access for compliance and monitoring purposes.",
+      "keyMethods": [
+        "Page_Load - Loads access log details by UserQuizAssignmentLogID",
+        "BindData - Binds quiz assignment access user log data to grid"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["AssignmentInfoManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple audit log display. Integrate into quiz management detail views.",
+      "complexity": "trivial",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/Quiz/QuizAutoClosedDetails.aspx.cs",
+      "fileName": "QuizAutoClosedDetails.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizAutoClosedDetails",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Displays details about auto-closed or timed-out quiz assignments including quiz name, period, user, completion and closure dates, and the person who closed it.",
+      "businessPurpose": "Shows administrators the details of quizzes that were automatically closed due to timeout or manually closed, for audit and review purposes.",
+      "keyMethods": [
+        "Page_Load - Loads auto-closed quiz details",
+        "FillinfoViewMode - Populates detail labels from GetQuizClosedInfo, handles both auto-closed and completed/timeout scenarios"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["GetQuizUsers"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple detail view. Can be integrated into quiz assignment detail page.",
+      "complexity": "simple",
+      "lineCount": 67
+    },
+    {
+      "filePath": "Web/Quiz/QuizLogDetails.aspx.cs",
+      "fileName": "QuizLogDetails.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizLogDetails",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Displays quiz assignment log details including attempt history and event-based report information. Supports navigation to review pages based on quiz status.",
+      "businessPurpose": "Provides detailed logging information for quiz assignments, showing attempt history and enabling navigation to quiz review.",
+      "keyMethods": [
+        "Page_Load - Loads quiz log data and event reports",
+        "lbtnReview_Click - Redirects to appropriate review page based on quiz status"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "EventManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Log detail view. Standard migration to React detail component.",
+      "complexity": "simple",
+      "lineCount": 108
+    },
+    {
+      "filePath": "Web/Quiz/QuizMain.aspx.cs",
+      "fileName": "QuizMain.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_Pages_QuizMainPage",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Main navigation/menu page for the Quiz (Learning) module. Controls visibility of menu sections including quiz management, learning assignments, and timesheet features based on user permissions and department settings.",
+      "businessPurpose": "Serves as the central hub for the Quiz/Learning module, providing role-based navigation to all quiz and learning assignment features.",
+      "keyMethods": [
+        "Page_Load - Initializes menu visibility based on permissions, role restrictions, and department settings",
+        "CheckForPermissions - Validates GA-Emergency and GA-User role access to QuizMain",
+        "InitializePage - Complex menu item visibility logic based on sub-module privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["DesignQuizManager", "DepartmentManager", "SessionManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Navigation menu page. Becomes part of React sidebar/navigation with permission-based rendering.",
+      "complexity": "complex",
+      "lineCount": 934
+    },
+    {
+      "filePath": "Web/Quiz/QuizQuestion.aspx.cs",
+      "fileName": "QuizQuestion.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizQuestion",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Add/Edit form for individual quiz questions. Supports question creation with answer options and correct answer selection via radio buttons.",
+      "businessPurpose": "Enables administrators to create and edit quiz questions with multiple choice answers and correct answer designation.",
+      "keyMethods": [
+        "Page_Load - Initializes question form with mode detection and correct answer radio button setup",
+        "CheckForPermissions - Validates ManageQuizQuestions add/edit privileges",
+        "btnAddQA_Click - Handles question/answer save"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness", "AssignmentInfoManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core question editor. Needs modern form builder approach in React.",
+      "complexity": "moderate",
+      "lineCount": 196
+    },
+    {
+      "filePath": "Web/Quiz/QuizReminderScheduler.aspx.cs",
+      "fileName": "QuizReminderScheduler.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizReminderScheduler",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Quiz",
+      "summary": "Scheduler endpoint that triggers quiz reminder email processing. Called by Windows services or scheduled tasks to send pending quiz reminders.",
+      "businessPurpose": "Automated endpoint for processing and sending quiz assignment reminder emails to users with pending assignments.",
+      "keyMethods": [
+        "Page_Load - Triggers quiz reminder processing via QuizReportBusiness.OnViewInitializeQuizReminder"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness"],
+      "migrationRelevance": "high",
+      "migrationNote": "Scheduler endpoint should become a BullMQ worker job in the Node.js backend. Currently invoked by Windows Services.",
+      "complexity": "trivial",
+      "lineCount": 28
+    },
+    {
+      "filePath": "Web/Quiz/QuizSubmissionMessage.aspx.cs",
+      "fileName": "QuizSubmissionMessage.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_QuizSubmissionMessage",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Quiz",
+      "summary": "Post-submission message page showing quiz results after completion. Displays pass/fail status and provides navigation to return to pending quizzes.",
+      "businessPurpose": "Shows users their quiz results immediately after submission, including score and pass/fail determination.",
+      "keyMethods": [
+        "Page_Load - Loads quiz results and displays submission message",
+        "GetQuizResult - Retrieves and displays quiz completion results",
+        "btnStartOtherQuiz_Click - Navigates to pending quizzes page"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "DesignQuizManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Post-submission feedback page. Should be a React modal or page component.",
+      "complexity": "moderate",
+      "lineCount": 369
+    },
+    {
+      "filePath": "Web/Quiz/Reports/DetailedQuizAssignments.aspx.cs",
+      "fileName": "DetailedQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_DetailedQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Report filter page for Detailed Quiz Assignments report with user/department filtering and back-to-filter navigation support.",
+      "businessPurpose": "Provides filter criteria for generating detailed quiz assignment reports showing individual assignment completion data.",
+      "keyMethods": [
+        "Page_Load - Initializes report filter with permission checks and back-filter support",
+        "CheckForPermissions - Validates DetailedQuizAssignmentsReport privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard report filter page. Follow established migration pattern.",
+      "complexity": "complex",
+      "lineCount": 431
+    },
+    {
+      "filePath": "Web/Quiz/Reports/DetailedQuizAssignmentsResult.aspx.cs",
+      "fileName": "DetailedQuizAssignmentsResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_DetailedQuizAssignmentsResult",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Renders the Detailed Quiz Assignments report results using parent repeater pattern with back-to-filter navigation support.",
+      "businessPurpose": "Displays detailed quiz assignment data organized by parent groupings with drill-down capabilities.",
+      "keyMethods": [
+        "Page_Load - Loads and renders detailed report data using parent repeater binding",
+        "CheckForPermissions - Validates report access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report result with repeater pattern. Migrate to React table with grouping.",
+      "complexity": "moderate",
+      "lineCount": 308
+    },
+    {
+      "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignments.aspx.cs",
+      "fileName": "LedgerOfQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_LedgerOfQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Report filter page for Ledger of Quiz Assignments report with personal data restriction and user type filtering.",
+      "businessPurpose": "Provides filter interface for generating ledger-style quiz assignment reports tracking all assignments and their status.",
+      "keyMethods": [
+        "Page_Load - Initializes ledger report filter with personal data restrictions",
+        "CheckForPermissions - Validates LedgerofQuizAssignmentsReport privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard report filter page.",
+      "complexity": "moderate",
+      "lineCount": 338
+    },
+    {
+      "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignmentsResult.aspx.cs",
+      "fileName": "LedgerOfQuizAssignmentsResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_LedgerOfQuizAssignmentsResult",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Renders the Ledger of Quiz Assignments report with parent repeater pattern, back-to-filter navigation, and session-based user type persistence.",
+      "businessPurpose": "Displays ledger report of all quiz assignments with completion status and user type filtering.",
+      "keyMethods": [
+        "Page_Load - Renders ledger report with personal data filtering and back-to-filter support"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report result with repeater pattern and session state.",
+      "complexity": "moderate",
+      "lineCount": 323
+    },
+    {
+      "filePath": "Web/Quiz/Reports/SummaryQuizAssignments.aspx.cs",
+      "fileName": "SummaryQuizAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_SummaryQuizAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Report filter page for Summary Quiz Performance report with user/department filtering and back-to-filter support.",
+      "businessPurpose": "Provides filter criteria for generating summary quiz performance reports showing aggregated scores and completion rates.",
+      "keyMethods": [
+        "Page_Load - Initializes performance report filter with permission checks",
+        "CheckForPermissions - Validates SummaryQuizPerformanceReport privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard report filter page.",
+      "complexity": "complex",
+      "lineCount": 430
+    },
+    {
+      "filePath": "Web/Quiz/Reports/SummaryQuizAssignmentsResult.aspx.cs",
+      "fileName": "SummaryQuizAssignmentsResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_SummaryQuizAssignmentsResult",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Renders Summary Quiz Performance report with sort options and personal data filtering. Supports multiple sort modes (by name, score, etc.).",
+      "businessPurpose": "Displays aggregated quiz performance data with configurable sorting for administrative review.",
+      "keyMethods": [
+        "Page_Load - Renders summary report with sort options and personal data filtering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizReportBusiness", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report result with sort options. Standard migration approach.",
+      "complexity": "complex",
+      "lineCount": 384
+    },
+    {
+      "filePath": "Web/Quiz/ReviewAttemptedQuiz.aspx.cs",
+      "fileName": "ReviewAttemptedQuiz.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ReviewAttemptedQuiz",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Quiz",
+      "summary": "Displays a completed quiz attempt for review, showing questions, user answers, correct answers, score, and pass/fail status. Supports popup mode.",
+      "businessPurpose": "Allows users and administrators to review completed quiz attempts with full question/answer detail and scoring information.",
+      "keyMethods": [
+        "Page_Load - Initializes quiz review with popup mode detection",
+        "rptQuestionAnswers_ItemDataBound - Renders each question/answer pair with correct answer highlighting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Quiz review component. Should be a reusable React component.",
+      "complexity": "simple",
+      "lineCount": 49
+    },
+    {
+      "filePath": "Web/Quiz/ReviewCompletedQuizzes.aspx.cs",
+      "fileName": "ReviewCompletedQuizzes.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ReviewCompletedQuizzes",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Administrative review page for completed quizzes with search/filter capabilities, session-based grid state persistence, and NewRelic error tracking integration.",
+      "businessPurpose": "Enables administrators to search and review completed quiz submissions across users with filtering and pagination.",
+      "keyMethods": [
+        "Page_Load - Initializes review grid with session-based state persistence",
+        "refreshGrid - Rebinds grid with current search criteria",
+        "FillFilters - Populates filter dropdowns"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "DutyHoursManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Search/filter grid with session state. Migrate to API-driven search with React state management.",
+      "complexity": "moderate",
+      "lineCount": 324
+    },
+    {
+      "filePath": "Web/Quiz/ShareQuizTemplates.aspx.cs",
+      "fileName": "ShareQuizTemplates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ShareQuizTemplates",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Page for sharing quiz templates between departments/users. Manages quiz template access rights with admin-view-only restriction.",
+      "businessPurpose": "Allows administrators to share quiz designs as templates with other departments, enabling quiz reuse across the organization.",
+      "keyMethods": [
+        "Page_Load - Initializes template sharing interface with permission checks",
+        "CheckForPermissions - Requires ManageQuizTemplates AdminView privilege"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness", "UserManager", "UserBusiness", "GetDetailsManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Cross-department sharing feature. Design API with proper authorization for template sharing.",
+      "complexity": "moderate",
+      "lineCount": 335
+    },
+    {
+      "filePath": "Web/Quiz/SubmitQuizAssignment.aspx.cs",
+      "fileName": "SubmitQuizAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_SubmitQuizAssignment",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Quiz",
+      "summary": "Core quiz-taking page where users answer quiz questions. Handles question display, answer selection, timing, browser detection, learning assignment integration, and comprehensive quiz access logging.",
+      "businessPurpose": "The primary interface where users take assigned quizzes, with timed responses, progress tracking, browser logging, and integration with learning assignments.",
+      "keyMethods": [
+        "Page_Load - Complex initialization with quiz state management, access logging, and learning assignment flag handling",
+        "StorePageState - ViewState management for quiz state",
+        "BrowserDetails - Captures browser information for access logging"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core quiz-taking experience. Requires careful migration for timing, state management, and access logging. Critical user-facing page.",
+      "complexity": "very-complex",
+      "lineCount": 1046
+    },
+    {
+      "filePath": "Web/Quiz/SubmitVoluntaryQuizAssignment.aspx.cs",
+      "fileName": "SubmitVoluntaryQuizAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_SubmitVoluntaryQuizAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Lists available voluntary (self-selected) quiz assignments for users to take on their own initiative.",
+      "businessPurpose": "Allows users to browse and take voluntary quizzes that are not formally assigned, supporting self-directed learning.",
+      "keyMethods": [
+        "Page_Load - Initializes voluntary quiz listing",
+        "CheckForPermissions - Validates VoluntaryQuiz add privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Voluntary quiz listing. Simple migration to React list component.",
+      "complexity": "simple",
+      "lineCount": 141
+    },
+    {
+      "filePath": "Web/Quiz/SubmitedQuizAssignmentResult.aspx.cs",
+      "fileName": "SubmitedQuizAssignmentResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_SubmitedQuizAssignmentResult",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Post-submission results page for quiz assignments showing detailed results with navigation context awareness (OBC, learning assignment, standard quiz flow).",
+      "businessPurpose": "Displays quiz results after submission with context-aware navigation back to the originating workflow (onboarding, learning assignment, or standalone quiz).",
+      "keyMethods": [
+        "Page_Load - Initializes results with multiple context parameters (page source, learning assignment, OBC, view mode)"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ManageQuizAssignmentsBusiness", "DesignQuizManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Results page with context-aware navigation. Important for workflow integration.",
+      "complexity": "complex",
+      "lineCount": 627
+    },
+    {
+      "filePath": "Web/Quiz/ViewQuiz.aspx.cs",
+      "fileName": "ViewQuiz.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Quiz_ViewQuiz",
+      "inheritsFrom": "BasePage",
+      "module": "Quiz",
+      "summary": "Read-only quiz preview page for administrators to review quiz content before assigning. Shows quiz structure and questions without answer interaction.",
+      "businessPurpose": "Allows administrators to preview a quiz design and its questions in read-only mode before publishing or assigning.",
+      "keyMethods": [
+        "Page_Load - Initializes quiz preview",
+        "CheckForPermissions - Validates ManageAssignments view privileges",
+        "btnBack_Click - Returns to ModifyQuiz with mode context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["QuizBusiness"],
+      "migrationRelevance": "low",
+      "migrationNote": "Read-only preview. Can be combined with quiz detail view in React.",
+      "complexity": "simple",
+      "lineCount": 69
+    }
+  ],
+  "directoryOverview": "The Quiz module provides a comprehensive assessment and testing system for medical education programs. It supports the full lifecycle of quiz management including quiz design, question bank management (organized by specialty/topic), question import, assignment creation with multi-step wizards, quiz taking with timed responses and browser logging, results review, and template sharing across departments. The module integrates with learning assignments and on-call scheduling, and includes three report types (Detailed, Ledger, Summary) plus a comprehensive analysis report with FusionCharts visualization. The architecture uses extensive business layer delegation through QuizBusiness and ManageQuizAssignmentsBusiness classes.",
+  "keyWorkflows": [
+    "Quiz design with multi-step wizard for question creation and quiz configuration",
+    "Quiz assignment with user/group selection, scheduling, and period configuration",
+    "Quiz taking with timed responses, browser logging, and access audit trail",
+    "Quiz results review with pass/fail scoring and question-level analysis",
+    "Question bank management organized by specialty and topic hierarchy",
+    "Quiz question import from external files",
+    "Quiz template sharing across departments",
+    "Voluntary quiz self-enrollment for self-directed learning",
+    "Quiz reminder scheduling via automated endpoints",
+    "Three report types: Detailed Assignments, Ledger, Summary Performance plus Analysis Report with charts"
+  ]
+}

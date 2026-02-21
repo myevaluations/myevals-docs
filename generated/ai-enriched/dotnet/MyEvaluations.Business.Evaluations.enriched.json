@@ -1,0 +1,166 @@
+{
+  "module": "MyEvaluations.Business.Evaluations",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": true,
+  "overview": "The Evaluations module is the foundational core of the MyEvaluations platform, responsible for the entire lifecycle of trainee and faculty evaluations across GME, CME, Nursing, and PA programs. This module manages evaluation form templates, question authoring, answer scales, evaluation scheduling and assignment, rotation-based evaluation triggers, clinical encounter summaries, burnout assessments, quick (ad-hoc) evaluations, patient diagnosis logging, and data export. With 43 classes and 10 Manager classes, the module follows the standard Manager/Info pattern.",
+  "architecture": "## Architecture Overview\n\nThe **Evaluations** module is the foundational core of the MyEvaluations platform, responsible for the entire lifecycle of trainee and faculty evaluations across GME, CME, Nursing, and PA programs. This module manages evaluation form templates, question authoring, answer scales, evaluation scheduling and assignment, rotation-based evaluation triggers, clinical encounter summaries, burnout assessments, quick (ad-hoc) evaluations, patient diagnosis logging, and data export.\n\nWith **43 classes** and **10 Manager classes**, the module follows the standard Manager/Info pattern. Manager classes encapsulate all business logic and orchestrate SQL Server stored procedure calls through a DataAccess layer, while Info classes serve as DTOs carrying data between layers. The module integrates tightly with the Scheduling, Rotations, and Users modules to determine who evaluates whom, when, and using which template.\n\nKey architectural characteristics:\n- **Template-driven design**: Evaluation forms are built from reusable templates containing questions, answer scales, and descriptive criteria\n- **Rotation-linked scheduling**: Evaluations are automatically generated based on rotation assignments, academic year blocks, shifts, clinics, and call schedules\n- **Multi-audience support**: Evaluations can target different user types (residents, faculty, nurses, PAs) with audience-specific templates\n- **PGY-level specificity**: Templates and rotation linkages can be configured per PGY (Post-Graduate Year) level\n- **Annual program reporting**: Supports ACGME Annual Program Evaluation through demographic and archival data aggregation",
+  "managerPattern": "Manager/Info pattern detected",
+  "storedProcedures": "GetDepartmentInfo, GetGeneralDemographicsInfoByUserID, GetUserInfoByDepartmentID, GetFlagArchivedDetailsByUserID, GetClinicalTasks, GetInformationSource, GetMainTeachingPoints, GetEBMor, GetEBMee, GetCriteriaList, GetCriteriaDetailsByCriterionID, AddCriteria, DeleteCriteria, UpdateCriteria, DoesCriteriaExists, GenerateEvaluationSchedules, GetEvaluationSchedules, GetLogOfEvaluationAssignments, GetLogEvaluationAssignments, SendNoAttendingOverlapNotifications, GetRotationNames, GetRotationNamesNew, GetRotationsByAcademicYear, GetShiftsByAcademicYear, GetClinicsByAcademicYear, GetCallsByAcademicYear, GetRotationsByAcademicYearNew, GetEvaluationsByRotation, GetEvaluationsByShift, GetEvaluationsByCalls, GetEvaluationsByClinics, GetAudienceAndSubject, GetRotationPrimaryActivityTypes, GetRotationGapDays, GetFieldsForLinkRotationTemplate, GetFieldsForLinkRotationTemplateIsPGYSpcific, DeleteTemplateRotation, AddTemplateRotation, AddTemplateRotationIsPGYSpecific, GetDistinctTemplateRotationInfo, GetDataForEvaluationExport, GetDataForEvaluationExport1, GetPatientAgeList, GetPatientDemographicTypeList, GetPatientDemographicSettingList, GetExamComplexityList, GetMinutesList, GetPatientProblemFocusList, GetGenderList, GetMCXInfo, AddMCXInfo, GetListOfQuestionGroups, DeleteQuestionGroup, DoesQuestionGroupNameExists, AddQuestionGroup, GetListOfQuestionsByGroupId, DeleteQuestionFromGroup, GetListOfQuestionsByAudienceId, AddQuestionToGroup, GetUserTypesForEvaluations, GetQuickEvaluationByDepartment, GetQuickEvaulationByUserType, GetUserScheduledRotations, AddQuickEvaluation, UpdateQuickEvaluation",
+  "keyClasses": [
+    {
+      "name": "EvaluationSchedulesManager",
+      "purpose": "Core evaluation scheduling engine -- generates and manages evaluation assignments based on rotation/shift/clinic/call schedules",
+      "keyMethods": ["GenerateEvaluationSchedules", "GetEvaluationsByRotation", "GetAudienceAndSubject"]
+    },
+    {
+      "name": "EvaluationsRotationsManager",
+      "purpose": "Template-rotation linkage management with PGY-specific configuration",
+      "keyMethods": ["AddTemplateRotation", "AddTemplateRotationIsPGYSpecific", "GetRotationGapDays"]
+    },
+    {
+      "name": "QuickEvaluationsManager",
+      "purpose": "Ad-hoc evaluation creation outside the scheduled workflow",
+      "keyMethods": ["AddQuickEvaluation", "UpdateQuickEvaluation", "GetUserScheduledRotations"]
+    },
+    {
+      "name": "DescriptiveCriteriaManager",
+      "purpose": "Manages descriptive rubric-style criteria for evaluation questions",
+      "keyMethods": ["AddCriteria", "UpdateCriteria", "DoesCriteriaExists"]
+    },
+    {
+      "name": "ClinicalSummaryManager",
+      "purpose": "Clinical encounter documentation including EBM assessments",
+      "keyMethods": ["GetClinicalTasks", "GetEBMor", "GetEBMee"]
+    },
+    {
+      "name": "PatientProblemDiagnosisManager",
+      "purpose": "Mini-CEX patient demographics and diagnosis data management",
+      "keyMethods": ["GetMCXInfo", "AddMCXInfo", "GetExamComplexityList"]
+    },
+    {
+      "name": "QuestionGroupManager",
+      "purpose": "Reusable question library organization across evaluation templates",
+      "keyMethods": ["AddQuestionGroup", "AddQuestionToGroup", "GetListOfQuestionsByGroupId"]
+    },
+    {
+      "name": "ExportEvaluationManager",
+      "purpose": "Bulk evaluation data export for reporting and analysis",
+      "keyMethods": ["GetDataForEvaluationExport"]
+    },
+    {
+      "name": "AnnualProgramReportManager",
+      "purpose": "ACGME Annual Program Evaluation report generation with demographic aggregation",
+      "keyMethods": ["GetDepartmentInfo", "GetGeneralDemographicsInfoByUserID"]
+    },
+    {
+      "name": "EvaluationsInfo",
+      "purpose": "Primary evaluation DTO carrying evaluation form data between layers",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluationsTemplateInfo",
+      "purpose": "Evaluation template DTO defining form structure",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluateInfo",
+      "purpose": "Evaluation submission container holding answers, criterions, burnout data, and comments",
+      "keyMethods": []
+    },
+    {
+      "name": "AnswerInfo",
+      "purpose": "Evaluation answer DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "AnswerScaleInfo",
+      "purpose": "Answer scale configuration DTO (e.g., Likert scales)",
+      "keyMethods": []
+    },
+    {
+      "name": "QuestionInfo",
+      "purpose": "Evaluation question DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "BurnOutInfo",
+      "purpose": "Burnout assessment data DTO for resident wellness tracking",
+      "keyMethods": []
+    },
+    {
+      "name": "ClinicalSummaryInfo",
+      "purpose": "Clinical encounter summary DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "PatientProblemDiagnosisInfo",
+      "purpose": "Mini-CEX patient data DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluationScheduleInfo",
+      "purpose": "Evaluation schedule assignment DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "QuickEvaluationInfo",
+      "purpose": "Quick (ad-hoc) evaluation DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluationSearchCriteria",
+      "purpose": "Search filter DTO for querying evaluations",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluationsTemplateSearchCriteria",
+      "purpose": "Search filter DTO for querying evaluation templates",
+      "keyMethods": []
+    },
+    {
+      "name": "EvaluationAssignmentUsersInfoLog",
+      "purpose": "Audit log entry DTO tracking evaluation assignment changes",
+      "keyMethods": []
+    },
+    {
+      "name": "AnnualProgramEvaluationSettings",
+      "purpose": "Configuration settings for Annual Program Evaluation reports",
+      "keyMethods": []
+    },
+    {
+      "name": "FavoriteSettingsInfo",
+      "purpose": "User evaluation preference settings DTO",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [
+    "Evaluations are automatically generated when rotation schedules are published, linking evaluators to evaluatees based on schedule overlap",
+    "Each evaluation template can be linked to specific rotations, and these linkages can be PGY-specific (different forms for PGY-1 vs PGY-3)",
+    "Quick evaluations allow faculty to create ad-hoc evaluations outside the scheduled workflow, but still require rotation context",
+    "Descriptive criteria names must be unique within their scope (enforced by DoesCriteriaExists validation)",
+    "Question group names must be unique (enforced by DoesQuestionGroupNameExists validation)",
+    "Evaluation assignments generate audit logs tracking who was assigned, when, and any changes",
+    "No-attending-overlap notifications are sent when rotation schedules do not have matching faculty coverage",
+    "Clinical summaries capture evidence-based medicine (EBM) data for both evaluators and evaluatees separately",
+    "Mini-CEX assessments require patient demographic data including age, gender, problem focus, exam complexity, and encounter duration",
+    "Evaluation export supports multiple export formats (indicated by GetDataForEvaluationExport and GetDataForEvaluationExport1 variants)",
+    "Annual program reports aggregate demographic and archival data per department for ACGME compliance",
+    "Evaluations span four schedule types: rotations, shifts, clinics, and calls -- each with dedicated query paths",
+    "Burnout assessment data (BurnOutInfo, EvaluationBurnOut) is captured as part of the evaluation workflow"
+  ],
+  "migrationNotes": [
+    "High complexity, high risk: This is the core module of the platform. Migration should be incremental, starting with read-only endpoints (exports, reports) before touching evaluation creation/scheduling",
+    "EvaluationSchedulesManager is the critical path: With 17 stored procedures and the schedule generation engine, this manager should be migrated last or in a dedicated phase. Consider running both .NET and NestJS versions in parallel during transition",
+    "Template-rotation linkage: The PGY-specific template-rotation binding logic is complex and must be thoroughly tested. Consider extracting this into a dedicated NestJS service with comprehensive unit tests",
+    "Question groups and criteria: These are relatively self-contained CRUD operations and good candidates for early migration with minimal cross-module dependencies",
+    "Clinical summaries and Mini-CEX: These features have healthcare-specific validation (EBM scoring, patient demographics) that must be preserved exactly during migration",
+    "Quick evaluations: The ad-hoc workflow depends on active rotation context (GetUserScheduledRotations), creating a dependency on the scheduling module",
+    "Audit logging: The evaluation assignment log (GetLogOfEvaluationAssignments) must be preserved or replaced with equivalent NestJS audit middleware",
+    "Dual stored procedure variants: Several procedures have 'New' variants (e.g., GetRotationNamesNew, GetRotationsByAcademicYearNew), suggesting incremental schema evolution. The NestJS migration should target only the latest variants",
+    "Burnout assessment: The BurnOutInfo and EvaluationBurnOut classes indicate wellness tracking that may have regulatory reporting requirements",
+    "Export compatibility: ExportEvaluationManager likely generates specific file formats. Ensure the NestJS replacement produces byte-identical output during the transition period",
+    "Notification system: SendNoAttendingOverlapNotifications integrates with the platform's notification infrastructure. Map this to NestJS BullMQ workers for async processing"
+  ],
+  "mermaidDiagram": "graph TD\n    A[Program Admin] -->|Creates| B[Evaluation Template]\n    B -->|Defines| C[Questions & Answer Scales]\n    B -->|Links to| D[Rotations / Shifts / Clinics / Calls]\n    C -->|Groups into| E[Question Groups]\n    C -->|Attaches| F[Descriptive Criteria]\n\n    D -->|Triggers| G[EvaluationSchedulesManager]\n    G -->|Generates| H[Evaluation Assignments]\n    H -->|Assigns to| I[Evaluator - Faculty/Peer]\n    H -->|Targets| J[Evaluatee - Trainee]\n\n    I -->|Completes| K[Evaluation Response]\n    K -->|Records| L[Answers + Comments]\n    K -->|Optionally captures| M[Clinical Summary]\n    K -->|Optionally captures| N[Mini-CEX / Patient Diagnosis]\n    K -->|Optionally captures| O[Burnout Assessment]\n\n    L -->|Exported by| P[ExportEvaluationManager]\n    H -->|Logged by| Q[Assignment Audit Log]\n    G -->|Checks| R[Attending Overlap Validation]\n    R -->|Sends| S[No-Overlap Notifications]\n\n    I -->|Can also create| T[QuickEvaluationsManager]\n    T -->|Creates| K\n\n    P -->|Feeds| U[Annual Program Report]\n    U -->|Generated by| V[AnnualProgramReportManager]",
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.Evaluations\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.Evaluations module\"\nsidebar_label: \"Evaluations\"\ntags: [dotnet, business-layer, priority]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Architecture Overview\n\nThe **Evaluations** module is the foundational core of the MyEvaluations platform, responsible for the entire lifecycle of trainee and faculty evaluations across GME, CME, Nursing, and PA programs. This module manages evaluation form templates, question authoring, answer scales, evaluation scheduling and assignment, rotation-based evaluation triggers, clinical encounter summaries, burnout assessments, quick (ad-hoc) evaluations, patient diagnosis logging, and data export.\n\nWith **43 classes** and **10 Manager classes**, the module follows the standard Manager/Info pattern."
+}

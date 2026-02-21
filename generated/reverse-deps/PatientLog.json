@@ -1,0 +1,265 @@
+{
+  "module": "PatientLog",
+  "businessClasses": [
+    "CaseReviewInfo",
+    "CaseReviewManager",
+    "EducationDXInfo",
+    "EducationDXManager",
+    "EducationDXSearchCriteria",
+    "EncounterTypeInfo",
+    "EncounterTypeManager",
+    "EncounterTypeSearchCriteria",
+    "ExportPatientLogInfo",
+    "ExportPatientLogManager",
+    "ImportPatientLogInfo",
+    "ImportPatientLogManager",
+    "LocationNameInfo",
+    "LocationNameManager",
+    "LocationNameSearchCriteria",
+    "PatientLogFieldGroupsInfo",
+    "PatientLogFieldInfo",
+    "PatientLogFieldsGroupManager",
+    "PatientLogFieldsManager",
+    "PatientLogInfo",
+    "PatientLogLookupItemInfo",
+    "PatientLogLookupItemManager",
+    "PatientLogManager",
+    "PatientLogReportManager",
+    "PatientLogSearchCriteria",
+    "PatientLogSupervisorInfo",
+    "PatientLogSupervisorsManager",
+    "ProcedureSelection",
+    "SubmitPatientLogCustomizations"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "AssignEvaluations.aspx.cs",
+        "filePath": "Web/BSNProgram/AssignEvaluations.aspx.cs",
+        "directory": "Web/BSNProgram",
+        "module": "BSNProgram"
+      },
+      {
+        "fileName": "ClinicalLogReviews.aspx.cs",
+        "filePath": "Web/EssentialActivities/ClinicalLogReviews.aspx.cs",
+        "directory": "Web/EssentialActivities",
+        "module": "EssentialActivities"
+      },
+      {
+        "fileName": "DevFNPRecords.aspx.cs",
+        "filePath": "Web/EssentialActivities/DevFNPRecords.aspx.cs",
+        "directory": "Web/EssentialActivities",
+        "module": "EssentialActivities"
+      },
+      {
+        "fileName": "EvaluationsAssignments.aspx.cs",
+        "filePath": "Web/EssentialActivities/EvaluationsAssignments.aspx.cs",
+        "directory": "Web/EssentialActivities",
+        "module": "EssentialActivities"
+      },
+      {
+        "fileName": "FNPClinicalLogForm.aspx.cs",
+        "filePath": "Web/EssentialActivities/FNPClinicalLogForm.aspx.cs",
+        "directory": "Web/EssentialActivities",
+        "module": "EssentialActivities"
+      },
+      {
+        "fileName": "FNPRecords.aspx.cs",
+        "filePath": "Web/EssentialActivities/FNPRecords.aspx.cs",
+        "directory": "Web/EssentialActivities",
+        "module": "EssentialActivities"
+      },
+      {
+        "fileName": "AddMilestonePatientLog.aspx.cs",
+        "filePath": "Web/Evaluations/AddMilestonePatientLog.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "DetailedLearningAssignmentsResult.aspx.cs",
+        "filePath": "Web/LearningAssignment/Reports/DetailedLearningAssignmentsResult.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "AjaxOperations.aspx.cs",
+        "filePath": "Web/PatientLog/AjaxOperations.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "EducationDX.aspx.cs",
+        "filePath": "Web/PatientLog/EducationDX.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "EncounterType.aspx.cs",
+        "filePath": "Web/PatientLog/EncounterType.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ExportPatientLog.aspx.cs",
+        "filePath": "Web/PatientLog/ExportPatientLog.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ImportPatientLogStep2.aspx.cs",
+        "filePath": "Web/PatientLog/ImportPatientLogStep2.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ImportPatientLogStep3.aspx.cs",
+        "filePath": "Web/PatientLog/ImportPatientLogStep3.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "Location.aspx.cs",
+        "filePath": "Web/PatientLog/Location.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManageEducationDX.aspx.cs",
+        "filePath": "Web/PatientLog/ManageEducationDX.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManageEncounterTypes.aspx.cs",
+        "filePath": "Web/PatientLog/ManageEncounterTypes.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManageLocationNames.aspx.cs",
+        "filePath": "Web/PatientLog/ManageLocationNames.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManagePatientLogCustomFields.aspx.cs",
+        "filePath": "Web/PatientLog/ManagePatientLogCustomFields.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManagePatientLogFields.aspx.cs",
+        "filePath": "Web/PatientLog/ManagePatientLogFields.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "ManagePatientLogs.aspx.cs",
+        "filePath": "Web/PatientLog/ManagePatientLogs.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientCaseReview.aspx.cs",
+        "filePath": "Web/PatientLog/PatientCaseReview.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientLogCustomField.aspx.cs",
+        "filePath": "Web/PatientLog/PatientLogCustomField.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientLogSubmitDetails.aspx.cs",
+        "filePath": "Web/PatientLog/PatientLogSubmitDetails.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "DXDepartmentPatientLogResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/DXDepartmentPatientLogResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "DepartmentPatientLogResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/DepartmentPatientLogResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "DetailedPatientLogResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/DetailedPatientLogResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientLogByCategoryResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/PatientLogByCategoryResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientLogByDXClassificationResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/PatientLogByDXClassificationResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "PatientLogSummaryResult.aspx.cs",
+        "filePath": "Web/PatientLog/Reports/PatientLogSummaryResult.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "RestoreDeletedSubmittedPatientLog.aspx.cs",
+        "filePath": "Web/PatientLog/RestoreDeletedSubmittedPatientLog.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "SelectPatientLogSupervisors.aspx.cs",
+        "filePath": "Web/PatientLog/SelectPatientLogSupervisors.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "SubmitPatientLog.aspx.cs",
+        "filePath": "Web/PatientLog/SubmitPatientLog.aspx.cs",
+        "directory": "Web/PatientLog",
+        "module": "PatientLog"
+      },
+      {
+        "fileName": "EducationDXSelect.ascx.cs",
+        "filePath": "Web/UserControls/Common/EducationDXSelect.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Common"
+      },
+      {
+        "fileName": "EncounterTypeSelect.ascx.cs",
+        "filePath": "Web/UserControls/Common/EncounterTypeSelect.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Common"
+      },
+      {
+        "fileName": "LocationSelect.ascx.cs",
+        "filePath": "Web/UserControls/Common/LocationSelect.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Common"
+      },
+      {
+        "fileName": "LookupField.ascx.cs",
+        "filePath": "Web/UserControls/Common/LookupField.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Common"
+      }
+    ],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 37,
+    "schedulers": 0
+  }
+}

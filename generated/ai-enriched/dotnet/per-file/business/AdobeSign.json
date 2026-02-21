@@ -1,0 +1,211 @@
+{
+  "directory": "Business.AdobeSign",
+  "layer": "business",
+  "generatedAt": "2026-02-21T12:57:06.033Z",
+  "fileCount": 8,
+  "files": [
+    {
+      "filePath": "Business.AdobeSign/AdobeJwtHelper.cs",
+      "fileName": "AdobeJwtHelper.cs",
+      "fileType": "business",
+      "className": "AdobeJwtHelper",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Builds and exchanges a JWT assertion (RS256, signed with a PFX private key) against Adobe IMS to obtain an OAuth access token. Reads all settings from Web.config (client ID, org ID, technical account, metascopes, PFX path/password, token endpoint) and performs a full server-to-server JWT exchange flow.",
+      "businessPurpose": "Enables non-interactive server-to-server Adobe Sign authentication so the application can call the Adobe Sign API without user involvement, supporting e-signature workflows for GME program documents.",
+      "keyMethods": [
+        "Base64UrlEncode(byte[]) - URL-safe Base64 encoder used for JWT header and payload segments",
+        "Base64UrlEncode(string) - Convenience overload that encodes a UTF-8 string",
+        "ExchangeJwtAsync() - Builds and signs a JWT assertion using the configured PFX certificate, then exchanges it at the Adobe IMS token endpoint for an AdobeTokenResponse"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AdobeSignTokenStore"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Implements the JWT server-to-server OAuth flow required for Adobe Sign integration. The Node.js migration must replicate this flow (or use Adobe's OAuth Server-to-Server credential type) to continue sending e-signature requests.",
+      "complexity": "moderate",
+      "lineCount": 183
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeOAuthHelper.cs",
+      "fileName": "AdobeOAuthHelper.cs",
+      "fileType": "business",
+      "className": "AdobeOAuthHelper",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Provides static async helpers for the Adobe Sign OAuth 2.0 authorization code and refresh token flows, including authorization URL construction, token endpoint URL derivation, and diagnostic token persistence. Also defines the AdobeTokenResponse DTO used across the AdobeSign module.",
+      "businessPurpose": "Handles interactive and refresh-based OAuth token exchange with Adobe Sign so that user-authorized e-signature sessions can be initiated and maintained across application restarts.",
+      "keyMethods": [
+        "ExchangeAuthorizationCodeAsync(string) - Exchanges an OAuth authorization code for an access token and refresh token",
+        "ExchangeRefreshTokenAsync(string) - Exchanges a stored refresh token for a new access token",
+        "BuildAuthorizationUrl() - Constructs the redirect URL for user-facing OAuth consent",
+        "BuildTokenEndpoint(string) - Derives the token endpoint URL from the configured API base URL",
+        "DumpTokenJsonForDebug(string) - Persists raw token JSON to App_Data for diagnostics",
+        "SaveOrganizationTokenJson(string) - Persists organization-level IMS token for diagnostics"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AdobeSignTokenStore"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "OAuth code exchange and refresh token rotation must be replicated in the Node.js backend. The AdobeTokenResponse DTO fields (api_access_point, web_access_point) are essential for multi-shard Adobe Sign environments.",
+      "complexity": "complex",
+      "lineCount": 473
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeSignAgreements.cs",
+      "fileName": "AdobeSignAgreements.cs",
+      "fileType": "business",
+      "className": "AdobeSignAgreements",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Lightweight synchronous HTTP client wrapper for common Adobe Acrobat Sign agreement REST API endpoints (v6). Provides methods to retrieve agreement info, documents, combined PDFs, audit trails, signing URLs, members, and upload transient documents. Automatically attempts a token refresh on 401 responses using AdobeOAuthHelper.",
+      "businessPurpose": "Allows the platform to retrieve signed document artifacts, check agreement status, get signing URLs for embedded signing, and upload documents to Adobe Sign as part of the e-signature workflow for GME program agreements.",
+      "keyMethods": [
+        "GetAgreementInfo(string) - Returns JSON object with agreement metadata for a given agreement ID",
+        "GetAgreementDocuments(string) - Returns list of documents associated with an agreement",
+        "GetDocumentBytes(string, string) - Downloads raw bytes of a specific document within an agreement",
+        "GetAgreementCombinedBytes(string) - Downloads the merged PDF of all agreement documents",
+        "GetAgreementAuditTrailBytes(string) - Downloads the audit trail PDF for an agreement",
+        "GetMyAgreements() - Returns the list of agreements for the authenticated user",
+        "GetSigningUrl(string) - Returns the embedded signing URL for a given agreement",
+        "GetAgreementMembers(string, bool) - Returns signers and participants for a given agreement",
+        "UploadTransientDocument(string, string) - Uploads a local file as a transient document and returns the transient document ID"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AdobeOAuthHelper",
+        "AdobeSignTokenStore"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "All agreement retrieval, signing URL generation, and document download operations need a direct equivalent in the Node.js service using the Adobe Sign REST API v6. The embedded signing flow and audit trail download are actively used in user-facing features.",
+      "complexity": "moderate",
+      "lineCount": 223
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeSignClient.cs",
+      "fileName": "AdobeSignClient.cs",
+      "fileType": "business",
+      "className": "AdobeSignClient",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Minimal synchronous Adobe Sign HTTP client for uploading transient documents and creating library document templates. Reads access token directly from Web.config (development-only approach noted in file comments) and uses the configured base URL.",
+      "businessPurpose": "Provides early-development scaffolding for uploading contract templates to Adobe Sign as library documents, supporting the document template management portion of the e-signature workflow.",
+      "keyMethods": [
+        "UploadTransientDocument(string, string) - Uploads a file to Adobe Sign transientDocuments endpoint and returns the transient document ID",
+        "CreateLibraryDocumentFromTransient(string, string) - Creates a named library document from a transient document ID and returns the library document ID"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "This is a simplified dev-time helper superseded by AdobeSignService for production use. The library document creation pattern may still be relevant if document templates are managed through Adobe Sign.",
+      "complexity": "simple",
+      "lineCount": 81
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeSignService.cs",
+      "fileName": "AdobeSignService.cs",
+      "fileType": "business",
+      "className": "AdobeSignService",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "The primary Adobe Sign integration service providing a layered token acquisition strategy (persisted token, refresh token exchange, JWT server-to-server) and synchronous wrappers for uploading transient documents, creating library documents, and creating agreements. Token is validated against the users/me endpoint before use.",
+      "businessPurpose": "Central orchestration point for all Adobe Sign e-signature operations in the platform, enabling program documents to be sent for electronic signature, creating agreements from templates, and managing the full document lifecycle.",
+      "keyMethods": [
+        "TryRefreshAccessToken() - Attempts token acquisition through persisted token validation, refresh token exchange, and JWT exchange in priority order",
+        "IsAccessTokenValid(string, out string) - Validates a candidate access token by calling the Adobe Sign users/me endpoint",
+        "UploadTransientDocument(string, string) - Uploads a file to Adobe Sign transient storage with automatic token refresh retry",
+        "CreateLibraryDocument(string, string) - Creates a reusable library document template from a transient document ID",
+        "CreateAgreement(string, string, string) - Creates a new agreement from a library document with a recipient signer",
+        "GetAgreementStatus(string) - Retrieves the current status of an agreement",
+        "LogAuthDiagnostics(string) - Writes masked token and base URL diagnostics to App_Data log file",
+        "EnsureLogWrite(string, string) - Resilient append-only log writer used throughout the service for error diagnostics"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AdobeSignTokenStore",
+        "AdobeOAuthHelper",
+        "AdobeTokenManager",
+        "AdobeTemplateLogger"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This is the highest-value file in the AdobeSign module. The Node.js migration must replicate the full token lifecycle management, agreement creation, and status polling. The layered token fallback strategy (persisted -> refresh -> JWT) should be preserved or simplified using a managed credential type.",
+      "complexity": "very-complex",
+      "lineCount": 1390
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeSignTokenStore.cs",
+      "fileName": "AdobeSignTokenStore.cs",
+      "fileType": "business",
+      "className": "AdobeSignTokenStore",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Centralized static helper for reading and writing AdobeSignToken.json in the App_Data folder. Handles multiple token JSON envelope formats (flat, wrapped), preserves existing refresh tokens when new responses omit them, and performs atomic-ish file writes to prevent corruption.",
+      "businessPurpose": "Provides persistent token storage for the Adobe Sign integration so that access tokens and refresh tokens survive application restarts, reducing the frequency of OAuth re-authorization flows.",
+      "keyMethods": [
+        "GetTokenFilePath() - Resolves the absolute path to AdobeSignToken.json under App_Data using HostingEnvironment or AppDomain fallback",
+        "ReadToken() - Reads and normalizes the persisted token JSON, unwrapping envelope formats as needed",
+        "WriteToken(object) - Atomically serializes and persists a token object, preserving the existing refresh_token if the new response omits it",
+        "GetRefreshToken() - Returns the stored refresh token, falling back to Web.config AdobeSignRefreshToken setting",
+        "GetAccessToken() - Returns the stored access token exclusively from the token file (no config fallback)",
+        "GetApiAccessPoint() - Returns the Adobe API access point URL from the stored token or configuration"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "The token persistence strategy (file-based in App_Data) must be replaced in the Node.js migration with a secure credential store (Azure Key Vault, database, or encrypted config). The refresh token preservation logic is critical to avoid reauthentication loops.",
+      "complexity": "moderate",
+      "lineCount": 196
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeTemplateLogger.cs",
+      "fileName": "AdobeTemplateLogger.cs",
+      "fileType": "business",
+      "className": "AdobeTemplateLogger",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Simple static file-based logger for Adobe Sign template upload operations. Writes timestamped log entries to App_Data/AdobeTemplate.log and masks access tokens in log output to prevent credential exposure.",
+      "businessPurpose": "Provides diagnostic audit trail for Adobe Sign document template upload and library creation operations, aiding troubleshooting of e-signature setup issues.",
+      "keyMethods": [
+        "Log(string) - Appends a timestamped message to AdobeTemplate.log",
+        "LogTransientUpload(string, string, string, string) - Logs a transient document upload event with masked access token",
+        "LogLibraryCreate(string, string, string, string) - Logs a library document creation event with masked access token",
+        "LogException(string, Exception) - Logs an exception with context, type, message, and stack trace",
+        "Mask(string) - Returns a masked representation of a token showing only first and last 6 characters"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "The logging pattern itself is not needed in Node.js (structured logging via Winston/Pino is standard), but the token masking and audit log concept should be preserved in migration monitoring.",
+      "complexity": "simple",
+      "lineCount": 56
+    },
+    {
+      "filePath": "Business.AdobeSign/AdobeTokenManager.cs",
+      "fileName": "AdobeTokenManager.cs",
+      "fileType": "business",
+      "className": "AdobeTokenManager",
+      "inheritsFrom": null,
+      "module": "AdobeSign",
+      "summary": "Thread-safe in-memory token cache for Adobe Sign JWT server-to-server flow. Caches the AdobeTokenResponse with expiry tracking (with a 60-second safety buffer), reads from persisted token file on startup, and falls back to fresh JWT exchange via AdobeJwtHelper when expired.",
+      "businessPurpose": "Prevents repeated JWT exchanges on every API call by caching the token in memory with expiry awareness, reducing latency and Adobe IMS rate-limit pressure for e-signature operations.",
+      "keyMethods": [
+        "GetToken() - Returns a valid cached AdobeTokenResponse, refreshing via JWT exchange when expired or missing",
+        "GetAccessToken() - Convenience method returning only the access token string",
+        "ForceRefresh() - Clears the cached token and forces an immediate JWT exchange, useful for manual rotation or testing"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AdobeJwtHelper",
+        "AdobeSignTokenStore"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "The caching pattern is important for performance. In Node.js, equivalent in-memory caching with TTL (e.g., node-cache or a module-level variable with expiry check) should be used for the JWT token, ideally backed by the same AdobeJwtHelper equivalent.",
+      "complexity": "moderate",
+      "lineCount": 130
+    }
+  ],
+  "directoryOverview": "AdobeSign business module providing adobesign functionality for the MyEvaluations platform.",
+  "keyWorkflows": []
+}

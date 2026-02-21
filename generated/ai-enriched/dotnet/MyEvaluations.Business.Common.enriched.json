@@ -1,0 +1,123 @@
+{
+  "module": "MyEvaluations.Business.Common",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "isPriority": false,
+  "overview": "Foundational shared library containing 103 classes that provide base classes (Manager, BusinessObject), dashboard DTOs (~70 classes), event management, caching, email validation, constants, file path utilities, logging, and custom exception handling. Nearly every other business module depends on this assembly.",
+  "architecture": {
+    "classCount": 103,
+    "managerClasses": ["CacheManager", "EventManager", "Manager"],
+    "infoClasses": ["EventInfo", "EventData", "BusinessEventArgs", "ListItem"],
+    "dtoClasses": ["DashBoard", "ToDos", "ModulesSystemImplementation", "DashboardSystemImplementation", "Progress", "SubModulesSystemImplementation", "EvaluationFormModulesSystemImplementation", "SubSubModules", "Item", "Status", "DashBoardSystemImplementation", "Dashboardtodo", "DashboardThingstodo", "DashboardMessages", "MessageItems", "DashBoardShortcuts", "DashBoardSubmitShortcuts", "DashBoardSubShortcuts", "DashBoardSubShortcutitems", "ActionTrigger", "Schedule", "RotationData", "Assigned", "EventDetails", "ScheduleEventId", "Event", "TopicData", "AttachmentData", "AverageScore", "AverageScoreHistogram", "AverageScoreOverTime", "Quiz", "QuizPerformanceResponseModel", "Expired", "ClinicalHourResponseModel", "ReviewalRate", "SubmittedCurrently", "ScheduledCurrently", "ViolationRateOverTime", "PerformanceTaskCompletionModel", "PerformanceTaskCompletionRate", "PerformanceTaskCompletionRateOvertTime", "PerformancecompletionRateByType", "PublicationsResearchResponseModel", "PerformanceEvalutionModel", "PerformanceEvalutaionaverageDaysToComplete", "PerformanceEvalutaionpendingCurrently", "PerformanceEvalutaionOverdueCurrently", "PerformanceEvalutaionaverageDaysToCompleteOverTime", "PerformanceEvalutaionaverageDaysToCompleteHistogram", "SubmissionRate", "SubmissionRateByType", "SubmissionsOverTime", "ImplementedInAllYears", "QualityImprovementResponseModel", "SubmittedInAllYears", "UnderReviewCurrently", "ProceduresData", "ProcedureObjectiveData", "AcceptanceRateData", "AcceptanceRateByProceduredata", "ProcedureacceptanceBreakdown", "Competencies", "Myinsighst", "CoreCompetencies", "OtherCompetencies", "Score", "ScoreOverTime", "PerformanceImprovementPlans", "CompetenciesbyId", "Subcompetencies", "SubcompetenciesData", "SubcompetencyScoreOvertime", "CompetencyScoreOvertime", "EPADashboard", "EPAGroup", "EPAScore", "EPAS", "EPAScoreOverTime", "SingleEPA", "SingleEpaScoreOverTime", "PatientLogData", "PatientLogDataOutpatientHours", "PatientLogDataOutpatientHoursOverTime", "PatientLogDataSubmissionRate", "PatientLogDataSubmissionRateByPatientType", "PerLevelsubmissionRateByPatientType"],
+    "utilityClasses": ["Constants", "FilePaths", "StringValue", "CalculateDateDifference", "EmailValidation"],
+    "loggingClasses": ["AuthenticationFailureAuditEvent", "ApplicationCustomErrorEvent"],
+    "exceptionClasses": ["UserFriendlyException"],
+    "abstractClasses": ["Manager", "BusinessObject"],
+    "keyFiles": ["Manager.cs", "BusinessObject.cs", "DashBoard.cs", "EventManager.cs", "Constants.cs", "EmailValidation.cs", "LoggingManager.cs", "UserFriendlyException.cs"]
+  },
+  "managerPattern": {
+    "description": "Manager is the abstract base class for all business logic managers. BusinessObject is the abstract base for domain entities. The Manager/Info pairing (e.g., EventManager/EventInfo) is the canonical pattern used across the platform.",
+    "baseManagerClass": "Manager",
+    "baseEntityClass": "BusinessObject",
+    "managerInfoPairs": {
+      "EventManager": "EventInfo"
+    }
+  },
+  "storedProcedures": [
+    {
+      "name": "LogEvent",
+      "calledBy": "EventManager",
+      "purpose": "Log a system event for audit tracking"
+    },
+    {
+      "name": "LogEventDetail",
+      "calledBy": "EventManager",
+      "purpose": "Log detailed information for a system event"
+    },
+    {
+      "name": "CheckEmailStatus",
+      "calledBy": "EmailValidation",
+      "purpose": "Check delivery status of an email"
+    },
+    {
+      "name": "CheckEventEmailStatus",
+      "calledBy": "EmailValidation",
+      "purpose": "Check delivery status of a CME event-related email"
+    }
+  ],
+  "keyClasses": [
+    {
+      "name": "Manager",
+      "role": "Abstract base class for all business managers across the platform",
+      "isAbstract": true,
+      "file": "Manager.cs"
+    },
+    {
+      "name": "BusinessObject",
+      "role": "Abstract base class for domain entities",
+      "isAbstract": true,
+      "file": "BusinessObject.cs"
+    },
+    {
+      "name": "CacheManager",
+      "role": "Centralized caching logic for frequently accessed data",
+      "extends": "Manager",
+      "file": "CacheManager.cs"
+    },
+    {
+      "name": "EventManager",
+      "role": "Logs system events via LogEvent and LogEventDetail stored procedures",
+      "extends": "Manager",
+      "file": "EventManager.cs"
+    },
+    {
+      "name": "DashBoard",
+      "role": "Root dashboard response model containing nested performance analytics",
+      "file": "DashBoard.cs"
+    },
+    {
+      "name": "Constants",
+      "role": "Platform-wide constant values (roles, statuses, configuration keys)",
+      "file": "Constants.cs"
+    },
+    {
+      "name": "EmailValidation",
+      "role": "Validates email delivery status via stored procedures",
+      "file": "EmailValidation.cs"
+    },
+    {
+      "name": "UserFriendlyException",
+      "role": "Custom exception type for user-facing error messages",
+      "file": "UserFriendlyException.cs"
+    }
+  ],
+  "businessRules": [
+    "Manager base class enforces stored-procedure-only database access pattern",
+    "Dashboard DTOs mirror a hierarchical UI structure: modules > sub-modules > items > scores > time series",
+    "Event logging is mandatory for audit compliance (LogEvent/LogEventDetail)",
+    "Email validation checks both general email status and CME event-specific email status",
+    "ASP.NET health monitoring tracks authentication failures and application errors",
+    "EPA (Entrustable Professional Activities) models support ACGME competency framework compliance"
+  ],
+  "migrationNotes": {
+    "priority": "high",
+    "complexity": "high",
+    "notes": [
+      "Manager and BusinessObject are the most critical classes to map to NestJS equivalents -- every module depends on them",
+      "The ~70 dashboard DTOs in DashBoard.cs should be decomposed into domain-specific response DTOs during migration",
+      "CacheManager should map to NestJS caching module (e.g., cache-manager with Redis)",
+      "EventManager audit logging should map to a NestJS interceptor or middleware pattern",
+      "UserFriendlyException has no namespace -- ensure proper module scoping in NestJS",
+      "Constants should be migrated to TypeScript enums or const objects with proper typing",
+      "StringValue attribute pattern should be replaced with TypeScript enum-to-string utilities"
+    ],
+    "nestjsEquivalents": {
+      "Manager": "Injectable service base class or abstract service",
+      "BusinessObject": "MikroORM entity base class",
+      "CacheManager": "@nestjs/cache-manager with Redis",
+      "EventManager": "NestJS EventEmitter or custom audit interceptor",
+      "Constants": "TypeScript const enums or frozen objects"
+    }
+  },
+  "mermaidDiagram": null,
+  "mdxContent": "See MyEvaluations.Business.Common.mdx"
+}

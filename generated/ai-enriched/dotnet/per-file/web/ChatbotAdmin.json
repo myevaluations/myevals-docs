@@ -1,0 +1,116 @@
+{
+  "directory": "Web/ChatbotAdmin",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 5,
+  "files": [
+    {
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminFeedback.aspx.cs",
+      "fileName": "ChatbotAdminFeedback.aspx.cs",
+      "fileType": "code-behind",
+      "className": "ChatbotAdmin_ChatbotAdminFeedback",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "ChatbotAdmin",
+      "summary": "Minimal code-behind for the chatbot admin feedback page. Contains only the default Page_Load handler with no custom logic.",
+      "businessPurpose": "Displays chatbot user feedback for administrators to review",
+      "keyMethods": [
+        "Page_Load - Default page initialization"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminHistory.aspx.cs",
+      "fileName": "ChatbotAdminHistory.aspx.cs",
+      "fileType": "code-behind",
+      "className": "ChatbotAdmin_ChatbotAdminHistory",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "ChatbotAdmin",
+      "summary": "Minimal code-behind for chatbot conversation history page. Contains only the default Page_Load handler.",
+      "businessPurpose": "Displays chatbot interaction history for admin review",
+      "keyMethods": [
+        "Page_Load - Default page initialization"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminSettings.aspx.cs",
+      "fileName": "ChatbotAdminSettings.aspx.cs",
+      "fileType": "code-behind",
+      "className": "ChatbotAdmin_ChatbotAdminSettings",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "ChatbotAdmin",
+      "summary": "Minimal code-behind for chatbot settings configuration page. Contains only the default Page_Load handler.",
+      "businessPurpose": "Allows administrators to configure chatbot settings",
+      "keyMethods": [
+        "Page_Load - Default page initialization"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/ChatbotAdmin/ChatbotIndex.aspx.cs",
+      "fileName": "ChatbotIndex.aspx.cs",
+      "fileType": "code-behind",
+      "className": "ChatbotAdmin_ChatbotIndex",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "ChatbotAdmin",
+      "summary": "Minimal code-behind for the chatbot admin index/landing page. Contains only the default Page_Load handler.",
+      "businessPurpose": "Landing page for the chatbot administration module",
+      "keyMethods": [
+        "Page_Load - Default page initialization"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/ChatbotAdmin/ChatbotUploadFiles.aspx.cs",
+      "fileName": "ChatbotUploadFiles.aspx.cs",
+      "fileType": "code-behind",
+      "className": "ChatbotAdmin_ChatbotUploadFiles",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "ChatbotAdmin",
+      "summary": "Manages chatbot knowledge base file uploads to Azure Blob Storage. Supports uploading, updating, and deleting video/document files with SAS token generation, and stores metadata via stored procedures.",
+      "businessPurpose": "Enables administrators to manage chatbot training content (videos and documents) stored in Azure Blob Storage",
+      "keyMethods": [
+        "GenerateSasToken - Creates Azure Blob SAS tokens for secure file access",
+        "SaveVideoData - WebMethod to persist uploaded file metadata to database",
+        "InsertAdminChatbotData - Calls stored procedure to insert chatbot file records",
+        "GetAllUploadedVideos - WebMethod returning all uploaded chatbot files as a list",
+        "GetChatbotData - Retrieves chatbot file data from database",
+        "UpdateVideoData - WebMethod to update file name for existing chatbot content",
+        "DeleteData - WebMethod to remove chatbot file records",
+        "SaveUploadedFile - WebMethod handling base64 file upload and blob storage"
+      ],
+      "storedProcedures": [
+        "InsertAdminChatbotData",
+        "GetChatbotData",
+        "UpdateAdminChatbotData",
+        "DeleteAdminChatbotData"
+      ],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 256
+    }
+  ],
+  "directoryOverview": "Chatbot administration module providing CRUD operations for chatbot knowledge base content. Most pages are thin code-behinds (likely using client-side JavaScript), except ChatbotUploadFiles which handles Azure Blob Storage file management with SAS token authentication.",
+  "keyWorkflows": [
+    "Upload chatbot training files to Azure Blob Storage with SAS token security",
+    "CRUD operations on chatbot knowledge base content metadata via stored procedures",
+    "Admin review of chatbot feedback and conversation history"
+  ]
+}

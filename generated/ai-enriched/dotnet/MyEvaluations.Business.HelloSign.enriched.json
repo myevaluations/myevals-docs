@@ -1,0 +1,55 @@
+{
+  "module": "MyEvaluations.Business.HelloSign",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": false,
+  "overview": "The HelloSign module provides a .NET SDK wrapper for the HelloSign (now Dropbox Sign) e-signature platform, enabling MyEvaluations to send, track, and manage electronic signature requests for program-related documents. With 45 classes, the module implements a comprehensive client library covering accounts, signature requests (file-based and template-based), embedded signing flows, OAuth authentication, signers, templates, teams, events/webhooks, and a robust exception hierarchy for API error handling.",
+  "architecture": "## Overview\n\nThe HelloSign module provides a .NET SDK wrapper for the HelloSign (now Dropbox Sign) e-signature platform, enabling MyEvaluations to send, track, and manage electronic signature requests for program-related documents. With 45 classes, the module implements a comprehensive client library covering accounts, signature requests (file-based and template-based), embedded signing flows, OAuth authentication, signers, templates, teams, events/webhooks, and a robust exception hierarchy for API error handling. This is a third-party integration library adapted for MyEvaluations' document signing needs in healthcare education workflows.\n\n## Key Classes\n\n- **SignatureRequest** (extends BaseSignatureRequest): Core class representing a signature request with file attachments.\n- **BaseSignatureRequest**: Base class for all signature request types.\n- **TemplateSignatureRequest** (extends BaseSignatureRequest): Signature request created from a pre-defined HelloSign template.\n- **EmbeddedSign** (extends Embedded): Enables embedded (in-app) signing experiences.\n- **EmbeddedTemplate** (extends Embedded): Manages embedded template editing flows.\n- **EmbeddedTemplateDraft** (extends SignatureRequest): Represents a draft embedded template with merge field support.\n- **Signer** (extends SignerRole): Represents an individual signer on a signature request.\n- **Account**: HelloSign account management and configuration.\n- **Template**: Reusable document template definitions.\n- **Event / EventMetadata / EventHashInfo**: Webhook event processing classes.\n- **Oauth**: OAuth authentication flow for HelloSign API access.\n- **ObjectList** (implements IEnumerable<T>): Generic paginated list container for API responses.\n- **Exception hierarchy**: ErrorException base with 10 specialized HTTP status code exceptions.\n\n## Patterns\n\n- **No Manager pattern**: This module is structured as a third-party SDK wrapper.\n- **Inheritance hierarchies**: Three distinct hierarchies -- BaseSignatureRequest, Embedded, and ErrorException.\n- **Builder pattern**: FileSignatureRequestBuilder provides a fluent interface for constructing requests.\n- **Webhook/Event pattern**: Event classes support secure webhook processing with hash verification.\n- **Exception mapping**: Maps HelloSign API HTTP error codes to strongly-typed .NET exceptions.\n\n## Notes\n\n- HelloSign has been rebranded to Dropbox Sign.\n- No stored procedures detected -- operates entirely through the HelloSign REST API.\n- Contains a Class1.cs placeholder file suggesting incomplete scaffolding.\n- During NestJS migration, could be replaced with the Dropbox Sign Node.js SDK.",
+  "managerPattern": "No Manager pattern",
+  "storedProcedures": "",
+  "keyClasses": [
+    {
+      "name": "SignatureRequest",
+      "purpose": "Core class representing a signature request with file attachments, extends BaseSignatureRequest",
+      "keyMethods": []
+    },
+    {
+      "name": "BaseSignatureRequest",
+      "purpose": "Base class providing shared properties and behavior for all signature request types",
+      "keyMethods": []
+    },
+    {
+      "name": "TemplateSignatureRequest",
+      "purpose": "Signature request created from pre-defined HelloSign templates for standardized workflows",
+      "keyMethods": []
+    },
+    {
+      "name": "EmbeddedSign",
+      "purpose": "Enables embedded in-app signing experiences within the MyEvaluations UI",
+      "keyMethods": []
+    },
+    {
+      "name": "Signer",
+      "purpose": "Represents an individual signer on a signature request with role-based assignment",
+      "keyMethods": []
+    },
+    {
+      "name": "Event",
+      "purpose": "Webhook event processing for handling signature status callbacks from HelloSign",
+      "keyMethods": []
+    },
+    {
+      "name": "Oauth",
+      "purpose": "OAuth authentication flow for HelloSign API access",
+      "keyMethods": []
+    },
+    {
+      "name": "FileSignatureRequestBuilder",
+      "purpose": "Builder pattern class for constructing file-based signature requests",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [],
+  "migrationNotes": [],
+  "mermaidDiagram": null,
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.HelloSign\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.HelloSign module\"\nsidebar_label: \"HelloSign\"\ntags: [dotnet, business-layer]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Overview\n\nThe HelloSign module provides a .NET SDK wrapper for the HelloSign (now Dropbox Sign) e-signature platform, enabling MyEvaluations to send, track, and manage electronic signature requests for program-related documents. With 45 classes, the module implements a comprehensive client library covering accounts, signature requests (file-based and template-based), embedded signing flows, OAuth authentication, signers, templates, teams, events/webhooks, and a robust exception hierarchy for API error handling. This is a third-party integration library adapted for MyEvaluations' document signing needs in healthcare education workflows.\n\n## Key Classes\n\n- **SignatureRequest** (extends BaseSignatureRequest): Core class representing a signature request with file attachments. Works with FileContainer and FileSignatureRequestBuilder for constructing requests.\n- **BaseSignatureRequest**: Base class for all signature request types, providing shared properties and behavior.\n- **TemplateSignatureRequest** (extends BaseSignatureRequest): Signature request created from a pre-defined HelloSign template, enabling standardized document workflows.\n- **EmbeddedSign** (extends Embedded): Enables embedded (in-app) signing experiences where users sign documents within the MyEvaluations UI rather than being redirected to HelloSign.\n- **EmbeddedTemplate** (extends Embedded): Manages embedded template editing flows.\n- **EmbeddedTemplateDraft** (extends SignatureRequest): Represents a draft embedded template with merge field support.\n- **Signer** (extends SignerRole): Represents an individual signer on a signature request, with role-based assignment capabilities.\n- **Account**: HelloSign account management and configuration.\n- **Template**: Reusable document template definitions.\n- **Event / EventMetadata / EventHashInfo**: Webhook event processing classes for handling signature status callbacks from HelloSign.\n- **Oauth**: OAuth authentication flow for HelloSign API access.\n- **ObjectList** (implements IEnumerable<T>): Generic paginated list container for API responses.\n- **Program**: Entry point class in the MyEvaluations.HelloSign namespace.\n- **Exception hierarchy**: ErrorException base with specialized exceptions -- BadRequestException, UnauthorizedException, PaymentRequiredException, ForbiddenException, NotFoundException, MethodNotAllowedException, ConflictException, GoneException, UnknownException, ServiceUnavailableException, ExceededRateLimitException -- mapping HTTP status codes to typed exceptions.\n\n## Patterns\n\n- **No Manager pattern**: This module does not follow the typical Manager/Info pattern. It is structured as a third-party SDK wrapper with domain model classes rather than MyEvaluations business managers.\n- **Inheritance hierarchies**: Three distinct hierarchies -- BaseSignatureRequest for request types, Embedded for embedded flow types, and ErrorException for API error types.\n- **Builder pattern**: FileSignatureRequestBuilder provides a fluent interface for constructing file-based signature requests.\n- **Webhook/Event pattern**: Event, EventMetadata, and EventHashInfo classes support secure webhook processing with hash verification for signature status updates.\n- **Exception mapping**: A comprehensive exception hierarchy maps HelloSign API HTTP error codes to strongly-typed .NET exceptions.\n\n## Notes\n\n- HelloSign has been rebranded to Dropbox Sign. This module may need updates if the API endpoints or SDK change due to the rebrand.\n- No stored procedures are detected -- this module operates entirely through the HelloSign REST API with no direct database interaction.\n- The module contains a `Class1.cs` placeholder file in the MyEvaluations.Business.HelloSign namespace, suggesting the module was scaffolded and may have incomplete areas.\n- During NestJS migration, this integration could be replaced with the official Dropbox Sign Node.js SDK or a direct REST API client.\n- The embedded signing flow (EmbeddedSign, EmbeddedTemplate) is particularly important for user experience, as it keeps signers within the MyEvaluations application.\n- Event webhook handling with hash verification (EventHashInfo, EventHashException) is a security-critical component that must be preserved in any migration.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*"
+}

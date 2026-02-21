@@ -1,0 +1,335 @@
+{
+  "directory": "Web/Curriculum",
+  "layer": "web",
+  "generatedAt": "2026-02-21T00:00:00.000Z",
+  "fileCount": 18,
+  "files": [
+    {
+      "filePath": "Web/Curriculum/AddCourse.aspx.cs",
+      "fileName": "AddCourse.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_AddCourse",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Form page for adding a new curriculum course; delegates initialization and save logic to CurriculumBusiness.",
+      "businessPurpose": "Allows administrators to create new curriculum courses.",
+      "keyMethods": [
+        "Page_Load - initializes add course form via CurriculumBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 35
+    },
+    {
+      "filePath": "Web/Curriculum/AddInstructionUnit.aspx.cs",
+      "fileName": "AddInstructionUnit.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_AddInstructionUnit",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Form page for adding a new instruction unit; after save, navigates to ChooseTeachingUnits to link teaching units.",
+      "businessPurpose": "Enables administrators to create instruction units and link them to teaching units.",
+      "keyMethods": [
+        "Page_Load - initializes instruction unit form",
+        "btnSave_Click - saves instruction unit and redirects to ChooseTeachingUnits"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 32
+    },
+    {
+      "filePath": "Web/Curriculum/AddTeachUnit.aspx.cs",
+      "fileName": "AddTeachUnit.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_AddTeachUnit",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Form page for adding a new teaching unit to the curriculum; delegates to CurriculumBusiness.",
+      "businessPurpose": "Allows administrators to add teaching units used in curriculum instruction.",
+      "keyMethods": [
+        "Page_Load - initializes teaching unit form via CurriculumBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 36
+    },
+    {
+      "filePath": "Web/Curriculum/AssignCourses.aspx.cs",
+      "fileName": "AssignCourses.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_AssignCourses",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Dual-listbox interface for assigning courses to a curriculum; supports moving individual courses or all courses between available and selected lists.",
+      "businessPurpose": "Allows administrators to assign or unassign courses from a curriculum using a dual-listbox picker.",
+      "keyMethods": [
+        "Page_Load - loads available and assigned course lists",
+        "btnSave_Click - saves course assignments",
+        "MoveCourse - moves a single course between lists",
+        "MoveCourses - moves all courses between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 79
+    },
+    {
+      "filePath": "Web/Curriculum/ChooseTeachingUnits.aspx.cs",
+      "fileName": "ChooseTeachingUnits.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_ChooseTeachingUnits",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Selection page for choosing teaching units to attach to an instruction unit; delegates binding to CurriculumBusiness.",
+      "businessPurpose": "Allows administrators to associate teaching units with instruction units during curriculum setup.",
+      "keyMethods": [
+        "Page_Load - initializes teaching unit selection list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 36
+    },
+    {
+      "filePath": "Web/Curriculum/Curriculum.aspx.cs",
+      "fileName": "Curriculum.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_Curriculum",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Stub page for curriculum add/edit; inherits BasePage but contains no implemented business logic.",
+      "businessPurpose": "Placeholder for the curriculum add/edit form; actual logic not yet implemented.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 28
+    },
+    {
+      "filePath": "Web/Curriculum/CurriculumMain.aspx.cs",
+      "fileName": "CurriculumMain.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_CurriculumMain",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Empty stub page for the curriculum main landing; inherits directly from System.Web.UI.Page with no implementation.",
+      "businessPurpose": "Placeholder main landing page for the Curriculum module.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 19
+    },
+    {
+      "filePath": "Web/Curriculum/CurriculumReports.aspx.cs",
+      "fileName": "CurriculumReports.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_CurriculumReports",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Report type selection page allowing users to choose between vertical and horizontal curriculum analysis reports.",
+      "businessPurpose": "Entry point for curriculum reporting, letting users select the analysis style.",
+      "keyMethods": [
+        "Page_Load - initializes report type selection",
+        "btnViewReport_Click - redirects to selected report type"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 44
+    },
+    {
+      "filePath": "Web/Curriculum/GhanChart.aspx.cs",
+      "fileName": "GhanChart.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_GhanChart",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Empty stub page for a Gantt chart visualization; no implementation present.",
+      "businessPurpose": "Placeholder for a curriculum Gantt (Ghan) chart view; not yet implemented.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 19
+    },
+    {
+      "filePath": "Web/Curriculum/HarizontalAnalysis.aspx.cs",
+      "fileName": "HarizontalAnalysis.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_HarizontalAnalysis",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Empty stub page for horizontal curriculum analysis report; no implementation present.",
+      "businessPurpose": "Placeholder for the horizontal curriculum analysis report.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 19
+    },
+    {
+      "filePath": "Web/Curriculum/ManageCourses.aspx.cs",
+      "fileName": "ManageCourses.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_ManageCourses",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Lists and manages curriculum courses with edit and delete operations; delegates data binding to CurriculumBusiness.",
+      "businessPurpose": "Provides a management view of all curriculum courses with CRUD capabilities.",
+      "keyMethods": [
+        "Page_Load - loads course list via CurriculumBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 33
+    },
+    {
+      "filePath": "Web/Curriculum/ManageCurriculum.aspx.cs",
+      "fileName": "ManageCurriculum.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_Manage_Curriculum",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Lists and manages all curricula; class name is Curriculum_Manage_Curriculum. Delegates to CurriculumBusiness.",
+      "businessPurpose": "Provides a management grid for all curricula with edit, delete, and view actions.",
+      "keyMethods": [
+        "Page_Load - binds curriculum list via CurriculumBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 34
+    },
+    {
+      "filePath": "Web/Curriculum/ManageCurriculumAssignments.aspx.cs",
+      "fileName": "ManageCurriculumAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_ManageCurriculumAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Lists curriculum-to-user assignments; delegates data binding to CurriculumBusiness.",
+      "businessPurpose": "Allows administrators to view and manage which users are assigned to which curricula.",
+      "keyMethods": [
+        "Page_Load - loads curriculum assignment list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 34
+    },
+    {
+      "filePath": "Web/Curriculum/ManageInstructionUnits.aspx.cs",
+      "fileName": "ManageInstructionUnits.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_ManageInstructionUnits",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Lists all instruction units for management; delegates to CurriculumBusiness.",
+      "businessPurpose": "Provides an admin view of instruction units with edit and delete capabilities.",
+      "keyMethods": [
+        "Page_Load - loads instruction unit list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 32
+    },
+    {
+      "filePath": "Web/Curriculum/ManageTeachingUnits.aspx.cs",
+      "fileName": "ManageTeachingUnits.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_ManageTeachingUnits",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Lists all teaching units; inherits from System.Web.UI.Page rather than BasePage; delegates to CurriculumBusiness.",
+      "businessPurpose": "Provides a view of all teaching units with management capabilities.",
+      "keyMethods": [
+        "Page_Load - loads teaching unit list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 31
+    },
+    {
+      "filePath": "Web/Curriculum/SearchCurriculum.aspx.cs",
+      "fileName": "SearchCurriculum.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_SearchCurriculum",
+      "inheritsFrom": "BasePage",
+      "module": "Curriculum",
+      "summary": "Filter-based curriculum search page that shows or hides a results panel based on the search action.",
+      "businessPurpose": "Allows users to search for curricula by filter criteria and view matching results.",
+      "keyMethods": [
+        "Page_Load - initializes search filters",
+        "btnSearch_Click - executes search and displays results panel"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 44
+    },
+    {
+      "filePath": "Web/Curriculum/SelectCourses.aspx.cs",
+      "fileName": "SelectCourses.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_SelectCourses",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Displays a course selection list for reporting purposes; inherits from System.Web.UI.Page.",
+      "businessPurpose": "Allows users to select courses to include in curriculum reports.",
+      "keyMethods": [
+        "Page_Load - loads available courses for selection"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CurriculumBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "trivial",
+      "lineCount": 31
+    },
+    {
+      "filePath": "Web/Curriculum/VerticalAnalysis.aspx.cs",
+      "fileName": "VerticalAnalysis.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Curriculum_VerticalAnalysis",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Curriculum",
+      "summary": "Empty stub page for vertical curriculum analysis report; no implementation present.",
+      "businessPurpose": "Placeholder for the vertical curriculum analysis report.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 19
+    }
+  ],
+  "directoryOverview": "The Curriculum directory contains 18 code-behind files for the MyEvaluations curriculum management module. It covers course and teaching unit CRUD, curriculum creation and assignment to users, instruction unit management, and basic reporting stubs. The module is relatively thin on the web layer, with almost all logic delegated to the CurriculumBusiness class. Several files are unimplemented stubs (CurriculumMain, GhanChart, HarizontalAnalysis, VerticalAnalysis). The module appears to be a secondary feature with lower adoption relative to Evaluations or DutyHours, as evidenced by the prevalence of stub implementations.",
+  "keyWorkflows": [
+    "Curriculum CRUD: ManageCurriculum lists all curricula, Curriculum.aspx handles add/edit (stub), AssignCourses assigns courses to curricula",
+    "Teaching unit hierarchy: AddTeachUnit creates units, AddInstructionUnit creates instruction units and links to teaching units via ChooseTeachingUnits",
+    "Curriculum assignment to users managed via ManageCurriculumAssignments",
+    "Curriculum reporting: CurriculumReports selects report type, routing to VerticalAnalysis or HarizontalAnalysis (both stubs)"
+  ]
+}

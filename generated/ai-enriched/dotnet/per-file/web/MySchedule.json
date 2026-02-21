@@ -1,0 +1,183 @@
+{
+  "directory": "Web/MySchedule",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 8,
+  "files": [
+    {
+      "filePath": "Web/MySchedule/AddAffiliateAgreements.aspx.cs",
+      "fileName": "AddAffiliateAgreements.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_AddAffiliateAgreements",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Manages creation of affiliate/affiliation agreements for scheduling. Binds directors, sponsor names, and participating institutions from session/department context. Uses DataTableToJSON for client-side rendering.",
+      "businessPurpose": "Creates and manages affiliate agreements between institutions for clinical rotation scheduling",
+      "keyMethods": [
+        "Page_Load - Initializes affiliate agreement form with director and institution data",
+        "BindDirectors - Populates director dropdown from department data",
+        "BindSponcerName - Populates sponsor institution dropdown",
+        "BindParticipatingName - Populates participating institution dropdown",
+        "DataTableToJSONWithJSONNet - Serializes data to JSON for client-side rendering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["DocDetailsManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 176
+    },
+    {
+      "filePath": "Web/MySchedule/AddCampuses.aspx.cs",
+      "fileName": "AddCampuses.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_AddCampuses",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Handles campus/site creation for scheduling. Uses PreceptorManager to manage campus data with cohort binding via DataView.",
+      "businessPurpose": "Allows administrators to add clinical campuses/sites used in rotation scheduling",
+      "keyMethods": [
+        "Page_Load - Initializes campus creation form with cohort data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PreceptorManager"],
+      "migrationRelevance": "medium",
+      "complexity": "simple",
+      "lineCount": 50
+    },
+    {
+      "filePath": "Web/MySchedule/AddScheduleTemplate.aspx.cs",
+      "fileName": "AddScheduleTemplate.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_AddScheduleTemplate",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Creates schedule templates for rotation scheduling. Binds campus names and serializes data to JSON for client-side template construction using PreceptorManager.",
+      "businessPurpose": "Allows creation of schedule templates that define rotation patterns and campus assignments",
+      "keyMethods": [
+        "Page_Load - Initializes schedule template form",
+        "BindCampusNames - Populates campus dropdown from PreceptorManager",
+        "DataTableToJSONWithJSONNet - Serializes data for client-side rendering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PreceptorManager"],
+      "migrationRelevance": "medium",
+      "complexity": "simple",
+      "lineCount": 55
+    },
+    {
+      "filePath": "Web/MySchedule/AddUsers.aspx.cs",
+      "fileName": "AddUsers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_AddUsers",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MySchedule",
+      "summary": "Manages user assignment to schedules. Binds user types, groups, specialties, campuses, years, and affiliations for comprehensive user scheduling configuration. Uses UserManager and PreceptorManager.",
+      "businessPurpose": "Assigns users (residents/faculty) to rotation schedules with specialty, campus, and year filtering",
+      "keyMethods": [
+        "Page_Load - Initializes user assignment form with multiple dropdown bindings",
+        "BindUserTypes - Populates user type dropdown",
+        "BindGroups - Populates group dropdown",
+        "BindSpecialityTypes - Populates specialty dropdown",
+        "BindCampus - Populates campus dropdown",
+        "BindYears - Populates academic year dropdown",
+        "BindAffiliation - Populates affiliation dropdown by department",
+        "GetCalenderYears - Generates academic year list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserManager", "PreceptorManager", "DepartmentManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 156
+    },
+    {
+      "filePath": "Web/MySchedule/AffiliateAgreementReport.aspx.cs",
+      "fileName": "AffiliateAgreementReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_AffiliateAgreementReport",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Displays affiliate agreement reports. Uses UserManager to set up user context for report generation.",
+      "businessPurpose": "Generates reports on affiliate agreements between institutions",
+      "keyMethods": [
+        "Page_Load - Initializes affiliate agreement report with user context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserManager"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 22
+    },
+    {
+      "filePath": "Web/MySchedule/EditSettings.aspx.cs",
+      "fileName": "EditSettings.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_EditSettings",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Edits scheduling settings including time slots, activities, and configuration. Populates time slot dropdowns at 15-minute intervals and binds department activities by category using PreceptorManager.",
+      "businessPurpose": "Configures schedule settings such as time slots, activity types, and department-specific scheduling parameters",
+      "keyMethods": [
+        "Page_Load - Initializes settings form with time slots and activities",
+        "PopulateTimeSlots - Generates time slot options at configurable intervals",
+        "DataTableToJSONWithJSONNet - Serializes settings data for client rendering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PreceptorManager", "ActivityManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 99
+    },
+    {
+      "filePath": "Web/MySchedule/ScheduleSettings.aspx.cs",
+      "fileName": "ScheduleSettings.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleSettings",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Global schedule settings page for department-level scheduling configuration. Checks permissions for schedule management access and uses DepartmentManager and EvaluationTemplateBusiness for settings management.",
+      "businessPurpose": "Provides department-level scheduling configuration for administrators and program directors",
+      "keyMethods": [
+        "Page_Load - Initializes schedule settings with permission check",
+        "CheckForPermissions - Validates schedule management access based on isEnableScheduleManagement flag"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["DepartmentManager", "EvaluationTemplateBusiness"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 141
+    },
+    {
+      "filePath": "Web/MySchedule/Settings.aspx.cs",
+      "fileName": "Settings.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MySchedule_Settings",
+      "inheritsFrom": "BasePage",
+      "module": "MySchedule",
+      "summary": "Comprehensive scheduling settings page. Binds years, campuses, sites, PGY levels, and department default days. Uses PreceptorManager and PreceptorModuleManager for site and scheduling data with ViewState-based page state management.",
+      "businessPurpose": "Configures comprehensive scheduling settings including campuses, sites, PGY levels, and default schedule parameters",
+      "keyMethods": [
+        "Page_Load - Initializes comprehensive settings form",
+        "BindYears - Populates academic year dropdown",
+        "BindCampus - Populates campus dropdown",
+        "BindSites - Populates clinical sites from PreceptorModuleManager",
+        "BindPGYList - Populates PGY training level dropdown",
+        "SetDepartmentDefaultDays - Configures default scheduling days for department",
+        "GetPGYCategoryTable - Builds DataTable of PGY categories",
+        "GetCalenderYears - Generates academic year list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PreceptorManager", "PreceptorModuleManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 203
+    }
+  ],
+  "directoryOverview": "Rotation/clinical scheduling module (MySchedule) for managing clinical rotation schedules, campuses, affiliate agreements, and scheduling settings. Supports creating schedule templates, assigning users to rotations, managing campus/site configurations, and department-level scheduling parameters. Uses PreceptorManager as the primary business layer for scheduling operations.",
+  "keyWorkflows": [
+    "Create and manage clinical rotation schedule templates with campus assignments",
+    "Add and configure campuses and clinical sites for rotation scheduling",
+    "Assign users (residents/faculty) to schedules with specialty and year filtering",
+    "Manage affiliate agreements between institutions for rotation placements",
+    "Configure department-level scheduling settings (time slots, PGY levels, default days)"
+  ]
+}

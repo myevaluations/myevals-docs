@@ -1,0 +1,352 @@
+{
+  "directory": "Business.EssentialActivities",
+  "layer": "business",
+  "generatedAt": "2026-02-21T12:57:06.038Z",
+  "fileCount": 13,
+  "files": [
+    {
+      "filePath": "Business.EssentialActivities/AddDNPData.cs",
+      "fileName": "AddDNPData.cs",
+      "fileType": "business",
+      "className": "AddDNPData",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "Contains two data-transfer entity classes: AddDNPEssentials, which represents a student's DNP essential activity log entry with student, course, procedure, and audit metadata; and AddDNPData, which holds course-activity registration and essential activity submission fields. Both are plain property bags with no methods, used to carry data between the presentation layer and the manager/data-access layer.",
+      "businessPurpose": "Provides strongly-typed DTOs for creating and submitting DNP essential activity log records, capturing student identity, time spent, activity category, procedures, and program context for DNP program tracking.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "These are plain entity/DTO classes. Their fields map directly to DNP log schema and should inform the NestJS DTO and MikroORM entity design for the DNP log feature.",
+      "complexity": "trivial",
+      "lineCount": 209
+    },
+    {
+      "filePath": "Business.EssentialActivities/AddDNPManager.cs",
+      "fileName": "AddDNPManager.cs",
+      "fileType": "business",
+      "className": "AddDNPManager",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "Provides two database operations for the DNP essential activity workflow: retrieving course details for the logged-in user via GetCourseDetails, and saving a new DNP activity log entry via the SaveDNPInfo stored procedure. Uses SessionManager for user/department context and DBDataAccess for SQL execution.",
+      "businessPurpose": "Supports the faculty/student workflow for adding DNP program essential activity entries — populates the course selection dropdown and persists new activity log submissions to SQL Server.",
+      "keyMethods": [
+        "GetCourseDetails - retrieves available courses for the logged-in user's department via GetCourseDetails stored procedure",
+        "Save - persists a new DNP activity log entry by calling the SaveDNPInfo stored procedure"
+      ],
+      "storedProcedures": [
+        "GetCourseDetails",
+        "SaveDNPInfo"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.Security.SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "The Save method contains a bug (it sets but never uses Result, always returns false). This logic needs to be correctly reimplemented in the Node.js backend. The SaveDNPInfo SP call and the GetCourseDetails SP are both migration targets.",
+      "complexity": "simple",
+      "lineCount": 66
+    },
+    {
+      "filePath": "Business.EssentialActivities/BSNProgramManager.cs",
+      "fileName": "BSNProgramManager.cs",
+      "fileType": "business",
+      "className": "BSNProgramManager",
+      "inheritsFrom": "Manager",
+      "module": "EssentialActivities",
+      "summary": "Manages BSN (Bachelor of Science in Nursing) program data operations, including retrieving academic sessions, courses by session, BSN return demonstration forms, and generating manual evaluation assignments. The class wraps a large set of stored procedure calls covering the full BSN clinical evaluation lifecycle. At 2713 lines it encompasses BSN-specific equivalents of many FNP program operations.",
+      "businessPurpose": "Supports BSN program administrators and faculty in managing clinical sessions, courses, midterm evaluation verification, return demonstration forms, and manual evaluation assignment generation for BSN nursing students.",
+      "keyMethods": [
+        "GetBSNSessions - retrieves BSN academic sessions for a given academic year and department",
+        "GetBSNSessionsByAcademicYears - retrieves BSN sessions across multiple academic years",
+        "VerifyBSNMidtermEvaluations - checks for existing midterm evaluations before generating new assignments",
+        "GenerateBSNManualAssignments - creates manual evaluation assignment batches for BSN students",
+        "GetBSNCoursesBySession - retrieves BSN courses for a given session with optional user-course filtering",
+        "GetBSNReturnDemonstrationFields - fetches field definitions for return demonstration skills forms",
+        "SaveBSNReturnForm - persists a complete BSN return demonstration form including skills, steps, instructions, and unsafe actions"
+      ],
+      "storedProcedures": [
+        "GetBSNSessions",
+        "GetBSNSessionsByAcademicYears",
+        "VerifyBSNMidtermEvaluations",
+        "GenerateBSNManualAssignments",
+        "GetBSNCoursesBySession",
+        "GetBSNReturnDemonstrationFields",
+        "SaveBSNReturnForm"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.Security.SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This is a large, feature-rich manager covering the entire BSN clinical program workflow. The NestJS backend must replicate session/course retrieval, midterm verification, manual assignment generation, and return demonstration form CRUD. Each SP call should become a dedicated service method.",
+      "complexity": "very-complex",
+      "lineCount": 2713
+    },
+    {
+      "filePath": "Business.EssentialActivities/DNPInfoBusiness.cs",
+      "fileName": "DNPInfoBusiness.cs",
+      "fileType": "business",
+      "className": "DNPInfoBusiness",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "Business façade for DNP (Doctor of Nursing Practice) log data operations. Delegates all database calls through DNPLogManager and provides view-initialization helpers that populate stub DataTables for the WebForms grid controls. Exposes methods for fetching course details, essential activities, procedure categories, student activity logs, and summary data.",
+      "businessPurpose": "Acts as the business layer intermediary for DNP program management pages, orchestrating data retrieval for course listings, essential activity type lookups, student activity logs, and DNP-specific student summaries used by faculty and students.",
+      "keyMethods": [
+        "GetCourseDetails - retrieves course enrollment details for the logged-in user or a specified user via DNPLogManager",
+        "OnViewInitializeManageEssentialActivities - initializes stub grid data for the manage essential activities WebForm page",
+        "OnViewInitializeStudentLog - initializes stub grid data for the student log WebForm page",
+        "GetDNPInfoDetails - retrieves filtered DNP activity log details by user, course, instructor, essentials, and activities",
+        "GetStudentAcitivityLogById - fetches a specific student activity log record by ID",
+        "GetEssentialActivities - retrieves the list of available essential activity types",
+        "GetEssentials - retrieves essential activity categories filtered by department and optionally by activity log ID",
+        "GetEssentialsActivity - retrieves activities within specified procedure categories for a department"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.EssentialActivities.DNPLogManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This façade class defines the public API surface for DNP log features. Each delegated method maps to a NestJS service method. The stub initialization methods (OnViewInitializeManageEssentialActivities, OnViewInitializeStudentLog) are WebForms-specific and have no equivalent in the Node.js backend.",
+      "complexity": "moderate",
+      "lineCount": 1118
+    },
+    {
+      "filePath": "Business.EssentialActivities/DNPLog.cs",
+      "fileName": "DNPLog.cs",
+      "fileType": "business",
+      "className": "DNPLog",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "A minimal data entity class representing a DNP course registration record with fields for CourseRegistrationID, CRN, CourseCode, CourseSection, and CourseName. Contains recursive property definitions (a known .NET bug pattern where properties reference themselves). Has no methods.",
+      "businessPurpose": "Provides a typed container for DNP course enrollment data (CRN, course code, section, name) used in the DNP log workflow course selection.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple DTO. Note that several properties have self-referencing getter/setter definitions which would cause stack overflow if accessed — this is a bug. The Node.js equivalent should be a clean DTO/entity with proper field mapping.",
+      "complexity": "trivial",
+      "lineCount": 50
+    },
+    {
+      "filePath": "Business.EssentialActivities/DNPLogManager.cs",
+      "fileName": "DNPLogManager.cs",
+      "fileType": "business",
+      "className": "DNPLogManager",
+      "inheritsFrom": "Manager",
+      "module": "EssentialActivities",
+      "summary": "The primary data-access manager for DNP program log operations. Provides overloaded methods for retrieving course details, student details (with progressive filter overloads for session, faculty, and status), session information with group management, and department-conditional stored procedure selection (e.g., department 2175 uses different SPs). At 1965 lines it is the central DNP data layer covering student summaries, session management, session groups, and activity log CRUD.",
+      "businessPurpose": "Serves as the database gateway for all DNP essential activity log features: course lookups, student detail summaries, session and session group management, activity log retrieval and save operations, all parameterized by department ID for multi-client routing to different stored procedures.",
+      "keyMethods": [
+        "GetCourseDetails - retrieves courses for logged-in user, routing to GetCourseDetails or GetActCourseDetails based on department",
+        "GetACTDNPCourseDetails - retrieves ACT-specific DNP course details",
+        "GetDNPStudentDetails - retrieves student enrollment summaries with multiple overloads for course, session, and faculty filters",
+        "GetDNPStudentDetailsDetailed - retrieves detailed student activity log data with filters for course, session, faculty, status, and deletion flag",
+        "GetDNPSessionsWithCourseInfo - retrieves DNP sessions with associated course data for a user and department",
+        "GetDNPSessions - retrieves DNP sessions for a calendar year and department with campus location filter",
+        "GetSessionGroupName - retrieves named session groups for a department",
+        "AddSessionGroupName - creates or updates a named session group"
+      ],
+      "storedProcedures": [
+        "GetCourseDetails",
+        "GetActCourseDetails",
+        "GetACTDNPCourseDetails",
+        "GetDNPStudentDetails",
+        "GetACTDNPStudentDetails",
+        "GetDNPActStudentDetails",
+        "GetDNPStudentDetailsDetailed",
+        "GetDNPActStudentDetailsDetailed",
+        "GetDNPSessionsWithCourseInfo",
+        "GetDNPSessions",
+        "GetSessionGroupName",
+        "AddSessionGroupName"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.Security.SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This is the core DNP data layer. The multi-client stored procedure routing pattern (department 2175 vs others) should be replaced with a clean multi-tenant strategy in NestJS. All overloaded GetDNPStudentDetails variants should become a single parameterized query service method.",
+      "complexity": "complex",
+      "lineCount": 1965
+    },
+    {
+      "filePath": "Business.EssentialActivities/DevManager.cs",
+      "fileName": "DevManager.cs",
+      "fileType": "business",
+      "className": "DevManager",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "A utility manager that provides FNP clinical log retrieval and reporting operations, with heavy routing logic based on department IDs (2207 for DEV environment, 2175 for one specific institution). Covers session-for-report retrieval, FNP student log details, clinical log review, and preceptor hours reporting. The class name reflects its origin as a development/test environment routing class, but it appears to be used in production multi-department scenarios.",
+      "businessPurpose": "Supports FNP clinical log reporting and review workflows for faculty and administrators, providing session listings, student log detail exports, clinical log review data, and preceptor hours summaries, with department-based SP routing for different institutional clients.",
+      "keyMethods": [
+        "GetFNPStudentDetailsLogs - retrieves FNP student detail logs filtered by course number, student, and alternative encounter flag",
+        "GetSessionsForReport - retrieves sessions available for reporting, with overloads for FNP department flag and calendar year",
+        "GetDNPSessionsForReport - retrieves DNP sessions for report generation",
+        "GetAssignmentVersionSessionsForReport - retrieves sessions filtered by assignment version and calendar year",
+        "GetFNPClinicalLogReview - retrieves FNP clinical log records for review, filtered by deletion status, log ID, and optionally status"
+      ],
+      "storedProcedures": [
+        "DEV_GetFNPStudentDetailsLogs",
+        "GetACTStudentDetailsLogs",
+        "DEV_GetSessionsForReport",
+        "GetACTSessionsForReport",
+        "GetDNPSessionsForReport",
+        "DEV_GetFNPClinicalLogReview",
+        "GetACTClinicalLogReview"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.Security.SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "The DEV_ vs ACT_ stored procedure routing by department ID is a legacy multi-tenant hack that should be replaced with proper tenant configuration in NestJS. The reporting functionality (sessions for report, clinical log review) needs to be migrated as distinct service endpoints.",
+      "complexity": "moderate",
+      "lineCount": 387
+    },
+    {
+      "filePath": "Business.EssentialActivities/FNPAutomaticEvaluationAssignments.cs",
+      "fileName": "FNPAutomaticEvaluationAssignments.cs",
+      "fileType": "business",
+      "className": "FNPAutomaticEvaluationAssignments",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "Provides two operations for the FNP automatic evaluation assignment system: triggering the automatic assignment generation process and retrieving last-updated timestamps for FNP schedule records. Delegates log-related operations to FNPLogManager.",
+      "businessPurpose": "Supports the automated workflow that generates FNP clinical evaluation assignments based on schedule data, and provides schedule update audit information for administrative monitoring.",
+      "keyMethods": [
+        "AutomaticFNPEvaluationAssignments - executes the AutomaticFNPEvaluationAssignments stored procedure to generate evaluation assignments automatically",
+        "GetLastUpdatedDatesForFNPSchedules - retrieves last-modified timestamps for FNP schedule records"
+      ],
+      "storedProcedures": [
+        "AutomaticFNPEvaluationAssignments",
+        "GetLastUpdatedDatesForFNPSchedules"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.EssentialActivities.FNPLogManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "The automatic assignment generation is a background/scheduled operation that should be implemented as a BullMQ worker job in the NestJS backend. The schedule timestamp query is needed for administrative dashboards.",
+      "complexity": "simple",
+      "lineCount": 55
+    },
+    {
+      "filePath": "Business.EssentialActivities/FNPInfoBusiness.cs",
+      "fileName": "FNPInfoBusiness.cs",
+      "fileType": "business",
+      "className": "FNPInfoBusiness",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "Business façade for FNP (Family Nurse Practitioner) clinical log management. Delegates all database calls to FNPLogManager, exposing methods for client complexity lookups, preceptor and clinical site retrieval, course details, medication/therapeutics lookups, user listings, and FNP log CRUD operations. At 1920 lines this is the primary business layer entry point for all FNP log page interactions.",
+      "businessPurpose": "Provides the business service layer for FNP clinical log entry, supporting nursing students and faculty in logging patient encounters with preceptor, site, medication, therapeutic, and clinical complexity data.",
+      "keyMethods": [
+        "GetClientComplexity - retrieves client complexity classification options for FNP log entries",
+        "GetPreceptors - retrieves preceptors available to a student for their FNP clinical log",
+        "GetCoursePreceptors - retrieves preceptors filtered by course and optionally session, with merge support",
+        "GetFNPClinicalSite - retrieves available clinical sites for a preceptor-student-course combination",
+        "GetStudentLevelofFunction - retrieves student level of function lookup data",
+        "GetCourseDetails - retrieves FNP course enrollment details for a user and optionally a session",
+        "GetUsers - retrieves user listing for FNP log administration",
+        "GetSiteType - retrieves clinical site type classification options",
+        "GetFNPMedications - retrieves medication lookup list for FNP log entries",
+        "GetFNPTherapeutics - retrieves therapeutic intervention lookup list for FNP log entries"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.EssentialActivities.FNPLogManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This class defines the complete API surface for FNP clinical log features. Every method maps to a NestJS service method backed by the equivalent FNPLogManager SP call. The large size (1920 lines) indicates this is a heavily used and feature-rich module.",
+      "complexity": "complex",
+      "lineCount": 1920
+    },
+    {
+      "filePath": "Business.EssentialActivities/FNPLogData.cs",
+      "fileName": "FNPLogData.cs",
+      "fileType": "business",
+      "className": "FNPLogData",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "A comprehensive data transfer object representing a single FNP clinical log entry. Contains over 50 properties covering student identity, course registration, preceptor, clinical site, patient demographics, encounter dates, medications, therapeutics, follow-up, client complexity, student function level, site type, and assignment-generation metadata (TemplateID, BatchID, AssignmentVersion, EvaluationID, etc.). Used as the primary input structure for FNP log save and evaluation assignment operations.",
+      "businessPurpose": "Carries all data required to create, update, or submit an FNP patient encounter log entry, and also serves as the parameter object for manual evaluation assignment generation, covering both clinical documentation and evaluation workflow needs.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "This DTO is the canonical shape of the FNP clinical log record. Its fields should directly inform the NestJS DTO class and MikroORM entity for the FNP clinical log feature. The dual use for both log entry and assignment generation parameters may warrant splitting into two DTOs in the modern backend.",
+      "complexity": "moderate",
+      "lineCount": 530
+    },
+    {
+      "filePath": "Business.EssentialActivities/FNPLogManager.cs",
+      "fileName": "FNPLogManager.cs",
+      "fileType": "business",
+      "className": "FNPLogManager",
+      "inheritsFrom": "Manager",
+      "module": "EssentialActivities",
+      "summary": "The primary data-access manager for all FNP clinical log operations. At 4247 lines it is one of the largest files in the EssentialActivities module, providing stored procedure calls for client complexity, preceptors, clinical sites, course details, log entry CRUD, evaluation assignments, reports (preceptor hours, immersion faculty, student detail logs), and multi-department routing (DEV vs ACT stored procedures based on department ID 2207). Integrates with NewRelic for performance monitoring.",
+      "businessPurpose": "Serves as the SQL Server gateway for all FNP program clinical log and evaluation features, supporting student patient encounter logging, preceptor management, clinical site management, evaluation assignment generation, and administrative reporting for FNP nursing programs.",
+      "keyMethods": [
+        "GetClientComplexity - retrieves FNP client complexity options via GetFNPClientComplexity SP",
+        "GetPreceptors - retrieves preceptors for a department and student via GetFNPPreceptors SP",
+        "GetCoursePreceptors - retrieves course-specific preceptors with session and merge options, routing to GetFNPPreceptors or GetACTPreceptors based on department",
+        "GetFNPPreceptorsAndCourse - retrieves preceptors and courses for batch assignment filtering",
+        "GetFNPCoursesByPreceptors - retrieves courses filtered by preceptor IDs for a session and calendar year",
+        "GetFNPClinicalSite - retrieves clinical sites for a preceptor-student-course combination",
+        "GetStudentLevelofFunction - retrieves FNP student level of function options",
+        "GeneratePreceptorHoursReport - generates preceptor hours report for a date range, with extended overload for sessions, courses, format, and preceptor filtering",
+        "GetImmersionFacultyAccount - retrieves immersion faculty account data for assignment review"
+      ],
+      "storedProcedures": [
+        "GetFNPClientComplexity",
+        "GetFNPPreceptors",
+        "GetACTPreceptors",
+        "GetFNPPreceptorsAndCourse",
+        "GetACTPreceptorsAndCourse",
+        "GetFNPCoursesByPreceptors",
+        "GetFNPClinicalSite",
+        "GetFNPStudentLevelofFunction",
+        "GetFNPPreceptorReprot",
+        "GetImmersionFacultyAccount"
+      ],
+      "businessManagersUsed": [
+        "MyEvaluations.Business.Security.SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This is the largest and most critical EssentialActivities data manager. Each SP call group (preceptors, clinical sites, logs, reports) should become a dedicated NestJS repository method. The department-based SP routing (2207 vs others) must be replaced with tenant-aware query building. NewRelic integration should carry over to the Node.js APM setup.",
+      "complexity": "very-complex",
+      "lineCount": 4247
+    },
+    {
+      "filePath": "Business.EssentialActivities/LinkBSNEvaluationtoCoursesEntity.cs",
+      "fileName": "LinkBSNEvaluationtoCoursesEntity.cs",
+      "fileType": "business",
+      "className": "LinkBSNEvaluationtoCoursesEntity",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "A small data entity class representing the link between a BSN evaluation template assignment version and a specific course, including clinical site and unit context. Used to configure which evaluation template is assigned to which BSN course section at which clinical site and unit.",
+      "businessPurpose": "Carries the configuration data for linking a BSN evaluation assignment version to a course with its associated clinical site and unit, supporting the evaluation template assignment workflow for BSN programs.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "This entity defines the BSN course-to-evaluation-template linkage schema. It should become a join-table entity in the NestJS/MikroORM data model for evaluation assignment versioning.",
+      "complexity": "trivial",
+      "lineCount": 24
+    },
+    {
+      "filePath": "Business.EssentialActivities/LinkEvaluationtoCoursesEntity.cs",
+      "fileName": "LinkEvaluationtoCoursesEntity.cs",
+      "fileType": "business",
+      "className": "LinkEvaluationtoCoursesEntity",
+      "inheritsFrom": null,
+      "module": "EssentialActivities",
+      "summary": "A minimal data entity representing the link between an evaluation assignment version and an FNP/general course, including a PIP (Performance Improvement Plan) threshold configuration. Simpler than the BSN equivalent, lacking clinical site and unit fields.",
+      "businessPurpose": "Carries the mapping data for associating an evaluation template assignment version with a course, including the PIP threshold that triggers performance improvement plan workflows.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "The PIPThreshold field is important business logic that controls when PIP workflows are triggered. This should be modeled as a configuration field on the course-evaluation assignment link in the NestJS data model.",
+      "complexity": "trivial",
+      "lineCount": 19
+    }
+  ],
+  "directoryOverview": "EssentialActivities business module providing essentialactivities functionality for the MyEvaluations platform.",
+  "keyWorkflows": []
+}

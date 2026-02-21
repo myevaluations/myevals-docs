@@ -1,0 +1,64 @@
+{
+  "module": "Business.AdobeSign",
+  "businessClasses": [
+    "AdobeJwtHelper",
+    "AdobeOAuthHelper",
+    "AdobeSignAgreements",
+    "AdobeSignClient",
+    "AdobeSignService",
+    "AdobeSignTokenStore",
+    "AdobeTemplateLogger",
+    "AdobeTokenManager"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "AddAdobeDocumentType.aspx.cs",
+        "filePath": "Web/Security/AddAdobeDocumentType.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "AddAdobeSignatureTemplate.aspx.cs",
+        "filePath": "Web/Security/AddAdobeSignatureTemplate.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "AddAdobeSignatureTemplateNew.aspx.cs",
+        "filePath": "Web/Security/AddAdobeSignatureTemplateNew.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "AddAdobeSignatureTemplateTest.aspx.cs",
+        "filePath": "Web/Security/AddAdobeSignatureTemplateTest.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "AdobeOAuthCallback.aspx.cs",
+        "filePath": "Web/Security/AdobeOAuthCallback.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "AssignAdobeRequirementGroup.aspx.cs",
+        "filePath": "Web/Security/AssignAdobeRequirementGroup.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      },
+      {
+        "fileName": "EditAdobeDocument.aspx.cs",
+        "filePath": "Web/Security/EditAdobeDocument.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      }
+    ],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 7,
+    "schedulers": 0
+  }
+}

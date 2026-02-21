@@ -1,0 +1,3425 @@
+{
+  "directory": "Web/UserControls",
+  "layer": "web",
+  "generatedAt": "2026-02-21T05:01:25.246Z",
+  "fileCount": 142,
+  "files": [
+    {
+      "filePath": "Web/UserControls/ChangeText.ascx.cs",
+      "fileName": "ChangeText.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ChangeText",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Provides custom text replacement functionality and Google Translate language support per department. Reads department-specific text substitution mappings (FromText/ToText) and builds a JSON payload for client-side text replacement. Also manages a Google Translate cookie based on the department's configured language code.",
+      "businessPurpose": "Enables per-department UI text customization (renaming labels/terms) and multi-language translation support via Google Translate integration.",
+      "keyMethods": [
+        "Page_Load - Loads department change-text configuration and sets Google Translate cookie"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Google Translate cookie-based approach is outdated; modern i18n frameworks would replace this.",
+      "complexity": "simple",
+      "lineCount": 71
+    },
+    {
+      "filePath": "Web/UserControls/ClientSideUserFilter.ascx.cs",
+      "fileName": "ClientSideUserFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ClientSideUserFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "A client-side user filter control that populates department and user type dropdowns, then triggers JavaScript-based user data fetching. Stores selected users, department IDs, and user type IDs in hidden fields for client-side processing.",
+      "businessPurpose": "Provides a reusable AJAX-driven user selection filter with department and user type filtering, used across evaluation assignment pages.",
+      "keyMethods": [
+        "Page_Load - Binds departments and user types, registers client-side scripts for AJAX user filtering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "UserManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Client-side user filtering pattern is a candidate for React component replacement.",
+      "complexity": "simple",
+      "lineCount": 82
+    },
+    {
+      "filePath": "Web/UserControls/Common/AcademicYears.ascx.cs",
+      "fileName": "AcademicYears.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_AcademicYears",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable dropdown for selecting academic years in the GME context. Supports configurable options including show-all-years, future years, Amion export start year, auto-postback, and assigned year preselection. Fires a delegate event on selection change and can trigger associated UpdatePanel refreshes.",
+      "businessPurpose": "Provides a standardized academic year selector used across duty hours, evaluations, and scheduling pages to filter data by academic year.",
+      "keyMethods": [
+        "Page_Load - Initializes year binding and handles postback state restoration",
+        "BindYears - Fetches academic years from DutyHoursManager with configurable options (all years, future, Amion export)",
+        "lstAcademicYears_SelectedIndexChanged - Fires delegate event and updates associated panels on year change"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Academic year selection is widely reused; equivalent React component needed for migrated pages.",
+      "complexity": "moderate",
+      "lineCount": 225
+    },
+    {
+      "filePath": "Web/UserControls/Common/ArchiveUserSelectFilter.ascx.cs",
+      "fileName": "ArchiveUserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ArchiveUserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Complex dual-listbox user selection control specifically for archived users. Supports filtering by user type, PGY level, groups, speciality types, academic year, and user scope (local vs all). Provides add/remove/add-all/remove-all operations between available and selected user lists. Includes local-user-only filtering variants.",
+      "businessPurpose": "Enables selection of archived (inactive) users for historical reports and evaluation data review, with multi-faceted filtering capabilities.",
+      "keyMethods": [
+        "Page_Load - Initializes all filter panels and binds available archived users",
+        "BindAvailableUsers - Fetches archived users based on current filter criteria (type, scope, academic year)",
+        "btnAdd_Click - Moves selected users or group/PGY/specialty-filtered users to selected list",
+        "BindSelectedUsersforPGYs - Populates selected list based on PGY filter",
+        "BindSelctedUsersForSpecialityTypes - Populates selected list based on specialty type",
+        "BindTopUserTypes - Populates the top-level user type filter list",
+        "GetYearList - Generates academic year list for the academic year filter"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "EvaluationsTemplateManager",
+        "DepartmentManager",
+        "ConferenceSchedulesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Archived user selection is needed for historical reports; complex filtering logic needs careful migration.",
+      "complexity": "very-complex",
+      "lineCount": 1364
+    },
+    {
+      "filePath": "Web/UserControls/Common/AttendingScoringProfileUserSelectFilter.ascx.cs",
+      "fileName": "AttendingScoringProfileUserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_AttendingScoringProfileUserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "A highly complex dual-listbox user selection control used for attending scoring profile reports. Extends the standard user selection pattern with additional features: CME evaluation completed user tracking, single-topic speaker info, required/optional user separation, cross-department user selection, and archived user support. Supports delegates for user type changes and archived checkbox events.",
+      "businessPurpose": "Provides the primary user selection interface for attending physician scoring profiles and evaluation report generation, supporting the full range of user filtering and selection operations.",
+      "keyMethods": [
+        "Page_Load - Initializes complex multi-panel user selection interface",
+        "BindAvailableUsers - Fetches users based on scope, type, department, and archive status",
+        "BindSelectedUsersforPGYs - Selects users by PGY level",
+        "BindSelectedUsersforGroup - Selects users by group membership",
+        "lstSelectUserTypes_SelectedIndexChanged - Handles user type filter changes with dynamic panel visibility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "EvaluationsTemplateManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Central to attending scoring workflow; one of the most complex user controls needing careful decomposition during migration.",
+      "complexity": "very-complex",
+      "lineCount": 2923
+    },
+    {
+      "filePath": "Web/UserControls/Common/AvailableUsers.ascx.cs",
+      "fileName": "AvailableUsers.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_AvailableUsers",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Single-select user dropdown control with local/all user scope toggle, user type filtering, archived user support, and preceptor-specific binding. Fires selection change events to parent pages and supports associated UpdatePanel refreshes. Used widely for selecting individual users (residents, attendings, preceptors).",
+      "businessPurpose": "Provides the standard single-user selection dropdown used across patient logs, procedures, duty hours, and evaluation pages.",
+      "keyMethods": [
+        "Page_Load - Initializes control with user scope, filters, and preceptor mode",
+        "BindAvailableUsers - Fetches users based on type, scope, and archive status",
+        "BindAvailablePreceptors - Fetches preceptor users for competency/individual pages",
+        "lstAvailableUsers_SelectedIndexChanged - Fires delegate event and updates associated panels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "UserManager",
+        "GroupParticipantsManager",
+        "MenuManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "One of the most widely-used user controls; React equivalent needed early in migration.",
+      "complexity": "complex",
+      "lineCount": 459
+    },
+    {
+      "filePath": "Web/UserControls/Common/AvailableUsersPostBack.ascx.cs",
+      "fileName": "AvailableUsersPostBack.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_AvailableUsersPostBack",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Nearly identical to AvailableUsers.ascx.cs but designed for postback-based pages. Provides single-select user dropdown with local/all scope, user type filtering, archived user support, and preceptor binding. The key difference is in postback handling behavior.",
+      "businessPurpose": "Provides a postback-compatible variant of the standard single-user selection dropdown for pages that require full-page postbacks instead of AJAX partial updates.",
+      "keyMethods": [
+        "Page_Load - Initializes control with postback-aware user scope handling",
+        "BindAvailableUsers - Fetches users with type/scope/archive filtering",
+        "BindAvailablePreceptors - Fetches preceptor users",
+        "lstAvailableUsers_SelectedIndexChanged - Fires delegate event on selection change"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "UserManager",
+        "GroupParticipantsManager",
+        "MenuManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Duplicate of AvailableUsers with postback differences; consolidate into single React component during migration.",
+      "complexity": "complex",
+      "lineCount": 457
+    },
+    {
+      "filePath": "Web/UserControls/Common/CommitteeUserSelectFilter.ascx.cs",
+      "fileName": "CommitteeUserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_CommitteeUserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Complex dual-listbox user selection control for committee-related workflows. Similar to UserSelectFilter but specialized for committee user selection with department scope, PGY filtering, group filtering, user type selection, and archived user support. Manages available/selected user lists with add/remove operations.",
+      "businessPurpose": "Enables committee member selection for CCC (Clinical Competency Committee) and other committee-based evaluation processes.",
+      "keyMethods": [
+        "Page_Load - Initializes committee user selection filters",
+        "BindAvailableUsers - Fetches users for committee selection",
+        "BindSelectedUsersforPGYs - Filters by PGY level",
+        "BindSelectedUsersforGroup - Filters by group",
+        "btnAdd_Click/btnRemove_Click - Manages dual-list transfers"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Committee user selection is used in CCC workflows; consider consolidating with other user select filters.",
+      "complexity": "very-complex",
+      "lineCount": 2325
+    },
+    {
+      "filePath": "Web/UserControls/Common/ComplicationTypeSelect.ascx.cs",
+      "fileName": "ComplicationTypeSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ComplicationTypeSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Radio button selection control for complication types in procedure logging. Provides radio button list for selecting complication type (Yes/No/etc.) with an optional text area for complication details. Supports required field validation.",
+      "businessPurpose": "Captures complication occurrence information during procedure logging, a critical data point for patient safety tracking.",
+      "keyMethods": [
+        "Page_Load - Applies CSS class on initial load",
+        "DefaultControlLoad - Sets up control styling"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simple form control used in procedure logging; straightforward to recreate as React component.",
+      "complexity": "simple",
+      "lineCount": 125
+    },
+    {
+      "filePath": "Web/UserControls/Common/ConsentTypeSelect.ascx.cs",
+      "fileName": "ConsentTypeSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ConsentTypeSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Radio button selection control for patient consent types in procedure logging. Provides a three-option radio button list for consent type selection with custom styling.",
+      "businessPurpose": "Captures patient consent status (e.g., Informed/Verbal/None) during procedure logging for compliance tracking.",
+      "keyMethods": [
+        "Page_Load - Applies CSS on initial load",
+        "DefaultControlLoad - Sets CSS classes on radio button items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simple consent form control; easy to recreate in React.",
+      "complexity": "trivial",
+      "lineCount": 105
+    },
+    {
+      "filePath": "Web/UserControls/Common/DateField.ascx.cs",
+      "fileName": "DateField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DateField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable date input field control with calendar popup, validation, and department-specific behavior. Supports required field validation, date range validation, and special BSN department logic that auto-selects supervisors based on date. Switches between editable textbox and read-only label based on page mode.",
+      "businessPurpose": "Provides a standardized date entry component used across patient logs and procedures with built-in validation and department-specific supervisor auto-selection.",
+      "keyMethods": [
+        "Page_Load - Configures date field with validation, calendar script, and BSN department supervisor logic",
+        "EnteredDate (property) - Gets/sets the date value with parsing"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Date picker with department-specific logic; replace with standard React date picker plus business logic.",
+      "complexity": "moderate",
+      "lineCount": 181
+    },
+    {
+      "filePath": "Web/UserControls/Common/DateRangeFilter.ascx.cs",
+      "fileName": "DateRangeFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DateRangeFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Date range picker control with start and end date inputs. Defaults to academic year start date through current date. Supports custom date headers and pre-assigned dates for favorite reports.",
+      "businessPurpose": "Provides a reusable date range filter used across reports to constrain data by time period, defaulting to the current academic year.",
+      "keyMethods": [
+        "Page_Load - Sets default dates from academic year start to current date, applies assigned values"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DetailedConferenceTrackingReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simple date range filter; replace with React date range picker component.",
+      "complexity": "simple",
+      "lineCount": 104
+    },
+    {
+      "filePath": "Web/UserControls/Common/DateRangeFilterNew.ascx.cs",
+      "fileName": "DateRangeFilterNew.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DateRangeFilterNew",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Simplified version of DateRangeFilter without postback-only initialization. Sets default dates every load cycle rather than only on first load.",
+      "businessPurpose": "Provides a variant date range filter for pages that need date defaults set on every page load, not just initial load.",
+      "keyMethods": [
+        "Page_Load - Sets default date range on every load"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DetailedConferenceTrackingReportManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Variant of DateRangeFilter; consolidate during migration.",
+      "complexity": "trivial",
+      "lineCount": 79
+    },
+    {
+      "filePath": "Web/UserControls/Common/DiagnosisSearch.ascx.cs",
+      "fileName": "DiagnosisSearch.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DiagnosisSearch",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Search-based diagnosis selection control with keyword search and category filtering. Displays search results as a repeater with checkboxes for multi-select diagnosis selection. Uses client-side JavaScript for managing selected diagnoses.",
+      "businessPurpose": "Enables clinicians to search and select ICD/diagnosis codes during patient log and procedure entry.",
+      "keyMethods": [
+        "Page_Load - Initializes with existing selected diagnosis IDs",
+        "btnSearch_Click - Searches diagnoses by keyword and category",
+        "rptDiagnosis_ItemDataBound - Binds checkbox click handlers for diagnosis selection"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DiagnosesManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Diagnosis search is critical for patient log entry; needs React autocomplete/search component.",
+      "complexity": "moderate",
+      "lineCount": 80
+    },
+    {
+      "filePath": "Web/UserControls/Common/DiagnosisSelect.ascx.cs",
+      "fileName": "DiagnosisSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DiagnosisSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Full-featured diagnosis selection control with postback support, category-based browsing, and search functionality. Manages diagnosis selection via hidden fields and client-side JavaScript. Supports both add and edit modes with pre-populated diagnosis lists. Includes patient context awareness.",
+      "businessPurpose": "Primary diagnosis selection component used in procedure and patient log entry forms, supporting ICD code browsing and selection.",
+      "keyMethods": [
+        "Page_Load - Initializes diagnosis selector with existing selections and validation",
+        "GetDeptId/GetUserId - Resolves department and user context from request or session"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DiagnosesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core clinical data entry component; needs modern searchable multi-select React component.",
+      "complexity": "complex",
+      "lineCount": 1220
+    },
+    {
+      "filePath": "Web/UserControls/Common/DiagnosisSelectNoPostBack.ascx.cs",
+      "fileName": "DiagnosisSelectNoPostBack.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_DiagnosisSelectNoPostBack",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "No-postback variant of DiagnosisSelect that uses client-side JavaScript for all interactions. Stores selected diagnosis IDs in hidden fields and ViewState. Supports required/optional diagnosis entry with radio button toggle. Includes patient context via PatientSelectNoPostBack control reference.",
+      "businessPurpose": "Provides a smoother (no page reload) diagnosis selection experience for patient log and procedure entry forms.",
+      "keyMethods": [
+        "Page_Load - Initializes diagnosis selector with client-side script registration",
+        "GetDeptId/GetUserId - Resolves department and user context",
+        "StorePageState/RetrievePageState/RemovePageState - ViewState management for selected diagnoses"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DiagnosesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "No-postback pattern is closer to React SPA behavior; migration should use this as reference.",
+      "complexity": "moderate",
+      "lineCount": 250
+    },
+    {
+      "filePath": "Web/UserControls/Common/EducationDXSelect.ascx.cs",
+      "fileName": "EducationDXSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_EducationDXSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dropdown selection control for education diagnosis classifications. Fetches department-specific education diagnosis categories and supports dynamic reloading when the department selection changes. Used in patient log entry for educational classification of clinical encounters.",
+      "businessPurpose": "Allows trainees to classify patient encounters by educational diagnosis category, supporting curriculum mapping and educational outcome tracking.",
+      "keyMethods": [
+        "Page_Load - Initializes education DX dropdown with validation",
+        "FillEducationDX - Fetches education diagnoses by department and page mode",
+        "FillEducationDXFromDepartmentSelection - Refreshes list when department changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EducationDXManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department-specific lookup; standard dropdown in React with API-driven data.",
+      "complexity": "moderate",
+      "lineCount": 220
+    },
+    {
+      "filePath": "Web/UserControls/Common/EncounterTypeSelect.ascx.cs",
+      "fileName": "EncounterTypeSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_EncounterTypeSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dropdown selection control for clinical encounter types (competence levels). Fetches encounter types by department and supports dynamic department changes. Includes a method to serialize encounter descriptions to JSON for client-side display.",
+      "businessPurpose": "Captures the type/level of clinical encounter during patient log entry, supporting competency-based medical education tracking.",
+      "keyMethods": [
+        "Page_Load - Initializes encounter type dropdown with validation",
+        "FillEncounterType - Fetches encounter types by department",
+        "FillEncounterTypeFromDepartmentSelection - Refreshes on department change",
+        "GetEncounterDetails - Serializes encounter descriptions to JSON for client-side tooltips"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EncounterTypeManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard encounter type dropdown; straightforward React migration with API.",
+      "complexity": "moderate",
+      "lineCount": 269
+    },
+    {
+      "filePath": "Web/UserControls/Common/ErrorSelect.ascx.cs",
+      "fileName": "ErrorSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ErrorSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dual-listbox error selection control with error category filtering. Allows users to select medical errors by category, showing available errors in one list and selected errors in another. Includes error descriptions shown on click/hover. Manages error category descriptions and tooltips.",
+      "businessPurpose": "Enables clinicians to document medical errors/near-misses during procedure logging, categorized by error type for quality improvement tracking.",
+      "keyMethods": [
+        "Page_Load - Initializes error category dropdown and error lists",
+        "FillErrorCategoryList - Loads error categories",
+        "ddlErrorCategory_SelectedIndexChanged - Filters errors by selected category",
+        "btnAdd_Click/btnRemove_Click - Manages dual-list transfers",
+        "BindErrorCategoryDescription - Adds description tooltips to error items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ErrorManager",
+        "ErrorCategoryManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Error/near-miss documentation is important for quality; dual-list pattern needs React equivalent.",
+      "complexity": "complex",
+      "lineCount": 392
+    },
+    {
+      "filePath": "Web/UserControls/Common/FNPDiagnosisLog.ascx.cs",
+      "fileName": "FNPDiagnosisLog.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_FNPDiagnosisLog",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Family Nurse Practitioner (FNP) specific diagnosis log control. Very similar to DiagnosisSelectNoPostBack but without required field validation. Manages diagnosis selection for FNP program patient logging with client-side JavaScript and ViewState-based state management.",
+      "businessPurpose": "Provides diagnosis selection specifically for FNP (Family Nurse Practitioner) program patient logging, where diagnosis is optional.",
+      "keyMethods": [
+        "Page_Load - Initializes FNP diagnosis log with optional validation",
+        "GetDeptId/GetUserId - Resolves department and user context",
+        "StorePageState/RemovePageState - ViewState management"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DiagnosesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "FNP-specific variant; consolidate with DiagnosisSelectNoPostBack during migration.",
+      "complexity": "moderate",
+      "lineCount": 251
+    },
+    {
+      "filePath": "Web/UserControls/Common/FileUpload.ascx.cs",
+      "fileName": "FileUpload.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_FileUpload",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Multi-file upload control with client-side file element management. Saves uploaded files with GUID-based names, builds a delimited string tracking original filenames, saved paths, DB entry status, and deletion flags. Includes HTML table rendering for displaying uploaded file lists with remove links.",
+      "businessPurpose": "Provides file attachment capability used in procedures, evaluations, and portfolio documentation uploads.",
+      "keyMethods": [
+        "Page_Load - Sets up client-side file add handler",
+        "UploadFiles - Processes HTTP file collection, saves to server with GUID names",
+        "BindTable - Renders an HTML table of previously uploaded files with remove links",
+        "GetFileName - Generates GUID-based filename",
+        "CreateFolder - Ensures upload directory exists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "File upload needs modernization; replace with Azure Blob Storage integration in Node.js backend.",
+      "complexity": "moderate",
+      "lineCount": 177
+    },
+    {
+      "filePath": "Web/UserControls/Common/FreeTextField.ascx.cs",
+      "fileName": "FreeTextField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_FreeTextField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable free-text input field with configurable label, required validation, error message, CSS class, and width. Maps to a TextBox control with RequiredFieldValidator.",
+      "businessPurpose": "Provides a standardized labeled text input control used in patient log and procedure custom field rendering.",
+      "keyMethods": [
+        "Page_Load - Configures label, visibility, validation, and CSS",
+        "EnteredText (property) - Gets/sets the text value"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple text input; trivial to replace with standard React form field.",
+      "complexity": "trivial",
+      "lineCount": 98
+    },
+    {
+      "filePath": "Web/UserControls/Common/GetRotations.ascx.cs",
+      "fileName": "GetRotations.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_GetRotations",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dual-listbox rotation selection control for quiz/on-call assignments. Provides available/selected rotation lists with add/remove/add-all/remove-all operations. Used for integrated on-call quiz assignment to associate quizzes with specific rotations.",
+      "businessPurpose": "Enables rotation selection for on-call quiz assignments, allowing administrators to target quizzes to specific clinical rotations.",
+      "keyMethods": [
+        "Page_Load - Fills available rotations via IntegratedOnCallQuizAssignmentBusiness",
+        "btnAdd_Click/btnRemove_Click/btnAddAll_Click/btnRemoveAll_Click - Dual-list transfer operations",
+        "SelectedRotations (property) - Returns comma-separated selected rotation IDs"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "IntegratedOnCallQuizAssignmentBusiness"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Quiz assignment rotation selection; niche use case.",
+      "complexity": "simple",
+      "lineCount": 129
+    },
+    {
+      "filePath": "Web/UserControls/Common/LocationSelect.ascx.cs",
+      "fileName": "LocationSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_LocationSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dropdown selection control for clinical locations. Fetches location names by department with support for dynamic department changes. Includes required field validation and configurable label text.",
+      "businessPurpose": "Captures the clinical location where a patient encounter or procedure occurred, supporting location-based reporting.",
+      "keyMethods": [
+        "Page_Load - Initializes location dropdown with validation",
+        "FillLocation - Fetches locations by department and page mode",
+        "FillLocationsFromDepartmentSelection - Refreshes when department changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LocationNameManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard location dropdown; straightforward React migration.",
+      "complexity": "moderate",
+      "lineCount": 210
+    },
+    {
+      "filePath": "Web/UserControls/Common/LogDatesSelect.ascx.cs",
+      "fileName": "LogDatesSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_LogDatesSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dual date input control for first and last log dates with required field validation on both fields. Provides paired date entry for patient log date ranges.",
+      "businessPurpose": "Captures the date range for patient log entries that span multiple dates (e.g., multi-day procedures or patient encounters).",
+      "keyMethods": [
+        "Page_Load - Enables required validation for both date fields",
+        "EnteredFirstLogDate/EnteredLastLogDate (properties) - Gets/sets date values with parsing"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple dual-date control; trivial React replacement.",
+      "complexity": "trivial",
+      "lineCount": 76
+    },
+    {
+      "filePath": "Web/UserControls/Common/LongTextField.ascx.cs",
+      "fileName": "LongTextField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_LongTextField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable multi-line text area input with configurable label, required validation, error message, CSS class, width, and validation group. Maps to a TextBox in multiline mode.",
+      "businessPurpose": "Provides a standardized labeled textarea control for longer text entries in patient logs and procedure custom fields.",
+      "keyMethods": [
+        "Page_Load - Configures label, visibility, validation, and CSS",
+        "EnteredText (property) - Gets/sets the text value"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple textarea; trivial React replacement.",
+      "complexity": "trivial",
+      "lineCount": 97
+    },
+    {
+      "filePath": "Web/UserControls/Common/LookupField.ascx.cs",
+      "fileName": "LookupField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_LookupField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Generic lookup dropdown control that fetches values from either Procedures or PatientLog lookup tables based on a lookup ID. Supports required validation, configurable label, and module-specific data sources.",
+      "businessPurpose": "Provides a reusable dropdown for department-configured custom lookup fields in patient logs and procedures, enabling institution-specific data capture.",
+      "keyMethods": [
+        "Page_Load - Fetches lookup items based on module type (Procedures or PatientLog) and lookup ID"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager",
+        "PatientLogLookupItemManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Generic lookup pattern used for custom fields; needs API-driven React select component.",
+      "complexity": "moderate",
+      "lineCount": 178
+    },
+    {
+      "filePath": "Web/UserControls/Common/MultiDepartmentSelectFilter.ascx.cs",
+      "fileName": "MultiDepartmentSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_MultiDepartmentSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Complex multi-department user selection filter similar to UserSelectFilter but with cross-department capabilities. Provides dual-listbox user selection with department, PGY, group, specialty, and user type filtering. Supports shared department visibility and user scope management.",
+      "businessPurpose": "Enables user selection across multiple departments, used in GME-level reports and cross-program evaluation workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes multi-department filtering interface",
+        "BindAvailableUsers - Fetches users across departments",
+        "SetPanelVisibility - Manages visibility of filter panels based on configuration"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Cross-department selection needed for GME admin; consolidate with other user select filters.",
+      "complexity": "very-complex",
+      "lineCount": 2009
+    },
+    {
+      "filePath": "Web/UserControls/Common/MultiDepartmentUserSelection.ascx.cs",
+      "fileName": "MultiDepartmentUserSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_MultiDepartmentUserSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "The most complex user selection control, providing full multi-department user selection with all filtering capabilities. Extends MultiDepartmentSelectFilter with additional department-specific user type handling, local user filtering, and comprehensive add/remove operations.",
+      "businessPurpose": "Provides the full-featured multi-department user selection interface for institution-wide reports and cross-program evaluations.",
+      "keyMethods": [
+        "Page_Load - Initializes full multi-department user selection",
+        "BindAvailableUsers - Fetches users with full filtering",
+        "BindSelectedUsersforPGYs/Group/Types/Speciality - Various filter-based selection methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "EvaluationsTemplateManager",
+        "ConferenceSchedulesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Largest user selection control; needs careful decomposition into composable React components.",
+      "complexity": "very-complex",
+      "lineCount": 3100
+    },
+    {
+      "filePath": "Web/UserControls/Common/NumberField.ascx.cs",
+      "fileName": "NumberField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_NumberField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable numeric input field with configurable type (Integer or Float), range validation, required validation, and inline JavaScript for numeric-only input enforcement. Registers client-side keypress handlers to restrict input to digits and optionally decimal points.",
+      "businessPurpose": "Provides a standardized numeric input for patient log and procedure custom fields where quantitative data capture is needed.",
+      "keyMethods": [
+        "Page_Load - Configures numeric input type, range validation, and registers client-side numeric enforcement script",
+        "EnteredValue (property) - Gets/sets the numeric text value"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple numeric input; replace with HTML5 number input or React numeric field.",
+      "complexity": "simple",
+      "lineCount": 163
+    },
+    {
+      "filePath": "Web/UserControls/Common/NumberList.ascx.cs",
+      "fileName": "NumberList.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_NumberList",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Simple dropdown generating a list of sequential numbers from 1 to a configurable maximum (default 30). Used for reminder day count selection in evaluation assignment workflows.",
+      "businessPurpose": "Provides a numeric day count selector for configuring evaluation assignment reminder intervals.",
+      "keyMethods": [
+        "Page_Load - Binds numbers on initial load",
+        "BindNumbers - Generates ListItems from 1 to MaxValue, defaults to 7"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Trivial number dropdown; simple React select replacement.",
+      "complexity": "trivial",
+      "lineCount": 78
+    },
+    {
+      "filePath": "Web/UserControls/Common/ParticipationTypeSelect.ascx.cs",
+      "fileName": "ParticipationTypeSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ParticipationTypeSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dropdown selection for procedure participation types (e.g., Primary Surgeon, First Assistant, Observer). Wraps a custom participation type list control with label, required validation, and default item configuration.",
+      "businessPurpose": "Captures the trainee's role/participation level during a procedure, critical for procedure logging compliance and competency tracking.",
+      "keyMethods": [
+        "Page_Load - Initializes control with CSS and default text",
+        "InitControl - Delegates initialization to inner participation type control"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Procedure participation type is required for ACGME compliance; needs React equivalent.",
+      "complexity": "simple",
+      "lineCount": 146
+    },
+    {
+      "filePath": "Web/UserControls/Common/PatientLogReportFilter.ascx.cs",
+      "fileName": "PatientLogReportFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_PatientLogReportFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Report filter control for patient log reports, aggregating multiple sub-filters including user selection, date range, rotation, and various patient log-specific criteria. Manages the composite filter state for patient log report generation.",
+      "businessPurpose": "Provides the consolidated filter interface for patient log reports, enabling administrators to filter by trainee, date range, rotation, and other criteria.",
+      "keyMethods": [
+        "Page_Load - Initializes composite report filter",
+        "Various filter property accessors for user, date range, rotation selections"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter aggregation pattern; decompose into composable React filter components.",
+      "complexity": "complex",
+      "lineCount": 581
+    },
+    {
+      "filePath": "Web/UserControls/Common/PatientSelect.ascx.cs",
+      "fileName": "PatientSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_PatientSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Patient selection control with search capability, new patient creation, and department/user context awareness. Supports postback-based patient search by name, displays results in a dropdown, and allows creating new patients. Provides the patient context for procedure and patient log entry.",
+      "businessPurpose": "Provides patient identification for procedure logging and patient encounter documentation, with search and new patient creation capabilities.",
+      "keyMethods": [
+        "Page_Load - Initializes patient selection with search and create modes",
+        "Patient search and selection methods",
+        "New patient creation handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Patient selection is critical for clinical workflows; needs modern React autocomplete with debounced API search.",
+      "complexity": "complex",
+      "lineCount": 667
+    },
+    {
+      "filePath": "Web/UserControls/Common/PatientSelectNoPostBack.ascx.cs",
+      "fileName": "PatientSelectNoPostBack.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_PatientSelectNoPostBack",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "No-postback variant of PatientSelect using client-side AJAX for patient search and selection. Stores patient ID in hidden field for no-reload form submission. Similar functionality to PatientSelect but with smoother user experience.",
+      "businessPurpose": "Provides a smoother patient selection experience without page reloads, used in patient log entry forms.",
+      "keyMethods": [
+        "Page_Load - Initializes AJAX-based patient selection",
+        "PatientID (property) - Gets/sets patient ID from hidden field"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "AJAX patient search is closer to modern SPA pattern; use as reference for React migration.",
+      "complexity": "complex",
+      "lineCount": 577
+    },
+    {
+      "filePath": "Web/UserControls/Common/ProcedureQuestions.ascx.cs",
+      "fileName": "ProcedureQuestions.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ProcedureQuestions",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Dynamic form control that renders configurable procedure-specific questions. Loads question definitions from the database and dynamically generates form fields (text, radio, dropdown, checkbox) based on question configuration. Used during procedure logging to capture procedure-specific data.",
+      "businessPurpose": "Enables institution-configurable procedure-specific questions during procedure logging, supporting custom data capture requirements.",
+      "keyMethods": [
+        "Page_Load - Loads and renders dynamic procedure questions",
+        "Dynamic question rendering and answer collection methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Dynamic form generation needs React equivalent with JSON-driven form builder.",
+      "complexity": "complex",
+      "lineCount": 487
+    },
+    {
+      "filePath": "Web/UserControls/Common/ProcedureReviewComment.ascx.cs",
+      "fileName": "ProcedureReviewComment.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ProcedureReviewComment",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Minimal control wrapping a single textarea for supervisor review comments on procedures. Exposes Comment property for get/set access to the text content.",
+      "businessPurpose": "Captures supervisor review comments during procedure verification/approval workflow.",
+      "keyMethods": [
+        "Comment (property) - Gets/sets supervisor comment text"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Trivial textarea wrapper; no separate component needed in React.",
+      "complexity": "trivial",
+      "lineCount": 21
+    },
+    {
+      "filePath": "Web/UserControls/Common/ProcedureSelect.ascx.cs",
+      "fileName": "ProcedureSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ProcedureSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Procedure type selection control with hierarchical category/subcategory navigation. Fetches procedures by department with support for dynamic department changes, selected value persistence, and required validation.",
+      "businessPurpose": "Provides the primary procedure type selector for procedure logging, allowing trainees to identify the specific procedure performed.",
+      "keyMethods": [
+        "Page_Load - Initializes procedure selection",
+        "Procedure binding and selection methods",
+        "Department change handler for cross-department procedure selection"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Procedure selection is core to procedure logging compliance; needs React hierarchical selector.",
+      "complexity": "complex",
+      "lineCount": 597
+    },
+    {
+      "filePath": "Web/UserControls/Common/ProcedureUsersDepartments.ascx.cs",
+      "fileName": "ProcedureUsersDepartments.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ProcedureUsersDepartments",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Department and user selection control specifically for procedure workflows. Manages the relationship between departments, users, and procedures, supporting cross-department procedure viewing and user selection in the context of procedure management.",
+      "businessPurpose": "Provides department-aware user selection for procedure administration, enabling procedure assignments across departments.",
+      "keyMethods": [
+        "Page_Load - Initializes department and user selections for procedure context",
+        "Department/user binding methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Procedure-specific department/user selection; consolidate with general user selection during migration.",
+      "complexity": "complex",
+      "lineCount": 539
+    },
+    {
+      "filePath": "Web/UserControls/Common/PtLogProceduresSupervisorSelect.ascx.cs",
+      "fileName": "PtLogProceduresSupervisorSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_PtLogProceduresSupervisorSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Supervisor selection control specifically for patient log procedures. Provides a dropdown of available supervisors filtered by department, with support for dynamic loading based on selected procedure and department. Used to capture the supervising physician for patient log entries.",
+      "businessPurpose": "Captures the supervising physician for patient log procedure entries, required for ACGME supervision documentation compliance.",
+      "keyMethods": [
+        "Page_Load - Initializes supervisor dropdown for patient log context",
+        "Supervisor binding methods filtered by department and procedure"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Supervisor documentation is ACGME-required; critical for migration.",
+      "complexity": "moderate",
+      "lineCount": 349
+    },
+    {
+      "filePath": "Web/UserControls/Common/SecurityCommitteeUserSelectFilter.ascx.cs",
+      "fileName": "SecurityCommitteeUserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_SecurityCommitteeUserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Security-enhanced variant of CommitteeUserSelectFilter with additional access control checks. Complex dual-listbox user selection for security committee workflows with department scope, PGY filtering, group filtering, and security-role-based visibility controls.",
+      "businessPurpose": "Provides secure committee member selection for security-sensitive committee workflows where additional access controls are needed.",
+      "keyMethods": [
+        "Page_Load - Initializes security-enhanced committee user selection",
+        "BindAvailableUsers - Fetches users with security context",
+        "SetPanelVisibility - Manages panel visibility based on security roles"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Security committee variant; consolidate with CommitteeUserSelectFilter during migration.",
+      "complexity": "very-complex",
+      "lineCount": 2692
+    },
+    {
+      "filePath": "Web/UserControls/Common/SelectDepartments.ascx.cs",
+      "fileName": "SelectDepartments.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_SelectDepartments",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Simple dual-listbox department selection control. Shows linked departments for the logged-in user's primary department and allows add/remove operations between available and selected department lists.",
+      "businessPurpose": "Enables multi-department selection for cross-department reports and operations where the user has linked department access.",
+      "keyMethods": [
+        "Page_Load - Loads linked departments for current user",
+        "btnAdd_Click/btnRemove_Click/btnAddAll_Click/btnRemoveAll_Click - Dual-list department transfer operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department selection used in multi-department report filters.",
+      "complexity": "simple",
+      "lineCount": 74
+    },
+    {
+      "filePath": "Web/UserControls/Common/SelectSubmittedProcedures.ascx.cs",
+      "fileName": "SelectSubmittedProcedures.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_SelectSubmittedProcedures",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Procedure selection control that shows already-submitted procedures for selection in review/approval workflows. Supports filtering by department, user, date range, and procedure status. Used in supervisor review contexts to select which submitted procedures to review.",
+      "businessPurpose": "Enables supervisors to select submitted procedures for review and approval in the procedure verification workflow.",
+      "keyMethods": [
+        "Page_Load - Initializes submitted procedure list with filters",
+        "Procedure filtering and selection methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Procedure review workflow is critical; React data table with filtering needed.",
+      "complexity": "complex",
+      "lineCount": 1251
+    },
+    {
+      "filePath": "Web/UserControls/Common/SelectSubmittedProceduresNoPostBack.ascx.cs",
+      "fileName": "SelectSubmittedProceduresNoPostBack.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_SelectSubmittedProceduresNoPostBack",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "No-postback variant of SelectSubmittedProcedures using client-side JavaScript for smoother interaction. Similar functionality for procedure selection in review workflows but without page reloads.",
+      "businessPurpose": "Provides a smoother submitted procedure selection experience for supervisor review workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes AJAX-based submitted procedure selection",
+        "Client-side procedure filtering methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "AJAX variant closer to SPA pattern; consolidate with postback version during migration.",
+      "complexity": "complex",
+      "lineCount": 1165
+    },
+    {
+      "filePath": "Web/UserControls/Common/ShortTextField.ascx.cs",
+      "fileName": "ShortTextField.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_ShortTextField",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Reusable single-line text input with configurable label, required validation, error message, CSS class, width, and validation group. Similar to FreeTextField but for shorter text entries.",
+      "businessPurpose": "Provides a standardized labeled text input for short-text custom fields in patient logs and procedures.",
+      "keyMethods": [
+        "Page_Load - Configures label, validation, and CSS",
+        "EnteredText (property) - Gets/sets the text value"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple text input; trivial React replacement.",
+      "complexity": "trivial",
+      "lineCount": 97
+    },
+    {
+      "filePath": "Web/UserControls/Common/SupervisorSelect.ascx.cs",
+      "fileName": "SupervisorSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_SupervisorSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Supervisor selection dropdown with multiple data source methods: default department supervisors, patient-log-specific supervisors, department-changed supervisors, and procedure-context supervisors. Supports required validation and configurable label.",
+      "businessPurpose": "Captures the supervising physician for procedures, patient logs, and other clinical encounters requiring supervisor documentation.",
+      "keyMethods": [
+        "FillSupervisors - Default supervisor loading by department",
+        "FillSupervisorsForpatientLog - Patient log specific supervisor loading",
+        "FillSupervisorsFromDepartmentSelection - Refreshes on department change",
+        "FillSupervisorFromProcedure - Loads supervisors filtered by specific procedure context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Supervisor selection is required for ACGME compliance; needs React dropdown with context-aware filtering.",
+      "complexity": "complex",
+      "lineCount": 512
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserFilterDeptSelection.ascx.cs",
+      "fileName": "UserFilterDeptSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserFilterDeptSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Department-centric user filter with dual-listbox user selection. Provides department dropdown that drives user list population, with PGY, group, and user type sub-filters. Manages available/selected user transfers with scope awareness.",
+      "businessPurpose": "Provides department-driven user filtering and selection for reports and evaluation workflows that require department-level user aggregation.",
+      "keyMethods": [
+        "Page_Load - Initializes department-driven user filter",
+        "Department change handler that refreshes user list",
+        "User transfer operations between available and selected lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department-centric user filter; consolidate with other user selection controls.",
+      "complexity": "very-complex",
+      "lineCount": 1972
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserFilterPreceptorControl.ascx.cs",
+      "fileName": "UserFilterPreceptorControl.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserFilterPreceptorControl",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Preceptor-specific user filter control that shows preceptors (supervising faculty) with filtering options. Provides a dropdown filtered for preceptor-type users, used in preceptor-related report and evaluation contexts.",
+      "businessPurpose": "Enables preceptor selection for nursing, PA, and other programs that use the preceptor model instead of the attending physician model.",
+      "keyMethods": [
+        "Page_Load - Initializes preceptor filter",
+        "Preceptor user binding methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GroupParticipantsManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Preceptor-specific filter for non-GME programs.",
+      "complexity": "moderate",
+      "lineCount": 281
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserFilterSelection.ascx.cs",
+      "fileName": "UserFilterSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserFilterSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Comprehensive user filter selection control with dual-listbox pattern. Combines department, PGY, group, user type, and scope filters to populate available users for selection. Standard implementation of the user selection pattern used across reporting pages.",
+      "businessPurpose": "Provides the standard user filter and selection interface used across multiple report types for selecting which users to include in reports.",
+      "keyMethods": [
+        "Page_Load - Initializes comprehensive user filter",
+        "BindAvailableUsers - Fetches users based on all active filters",
+        "User transfer operations between available and selected lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard user filter pattern; consolidate with other user selection controls.",
+      "complexity": "very-complex",
+      "lineCount": 1614
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelect.ascx.cs",
+      "fileName": "UserSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Minimal user selection control that loads all users for the logged-in user's department into a list. Returns selected user IDs from the request form. One of the simplest user selection implementations.",
+      "businessPurpose": "Provides a basic department-scoped user list for simple user selection scenarios.",
+      "keyMethods": [
+        "Page_Load - Loads all department users into listbox",
+        "SelectedUserIDs (property) - Returns form-submitted selected user IDs"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple user list; likely replaced by more feature-rich user selection controls.",
+      "complexity": "trivial",
+      "lineCount": 29
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelectFilter.ascx.cs",
+      "fileName": "UserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "The most widely-used and comprehensive user selection filter control. Provides full dual-listbox user selection with scope (local/all), PGY, group, user type, specialty type, academic year, and archived user filtering. Supports delegates for selection changes and is the foundation pattern for many other user selection controls.",
+      "businessPurpose": "Primary reusable user selection component used across evaluations, reports, duty hours, and scheduling modules for selecting users with multi-faceted filtering.",
+      "keyMethods": [
+        "Page_Load - Initializes full user selection interface with all filter panels",
+        "BindAvailableUsers - Fetches users based on comprehensive filter criteria",
+        "BindSelectedUsersforPGYs/Group/Types/Speciality - Filter-based user selection",
+        "btnAdd_Click/btnRemove_Click - Dual-list user transfer operations",
+        "lstSelectUserTypes_SelectedIndexChanged - Handles user type changes with dynamic PGY/specialty panels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "EvaluationsTemplateManager",
+        "ConferenceSchedulesManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Most important user control to migrate; foundation for many page user selection needs. Needs composable React filter components.",
+      "complexity": "very-complex",
+      "lineCount": 2969
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelectFilterForCMEReports.ascx.cs",
+      "fileName": "UserSelectFilterForCMEReports.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelectFilterForCMEReports",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "CME (Continuing Medical Education) report-specific variant of UserSelectFilter. Tailored for CME report user selection with department and attendee type filtering specific to CME conference reporting needs.",
+      "businessPurpose": "Provides user selection for CME conference attendance and activity reports, filtering for CME-relevant user types and departments.",
+      "keyMethods": [
+        "Page_Load - Initializes CME-specific user filter",
+        "BindAvailableUsers - Fetches users with CME-specific criteria",
+        "User transfer and filter operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "CME-specific user filter; consolidate with general UserSelectFilter during migration.",
+      "complexity": "very-complex",
+      "lineCount": 1925
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelectFilterNew.ascx.cs",
+      "fileName": "UserSelectFilterNew.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelectFilterNew",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Updated variant of UserSelectFilter with improved functionality. Likely represents an iteration on the user selection pattern with refined filtering or UI improvements while maintaining the same core dual-listbox approach.",
+      "businessPurpose": "Provides an updated user selection filter for newer pages that need improved user selection behavior.",
+      "keyMethods": [
+        "Page_Load - Initializes updated user filter",
+        "BindAvailableUsers - Fetches users with updated filter logic",
+        "User transfer and filter operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Newer variant of UserSelectFilter; use as reference for React migration.",
+      "complexity": "complex",
+      "lineCount": 1210
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelection.ascx.cs",
+      "fileName": "UserSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Another comprehensive dual-listbox user selection variant with full PGY, group, user type, specialty, scope, and academic year filtering. Very similar to UserSelectFilter but may be used in different page contexts or have slightly different initialization logic.",
+      "businessPurpose": "Provides full-featured user selection for evaluation assignment and report generation workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes user selection with all filter panels",
+        "BindAvailableUsers - Fetches users with comprehensive filtering",
+        "Filter-based selection and dual-list transfer operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "EvaluationsTemplateManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Variant of UserSelectFilter; consolidate during migration.",
+      "complexity": "very-complex",
+      "lineCount": 2929
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserSelectionWithAcademicYear.ascx.cs",
+      "fileName": "UserSelectionWithAcademicYear.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserSelectionWithAcademicYear",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "User selection control that adds academic year filtering as a primary filter dimension. Extends the standard dual-listbox user selection with academic year awareness, loading users based on their enrollment in specific academic years.",
+      "businessPurpose": "Provides user selection filtered by academic year for milestone reviews, semi-annual evaluations, and other academic-year-scoped workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes user selection with academic year context",
+        "Academic year change handler that refreshes user list",
+        "Full set of filter and transfer operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "EvaluationsTemplateManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Academic year user filter for milestone workflows; needed for semi-annual review migration.",
+      "complexity": "very-complex",
+      "lineCount": 2566
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserTypeMailUserSelectFilter.ascx.cs",
+      "fileName": "UserTypeMailUserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserTypeMailUserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "User selection filter specifically designed for email/notification recipient selection. Similar to UserSelectFilter but optimized for selecting users for bulk email or notification sending, with user type-based filtering to target specific user groups.",
+      "businessPurpose": "Enables selection of email/notification recipients by user type, used in evaluation reminder and communication workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes mail user filter with user type options",
+        "BindAvailableUsers - Fetches users for email targeting",
+        "User type change handler and transfer operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "LookUpManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Email recipient selection; consolidate with general user filter during migration.",
+      "complexity": "very-complex",
+      "lineCount": 2926
+    },
+    {
+      "filePath": "Web/UserControls/Common/UserTypeSelection.ascx.cs",
+      "fileName": "UserTypeSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UserTypeSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "User type selection control that combines user type dropdown with user list, allowing filtering users by type (Resident, Fellow, Attending, Student, etc.). Manages user type-driven user list refreshing with scope and department awareness.",
+      "businessPurpose": "Provides user type-centric user selection for reports and workflows that need to filter by trainee/faculty type categories.",
+      "keyMethods": [
+        "Page_Load - Initializes user type selection",
+        "User type change handler that refreshes available users",
+        "BindAvailableUsers with type filtering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "User type filter; consolidate with general user selection during migration.",
+      "complexity": "complex",
+      "lineCount": 1386
+    },
+    {
+      "filePath": "Web/UserControls/Common/UsersDepartments.ascx.cs",
+      "fileName": "UsersDepartments.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Common_UsersDepartments",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Common",
+      "summary": "Department selection control that shows all departments a user belongs to. Provides a dropdown of user's associated departments with selection change event support. Used to switch departmental context when a user has access to multiple departments.",
+      "businessPurpose": "Enables users with multi-department access to switch their active department context for viewing data and performing operations.",
+      "keyMethods": [
+        "Page_Load - Loads user's departments",
+        "Department selection change handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department context switching is needed across the platform.",
+      "complexity": "moderate",
+      "lineCount": 233
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/ActivityList.ascx.cs",
+      "fileName": "ActivityList.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_ActivityList",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "Activity selection control for duty hours with single-select dropdown or multi-select dual-listbox modes. Fetches department-specific activities by category, supports DH verification mode, and handles favorite report pre-selection of activities.",
+      "businessPurpose": "Enables selection of duty hour activities for time logging and activity reporting, supporting both individual entry and report filtering contexts.",
+      "keyMethods": [
+        "Page_Load - Initializes activity selection in single or multi mode",
+        "InitializeControl - Sets panel visibility based on selection mode",
+        "BindActivities - Fetches department activities with mode-specific options",
+        "AddFavoriteReportSelectedRotations - Pre-selects activities from saved favorite reports"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ActivityManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Duty hours activity selection; needed for DH module migration.",
+      "complexity": "moderate",
+      "lineCount": 241
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/AvailablePGYs.ascx.cs",
+      "fileName": "AvailablePGYs.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_AvailablePGYs",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "PGY (Post-Graduate Year) level dropdown for duty hours filtering. Generates PGY options dynamically based on department's max PGY, supports user type-specific PGY text (PGY, MSY, etc.), includes options for nurses and PAs, and has archived user toggle. Fires selection change events and supports associated UpdatePanel updates.",
+      "businessPurpose": "Provides PGY-level filtering across duty hours reports and scheduling, with dynamic label text based on program type (residency, fellowship, medical student, etc.).",
+      "keyMethods": [
+        "Page_Load - Initializes PGY dropdown with department-specific max PGY and user type labels",
+        "GetUserPGYs - Generates PGY list items for a department and user type",
+        "lstPGYs_SelectedIndexChanged - Fires delegate event on PGY change",
+        "setFlagArchived - Toggles archived user inclusion"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "PGY filter is used across duty hours module; straightforward React dropdown.",
+      "complexity": "moderate",
+      "lineCount": 356
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/CheckInSettings.ascx.cs",
+      "fileName": "CheckInSettings.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_CheckInSettings",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "Configuration control for conference check-in/check-out timing settings. Manages four interval dropdowns (too-early-in, too-late-in, too-early-out, too-late-out) with enable/disable checkboxes for each. Supports filling settings from database and reading settings back for save operations.",
+      "businessPurpose": "Configures the allowed time windows for conference attendance check-in/check-out, used in conference management to validate attendance timing.",
+      "keyMethods": [
+        "BindCheckInIntervals - Populates interval dropdowns with 5-60 minute options",
+        "FillInfoFromDB - Loads settings from an ICheckInSettings object",
+        "FillInfoFromForm - Reads current form values into an ICheckInSettings object",
+        "Reset - Resets to default 5-minute intervals",
+        "cbIsTooEarlyInEnabled_CheckedChanged - Manages dependent checkbox/dropdown enable states"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Conference check-in configuration; moderately complex settings form.",
+      "complexity": "moderate",
+      "lineCount": 157
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/RotationBlocks.ascx.cs",
+      "fileName": "RotationBlocks.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_RotationBlocks",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "Rotation block date range selector that loads rotation block periods (start-end date pairs) and auto-selects the current rotation block. Supports PGY-based rotation block filtering, client-side date range JavaScript, and associated UpdatePanel refreshes. Auto-detects current rotation block by comparing today's date against block date ranges.",
+      "businessPurpose": "Provides rotation block period selection for duty hours reporting and scheduling, automatically highlighting the current rotation period.",
+      "keyMethods": [
+        "Page_Load - Initializes rotation blocks with auto-selection and client-side date scripts",
+        "LoadRotationBlocksUsingPGY - Fetches rotation blocks filtered by PGY level with current-period auto-selection",
+        "lstRotationBlocks_SelectedIndexChanged - Fires delegate and updates associated panels",
+        "OnPagePostBack - Restores selected value from form data on postback"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "BlockManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Rotation block selection needed for duty hours module migration.",
+      "complexity": "complex",
+      "lineCount": 305
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/SelectConferences.ascx.cs",
+      "fileName": "SelectConferences.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_SelectConferences",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "Complex conference selection control with dual-listbox for both conferences and topic categories. Supports conference source radio toggle (department/all), archived conference display, speaker filtering, and dynamic topic category loading based on selected conferences. Manages favorite report pre-selections for both conferences and topics.",
+      "businessPurpose": "Provides the primary conference filter for conference attendance reports, allowing selection of specific conferences, topic categories, and date ranges.",
+      "keyMethods": [
+        "Page_Load - Initializes conference and topic filters",
+        "InitializeConferenceList - Fetches conferences by scope",
+        "BindTopicCategory - Loads topic categories based on selected conferences and date range",
+        "rbtnlistconferencesource_SelectedIndexChanged - Refreshes conference list on scope change",
+        "btnAdd_Click/btnRemove_Click - Conference dual-list operations",
+        "btnTopicsAdd_Click/btnTopicsRemove_Click - Topic category dual-list operations",
+        "AddFavoriteReportSelectedConferences/Topics - Pre-selects from saved favorites"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DetailedConferenceTrackingReportManager",
+        "ConferenceSchedulesManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Conference reporting filter; complex but well-scoped for migration.",
+      "complexity": "very-complex",
+      "lineCount": 598
+    },
+    {
+      "filePath": "Web/UserControls/DutyHours/SelectRotation.ascx.cs",
+      "fileName": "SelectRotation.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_DutyHours_SelectRotation",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/DutyHours",
+      "summary": "Rotation selection control with single-select dropdown or multi-select dual-listbox modes. Fetches department rotations with support for department-specific binding, deleted rotation inclusion, and favorite report pre-selection. Supports both standard and preceptor-type rotation contexts.",
+      "businessPurpose": "Provides clinical rotation selection for duty hours reports, scheduling, and evaluation workflows across both GME and preceptor program models.",
+      "keyMethods": [
+        "Page_Load - Initializes rotation selection in appropriate mode",
+        "InitializeControl - Sets panel visibility for single/multi mode",
+        "BindRotations - Fetches rotations with optional deleted rotation inclusion",
+        "BindRotationsByDepartmentID - Department-specific rotation loading",
+        "AddFavoriteReportSelectedRotations - Pre-selects from saved favorites",
+        "CheckBoxShowDeletedList_CheckedChanged - Toggles deleted rotation inclusion"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "RotationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Rotation selection is widely used; needs React dual-list or multi-select component.",
+      "complexity": "complex",
+      "lineCount": 349
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/AnswerType.ascx.cs",
+      "fileName": "AnswerType.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_AnswerType",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Evaluation answer type display control that renders evaluation answer scales in either sliding (radio button grid) or list (radio button list / dropdown) format. Uses EvaluationTemplateBusiness to generate the HTML for grouping-based sliding scales with configurable number display.",
+      "businessPurpose": "Renders the answer scale options for evaluation questions, supporting both Likert-scale sliding views and dropdown/list views for evaluation completion.",
+      "keyMethods": [
+        "RefreshControl - Configures and renders the answer display based on sliding/list mode, data, grouping, and scale code"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core evaluation answer rendering; already has React equivalent for some evaluation types via Plasmic.",
+      "complexity": "moderate",
+      "lineCount": 145
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/BaseTemplate.ascx.cs",
+      "fileName": "BaseTemplate.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_BaseTemplate",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Base evaluation template configuration control that combines audience selection (target/subject) with template options. Manages the relationship between audience type, template options, title, and capstone/IPAP version settings. Delegates to sub-controls for audience selection and option binding.",
+      "businessPurpose": "Provides the base configuration interface for creating and editing evaluation templates, including audience targeting, title, and template options.",
+      "keyMethods": [
+        "Page_Load - Initializes template configuration with audience change handler",
+        "InitializeControl - Sets up audience-option relationship and page mode handling",
+        "audienceList_audianceChangeHandler - Refreshes template options when audience changes",
+        "BindOptionList - Binds template options for a specific audience ID",
+        "BindTemplateOptions - Binds options for an existing template ID"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Evaluation template configuration is central to the evaluations module; React equivalent needed.",
+      "complexity": "moderate",
+      "lineCount": 177
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/ClinicalSummary.ascx.cs",
+      "fileName": "ClinicalSummary.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_ClinicalSummary",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Clinical summary form control for evidence-based medicine (EBM) evaluations. Captures clinical scenario, PICO framework fields (Patient, Intervention, Comparison, Outcome), clinical task, information source, evidence, answer, learning points, teaching point categorization, and optional supervisor/trainee comments. Supports both editable and read-only display modes.",
+      "businessPurpose": "Captures structured clinical learning summaries as part of evidence-based medicine evaluations, supporting the PICO framework for clinical question formulation.",
+      "keyMethods": [
+        "Page_Load - Toggles between editable and read-only modes, binds lookup dropdowns",
+        "Details (property) - Gets/sets ClinicalSummaryInfo with all form fields",
+        "BindClinicalTasks - Loads clinical task dropdown",
+        "BindInformationSource - Loads information source dropdown",
+        "BindMainTeachingPoints - Loads teaching point dropdown"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ClinicalSummaryManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "EBM clinical summary form; specialized evaluation component for migration.",
+      "complexity": "moderate",
+      "lineCount": 199
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/EvaluateFinalGrade.ascx.cs",
+      "fileName": "EvaluateFinalGrade.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_EvaluateFinalGrade",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Final grade calculation and display control for capstone-based evaluations (IPAP). Renders a repeater of capstones with attempt scores, applying weighted scoring rules (20% per capstone for V1, 30%/10% split for V2). Tracks submission counts, fail counts, and calculates final composite grades with second-attempt score caps at 75%.",
+      "businessPurpose": "Displays and calculates final grades for PA (Physician Assistant) program IPAP capstone evaluations with multi-attempt weighted scoring.",
+      "keyMethods": [
+        "RefreshGrid - Loads capstone data and binds repeater",
+        "rptCapstones_OnItemDataBound - Binds individual capstone sections with MPA sub-items",
+        "rptMPAS_OnItemDataBound - Calculates per-attempt scores with weighting and cap rules, tracks totals"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "LookUpManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "PA program-specific grading logic; complex scoring rules need careful migration.",
+      "complexity": "complex",
+      "lineCount": 351
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/EvaluationSelect.ascx.cs",
+      "fileName": "EvaluationSelect.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_EvaluationSelect",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Evaluation template selection dropdown control. Fetches available evaluation templates for selection in report and assignment contexts. Supports default value display, selection change events, associated UpdatePanel refreshes, and selection mode (single/multi). Used across evaluation reporting pages to filter by specific evaluation templates.",
+      "businessPurpose": "Provides evaluation template selection for reports, assignments, and administrative workflows, allowing users to filter or target specific evaluation types.",
+      "keyMethods": [
+        "Page_Load - Initializes evaluation template dropdown",
+        "Evaluation binding methods with department context",
+        "Selection change event handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Evaluation selection is core to evaluation module; needs React dropdown with template data.",
+      "complexity": "complex",
+      "lineCount": 601
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/EvaluationSelectLinked.ascx.cs",
+      "fileName": "EvaluationSelectLinked.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_EvaluationSelectLinked",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Linked evaluation selection control that shows evaluations with their linked evaluation relationships. Extends EvaluationSelect with linked template ID parsing (splits on '-' delimiter). Used for selecting evaluations that have paired/linked counterparts (e.g., evaluation and self-evaluation pairs).",
+      "businessPurpose": "Provides selection of linked evaluation templates for reports that need to show paired evaluations together (e.g., attending evaluation paired with resident self-evaluation).",
+      "keyMethods": [
+        "Page_Load - Initializes linked evaluation dropdown",
+        "SelectedValue - Parses linked template ID from combined value",
+        "Linked evaluation binding and selection methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "DutyHoursManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Linked evaluation concept needs to be preserved in React migration.",
+      "complexity": "complex",
+      "lineCount": 697
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/EvaluatorResidentSatisfaction.ascx.cs",
+      "fileName": "EvaluatorResidentSatisfaction.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_EvaluatorResidentSatisfaction",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Satisfaction survey control that captures both evaluator and resident/student satisfaction ratings. Provides two radio button lists for rating satisfaction levels. Dynamically labels the evaluatee type (Resident, Fellow, Student) based on the audience target type code.",
+      "businessPurpose": "Captures bidirectional satisfaction ratings for the evaluation encounter, measuring both the evaluator's and the evaluatee's satisfaction with the evaluation process.",
+      "keyMethods": [
+        "Page_Load - Sets evaluatee label based on audience target type code (R=Resident, FE=Fellow, MS=Student)"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simple satisfaction survey; straightforward React form component.",
+      "complexity": "simple",
+      "lineCount": 111
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/FeedbackConfirmation.ascx.cs",
+      "fileName": "FeedbackConfirmation.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_FeedbackConfirmation",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Provides custom feedback confirmation questions for both trainee and evaluator. Toggles between edit mode (labels visible, text hidden) and entry mode.",
+      "businessPurpose": "Allows institutions to define custom feedback confirmation prompts shown to evaluators and trainees during the evaluation acknowledgment process.",
+      "keyMethods": [
+        "Page_Load - Toggles visibility of input/label controls based on edit vs entry mode"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple UI toggle control, feedback confirmation likely handled differently in React frontend",
+      "complexity": "trivial",
+      "lineCount": 45
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/FinalGrade.ascx.cs",
+      "fileName": "FinalGrade.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_FinalGrade",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Displays final grade capstone information for evaluations. Loads capstone items from a template or from a global lookup, and provides HTML-formatted description templates for each capstone type with scoring weights.",
+      "businessPurpose": "Renders capstone-based final grade sections within evaluation forms, showing weighted scoring formulas (e.g., oral exam, clinical grade) used in PA/medical education programs.",
+      "keyMethods": [
+        "Page_Load - Loads capstones by template ID or from global lookup",
+        "GetCapstoneDescription - Returns HTML scoring template text based on capstone ID with weighted formulas"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "LookUpManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Capstone grading is a core evaluation feature; the scoring formulas are hardcoded in switch statement",
+      "complexity": "simple",
+      "lineCount": 91
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/OverallFinalGrade.ascx.cs",
+      "fileName": "OverallFinalGrade.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_OverallFinalGrade",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Reusable overall final grade selector control for evaluations. Loads answer types from template configuration and displays grade dropdown with optional BB (building blocks) grade sections, attestation, and provisional grade rows.",
+      "businessPurpose": "Provides the overall grade selection UI within evaluation forms, supporting multiple grading scales (numeric ranges mapped to Honor/High Pass/Pass/Fail), overall grade attestation, and provisional final grades.",
+      "keyMethods": [
+        "Page_Load - Configures visibility of grade sections (BB grade, attestation, provisional) and fills grade dropdown",
+        "FillGrade - Loads answer types and answers by ID, populates dropdown with grade options and legend HTML",
+        "GetTotalCount - Returns total count based on IPAP version number"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Overall grade is a critical evaluation workflow component; grading scales and attestation logic need careful migration",
+      "complexity": "moderate",
+      "lineCount": 222
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/PatientProblemAndDiagnosis.ascx.cs",
+      "fileName": "PatientProblemAndDiagnosis.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_PatientProblemAndDiagnosis",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Captures patient encounter data as part of clinical evaluations, including patient demographics (age, sex, type, setting), exam complexity, observation time, feedback time, and clinical focus areas.",
+      "businessPurpose": "Collects structured patient encounter metadata for clinical competency evaluations, enabling programs to track the types of patients and clinical encounters trainees are assessed on.",
+      "keyMethods": [
+        "Page_Load - Fills all dropdown lists and restores saved values from PatientProblemDiagnosisInfo",
+        "FillDetails - Calls all bind methods to populate dropdowns",
+        "BindPatientAgeList - Populates age dropdown from PatientProblemDiagnosisManager",
+        "BindPatientDemographicTypeList - Populates patient type dropdown",
+        "BindExamComplexityList - Populates exam complexity dropdown",
+        "BindMinutesList - Populates observation and feedback time dropdowns",
+        "BindPatientProblemFocusList - Populates clinical focus checkbox list",
+        "BindSex - Populates gender dropdown"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PatientProblemDiagnosisManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Patient encounter tracking is domain-specific to clinical evaluations; data model is captured in PatientProblemDiagnosisInfo",
+      "complexity": "moderate",
+      "lineCount": 268
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/ReportManagementMenuList.ascx.cs",
+      "fileName": "ReportManagementMenuList.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_ReportManagementMenuList",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Massive report navigation menu control for management users. Dynamically shows/hides report menu items based on user type (Resident, Attending, Fellow, Nurse, Student, Other), user role privileges, archived status, and preceptor status. Contains extensive role-based access control logic and help icon configuration.",
+      "businessPurpose": "Controls the visibility and configuration of the entire report management menu, ensuring each user type and role only sees reports they are authorized to access. Handles report categories including individual evaluations, summary evaluations, competency reports, early warning, compliance reports, ACGME surveys, grade registers, and more.",
+      "keyMethods": [
+        "InitializeControl - Main dispatch: configures report menu based on user type, role, archived flag, and preceptor status",
+        "BuildLinksForPreceptor - Hides most menu items for preceptor users, showing only relevant reports",
+        "SetMenuItem - Makes a report hyperlink visible with optional label customization",
+        "RemoveMenuItem - Hides a report menu item from the navigation",
+        "UserHasPrivilege - Checks if user has view/admin privilege for a given submodule",
+        "SetHelpIcons - Configures contextual help icons per user type",
+        "BindAdditionalPreceptorReport - Binds additional preceptor-specific report items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "BasePage",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core navigation component for the reports module; the extensive RBAC logic needs systematic migration to Node.js role-based routing",
+      "complexity": "very-complex",
+      "lineCount": 2632
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/ReportMenuList.ascx.cs",
+      "fileName": "ReportMenuList.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_ReportMenuList",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Report navigation menu control very similar to ReportManagementMenuList but for standard report viewing. Adds DisableReportCategoryIDs property to hide entire report categories (Evaluation Results, Compliance, Analysis). Contains the same extensive role-based menu visibility logic.",
+      "businessPurpose": "Controls the report menu for standard users (non-management), implementing fine-grained visibility of report links based on user type, role privileges, preceptor status, and archived flag. Supports disabling entire report categories by ID.",
+      "keyMethods": [
+        "InitializeControl - Configures menu visibility based on user type, role, and preceptor status",
+        "BuildLinksForPreceptor - Restricts menu for preceptor users",
+        "SetMenuItem - Shows a report link with optional label",
+        "RemoveMenuItem - Hides a report link",
+        "UserHasPrivilege - Checks submodule privileges",
+        "SetHelpIcons - Configures help icons per user type",
+        "SetSurveyMenuItem - Configures ACGME survey menu items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "BasePage",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Companion to ReportManagementMenuList; both encode the complete report RBAC logic that must be migrated",
+      "complexity": "very-complex",
+      "lineCount": 2726
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectAudience.ascx.cs",
+      "fileName": "SelectAudience.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectAudience",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Provides paired target/subject (evaluator/evaluatee) audience selection dropdowns for evaluation templates. Supports setting audience by ID, cascading subject list based on target selection, and raises change events for parent pages.",
+      "businessPurpose": "Core audience selection control used throughout evaluation setup - lets users pick who evaluates whom (e.g., Attending evaluates Resident). The target/subject pairing determines which evaluation templates are available.",
+      "keyMethods": [
+        "Page_Load - Initializes control, sets labels, disables for published evaluations",
+        "InitializeControl - Binds target list, restores selections from session/querystring",
+        "SetAudienceId - Resolves audience ID to target/subject pair and sets selections",
+        "BindTargets - Loads audience target list from EvaluationsManager",
+        "BindSubject - Loads subject list filtered by selected target",
+        "lstTargets_SelectedIndexChanged - Cascades subject list on target change, fires events",
+        "lstSubjects_SelectedIndexChanged - Fires audience change events",
+        "GetAudienceID - Resolves target+subject back to audience ID"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Audience selection is fundamental to the evaluation template system; target/subject pairing logic is critical",
+      "complexity": "moderate",
+      "lineCount": 354
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectEvaluationFilter.ascx.cs",
+      "fileName": "SelectEvaluationFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectEvaluationFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Evaluation template filter control with single/multi-select modes, institution-wide template scope toggle, conference evaluation scope, and preceptor template filtering. Supports shared departments, local vs all evaluations, and evaluation type (standard/conference) filtering.",
+      "businessPurpose": "Provides reusable evaluation template filtering for reports - lets users select which evaluation templates to include in report generation, with support for cross-department shared templates and declined evaluation reports.",
+      "keyMethods": [
+        "InitializeControl - Configures single/multi mode, evaluation scope visibility, binds templates",
+        "BindInstitutionTemplates - Loads templates filtered by user type, scope, and department",
+        "bindpreceptortempalte - Loads preceptor-specific templates",
+        "CheckSharedDepartment - Determines if department has shared linked departments",
+        "radEvaluationScope_SelectedIndexChanged - Rebinds templates when scope changes",
+        "radEvalType_SelectedIndexChanged - Rebinds on evaluation type change"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core filter control for the reporting system; template scoping logic is complex",
+      "complexity": "complex",
+      "lineCount": 586
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectEvaluationType.ascx.cs",
+      "fileName": "SelectEvaluationType.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectEvaluationType",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Simple radio button control for selecting between all evaluation results or specific results. Provides checked state helper methods for radio buttons.",
+      "businessPurpose": "Provides a reusable toggle for report filters to switch between viewing all evaluation types or a specific subset.",
+      "keyMethods": [
+        "CheckAllResults - Returns 'checked' if all results selected",
+        "CheckSpecificResults - Returns 'checked' if specific results selected"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 55
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectEvaluationTypeSummary.ascx.cs",
+      "fileName": "SelectEvaluationTypeSummary.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectEvaluationTypeSummary",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Nearly identical to SelectEvaluationType but with a configurable CSS class and different client ID. Provides all/specific evaluation type radio toggle for summary reports.",
+      "businessPurpose": "Provides the same all/specific evaluation type toggle for summary-specific report pages with independent CSS styling.",
+      "keyMethods": [
+        "CheckAllResults - Returns 'checked' if all results selected",
+        "CheckSpecificResults - Returns 'checked' if specific results selected"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 55
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectEvaluations.ascx.cs",
+      "fileName": "SelectEvaluations.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectEvaluations",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Evaluation template selection control with single/multi-select modes, shared department scope, conference evaluation toggle, and favorite report template persistence. Extended version of SelectEvaluationFilter with assigned template support and evaluation scope type.",
+      "businessPurpose": "Primary evaluation template picker for reports, supporting saved favorite report selections, cross-department template visibility, and both standard and conference evaluation types.",
+      "keyMethods": [
+        "InitializeControl - Sets up single/multi mode, scope visibility, binds templates, restores favorites",
+        "BindTemplates - Loads available templates via EvaluationsReportManager with scope/conference/archived filtering",
+        "bindpreceptortempalte - Loads preceptor-specific templates",
+        "AddFavoriteReportSelectedTemplates - Restores previously saved template selections from favorite reports",
+        "CheckSharedDepartment - Checks for shared department setup"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core template selection for reports with favorite-report persistence; extends SelectEvaluationFilter with additional features",
+      "complexity": "complex",
+      "lineCount": 633
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectEvaluator.ascx.cs",
+      "fileName": "SelectEvaluator.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectEvaluator",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Evaluator selection dropdown for reports with support for all/local evaluator scope, preceptor mode, archived users, and AJAX evaluator loading. Includes a WebMethod for AJAX-based evaluator list retrieval.",
+      "businessPurpose": "Lets report users select a specific evaluator to filter report results, with support for switching between local department evaluators and all evaluators across shared departments.",
+      "keyMethods": [
+        "Page_Load - Configures evaluator source visibility and initializes dropdown",
+        "BindEvaluators - Loads evaluators by user type, archive flag, and all/local scope",
+        "BindPreceptorEvaluator - Loads evaluators for preceptor context",
+        "GetEvaluatorsAjax - Static WebMethod returning evaluator list as JSON for AJAX calls",
+        "OnPreRender - Syncs IsAllEvaluators from hidden field"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Evaluator selection filter with AJAX WebMethod; pattern can be replaced by React API calls",
+      "complexity": "moderate",
+      "lineCount": 244
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectOverallGrade.ascx.cs",
+      "fileName": "SelectOverallGrade.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectOverallGrade",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Displays overall grade selection using a DataList of answer types (OGN - Overall Grade Numeric), each containing nested AnswerType user controls. Loads answer types and answers from AnswerTypeManager.",
+      "businessPurpose": "Renders the overall grade selection UI with multiple grading scales, where each scale contains its own answer options. Used in evaluation template configuration.",
+      "keyMethods": [
+        "Page_Load - Calls refreshList on first load",
+        "refreshList - Loads OGN answer types and answers dataset, stores answers in ViewState",
+        "dlstBaseAnswerTypes_ItemDataBound - Binds nested AnswerType user control for each answer type row"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AnswerTypeManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Overall grade configuration is part of template design; nested control pattern needs flattening for React",
+      "complexity": "moderate",
+      "lineCount": 107
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectResultsDisplayType.ascx.cs",
+      "fileName": "SelectResultsDisplayType.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectResultsDisplayType",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Simple radio button control for selecting results display type (all results vs specific results). Nearly identical to SelectEvaluationType but with a preceptor_pagetext property.",
+      "businessPurpose": "Provides a toggle for report display options - showing all results or specific filtered results.",
+      "keyMethods": [
+        "CheckAllResults - Returns 'checked' for all results option",
+        "CheckSpecificResults - Returns 'checked' for specific results option"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 60
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectRotation.ascx.cs",
+      "fileName": "SelectRotation.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectRotation",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Rotation selection control with single dropdown or multi-select dual-listbox modes. Supports favorite report rotation persistence, deleted rotation visibility toggle, and summary program evaluation report mode.",
+      "businessPurpose": "Lets users select rotations (clinical rotations/clerkships) for evaluation reports, supporting both single and multi-select with saved favorite report selections and deleted rotation visibility.",
+      "keyMethods": [
+        "InitializeControl - Sets up single/multi mode and binds rotations",
+        "BindRotations - Loads department rotations with optional deleted rotation inclusion",
+        "AddFavoriteReportSelectedRotations - Restores saved rotation selections from favorite reports",
+        "CkbxShowDeleted_CheckedChanged - Toggles deleted rotation visibility and rebinds",
+        "CheckBoxShowDeletedList_CheckedChanged - Multi-select deleted rotation toggle"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "RotationManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Rotation selection is fundamental to evaluation reporting; used across multiple report pages",
+      "complexity": "moderate",
+      "lineCount": 432
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectRotationHandler.ascx.cs",
+      "fileName": "SelectRotationHandler.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectRotationHandler",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Extended rotation selection control with event-driven list box interactions. Similar to SelectRotation but with SelectedIndexChanged event handlers that auto-move items and fire parent change events.",
+      "businessPurpose": "Provides rotation selection with automatic move-on-select behavior and parent page notifications, used in report pages that need real-time filtering when rotations change.",
+      "keyMethods": [
+        "InitializeControl - Sets up single/multi mode and binds rotations",
+        "BindRotations - Loads department rotations with deleted filter criteria",
+        "lstRotation_SelectedIndexChanged - Auto-adds selected rotation and fires parent event",
+        "lstRotationRemove_SelectedIndexChanged - Auto-removes and fires event",
+        "AddFavoriteReportSelectedRotations - Restores saved rotation selections"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "RotationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Event-driven variant of SelectRotation; the auto-move pattern can be simplified in React",
+      "complexity": "moderate",
+      "lineCount": 392
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectTemplate.ascx.cs",
+      "fileName": "SelectTemplate.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectTemplate",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Simple evaluation template dropdown selector. Loads templates filtered by target/subject audience with optional voluntary and self-evaluation template support.",
+      "businessPurpose": "Provides a dropdown to select a specific evaluation template, filtered by who evaluates whom. Used in evaluation creation and assignment workflows.",
+      "keyMethods": [
+        "Page_Load - Fills template list and configures required validation",
+        "FillTemplateList - Loads templates from EvaluationsTemplateManager or EvaluationsReportManager based on voluntary flag"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Template selection by audience is a core workflow element",
+      "complexity": "simple",
+      "lineCount": 114
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SelectTemplateOptions.ascx.cs",
+      "fileName": "SelectTemplateOptions.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SelectTemplateOptions",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Complex evaluation template options configuration control. Manages a DataList of template options (anonymous, confidential, comments, descriptive criteria, overall grade, BB grade, attestation, summative/formative, feedback confirmation) with Yes/No radio buttons, mandatory checkboxes, and dynamic show/hide logic for dependent options.",
+      "businessPurpose": "Central control for configuring evaluation template behavioral options during template design. Controls whether evaluations are anonymous, confidential, include comments, use overall grades, support summative/formative modes, and require feedback confirmation.",
+      "keyMethods": [
+        "BindOptions - Loads template options by target/subject audience",
+        "BindTemplateOptions - Loads options from existing template (edit mode) or session (express template)",
+        "SetOptionsFromDB - Restores saved option states from database into DataList radio buttons and checkboxes",
+        "GetOptionsState - Reads current DataList state into List<TemplateOptionInfo>",
+        "lstOptions_PreRender - Adds JavaScript onclick handlers for dynamic show/hide of dependent options",
+        "lstOptions_ItemDataBound - Complex data binding with layout grouping, summative dropdown, capstone controls",
+        "GetHelpWindow - Generates help icon HTML based on department and role"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager",
+        "EvaluationsManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Template options are fundamental to evaluation behavior; complex interdependent option logic needs careful migration to React state management",
+      "complexity": "very-complex",
+      "lineCount": 830
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/SummativeEvaluations.ascx.cs",
+      "fileName": "SummativeEvaluations.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_SummativeEvaluations",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Renders summative, formative, and self-assessment evaluation comparison tables. Builds complex HTML tables showing question responses across multiple evaluation periods with sub-competency grouping, EPA scores, sliding scale rendering, and EarlyWarning comments.",
+      "businessPurpose": "Displays a comprehensive comparison view of formative, summative, and self-assessment evaluations for a trainee, allowing reviewers to see performance trends across evaluation periods with competency-level breakdowns.",
+      "keyMethods": [
+        "GetSummativeFormativeEvalInfo - Builds HTML tables from a multi-table DataSet showing evaluation responses across periods",
+        "ReplaceText - Case-insensitive text replacement utility for sliding scale markers"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Complex evaluation comparison view; server-side HTML generation should be replaced with React components using structured data",
+      "complexity": "very-complex",
+      "lineCount": 471
+    },
+    {
+      "filePath": "Web/UserControls/Evaluations/UserSelectFilter.ascx.cs",
+      "fileName": "UserSelectFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Evaluations_UserSelectFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Evaluations",
+      "summary": "Comprehensive user selection filter control for evaluation reports. Provides dual-listbox user selection with filtering by PGY level, user groups, user types, specialty types, and local/database search. Supports shared departments, archived users, and various visibility configurations.",
+      "businessPurpose": "Primary user/trainee picker for evaluation reports, allowing administrators to filter and select specific users by PGY year, group, type, and specialty to include in generated reports.",
+      "keyMethods": [
+        "Page_Load - Initializes all filter panels and binds available users",
+        "BindAvailableUsers - Loads users matching current filter criteria via UserSearchCriteria",
+        "BindPGYList - Populates PGY year checkboxes",
+        "BindUserGroups - Populates user group filter",
+        "BindUserTypes - Populates user type filter",
+        "BindSpecialityTypes - Populates specialty filter",
+        "MoveUser/MoveUsers - Moves selected users between available/selected listboxes",
+        "btnAddLocal_Click - Adds users from local search to selected list",
+        "SetPanelVisibility - Controls which filter panels are visible"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core user selection control used across all report pages; complex filtering logic with local/database search modes",
+      "complexity": "very-complex",
+      "lineCount": 1916
+    },
+    {
+      "filePath": "Web/UserControls/Footer.ascx.cs",
+      "fileName": "Footer.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Footer",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Simple page footer control that sets hidden field values for user role ID, user ID, and module. Contains commented-out chatbot icon visibility logic.",
+      "businessPurpose": "Provides consistent footer across all pages with user context hidden fields for client-side scripts.",
+      "keyMethods": [
+        "Page_Load - Sets hidden fields for user role ID, user ID, and module"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 30
+    },
+    {
+      "filePath": "Web/UserControls/Header.ascx.cs",
+      "fileName": "Header.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Header",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Page header control handling SAML/JWT token authentication, department logo display, WalkMe analytics integration, and department-specific text replacement (e.g., renaming 'Attending' to 'Faculty'). Also manages department switching and procedure module enablement.",
+      "businessPurpose": "Provides the application header with SSO token validation, department branding (logos), and institution-specific terminology customization that allows each department to rename standard labels.",
+      "keyMethods": [
+        "Page_Load - Validates JWT token for SSO, loads department logo, configures WalkMe user context, builds text replacement JSON for department-specific terminology"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "DepartmentManager",
+        "SAMLServiceProvider.JwtToken"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "SSO/JWT handling and department branding are critical; text replacement logic is a unique customization feature. React frontend already has its own header.",
+      "complexity": "moderate",
+      "lineCount": 148
+    },
+    {
+      "filePath": "Web/UserControls/LearningAssignmentSelection.ascx.cs",
+      "fileName": "LearningAssignmentSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_LearningAssignmentSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Dual-listbox learning assignment (literature/module) selection control. Allows users to move learning assignments between available and selected lists, with support for edit mode restoration and back button navigation.",
+      "businessPurpose": "Enables selection of learning assignments/literature modules to associate with evaluations or reports, supporting both add and edit workflows.",
+      "keyMethods": [
+        "InitializeControl - Binds available learning assignments and restores edit mode selections",
+        "BindLiteratures - Loads learning assignment list from LiteratureManager",
+        "UpdateSelectedAssignments - Updates selected list from DataTable source",
+        "btnAdd_Click/btnRemove_Click - Move items between available and selected listboxes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LiteratureManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Learning assignment selection for evaluation workflows",
+      "complexity": "moderate",
+      "lineCount": 328
+    },
+    {
+      "filePath": "Web/UserControls/Lookups/GenericLookup.ascx.cs",
+      "fileName": "GenericLookup.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Lookups_GenericLookup",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Lookups",
+      "summary": "Generic reusable dropdown lookup control that loads data from LookUpManager based on a configurable lookup type (Countries, Specialties, ParticipationTypes, Capstones, etc.). Supports required validation, custom width, default items, specialty code display, CME filtering, and postback state restoration.",
+      "businessPurpose": "The most widely-used lookup control in the application - provides a configurable dropdown for any lookup table type, reducing code duplication across all pages that need reference data selection.",
+      "keyMethods": [
+        "InitControl - Loads lookup data by type, configures validation, handles postback restoration",
+        "RemoveListItems - Removes specific items from the dropdown by value",
+        "AddDefaultListItem - Inserts a default '(Select One)' option",
+        "OnPagePostBack - Restores selected value from form postback data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Pattern should be replaced by a React generic Select component with API-driven lookup data",
+      "complexity": "moderate",
+      "lineCount": 350
+    },
+    {
+      "filePath": "Web/UserControls/Lookups/GenericLookupWithEvents.ascx.cs",
+      "fileName": "GenericLookupWithEvents.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Lookups_GenericLookupWithEvents",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Lookups",
+      "summary": "Extended version of GenericLookup with a SelectedIndexChanged event delegate. Fires events to parent controls when selection changes, enabling cascading dropdown behaviors.",
+      "businessPurpose": "Provides the same lookup dropdown as GenericLookup but with event notification to parent pages/controls when the user changes their selection.",
+      "keyMethods": [
+        "Page_Load - Initializes lookup and configures auto-postback",
+        "AddDefaultListItem - Inserts default selection item",
+        "lstLookUp_SelectedIndexChanged - Fires the listSelectedIndexChangeHandler event to parent"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Event-driven variant; React onChange pattern replaces this",
+      "complexity": "simple",
+      "lineCount": 217
+    },
+    {
+      "filePath": "Web/UserControls/Lookups/GenericLookupWithEventsAndState.ascx.cs",
+      "fileName": "GenericLookupWithEventsAndState.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Lookups_GenericLookupWithEventsAndState",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Lookups",
+      "summary": "Variant of GenericLookup that preserves selection state across postbacks and includes event notification. Combines state management with event handling.",
+      "businessPurpose": "Provides lookup dropdown with both postback state preservation and parent event notification for complex form scenarios.",
+      "keyMethods": [
+        "Page_Init - Early initialization hook",
+        "Page_Load - Loads lookup data and restores state",
+        "AddDefaultListItem - Inserts default option"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "State management variant; unnecessary in React",
+      "complexity": "simple",
+      "lineCount": 96
+    },
+    {
+      "filePath": "Web/UserControls/Lookups/GenericLookupWithState.ascx.cs",
+      "fileName": "GenericLookupWithState.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Lookups_GenericLookupWithState",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Lookups",
+      "summary": "Variant of GenericLookup that preserves dropdown selection across postbacks without event notification. Used where state persistence is needed but parent notification is not.",
+      "businessPurpose": "Provides lookup dropdown with postback state preservation for complex multi-panel forms.",
+      "keyMethods": [
+        "Page_Init - Early initialization",
+        "Page_Load - Loads lookup data and restores state",
+        "AddDefaultListItem - Inserts default option"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "State variant; unnecessary in React",
+      "complexity": "simple",
+      "lineCount": 115
+    },
+    {
+      "filePath": "Web/UserControls/Mail/MailMergeUserFilter.ascx.cs",
+      "fileName": "MailMergeUserFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Mail_MailMergeUserFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Mail",
+      "summary": "Comprehensive user filter for mail merge operations. Provides dual-listbox user selection with filtering by PGY, FPGY/MSY levels, user groups, types, specialty, and local/database search. Supports multi-department selection, archived users, and all/select-one modes.",
+      "businessPurpose": "Enables administrators to select target users for mail merge operations using the same rich filtering as evaluation reports but adapted for the mail distribution system.",
+      "keyMethods": [
+        "Page_Load - Initializes all filter panels and binds available users",
+        "BindAvailableUsers - Loads users matching filter criteria including FPGY/MSY levels",
+        "BindPGYList - Populates PGY checkboxes",
+        "BindFPGY_MsyLists - Populates FPGY and MSY level filters",
+        "BindDepartments - Populates department dropdown for cross-department user search",
+        "MoveUser/MoveUsers - Moves users between available/selected lists",
+        "BindAllLocalUsers - Searches for local users by name",
+        "ddlDepartment_SelectedIndexChanged - Reloads users when department changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager",
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Mail merge user selection; shares pattern with UserSelectFilter but adds FPGY/MSY and department filtering",
+      "complexity": "very-complex",
+      "lineCount": 1399
+    },
+    {
+      "filePath": "Web/UserControls/Mail/SelectDepartments.ascx.cs",
+      "fileName": "SelectDepartments.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Mail_SelectDepartments",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Mail",
+      "summary": "Multi-step department, specialty, program type, and user selection control for mail distribution. Supports dual-listbox selection for departments, specialties, and program types, with user filtering by type and level. Includes mail distribution template save/load/delete functionality.",
+      "businessPurpose": "Provides the complete recipient selection UI for the mail distribution system, allowing administrators to build complex recipient lists by department, specialty, program type, and individual user, with template persistence.",
+      "keyMethods": [
+        "Page_Load - Initializes all listboxes with departments, specialties, program types, and templates",
+        "MoveData - Moves selected items between available/selected listboxes",
+        "MoveAllData - Moves all items between listboxes",
+        "btnSaveAsTemplate_Click - Saves current selection as a new mail distribution template",
+        "btnSaveTemplate_Click - Updates existing template",
+        "btnDeleteTemplate_Click - Deletes a template",
+        "btnUpdateUsers_Click - Refreshes user list based on current department/specialty/type filters",
+        "BindDepartmentsByProgramIDs - Filters departments by selected program types"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MailDistributionManager",
+        "AssignmentUsersManager",
+        "LookUpManager",
+        "GetQuizUsers"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Mail distribution recipient selection with template persistence",
+      "complexity": "complex",
+      "lineCount": 798
+    },
+    {
+      "filePath": "Web/UserControls/MyScheduleDetails.ascx.cs",
+      "fileName": "MyScheduleDetails.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_MyScheduleDetails",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Renders the MySchedule widget showing upcoming activities, rotations, and schedule entries for the logged-in user. Builds HTML table with clickable activity rows and rotation links, supports configurable day range (7-60 days forward/back).",
+      "businessPurpose": "Provides the dashboard schedule widget showing a trainee's upcoming activities, rotation assignments, and schedule details with interactive activity detail viewing.",
+      "keyMethods": [
+        "Page_Load - Builds schedule HTML table from DutyHoursManager data, serializes appointments to JSON",
+        "DataTableToJSONWithJSONNet - Serializes DataTable to JSON using Newtonsoft.Json"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager",
+        "SyncAmionOnCallManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Dashboard schedule widget; server-side HTML generation should be replaced with React component",
+      "complexity": "moderate",
+      "lineCount": 101
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/BreadCrumbs.ascx.cs",
+      "fileName": "BreadCrumbs.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_BreadCrumbs",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Generates breadcrumb navigation trail based on current page and referrer. Uses MenuManager.GetPageHierarchy to build the navigation path with links to parent pages and module detection.",
+      "businessPurpose": "Provides consistent breadcrumb navigation across the application, helping users understand their location in the page hierarchy and navigate back to parent sections.",
+      "keyMethods": [
+        "Page_Load - Builds breadcrumb trail from current and previous page names using MenuManager",
+        "GetCurrentPageName - Extracts current page filename from URL",
+        "GetPreviousPageName - Extracts referrer page filename"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MenuManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Breadcrumbs handled by React router in new frontend",
+      "complexity": "moderate",
+      "lineCount": 274
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/CustomBreadCrumbs.ascx.cs",
+      "fileName": "CustomBreadCrumbs.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_CustomBreadCrumbs",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Custom breadcrumb variant that uses EvaluationsTemplateManager to include evaluation-specific context (template name, audience) in the breadcrumb trail alongside standard MenuManager hierarchy.",
+      "businessPurpose": "Provides context-aware breadcrumbs for evaluation pages, showing both navigation hierarchy and the specific evaluation template/audience being viewed.",
+      "keyMethods": [
+        "Page_Load - Builds breadcrumb trail with evaluation context",
+        "GetCurrentPageName - Gets current page name"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MenuManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Custom breadcrumb for evaluation context; handled by React in new frontend",
+      "complexity": "moderate",
+      "lineCount": 286
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/CustomBreadCrumbsForReports.ascx.cs",
+      "fileName": "CustomBreadCrumbsForReports.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_CustomBreadCrumbsForReports",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Report-specific breadcrumb variant that includes user type context (Resident, Attending, Fellow, etc.) in the breadcrumb trail, with special handling for 'PA/NP/Tech/Other' user type display.",
+      "businessPurpose": "Provides context-aware breadcrumbs for report pages, showing the user type being reported on alongside the navigation hierarchy.",
+      "keyMethods": [
+        "Page_Load - Builds breadcrumb with user type name context",
+        "UserTypeName - Returns display-friendly user type name"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MenuManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "",
+      "complexity": "moderate",
+      "lineCount": 202
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/DepartmentList.ascx.cs",
+      "fileName": "DepartmentList.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_DepartmentList",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Displays a list of departments the logged-in user has access to, with links to switch between departments. Generates encrypted department switching URLs and supports Medcom server integration for external portfolio access.",
+      "businessPurpose": "Enables multi-department users to switch between departments, generating secure department-switch URLs with optional Medcom server redirect for external system integration.",
+      "keyMethods": [
+        "Page_Load - Loads department list and generates navigation links",
+        "GetServerExecutionURL - Creates encrypted department-switch URL",
+        "GetMedcomServerExecutionURL - Creates Medcom server redirect URL",
+        "GetMedcomURL - Generates external Medcom portfolio URL",
+        "IsEncrypted - Checks if URL parameters are encrypted"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "DocDetailsManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department switching is handled by React frontend and Node.js API; Medcom integration may need preservation",
+      "complexity": "moderate",
+      "lineCount": 255
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/ImpersonationNotice.ascx.cs",
+      "fileName": "ImpersonationNotice.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_ImpersonationNotice",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Displays a warning notice when an administrator is impersonating another user, showing the impersonated user's name with a cautionary message.",
+      "businessPurpose": "Provides visual awareness for admin users when they are acting as another user, preventing accidental actions under the wrong identity.",
+      "keyMethods": [
+        "Page_Load - Checks impersonation on first load",
+        "CheckImpersonation - Gets impersonated user info from SessionManager and displays warning"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Impersonation notice likely handled by React frontend header",
+      "complexity": "trivial",
+      "lineCount": 30
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/Notice.ascx.cs",
+      "fileName": "Notice.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_Notice",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Displays service messages/announcements from the UserBusiness layer. Fires a BindMakes event to parent controls to allow them to hide the notice area when no message exists.",
+      "businessPurpose": "Shows system-wide service messages or announcements to users, with parent control notification for conditional visibility.",
+      "keyMethods": [
+        "Page_Load - Loads notice message from UserBusiness and fires BindMakes event to parent"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserBusiness"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Service messages likely handled by Node.js API and React frontend",
+      "complexity": "trivial",
+      "lineCount": 42
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/PFReportsHeader.ascx.cs",
+      "fileName": "PFReportsHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_PFReportsHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Simple header control for portfolio/PF reports pages. Sets up page heading and exposes a Rotations property.",
+      "businessPurpose": "Provides consistent header formatting for portfolio report pages.",
+      "keyMethods": [
+        "Page_Load - Sets header text",
+        "Rotations - Property for rotation data access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 28
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/PFReportsMenu.ascx.cs",
+      "fileName": "PFReportsMenu.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_PFReportsMenu",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Navigation menu for portfolio/PF report pages. Configures menu item visibility based on Quiz module availability.",
+      "businessPurpose": "Provides navigation links specific to portfolio report section.",
+      "keyMethods": [
+        "Page_Load - Configures PF report menu visibility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "QuizBusiness"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 31
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/ReportMenu.ascx.cs",
+      "fileName": "ReportMenu.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_ReportMenu",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Minimal report menu stub with empty Page_Load. Likely serves as a container for markup-only menu rendering.",
+      "businessPurpose": "Placeholder report menu control with no server-side logic.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 19
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/ReportsMenu.ascx.cs",
+      "fileName": "ReportsMenu.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_ReportsMenu",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Reports section navigation menu with ReportHeader property for sub-header text display. Uses Quiz business module for menu configuration.",
+      "businessPurpose": "Provides the navigation menu for the reports section with configurable sub-header text.",
+      "keyMethods": [
+        "Page_Load - Configures report menu",
+        "ReportHeader - Property setting sub-header text"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "QuizBusiness"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/TabsMenu.ascx.cs",
+      "fileName": "TabsMenu.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_TabsMenu",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Main application tabs menu control managing visibility of module tabs (Portfolio, Help, Quiz, Procedures/Consult, Challenger, MyGMEA) based on user role, department features, and service message configuration. Includes breadcrumb integration.",
+      "businessPurpose": "The primary module-level navigation tabs shown across all pages, controlling which application modules are visible to each user role and department configuration.",
+      "keyMethods": [
+        "Page_Load - Configures tab visibility by role ID (SysAdmin, Admin, User, etc.), loads service messages, manages breadcrumb display",
+        "GetCurrentPageName - Gets current page for breadcrumb",
+        "GetPreviousPageName - Gets referrer page for breadcrumb context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "ServiceMessageManager",
+        "MenuManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Module-level navigation; React frontend has its own navigation system",
+      "complexity": "complex",
+      "lineCount": 369
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/TabsMenuRedQuiz.ascx.cs",
+      "fileName": "TabsMenuRedQuiz.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_TabsMenuRedQuiz",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Alternate version of TabsMenu with a red-highlighted Quiz tab to indicate pending quizzes. Same role-based tab visibility logic but with visual alert for quiz attention needed.",
+      "businessPurpose": "Provides the same module navigation as TabsMenu but visually highlights the Quiz tab in red when the user has pending quizzes requiring attention.",
+      "keyMethods": [
+        "Page_Load - Configures tab visibility by role with red quiz tab highlighting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "ServiceMessageManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Visual variant of TabsMenu; badge/notification pattern in React replaces this",
+      "complexity": "moderate",
+      "lineCount": 251
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/TopMenu.ascx.cs",
+      "fileName": "TopMenu.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_TopMenu",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Top-level horizontal navigation menu dynamically built from MenuManager.GetMenuForFirstLevel(). Generates HTML anchor links for each menu item with special handling for Procedures/Tasks renaming, OnCall service visibility, and department context via cookies.",
+      "businessPurpose": "Renders the main horizontal navigation bar at the top of every page, dynamically building menu items from the database menu configuration with department-specific customizations.",
+      "keyMethods": [
+        "Page_Init - Dynamically builds menu HTML from MenuManager data with anchor links",
+        "Page_Load - Sets department cookies and page context",
+        "GetDepartmentID - Gets current department from session",
+        "GetPageName - Gets current page name for active menu highlighting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MenuManager",
+        "SessionManager",
+        "SyncAmionOnCallManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "React frontend has its own top navigation",
+      "complexity": "complex",
+      "lineCount": 316
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/VoluntaryBreadCrumbs.ascx.cs",
+      "fileName": "VoluntaryBreadCrumbs.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_VoluntaryBreadCrumbs",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Breadcrumb variant for the voluntary evaluation section. Similar to CustomBreadCrumbs but with evaluation template context from the voluntary evaluation workflow.",
+      "businessPurpose": "Provides breadcrumb navigation specific to the voluntary evaluation pages, including evaluation template context.",
+      "keyMethods": [
+        "Page_Load - Builds breadcrumb trail for voluntary evaluation pages",
+        "GetCurrentPageName - Gets current page name"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MenuManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "",
+      "complexity": "moderate",
+      "lineCount": 229
+    },
+    {
+      "filePath": "Web/UserControls/PrivateControls/WelcomeMessage.ascx.cs",
+      "fileName": "WelcomeMessage.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_WelcomeMessage",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/PrivateControls",
+      "summary": "Simple welcome message control displaying the logged-in user's name and role/department context from session.",
+      "businessPurpose": "Shows a personalized welcome greeting to the logged-in user with their name and current role context.",
+      "keyMethods": [
+        "Page_Load - Sets welcome message text from SessionManager"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/UserControls/Quiz/UserTypeDepartmentSelection.ascx.cs",
+      "fileName": "UserTypeDepartmentSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Quiz_UserTypeDepartmentSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Quiz",
+      "summary": "The most complex user selection control in the application. Extends user filtering with multi-department selection, providing department dual-listbox alongside user dual-listbox. Supports PGY, FPGY/MSY levels, user groups, types, specialty types, local search, portfolio departments, milestone committee modes, archived users, and extensive duplicate user handling across departments.",
+      "businessPurpose": "Primary user and department selection control for quiz/assessment distribution, enabling administrators to select users across multiple departments with all available filter dimensions and duplicate handling for cross-department users.",
+      "keyMethods": [
+        "Page_Load - Initializes all filter panels, department lists, and user lists",
+        "BindAvailableUsers - Complex user loading with 12 different UserSearchCriteria configurations based on user type",
+        "BindDepartment - Loads available departments including portfolio and milestone committee modes",
+        "BindDepartmentsByProgramIDs - Filters departments by selected program types",
+        "MoveUser/MoveUsers/MoveDuplicateUsers - Handles user moves with cross-department duplicate detection",
+        "CheckDuplicates - Prevents duplicate user entries across departments",
+        "btnDeptAdd_Click/btnDeptRemove_Click - Department selection with automatic user list refresh",
+        "CopyDeptUsers - Copies users when switching departments",
+        "AddReportOptionSelectedUsers/AddReportOptionSelectedDepts - Restores saved selections"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "DutyHoursManager",
+        "SessionManager",
+        "EvaluationsTemplateManager",
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Most complex user selection control; the multi-department + multi-user dual-listbox with duplicate handling needs careful decomposition for React migration",
+      "complexity": "very-complex",
+      "lineCount": 3610
+    },
+    {
+      "filePath": "Web/UserControls/Quiz/UserTypeSelection.ascx.cs",
+      "fileName": "UserTypeSelection.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Quiz_UserTypeSelection",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Quiz",
+      "summary": "User selection control for quiz distribution without multi-department support. Provides dual-listbox user selection with PGY, FPGY/MSY, user groups, types, specialty, and local search filtering. Simplified version of UserTypeDepartmentSelection.",
+      "businessPurpose": "Enables quiz/assessment administrators to select target users within a single department using rich filtering, supporting the quiz assignment workflow.",
+      "keyMethods": [
+        "Page_Load - Initializes filter panels and binds available users",
+        "BindAvailableUsers - Loads users by filter criteria",
+        "BindPGYList - Populates PGY checkboxes",
+        "BindFPGY_MsyLists - Populates fellowship PGY and MSY level filters",
+        "MoveUser/MoveUsers - Handles user selection moves",
+        "BindAllLocalUsers - Local name-based user search",
+        "Usertypeselect_SelectedIndexChanged - Refreshes filters when user type selection changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager",
+        "SessionManager",
+        "EvaluationsTemplateManager",
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Simplified variant of UserTypeDepartmentSelection for single-department quiz assignment",
+      "complexity": "very-complex",
+      "lineCount": 1552
+    },
+    {
+      "filePath": "Web/UserControls/ReportFooter.ascx.cs",
+      "fileName": "ReportFooter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ReportFooter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Simple footer control for printed/exported reports with empty Page_Load.",
+      "businessPurpose": "Provides consistent footer formatting for report print/export views.",
+      "keyMethods": [
+        "Page_Load - Empty handler, footer content is markup-only"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 30
+    },
+    {
+      "filePath": "Web/UserControls/ReportHeader.ascx.cs",
+      "fileName": "ReportHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ReportHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Header control for printed/exported reports. Displays department logo and institution name from session.",
+      "businessPurpose": "Provides branded header for report print/export views with department logo.",
+      "keyMethods": [
+        "Page_Load - Loads department logo and sets institution context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/UserControls/ReportSubHeader.ascx.cs",
+      "fileName": "ReportSubHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ReportSubHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Sub-header control for report pages. Handles BindMakes event from Notice child control to conditionally hide notice area.",
+      "businessPurpose": "Provides sub-header section for report pages with service message notice integration.",
+      "keyMethods": [
+        "Page_Load - Subscribes to Notice.BindMakes event",
+        "BindMake - Hides notice table if no service message"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 40
+    },
+    {
+      "filePath": "Web/UserControls/ReportsFooter.ascx.cs",
+      "fileName": "ReportsFooter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ReportsFooter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Footer for quiz/assessment report pages. Integrates with QuizReportBusiness and includes session management for report context.",
+      "businessPurpose": "Provides footer formatting for quiz report print/export views with report context.",
+      "keyMethods": [
+        "Page_Load - Configures footer with report context from session"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 59
+    },
+    {
+      "filePath": "Web/UserControls/ReportsHeader.ascx.cs",
+      "fileName": "ReportsHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_ReportsHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Header for quiz/assessment report pages. Loads report context from QuizReportBusiness, including report name and parameters, with encrypted string decryption support.",
+      "businessPurpose": "Provides branded header for quiz report pages with report title and parameter display, supporting encrypted URL parameter decryption.",
+      "keyMethods": [
+        "Page_Load - Loads report context from session/QuizReportBusiness, decrypts parameters",
+        "DecryptString - Decrypts encrypted URL parameters"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "QuizReportBusiness",
+        "DecryptString (Utilities)"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Quiz report header with encryption support",
+      "complexity": "simple",
+      "lineCount": 98
+    },
+    {
+      "filePath": "Web/UserControls/Security/RequirementGroupFilter.ascx.cs",
+      "fileName": "RequirementGroupFilter.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_RequirementGroupFilter",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox filter for selecting requirement groups with support for individual/department scope toggle, edit mode restoration, and deleted group inclusion. Fires events on selection changes.",
+      "businessPurpose": "Enables administrators to select which requirement groups to apply in security/compliance configurations, with dual-listbox selection and scope filtering.",
+      "keyMethods": [
+        "InitializeControl - Binds requirement groups and restores edit mode selections",
+        "BindRequirementGroups - Loads groups filtered by scope and deleted flag",
+        "btnAdd_Click/btnRemove_Click - Moves items between available/selected lists",
+        "radGroup_SelectedIndexChanged - Rebinds groups when scope changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Requirement group selection for compliance/OBC configuration",
+      "complexity": "moderate",
+      "lineCount": 177
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectCustomFields.ascx.cs",
+      "fileName": "SelectCustomFields.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectCustomFields",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting custom fields in security/role configuration. Loads available custom fields and allows move between available/selected.",
+      "businessPurpose": "Enables administrators to assign custom fields to roles or configurations through dual-listbox selection.",
+      "keyMethods": [
+        "InitializeControl - Binds custom fields and restores selections",
+        "BindCustomFields - Loads custom fields from Security business layer",
+        "btnAdd_Click/btnRemove_Click - Moves items between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Custom field selection for role configuration",
+      "complexity": "simple",
+      "lineCount": 128
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectDemographicFields.ascx.cs",
+      "fileName": "SelectDemographicFields.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectDemographicFields",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting demographic fields in role/security configuration. Loads demographic fields from UserManager.",
+      "businessPurpose": "Enables administrators to configure which demographic fields are visible/editable for specific roles.",
+      "keyMethods": [
+        "InitializeControl - Binds demographic fields and restores selections",
+        "BindDemographicFields - Loads fields from UserManager",
+        "btnAdd_Click/btnRemove_Click - Moves items between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Demographic field configuration for roles",
+      "complexity": "simple",
+      "lineCount": 121
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectFormDocumentLearningAssignment.ascx.cs",
+      "fileName": "SelectFormDocumentLearningAssignment.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectFormDocumentLearningAssignment",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting form documents and learning assignments in security/role configuration.",
+      "businessPurpose": "Enables administrators to assign which form documents and learning assignments are accessible for specific roles or OBC configurations.",
+      "keyMethods": [
+        "InitializeControl - Binds items and restores selections",
+        "BindItemsIncluded - Loads available items from Security business layer",
+        "btnAdd_Click/btnRemove_Click - Moves items between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Form document/learning assignment assignment for roles",
+      "complexity": "simple",
+      "lineCount": 121
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectOBCAdmins.ascx.cs",
+      "fileName": "SelectOBCAdmins.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectOBCAdmins",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting OBC (Outcomes-Based Curriculum) administrators. Loads admin users via UserSearchCriteria and supports add/remove/restore from saved selections.",
+      "businessPurpose": "Enables assignment of administrator roles for OBC/outcomes-based curriculum management, selecting which users have admin privileges for specific OBC configurations.",
+      "keyMethods": [
+        "InitializeControl - Binds admin users and restores selections",
+        "BindAdmins - Loads available admin users via UserSearchCriteria",
+        "BindSeleceMemberAdmin - Loads previously selected admins",
+        "AddReportOptionSelectedUsers - Restores saved admin selections",
+        "btnAdd_Click/btnRemove_Click - Moves items between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "OBC admin assignment",
+      "complexity": "moderate",
+      "lineCount": 173
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectOBCCustomForm.ascx.cs",
+      "fileName": "SelectOBCCustomForm.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectOBCCustomForm",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting custom forms to associate with OBC configurations. Tracks selected custom forms as a property and handles move operations with item tracking.",
+      "businessPurpose": "Enables administrators to assign custom forms to OBC configurations, controlling which forms are available within specific outcomes-based curriculum setups.",
+      "keyMethods": [
+        "InitializeControl - Binds custom forms and restores selections",
+        "BindCustomForms - Loads available custom forms",
+        "SelectedCustomForms - Property returning list of selected form IDs",
+        "btnAdd_Click/btnRemove_Click - Moves forms between lists with tracking"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "OBC custom form assignment",
+      "complexity": "moderate",
+      "lineCount": 247
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectOBCDocumentType.ascx.cs",
+      "fileName": "SelectOBCDocumentType.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectOBCDocumentType",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Dual-listbox control for selecting document types to associate with OBC configurations. Includes selected document type list tracking with update function.",
+      "businessPurpose": "Enables administrators to assign document types to OBC configurations, controlling which document categories are tracked within outcomes-based curriculum setups.",
+      "keyMethods": [
+        "InitializeControl - Binds document types and restores selections",
+        "BindDocumentTypes - Loads available document types",
+        "UpdateSelectedDocumentTypeList - Syncs selected list with tracking",
+        "btnAdd_Click/btnRemove_Click - Moves items between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "OBC document type assignment",
+      "complexity": "moderate",
+      "lineCount": 221
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectRequirementGroup.ascx.cs",
+      "fileName": "SelectRequirementGroup.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectRequirementGroup",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Simple dropdown selector for a single requirement group. Loads requirement groups from the Security business layer.",
+      "businessPurpose": "Provides a simple dropdown to select one requirement group for filtering or configuration purposes.",
+      "keyMethods": [
+        "Page_Load - Initializes dropdown",
+        "BindRequirementGroup - Loads requirement groups into dropdown with default option"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 39
+    },
+    {
+      "filePath": "Web/UserControls/Security/SelectSDETypes.ascx.cs",
+      "fileName": "SelectSDETypes.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_SelectSDETypes",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Minimal stub control for SDE (Self-Directed Education) type selection with empty Page_Load. Content is likely markup-only.",
+      "businessPurpose": "Placeholder for SDE type selection with no server-side logic.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/UserControls/Security/TangierCredentials.ascx.cs",
+      "fileName": "TangierCredentials.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_Security_TangierCredentials",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls/Security",
+      "summary": "Captures Tangier (external scheduling system) credentials and schedule selection. Provides dropdown for Tangier schedule binding with text and value retrieval methods.",
+      "businessPurpose": "Enables configuration of Tangier scheduling system integration by capturing credentials and selecting which Tangier schedule to synchronize with.",
+      "keyMethods": [
+        "Page_Load - Initializes Tangier credential form",
+        "InitData - Loads Tangier schedules into dropdown",
+        "BindSchedules - Binds available Tangier schedules",
+        "getValues/getValuesText - Retrieves selected schedule value and display text"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "External scheduling system integration; Tangier is a niche GME scheduling tool",
+      "complexity": "simple",
+      "lineCount": 79
+    },
+    {
+      "filePath": "Web/UserControls/SelectMultipleProcedures.ascx.cs",
+      "fileName": "SelectMultipleProcedures.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_SelectMultipleProcedures",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Multi-select dropdown for clinical procedures using AnnualProgramEvaluationManager. Loads procedures with default 'All Procedures' option.",
+      "businessPurpose": "Enables selection of multiple clinical procedures for evaluation or reporting contexts within annual program evaluation workflows.",
+      "keyMethods": [
+        "InitializeControl - Binds procedures from AnnualProgramEvaluationManager",
+        "BindProcedures - Loads procedure list with default option"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AnnualProgramEvaluationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Procedure selection for annual program evaluation reports",
+      "complexity": "simple",
+      "lineCount": 109
+    },
+    {
+      "filePath": "Web/UserControls/SessionTimeout.ascx.cs",
+      "fileName": "SessionTimeout.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_PrivateControls_SessionTimeout",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Session timeout management control that tracks last access time, provides paths to timeout-related JavaScript/CSS/ASHX resources, and configures countdown duration and APP interval from SessionManager settings.",
+      "businessPurpose": "Manages session timeout behavior across all pages - tracks user activity, provides client-side countdown scripts, and handles session extension and verification via ASHX handlers.",
+      "keyMethods": [
+        "Page_Load - Sets LastAccessDateTime in session, registers ExtendSession script",
+        "GetCountdownScriptPath - Returns resolved path to SessionTimeOut.js",
+        "GetLogoutURL - Returns resolved logout URL",
+        "GetSessionExtenderURL - Returns path to ExtendSession.ashx handler",
+        "GetVerifySessionOutURL - Returns path to VerifySessionTimeOut.ashx handler",
+        "GetTimeoutAPPInterval - Returns application timeout interval from config",
+        "GetCountdownDuration - Returns countdown display duration"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Session management handled by Node.js JWT-based auth in new system",
+      "complexity": "simple",
+      "lineCount": 151
+    },
+    {
+      "filePath": "Web/UserControls/SessionTimeoutModalPopup.ascx.cs",
+      "fileName": "SessionTimeoutModalPopup.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_SessionTimeoutModalPopup",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Simplified session timeout control providing logout and session extension URLs for a modal popup timeout warning.",
+      "businessPurpose": "Provides the modal popup variant of session timeout warning with URLs for extending or ending the session.",
+      "keyMethods": [
+        "Page_Load - Empty handler",
+        "GetLogoutURL - Returns resolved logout URL",
+        "GetSessionExtenderURL - Returns path to session extension handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 46
+    },
+    {
+      "filePath": "Web/UserControls/SubHeader.ascx.cs",
+      "fileName": "SubHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_SubHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Main sub-header control composing breadcrumbs, welcome message, notice, and tabs menu controls. Checks for pending quizzes and toggles between normal and red-quiz-highlighted tab menus. Subscribes to Notice.BindMakes for conditional notice visibility.",
+      "businessPurpose": "The primary sub-header area below the top menu, combining breadcrumb navigation, user welcome message, system notices, and module tab navigation into a single reusable component.",
+      "keyMethods": [
+        "Page_Load - Checks pending quiz count, toggles tabs menu variant, subscribes to notice events",
+        "BindMake - Hides notice section when no service message exists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "QuizBusiness",
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Composite layout control; React frontend has its own layout system",
+      "complexity": "simple",
+      "lineCount": 97
+    },
+    {
+      "filePath": "Web/UserControls/TestSubHeader.ascx.cs",
+      "fileName": "TestSubHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_TestSubHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Test/development version of SubHeader with simplified logic. Subscribes to Notice.BindMakes event handler for conditional notice visibility.",
+      "businessPurpose": "Provides a simplified sub-header for testing or specific page layouts without quiz-checking logic.",
+      "keyMethods": [
+        "Page_Load - Subscribes to Notice.BindMakes event",
+        "BindMake - Hides notice when empty"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 39
+    },
+    {
+      "filePath": "Web/UserControls/UserErrorMessage.ascx.cs",
+      "fileName": "UserErrorMessage.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_UserErrorMessage",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Reusable error message display control. Shows error messages from session or programmatic calls in a bulleted list with show/hide CSS toggling.",
+      "businessPurpose": "Provides consistent error message display across pages, supporting both session-stored errors and programmatic error/success message addition.",
+      "keyMethods": [
+        "AddMessage - Adds error message to bulleted list and shows container",
+        "AddSuccessMessage - Sets header text as success message",
+        "GetContainerID - Returns client ID for JavaScript interaction",
+        "Page_Load - Checks session for stored error messages"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Error display pattern; React has its own notification system",
+      "complexity": "trivial",
+      "lineCount": 43
+    },
+    {
+      "filePath": "Web/UserControls/UserFilterAJAX.ascx.cs",
+      "fileName": "UserFilterAJAX.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_UserFilterAJAX",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "AJAX-enabled user filter control providing client-side user search with server-rendered filter dropdowns. Supports user scope, department, multi-department, user type, PGY, user groups, specialty types, academic year, and archived user filtering. Generates host URL for AJAX handler calls.",
+      "businessPurpose": "Provides modern AJAX-based user filtering for pages that need responsive user search without full postbacks, replacing the traditional postback-based UserSelectFilter pattern.",
+      "keyMethods": [
+        "Page_Load - Initializes all filter dropdowns and configures AJAX host URL",
+        "BindYears - Loads academic/calendar year dropdown options",
+        "BindUserGroups - Populates user group checkboxes",
+        "BindPGYList - Populates PGY level checkboxes",
+        "BindSpecialityTypes - Populates specialty type checkboxes",
+        "GetHostURL - Returns base URL for AJAX handler calls",
+        "GetCalenderYears - Generates academic year list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "EvaluationsTemplateManager",
+        "DutyHoursManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "AJAX user filter; closer to React pattern but still uses WebForms rendering for filter panels",
+      "complexity": "complex",
+      "lineCount": 720
+    },
+    {
+      "filePath": "Web/UserControls/UserMessage.ascx.cs",
+      "fileName": "UserMessage.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_UserMessage",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Reusable message display control similar to UserErrorMessage. Shows messages from query string parameters or programmatic calls.",
+      "businessPurpose": "Provides consistent message display (typically for permission errors) with support for query string-based messages and programmatic message addition.",
+      "keyMethods": [
+        "AddMessage - Adds message to bulleted list and shows container",
+        "AddSuccessMessage - Sets header as success message",
+        "GetContainerID - Returns client ID for JavaScript",
+        "Page_Load - Checks query string for ErrorMessage parameter"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Message display pattern; React notification system replaces this",
+      "complexity": "trivial",
+      "lineCount": 45
+    },
+    {
+      "filePath": "Web/UserControls/VoluntarySubHeader.ascx.cs",
+      "fileName": "VoluntarySubHeader.ascx.cs",
+      "fileType": "user-control",
+      "className": "UserControls_VoluntarySubHeader",
+      "inheritsFrom": "System.Web.UI.UserControl",
+      "module": "UserControls",
+      "summary": "Sub-header variant for voluntary evaluation pages. Similar to TestSubHeader with Notice.BindMakes event subscription.",
+      "businessPurpose": "Provides sub-header layout specific to voluntary evaluation pages.",
+      "keyMethods": [
+        "Page_Load - Subscribes to Notice.BindMakes event",
+        "BindMake - Hides notice when empty"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 39
+    }
+  ],
+  "directoryOverview": "Web/UserControls contains reusable ASP.NET user controls (.ascx) shared across multiple pages - navigation menus, data grids, filter panels, date pickers, file uploaders, and modal dialogs. This second batch covers evaluation-specific controls (audience selectors, template pickers, grade selectors, report menus, user filters), navigation controls (breadcrumbs, tabs, top menu), lookup controls (generic dropdown variants), mail distribution controls, security/OBC configuration controls, session management, and common layout controls (headers, footers, sub-headers, message displays).",
+  "keyWorkflows": [
+    "Shared UI components for page composition (headers, footers, sub-headers, breadcrumbs)",
+    "Evaluation report filter controls (evaluation selection, rotation selection, user selection, evaluator selection)",
+    "Report navigation menus with extensive role-based access control (ReportMenuList, ReportManagementMenuList)",
+    "Generic lookup dropdown controls with multiple variants (state, events, events+state)",
+    "User selection dual-listbox controls with rich filtering (PGY, groups, types, specialty, departments)",
+    "Evaluation template configuration controls (template options, audience, grades)",
+    "Session timeout management and modal popup controls",
+    "Mail distribution recipient selection with template persistence",
+    "OBC/security configuration controls for custom fields, document types, requirement groups",
+    "Navigation and menu components (TabsMenu, TopMenu) with role-based module visibility"
+  ]
+}

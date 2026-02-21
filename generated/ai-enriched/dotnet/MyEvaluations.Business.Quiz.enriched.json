@@ -1,0 +1,55 @@
+{
+  "module": "MyEvaluations.Business.Quiz",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": false,
+  "overview": "The Quiz module manages quiz creation, assignment, user targeting, result tracking, and reporting within MyEvaluations. With 17 classes and two Manager classes, it supports assigning quizzes to residents and trainees based on departments, rotations, PGY levels, and user types. The module handles quiz lifecycle management including assignment scheduling, automated reminders for incomplete and partially-completed quizzes, audit trails, auto-close logic, shared templates, and comprehensive reporting (detailed, summary, and ledger formats).",
+  "architecture": "## Overview\n\nThe Quiz module manages quiz creation, assignment, user targeting, result tracking, and reporting within MyEvaluations. With 17 classes and two Manager classes, it supports assigning quizzes to residents and trainees based on departments, rotations, PGY levels, and user types. The module handles quiz lifecycle management including assignment scheduling, automated reminders for incomplete and partially-completed quizzes, audit trails, auto-close logic, shared templates, and comprehensive reporting (detailed, summary, and ledger formats). It also integrates with on-call scheduling for context-aware quiz assignments.\n\n## Key Classes\n\n- **AssignmentUsersManager** (extends Manager): Manages quiz assignment distribution to users. Calls 10 stored procedures.\n- **GetDetailsManager** (extends Manager): Primary query manager for retrieval of user details, quiz assignments, results, reports, and template operations. Calls 18 stored procedures.\n- **GetQuizUsers** (extends Manager): Resolves quiz target users based on PGY levels, department configurations, and user types. Calls 5 stored procedures.\n- **AssignmentInfo / QuizReportInfo**: Data transfer objects for quiz assignment records and report data.\n- **AssignmentBussiness**: Business logic class for quiz assignment operations.\n- **IntegratedOnCallQuizAssignmentBusiness**: Handles quiz assignments integrated with on-call scheduling.\n- **QuizList**: Retrieves quiz listings via the GetQuizList stored procedure.\n- **DepartmentInfo / DepartmentRotations**: Department and rotation data for quiz targeting.\n- **QuestionsBySpecialtyInfo**: Maps quiz questions to medical specialties.\n\n## Patterns\n\n- **Manager/Info pattern detected**: Three Manager classes extend the base Manager class.\n- **Stored procedure-driven data access**: 34 total stored procedures across three managers plus QuizList.\n- **Scheduler integration**: Automated quiz reminders and notifications.\n- **Report generation**: Three report formats (detailed, summary, ledger).\n- **Audit trail**: Quiz assignment actions logged via dedicated stored procedures.\n\n## Notes\n\n- This module has the highest stored procedure count (34) among the documented modules.\n- The AssignmentBussiness typo is a legacy artifact.\n- Quiz template sharing enables cross-department collaboration.\n- PGY-level targeting ensures appropriate assignment by training year.",
+  "managerPattern": "Manager/Info pattern detected",
+  "storedProcedures": "AddAssignmentUsersDetails, GetLinkedDepartmentList, GetQuizName, GetRotationIDNameDetails, GetQuizTimeDetails, GetAllEnabledDepartmentList, GetQuizReminderAssignments, GetQuizReminderForPartialCompleted, GetQuizModuleAssignmentEmailNoticeInformation, InsertSchedulerJobHistory, GetUserTypeDetails, GetUsersFullNameDetails, GetPreceptorUserIDDetails, CheckDepartmentDetails, GetDepartmentRotationDetails, GetUserNameByUserTypeIDs, GetAdminUsers, GetQuizAssignments, GetQuizAssignedToAndStatus, GetQuizAssignmentsforAuditTrail, GetQuizAssignmentsByAssignmentID, GetQuizAssignmentsAndUsersByAssignmentID, GetDetailedQuizAssignmentsResults, GetSummaryQuizAssignmentsResult, GetLedgerOfQuizAssignmentsReportResult, GetPendingQuizCount, GetQuizResult, GetQuizSharedTemplates, CopyQuizTemplate, GetMaxPGYforDepartment, GetFPGY_MsyTextforDepartment, GetMaxPGYforUserTypes, GetQuizAutoClosedDetail, GetQuizList",
+  "keyClasses": [
+    {
+      "name": "AssignmentUsersManager",
+      "purpose": "Manages quiz assignment distribution to users including department linking, rotation mapping, and automated reminders",
+      "keyMethods": []
+    },
+    {
+      "name": "GetDetailsManager",
+      "purpose": "Primary query manager for user details, quiz assignments, results, reports, and template operations",
+      "keyMethods": []
+    },
+    {
+      "name": "GetQuizUsers",
+      "purpose": "Resolves quiz target users based on PGY levels, department configurations, and user types",
+      "keyMethods": []
+    },
+    {
+      "name": "IntegratedOnCallQuizAssignmentBusiness",
+      "purpose": "Handles quiz assignments integrated with on-call scheduling for context-aware quizzes",
+      "keyMethods": []
+    },
+    {
+      "name": "AssignmentInfo",
+      "purpose": "Data transfer object for quiz assignment records",
+      "keyMethods": []
+    },
+    {
+      "name": "QuizReportInfo",
+      "purpose": "Data transfer object for quiz report data",
+      "keyMethods": []
+    },
+    {
+      "name": "QuizList",
+      "purpose": "Retrieves quiz listings via the GetQuizList stored procedure",
+      "keyMethods": []
+    },
+    {
+      "name": "QuestionsBySpecialtyInfo",
+      "purpose": "Maps quiz questions to medical specialties for targeted assessment",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [],
+  "migrationNotes": [],
+  "mermaidDiagram": null,
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.Quiz\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.Quiz module\"\nsidebar_label: \"Quiz\"\ntags: [dotnet, business-layer]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Overview\n\nThe Quiz module manages quiz creation, assignment, user targeting, result tracking, and reporting within MyEvaluations. With 17 classes and two Manager classes, it supports assigning quizzes to residents and trainees based on departments, rotations, PGY levels, and user types. The module handles quiz lifecycle management including assignment scheduling, automated reminders for incomplete and partially-completed quizzes, audit trails, auto-close logic, shared templates, and comprehensive reporting (detailed, summary, and ledger formats). It also integrates with on-call scheduling for context-aware quiz assignments.\n\n## Key Classes\n\n- **AssignmentUsersManager** (extends Manager): Manages quiz assignment distribution to users, including department linking, rotation mapping, scheduling, and automated email reminders. Calls 10 stored procedures: `AddAssignmentUsersDetails`, `GetLinkedDepartmentList`, `GetQuizName`, `GetRotationIDNameDetails`, `GetQuizTimeDetails`, `GetAllEnabledDepartmentList`, `GetQuizReminderAssignments`, `GetQuizReminderForPartialCompleted`, `GetQuizModuleAssignmentEmailNoticeInformation`, `InsertSchedulerJobHistory`.\n- **GetDetailsManager** (extends Manager): The primary query manager, handling retrieval of user details, quiz assignments, results, reports, and template operations. Calls 18 stored procedures: `GetUserTypeDetails`, `GetUsersFullNameDetails`, `GetPreceptorUserIDDetails`, `CheckDepartmentDetails`, `GetDepartmentRotationDetails`, `GetUserNameByUserTypeIDs`, `GetAdminUsers`, `GetQuizAssignments`, `GetQuizAssignedToAndStatus`, `GetQuizAssignmentsforAuditTrail`, `GetQuizAssignmentsByAssignmentID`, `GetQuizAssignmentsAndUsersByAssignmentID`, `GetDetailedQuizAssignmentsResults`, `GetSummaryQuizAssignmentsResult`, `GetLedgerOfQuizAssignmentsReportResult`, `GetPendingQuizCount`, `GetQuizResult`, `GetQuizSharedTemplates`, `CopyQuizTemplate`.\n- **GetQuizUsers** (extends Manager): Resolves quiz target users based on PGY levels, department configurations, and user types. Calls 5 stored procedures: `GetMaxPGYforDepartment`, `GetFPGY_MsyTextforDepartment`, `GetUserTypeDetails`, `GetMaxPGYforUserTypes`, `GetQuizAutoClosedDetail`.\n- **AssignmentInfo / QuizReportInfo**: Data transfer objects for quiz assignment records and quiz report data.\n- **AssignmentBussiness**: Business logic class for quiz assignment operations (note: legacy spelling \"Bussiness\").\n- **IntegratedOnCallQuizAssignmentBusiness**: Handles quiz assignments integrated with on-call scheduling, enabling context-aware quizzes during specific duty periods.\n- **GroupBusiness**: Business logic for quiz group operations.\n- **QuizList**: Retrieves quiz listings via the `GetQuizList` stored procedure.\n- **DepartmentInfo / DepartmentRotations**: Department and rotation data for quiz targeting.\n- **PreceptorInfo / UserInfo**: User and preceptor data transfer objects.\n- **QuestionsBySpecialtyInfo**: Maps quiz questions to medical specialties.\n- **QuizAssignmentUsersLog**: Audit logging for quiz assignment user actions.\n- **AssignAQuiz**: Email entity class for quiz assignment notification workflows.\n\n## Patterns\n\n- **Manager/Info pattern detected**: Three Manager classes (AssignmentUsersManager, GetDetailsManager, GetQuizUsers) extend the base Manager class. Multiple Info classes serve as DTOs, though the Manager-to-Info pairing is less strict than in other modules.\n- **Stored procedure-driven data access**: 34 total stored procedures across three managers plus QuizList, representing heavy database coupling.\n- **Scheduler integration**: AssignmentUsersManager interacts with a job scheduler (`InsertSchedulerJobHistory`, reminder stored procedures) for automated quiz reminders and notifications.\n- **Report generation**: Three report formats (detailed, summary, ledger) via dedicated stored procedures.\n- **Audit trail**: Quiz assignment actions are logged via QuizAssignmentUsersLog and dedicated audit trail stored procedures.\n\n## Notes\n\n- This module has the highest stored procedure count (34) among the modules being documented, indicating deep SQL Server dependency.\n- The \"Bussiness\" typo in AssignmentBussiness is a legacy artifact that must be preserved for compatibility.\n- The `GetQuizAutoClosedDetail` procedure suggests quizzes can be automatically closed after a deadline, an important compliance feature.\n- Quiz template sharing (`GetQuizSharedTemplates`, `CopyQuizTemplate`) enables cross-department collaboration.\n- Integration with on-call scheduling (IntegratedOnCallQuizAssignmentBusiness) is a unique feature linking duty schedules with assessment.\n- PGY-level targeting (`GetMaxPGYforDepartment`, `GetMaxPGYforUserTypes`) ensures quizzes are appropriately assigned based on training year.\n- During NestJS migration, the 34 stored procedures will need to be mapped to MikroORM queries or replicated as PostgreSQL functions.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*"
+}

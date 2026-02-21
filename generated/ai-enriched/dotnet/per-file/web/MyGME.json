@@ -1,0 +1,34 @@
+{
+  "directory": "Web/MyGME",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 1,
+  "files": [
+    {
+      "filePath": "Web/MyGME/MyGMELogin.aspx.cs",
+      "fileName": "MyGMELogin.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyGME_MyGMELogin",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MyGME",
+      "summary": "SSO login handler for the MyGME (Graduate Medical Education) portal integration. Performs RC4 decryption of SSO tokens, validates user credentials via HTTP requests, URL-decodes parameters, and authenticates users through UserBusiness.",
+      "businessPurpose": "Handles single sign-on authentication from external MyGME systems into the MyEvaluations platform using RC4 encryption",
+      "keyMethods": [
+        "Page_Load - Processes SSO login request, decrypts tokens, and authenticates user",
+        "GetKeyValue - Retrieves RC4 encryption key from configuration",
+        "URlDecode - Custom URL decoding utility for SSO parameters"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserBusiness"],
+      "migrationRelevance": "high",
+      "complexity": "moderate",
+      "lineCount": 167
+    }
+  ],
+  "directoryOverview": "Single-file module implementing SSO login integration for MyGME (Graduate Medical Education) systems. Uses RC4 encryption for secure token exchange and handles external authentication flow into the MyEvaluations platform.",
+  "keyWorkflows": [
+    "Receive SSO request from MyGME external system",
+    "Decrypt RC4-encrypted credentials and validate user",
+    "Authenticate and redirect user into the MyEvaluations session"
+  ]
+}

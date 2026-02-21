@@ -1,0 +1,339 @@
+{
+  "directory": "Web/App_Code",
+  "layer": "web",
+  "generatedAt": "2026-02-20T20:00:00.000Z",
+  "fileCount": 12,
+  "files": [
+    {
+      "filePath": "Web/App_Code/BasePage.cs",
+      "fileName": "BasePage.cs",
+      "fileType": "class",
+      "className": "BasePage",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Infrastructure",
+      "summary": "Core base page class inherited by virtually all WebForms pages in the application. Provides session validation, privilege checking, error handling with NewRelic integration, type conversion utilities, GridView sorting helpers, ListBox management, encryption/decryption (TripleDES), PGY/trainee type display logic, and report footer generation with confidentiality notices.",
+      "businessPurpose": "Ensures every page in the application validates the user session on init, loads role-based privileges from the database, handles unhandled exceptions with proper logging, and provides shared UI utilities (grid sorting, combo filling, list item management) so that individual pages can focus on their specific functionality.",
+      "keyMethods": [
+        "OnPreInit - Validates session and redirects to login if expired",
+        "OnInit - Loads user privileges from RoleManager into session, refreshing if updated",
+        "OnError - Global error handler with NewRelic reporting, custom error events, and redirect to main page",
+        "OnLoadComplete - Caches the last visited page URL",
+        "UserHasPrivilege - Checks if current user has a specific privilege on a submodule",
+        "CheckPrivilegesForMode - Validates CRUD privileges based on page mode (Add/Edit/View)",
+        "SetCurrentPageMode - Determines page mode from query string parameters (Add/Edit/View)",
+        "Encrypt - TripleDES encryption with optional MD5 hashing for sensitive data",
+        "Decrypt - TripleDES decryption with Base64 validation to avoid corruption",
+        "GetReprotFooter - Generates HTML report footer with confidentiality notice and copyright"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "RoleManager",
+        "UserManager",
+        "DutyHoursManager",
+        "EvaluationsManager",
+        "EvaluationsReportManager",
+        "DepartmentManager",
+        "FeatureManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Session validation, privilege checking, and encryption logic are being replaced by JWT-based auth and RBAC in the Node.js backend. The UI helper methods (grid sorting, combo filling) are not needed in React. The error handling pattern needs equivalent middleware in NestJS.",
+      "complexity": "very-complex",
+      "lineCount": 1595
+    },
+    {
+      "filePath": "Web/App_Code/BasePage_Ajax.cs",
+      "fileName": "BasePage_Ajax.cs",
+      "fileType": "class",
+      "className": "BasePage_Ajax",
+      "inheritsFrom": "oboutAJAXPage",
+      "module": "Infrastructure",
+      "summary": "Alternative base page class for pages using the Obout AJAX framework. Duplicates most of BasePage's utility methods (type conversion, grid sorting, list management, privilege checking) but inherits from oboutAJAXPage instead of System.Web.UI.Page. Also includes simple Base64 encrypt/decrypt methods.",
+      "businessPurpose": "Provides the same infrastructure functionality as BasePage but for AJAX-enabled pages that use the Obout third-party component library, ensuring consistent session validation, privilege checking, and UI utilities across both standard and AJAX page types.",
+      "keyMethods": [
+        "OnPreInit - Validates session and redirects to login if expired",
+        "Page_Init - Empty initialization handler placeholder",
+        "UserHasPrivilege - Checks role-based privilege for a submodule",
+        "CheckPrivilegesForMode - Validates CRUD privileges based on page mode",
+        "SetCurrentPageMode - Determines Add/Edit/View mode from query string",
+        "FillCombo - Populates a DropDownList from a DataTable",
+        "SortGridView - Sorts a GridView by expression and direction",
+        "DecryptString - Simple Base64 to ASCII string decryption",
+        "EncryptString - Simple ASCII to Base64 string encryption",
+        "ShowPersonalDataOnly - Checks if user should see only personal data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "RoleManager",
+        "UserManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "This class is largely a duplicate of BasePage for Obout AJAX pages. As the frontend migrates to React, Obout AJAX pages will be retired entirely, making this class obsolete. The utility methods are already covered by BasePage migration.",
+      "complexity": "complex",
+      "lineCount": 838
+    },
+    {
+      "filePath": "Web/App_Code/BaseReportPage.cs",
+      "fileName": "BaseReportPage.cs",
+      "fileType": "class",
+      "className": "BaseReportPage",
+      "inheritsFrom": "BasePage",
+      "module": "Evaluations",
+      "summary": "Base class for report filter/criteria pages that extends BasePage. Manages saved report settings (favourite reports) by loading them from the database via EvaluationsReportManager, deserializing JSON settings, and auto-populating form controls with saved filter values on page load.",
+      "businessPurpose": "Enables users to save and reuse report filter configurations (favourite reports). When a user opens a saved report, this class automatically restores all filter selections (dropdowns, checkboxes, text fields) so they do not have to re-enter criteria each time they run a report.",
+      "keyMethods": [
+        "ReportSettings (property) - Lazy-loads saved report settings from DB or session by ReportSettingID or back-filter UID",
+        "OnLoad - Sets department hidden field and loads saved report name/system/institutional flags into hidden fields",
+        "OnLoadComplete - Triggers SetControlsValues to populate form controls with saved settings",
+        "SetControlsValues - Iterates saved key-value pairs and sets corresponding control values via reflection",
+        "SetListValues - Sets multi-select ListBox selections from a comma-separated saved value string"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report favourite/saved settings functionality would need equivalent API endpoints in Node.js. The pattern of auto-populating controls from JSON is handled by React state management in the new frontend.",
+      "complexity": "moderate",
+      "lineCount": 168
+    },
+    {
+      "filePath": "Web/App_Code/BaseReportResultPage.cs",
+      "fileName": "BaseReportResultPage.cs",
+      "fileType": "class",
+      "className": "BaseReportResultPage",
+      "inheritsFrom": "BasePage",
+      "module": "Evaluations",
+      "summary": "Base class for report result/display pages that extends BasePage. Stores the current report filter parameters in session (as JSON) with a unique GUID so users can navigate back to the filter page with their selections preserved. Loads saved report settings from the database when viewing a favourite report.",
+      "businessPurpose": "Supports the report workflow by preserving report filter state across page navigation. When a user views report results and clicks 'back to filters', this class ensures their previous selections are restored from the session, avoiding the frustration of re-entering complex filter criteria.",
+      "keyMethods": [
+        "GetReportSettingUid (property) - Generates a unique GUID key for storing report parameters in session",
+        "OnLoad - Calls StoreRequestParams to persist current filters into session",
+        "StoreRequestParams - Serializes ReportSettingInfo dictionary to JSON and stores in session",
+        "GetFormParams - Collects all form and query string parameters into a dictionary for persistence",
+        "ReportSettingInfo (property) - Lazy-loads report settings from DB (for saved reports) or from form params (for ad-hoc reports)"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "The pattern of storing report state in session for back-navigation is replaced by client-side state management (React context/URL params) in the new frontend. The saved report settings loading can be served by a Node.js API.",
+      "complexity": "simple",
+      "lineCount": 98
+    },
+    {
+      "filePath": "Web/App_Code/BaseWebService.cs",
+      "fileName": "BaseWebService.cs",
+      "fileType": "class",
+      "className": "BaseWebService",
+      "inheritsFrom": null,
+      "module": "DutyHours",
+      "summary": "Abstract HTTP handler base class for timesheet/duty hours web service endpoints. Processes XML-based requests for timesheet operations: initializing a timesheet view, searching by date range, saving duty hour activities with rotation tracking and violation counting, and saving violation explanations. Uses session-based authentication.",
+      "businessPurpose": "Provides the XML-based API contract for the duty hours timesheet UI. Residents log their work hours, on-call activities, and rotations through this service. It also handles ACGME duty hour violation tracking and explanation submission, which are critical for GME compliance reporting.",
+      "keyMethods": [
+        "ProcessRequest - Main IHttpHandler entry point that routes XML requests by EventType (Initialize/Search/Save/Explanation)",
+        "DoInitialize (abstract) - Subclass implements timesheet initialization logic",
+        "DoSearch (abstract) - Subclass implements week navigation/search logic",
+        "DoSave (abstract) - Subclass implements timesheet saving with activities and violations",
+        "DoExplanation (abstract) - Subclass implements violation explanation saving",
+        "ParseSaveRequest - Parses XML into SaveRequest with user activities, rotations, violations, and recursion support",
+        "ParseExplanationRequest - Parses XML violation explanations with URL-decoded comments",
+        "SetSessionData - Populates request with logged-in user/department from session",
+        "ParseInitializeRequest - Extracts department and date from XML for initialization",
+        "ParseSearchRequest - Extracts user and date range from XML for timesheet search"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Duty hours/timesheet functionality is a key migration target. The XML-based request/response pattern should be replaced with JSON REST APIs in NestJS. The TimeSheet business objects (ActivityInfo, TimeSheetViolation) need equivalent DTOs. BullMQ workers may handle violation calculation asynchronously.",
+      "complexity": "moderate",
+      "lineCount": 320
+    },
+    {
+      "filePath": "Web/App_Code/BaseWebService_Test.cs",
+      "fileName": "BaseWebService_Test.cs",
+      "fileType": "class",
+      "className": "BaseWebService_Test",
+      "inheritsFrom": null,
+      "module": "DutyHours",
+      "summary": "Test/alternate version of BaseWebService that lacks error handling around session validation and uses a different XML structure for parsing violation explanations (child elements instead of attributes). Loads XML directly from InputStream without the stream-position fix present in the production BaseWebService.",
+      "businessPurpose": "Appears to be an earlier or test version of the timesheet web service handler. May have been used for development or testing of the duty hours XML API before the production version added session expiry handling and stream-reading improvements.",
+      "keyMethods": [
+        "ProcessRequest - Routes XML requests by EventType without session expiry checks",
+        "SetSessionData - Sets session data without try-catch (throws on session expiry)",
+        "ParseSaveRequest - Parses save requests without null checks on session",
+        "ParseExplanationRequest - Parses violations using child element XPath instead of attribute-based structure",
+        "DoInitialize (abstract) - Subclass implements initialization",
+        "DoSearch (abstract) - Subclass implements search",
+        "DoSave (abstract) - Subclass implements save",
+        "DoExplanation (abstract) - Subclass implements explanation saving"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "This is a test/legacy variant of BaseWebService. It should not need separate migration - the production BaseWebService covers the functionality. Can be deprecated.",
+      "complexity": "moderate",
+      "lineCount": 269
+    },
+    {
+      "filePath": "Web/App_Code/DropDownListAdapter.cs",
+      "fileName": "DropDownListAdapter.cs",
+      "fileType": "class",
+      "className": "DropDownListAdapter",
+      "inheritsFrom": "WebControlAdapter",
+      "module": "Infrastructure",
+      "summary": "Custom WebControl adapter that extends the standard ASP.NET DropDownList to support HTML optgroup elements. Renders ListItems with an 'OptionGroup' attribute inside optgroup tags, preserves option group assignments across postbacks via ViewState, and handles event validation registration.",
+      "businessPurpose": "Enables grouped dropdown selections in the UI where related options are visually organized under category headers (e.g., grouping rotations by department, or procedures by specialty). This improves usability for dropdowns with many items by providing visual categorization.",
+      "keyMethods": [
+        "RenderContents - Overrides rendering to emit optgroup tags based on OptionGroup attribute",
+        "RenderOptionGroupBeginTag - Writes opening optgroup tag with label",
+        "RenderOptionGroupEndTag - Writes closing optgroup tag",
+        "RenderListItem - Renders individual option element with attributes and selection state",
+        "SaveAdapterViewState - Persists OptionGroup attributes and item hash across postbacks",
+        "LoadAdapterViewState - Restores OptionGroup attributes from ViewState",
+        "OnPreRender - Reapplies OptionGroup attributes to items after ViewState load"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "This is a pure WebForms UI adapter with no business logic. React dropdowns handle grouping natively (e.g., Ant Design Select with OptGroup). No migration needed.",
+      "complexity": "simple",
+      "lineCount": 146
+    },
+    {
+      "filePath": "Web/App_Code/HtmlToPdfBuilder.cs",
+      "fileName": "HtmlToPdfBuilder.cs",
+      "fileType": "class",
+      "className": "HtmlToPdfBuilder",
+      "inheritsFrom": null,
+      "module": "Reports",
+      "summary": "HTML-to-PDF conversion utility using iTextSharp library. Supports multi-page PDF generation from HTML content with CSS stylesheet imports, page numbering, custom page breaks (via 'pagebreak' keyword), image handling with special treatment for radio/checkbox images, and PDF form field manipulation. Also defines the HtmlPdfPage helper class and RenderEvent delegate.",
+      "businessPurpose": "Generates downloadable PDF reports from HTML content for evaluation reports, semi-annual reviews, milestone reports, and other printable documents. Program directors and administrators use these PDFs for accreditation documentation, board meetings, and permanent trainee records.",
+      "keyMethods": [
+        "RenderPdf - Main rendering method that converts multi-page HTML to PDF with image scaling, page breaks, and footer pagination",
+        "RenderDirectHtmltoPDF - Alternate rendering path with simplified table/image handling for direct HTML conversion",
+        "AddPage - Appends a new HtmlPdfPage to the document",
+        "AddStyle - Registers a CSS style selector for the PDF stylesheet",
+        "ImportStylesheet - Loads and parses an external CSS file into iTextSharp styles using regex",
+        "ManipulatePdf - Modifies existing PDF form fields using PdfStamper (for AcroFields)",
+        "RemoveExtaSpaces - Cleans up whitespace in CSS/HTML content",
+        "InsertBefore/InsertAfter - Reorders pages within the document"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "PDF generation is needed in the Node.js backend as well. Consider using puppeteer or @react-pdf/renderer for the new stack. The iTextSharp-specific workarounds (image handling, pagebreak detection) would not carry over but the page structure concept is reusable.",
+      "complexity": "complex",
+      "lineCount": 654
+    },
+    {
+      "filePath": "Web/App_Code/ManageUsers.cs",
+      "fileName": "ManageUsers.cs",
+      "fileType": "class",
+      "className": "ManageUsers",
+      "inheritsFrom": null,
+      "module": "Security",
+      "summary": "Data access class for paginated user listing in the admin user management grid. Calls stored procedures GetUserDetailsByCriteria and GetManageUsersCount to retrieve filtered, sorted, and paginated user records. Contains both parameterized methods and hardcoded test methods with department ID 335.",
+      "businessPurpose": "Powers the admin 'Manage Users' page where program coordinators and administrators search, filter, and browse through the user directory. Supports filtering by user type and column-based search with server-side pagination for large user populations (10,000+ users).",
+      "keyMethods": [
+        "GetOrders - Retrieves paginated user records filtered by type, column, and department using GetUserDetailsByCriteria SP",
+        "GetOrdersCount - Returns total count of filtered users using GetManageUsersCount SP for pagination",
+        "GetOrders1 - Test/hardcoded version of GetOrders with fixed department ID 335",
+        "GetOrdersCount1 - Test/hardcoded version of GetOrdersCount with fixed department ID 335"
+      ],
+      "storedProcedures": [
+        "GetUserDetailsByCriteria",
+        "GetManageUsersCount"
+      ],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "User management is a core feature being migrated to Node.js. The direct SQL/stored procedure calls should be replaced with MikroORM queries or equivalent Node.js service methods. The hardcoded test methods (GetOrders1, GetOrdersCount1) should be removed.",
+      "complexity": "moderate",
+      "lineCount": 165
+    },
+    {
+      "filePath": "Web/App_Code/NewControls.cs",
+      "fileName": "NewControls.cs",
+      "fileType": "class",
+      "className": "NewDropDownList",
+      "inheritsFrom": "DropDownList",
+      "module": "Infrastructure",
+      "summary": "Custom DropDownList server control that preserves custom HTML attributes on ListItems across ASP.NET postbacks. Overrides SaveViewState and LoadViewState to serialize and restore all custom attributes (like data attributes, CSS classes, or option group markers) that would normally be lost during the WebForms page lifecycle.",
+      "businessPurpose": "Enables dropdown lists throughout the application to maintain custom attributes on their options across postbacks, which is essential for features like option grouping, conditional styling, and JavaScript-driven behaviors that depend on data attributes persisted on list items.",
+      "keyMethods": [
+        "SaveViewState - Serializes all custom ListItem attributes into a ViewState-compatible object array",
+        "LoadViewState - Restores custom ListItem attributes from ViewState after postback"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "Pure WebForms control with no business logic. React handles select element attributes natively. No migration needed.",
+      "complexity": "trivial",
+      "lineCount": 73
+    },
+    {
+      "filePath": "Web/App_Code/New_Auth.cs",
+      "fileName": "New_Auth.cs",
+      "fileType": "class",
+      "className": "New_Auth",
+      "inheritsFrom": null,
+      "module": "Security",
+      "summary": "Authentication context class that assembles the current user's identity information for the React frontend integration. Collects user ID, email, department, role, enabled features, and RBAC privileges (serialized as JSON) from session managers into a single object that can be passed to the React shell.",
+      "businessPurpose": "Bridges the .NET authentication system with the React frontend by packaging the logged-in user's identity, department context, role, feature flags, and granular CRUD privileges into a serializable object. This is a key part of the strangler fig migration pattern where React pages need auth context from the .NET session.",
+      "keyMethods": [
+        "Constructor - Assembles complete auth context from SessionManager, DepartmentManager, and FeatureManager",
+        "GetPrivileges - Serializes the user's privilege DataTable to JSON",
+        "BuildPrivilegesDictionary - Converts privilege DataTable rows into a submodule-to-actions dictionary with adminView/view/create/update/delete permissions"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "DepartmentManager",
+        "FeatureManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This class is the .NET-to-React auth bridge, directly relevant to the migration. The Node.js backend already has its own JWT-based auth that provides equivalent data. Once all pages are migrated off .NET, this bridge class becomes unnecessary.",
+      "complexity": "simple",
+      "lineCount": 58
+    },
+    {
+      "filePath": "Web/App_Code/RC4.cs",
+      "fileName": "RC4.cs",
+      "fileType": "class",
+      "className": "RC4",
+      "inheritsFrom": null,
+      "module": "Security",
+      "summary": "Implementation of the RC4 stream cipher algorithm for symmetric encryption and decryption. Provides the core EnDeCrypt method (RC4 is symmetric so encrypt and decrypt are the same operation) along with hex string conversion utilities for encoding encrypted output as hexadecimal text.",
+      "businessPurpose": "Provides a lightweight encryption mechanism used for encrypting sensitive data in URLs, cookies, or inter-system communication where TripleDES (from BasePage) may be too heavy. The hex encoding methods allow encrypted data to be safely transmitted in URL parameters.",
+      "keyMethods": [
+        "EnDeCrypt - Performs RC4 encryption/decryption using the initialized S-box with XOR operations",
+        "RC4Initialize - Initializes the 256-byte S-box from the password using the Key Scheduling Algorithm (KSA)",
+        "StrToHexStr - Converts a plain string to its hexadecimal representation",
+        "HexStrToStr - Converts a hexadecimal string back to its plain string form"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "RC4 is considered cryptographically weak and should not be migrated. The Node.js backend should use modern encryption (AES-256-GCM). If any data is currently RC4-encrypted, a migration plan to re-encrypt with modern algorithms is needed.",
+      "complexity": "simple",
+      "lineCount": 111
+    }
+  ],
+  "directoryOverview": "The App_Code directory contains the foundational infrastructure classes for the MyEvaluations .NET WebForms application. It includes two base page classes (BasePage for standard pages, BasePage_Ajax for Obout AJAX pages) that provide session management, RBAC privilege checking, error handling, and UI utilities inherited by all pages. Two report base classes (BaseReportPage, BaseReportResultPage) support saved report filter state. Two abstract HTTP handlers (BaseWebService, BaseWebService_Test) define the XML-based API for duty hours timesheet operations. Infrastructure utilities include dropdown grouping adapters, ViewState-preserving controls, and HTML-to-PDF conversion. Security classes handle encryption (TripleDES, RC4) and the React frontend auth bridge (New_Auth). A direct-SQL ManageUsers class supports the admin user management grid.",
+  "keyWorkflows": [
+    "Page lifecycle: Every page inherits BasePage/BasePage_Ajax -> OnPreInit validates session -> OnInit loads privileges -> page-specific logic runs -> OnError handles exceptions with NewRelic logging",
+    "RBAC privilege checking: BasePage.OnInit loads privileges via RoleManager -> UserHasPrivilege/CheckPrivilegesForMode called on each page to enforce access control",
+    "Report filter persistence: BaseReportPage loads saved settings from DB -> auto-populates controls -> user runs report -> BaseReportResultPage stores params in session for back-navigation",
+    "Duty hours timesheet API: BaseWebService.ProcessRequest receives XML -> routes by EventType -> subclass handles Initialize/Search/Save/Explanation -> returns XML response",
+    "React auth bridge: New_Auth constructor assembles user identity from session managers -> serialized to JSON -> passed to React frontend for RBAC enforcement",
+    "PDF report generation: HtmlToPdfBuilder.RenderPdf converts styled HTML pages to PDF with iTextSharp -> handles page breaks, images, footers for downloadable reports"
+  ]
+}

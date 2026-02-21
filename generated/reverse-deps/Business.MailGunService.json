@@ -1,0 +1,32 @@
+{
+  "module": "Business.MailGunService",
+  "businessClasses": [
+    "MailgunPOP3"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "MailHistoryAPIData.aspx.cs",
+        "filePath": "Web/Security/MailHistoryAPIData.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      }
+    ],
+    "schedulers": [
+      {
+        "fileName": "MailBounceLog.cs",
+        "filePath": "Schedulers/MailgunService/MailgunService/MailBounceLog.cs",
+        "directory": "Schedulers"
+      },
+      {
+        "fileName": "MailBounceLog.cs",
+        "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailBounceLog.cs",
+        "directory": "Schedulers"
+      }
+    ]
+  },
+  "totals": {
+    "web": 1,
+    "schedulers": 2
+  }
+}

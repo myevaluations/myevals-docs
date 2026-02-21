@@ -1,0 +1,42 @@
+{
+  "module": "Business.HelloSign",
+  "businessClasses": [
+    "Account",
+    "ApiApp",
+    "BaseSignatureRequest",
+    "Class1",
+    "CustomField",
+    "Document",
+    "Embedded",
+    "EmbeddedSign",
+    "EmbeddedTemplate",
+    "EmbeddedTemplateDraft, MergeField",
+    "Error",
+    "Event, EventMetadata",
+    "BadRequestException, UnauthorizedException, ForbiddenException, NotFoundException, MethodNotAllowedException, NotAllowedForApiAppException, ConflictException, GoneException, TeamInviteFailedException, ExceededApiRateLimitException, InternalServerErrorException, ServiceUnavailableException, NotImplementedException",
+    "FieldResponse",
+    "FormField",
+    "Client",
+    "Oauth",
+    "ObjectList<T>",
+    "Program",
+    "Signature",
+    "SignatureRequest, FileContainer, FileSignatureRequestBuilder",
+    "Signer",
+    "SignerRole",
+    "Team",
+    "Template",
+    "TemplateSignatureRequest",
+    "TemporaryUrl",
+    "UnclaimedDraft",
+    "Warning"
+  ],
+  "dependents": {
+    "web": [],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 0,
+    "schedulers": 0
+  }
+}

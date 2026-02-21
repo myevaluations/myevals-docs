@@ -1,0 +1,104 @@
+{
+  "directory": "MyEvaluations.DataAccess.SQL",
+  "layer": "supporting",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "fileCount": 4,
+  "files": [
+    {
+      "filePath": "MyEvaluations.DataAccess.SQL/ApplicationCustomErrorEvent.cs",
+      "fileName": "ApplicationCustomErrorEvent.cs",
+      "fileType": "infrastructure",
+      "className": "ApplicationCustomErrorEvent",
+      "inheritsFrom": "System.Web.Management.WebErrorEvent",
+      "module": "Error Handling",
+      "summary": "Custom error event class that extends ASP.NET WebErrorEvent for health monitoring. Provides a custom event code (104006) and allows attaching custom event details to error reports.",
+      "businessPurpose": "Structured error reporting for ASP.NET health monitoring infrastructure, used by the data access layer to log database errors with parameter details.",
+      "keyMethods": [
+        "FormatCustomEventDetails - Appends custom event details to the ASP.NET health monitoring formatter output"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "ASP.NET health monitoring is replaced by structured logging in the Node.js backend. No direct migration needed.",
+      "complexity": "trivial",
+      "lineCount": 23
+    },
+    {
+      "filePath": "MyEvaluations.DataAccess.SQL/CustomCommand.cs",
+      "fileName": "CustomCommand.cs",
+      "fileType": "infrastructure",
+      "className": "CustomCommand",
+      "inheritsFrom": null,
+      "module": "Data Access",
+      "summary": "Wrapper around SqlCommand that provides parameter management with automatic null handling (including DateTime.MinValue treated as null). Implements IDisposable for connection cleanup and supports both input and output parameters.",
+      "businessPurpose": "Core abstraction used throughout the entire .NET backend for building SQL commands with parameters. Every database call in the legacy system flows through this class.",
+      "keyMethods": [
+        "AddParameterWithValue - Adds an input parameter with automatic null/DBNull handling",
+        "SetParameterWithValue - Updates or adds a parameter value on an existing command",
+        "AddOutParameterWithValue - Adds an output parameter for stored procedures returning values",
+        "GetCommand - Returns the underlying SqlCommand for execution by DBDataAccess",
+        "IsNullValue - Private helper that treats null and DateTime.MinValue as null values"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "This is the fundamental data access building block. In the Node.js backend, MikroORM handles parameterized queries. Understanding CustomCommand usage patterns is key to migrating stored procedure calls.",
+      "complexity": "simple",
+      "lineCount": 154
+    },
+    {
+      "filePath": "MyEvaluations.DataAccess.SQL/DBDataAccess.cs",
+      "fileName": "DBDataAccess.cs",
+      "fileType": "infrastructure",
+      "className": "DBDataAccess",
+      "inheritsFrom": null,
+      "module": "Data Access",
+      "summary": "Static data access class that provides all database execution methods (ExecuteTable, ExecuteNonQuery, ExecuteScalar, ExecuteDataSet, ExecuteTransaction, etc.) using SQL Server connections from ConfigurationManager. Handles connection lifecycle, transactions, and error logging via ApplicationCustomErrorEvent.",
+      "businessPurpose": "The single point of database interaction for the entire .NET application. Every business manager and data access call ultimately uses this class to execute queries and stored procedures against SQL Server.",
+      "keyMethods": [
+        "GetConnectionString - Retrieves MyEvalsConnectionString from ConfigurationManager",
+        "ExecuteTransaction (parent/children) - Executes a parent command and child commands in a single transaction with foreign key linking",
+        "ExecuteTransaction (array) - Executes multiple commands in a single transaction",
+        "ExecuteTable - Executes a command and returns results as DataTable",
+        "ExecuteTableEvalReminder - ExecuteTable variant with 1200-second timeout for long-running evaluation reminder queries",
+        "ExecuteDataReader - Returns an IDataReader for streaming results",
+        "ExecuteDataSet - Executes and fills a DataSet using SqlDataAdapter",
+        "ExecuteScalar - Executes and returns a single value",
+        "ExecuteNonQuery - Executes a non-query command with optional exception throwing",
+        "UpdateDataSet - Updates database from DataSet changes via SqlDataAdapter",
+        "GetOutParameterValue - Retrieves output parameter values after execution",
+        "TempLogErrorMessage - Logs detailed error info including command text and all parameters"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "This is the core data access layer. The Node.js backend replaces this entirely with MikroORM for new features and direct MSSQL queries via tedious driver for legacy stored procedures. CommandTimeout=0 (infinite) is a concern.",
+      "complexity": "moderate",
+      "lineCount": 348
+    },
+    {
+      "filePath": "MyEvaluations.DataAccess.SQL/Properties/AssemblyInfo.cs",
+      "fileName": "AssemblyInfo.cs",
+      "fileType": "infrastructure",
+      "className": null,
+      "inheritsFrom": null,
+      "module": "Assembly Metadata",
+      "summary": "Standard assembly information file with version and metadata attributes for the MyEvaluations.DataAccess.SQL project.",
+      "businessPurpose": "Assembly identity and versioning. No business logic.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "",
+      "complexity": "trivial",
+      "lineCount": 36
+    }
+  ],
+  "directoryOverview": "Core data access layer providing the foundational database interaction classes for the entire MyEvaluations .NET backend. CustomCommand wraps SqlCommand with parameter management, and DBDataAccess provides all static execution methods (ExecuteTable, ExecuteNonQuery, ExecuteScalar, ExecuteTransaction, etc.) that every business manager depends on. All database calls in the legacy system flow through these two classes.",
+  "keyWorkflows": [
+    "SQL command building with CustomCommand parameter management",
+    "Database query execution (DataTable, DataSet, DataReader, Scalar, NonQuery)",
+    "Transaction management with parent-child command patterns",
+    "Error logging with ApplicationCustomErrorEvent for health monitoring"
+  ]
+}

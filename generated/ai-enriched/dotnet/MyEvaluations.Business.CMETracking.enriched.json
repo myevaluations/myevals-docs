@@ -1,0 +1,357 @@
+{
+  "module": "MyEvaluations.Business.CMETracking",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "isPriority": false,
+  "overview": "Continuing Medical Education (CME) credit tracking module containing 44 classes for managing CME events, credit types, certificates, evaluations, financial reporting, connectivity/integration configuration, email distribution, course materials, guest presenters, learning objectives, and question management. Supports ACCME accreditation compliance requirements.",
+  "architecture": {
+    "classCount": 44,
+    "managerClasses": ["AssignmentManager", "CMEConnectivityManager", "CMECredentialManager", "CMEFinancialManager", "CerificateManager", "CmeEventManager", "CreditTypeManager", "EmailDatabaseManager", "GuestManager", "LearningObjectiveManager", "QuestionManager"],
+    "infoClasses": ["AssignmentInfo", "CMECertificateInfo", "CMEConnectivityInfo", "CMECredentialInfo", "CmeEventInfo", "CourseHandOutInfo", "CourseInfo", "CourseVideoInfo", "CreditTypeInfo", "EvaluationInfo", "CMEQuizInfo", "EvaluationCommentsInfo", "EvaluationBarrierAnswerInfo", "EvaluationAnswerInfo", "EvaluationLearningObjectiveInfo", "EvaluationQuestionCommentInfo", "EvaluationTopicCredits", "EventInfo", "FileInfo", "GuestInfo", "LearningObjectiveInfo", "LecturerInfo", "QuestionInfo", "ScheduleTemplateInfo", "SupportSourceInfo", "TemplateInfo"],
+    "searchCriteriaClasses": ["EvaluationSearchCriteria", "EventSearchCriteria"],
+    "businessLogicClasses": ["CMEBusinessClass", "CMEFinancialBussiness"],
+    "bulkOperationClasses": ["UploadNameOfList"],
+    "registrationClasses": ["RegisterCMEEvent"],
+    "configClasses": ["Settings"],
+    "keyFiles": ["CMEBusinessClass.cs", "CmeEventManager.cs", "CertificateManager.cs", "CreditTypeManager.cs", "CMEFinancialManager.cs", "CMEConnectivityManager.cs", "EvaluationInfo.cs", "EmailDatabaseManager.cs"]
+  },
+  "managerPattern": {
+    "description": "11 manager classes following the Manager/Info pattern. Managers extend the base Manager class and use stored procedures for all data access. 8 managers have explicit Info counterparts.",
+    "managerInfoPairs": {
+      "AssignmentManager": "AssignmentInfo",
+      "CMEConnectivityManager": "CMEConnectivityInfo",
+      "CMECredentialManager": "CMECredentialInfo",
+      "CmeEventManager": "CmeEventInfo",
+      "CreditTypeManager": "CreditTypeInfo",
+      "GuestManager": "GuestInfo",
+      "LearningObjectiveManager": "LearningObjectiveInfo",
+      "QuestionManager": "QuestionInfo"
+    }
+  },
+  "storedProcedures": [
+    {
+      "name": "GetConnectivityNames",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Retrieve available connectivity/integration provider names"
+    },
+    {
+      "name": "SaveDepartmentConnectivityInfo",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Save department-level connectivity configuration"
+    },
+    {
+      "name": "GetDepartmentConnectivityInfo",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Retrieve department connectivity settings"
+    },
+    {
+      "name": "GetCMESatelliteProgramsDepartments",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Get departments participating in satellite programs"
+    },
+    {
+      "name": "GetSavedSatelliteProgramsDepartments",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Get saved satellite program department configurations"
+    },
+    {
+      "name": "SaveSatelliteProgramDepartments",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Save satellite program department assignments"
+    },
+    {
+      "name": "GetMerchantServiceNames",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Retrieve available merchant/payment service providers"
+    },
+    {
+      "name": "GetSavedMerchantServiceInfo",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Get saved merchant service configuration"
+    },
+    {
+      "name": "SaveDepartmentMerchantServiceInfo",
+      "calledBy": "CMEConnectivityManager",
+      "purpose": "Save department merchant service settings"
+    },
+    {
+      "name": "ManageCMECredentialingInformation",
+      "calledBy": "CMECredentialManager",
+      "purpose": "Create or update CME credentialing records"
+    },
+    {
+      "name": "GetCMECredentialingInformation",
+      "calledBy": "CMECredentialManager",
+      "purpose": "Retrieve CME credentialing data"
+    },
+    {
+      "name": "GetCMEMaxEventCredits",
+      "calledBy": "CMECredentialManager",
+      "purpose": "Get maximum allowable credits for a CME event"
+    },
+    {
+      "name": "GetCMEFinancialReport",
+      "calledBy": "CMEFinancialManager",
+      "purpose": "Generate CME financial summary report"
+    },
+    {
+      "name": "GetCurrentYearStartDate",
+      "calledBy": "CMEFinancialManager",
+      "purpose": "Get the fiscal/academic year start date for financial calculations"
+    },
+    {
+      "name": "GetFavouriteReportSettingsinfoByID",
+      "calledBy": "CMEFinancialManager",
+      "purpose": "Retrieve saved report configuration preferences"
+    },
+    {
+      "name": "GetCMEFinancialResultsReport",
+      "calledBy": "CMEFinancialManager",
+      "purpose": "Generate detailed CME financial results report"
+    },
+    {
+      "name": "GetCMECertificateList",
+      "calledBy": "CerificateManager",
+      "purpose": "List all CME certificates"
+    },
+    {
+      "name": "GetCertificatesForLookup",
+      "calledBy": "CerificateManager",
+      "purpose": "Get certificate options for dropdown selection"
+    },
+    {
+      "name": "GetCertificateInfoByID",
+      "calledBy": "CerificateManager",
+      "purpose": "Retrieve certificate details by ID"
+    },
+    {
+      "name": "GetCertificateForDepartment",
+      "calledBy": "CerificateManager",
+      "purpose": "Get certificates assigned to a specific department"
+    },
+    {
+      "name": "AddCertificate",
+      "calledBy": "CerificateManager",
+      "purpose": "Create a new CME certificate"
+    },
+    {
+      "name": "UpdateCertificate",
+      "calledBy": "CerificateManager",
+      "purpose": "Update an existing CME certificate"
+    },
+    {
+      "name": "DeleteCertificate",
+      "calledBy": "CerificateManager",
+      "purpose": "Delete a CME certificate"
+    },
+    {
+      "name": "GetCreditTypeList",
+      "calledBy": "CreditTypeManager",
+      "purpose": "List all credit types (AMA PRA Category 1, MOC, etc.)"
+    },
+    {
+      "name": "GetCreditTypesForLookup",
+      "calledBy": "CreditTypeManager",
+      "purpose": "Get credit types for dropdown selection"
+    },
+    {
+      "name": "GetCreditTypeInfoByID",
+      "calledBy": "CreditTypeManager",
+      "purpose": "Retrieve credit type details by ID"
+    },
+    {
+      "name": "AddCreditType",
+      "calledBy": "CreditTypeManager",
+      "purpose": "Create a new credit type"
+    },
+    {
+      "name": "UpdateCreditType",
+      "calledBy": "CreditTypeManager",
+      "purpose": "Update an existing credit type"
+    },
+    {
+      "name": "DeleteCreditType",
+      "calledBy": "CreditTypeManager",
+      "purpose": "Delete a credit type"
+    },
+    {
+      "name": "DoesEventNameExists",
+      "calledBy": "CerificateManager, CreditTypeManager",
+      "purpose": "Check for duplicate event names (uniqueness validation)"
+    },
+    {
+      "name": "GetEmailDBListByCriteria",
+      "calledBy": "EmailDatabaseManager",
+      "purpose": "Search email distribution lists by criteria"
+    },
+    {
+      "name": "GetDeletedEmailDBListByCriteria",
+      "calledBy": "EmailDatabaseManager",
+      "purpose": "Search deleted/archived email lists"
+    },
+    {
+      "name": "GetEmailDBListByID",
+      "calledBy": "EmailDatabaseManager",
+      "purpose": "Retrieve email list by ID"
+    },
+    {
+      "name": "SaveScheduleList",
+      "calledBy": "EmailDatabaseManager",
+      "purpose": "Save email distribution schedule"
+    },
+    {
+      "name": "AddCMEGuestPresenters",
+      "calledBy": "GuestManager",
+      "purpose": "Add guest/external presenter to CME event"
+    },
+    {
+      "name": "UpdateCMEGuestPresenters",
+      "calledBy": "GuestManager",
+      "purpose": "Update guest presenter information"
+    },
+    {
+      "name": "GetCMEGuestInfoByID",
+      "calledBy": "GuestManager",
+      "purpose": "Retrieve guest presenter details by ID"
+    },
+    {
+      "name": "GetCMEAudienceList",
+      "calledBy": "QuestionManager",
+      "purpose": "Get target audience categories for CME questions"
+    },
+    {
+      "name": "GetCMEQuestionCategories",
+      "calledBy": "QuestionManager",
+      "purpose": "Get question category taxonomy"
+    },
+    {
+      "name": "DoesUploadNameExists",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Check for duplicate upload list names"
+    },
+    {
+      "name": "AddUploadEmailDBList",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Create a new email upload list"
+    },
+    {
+      "name": "spBulkImportUploadList",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Bulk import contacts from uploaded file"
+    },
+    {
+      "name": "DeleteNameList",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Soft-delete an upload list"
+    },
+    {
+      "name": "DeleteUploadEmail",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Delete a single email from an upload list"
+    },
+    {
+      "name": "RestoreNameList",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Restore a deleted upload list"
+    },
+    {
+      "name": "RestoreUploadUser",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Restore a deleted user from upload list"
+    },
+    {
+      "name": "GetCMEUploadUser",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Retrieve uploaded user details"
+    },
+    {
+      "name": "SetUploadUserInfo",
+      "calledBy": "UploadNameOfList",
+      "purpose": "Update uploaded user information"
+    }
+  ],
+  "keyClasses": [
+    {
+      "name": "CMEBusinessClass",
+      "role": "Primary business logic class for CME operations",
+      "extends": "Manager",
+      "file": "CMEBusinessClass.cs"
+    },
+    {
+      "name": "CmeEventManager",
+      "role": "CME event lifecycle management (create, schedule, register)",
+      "extends": "Manager",
+      "file": "CmeEventManager.cs"
+    },
+    {
+      "name": "CerificateManager",
+      "role": "CRUD for CME certificates (typo in name: should be CertificateManager)",
+      "extends": "Manager",
+      "file": "CertificateManager.cs"
+    },
+    {
+      "name": "CreditTypeManager",
+      "role": "Manages credit types (AMA PRA Category 1, MOC, etc.)",
+      "extends": "Manager",
+      "file": "CreditTypeManager.cs"
+    },
+    {
+      "name": "CMEFinancialManager",
+      "role": "CME financial reporting and analytics",
+      "extends": "Manager",
+      "file": "CMEFinancialManager.cs"
+    },
+    {
+      "name": "CMEConnectivityManager",
+      "role": "Third-party integration configuration (satellite programs, merchant services)",
+      "extends": "Manager",
+      "file": "CMEConnectivityManager.cs"
+    },
+    {
+      "name": "EvaluationInfo",
+      "role": "Primary CME evaluation DTO with nested response models",
+      "file": "EvaluationInfo.cs"
+    },
+    {
+      "name": "UploadNameOfList",
+      "role": "Bulk email list import/management with 9 stored procedures",
+      "file": "UploadNameOfList.cs"
+    }
+  ],
+  "businessRules": [
+    "CME events must have credit types assigned (AMA PRA Category 1 is most common)",
+    "Certificate generation requires completed evaluation and attendance verification",
+    "Financial reporting spans fiscal/academic year boundaries (GetCurrentYearStartDate)",
+    "ACCME requires disclosure of commercial support sources (SupportSourceInfo)",
+    "Guest presenters require conflict-of-interest disclosures",
+    "Email distribution lists support soft-delete with restore capability",
+    "Bulk import uses dedicated stored procedure (spBulkImportUploadList) for performance",
+    "Event names must be unique across the department (DoesEventNameExists validation)",
+    "Satellite programs allow multi-department CME event sharing",
+    "Max event credits are configurable per credential type (GetCMEMaxEventCredits)"
+  ],
+  "migrationNotes": {
+    "priority": "medium",
+    "complexity": "high",
+    "notes": [
+      "Fix class name typos during migration: CerificateManager -> CertificateManager, CMEFinancialBussiness -> CMEFinancialBusiness",
+      "CMEConnectivityManager handles external integrations that may need REST API clients in NestJS",
+      "UploadNameOfList bulk import should use NestJS streaming/batch processing for large file uploads",
+      "Financial reporting stored procedures are complex and may be candidates for last-mile migration",
+      "EvaluationInfo and its 7 related DTOs in a single file should be split into separate files in NestJS",
+      "The Settings auto-generated class maps directly to NestJS ConfigModule",
+      "ACCME compliance features are regulatory requirements -- must be fully preserved"
+    ],
+    "nestjsEquivalents": {
+      "CMEBusinessClass": "CmeService (NestJS injectable)",
+      "CmeEventManager": "CmeEventService",
+      "CerificateManager": "CmeCertificateService",
+      "CreditTypeManager": "CreditTypeService",
+      "CMEFinancialManager": "CmeFinancialService",
+      "CMEConnectivityManager": "CmeIntegrationService",
+      "EmailDatabaseManager": "CmeEmailService",
+      "UploadNameOfList": "BulkImportService with streaming"
+    }
+  },
+  "mermaidDiagram": null,
+  "mdxContent": "See MyEvaluations.Business.CMETracking.mdx"
+}

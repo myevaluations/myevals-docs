@@ -1,0 +1,14 @@
+{
+  "module": "NurseNotifyService",
+  "businessClasses": [
+    "NurseActions"
+  ],
+  "dependents": {
+    "web": [],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 0,
+    "schedulers": 0
+  }
+}

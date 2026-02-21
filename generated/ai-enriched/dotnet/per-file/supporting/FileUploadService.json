@@ -1,0 +1,90 @@
+{
+  "directory": "FileUploadService",
+  "layer": "supporting",
+  "generatedAt": "2026-02-20T22:00:00.000Z",
+  "fileCount": 3,
+  "files": [
+    {
+      "filePath": "FileUploadService/App_Code/ExcelProcess.cs",
+      "fileName": "ExcelProcess.cs",
+      "fileType": "service",
+      "className": "ExcelProcess",
+      "inheritsFrom": null,
+      "module": "Excel Import/Export",
+      "summary": "Comprehensive Excel file processing class for importing data into MyEvaluations. Handles reading Excel files (XLS and XLSX formats via MyXls library and OleDb connections), extracting worksheet names and headers, and importing user data with field mapping. Contains extensive import logic for user profiles including certification tracking fields (ACLS, ALSO, ATLS, BLS, PACLS, PALS certification expiry and pass dates).",
+      "businessPurpose": "Enables bulk data import from Excel spreadsheets for user management, question importing, and certification tracking. Critical for institutions onboarding residents, faculty, and other users in bulk rather than one-by-one entry.",
+      "keyMethods": [
+        "GetWorksSheetsCount - Returns the number of worksheets in an Excel file",
+        "GetWorksSheetsNames - Returns worksheet names from XLS files using MyXls library",
+        "GetWorksSheetsNames (overload) - Returns worksheet names from XLSX files using OleDb",
+        "GetExcelFileHeaders - Extracts column headers from the first row of a worksheet",
+        "ImportUsers - Imports user data from Excel with field mapping and validation",
+        "ValidateImportData - Validates imported data against expected schema"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Excel import functionality is actively used by institutions. Node.js can use xlsx or exceljs npm packages for equivalent functionality. The certification field tracking logic (ACLS, BLS, etc.) is domain-specific and must be preserved.",
+      "complexity": "very-complex",
+      "lineCount": 1861
+    },
+    {
+      "filePath": "FileUploadService/App_Code/FileUploadComponent.cs",
+      "fileName": "FileUploadComponent.cs",
+      "fileType": "service",
+      "className": "FileUploadComponent",
+      "inheritsFrom": null,
+      "module": "File Upload",
+      "summary": "Core file upload handler supporting document and photo uploads to a configurable upload server. Handles file size validation, image resizing (using System.Drawing for JPEG conversion and thumbnail generation), file extension validation, and network path-based file storage. Reads upload server configuration from AppSettings (server URL, credentials, virtual folder paths, image dimensions).",
+      "businessPurpose": "Manages all file uploads in MyEvaluations including profile photos, evaluation documents, certificates, and other attachments. Supports both regular document uploads and photo uploads with automatic resizing.",
+      "keyMethods": [
+        "UploadFile - Orchestrates document upload with size validation and path management",
+        "PhotoUploading - Handles photo upload with JPEG conversion and thumbnail generation",
+        "FileUploading - Core file upload logic writing bytes to network path with extension validation",
+        "ResizeImage - Resizes uploaded images to configured dimensions while maintaining aspect ratio",
+        "CreateThumbnail - Creates thumbnail versions of uploaded photos",
+        "DeleteFile - Removes an uploaded file from the server"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "File upload is being migrated to Azure Blob Storage in the Node.js backend. The network path-based storage is legacy IIS infrastructure. Image resizing can use sharp npm package in Node.js.",
+      "complexity": "very-complex",
+      "lineCount": 2416
+    },
+    {
+      "filePath": "FileUploadService/App_Code/FileUploadComponentWebService.cs",
+      "fileName": "FileUploadComponentWebService.cs",
+      "fileType": "service",
+      "className": "FileUploadComponentWebService",
+      "inheritsFrom": "System.Web.Services.WebService",
+      "module": "File Upload Web Service",
+      "summary": "ASMX SOAP web service exposing file upload functionality. Provides WebMethod endpoints for uploading files, photos, and Excel files with authentication via SoapHeader (AuthHeader). Includes methods for Excel sheet processing (getting sheet names, headers, importing users/questions). Delegates to FileUploadComponent and ExcelProcess for actual processing.",
+      "businessPurpose": "Exposes file upload and Excel import functionality as a SOAP web service, enabling the WebForms frontend and potentially external clients to upload files and import data via SOAP calls. Authentication is time-based using file access datetime checks.",
+      "keyMethods": [
+        "UploadFile - SOAP endpoint for uploading documents with size validation",
+        "UploadFileWithDynamicSize - SOAP endpoint for uploading with configurable max file size",
+        "UploadPhoto - SOAP endpoint for photo upload with image processing",
+        "UploadVideo - SOAP endpoint for video file uploads",
+        "GetExcelSheetNames - Returns worksheet names from an uploaded Excel file",
+        "GetExcelFileHeaders - Returns column headers from an Excel worksheet",
+        "ImportUsersFromExcel - Imports user data from Excel via SOAP",
+        "ImportQuestionsFromExcel - Imports evaluation questions from Excel via SOAP",
+        "GetFileAccessDateTime - Validates authentication by checking time-based access window"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "SOAP web service is legacy infrastructure. The Node.js backend exposes equivalent REST API endpoints. File upload endpoints should be REST with multipart/form-data instead of SOAP byte arrays.",
+      "complexity": "complex",
+      "lineCount": 919
+    }
+  ],
+  "directoryOverview": "ASMX SOAP web service for file upload and Excel import operations. Contains three tightly coupled classes: FileUploadComponentWebService (SOAP endpoints), FileUploadComponent (core upload logic with image processing), and ExcelProcess (Excel file reading and data import). Handles document uploads, photo uploads with resizing, video uploads, and bulk data import from Excel spreadsheets. Files are stored on a network file server via configurable UNC paths. Authentication uses a time-based SOAP header mechanism.",
+  "keyWorkflows": [
+    "Document Upload: SOAP UploadFile -> FileUploadComponent.UploadFile -> FileUploading (write bytes to network path with extension validation)",
+    "Photo Upload: SOAP UploadPhoto -> FileUploadComponent.PhotoUploading -> FileUploading + ResizeImage + CreateThumbnail",
+    "Excel Import: SOAP GetExcelSheetNames -> ExcelProcess.GetWorksSheetsNames -> SOAP GetExcelFileHeaders -> ExcelProcess.GetExcelFileHeaders -> SOAP ImportUsersFromExcel -> ExcelProcess.ImportUsers",
+    "Video Upload: SOAP UploadVideo -> FileUploadComponent.UploadFile (video flag) -> FileUploading to video server path"
+  ]
+}

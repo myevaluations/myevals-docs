@@ -1,0 +1,302 @@
+{
+  "directory": "Web",
+  "layer": "web",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "fileCount": 1,
+  "files": [
+    {
+      "filePath": "Web/ApiHandler.ashx",
+      "fileName": "ApiHandler.ashx",
+      "fileType": "handler",
+      "className": "ApiHandler",
+      "inheritsFrom": "IHttpHandler, IReadOnlySessionState",
+      "module": "API Gateway",
+      "summary": "Main HTTP API handler that routes all AJAX/API requests from the web application via a cmd query parameter. Acts as a central dispatcher using a massive if/else-if chain in a single ProcessRequest method, routing to ~18 active endpoints (plus 2 commented-out EPA endpoints) across dashboard, messaging, evaluations, clinical hours, procedures, patient logs, quizzes, portfolio, and system implementation functional areas.",
+      "businessPurpose": "Provides the JSON API layer that the React frontend dashboard uses for all data operations. Handles dashboard widgets (things to do, shortcuts, messages, system implementation progress), portfolio data (publications, research, quality improvement), clinical hours tracking, procedure and patient log data, quiz performance metrics, performance task completion, evaluation turnaround data, and AI-powered curricular assessment worksheet (CAW) insights.",
+      "keyMethods": [
+        "ProcessRequest - Main entry point; validates session, parses query parameters (cmd, departmentId, uid, academicYear, etc.), and dispatches to the appropriate cmd handler via a large if/else-if chain",
+        "cmd=getdepartmentsdata - Returns list of departments for demographics report filtered by logged-in user's access",
+        "cmd=getdashboardmessagedata - Retrieves dashboard messages/notifications for a user with timezone-aware date formatting",
+        "cmd=message/read - Marks a specific message as read by updating its read status",
+        "cmd=getusershortcuts - Returns dashboard shortcut menu items grouped by module (Evaluations, Clinical Hours, Scholarly Activities, etc.) with color coding and feature-flag-based URL overrides for Accreditation Documentation and Program Assessment",
+        "cmd=getusersbydepartmentid - Returns user list with profile image URLs for a given department",
+        "cmd=getdashboardsystemimplementationdata - Returns department-level system implementation progress score (average across modules) for the dashboard summary widget",
+        "cmd=getsystemimplementationdata - Returns full hierarchical system implementation tree (modules > sub-modules > sub-sub-modules) with implementation rates, statuses (Disabled/Not Implemented/Partially/Functional/Fully), and drill-down URLs",
+        "cmd=getPublicationsResearchProjects - Returns scholarly activity data: submission rates by type (professional, research, publications, conferences, textbooks, grants, abstracts), group averages, and PGY-level breakdowns using DocDetailsManager portfolio queries",
+        "cmd=getQualityImprovementProjects - Returns QI project metrics: submitted count (all years), under review count (current), and implemented count (all years) with group averages",
+        "cmd=getQuizPerformance - Returns quiz performance dashboard data: average score with YoY change, expired quizzes, score-over-time trends, score histogram distribution, and individual quiz details with review URLs",
+        "cmd=getClinicalHours - Returns clinical/duty hours dashboard: reviewal rate with YoY change, submitted/scheduled shift counts, last submission and review dates, and violation rate over time by type",
+        "cmd=getdashboardthingstodo - Returns things-to-do list grouped by module type with counts and status, including dynamic URL rewriting for new Procedure Module when enabled",
+        "cmd=cawmyinsights - Retrieves AI-generated Curricular Assessment Worksheet (CAW) insights, parses AI comments by competency, stores parsed competency-level comments back to DB via InsertMyInsightCompetencyComments",
+        "cmd=getmyinsightsdata - Returns AI-generated report data for a specific competency and date range, including period number lookup",
+        "cmd=getProceduresData - Returns procedure/task log data: acceptance rates by objective type (Certification/Graduation), per-procedure breakdowns with required-per-year tracking, and acceptance breakdown by status",
+        "cmd=getPatientLogData - Returns patient log dashboard: outpatient hours with YoY change, hours over time trends, submission rates, and per-patient-type submission rates with per-PGY-level breakdowns",
+        "cmd=getPerformanceTaskCompletionData - Returns performance task completion metrics: overall completion rate with YoY, completion rate over time by period, and completion rate by evaluation type with warnings",
+        "cmd=getPerformanceEvaluationData - Returns evaluation turnaround metrics: average days to complete with YoY, pending/overdue counts with group averages, days-to-complete over time, and histogram distribution",
+        "render401 - Returns HTTP 401 unauthorized JSON response",
+        "render400 - Returns HTTP 400 bad request JSON response",
+        "render500 - Returns HTTP 500 internal server error JSON response",
+        "render404 - Returns HTTP 404 not found JSON response",
+        "error_UnauthorizedAccess - Returns HTTP 403 with unauthorized access message",
+        "error_InvalidDepartmentSelcted - Returns unauthorized access message for wrong department selection",
+        "DataTableToJSONWithJSONNet - Converts a DataTable to JSON string using Newtonsoft.Json",
+        "DataSetToJSONWithJSONNet - Converts a DataSet to JSON string using Newtonsoft.Json",
+        "DataTableToList - Converts DataTable rows to List<Item> for system implementation sub-modules with status calculation",
+        "GetStatusId - Maps implementation percentage to status ID (0=Disabled, 1=Not Implemented, 2=Partially, 3=Functional, 4=Fully Implemented)",
+        "GetModulePercentage - Calculates average implementation percentage across child module items",
+        "setStatusAsDisabledModules - Recursively sets all child items to disabled status (statusId=0, rate=0)",
+        "setPercentageforDisabledModules - Recursively sets implementation rate to 0 for disabled module trees",
+        "checkForNullURLs - Recursively prepends base URL to relative URLs and nullifies empty URLs in the implementation tree",
+        "GetCompetencyComments - Parses AI-generated text to extract competency-specific comments between markdown bold markers",
+        "EmptyResult - Returns empty MyInsights list as fallback response",
+        "ReturnAssignedGroupBy - Groups and joins assigned names/short names by group category from DataRow collections"
+      ],
+      "storedProcedures": [
+        "GetListOfDepartmentsForDemographicsReport (via UserManager instance method)",
+        "GetUserMessagesInfoDetails_API (via UserManager static method)",
+        "GetDepartmentTimeZoneInfo (via DepartmentManager static method)",
+        "UpdateMessageReadStatus (via UserManager instance method)",
+        "GetUserShortcuts (via UserManager static method)",
+        "GetUsersByDepartmentID (via UserManager static method)",
+        "checkEntityValueExists (via UserManager static method - used in 8 endpoints for entity validation)",
+        "CheckDepartmentExistsforGMEAdmin (via UserManager static method)",
+        "GetDashboardSystemImplementationData (via UserManager static method)",
+        "GetSystemImplementationDashBoardDetails (via UserManager static method)",
+        "GetUserPgyPeriodsList (via UserManager static method)",
+        "GetDashboardResultsForPortfolio (via DocDetailsManager instance method)",
+        "GetPFSubjectAverages (via DocDetailsManager static method)",
+        "checkforAuthorization (via UserManager static method - used in 7 endpoints for RBAC checks)",
+        "GetQualityImprovementObjectAPI (via UserManager static method)",
+        "GetQuizPerformanceAPI (via UserManager static method)",
+        "GetQuizReviewURL (via DesignQuizManager instance method)",
+        "GetClinicalHoursAPI (via UserManager static method)",
+        "GetThingsToDoDetails (via UserManager static method)",
+        "GetCAWMyInsights (via EvaluationsTemplateManager instance method)",
+        "InsertMyInsightCompetencyComments (via EvaluationsTemplateManager instance method)",
+        "GenerateAIReport (via UserManager static method)",
+        "GetPeriodNumber (via UserManager static method)",
+        "GetProceduresData (via UserManager static method)",
+        "GetPatientLogData (via UserManager static method)",
+        "GetPerformanceTaskCompletionData (via UserManager static method)",
+        "GetTaskEvaluationData (via UserManager static method)",
+        "GetEpas (via UserManager static method - commented out)",
+        "GetSingleEpa (via UserManager static method - commented out)"
+      ],
+      "businessManagersUsed": [
+        "UserManager (MyEvaluations.Business.Security) - Primary manager handling ~25 static/instance methods for user data, dashboard data, authorization checks, quiz performance, clinical hours, procedures, patient logs, task completion, evaluations, AI reports, system implementation, and entity validation",
+        "SessionManager (MyEvaluations.Business.Security) - Session validation, user identity (GetLoggedInUserID, GetLoggedInUserPrimaryDepartmentID, GetLoggedInUserRoleID), and JWT token generation",
+        "DepartmentManager (MyEvaluations.Business.Common) - Department timezone information retrieval",
+        "FeatureManager (MyEvaluations.Business.Common) - Feature flag checks for AccreditationDocumentation and ProgramAssessment features",
+        "DocDetailsManager (MyEvaluations.Business.Portfolio) - Portfolio document details, publication/research submission rates, and subject averages (PGY-level tracking)",
+        "DesignQuizManager (MyEvaluations.Business.Quiz) - Quiz review URL generation for attempted quiz review links",
+        "EvaluationsTemplateManager (MyEvaluations.Business.Evaluations) - CAW (Curricular Assessment Worksheet) AI insights retrieval and competency comment storage"
+      ],
+      "inlineModelClasses": [
+        "CompetencyData - Container for MyInsights competency data list",
+        "CompetencyViewModel - AI insight view model with period dates, content, and submit date",
+        "CawMyInsights - CAW insights container with ID and list of MyInsights",
+        "MyInsights - Individual competency insight with competencyid, name, and content",
+        "DashboardMessages (external) - Dashboard message container",
+        "MessageItems (external) - Individual message with sender, date, title, content, URL",
+        "DashBoardShortcuts (external) - Dashboard shortcuts container with sections and submit shortcuts",
+        "DashBoardSubShortcuts (external) - Shortcut section with label, color, and items",
+        "DashBoardSubShortcutitems (external) - Individual shortcut item with label and action trigger",
+        "ActionTrigger (external) - URL action with type (open-url/open-modal)",
+        "DashboardSystemImplementation (external) - System implementation progress container",
+        "DashBoardSystemImplementation (external) - Full system implementation tree container with items and statuses",
+        "Item (external) - Hierarchical tree node for system implementation with moduleid, submoduleid, label, url, implementationRate, statusId, children",
+        "Status (external) - Implementation status definition with id, label, color",
+        "PublicationsResearchResponseModel (external) - Publications/research response with submission rates",
+        "QualityImprovementResponseModel (external) - QI projects response model",
+        "QuizPerformanceResponseModel (external) - Quiz performance dashboard model",
+        "ClinicalHourResponseModel (external) - Clinical hours dashboard model",
+        "ProceduresData (external) - Procedures dashboard model with objectives and acceptance breakdown",
+        "PatientLogData (external) - Patient log dashboard model",
+        "PerformanceTaskCompletionModel (external) - Task completion dashboard model",
+        "PerformanceEvalutionModel (external) - Evaluation turnaround dashboard model"
+      ],
+      "apiEndpoints": [
+        {
+          "cmd": "getdepartmentsdata",
+          "httpMethod": "GET",
+          "description": "Get departments list for demographics report",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Departments"
+        },
+        {
+          "cmd": "getdashboardmessagedata",
+          "httpMethod": "GET",
+          "description": "Get dashboard messages/notifications",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Messaging"
+        },
+        {
+          "cmd": "message/read",
+          "httpMethod": "GET",
+          "description": "Mark a message as read",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Messaging"
+        },
+        {
+          "cmd": "getusershortcuts",
+          "httpMethod": "GET",
+          "description": "Get dashboard shortcut menu items by module",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Navigation"
+        },
+        {
+          "cmd": "getusersbydepartmentid",
+          "httpMethod": "GET",
+          "description": "Get users list with images for a department",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Users"
+        },
+        {
+          "cmd": "getdashboardsystemimplementationdata",
+          "httpMethod": "GET",
+          "description": "Get department system implementation progress summary",
+          "authRequired": true,
+          "functionalArea": "Dashboard - System Implementation"
+        },
+        {
+          "cmd": "getsystemimplementationdata",
+          "httpMethod": "GET",
+          "description": "Get full system implementation hierarchical tree with statuses",
+          "authRequired": true,
+          "functionalArea": "Dashboard - System Implementation"
+        },
+        {
+          "cmd": "getPublicationsResearchProjects",
+          "httpMethod": "GET",
+          "description": "Get scholarly activity submission rates and PGY breakdowns",
+          "authRequired": true,
+          "functionalArea": "Portfolio - Scholarly Activities"
+        },
+        {
+          "cmd": "getQualityImprovementProjects",
+          "httpMethod": "GET",
+          "description": "Get QI project metrics (submitted, under review, implemented)",
+          "authRequired": true,
+          "functionalArea": "Portfolio - Quality Improvement"
+        },
+        {
+          "cmd": "getQuizPerformance",
+          "httpMethod": "GET",
+          "description": "Get quiz performance dashboard (scores, trends, histogram)",
+          "authRequired": true,
+          "functionalArea": "Quiz - Performance"
+        },
+        {
+          "cmd": "getClinicalHours",
+          "httpMethod": "GET",
+          "description": "Get clinical/duty hours dashboard (reviewal rate, violations, shifts)",
+          "authRequired": true,
+          "functionalArea": "Clinical Hours"
+        },
+        {
+          "cmd": "getdashboardthingstodo",
+          "httpMethod": "GET",
+          "description": "Get things-to-do list with counts and procedure module URL rewriting",
+          "authRequired": true,
+          "functionalArea": "Dashboard - Things To Do"
+        },
+        {
+          "cmd": "cawmyinsights",
+          "httpMethod": "GET",
+          "description": "Get and parse AI-generated CAW insights by competency",
+          "authRequired": true,
+          "functionalArea": "Evaluations - AI Insights (CAW)"
+        },
+        {
+          "cmd": "getmyinsightsdata",
+          "httpMethod": "GET",
+          "description": "Get AI-generated report data for a specific competency",
+          "authRequired": true,
+          "functionalArea": "Evaluations - AI Insights"
+        },
+        {
+          "cmd": "getProceduresData",
+          "httpMethod": "GET",
+          "description": "Get procedure/task log acceptance rates and breakdowns",
+          "authRequired": true,
+          "functionalArea": "Procedures"
+        },
+        {
+          "cmd": "getPatientLogData",
+          "httpMethod": "GET",
+          "description": "Get patient log dashboard (outpatient hours, submission rates, per-level data)",
+          "authRequired": true,
+          "functionalArea": "Patient Logs"
+        },
+        {
+          "cmd": "getPerformanceTaskCompletionData",
+          "httpMethod": "GET",
+          "description": "Get performance task completion rates over time and by type",
+          "authRequired": true,
+          "functionalArea": "Performance - Task Completion"
+        },
+        {
+          "cmd": "getPerformanceEvaluationData",
+          "httpMethod": "GET",
+          "description": "Get evaluation turnaround metrics (days to complete, pending, overdue, histogram)",
+          "authRequired": true,
+          "functionalArea": "Performance - Evaluations"
+        }
+      ],
+      "commentedOutEndpoints": [
+        {
+          "cmd": "getAllEpaData",
+          "description": "EPA (Entrustable Professional Activities) dashboard with scores and milestone data - DISABLED"
+        },
+        {
+          "cmd": "getEpaDataById",
+          "description": "Single EPA detail with score-over-time chart data - DISABLED"
+        }
+      ],
+      "securityPatterns": [
+        "Session validation via SessionManager.IsSessionValid() at entry point - returns 401 if invalid",
+        "Department-level authorization via UserManager.checkforAuthorization() - compares session user/dept against requested user/dept",
+        "Entity existence validation via UserManager.checkEntityValueExists() - validates departmentId and userId exist in SEC_Departments and SEC_Users tables",
+        "Role-based access: sessionUserRoleId == 1 (Admin) or 9 (GME Admin) bypasses department checks",
+        "GME Admin cross-department access via UserManager.CheckDepartmentExistsforGMEAdmin()",
+        "Session user identity extracted from session (never from query params for auth): sessionUserId, sessionDepartmentId, sessionUserRoleId",
+        "Feature flags via FeatureManager.UserHasFeatureAccess() for AccreditationDocumentation and ProgramAssessment"
+      ],
+      "configurationDependencies": [
+        "ConfigurationManager.AppSettings['BaseUrl'] - Base URL for constructing links",
+        "ConfigurationManager.AppSettings['ProcedureModuleUrl'] - URL for new procedure module integration",
+        "ConfigurationManager.AppSettings['IsEnableNewProcedureModule'] - Feature flag for new procedure module",
+        "HttpContext.Current.Session['IsEnableNewProcedureSystem'] - Session-level procedure system flag",
+        "HttpContext.Current.Session['jwttoken'] - JWT token for procedure module SSO"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "This is a primary target for Node.js API migration. Each cmd handler maps to a NestJS controller method. The file uses a single ProcessRequest method with a massive if/else-if chain (no routing framework). All 18 active endpoints are GET-only, command-dispatched via the 'cmd' query parameter. Authorization logic (checkforAuthorization, checkEntityValueExists) is duplicated across nearly every endpoint and should be consolidated into NestJS guards/middleware. The numerous inline DTO/model classes defined at the bottom of the file should become separate TypeScript interfaces. The AI insights (CAW) endpoints represent newer functionality that writes back to the database.",
+      "complexity": "very-complex",
+      "lineCount": 2973,
+      "codeSmells": [
+        "God class: Single ProcessRequest method contains ~2700 lines with all endpoint logic",
+        "No routing framework: Manual cmd query parameter dispatch via if/else-if chain",
+        "Duplicated authorization: checkforAuthorization and checkEntityValueExists calls repeated in 7-8 endpoints each",
+        "Silent exception swallowing: Most catch blocks call render500 with no logging",
+        "Mixed static/instance method calls on UserManager (inconsistent)",
+        "Inline model classes defined at bottom of handler file rather than in separate model files",
+        "Commented-out code blocks (getAllEpaData, getEpaDataById) left in place (~130 lines)",
+        "No input validation beyond basic null checks and parameter whitelist",
+        "Hardcoded timezone fallback to 'Eastern Standard Time'",
+        "ConfigurationManager used directly instead of injected configuration"
+      ]
+    }
+  ],
+  "directoryOverview": "The ApiHandler is the central API gateway for the entire .NET web application's React dashboard, handling 18 active JSON endpoints across all functional modules including dashboard widgets, messaging, system implementation tracking, scholarly activities, quality improvement, quizzes, clinical hours, procedures, patient logs, performance metrics, and AI-powered curricular assessment insights. All requests are dispatched through a single ProcessRequest method using a cmd query parameter pattern.",
+  "keyWorkflows": [
+    "API request routing via cmd query parameter dispatch in a single if/else-if chain",
+    "Dashboard data aggregation (messages, shortcuts, things-to-do, system implementation progress)",
+    "Portfolio and scholarly activity tracking with PGY-level group comparisons",
+    "Clinical hours monitoring with violation rate tracking over time",
+    "Quiz performance analytics with score histograms and trending",
+    "Procedure and patient log acceptance rate tracking with per-objective breakdowns",
+    "Performance evaluation turnaround metrics (days to complete, pending, overdue)",
+    "AI-generated curricular assessment worksheet (CAW) insights parsing and storage",
+    "Cross-cutting authorization pattern: session validation > entity existence check > role-based authorization > data retrieval"
+  ]
+}

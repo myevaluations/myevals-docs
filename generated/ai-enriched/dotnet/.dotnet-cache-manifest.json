@@ -1,0 +1,137 @@
+{
+  "lastRun": "2026-02-20T16:00:00.000Z",
+  "entries": {
+    "MyEvaluations.Business.AdobeSign": {
+      "sha256": "fd101009748f01f1904a762eeed214756bdde1ca52751c544147c9cfe78768fb",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.AdobeSign.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.CMETracking": {
+      "sha256": "eb52128efcf1faf5db2b4a6edff4b89be73b620d32fb8cdfc4970673031bfb2a",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.CMETracking.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Common": {
+      "sha256": "d891e49d6f1694e573c3407f4f7c412244521ee72c01c0ec2d01cac708d10504",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Common.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.DutyHours": {
+      "sha256": "05269e1e06a344efd774d5f48d84464d51fa6c6b17dc813a67086623048d8b0b",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.DutyHours.enriched.json",
+      "priority": true
+    },
+    "MyEvaluations.Business.ERAS": {
+      "sha256": "e4fda5c4b515f9a4e95df73dac75929acbeca8e69a7dade49d85d31e653ac2dc",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.ERAS.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.EssentialActivities": {
+      "sha256": "d5bf2242cfe5ae11f4b5f1b9508b2cd86f46f9fd46f54bd8c99ea5fea0a75060",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.EssentialActivities.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Evaluations": {
+      "sha256": "926320a63af016a88108ddd68225deeed8231b66fad2731ab7b8fee57b16a5fb",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Evaluations.enriched.json",
+      "priority": true
+    },
+    "MyEvaluations.Business.HelloSign": {
+      "sha256": "7c06bd0011a4b23a035c2dd28932c4d4205160348ba481194adf728be10ecab9",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.HelloSign.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.ICC": {
+      "sha256": "1387595cc9f9df4f21d2bfe6ba0109a9dc589e7c9718341b2fc00bab730fb493",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.ICC.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.LearningAssignment": {
+      "sha256": "c82c9dfe9961a167d67d6a0436189b6d35c3bde46ae80c10368c9c017e1d8321",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.LearningAssignment.enriched.json",
+      "priority": true
+    },
+    "MyEvaluations.Business.Mail": {
+      "sha256": "f6060ab9463666fde6c9bd640d5ef0ebe36d6dff666b975bd3555b976385be82",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Mail.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.MailGunService": {
+      "sha256": "0f44a9cc6690470b80b12ff588d5b8f81ba8419e893bb919827919162b0d0b17",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.MailGunService.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.MyHelp": {
+      "sha256": "baac29d32dcdf92c061b9e63fac5fc0c9f40e03633abfd3bba0ccdedecb7e787",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.MyHelp.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.NurseNotifyService": {
+      "sha256": "707ba8487655d1adc85bcd2669723cfe0fe23db818df6e27e91ec86a83ce9bea",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.NurseNotifyService.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.PatientLog": {
+      "sha256": "f4fa58f6babea442a98f591864ef16938b0ca6437b53f3b53827a11f606d2935",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.PatientLog.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Portfolio": {
+      "sha256": "9d4577482c61b7fc27e205bc57bd4cdd238207c4d1d8b0e32213874caf58bf73",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Portfolio.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Procedures": {
+      "sha256": "e64d736c09f382fa9a83e1495d38363dd907e9f2a05067618cb638a42aee4239",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Procedures.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Quiz": {
+      "sha256": "a26dfe345d51d1c3ecd1f36caf36410b9f04a401fc403a3255e73ca764181ddd",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Quiz.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.RightSignature": {
+      "sha256": "78665cee2bbf6deac1f05afeb41164d3378b07ec48c6349effeef17cae4d8c8d",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.RightSignature.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Security": {
+      "sha256": "2411b527ddc271cc6632f72be8350d225b1e3c17d61b9deb220088debcc8ebf5",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Security.enriched.json",
+      "priority": true
+    },
+    "MyEvaluations.Business.TimeSheet": {
+      "sha256": "a899d0a76479c23c6302fff6f6090c5ce328d877d8cc212282c9382c819751ca",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.TimeSheet.enriched.json",
+      "priority": false
+    },
+    "MyEvaluations.Business.Utilities": {
+      "sha256": "feaa6a1c8529a82645357853965fae3b1c5e89b051845d052261bf403d1e704d",
+      "enrichedAt": "2026-02-20T16:00:00.000Z",
+      "outputFile": "MyEvaluations.Business.Utilities.enriched.json",
+      "priority": false
+    }
+  }
+}

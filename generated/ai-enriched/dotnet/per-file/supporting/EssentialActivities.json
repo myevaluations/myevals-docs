@@ -1,0 +1,27 @@
+{
+  "directory": "EssentialActivities",
+  "layer": "supporting",
+  "generatedAt": "2026-02-20T22:00:00.000Z",
+  "fileCount": 1,
+  "files": [
+    {
+      "filePath": "EssentialActivities/Properties/AssemblyInfo.cs",
+      "fileName": "AssemblyInfo.cs",
+      "fileType": "infrastructure",
+      "className": null,
+      "inheritsFrom": null,
+      "module": "Assembly Metadata",
+      "summary": "Standard .NET assembly info file for the EssentialActivities project. Contains assembly title, GUID (e6a88dc9-7997-44e5-a5ab-0e585a4a9df8), version 1.0.0.0, and copyright 2017. No other source files exist in this project.",
+      "businessPurpose": "Assembly metadata for what appears to be an empty or stub project related to essential activities tracking in medical education (likely ACGME essential activity logging). The project contains only assembly metadata with no implementation code.",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "Empty project with only AssemblyInfo.cs. If essential activities functionality exists, it is likely implemented elsewhere in the solution (possibly in MyEvaluations-Web or a business manager). No migration action needed for this project.",
+      "complexity": "trivial",
+      "lineCount": 37
+    }
+  ],
+  "directoryOverview": "Stub/empty project containing only assembly metadata. Named 'EssentialActivities' which in GME (Graduate Medical Education) context likely relates to tracking essential clinical activities or Entrustable Professional Activities (EPAs). The actual implementation of essential activities tracking is located elsewhere in the solution, possibly in business managers or the web project. This project may have been created as a placeholder for a planned separate library that was never developed.",
+  "keyWorkflows": []
+}

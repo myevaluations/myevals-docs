@@ -1,0 +1,360 @@
+{
+  "directory": "Web/LearningAssignment",
+  "layer": "web",
+  "generatedAt": "2026-02-21T00:00:00.000Z",
+  "fileCount": 17,
+  "files": [
+    {
+      "filePath": "Web/LearningAssignment/AssignLearningModule.aspx.cs",
+      "fileName": "AssignLearningModule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_AssignLearningModule",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Complex assignment creation page that supports optional inline creation of a new learning module with file upload via FileUploadComponentWebService and optional quiz assignment.",
+      "businessPurpose": "Allows administrators to create learning assignments, optionally create the learning module inline, attach documents, and link quizzes.",
+      "keyMethods": [
+        "Page_Load - initializes assignment form and module selection",
+        "btnSave_Click - saves assignment and optional new module with file upload",
+        "BindModules - populates available learning module dropdown",
+        "BindUsers - populates assignable user list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentBusiness", "DesignQuizManager", "LiteratureManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core assignment creation workflow; should be tracked in Node.js migration as a high-priority endpoint.",
+      "complexity": "complex",
+      "lineCount": 793
+    },
+    {
+      "filePath": "Web/LearningAssignment/Assignment.aspx.cs",
+      "fileName": "Assignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Assignment",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Individual assignment view/submission/review page; handles both the learner submission flow and the administrator or preceptor review mode.",
+      "businessPurpose": "Enables learners to view and submit their learning assignments and administrators to review submitted work.",
+      "keyMethods": [
+        "Page_Load - determines mode (learner or reviewer) and initializes assignment details",
+        "btnSubmit_Click - learner submits assignment completion",
+        "btnApprove_Click - admin or preceptor approves submission",
+        "btnReject_Click - admin or preceptor rejects submission with comments"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentManager", "LearningAssignmentBusiness", "ManageQuizAssignmentsBusiness"],
+      "migrationRelevance": "high",
+      "complexity": "very-complex",
+      "lineCount": 1024
+    },
+    {
+      "filePath": "Web/LearningAssignment/AssignmentsReminderScheduler.aspx.cs",
+      "fileName": "AssignmentsReminderScheduler.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_AssignmentsReminderScheduler",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "LearningAssignment",
+      "summary": "Scheduler trigger page that fires the learning assignment reminder email process via LearningAssignmentBusiness.",
+      "businessPurpose": "Provides a web-accessible endpoint to trigger scheduled reminder emails for upcoming or overdue learning assignments.",
+      "keyMethods": [
+        "Page_Load - invokes LearningAssignmentBusiness.OnViewInitializeLearningAssignmentScheduler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Likely superseded by BullMQ scheduler in Node.js backend; verify parity.",
+      "complexity": "trivial",
+      "lineCount": 28
+    },
+    {
+      "filePath": "Web/LearningAssignment/EditLearningAssignment.aspx.cs",
+      "fileName": "EditLearningAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_EditLearningAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Edit existing learning assignment dates and user lists; supports batch OBC (Onboarding-Credentialing) editing alongside standard assignment editing.",
+      "businessPurpose": "Allows administrators to modify assignment dates, add or remove assigned users, and update quiz configurations.",
+      "keyMethods": [
+        "Page_Load - loads assignment for editing",
+        "btnSave_Click - saves updated assignment with modified dates and users",
+        "BindUsers - populates assigned user list for editing"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentBusiness", "LearningAssignmentManager", "DesignQuizManager"],
+      "migrationRelevance": "high",
+      "complexity": "moderate",
+      "lineCount": 387
+    },
+    {
+      "filePath": "Web/LearningAssignment/LearningModule.aspx.cs",
+      "fileName": "LearningModule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Literature",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "CRUD page for individual learning modules (literature); manages document upload via FileUploadComponentWebService and optional quiz settings; class name is LearningAssignment_Literature.",
+      "businessPurpose": "Allows administrators to create and manage learning module records including associated documents and quiz configuration.",
+      "keyMethods": [
+        "Page_Load - initializes module form for add or edit mode",
+        "btnSave_Click - saves module details and uploads associated document",
+        "BindResults - populates form fields from existing module record"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LiteratureManager", "FileUploadComponentWebService", "DesignQuizManager"],
+      "migrationRelevance": "high",
+      "complexity": "moderate",
+      "lineCount": 284
+    },
+    {
+      "filePath": "Web/LearningAssignment/LearningModuleReview.aspx.cs",
+      "fileName": "LearningModuleReview.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_LearningModuleReview",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Admin review queue for submitted learning assignments with preceptor role support; displays all pending submissions for review action.",
+      "businessPurpose": "Provides administrators and preceptors with a queue to review and approve or reject learning assignment submissions.",
+      "keyMethods": [
+        "Page_Load - loads pending submission review queue",
+        "BindResults - fetches and binds submissions requiring review",
+        "ApproveAll - bulk-approves all displayed submissions"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentManager", "DesignQuizManager"],
+      "migrationRelevance": "high",
+      "complexity": "complex",
+      "lineCount": 561
+    },
+    {
+      "filePath": "Web/LearningAssignment/ManageAssignments.aspx.cs",
+      "fileName": "ManageAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_ManageAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Master admin view of all learning assignments with filter criteria; uses ObjectDataSource for server-side grid paging and integrates with New Relic error tracking.",
+      "businessPurpose": "Gives administrators a comprehensive filterable view of all learning assignments across all departments and users.",
+      "keyMethods": [
+        "Page_Load - initializes filters and grid with paging",
+        "btnSearch_Click - applies filter criteria and reloads grid",
+        "grdAssignments_PageIndexChanging - handles grid paging",
+        "BindResults - executes query with current filters via ObjectDataSource"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentBusiness"],
+      "migrationRelevance": "high",
+      "complexity": "very-complex",
+      "lineCount": 1172
+    },
+    {
+      "filePath": "Web/LearningAssignment/ManageLearningAssignmentUsers.aspx.cs",
+      "fileName": "ManageLearningAssignmentUsers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_ManageLearningAssignmentUsers",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "View and delete users assigned to a specific learning assignment; supports OBC batch grid; integrates with New Relic.",
+      "businessPurpose": "Allows administrators to manage user assignments for a specific learning assignment and remove individuals from the assignment.",
+      "keyMethods": [
+        "Page_Load - loads user list for the assignment",
+        "lbtnDelete_Click - removes a user from the assignment",
+        "BindResults - fetches and displays assigned users"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 493
+    },
+    {
+      "filePath": "Web/LearningAssignment/ManageLearningModules.aspx.cs",
+      "fileName": "ManageLearningModules.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_ManageLiteratures",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "CRUD list of learning modules with soft-delete/restore and voluntary flag toggle; class name is LearningAssignment_ManageLiteratures.",
+      "businessPurpose": "Provides administrators a management view of all learning modules with ability to deactivate, restore, and toggle the voluntary status.",
+      "keyMethods": [
+        "Page_Load - loads learning module list",
+        "lbtnDelete_Click - soft-deletes a learning module",
+        "lbtnRestore_Click - restores a soft-deleted module",
+        "chkVoluntary_CheckedChanged - toggles voluntary assignment flag"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LiteratureManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 253
+    },
+    {
+      "filePath": "Web/LearningAssignment/NonComplianceAdminEmails.aspx.cs",
+      "fileName": "NonComplianceAdminEmails.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_NonComplianceAdminEmails",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Dual-listbox interface to manage administrator email recipients for past-due (non-compliance) learning assignment notifications.",
+      "businessPurpose": "Lets administrators configure which admin users receive non-compliance notification emails for overdue learning assignments.",
+      "keyMethods": [
+        "Page_Load - loads available and selected admin email lists",
+        "btnSave_Click - saves updated admin email recipient list",
+        "MoveAdmin - moves individual admin between available and selected",
+        "MoveAllAdmins - moves all admins between lists"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentAdminManager", "SyncAmionUserManager"],
+      "migrationRelevance": "medium",
+      "complexity": "complex",
+      "lineCount": 563
+    },
+    {
+      "filePath": "Web/LearningAssignment/PendingLearningAssignments.aspx.cs",
+      "fileName": "PendingLearningAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_PendingLearningAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Learner-facing view of their own pending learning assignments filtered by status (pending, submitted, approved, etc.).",
+      "businessPurpose": "Provides learners with a personalized view of their outstanding and historical learning assignments.",
+      "keyMethods": [
+        "Page_Load - loads pending assignment list for logged-in user",
+        "ddlStatus_SelectedIndexChanged - filters list by assignment status"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentManager", "DesignQuizManager"],
+      "migrationRelevance": "high",
+      "complexity": "moderate",
+      "lineCount": 285
+    },
+    {
+      "filePath": "Web/LearningAssignment/Reports/DetailedLearningAssignments.aspx.cs",
+      "fileName": "DetailedLearningAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Reports_DetailedLearningAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Report filter page for the detailed learning assignment report; supports saving and loading favorite report filter configurations via JSON deserialization.",
+      "businessPurpose": "Allows users to configure and generate a detailed learning assignment report with persistent filter preferences.",
+      "keyMethods": [
+        "Page_Load - initializes filter dropdowns and loads saved favorites",
+        "btnViewReport_Click - redirects to report result page with selected filters",
+        "btnSaveFavorite_Click - serializes current filter state to saved favorites",
+        "BindFilters - populates all filter controls"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 434
+    },
+    {
+      "filePath": "Web/LearningAssignment/Reports/DetailedLearningAssignmentsResult.aspx.cs",
+      "fileName": "DetailedLearningAssignmentsResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Reports_DetailedLearningAssignmentsResult",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Renders the detailed learning assignment report as raw HTML using Response.Write; uses both LearningAssignmentReportManager and PatientLogReportManager.",
+      "businessPurpose": "Generates the detailed learning assignment report output for administrator review and printing.",
+      "keyMethods": [
+        "Page_Load - reads filter parameters from query string and calls report managers",
+        "BuildReportHTML - constructs the report HTML for inline rendering"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentReportManager", "PatientLogReportManager"],
+      "migrationRelevance": "medium",
+      "complexity": "complex",
+      "lineCount": 924
+    },
+    {
+      "filePath": "Web/LearningAssignment/Reports/LedgerOfLearningAssignments.aspx.cs",
+      "fileName": "LedgerOfLearningAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Reports_LedgerOfLearningAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Filter page for the learning assignment ledger report; similar structure to DetailedLearningAssignments with saved favorites support.",
+      "businessPurpose": "Allows users to configure and view a ledger-style learning assignment completion report.",
+      "keyMethods": [
+        "Page_Load - initializes filters and loads saved preferences",
+        "btnViewReport_Click - navigates to ledger result page with filters",
+        "btnSaveFavorite_Click - persists current filters as favorites"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager"],
+      "migrationRelevance": "low",
+      "complexity": "moderate",
+      "lineCount": 385
+    },
+    {
+      "filePath": "Web/LearningAssignment/Reports/LedgerOfLearningAssignmentsResult.aspx.cs",
+      "fileName": "LedgerOfLearningAssignmentsResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_Reports_LedgerOfLearningAssignmentsResult",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Renders the learning assignment ledger report as raw HTML; supports both detailed and summary format modes.",
+      "businessPurpose": "Generates the ledger-style learning assignment completion report for printing and download.",
+      "keyMethods": [
+        "Page_Load - reads filter parameters and calls LearningAssignmentReportManager",
+        "BuildReportHTML - constructs tabular HTML report output"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentReportManager"],
+      "migrationRelevance": "low",
+      "complexity": "complex",
+      "lineCount": 837
+    },
+    {
+      "filePath": "Web/LearningAssignment/SubmitLearningAssignment.aspx.cs",
+      "fileName": "SubmitLearningAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_SubmitLearningAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Learner submission form for both voluntary and assigned learning assignments; integrates with the AvailableUsers user control for user context.",
+      "businessPurpose": "Provides the primary learner interface for submitting a learning assignment with any required attachments or quiz responses.",
+      "keyMethods": [
+        "Page_Load - loads assignment details for submission",
+        "btnSubmit_Click - processes learner submission",
+        "BindModuleDetails - populates module info and instructions"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LiteratureManager"],
+      "migrationRelevance": "high",
+      "complexity": "complex",
+      "lineCount": 870
+    },
+    {
+      "filePath": "Web/LearningAssignment/SubmitVoluntaryAssignment.aspx.cs",
+      "fileName": "SubmitVoluntaryAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "LearningAssignment_SubmitVoluntaryAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "LearningAssignment",
+      "summary": "Lists all voluntary learning assignments available to the current learner with sorting and paging support.",
+      "businessPurpose": "Allows learners to browse and self-enroll in voluntary learning assignments.",
+      "keyMethods": [
+        "Page_Load - loads voluntary assignment list for current user",
+        "grd_PageIndexChanging - handles grid paging",
+        "grd_Sorting - handles column sorting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LearningAssignmentManager"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 343
+    }
+  ],
+  "directoryOverview": "The LearningAssignment directory contains 17 code-behind files covering the full lifecycle of learning module assignments in MyEvaluations. The module handles learning module creation and management (LearningModule, ManageLearningModules), assignment creation (AssignLearningModule, EditLearningAssignment), learner-facing submission (Assignment, SubmitLearningAssignment, SubmitVoluntaryAssignment, PendingLearningAssignments), admin review (LearningModuleReview), master admin views (ManageAssignments, ManageLearningAssignmentUsers), compliance notifications (NonComplianceAdminEmails), and reporting (four report files). The module integrates with the quiz system (DesignQuizManager), file upload service (FileUploadComponentWebService), and New Relic monitoring. Several files are among the most complex in the entire codebase (Assignment.aspx.cs at 1024 lines, ManageAssignments.aspx.cs at 1172 lines).",
+  "keyWorkflows": [
+    "Module management: administrators create modules via LearningModule.aspx, manage existing ones via ManageLearningModules.aspx",
+    "Assignment creation: AssignLearningModule creates assignments with optional inline module creation, file upload, and quiz linking; EditLearningAssignment modifies existing assignments",
+    "Learner experience: PendingLearningAssignments shows outstanding work, SubmitVoluntaryAssignment allows self-enrollment, SubmitLearningAssignment and Assignment.aspx handle submission",
+    "Admin review: LearningModuleReview provides review queue, Assignment.aspx in review mode handles approve/reject",
+    "Compliance notifications: NonComplianceAdminEmails configures who receives overdue alerts; AssignmentsReminderScheduler triggers reminder emails",
+    "Reporting: DetailedLearningAssignments and LedgerOfLearningAssignments provide filter configuration with saved favorites; corresponding Result pages render HTML reports"
+  ]
+}

@@ -1,0 +1,466 @@
+{
+  "module": "MyEvaluations.Business.PatientLog",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "isPriority": false,
+  "overview": "Patient encounter logging module containing 31 classes for managing patient encounters in medical training programs. Covers encounter submission, case review workflows, education diagnosis classification, encounter types, location management, custom field configuration, import/export, supervisor management, and lookup items. Distinct from Procedures module -- tracks broader patient encounters rather than specific clinical procedures. Has cross-module dependency on MyEvaluations.Business.Procedures.",
+  "architecture": {
+    "classCount": 31,
+    "managerClasses": ["CaseReviewManager", "EducationDXManager", "EncounterTypeManager", "ExportPatientLogManager", "ImportPatientLogManager", "LocationNameManager", "PatientLogFieldsGroupManager", "PatientLogFieldsManager", "PatientLogLookupItemManager", "PatientLogSupervisorsManager"],
+    "infoClasses": ["CaseReviewInfo", "LearnerReviewInfo", "EducationDXInfo", "EncounterTypeInfo", "ExportPatientLogInfo", "ImportPatientLogInfo", "LocationNameInfo", "PatientLogFieldGroupsInfo", "PatientLogFieldInfo", "PatientLogInfo", "CustomFieldDetails", "PatientLogLookupItemInfo", "PatientLogLookUpValue", "PatientLogSupervisorInfo"],
+    "searchCriteriaClasses": ["EducationDXSearchCriteria", "EncounterTypeSearchCriteria", "LocationNameSearchCriteria", "PatientLogSearchCriteria"],
+    "crossModuleClasses": ["PatientLogProceduresSubmittedInfo"],
+    "customizationClasses": ["SubmitPatientLogCustomizations", "ProcedureSelection"],
+    "dependencies": ["MyEvaluations.Business.Procedures (via PatientLogProceduresSubmittedInfo extends SubmittedProcedureInfo)"],
+    "keyFiles": ["CaseReviewManager.cs", "EducationDXManager.cs", "EncounterTypeManager.cs", "PatientLogFieldsManager.cs", "LocationNameManager.cs", "PatientLogSupervisorsManager.cs", "PatientLogLookupItemManager.cs", "PatientLogInfo.cs"]
+  },
+  "managerPattern": {
+    "description": "10 manager classes following the Manager/Info pattern. 7 have explicit Info counterparts. Custom field system mirrors Procedures module pattern with PatientLog-prefixed equivalents.",
+    "managerInfoPairs": {
+      "CaseReviewManager": "CaseReviewInfo",
+      "EducationDXManager": "EducationDXInfo",
+      "EncounterTypeManager": "EncounterTypeInfo",
+      "ExportPatientLogManager": "ExportPatientLogInfo",
+      "ImportPatientLogManager": "ImportPatientLogInfo",
+      "LocationNameManager": "LocationNameInfo",
+      "PatientLogLookupItemManager": "PatientLogLookupItemInfo"
+    }
+  },
+  "storedProcedures": [
+    {
+      "name": "GetPatientLogsSubmittedByUser",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Get patient logs submitted by a specific user for case review"
+    },
+    {
+      "name": "GetPatientLogsTobeReviewedByUser",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Get patient logs assigned to a user for review"
+    },
+    {
+      "name": "GetLearnerReviewsForPatientLog",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Get all learner reviews for a specific patient log"
+    },
+    {
+      "name": "GetPatientCasesToReviewCount",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Get count of pending case reviews for dashboard/notifications"
+    },
+    {
+      "name": "AddPatientLogForReview",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Submit a patient log for case review"
+    },
+    {
+      "name": "GetCaseReviewForPatientLog",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Get the case review record for a patient log"
+    },
+    {
+      "name": "AddLearnerReviewForPatientLog",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Submit a learner review for a patient log case"
+    },
+    {
+      "name": "CloseCase",
+      "calledBy": "CaseReviewManager",
+      "purpose": "Close a case review (final step in review workflow)"
+    },
+    {
+      "name": "GetPatientLogEducationDX",
+      "calledBy": "EducationDXManager",
+      "purpose": "List education diagnosis classifications"
+    },
+    {
+      "name": "RestoreDxClassification",
+      "calledBy": "EducationDXManager",
+      "purpose": "Restore a deleted DX classification"
+    },
+    {
+      "name": "GetPatientLogEducationDXById",
+      "calledBy": "EducationDXManager",
+      "purpose": "Get education DX by ID"
+    },
+    {
+      "name": "DoesPatientLogEducationDXExists",
+      "calledBy": "EducationDXManager",
+      "purpose": "Check for duplicate DX name"
+    },
+    {
+      "name": "AddPatientLogEducationDX",
+      "calledBy": "EducationDXManager",
+      "purpose": "Create a new education DX classification"
+    },
+    {
+      "name": "UpdatePatientLogEducationDX",
+      "calledBy": "EducationDXManager",
+      "purpose": "Update an education DX classification"
+    },
+    {
+      "name": "DeletePatientLogEducationDX",
+      "calledBy": "EducationDXManager",
+      "purpose": "Soft-delete an education DX classification"
+    },
+    {
+      "name": "AddDXClassificationSetting",
+      "calledBy": "EducationDXManager",
+      "purpose": "Save DX classification display settings"
+    },
+    {
+      "name": "GetDXClassificationSetting",
+      "calledBy": "EducationDXManager",
+      "purpose": "Retrieve DX classification display settings"
+    },
+    {
+      "name": "GetEducationDXIdByName",
+      "calledBy": "EducationDXManager",
+      "purpose": "Look up education DX ID by name"
+    },
+    {
+      "name": "GetPatientLogEncounterType",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "List encounter types"
+    },
+    {
+      "name": "RestoreEncounterTypes",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Restore deleted encounter types"
+    },
+    {
+      "name": "GetPatientLogEncounterTypeDetailsById",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Get encounter type details by ID"
+    },
+    {
+      "name": "DoesPatientLogEncounterTypeExists",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Check for duplicate encounter type name"
+    },
+    {
+      "name": "AddPatientLogEncounterType",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Create a new encounter type"
+    },
+    {
+      "name": "UpdatePatientLogEncounterType",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Update an encounter type"
+    },
+    {
+      "name": "DeletePatientLogEncounterType",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Soft-delete an encounter type"
+    },
+    {
+      "name": "GetEncounterTypeIdByName",
+      "calledBy": "EncounterTypeManager",
+      "purpose": "Look up encounter type ID by name"
+    },
+    {
+      "name": "GetDataForPatientLogExport",
+      "calledBy": "ExportPatientLogManager",
+      "purpose": "Get patient log data formatted for export"
+    },
+    {
+      "name": "GetUserIdByNPIForImport",
+      "calledBy": "ImportPatientLogManager",
+      "purpose": "Look up user by NPI (National Provider Identifier) during import"
+    },
+    {
+      "name": "GetPatientLogLocationNames",
+      "calledBy": "LocationNameManager",
+      "purpose": "List clinical locations"
+    },
+    {
+      "name": "RestoreLocations",
+      "calledBy": "LocationNameManager",
+      "purpose": "Restore deleted locations"
+    },
+    {
+      "name": "GetPatientLogLocationDetailsById",
+      "calledBy": "LocationNameManager",
+      "purpose": "Get location details by ID"
+    },
+    {
+      "name": "DoesPatientLogLocationNameExists",
+      "calledBy": "LocationNameManager",
+      "purpose": "Check for duplicate location name"
+    },
+    {
+      "name": "AddPatientLogLocation",
+      "calledBy": "LocationNameManager",
+      "purpose": "Create a new clinical location"
+    },
+    {
+      "name": "UpdatePatientLogLocation",
+      "calledBy": "LocationNameManager",
+      "purpose": "Update a clinical location"
+    },
+    {
+      "name": "DeletePatientLogLocation",
+      "calledBy": "LocationNameManager",
+      "purpose": "Soft-delete a clinical location"
+    },
+    {
+      "name": "GetLocationIdByName",
+      "calledBy": "LocationNameManager",
+      "purpose": "Look up location ID by name"
+    },
+    {
+      "name": "SetPatientLogFieldGroupHiddenFlag",
+      "calledBy": "PatientLogFieldsGroupManager",
+      "purpose": "Toggle field group visibility"
+    },
+    {
+      "name": "SetPatientLogFieldGroupRequiredFlag",
+      "calledBy": "PatientLogFieldsGroupManager",
+      "purpose": "Toggle field group required status"
+    },
+    {
+      "name": "SwapPatientLogFieldGroupOrder",
+      "calledBy": "PatientLogFieldsGroupManager",
+      "purpose": "Reorder field groups"
+    },
+    {
+      "name": "GetPatientLogFieldsToDraw",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Get custom fields to render on patient log form"
+    },
+    {
+      "name": "SetPatientLogFieldHiddenFlag",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Toggle field visibility"
+    },
+    {
+      "name": "SetPatientLogFieldRequiredFlag",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Toggle field required status"
+    },
+    {
+      "name": "SwapPatientLogFieldOrder",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Reorder individual fields"
+    },
+    {
+      "name": "SwapPatientLogFieldAndGroupOrder",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Reorder fields across groups"
+    },
+    {
+      "name": "GetPatientLogFieldsList",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "List all custom fields"
+    },
+    {
+      "name": "GetPatientLogsDeletedFields",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "List soft-deleted fields"
+    },
+    {
+      "name": "DeletePatientLogField",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Soft-delete a custom field"
+    },
+    {
+      "name": "GetPatientLogCustomFieldInfoByID",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Get custom field details by ID"
+    },
+    {
+      "name": "DoesPatientLogFieldNameExist",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Check for duplicate field name"
+    },
+    {
+      "name": "AddPatientLogField",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Create a new custom field"
+    },
+    {
+      "name": "UpdatePatientLogField",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Update a custom field"
+    },
+    {
+      "name": "RestoreDeletedPatientLogFields",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Restore soft-deleted fields"
+    },
+    {
+      "name": "SavePatientLogFieldAndFieldGroupOrder",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Save complete field and group ordering"
+    },
+    {
+      "name": "GetCustomFieldDetailsByName",
+      "calledBy": "PatientLogFieldsManager",
+      "purpose": "Look up custom field by name"
+    },
+    {
+      "name": "AddPatientLogLookup",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Create a new lookup/dropdown field"
+    },
+    {
+      "name": "AddPatientLogLookupItem",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Add an option to a lookup field"
+    },
+    {
+      "name": "UpdatePatientLogLookup",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Update a lookup field"
+    },
+    {
+      "name": "UpdatePatientLogLookupItem",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Update a lookup option"
+    },
+    {
+      "name": "GetPatientLogLookUpItemInfoByID",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Get lookup item by ID"
+    },
+    {
+      "name": "GetPatientLogLookUpValuesByLookUpID",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Get all values for a lookup field"
+    },
+    {
+      "name": "GetPatientLogCustomLookupItems",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Get custom lookup items"
+    },
+    {
+      "name": "DoesPatientLogLookUpNameExist",
+      "calledBy": "PatientLogLookupItemManager",
+      "purpose": "Check for duplicate lookup name"
+    },
+    {
+      "name": "GetPatientLogSupervisors",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Get supervisors for patient log"
+    },
+    {
+      "name": "GetSupervisorsByDepartment",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Get supervisors by department"
+    },
+    {
+      "name": "GetPatientLogSupervisorList",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Get patient log supervisor list"
+    },
+    {
+      "name": "GetDepartmentCriteriaTypeID",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Get department criteria type for supervisor filtering"
+    },
+    {
+      "name": "GetUserType",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Get user type classification"
+    },
+    {
+      "name": "AddPatientLogSupervisor",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Add a supervisor to patient log"
+    },
+    {
+      "name": "DeletePatientLogSupervisor",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Remove a supervisor from patient log"
+    },
+    {
+      "name": "DoesPatientLogSupervisorActive",
+      "calledBy": "PatientLogSupervisorsManager",
+      "purpose": "Check if a supervisor assignment is active"
+    }
+  ],
+  "keyClasses": [
+    {
+      "name": "CaseReviewManager",
+      "role": "Multi-step case review workflow: submit for review, learner reviews, close case. 8 stored procedures.",
+      "extends": "Manager",
+      "file": "CaseReviewManager.cs"
+    },
+    {
+      "name": "EducationDXManager",
+      "role": "Education diagnosis classification management with CRUD, restore, and settings. 10 stored procedures.",
+      "extends": "Manager",
+      "file": "EducationDXManager.cs"
+    },
+    {
+      "name": "PatientLogFieldsManager",
+      "role": "Custom patient log form field management mirroring Procedures.FieldsManager. 15 stored procedures.",
+      "extends": "Manager",
+      "file": "PatientLogFieldsManager.cs"
+    },
+    {
+      "name": "EncounterTypeManager",
+      "role": "Encounter type management with CRUD, soft-delete/restore, and name lookup. 8 stored procedures.",
+      "extends": "Manager",
+      "file": "EncounterTypeManager.cs"
+    },
+    {
+      "name": "LocationNameManager",
+      "role": "Clinical location management with CRUD, soft-delete/restore, and name lookup. 8 stored procedures.",
+      "extends": "Manager",
+      "file": "LocationNameManager.cs"
+    },
+    {
+      "name": "PatientLogSupervisorsManager",
+      "role": "Patient log supervisor assignment management mirroring Procedures.SupervisorsManager. 8 stored procedures.",
+      "extends": "Manager",
+      "file": "PatientLogSupervisorsManager.cs"
+    },
+    {
+      "name": "PatientLogInfo",
+      "role": "Primary patient encounter log DTO with custom field details.",
+      "file": "PatientLogInfo.cs"
+    },
+    {
+      "name": "PatientLogProceduresSubmittedInfo",
+      "role": "Cross-module class extending Procedures.SubmittedProcedureInfo for procedure-linked encounters.",
+      "extends": "MyEvaluations.Business.Procedures.SubmittedProcedureInfo",
+      "file": "PatientLogInfo.cs"
+    }
+  ],
+  "businessRules": [
+    "Patient encounters track encounter type, location, education diagnosis, and supervising faculty",
+    "Case review is a multi-step workflow: submit -> learner review(s) -> close case",
+    "Education DX classifications support soft-delete with restore and configurable display settings",
+    "Encounter types, locations, and DX classifications enforce name uniqueness per department",
+    "Custom fields mirror the Procedures module field system with identical visibility/required/ordering capabilities",
+    "Import uses NPI (National Provider Identifier) for healthcare provider identity resolution",
+    "Supervisors must be active to be assigned (DoesPatientLogSupervisorActive check)",
+    "Export produces formatted data for accreditation reporting and program evaluation",
+    "Patient logs can be linked to submitted procedures via PatientLogProceduresSubmittedInfo"
+  ],
+  "migrationNotes": {
+    "priority": "medium",
+    "complexity": "medium",
+    "notes": [
+      "Custom field system (PatientLogFieldsManager, PatientLogFieldsGroupManager, PatientLogLookupItemManager) duplicates Procedures module -- consolidate into shared field service",
+      "PatientLogSupervisorsManager mirrors Procedures.SupervisorsManager -- extract shared supervisor service parameterized by context",
+      "CaseReviewManager workflow maps well to a NestJS state machine or event-driven workflow",
+      "PatientLogProceduresSubmittedInfo cross-module inheritance should be replaced with composition in NestJS",
+      "EncounterTypeManager, LocationNameManager, EducationDXManager follow identical CRUD patterns -- create generic CrudService<T> base",
+      "NPI-based import lookup is healthcare-specific and should be preserved as-is",
+      "4 SearchCriteria classes follow identical patterns -- consider generic query builder in NestJS"
+    ],
+    "nestjsEquivalents": {
+      "CaseReviewManager": "CaseReviewService with workflow state machine",
+      "EducationDXManager": "EducationDxService (extends GenericCrudService)",
+      "EncounterTypeManager": "EncounterTypeService (extends GenericCrudService)",
+      "LocationNameManager": "LocationService (extends GenericCrudService)",
+      "PatientLogFieldsManager": "Shared CustomFieldService (with Procedures)",
+      "PatientLogSupervisorsManager": "Shared SupervisorService (with Procedures)",
+      "PatientLogLookupItemManager": "Shared LookupItemService (with Procedures)",
+      "ImportPatientLogManager": "PatientLogImportService",
+      "ExportPatientLogManager": "PatientLogExportService"
+    }
+  },
+  "mermaidDiagram": null,
+  "mdxContent": "See MyEvaluations.Business.PatientLog.mdx"
+}

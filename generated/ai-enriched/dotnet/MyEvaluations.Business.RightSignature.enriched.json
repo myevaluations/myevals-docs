@@ -1,0 +1,50 @@
+{
+  "module": "MyEvaluations.Business.RightSignature",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": false,
+  "overview": "The RightSignature module provides electronic signature integration for the MyEvaluations platform. It wraps the RightSignature API (a document signing service) to enable digital signing workflows within healthcare education management -- such as signing training agreements, program letters, and compliance documents. The module contains 10 classes covering OAuth authentication, document management, template handling, and API communication helpers.",
+  "architecture": "## Overview\n\nThe RightSignature module provides electronic signature integration for the MyEvaluations platform. It wraps the RightSignature API (a document signing service) to enable digital signing workflows within healthcare education management -- such as signing training agreements, program letters, and compliance documents. The module contains 10 classes covering OAuth authentication, document management, template handling, and API communication helpers.\n\n## Key Classes\n\n- **OAuthRightSignature** (extends `oAuthBase`): Implements OAuth authentication specifically for the RightSignature API. Handles token exchange and request signing for secure API communication.\n- **DocumentApi** (implements `IDocument`): Manages document lifecycle operations through the RightSignature API -- creating, retrieving, and tracking signature requests on documents.\n- **TemplateApi** (implements `ITemplate`): Provides template management for reusable signature document templates, allowing pre-configured signing workflows.\n- **ApiHelper**: Utility class providing low-level HTTP communication helpers for RightSignature API calls.\n- **SignatureConfiguration**: Stores RightSignature API configuration settings (API keys, endpoints, OAuth credentials).\n- **oAuthBase**: Base class for OAuth 1.0 authentication, providing HMAC-SHA1 signing, nonce generation, and query parameter handling.\n- **QueryParameter / QueryParameterComparer**: Supporting types for OAuth query string parameter sorting and comparison during signature base string construction.\n- **Structs**: Data structures (likely enums or value types) used across the RightSignature integration.\n- **Class1**: Default/placeholder class (likely unused scaffolding from project creation).\n\n## Patterns\n\n- **Interface-based API abstraction**: `DocumentApi` implements `IDocument` and `TemplateApi` implements `ITemplate`, enabling testability and potential provider swapping.\n- **OAuth inheritance hierarchy**: `OAuthRightSignature` extends `oAuthBase`, separating generic OAuth logic from RightSignature-specific authentication.\n- **No Manager/Info pattern**: This module does not follow the standard MyEvaluations Manager/Info data access pattern -- it is a pure API integration wrapper with no stored procedure calls.\n- **External service wrapper**: Encapsulates all RightSignature API concerns (auth, documents, templates) in a dedicated assembly.\n\n## Notes\n\n- This module has **no stored procedure calls**, meaning it operates independently of the MSSQL database layer. All data flows through the external RightSignature API.\n- The `Class1` placeholder suggests this project may have been auto-generated and could contain dead code.\n- During migration to NestJS, this functionality could be replaced with a dedicated NestJS service using a modern e-signature provider SDK (e.g., DocuSign or native RightSignature REST API with modern auth).\n- OAuth 1.0 authentication (used here) is considered legacy; a migration should evaluate whether the current RightSignature API version supports OAuth 2.0.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*",
+  "managerPattern": "No Manager pattern",
+  "storedProcedures": "",
+  "keyClasses": [
+    {
+      "name": "OAuthRightSignature",
+      "purpose": "Implements OAuth authentication for the RightSignature API, extending the oAuthBase class for secure token-based API communication",
+      "keyMethods": []
+    },
+    {
+      "name": "DocumentApi",
+      "purpose": "Manages document lifecycle operations (create, retrieve, track) through the RightSignature API via the IDocument interface",
+      "keyMethods": []
+    },
+    {
+      "name": "TemplateApi",
+      "purpose": "Provides template management for reusable signature document templates via the ITemplate interface",
+      "keyMethods": []
+    },
+    {
+      "name": "ApiHelper",
+      "purpose": "Low-level HTTP communication helpers for RightSignature API calls",
+      "keyMethods": []
+    },
+    {
+      "name": "SignatureConfiguration",
+      "purpose": "Stores RightSignature API configuration settings including API keys, endpoints, and OAuth credentials",
+      "keyMethods": []
+    },
+    {
+      "name": "oAuthBase",
+      "purpose": "Base class for OAuth 1.0 authentication with HMAC-SHA1 signing and query parameter handling",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [],
+  "migrationNotes": [
+    "No stored procedure calls -- operates independently of MSSQL database layer",
+    "OAuth 1.0 authentication is legacy; evaluate OAuth 2.0 support in current RightSignature API",
+    "Could be replaced with modern e-signature provider SDK (DocuSign, RightSignature REST API)",
+    "Class1 placeholder suggests possible dead code that should be cleaned up"
+  ],
+  "mermaidDiagram": null,
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.RightSignature\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.RightSignature module\"\nsidebar_label: \"RightSignature\"\ntags: [dotnet, business-layer]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Overview\n\nThe RightSignature module provides electronic signature integration for the MyEvaluations platform. It wraps the RightSignature API (a document signing service) to enable digital signing workflows within healthcare education management -- such as signing training agreements, program letters, and compliance documents. The module contains 10 classes covering OAuth authentication, document management, template handling, and API communication helpers.\n\n## Key Classes\n\n- **OAuthRightSignature** (extends `oAuthBase`): Implements OAuth authentication specifically for the RightSignature API. Handles token exchange and request signing for secure API communication.\n- **DocumentApi** (implements `IDocument`): Manages document lifecycle operations through the RightSignature API -- creating, retrieving, and tracking signature requests on documents.\n- **TemplateApi** (implements `ITemplate`): Provides template management for reusable signature document templates, allowing pre-configured signing workflows.\n- **ApiHelper**: Utility class providing low-level HTTP communication helpers for RightSignature API calls.\n- **SignatureConfiguration**: Stores RightSignature API configuration settings (API keys, endpoints, OAuth credentials).\n- **oAuthBase**: Base class for OAuth 1.0 authentication, providing HMAC-SHA1 signing, nonce generation, and query parameter handling.\n- **QueryParameter / QueryParameterComparer**: Supporting types for OAuth query string parameter sorting and comparison during signature base string construction.\n- **Structs**: Data structures (likely enums or value types) used across the RightSignature integration.\n- **Class1**: Default/placeholder class (likely unused scaffolding from project creation).\n\n## Patterns\n\n- **Interface-based API abstraction**: `DocumentApi` implements `IDocument` and `TemplateApi` implements `ITemplate`, enabling testability and potential provider swapping.\n- **OAuth inheritance hierarchy**: `OAuthRightSignature` extends `oAuthBase`, separating generic OAuth logic from RightSignature-specific authentication.\n- **No Manager/Info pattern**: This module does not follow the standard MyEvaluations Manager/Info data access pattern -- it is a pure API integration wrapper with no stored procedure calls.\n- **External service wrapper**: Encapsulates all RightSignature API concerns (auth, documents, templates) in a dedicated assembly.\n\n## Notes\n\n- This module has **no stored procedure calls**, meaning it operates independently of the MSSQL database layer. All data flows through the external RightSignature API.\n- The `Class1` placeholder suggests this project may have been auto-generated and could contain dead code.\n- During migration to NestJS, this functionality could be replaced with a dedicated NestJS service using a modern e-signature provider SDK (e.g., DocuSign or native RightSignature REST API with modern auth).\n- OAuth 1.0 authentication (used here) is considered legacy; a migration should evaluate whether the current RightSignature API version supports OAuth 2.0.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*"
+}

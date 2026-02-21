@@ -1,0 +1,2064 @@
+{
+  "directory": "Web/CMETracking",
+  "layer": "web",
+  "generatedAt": "2026-02-21T11:13:57.337Z",
+  "fileCount": 74,
+  "files": [
+    {
+      "filePath": "Web/CMETracking/AnswerTypeSelection.aspx.cs",
+      "fileName": "AnswerTypeSelection.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_AnswerTypeSelection",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Popup page for selecting an answer type and answer scale when building a CME evaluation template question. Displays both standard and sliding-scale answer types and supports free-form answer configurations.",
+      "businessPurpose": "Allows administrators to pick the answer scale and answer type for each CME evaluation question during the evaluation design wizard.",
+      "keyMethods": [
+        "Page_Load - initializes page and populates answer scale list on first load",
+        "InitializePage - sets page mode and calls fill/refresh helpers",
+        "SetCurrentPageMode - determines Add vs Edit mode from session template info",
+        "GetAnswerTypes - filters a DataTable into sliding vs non-sliding answer type rows",
+        "refreshList - binds answer type and sliding scale DataList controls by selected scale",
+        "drawFreeFormItems - binds free-form answer types with special line-text ordering",
+        "fillAnswerScales - loads answer scale dropdown and restores selection from query string",
+        "GetEWEEHeading - builds display string annotating EarlyWarning/ExceedExpectation badges",
+        "GetAnswerTypeHeading - returns formatted answer type name with EarlyWarning annotation",
+        "dlstAnswerTypes_ItemDataBound - configures free-form TextBox dimensions per answer code",
+        "lstScale_SelectedIndexChanged - reloads answer type list when scale selection changes",
+        "lstAnswerType_SelectedIndexChanged - stores selected answer type and returns result to parent"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AnswerTypeManager",
+        "EvaluationsManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core to CME evaluation template designer; answer-type selection logic must be replicated in the modern stack.",
+      "complexity": "complex",
+      "lineCount": 430
+    },
+    {
+      "filePath": "Web/CMETracking/AssignCMEEvaluationInformation.aspx.cs",
+      "fileName": "AssignCMEEvaluationInformation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_AssignCMEEvaluationInformation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only information page that displays details of a CME event schedule (event name, topic, location, dates, credits, speakers, assigned users, and learning objectives) for assignment reference.",
+      "businessPurpose": "Gives coordinators a summary view of a CME event schedule before or after assigning evaluations.",
+      "keyMethods": [
+        "Page_Load - triggers FillInfoFromDB on initial load",
+        "FillInfoFromDB - fetches CME event schedule data by SID and populates all display labels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Read-only info display; straightforward to migrate as a detail endpoint.",
+      "complexity": "simple",
+      "lineCount": 101
+    },
+    {
+      "filePath": "Web/CMETracking/AssignMenu.aspx.cs",
+      "fileName": "AssignMenu.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_AssignMenu",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Navigation menu page for the CME assignment area that enforces role-based access control for GA-Emergency and related roles, and conditionally shows or hides help icons based on available help content.",
+      "businessPurpose": "Presents the CME assignment sub-menu to authorized users, restricting access for special roles (GA-Emergency, GA-Conf/MyQ/MyP) as configured.",
+      "keyMethods": [
+        "Page_Load - runs permission check and help icon configuration on every request",
+        "CheckForPermissions - blocks special GA roles that lack CMEAssignMenu privileges",
+        "SetHelpIcons - shows or hides admin vs regular help icon links per help content availability"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "HelpGroupManager",
+        "RoleManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Navigation scaffold; logic is mainly permission checks that map to modern RBAC middleware.",
+      "complexity": "moderate",
+      "lineCount": 153
+    },
+    {
+      "filePath": "Web/CMETracking/CMECourse.aspx.cs",
+      "fileName": "CMECourse.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMECourse",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit form for a CME online course, managing speakers, credit types, linked events, evaluations, quizzes, handouts, videos, and learning objectives with full CRUD support.",
+      "businessPurpose": "Enables CME administrators to create or update online CME courses that learners can take to earn credit.",
+      "keyMethods": [
+        "Page_Load - sets page mode, checks permissions, and initializes the form",
+        "CheckForPermissions - enforces CMETracking Courses module privileges",
+        "InitializePage - binds all dropdown/list controls and loads edit-mode data on first request",
+        "BindPassPercentage - populates passing baseline percentage dropdown",
+        "BindAvailableSpeakers - loads available lecturer list from ScheduleTemplateManager",
+        "BindEvents - loads event list from EventManager",
+        "BindEvaluations - loads published CME template list from TemplateManager",
+        "BindQuiz - loads quiz list for the course",
+        "BindCreditTypes - loads credit type options",
+        "BindEventCredits - populates event credit dropdown",
+        "btnAddLecturer_Click - moves selected speakers to the chosen list",
+        "btnRemoveLecturer_Click - moves selected speakers back to available list",
+        "UpdateSpcakerList - handles add/remove speaker list management including guest lecturers",
+        "StorePageStateToParm - persists CourseID from query string to view state",
+        "PrepareFormForEditMode - fills form controls from DB for edit mode",
+        "FillInfoFromDB - maps CourseInfo object fields to form controls",
+        "btnSave_Click - validates and saves or updates the course record"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CourseManager",
+        "ScheduleTemplateManager",
+        "EventManager",
+        "TemplateManager",
+        "AssignmentUsersManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Online CME course management is a core data entry workflow with complex many-to-many speaker/handout/video relationships.",
+      "complexity": "complex",
+      "lineCount": 950
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEvaluate.aspx.cs",
+      "fileName": "CMEEvaluate.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEvaluate",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Learner-facing dashboard listing pending and online CME evaluation assignments for the logged-in user, with sortable and paginated grids and a tab distinguishing normal vs online CME activities.",
+      "businessPurpose": "Shows healthcare professionals their outstanding CME evaluation assignments so they can access and complete them.",
+      "keyMethods": [
+        "Page_Load - initializes grid page sizes, loads session messages, and calls grid refresh methods",
+        "refreshGrid - binds the pending CME evaluations grid using GetIncompleteCMEEvaluationsForMultiTopics",
+        "refreshOnlineActivityGrid - binds the online CME activity grid for online-type evaluations",
+        "CheckForPermissions - checks CompleteCMEEvaluations submodule view privileges",
+        "GetActionText - determines if the action link is visible based on user identity",
+        "GetCMEEventType - retrieves the CME event type flag for tab display logic",
+        "FillPageListCombo - populates top and bottom page navigation dropdowns",
+        "SortGridView - applies column sort to the grid data source"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Learner-facing CME todo list; a critical user-facing feature to replicate in the modern frontend.",
+      "complexity": "complex",
+      "lineCount": 856
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEvaluationDetailsForAudittrail.aspx.cs",
+      "fileName": "CMEEvaluationDetailsForAudittrail.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEvaluationDetailsForAudittrail",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Popup page that renders a grid of audit trail details for a specific CME evaluation, showing completed, partially completed, or declined status history based on the EntityID parameter.",
+      "businessPurpose": "Provides administrators with an audit log of status changes for a CME evaluation for compliance and tracking purposes.",
+      "keyMethods": [
+        "Page_Load - decrypts query string IDs, fetches audit trail data, and binds the grid with dynamic header text"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "CommonFunctions"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Audit trail display for CME evaluations; important for compliance reporting.",
+      "complexity": "simple",
+      "lineCount": 63
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEvaluationInformation.aspx.cs",
+      "fileName": "CMEEvaluationInformation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEvaluationInformation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only information page that displays metadata about a CME evaluation template (name, published by, and published date) given a template ID query parameter.",
+      "businessPurpose": "Provides a quick-view popup of CME evaluation template details for reference during assignment workflows.",
+      "keyMethods": [
+        "Page_Load - triggers BindCMEEvaluationInfo on first load",
+        "BindCMEEvaluationInfo - fetches TemplateInfo by ID and populates name, publisher, and date labels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple read-only detail view; can be replaced by an API detail endpoint.",
+      "complexity": "simple",
+      "lineCount": 58
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEvaluationReminderEmailScheduler.aspx.cs",
+      "fileName": "CMEEvaluationReminderEmailScheduler.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEvaluationReminderEmailScheduler",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "CMETracking",
+      "summary": "Minimal scheduler trigger page that calls CMEBussiness.OnViewInitializeCMEEvaluationReminderEmailScheduler to send reminder emails for pending CME evaluations.",
+      "businessPurpose": "Acts as a web-based cron trigger for the CME evaluation reminder email job, typically invoked by a Windows scheduled task or HTTP ping.",
+      "keyMethods": [
+        "Page_Load - invokes CMEBussiness reminder email scheduler method"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEBussiness"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Scheduler trigger pattern; migrate to a BullMQ worker job in the Node.js backend.",
+      "complexity": "trivial",
+      "lineCount": 23
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEventInformation.aspx.cs",
+      "fileName": "CMEEventInformation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEventInformation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only information popup for a CME event showing event name, credits, credit types, and target audience fetched by event ID.",
+      "businessPurpose": "Provides a quick reference view of CME event details during scheduling or assignment workflows.",
+      "keyMethods": [
+        "Page_Load - calls FillinfoViewMode on first load",
+        "FillinfoViewMode - parses EventID query param and fetches event info",
+        "FillInfoByDBViewMode - maps EventInfo fields to display labels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple read-only detail popup; straightforward API endpoint in modern stack.",
+      "complexity": "simple",
+      "lineCount": 62
+    },
+    {
+      "filePath": "Web/CMETracking/CMEEventRegister.aspx.cs",
+      "fileName": "CMEEventRegister.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMEEventRegister",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Registration form for CME training events that handles payment processing via Authorize.Net, Square, and Clover merchant services, supports add/edit/view modes, and sends confirmation emails.",
+      "businessPurpose": "Allows users to register for paid or free CME training seminars, process credit card payments, and receive confirmation email notifications.",
+      "keyMethods": [
+        "Page_Load - initializes page mode and calls business layer and page setup",
+        "InitializePage - loads event details, payment amounts, merchant service credentials, and department info",
+        "StorePageParamsToState - persists TrainingID from query string",
+        "PrepareFormForEditMode - loads existing registration data for editing",
+        "PrepareFormForViewMode - loads read-only registration data",
+        "CheckForPermissions - validates TrainingEvent module view privilege",
+        "FillInfoFromDB - populates form controls from a training seminar record",
+        "FillInfo - fills read-only view form controls",
+        "btnSubmitRegistration_Click - submits new registration with payment processing",
+        "btnUpdateRegistration_Click - updates existing registration record",
+        "ProcessAuthorizeNetPayment - submits charge via Authorize.Net API",
+        "ProcessSquarePayment - submits charge via Square API",
+        "ProcessCloverPayment - submits charge via Clover API"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "MailDistributionBusiness",
+        "MailDistributionManager",
+        "ScheduleTemplateManager",
+        "CMEConnectivityManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Complex payment processing with three gateway integrations (Authorize.Net, Square, Clover); high priority for migration planning due to PCI compliance implications.",
+      "complexity": "very-complex",
+      "lineCount": 1822
+    },
+    {
+      "filePath": "Web/CMETracking/CMEMain.aspx.cs",
+      "fileName": "CMEMain.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CME_CMEMain",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Main navigation hub for the CME Tracking module, dynamically building the left-side menu by checking role privileges for each CME sub-section (evaluations, events, courses, conferences, reports, assignments) and toggling PARS/MyCME+ mode based on department settings.",
+      "businessPurpose": "Presents a role-filtered CME module menu to users, conditionally exposing CME evaluation design, assignment management, conference tracking, reporting, and PARS connectivity links.",
+      "keyMethods": [
+        "Page_Load - runs permission check, initializes page, sets help icons, stores chatbot params, and logs page access",
+        "CheckForPermissions - enforces user type and special GA role access rules",
+        "InitializePage - conditionally removes menu items based on privileges and toggles PARS vs standard CME menu mode",
+        "SetHelpIcons - configures context-sensitive help icon visibility for each menu section"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SessionManager",
+        "DepartmentManager",
+        "CMEConnectivityManager",
+        "UserManager",
+        "RoleManager",
+        "MyEvalLog"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Navigation shell; menu structure logic maps to frontend routing with permission guards in the modern app.",
+      "complexity": "complex",
+      "lineCount": 897
+    },
+    {
+      "filePath": "Web/CMETracking/CMEQuestion.aspx.cs",
+      "fileName": "CMEQuestion.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Question",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit form for CME evaluation questions, supporting question code auto-generation, category selection, CKEditor rich-text question body, and a comment-required toggle.",
+      "businessPurpose": "Allows CME administrators to create or update individual evaluation questions that are used when building CME evaluation templates.",
+      "keyMethods": [
+        "Page_Load - sets page mode, stores params to state, checks permissions, and initializes the form",
+        "StorePageParamsToState - persists QuestionId from query string in edit mode",
+        "CheckPermissions - enforces CmeQuestions module privilege and sets Save button visibility",
+        "InitilizePage - sets page title, populates category dropdown, and pre-populates question code",
+        "fillQuestionCategory - loads CME question categories from QuestionManager",
+        "FillInfoFromForm - builds QuestionInfo from form fields including sliding scale detection",
+        "PrepareFormForEditMode - loads existing question data for editing",
+        "FillInfoFromDB - populates form controls including CKEditor script injection",
+        "btnSave_Click - validates and saves or updates the question record",
+        "GetQuestionCode - auto-generates next sequential question code based on category",
+        "GetServerExecutionURL - returns handler URL for async question operations",
+        "Getparams - builds user/department parameter string for AJAX calls"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "QuestionManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Question management is foundational to CME evaluation template design.",
+      "complexity": "moderate",
+      "lineCount": 225
+    },
+    {
+      "filePath": "Web/CMETracking/CMETemplateCopy.aspx.cs",
+      "fileName": "CMETemplateCopy.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CMETemplateCopy",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Simple dialog for copying (duplicating) an existing CME evaluation template under a new name, validating the new title before saving.",
+      "businessPurpose": "Enables administrators to quickly create a new CME evaluation template based on an existing one without rebuilding it from scratch.",
+      "keyMethods": [
+        "Page_Load - calls InitializePage",
+        "InitializePage - loads the source template name on first request",
+        "btnCopy_Click - validates new title and saves the copied template",
+        "GetTemplateToCopy - fetches the source TemplateInfo by ID and stores in page state",
+        "btnCancel_Click - redirects back to ManageCmeEvaluations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Copy/duplicate pattern for evaluation templates; straightforward API action in the modern stack.",
+      "complexity": "simple",
+      "lineCount": 98
+    },
+    {
+      "filePath": "Web/CMETracking/Certificate.aspx.cs",
+      "fileName": "Certificate.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Certificate",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit page for configuring a department's CME credit certificate template, including heading, sub-heading, logo image upload, credit category, and custom descriptor text blocks.",
+      "businessPurpose": "Allows CME administrators to design the certificate of completion that learners receive after completing a CME evaluation.",
+      "keyMethods": [
+        "Page_Load - sets page mode, checks permissions, and initializes the form",
+        "InitializePage - handles mode branching and calls fill methods for edit or department default",
+        "StorePageParamsToState - persists CertificateID from query string",
+        "PrepareFormForEditMode - fetches certificate info by ID for editing",
+        "FillInfoFromDB - maps CMECertificateInfo to all form controls including image existence checks",
+        "FillInfoFromForm - collects form values into a CMECertificateInfo object",
+        "StoreSignature - handles logo file upload and saves to server path",
+        "BuildPath - constructs the server and DB path for certificate images",
+        "GetLogoAbsoluteImagePath - returns the logo image directory path",
+        "IsPictureFile - validates uploaded file is an image type",
+        "btnSave_Click - validates and saves or updates the certificate record",
+        "CheckForPermissions - enforces Certificates module privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CerificateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Certificate configuration is a key feature; logo upload and template customization need migration.",
+      "complexity": "complex",
+      "lineCount": 487
+    },
+    {
+      "filePath": "Web/CMETracking/CreateGuest.aspx.cs",
+      "fileName": "CreateGuest.aspx.cs",
+      "fileType": "code-behind",
+      "className": "DutyHours_ConferencesAndClinics_CreateGuest",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Popup form for creating or editing a conference guest presenter (non-system user), collecting title, first name, last name, and suffix, and returning the result to the parent page via JavaScript callback.",
+      "businessPurpose": "Allows scheduling coordinators to add external guest presenters to conference schedules without creating full system user accounts.",
+      "keyMethods": [
+        "Page_Load - sets page mode, checks permissions, stores params, and loads edit data if editing",
+        "StorePageParamsToState - shows/hides submit vs update buttons based on mode",
+        "CheckForPermissions - enforces ConferenceSchedules DutyHour module privileges",
+        "FillInfoFromForm - builds GuestInfo from form fields",
+        "PrepareFormForEditMode - fetches GuestInfo by ID for editing",
+        "FillInfoFromDB - populates form controls from GuestInfo",
+        "btnSubmit_Click - saves new guest and calls JavaScript Callback to parent",
+        "btnUpdate_Click - updates existing guest and calls JavaScript CallbackUpdate to parent"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GuestManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Guest presenter management is shared between CME and DutyHours modules.",
+      "complexity": "moderate",
+      "lineCount": 173
+    },
+    {
+      "filePath": "Web/CMETracking/CreateGuestLecturer.aspx.cs",
+      "fileName": "CreateGuestLecturer.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_CreateGuestLecturer",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Popup form for creating or editing a guest lecturer (external speaker) for CME assignments, appending a '_G' suffix to the GuestID to distinguish from regular system users.",
+      "businessPurpose": "Enables CME administrators to add external guest lecturers to CME course/event speaker lists without creating full accounts.",
+      "keyMethods": [
+        "Page_Load - sets page mode, stores params, and loads edit data if in edit mode",
+        "StorePageParamsToState - toggles submit vs update button visibility by mode",
+        "CheckForPermissions - enforces ConferenceSchedules DutyHour module privileges",
+        "FillInfoFromForm - builds GuestInfo including title text from dropdown",
+        "PrepareFormForEditMode - loads guest lecturer data by ID for editing",
+        "FillInfoFromDB - populates form controls from GuestInfo",
+        "btnSubmit_Click - saves new guest lecturer and returns ID with '_G' suffix to parent via JS callback",
+        "btnUpdate_Click - updates guest lecturer and returns to parent page",
+        "btnCancel_Click - closes the popup window"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GuestManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Guest lecturer management for CME courses; needs to track the '_G' suffix convention in migration.",
+      "complexity": "moderate",
+      "lineCount": 200
+    },
+    {
+      "filePath": "Web/CMETracking/DeclineCMEEvaluation.aspx.cs",
+      "fileName": "DeclineCMEEvaluation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DeclineCMEEvaluation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Confirmation page for a user to decline an assigned CME evaluation, which records the declination, sends a notification email, and validates that the CME event has started.",
+      "businessPurpose": "Allows learners to formally decline a CME evaluation assignment with optional comments, triggering an email notification to the administrator.",
+      "keyMethods": [
+        "Page_Load - checks permissions, validates evaluation ID, checks if already declined, and validates event start date",
+        "CheckForPermissions - enforces CompleteCMEEvaluations module privileges",
+        "ValidateScheduleDate - blocks access if the CME event has not yet started and shows a message",
+        "btnDecline_Click - declines the evaluation, triggers email notification, and redirects",
+        "btnCancel_Click - redirects back to CMEEvaluate list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "ScheduleTemplateManager",
+        "EmailUtility",
+        "EmailValidation"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Declination workflow with email notification is a business-critical process.",
+      "complexity": "moderate",
+      "lineCount": 129
+    },
+    {
+      "filePath": "Web/CMETracking/DeleteCMEEventInformation.aspx.cs",
+      "fileName": "DeleteCMEEventInformation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DeleteCMEEventInformation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only popup displaying deletion metadata for a deleted CME event, showing the event name, credits, deleted-by user, deleted date, and target audience.",
+      "businessPurpose": "Lets administrators view who deleted a CME event and when, for audit purposes.",
+      "keyMethods": [
+        "Page_Load - triggers ViewCMEEventDeleteInfo on first load",
+        "ViewCMEEventDeleteInfo - parses EventID query param and calls fill method",
+        "FillInfoByDBViewMode - maps EventInfo fields to delete audit labels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Audit information popup; simple read-only view to replicate as an API detail.",
+      "complexity": "simple",
+      "lineCount": 54
+    },
+    {
+      "filePath": "Web/CMETracking/DeletedCMETemplateInfo.aspx.cs",
+      "fileName": "DeletedCMETemplateInfo.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DeletedCMETemplateInfo",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only popup showing deletion metadata for a soft-deleted CME evaluation template, including name, deleted-by, deleted date, published-by, and published date.",
+      "businessPurpose": "Provides administrators an audit trail view for deleted CME evaluation templates.",
+      "keyMethods": [
+        "Page_Load - triggers CMETemplateDeleteinfo on first load",
+        "CMETemplateDeleteinfo - fetches deleted template info by TemplateID and populates labels or hides fields if no data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Audit popup for soft-deleted templates; straightforward to replicate as an API endpoint.",
+      "complexity": "simple",
+      "lineCount": 61
+    },
+    {
+      "filePath": "Web/CMETracking/DeletedCmeEvaluationInformation.aspx.cs",
+      "fileName": "DeletedCmeEvaluationInformation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DeletedCmeEvaluationInformation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Read-only popup showing deletion metadata for a deleted CME evaluation assignment schedule, including event name, topic, location, credits, template name, created-by, and deleted-by information.",
+      "businessPurpose": "Provides administrators an audit view of deleted CME evaluation schedules for compliance tracking.",
+      "keyMethods": [
+        "Page_Load - triggers DeletedCMEEvaluationInfo on first load",
+        "DeletedCMEEvaluationInfo - fetches CME event schedule data by ScheduleID and populates labels"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Audit detail popup; can be a simple API detail endpoint in the modern stack.",
+      "complexity": "simple",
+      "lineCount": 57
+    },
+    {
+      "filePath": "Web/CMETracking/DesignEvaluationStep1.aspx.cs",
+      "fileName": "DesignEvaluationStep1.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DesignEvaluationStep1",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Step 1 of the 4-step CME evaluation design wizard, capturing template name, comment settings (mandatory/confidential), voluntary flag, conflict-of-interest, barrier-to-entry, and competency improvement flags, storing the template in session state.",
+      "businessPurpose": "Guides CME administrators through the first step of creating or editing a CME evaluation template by setting high-level properties.",
+      "keyMethods": [
+        "Page_Load - checks permissions and initializes the page",
+        "InitializePage - sets current mode, stores params, and calls inner initialization",
+        "StorePageParamsToState - persists TemplateId and Cmd from query string",
+        "InitilizePage - handles cancel redirect storage and calls PrepareFormForEditMode",
+        "PrepareFormForEditMode - loads existing template or session data into the form",
+        "FillInfoFromDB - maps TemplateInfo fields to radio buttons and text box, updates session",
+        "btnNext_Click - validates and saves template properties to session, navigates to Step 2",
+        "CheckForPermissions - enforces CmeTemplates create privilege",
+        "btnCancel_Click - redirects to the cancel URL or evaluations list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Step 1 of the evaluation wizard; session-based multi-step form pattern must be migrated to a stateless API with client-side state.",
+      "complexity": "moderate",
+      "lineCount": 181
+    },
+    {
+      "filePath": "Web/CMETracking/DesignEvaluationStep2.aspx.cs",
+      "fileName": "DesignEvaluationStep2.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DesignEvaluationStep2",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Step 2 of the CME evaluation wizard presenting event-level questions (CME1 audience) grouped by category with checkboxes and answer-scale selection popups, accumulating selected questions into session state.",
+      "businessPurpose": "Allows administrators to select event-level evaluation questions and assign answer types during CME template design.",
+      "keyMethods": [
+        "Page_Load - initializes page and calls DrawQuestions for CME1 audience",
+        "InitializePage - sets mode from session and triggers question rendering",
+        "SetCurrentPageMode - determines mode from session template TemplateID",
+        "DrawQuestions - dynamically renders question checkboxes grouped by core and supplementary categories",
+        "btnBack_Click - saves current selections to session and navigates back to Step 1",
+        "btnNext_Click - validates at least one question selected, saves to session, navigates to Step 3",
+        "btnCancel_Click - redirects to cancel URL or evaluations list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "TemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Step 2 of wizard with dynamic HTML generation and session accumulation; complex front-end state management to migrate.",
+      "complexity": "complex",
+      "lineCount": 347
+    },
+    {
+      "filePath": "Web/CMETracking/DesignEvaluationStep3.aspx.cs",
+      "fileName": "DesignEvaluationStep3.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DesignEvaluationStep3",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Step 3 of the CME evaluation wizard presenting speaker-level questions (CME2 audience) with checkbox selection and answer scale popups, accumulating speaker question selections into session state.",
+      "businessPurpose": "Guides administrators through selecting speaker-evaluation questions for the CME template being designed.",
+      "keyMethods": [
+        "Page_Load - initializes page and renders speaker questions for CME2 audience",
+        "InitializePage - sets page mode from session and calls DrawQuestions",
+        "SetCurrentPageMode - determines Add vs Edit from session template ID",
+        "DrawQuestions - dynamically generates speaker question checkboxes grouped by category",
+        "btnBack_Click - saves selections to session and navigates back to Step 2",
+        "btnNext_Click - saves speaker question selections to session and advances to Step 4",
+        "btnCancel_Click - redirects to cancel URL or evaluations list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "TemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Step 3 mirrors Step 2 for speaker questions; session-based wizard pattern needs modern multi-step form migration.",
+      "complexity": "complex",
+      "lineCount": 347
+    },
+    {
+      "filePath": "Web/CMETracking/DesignEvaluationStep4.aspx.cs",
+      "fileName": "DesignEvaluationStep4.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_DesignEvaluationStep4",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Step 4 (final step) of the CME evaluation wizard displaying a drag-and-drop sortable question preview with conflict-of-interest, barrier-to-entry, and competency improvement panels, and saving the complete template to the database.",
+      "businessPurpose": "Lets administrators review and reorder the final question groupings before saving or updating the CME evaluation template.",
+      "keyMethods": [
+        "Page_Load - checks permissions and initializes the step",
+        "InitializePage - loads template from session or URL param and renders full question layout",
+        "AddDragDropScript - injects jQuery sortable drag-and-drop script for group reordering",
+        "SetCurrentPageMode - determines mode from URL ID or session TemplateID",
+        "ShowCustomComments - makes custom comments section visible",
+        "SetEvaluationNamelabel - sets the evaluation label text",
+        "FillGroupAndQuestions - renders conflict-of-interest, barrier, competency, and question group panels",
+        "btnFinish_Click - serializes order, validates, and saves or updates the full template",
+        "dlstGroups_ItemDataBound - dynamically renders question items within each group panel",
+        "dlstConflicts_ItemDataBound - renders conflict-of-interest question items",
+        "dlstBarriertoEntry_ItemDataBound - renders barrier-to-entry question items",
+        "dlstCompetencyImprovement_ItemDataBound - renders competency improvement question items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "The most complex wizard step; drag-and-drop ordering and multi-panel question grouping require significant front-end redesign.",
+      "complexity": "very-complex",
+      "lineCount": 1287
+    },
+    {
+      "filePath": "Web/CMETracking/EvaluateCMEEvaluation.aspx.cs",
+      "fileName": "EvaluateCMEEvaluation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_EvaluateCMEEvaluation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "The primary learner-facing evaluation submission page, rendering the full CME evaluation form with event/speaker topics, multi-topic navigation, barrier answers, MOC (Maintenance of Certification) credit selection, and partial save support.",
+      "businessPurpose": "Enables healthcare professionals to complete and submit their assigned CME evaluations, claim MOC credits, and save partial progress.",
+      "keyMethods": [
+        "Page_Load - checks expiry, binds validation scripts, calls InitializePage",
+        "InitializePage - loads evaluation info, template, schedule, renders questions, and binds MOC/credit data",
+        "CheckPermissions - enforces CompleteCMEEvaluations privileges",
+        "BindYears - populates birth year dropdown from 1900 to current year",
+        "BindMOCPoints - binds event credit values for MOC point selection",
+        "FillGroupAndQuestions - renders question groups with answers for the evaluation form",
+        "BindPageLoadData - loads initial page data and answer state",
+        "BindCMETopics - binds single or multi-topic section repeater",
+        "GetPartialCompletedTask - restores partial completion state",
+        "btnSaveAndContinue_Click - saves current answers and advances to next topic",
+        "btnSavePartial_Click - saves answers as partial completion",
+        "btnSubmit_Click - finalizes and submits the complete evaluation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEBussiness",
+        "EvaluationManager",
+        "TemplateManager",
+        "ScheduleTemplateManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "The central CME evaluation form is the highest-impact page for learners; multi-topic and MOC credit workflows are complex migration targets.",
+      "complexity": "very-complex",
+      "lineCount": 2921
+    },
+    {
+      "filePath": "Web/CMETracking/GroupParticipants.aspx.cs",
+      "fileName": "GroupParticipants.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_AddGroupParticipants",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit form for conference participant groups used in CME scheduling, allowing administrators to name a group and select its member users via a user selection user control.",
+      "businessPurpose": "Allows CME coordinators to define named groups of participants for bulk conference attendance tracking and assignment.",
+      "keyMethods": [
+        "Page_Load - sets mode, checks permissions, and initializes the form",
+        "StorePageParamsToState - persists DepartmentGroupID from query string in edit mode",
+        "CheckForPermissions - enforces ConferenceGroupParticipants view privilege and sets button visibility",
+        "GetNavigateURL - returns the redirect URL after save/update",
+        "PrepareFormForEditMode - loads group info and user list for editing",
+        "FillUserInfo - prepopulates the user selection control with existing members",
+        "FillInfoFromForm - builds GroupParticipantsInfo from form fields",
+        "btnOK_Click - saves new participant group",
+        "btnUpdate_Click - updates existing participant group"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GroupParticipantsManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Group participant management is shared with DutyHours module; shared data model needs care during migration.",
+      "complexity": "moderate",
+      "lineCount": 207
+    },
+    {
+      "filePath": "Web/CMETracking/LearningObjectiveSelection.aspx.cs",
+      "fileName": "LearningObjectiveSelection.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_LearningObjectiveSelection",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Popup page for selecting, adding, and removing learning objectives for a CME event, with answer scale and answer type selection matching the AnswerTypeSelection page pattern.",
+      "businessPurpose": "Allows CME administrators to define learning objectives for a CME event and assign answer types to each objective.",
+      "keyMethods": [
+        "Page_Load - initializes page, fills answer scales, and binds existing learning objectives",
+        "InitializePage - sets page mode, binds controls, restores objective list from state",
+        "StorePageStateToParam - saves EventID and LearningObjectiveID params and decodes existing LO list",
+        "SetPageMode - determines Add vs Edit mode based on EventID query param",
+        "GetAnswerTypes - filters DataTable into sliding/non-sliding answer types",
+        "refreshAnswerTypeList - binds answer type lists by selected scale",
+        "drawFreeFormItems - renders free-form answer type options",
+        "GetCurrentLearningObjectiveList - retrieves LO list from page state",
+        "BindLearningObjectives - binds the grid with active (non-deleted) objectives",
+        "GetLearningObjectiveListFromString - decodes serialized LO list from hidden field",
+        "getLOList - serializes LO list back to hidden field format",
+        "btnAddLO_Click - adds a new learning objective to the session list",
+        "btnRemoveSelections_Click - marks selected objectives as deleted",
+        "btnClearAll_Click - marks all objectives as deleted",
+        "btnFinished_Click - serializes and returns the final LO list to the parent page"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "AnswerTypeManager",
+        "EvaluationsManager",
+        "EventManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Learning objective selection with answer type assignment is a CME-specific workflow requiring careful migration.",
+      "complexity": "complex",
+      "lineCount": 865
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEAssignmentAddUsers.aspx.cs",
+      "fileName": "ManageCMEAssignmentAddUsers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMEAssignmentAddUsers",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Page for adding required and optional users to an existing CME evaluation assignment, with expiry date setting, email notification, and differential tracking of new vs existing assignees.",
+      "businessPurpose": "Allows CME administrators to expand the user list for an existing CME evaluation assignment, adding required or optional attendees after initial creation.",
+      "keyMethods": [
+        "Page_Load - checks permissions, loads existing assignments and expiry date, sets up user selection controls",
+        "CheckForPermissions - enforces CmeTemplates edit privilege",
+        "FillAssignmentsFromForm - computes new required and optional users vs existing ones and identifies candidates for deletion",
+        "FillInfoFromHiddenFields - builds ScheduleTemplateInfo from form hidden fields and FillAssignmentsFromForm",
+        "btnAddNew_Click - adds new assignments, sends email notifications, and redirects"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "DutyHoursManager",
+        "MyEvalLog"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Adding users to existing assignments is a core CME administration workflow.",
+      "complexity": "complex",
+      "lineCount": 438
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEAssignmentUsers.aspx.cs",
+      "fileName": "ManageCMEAssignmentUsers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMEAssignmentUsers",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Displays grids showing all users assigned to a specific CME evaluation schedule, including assignment details, quiz assignments, and per-user completion status, with delete-all and individual user management actions.",
+      "businessPurpose": "Gives CME administrators a per-assignment roster view to manage individual user evaluation assignments.",
+      "keyMethods": [
+        "Page_Load - initializes page and calls refreshGrid",
+        "InitializePage - checks permissions, checks PARS mode, configures delete button, and loads grid",
+        "StorePageStateToParm - stores TemplateID, CreatedBy, and CreatedDate from query params or ScheduleID lookup",
+        "CheckForPermissions - enforces CmeTemplates edit privilege and delete visibility",
+        "SetActionText - returns Edit or View action label based on Update privilege",
+        "refreshGrid - loads assignment and user grids from EvaluationManager data",
+        "BindAssignment - alternate bind by evaluation ID",
+        "btnDeleteAll_Click - removes all user assignments for this schedule"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "DepartmentManager",
+        "MyEvalLog"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Assignment user roster management is a core administrator workflow.",
+      "complexity": "complex",
+      "lineCount": 604
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEAssignmentUsersMainPage.aspx.cs",
+      "fileName": "ManageCMEAssignmentUsersMainPage.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMEAssignmentUsersMainPage",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Alternative main-page view for CME evaluation assignment users, using MailDistributionManager to load assignment lists for both regular-user and non-user CME events in a dual-grid layout.",
+      "businessPurpose": "Provides a consolidated view of CME evaluation assignment rosters including non-system-user registrants for PARS/MyCME+ programs.",
+      "keyMethods": [
+        "Page_Load - initializes and calls refreshGrid",
+        "InitializePage - calls refreshGrid on first load",
+        "StorePageStateToParm - stores template/schedule identifiers from query params",
+        "CheckForPermissions - enforces CmeTemplates edit privilege and delete visibility",
+        "SetActionText - returns Edit or View label based on Update privilege",
+        "refreshGrid - loads both user and non-user CME event grids via MailDistributionManager",
+        "BindAssignment - alternate bind by evaluation ID",
+        "btnDeleteAll_Click - removes all user assignments"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "MailDistributionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Main page variant for CME assignment roster with non-user event support; appears to be partially developed with hardcoded test data.",
+      "complexity": "complex",
+      "lineCount": 895
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEAssignments.aspx.cs",
+      "fileName": "ManageCMEAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMEAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Main CME assignment management list page with multi-criteria filtering (user, event, admin, audience, academic year, email list, CME event type) and sortable paginated grid showing all evaluation assignments.",
+      "businessPurpose": "Allows CME administrators to search, view, and manage all CME evaluation assignments across users and events.",
+      "keyMethods": [
+        "Page_Load - checks permissions, initializes filters, and loads the assignments grid",
+        "FillFilters - binds all filter dropdowns (audience, users, administrators, events, academic year, email list)",
+        "BindEmailList - loads email database list for email-based filtering",
+        "BindUsers - loads user list filtered by selected audience type",
+        "BindAdministrators - loads admin user dropdown",
+        "BindAudience - loads audience type dropdown",
+        "BindEvents - loads CME event filter dropdown",
+        "BindAcademicYear - populates academic year filter",
+        "refreshGrid - builds EvaluationSearchCriteria and fetches filtered assignments list",
+        "findColumnIndex - helper to find grid column by accessible header text",
+        "SetActionText - returns Edit or View label based on privilege",
+        "GenerateURL - builds URL to ManageCMEAssignmentUsers for a specific assignment",
+        "grdEvaluations_RowCommand - handles grid row delete and restore actions"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager",
+        "EvaluationManager",
+        "DutyHoursManager",
+        "UserManager",
+        "DepartmentManager",
+        "EmailDatabaseManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Central assignment management page with complex multi-criteria search; high-priority migration target.",
+      "complexity": "complex",
+      "lineCount": 1004
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMECourse.aspx.cs",
+      "fileName": "ManageCMECourse.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMECourse",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "List management page for CME online courses with a sortable paginated grid, add/delete actions, and show-all paging capability.",
+      "businessPurpose": "Gives CME administrators an overview of all online CME courses with options to add new ones or delete existing ones.",
+      "keyMethods": [
+        "Page_Load - checks permissions and initializes the page with the course grid",
+        "CheckForPermissions - enforces CMETracking Courses module view privilege",
+        "btnAddCourse_Click - redirects to CMECourse.aspx add form",
+        "InitializePage - binds grid and sets up pager on first load",
+        "GetDeleteConfirmScript - returns JavaScript confirm dialog script for course deletion",
+        "GenerateURL - builds edit URL for a course row",
+        "lbtnShowAll_Click - disables paging and shows all courses",
+        "RefreshGrid - fetches and binds course list from CourseManager with sort applied",
+        "lbtnPrevious_Click - navigates to previous page",
+        "lbtnNext_Click - navigates to next page",
+        "lstPageList_SelectedIndexChanged - jumps to selected page",
+        "lbtnReset_Click - resets to default paged view",
+        "grdCourses_RowCommand - handles delete row command",
+        "grdCourses_RowCreated - adds sort indicator image to header"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CourseManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard CRUD list page for CME courses; straightforward to migrate.",
+      "complexity": "complex",
+      "lineCount": 428
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEDeletedAssignments.aspx.cs",
+      "fileName": "ManageCMEDeletedAssignments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMEDeletedAssignments",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "List page for deleted CME evaluation assignments with filtering by user, admin, and event, and a Restore action to reinstate deleted assignments.",
+      "businessPurpose": "Allows CME administrators to view and restore soft-deleted CME evaluation assignments for audit and recovery purposes.",
+      "keyMethods": [
+        "Page_Load - checks permissions, fills filters, and loads deleted assignments grid",
+        "CheckForPermissions - enforces CmeTemplates view privilege",
+        "FillFilters - binds audience, user, admin, and event filter dropdowns",
+        "BindUsers - loads users filtered by selected audience type",
+        "BindAdministrators - loads admin user dropdown",
+        "BindAudience - loads audience type dropdown",
+        "BindEvents - loads CME event filter dropdown",
+        "SetActionText - returns Restore label based on Update privilege",
+        "refreshGrid - fetches deleted assignments by criteria and binds grid",
+        "findColumnIndex - finds grid column index by accessible header text",
+        "GenerateURL - builds URL for restore action linking to ManageCMEAssignmentUsers",
+        "grdEvaluations_RowCommand - handles restore command for individual rows"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "DutyHoursManager",
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Soft-delete restore workflow for CME assignments; needs soft-delete support in modern data model.",
+      "complexity": "complex",
+      "lineCount": 665
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMEGroupsParticipants.aspx.cs",
+      "fileName": "ManageCMEGroupsParticipants.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageGroupsParticipants",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "List management page for CME conference participant groups with sortable paged grid, search by group name, add/edit/delete/view actions, and delete confirmation.",
+      "businessPurpose": "Lets CME coordinators manage named groups of participants for conference attendance assignment.",
+      "keyMethods": [
+        "Page_Load - checks permissions and initializes the group participant grid",
+        "CheckForPermissions - enforces ConferenceGroupParticipants DutyHour module view privilege and hides add buttons if no create right",
+        "refreshGrid - binds group list, optionally filtered by search criteria",
+        "GetEditActionLink - builds encrypted URL to AddGroupParticipants edit form",
+        "GetViewActionLink - builds URL to print group participants view",
+        "SetActionText - returns Edit, Delete, or View label based on role privilege",
+        "GetConferenceDeleteConfirmScript - returns JavaScript confirm dialog for group deletion",
+        "grdViewGroupParticipants_RowCommand - handles delete row command",
+        "DeleteGroup - calls GroupParticipantsManager.Delete and shows success/error message",
+        "btnAddGroupParticipants_Click - redirects to AddGroupParticipants add form",
+        "btnSearch_Click - sets search criteria flag and refreshes grid"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GroupParticipantsManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Group participant list is shared with DutyHours; migration needs coordination.",
+      "complexity": "complex",
+      "lineCount": 380
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCMELearnerActivities.aspx.cs",
+      "fileName": "ManageCMELearnerActivities.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCMELearnerActivities",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Per-assignment learner activity view showing assignment details, per-user evaluation completion status, and quiz assignment status in multiple grids, with bulk-delete capability.",
+      "businessPurpose": "Gives CME administrators a detailed activity view for a specific assignment, showing each learner's completion, partial, or pending status.",
+      "keyMethods": [
+        "Page_Load - initializes page and calls refreshGrid",
+        "InitializePage - checks permissions and calls refreshGrid on first load",
+        "StorePageStateToParm - stores TemplateID, CreatedBy, and CreatedDate from query params or ScheduleID lookup",
+        "CheckForPermissions - enforces CmeTemplates edit privilege and delete button visibility",
+        "SetActionText - returns Edit or View label based on Update privilege",
+        "refreshGrid - loads assignment summary and per-user evaluation status grids from EvaluationManager",
+        "BindAssignment - alternate bind by evaluation ID",
+        "GetDeleteConfirmScript - returns JavaScript confirm for individual row delete",
+        "btnDeleteAll_Click - deletes all assignments in this schedule"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager",
+        "MyEvalLog"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Learner activity tracking is a key reporting/management view for CME compliance.",
+      "complexity": "complex",
+      "lineCount": 557
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCertificates.aspx.cs",
+      "fileName": "ManageCertificates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCertificates",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "List management page for CME credit certificates, with a sortable grid, add/edit/delete actions, and CSS-based link state management for published/unpublished certificates.",
+      "businessPurpose": "Allows CME administrators to view, add, edit, and delete CME certificate templates for their department.",
+      "keyMethods": [
+        "Page_Load - checks permissions and loads certificate grid",
+        "CheckForPermissions - enforces Certificates module view privilege and hides add button if no create right",
+        "refreshGrid - fetches and binds certificate list from CerificateManager with sort applied",
+        "GetDeleteConfirmScript - returns JavaScript confirm dialog script for deletion",
+        "GetEditCSS - returns CSS class based on published state",
+        "SetLinkCSS - returns active or inactive link CSS class with optional line-through",
+        "GenerateURL - builds edit URL for a certificate row",
+        "grdViewCertificateList_Sorting - handles column sort click",
+        "grdViewCertificateList_RowDeleting - executes certificate delete after confirmation",
+        "grdViewCertificateList_RowCommand - captures certificate ID for delete confirmation",
+        "grdViewCertificateList_RowDataBound - adds row ID attribute for client-side handling",
+        "grdViewCertificateList_RowCreated - adds sort indicator image to header",
+        "btnAddCertificate_Click - redirects to Certificate.aspx add form"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CerificateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard CRUD list for CME certificates; straightforward to migrate.",
+      "complexity": "moderate",
+      "lineCount": 254
+    },
+    {
+      "filePath": "Web/CMETracking/ManageCmeEvaluations.aspx.cs",
+      "fileName": "ManageCmeEvaluations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageCmeEvaluations",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Main CME evaluation template management list page with sortable paginated grid, name/status search filtering, publish/delete/copy/restore actions, and CKEditor handler URL exposure.",
+      "businessPurpose": "Provides CME administrators with a comprehensive list view to manage CME evaluation templates through their full lifecycle (design, publish, delete, restore, copy).",
+      "keyMethods": [
+        "Page_Load - checks permissions and initializes grid with pager",
+        "CheckForPermissions - enforces EvaluationsTemplate view privilege",
+        "SetActionText - returns Edit or View based on Update privilege",
+        "refreshGrid - fetches template list (active or deleted) with optional name/status search criteria",
+        "GetDeleteConfirmScript - returns JavaScript confirm for template deletion",
+        "GetServerExecutionURL - returns the TemplateActions HTTP handler URL for CKEditor",
+        "Getparams - returns user and department ID parameters for handler calls",
+        "lbtnShowAll_Click - disables paging and shows all templates",
+        "lbtnNext_Click / lbtnPrevious_Click - grid pagination navigation",
+        "lstBottomPageList_SelectedIndexChanged / lstTopPageList_SelectedIndexChanged - jump to page",
+        "lbtnReset_Click - resets to default paginated view",
+        "btnSearch_Click - applies name/status search criteria and refreshes grid",
+        "grdEvaluations_RowCommand - handles delete, publish, copy, voluntary toggle, and restore commands"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Central template management hub for the CME module; all template lifecycle operations flow through this page.",
+      "complexity": "complex",
+      "lineCount": 750
+    },
+    {
+      "filePath": "Web/CMETracking/ManageQuestions.aspx.cs",
+      "fileName": "ManageQuestions.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ManageQuestions",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Manages the list of CME evaluation questions, supporting filtering by audience and category, sortable grid display, and delete/activate/deactivate operations. Enforces role-based access via SubModule.CmeQuestions.",
+      "businessPurpose": "Allows CME administrators to browse, add, edit, and manage evaluation questions organized by audience and question category.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets grid page size, binds audience and question category dropdowns on first load",
+        "BindAudience - Loads CME audience list into dropdown from QuestionManager.GetCMEAdience()",
+        "FillQuestionCategory - Loads question categories filtered by selected audience ID",
+        "refreshGrid - Fetches questions by category, sorts, paginates, and binds to GridView",
+        "grdViewQuestions_RowCommand - Handles Delete and activate/deactivate commands on grid rows",
+        "lstQuestionCategory_SelectedIndexChanged - Refreshes grid when category selection changes",
+        "GenerateURL - Builds edit URL for a question item",
+        "GetDeleteConfirmScript - Returns JS confirm dialog checking delete privilege",
+        "CheckForPermissions - Redirects or hides Add button based on role privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "QuestionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Question management for CME evaluations; business logic in QuestionManager should be exposed as a NestJS service endpoint.",
+      "complexity": "complex",
+      "lineCount": 563
+    },
+    {
+      "filePath": "Web/CMETracking/MonthlyPopupCMEInfo.aspx.cs",
+      "fileName": "MonthlyPopupCMEInfo.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_MonthlyPopupCMEInfo",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Displays a popup with detailed schedule information for a specific CME event, including event name, timing, location, topic, presenters, and an optional downloadable document. Supports file download via FileUploadServiceManager.",
+      "businessPurpose": "Provides users a quick-view popup of a monthly CME conference schedule item, showing when and where it occurs, who presents, and linking to any attached document.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, checks permissions, and initializes page on first load",
+        "InitializePage - Reads CME schedule ID from query string and stores in session state",
+        "GetConferenceScheduleInfo - Retrieves schedule info by ID via ScheduleTemplateManager",
+        "GetConferencePresenterInfo - Retrieves and formats presenter names for display",
+        "FillInfoFromDB - Populates all display fields including event name, timing, location, topic, and document link",
+        "btnView_Click - Triggers file download for the attached document",
+        "DownLoadFile - Downloads file bytes via FileUploadServiceManager and streams to response"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ScheduleTemplateManager",
+        "FileUploadServiceManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple read-only popup page; equivalent functionality in React frontend can call a schedule detail API endpoint.",
+      "complexity": "simple",
+      "lineCount": 274
+    },
+    {
+      "filePath": "Web/CMETracking/MultipleScheduleAssignment.aspx.cs",
+      "fileName": "MultipleScheduleAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_MultipleScheduleAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "The primary CME evaluation assignment page for creating and editing multi-schedule CME assignments, supporting required/optional user lists, support sources, document attachments, competencies, learning objectives, and all event metadata. Very large and complex page with extensive multi-step wizard logic.",
+      "businessPurpose": "Enables CME administrators to assign CME evaluations to participants across one or more schedules, manage commercial support sources, attach documents, and configure event competencies and learning objectives.",
+      "keyMethods": [
+        "Page_Load - Initializes user/department context, binds provider, activity type, competency dropdowns, sets page mode and permissions",
+        "CheckForPermissions - Validates CME assignment privileges and sets hidden fields for system/topic category editing rights",
+        "BindDocumentSubjects - Loads document subject list for file attachments",
+        "BindProviderShipNames - Loads providership dropdown from EventManager",
+        "BindActivityTypes - Loads CME activity types (currently commented out)",
+        "BindEventCompetencies - Loads event competencies list",
+        "BindSpecialty - Loads specialty dropdown filtered by certificate board selection",
+        "btnAddNewSupportSource_Click - Adds or updates a commercial support source entry in session state list",
+        "BindSupportSources - Binds the active support source list to the grid"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "ScheduleTemplateManager",
+        "ConferenceSchedulesManager",
+        "CMEBussiness",
+        "FileUploadComponentWebService"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core CME assignment workflow at 5907 lines; highest-priority page for migration planning. Should be decomposed into NestJS APIs for assignment creation, support source management, and document attachment.",
+      "complexity": "very-complex",
+      "lineCount": 5907
+    },
+    {
+      "filePath": "Web/CMETracking/MultipleTopicsSelection.aspx.cs",
+      "fileName": "MultipleTopicsSelection.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_MultipleTopicsSelection",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Manages selection and configuration of multiple CME schedule topics within the event assignment workflow, handling topic lists, learning objectives, lecturers, credits, and date/time ranges. Supports auto-logout and postback state restoration.",
+      "businessPurpose": "Allows CME coordinators to select and configure multiple topics for a CME event, setting start/end dates, times, credit values, lecturers, and learning objectives per topic.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, handles auto-logout trigger, binds credits/lecturers/time lists and restores topic/LO session state",
+        "StorePageStateToParam - Reads event/create IDs from query string, loads event info and existing schedule topics for edit mode",
+        "btnBindExistingMultiTpics_Click - Deserializes the hidden topic list and refreshes grid",
+        "getLOList - Serializes learning objective list to pipe-delimited string for client-side use",
+        "GetLearningObjectiveListFromString - Deserializes pipe-delimited LO string back to typed list",
+        "BindAvailableLecturers - Loads lecturer list from ScheduleTemplateManager",
+        "BindEventCredits - Loads credit values from EventManager",
+        "BindStartTime / BindEndTime - Populates time dropdowns in 15-minute intervals"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ScheduleTemplateManager",
+        "EventManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Child popup page used within the multi-schedule assignment workflow; should be converted to a React modal or wizard step calling a topics API.",
+      "complexity": "complex",
+      "lineCount": 1598
+    },
+    {
+      "filePath": "Web/CMETracking/NoRecordFoundForAll.aspx.cs",
+      "fileName": "NoRecordFoundForAll.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_NoRecordFoundForAll",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Empty placeholder page displayed when a CME lookup finds no matching record. Contains no logic beyond the Page_Load stub.",
+      "businessPurpose": "Shows a 'no record found' message to users who navigate to a CME entity that does not exist or is unavailable.",
+      "keyMethods": [
+        "Page_Load - Empty event handler; page content is rendered entirely by ASPX markup"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "Trivial UI placeholder; equivalent is a React 404/empty-state component.",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/CMETracking/PrintGroupsParticipants.aspx.cs",
+      "fileName": "PrintGroupsParticipants.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_PrintGroupsParticipants",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders a printable list of participants in a CME conference group, showing the group name, each participant's name with shared/archived status indicators, and the department logo. Supports back navigation using referrer URL.",
+      "businessPurpose": "Allows CME administrators or coordinators to print the participant list for a specific conference group, useful for sign-in sheets and record keeping.",
+      "keyMethods": [
+        "Page_Load - Stores group ID from query string, checks permissions, loads department logo, and calls GetGroupParticipantsInfo",
+        "CheckForPermissions - Validates ConferenceGroupParticipants view privilege",
+        "StorePageParamsToState - Reads DepartmentGroupID from query string into page state",
+        "GetGroupParticipantsInfo - Retrieves participant rows, builds HTML table with shared/archived annotations",
+        "back_Click - Redirects back to referring page URL stored in ViewState"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GroupParticipantsManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Print-only page; can be replaced by a React print view or PDF generation endpoint.",
+      "complexity": "simple",
+      "lineCount": 128
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/CMECertificatesReport.aspx.cs",
+      "fileName": "CMECertificatesReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_CMECertificatesReport",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the CME Certificates Report, allowing selection of CME events and participants. Supports both personal (user-only) and administrative (multi-user) report modes, with role-based access control that restricts non-admin user types from the main report.",
+      "businessPurpose": "Enables administrators to configure and generate CME completion certificates by selecting specific events and user participants before viewing the certificate output.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets filter panels, initializes event list, configures cancel button URL based on report mode",
+        "CheckForPermissions - Enforces role and user-type restrictions; non-admin user types cannot access the main report",
+        "SetFilterPanels - Shows/hides user selection step based on IsMainRpt query parameter",
+        "InitializeEventList - Loads available CME events via EventManager; includes All Events option",
+        "InitializeUsers - Loads available participants filtered by selected event and date range",
+        "lstAvailableEvents_SelectedIndexChanged - Reloads user list when event selection changes",
+        "btnAdd_Click / btnRemove_Click / btnAddAll_Click / btnRemoveAll_Click - Move users between available and selected lists",
+        "CkbxShowArchved_CheckedChanged - Refreshes user list including archived users"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page with role-gated multi-user selection; migrate as a report parameters API and React filter UI.",
+      "complexity": "moderate",
+      "lineCount": 342
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/CMECertificatesReportResults.aspx.cs",
+      "fileName": "CMECertificatesReportResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_CMECertificatesReportResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders CME certificate HTML output directly to the response stream for printing, generating one certificate page per participant per event. Each certificate includes institutional logo, headings, participant name, event details, credit information, and dual signature images.",
+      "businessPurpose": "Produces printable CME completion certificates for selected participants and events, with full institutional branding and credential information.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, initializes page state, and calls ProcessReportOutput",
+        "InitializePage - Stores report input parameters via EvaluationsReportManager",
+        "StorePageStateParams - Deserializes ReportInfo from form post",
+        "ProcessReportOutput - Streams certificate HTML for each participant row in the result dataset, including logo, signatures, and credit details; handles no-data case"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Direct HTML streaming to response; migrate as a PDF generation endpoint (e.g., Puppeteer or server-side PDF library) in Node.js.",
+      "complexity": "moderate",
+      "lineCount": 356
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/CMEFinancialStatement.aspx.cs",
+      "fileName": "CMEFinancialStatement.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_CMEFinancialStatement",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the CME Financial Statement report, supporting selection of events or speakers, date ranges, archive flag, format (overall vs. by event), and saved favorite report settings. Restricted to admin-level roles only.",
+      "businessPurpose": "Allows CME administrators to configure parameters for the CME Financial Statement report, which shows income and expense breakdowns for CME events.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, loads department/role context, initializes event list, restores saved favorite or back-to-filter state",
+        "CheckForPermissions - Blocks all non-SysAdmin user types from accessing this report",
+        "PrepareFormForEditMode - Loads saved report settings from database or session and populates form controls",
+        "FillInfoFromDB - Deserializes ReportInfo JSON and restores event/speaker selections, date range, format, and custom report metadata",
+        "InitializeEventList - Delegates to CMEFinancialBussiness to load events/speakers/topics",
+        "MoveUser / MoveUsers - Moves items between available and selected list boxes with sorting",
+        "rbtnListEvents_SelectedIndexChanged - Reloads event list and reselects previously chosen items"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEFinancialBussiness",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Admin-only financial report filter; migrate as a parameterized report API with React filter UI and saved settings support.",
+      "complexity": "moderate",
+      "lineCount": 405
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/CMEFinancialStatementResults.aspx.cs",
+      "fileName": "CMEFinancialStatementResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_CMEFinancialStatementResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders the CME Financial Statement report output by streaming HTML directly to the response, showing income and expense line items per event with totals. Includes a loading overlay and back-to-filter navigation.",
+      "businessPurpose": "Produces the formatted CME Financial Statement report for administrators, displaying revenue sources and expense categories with totals for selected CME events over a date range.",
+      "keyMethods": [
+        "Page_Init - Writes loading script and loading screen HTML to response before page renders",
+        "GetLoadingScript - Returns JavaScript to hide the splash screen overlay",
+        "LoadReportLoadingScreen - Returns HTML for the loading overlay table",
+        "Page_Load - Checks permissions, initializes page, determines personal data flag, and calls ProcessReportOutput",
+        "InitializePage / StorePageStateParams - Reads form-posted report parameters into CMEFinancialManager state",
+        "ProcessReportOutput - Queries financial report data and streams formatted income/expense HTML per event row",
+        "StripHtml - Utility to strip HTML tags from strings for safe display"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEFinancialManager",
+        "CMEFinancialBussiness",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Financial report output with direct HTML streaming; migrate as a PDF/HTML report endpoint in Node.js.",
+      "complexity": "moderate",
+      "lineCount": 309
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/CertificateReport.aspx.cs",
+      "fileName": "CertificateReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "DutyHours_Reports_DailySummaryDutyHours",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Despite being located in the CMETracking/Reports folder, this file's class is DutyHours_Reports_DailySummaryDutyHours and serves as the filter page for a Duty Hours daily summary report with PGY-level filtering. The file appears to be misnamed or misplaced.",
+      "businessPurpose": "Provides PGY-based and user-selection filter steps for the Daily Summary Duty Hours report; restricts access to admin-level roles only.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets filter panel visibility, attaches event handlers for PGY selection changes",
+        "CheckForPermissions - Blocks all non-SysAdmin user types",
+        "SetFilterPanels - Shows or hides PGY and user-selection filter steps based on personal data only flag",
+        "lstAvailablePGYs_listSelectedIndexChangeHandler - Loads rotation blocks when PGY selection changes",
+        "lstAvailabelUsers_PreRender - Registers change handler for user selection dropdown",
+        "btnCancel_Click - Redirects to DutyHoursMain.aspx"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Misnamed/misplaced file that belongs to DutyHours module; class name does not match file path.",
+      "complexity": "simple",
+      "lineCount": 169
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/DetailedLedgerCreditsReport.aspx.cs",
+      "fileName": "DetailedLedgerCreditsReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_DetailedLedgerCreditsReport",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the CME Credits Detailed Ledger Report, allowing selection of event, date range, display type (completed/incomplete/all), external CME display option, archived users flag, user scope and type, and supporting saved favorite report settings.",
+      "businessPurpose": "Lets administrators configure and launch the detailed per-user CME credit ledger report, which shows each user's claimed and available credits across selected events.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets filter panels, initializes event list, restores saved or back-to-filter report settings",
+        "CheckForPermissions - Enforces role and user-type restrictions for main report access",
+        "InitializeEventList - Loads all events and local-only events into dropdown",
+        "SetFilterPanels - Adjusts visible steps based on IsMainRpt query parameter",
+        "PrepareFormForEditMode / FillInfoFromDB - Restores saved report settings from DB or session into form controls",
+        "lstAvailableEvent_SelectedIndexChanged - Updates user list control when event selection changes",
+        "InitializeUsers - Loads report users filtered by event and date range"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "EvaluationsReportManager",
+        "CMEBussiness"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Multi-step report filter with saved settings support; migrate as a parameterized report API with React UI.",
+      "complexity": "moderate",
+      "lineCount": 434
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/DetailedLedgerCreditsReportResults.aspx.cs",
+      "fileName": "DetailedLedgerCreditsReportResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_DetailedLedgerCreditsReportResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders the CME Credits Detailed Ledger Report by streaming HTML to the response, showing per-user credit details including event, topic, dates, claimed credits, and completion status. Supports CSV export, Excel export, and print, as well as personal data only mode.",
+      "businessPurpose": "Produces a detailed per-user CME credit ledger for administrators, showing exactly which CME activities each user completed and how many credits were claimed.",
+      "keyMethods": [
+        "Page_Load - Checks permissions on first load only, calls InitializePage and ProcessReportOutput",
+        "InitializePage / StorePageStateParams - Deserializes report input from form post or ReportSettingID query parameter",
+        "ProcessReportOutput - Streams full report HTML including header, filter summary, department logo, and per-user credit rows; handles both saved settings and live form post modes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Large report output page with CSV/Excel export hooks; migrate as a data API endpoint with frontend-driven export.",
+      "complexity": "complex",
+      "lineCount": 855
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryCMEEvaluationReport.aspx.cs",
+      "fileName": "SummaryCMEEvaluationReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryCMEEvaluationReport",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the Summary CME Evaluation Report supporting multi-step selection of events, topics, and speakers in both by-event and by-speaker modes. Supports archived users, date ranges, evaluator type, and saved favorite report settings. Admin-only access.",
+      "businessPurpose": "Enables CME administrators to configure the Summary CME Evaluation Report by selecting events, topics, speakers, and evaluator groups before generating the aggregated evaluation summary.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, loads department/role context, initializes event list, restores saved or back-to-filter settings",
+        "CheckForPermissions - Blocks all non-SysAdmin user types",
+        "PrepareFormForEditMode / FillInfoFromDB - Restores saved report settings from DB or session into multi-list selection controls for both by-event and by-speaker modes",
+        "InitializeEventList - Loads events and speakers with conditional overload for topics loaded state"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEBussiness",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Complex multi-step filter with two selection modes and saved settings; migrate as a parameterized report API.",
+      "complexity": "complex",
+      "lineCount": 1034
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryCMEEvaluationReportResults.aspx.cs",
+      "fileName": "SummaryCMEEvaluationReportResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryCMEEvaluationReportResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders the Summary CME Evaluation Report results by streaming HTML to the response. Supports both by-event and by-speaker selection modes with multi-event, multi-topic, multi-speaker parameters. Shows a loading overlay during generation and supports back-to-filter navigation.",
+      "businessPurpose": "Produces the aggregated Summary CME Evaluation Report for administrators, showing evaluation response summaries across selected CME events, topics, and speakers.",
+      "keyMethods": [
+        "Page_Init - Writes loading script and loading screen to response",
+        "GetLoadingScript / LoadReportLoadingScreen - Returns JS and HTML for the loading overlay",
+        "Page_Load - Checks permissions, initializes page state, processes report output",
+        "StorePageStateParams - Deserializes EvaluationsReportManager input info",
+        "ProcessReportOutput - Reads parameters from form post or saved report settings, builds report header HTML, and delegates data retrieval and rendering to EvaluationsReportManager"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "HTML-streaming report results page; migrate as a data API with React report viewer.",
+      "complexity": "complex",
+      "lineCount": 1580
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryEventReport.aspx.cs",
+      "fileName": "SummaryEventReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryEventReport",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the Summary Event Report allowing selection of a specific CME event, evaluation template, date period, topic category, and online/offline schedule period. Supports local vs. all events toggle, archived records, and saved favorite report settings. Admin-only access.",
+      "businessPurpose": "Allows CME administrators to specify filter criteria for the Summary Event Report, which provides detailed per-event evaluation summaries including learning objectives and response statistics.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets default date format, initializes event list, evaluation list, period list, topic category dropdown, and restores saved settings",
+        "CheckForPermissions - Blocks all non-SysAdmin user types",
+        "InitializeEventList - Loads events filtered by local or all per radio button selection",
+        "InitializeEvaluationList - Loads evaluation templates for the selected event",
+        "InitializePeriodList / InitializePeriodTimeList - Loads available period and time slot options",
+        "PrepareFormForEditMode / FillInfoFromDB - Restores saved report settings into form controls",
+        "BindTopicCategory - Loads topic category dropdown",
+        "rbtnListEvents_SelectedIndexChanged / lstAvailableEvent_SelectedIndexChanged - Cascades dropdowns on selection change"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Multi-step filter with cascading dropdowns and saved settings; migrate as a parameterized report API.",
+      "complexity": "moderate",
+      "lineCount": 480
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryEventReportResults.aspx.cs",
+      "fileName": "SummaryEventReportResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryEventReportResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders the Summary Event Report results by streaming detailed HTML to the response. Displays learning objective responses (text and numeric), question comments, topic category, event name, credits, location, and presenter information. Handles multiple data tables from a multi-result dataset.",
+      "businessPurpose": "Produces the comprehensive Summary Event Report for a specific CME conference showing aggregated evaluation responses, learning objective achievement percentages, and free-text comments.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, initializes page state, calls ProcessReportOutput",
+        "InitializePage / StorePageStateParams - Reads and stores report parameters from form post or saved settings",
+        "ProcessReportOutput - Reads report inputs, calls EvaluationsReportManager.GetSummaryEventReportResult, and streams complex multi-table HTML output covering event header, learning objectives, text/numeric responses, and question comments"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "EventManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Very large HTML streaming report; migrate as a structured data API with React rendering to replace direct Response.Write pattern.",
+      "complexity": "complex",
+      "lineCount": 1060
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReport.aspx.cs",
+      "fileName": "SummaryLedgerCreditsReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryLedgerCreditsReport",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Filter page for the Summary Ledger Credits Report supporting event selection, date range, display type (completed/incomplete/all), external CME display, display format, archived users, user scope and type, and saved favorite report settings.",
+      "businessPurpose": "Lets CME administrators configure the Summary Ledger Credits Report to view aggregated CME credit totals per user across selected events and date ranges.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets context, loads event list, shows no-data message if redirected, restores saved or back-to-filter settings",
+        "CheckForPermissions - Blocks non-SysAdmin user types",
+        "InitializeEventList - Loads all events and local events dropdown options",
+        "PrepareFormForEditMode / FillInfoFromDB - Restores saved report settings into form controls including user type, scope, and event selection",
+        "lstAvailableEvent_OnSelectedIndexChanged - Updates user list on event change",
+        "btnDummy_Click - Hidden trigger to refresh user list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page with saved settings and multi-user scope selection; migrate as a parameterized report API.",
+      "complexity": "moderate",
+      "lineCount": 305
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportBeta.aspx.cs",
+      "fileName": "SummaryLedgerCreditsReportBeta.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryLedgerCreditsReportBeta",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Beta/simplified version of the Summary Ledger Credits Report filter page, with basic event selection, archived flag, and user list binding. Fewer features than the main version and no saved settings support.",
+      "businessPurpose": "Provides an alternative simpler filter UI for the Summary Ledger Credits Report, likely used during testing or as a parallel implementation.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, handles no-data display, determines personal data flag, and loads event list",
+        "CheckForPermissions - Validates SummaryLedgerofCMECredits privilege",
+        "InitializeEventList - Loads events including Select One, All Events, and All Local Events options",
+        "lstAvailableEvent_OnSelectedIndexChanged - Updates user list on event change",
+        "btnDummy_Click - Hidden trigger to refresh user list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Beta/simplified version superseded by the main SummaryLedgerCreditsReport; low migration priority.",
+      "complexity": "simple",
+      "lineCount": 109
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportResults.aspx.cs",
+      "fileName": "SummaryLedgerCreditsReportResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryLedgerCreditsReportResults",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Renders the Summary Ledger Credits Report results by streaming HTML in Page_PreInit, before the ASP.NET lifecycle processes the page. Displays per-event credit tables with participant claimed/available credit columns, and multi-event summary totals. Supports CSV and Excel export buttons and back-to-filter navigation.",
+      "businessPurpose": "Produces the Summary Ledger Credits Report showing how many CME credits each participant claimed versus available credits per event, for administrators managing compliance and reporting.",
+      "keyMethods": [
+        "Page_PreInit - Runs initialization and full report output before page lifecycle; writes loading script",
+        "Page_Load - Checks permissions only (output already written in PreInit)",
+        "GetLoadingScript - Returns JavaScript for the splash screen hide function",
+        "InitializePage / StorePageStateParams - Reads and stores report input info from EvaluationsReportManager",
+        "ProcessReportOutput - Reads parameters from form post or saved settings, builds HTML header, iterates events, streams per-event credit tables, and prints multi-event summary totals"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report rendered in PreInit lifecycle with direct HTML streaming; migrate as a structured data API with React/PDF rendering.",
+      "complexity": "complex",
+      "lineCount": 1128
+    },
+    {
+      "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportResultsBeta.aspx.cs",
+      "fileName": "SummaryLedgerCreditsReportResultsBeta.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Reports_SummaryLedgerCreditsReportResultsBeta",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Beta version of the Summary Ledger Credits Report results page that renders event credit tables in Page_PreInit. Simpler than the main version, iterates events from a dataset and writes per-event and summary credit rows to the response.",
+      "businessPurpose": "Produces an alternative version of the Summary Ledger Credits Report output, likely used during development or A/B testing of the report format.",
+      "keyMethods": [
+        "Page_PreInit - Runs initialization and report output before page lifecycle",
+        "Page_Load - Permission check only",
+        "GetLoadingScript - Returns loading splash screen JavaScript",
+        "InitializePage / StorePageStateParams - Stores report input info",
+        "ProcessReportOutput - Iterates events list, writes per-event credit tables and multi-event summary totals to response stream",
+        "ShowErrorMessage - On exception, renders error back to form and redirects"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationsReportManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Beta version superseded by the main SummaryLedgerCreditsReportResults; low migration priority.",
+      "complexity": "moderate",
+      "lineCount": 364
+    },
+    {
+      "filePath": "Web/CMETracking/ScheduleAssignment.aspx.cs",
+      "fileName": "ScheduleAssignment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_ScheduleAssignment",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Single-schedule CME evaluation assignment page allowing selection of event, evaluation template, credit value, lecturers (with guest support), start/end dates and times, and learning objectives. Predecessor or simpler alternative to MultipleScheduleAssignment.",
+      "businessPurpose": "Allows CME administrators to create or edit a single CME schedule assignment, linking an event, an evaluation template, credits, date/time, and presenting lecturers.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, initializes page, binds all dropdowns",
+        "InitializePage - Binds lecturers, events, evaluations, credits, start/end time dropdowns",
+        "BindAvailableLecturers - Loads lecturer list from ScheduleTemplateManager",
+        "BidEvents - Loads CME event list from EventManager",
+        "BidEvaluations - Loads active evaluation templates from TemplateManager",
+        "BindEventCredits - Loads credit value list from EventManager",
+        "BindStartTime / BindEndTime - Populates time dropdowns in 15-minute intervals",
+        "UpdateLecturerList - Manages Add/Remove of lecturers between available and selected lists, with guest lecturer support"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "ScheduleTemplateManager",
+        "EventManager",
+        "TemplateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Single-schedule assignment form; may be deprecated in favor of MultipleScheduleAssignment but should be reviewed before decommissioning.",
+      "complexity": "complex",
+      "lineCount": 679
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/CMEConnectivity.aspx.cs",
+      "fileName": "CMEConnectivity.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_CMEConnectivity",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Setup page for CME connectivity configuration, loading available connectivity category names for the department and wiring a JavaScript handler for connectivity detail retrieval on dropdown change.",
+      "businessPurpose": "Allows CME setup administrators to select and configure the CME connectivity provider category for their institution.",
+      "keyMethods": [
+        "Page_Load - On first load, binds connectivity names dropdown and registers JS startup scripts for loading existing connectivity details"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEConnectivityManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple setup form with a single dropdown; migrate as a settings API endpoint.",
+      "complexity": "trivial",
+      "lineCount": 26
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/CMESatellitePrograms.aspx.cs",
+      "fileName": "CMESatellitePrograms.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_CMESatellitePrograms",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Setup page for managing CME satellite programs, loading a list of available satellite department programs and triggering a JavaScript function to pre-select saved satellite departments.",
+      "businessPurpose": "Lets CME administrators configure which satellite department programs are associated with their CME tracking instance.",
+      "keyMethods": [
+        "Page_Load - On first load, binds satellite programs list from CMEConnectivityManager and registers JS to load previously saved satellite departments"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEConnectivityManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple one-step satellite program configuration; migrate as a settings API endpoint.",
+      "complexity": "trivial",
+      "lineCount": 21
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/CmeSetup.aspx.cs",
+      "fileName": "CmeSetup.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_CmeSetup",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "CME Setup menu page that controls visibility of setup sub-menu items (events, credit types) based on user role and department CME enable status. Also shows or hides contextual help icons based on SysAdmin role and help content availability.",
+      "businessPurpose": "Serves as the landing page for the CME Setup section, dynamically rendering available configuration options based on user role and whether CME is enabled for the department.",
+      "keyMethods": [
+        "Page_Load - Determines personal data flag, calls InitializePage and SetHelpIcons",
+        "SetHelpIcons - Checks SysAdmin role and help content database to show/hide help icon links for CME certificate, events, and credit types",
+        "InitializePage - Removes unauthorized menu items based on user privileges and shows/hides an optional add-on feature label based on CME enable flag"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "RoleManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Navigation menu page with role-based item visibility; migrate as a React navigation component with permission-gated links.",
+      "complexity": "simple",
+      "lineCount": 155
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/CreditType.aspx.cs",
+      "fileName": "CreditType.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_CreditType",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit page for CME credit types, managing the description, two activity director signatures (uploaded images), and an accreditation statement split across two text areas. Handles signature image upload, storage, and display.",
+      "businessPurpose": "Allows CME administrators to create or update a credit type record including the accrediting organization, activity director signatures, and accreditation statement text displayed on CME certificates.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, checks permissions, initializes page",
+        "InitializePage - Sets page title and mode, stores params to state, calls PrepareFormForEditMode in edit/view mode",
+        "FillInfoFromDB(CMECertificateInfo) - Populates form from certificate info (signature images and director titles)",
+        "FillInfoFromDB(CreditTypeInfo) - Populates form from credit type record including both signature paths, directors, accreditation statement split",
+        "FillInfoFromForm - Builds CreditTypeInfo object from form inputs, handles signature upload via StoreSignature",
+        "StoreSignature - Validates and saves uploaded signature image file to server path",
+        "BuildPath - Constructs file system path and database path for new signature image",
+        "btnSave_Click - Validates and saves new credit type via CreditTypeManager.Save",
+        "btnUpdate_Click - Validates and updates existing credit type via CreditTypeManager.Update"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CreditTypeManager",
+        "CerificateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Credit type CRUD with file upload; migrate as a REST API with multipart upload support for signature images.",
+      "complexity": "moderate",
+      "lineCount": 412
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/Event.aspx.cs",
+      "fileName": "Event.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_Event",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Add/Edit page for CME Events, configuring event name, credit value, credit type, target audience, learning objectives, providership, competencies, certifying board, specialty, PARS reporting flags, and commercial support sources. Large and complex multi-step form.",
+      "businessPurpose": "Allows CME administrators to create or edit CME events with all associated accreditation metadata, credit configuration, and commercial support disclosures required for ACCME reporting.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, checks permissions, initializes page and support source list",
+        "CheckForPermissions - Enforces CmeEvents privilege and sets button visibility by mode",
+        "InitializePage - Binds all dropdowns (credits, credit types, providers, competencies, certifying boards, specialty), loads edit mode data, shows/hides PARS steps",
+        "BindEventCredits / BindCreditTypes / BindProviderShipNames / BindEventCompetencies / BindCertifyingBoards / BindSpecialty - Load respective dropdown data from EventManager and CreditTypeManager",
+        "PrepareFormForEditMode - Loads existing event info by ID",
+        "FillInfoFromDB - Populates all form fields from EventInfo including learning objectives, competencies, PARS flags, support sources",
+        "getLOList - Serializes learning objectives for client-side consumption"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager",
+        "CreditTypeManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core CME event setup with complex multi-step ACCME metadata; should be a high-priority NestJS API endpoint for event CRUD.",
+      "complexity": "complex",
+      "lineCount": 953
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageCreditTypes.aspx.cs",
+      "fileName": "ManageCreditTypes.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageCreditTypes",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Lists and manages CME credit types in a sortable GridView, supporting delete operations with confirmation dialogs and sort column indicator. Enforces role-based access for create and delete operations.",
+      "businessPurpose": "Allows CME administrators to view, sort, and delete CME credit type records, and navigate to add or edit individual credit types.",
+      "keyMethods": [
+        "Page_Load - Checks permissions and loads credit type grid on first load",
+        "CheckForPermissions - Validates CreditTypes view privilege and hides Add button if lacking Create privilege",
+        "refreshGrid - Loads credit types from CreditTypeManager and applies sort order",
+        "GetDeleteConfirmScript - Returns JS confirm dialog checking delete privilege",
+        "GenerateURL - Returns edit URL for a credit type ID",
+        "grdViewCreditTypeList_Sorting - Handles column sort toggling",
+        "grdViewCreditTypeList_RowDeleting - Deletes selected credit type and refreshes grid",
+        "grdViewCreditTypeList_RowCommand - Captures delete command argument to page state",
+        "grdViewCreditTypeList_RowDataBound - Sets row ID attribute for JS access",
+        "btnAddCreditType_Click - Redirects to CreditType.aspx for new entry"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CreditTypeManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard list/manage grid for credit types; migrate as a React data table with API-backed CRUD.",
+      "complexity": "moderate",
+      "lineCount": 254
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageDefaultCredentialingInfo.aspx.cs",
+      "fileName": "ManageDefaultCredentialingInfo.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageDefaultCredentialingInfo",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Manages the default CME credentialing text fields for a department including acknowledgment, disclosure, accreditation statement, and credit statement. Loads department-level defaults and allows administrators to customize these boilerplate texts.",
+      "businessPurpose": "Allows CME administrators to set the institution-level default credentialing statement texts that appear on CME evaluations and certificates, reducing repetitive entry for each event.",
+      "keyMethods": [
+        "Page_Load - Loads department name, sets page mode, checks permissions, initializes page",
+        "InitializePage - Calls PrepareFormForEditMode on first load",
+        "PrepareFormForEditMode - Loads existing credential info via CMECredentialManager",
+        "FillInfoFromDB - Populates text boxes with saved or default boilerplate acknowledgment, disclosure, accreditation, and credit statements",
+        "FillInfoFromForm - Builds CMECredentialInfo from text box values",
+        "btnSave_Click / btnUpdate_Click - Saves or updates credential info via CMECredentialManager.Save"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMECredentialManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Department-level settings page for credentialing boilerplate texts; migrate as a settings API endpoint.",
+      "complexity": "moderate",
+      "lineCount": 225
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageEmailDatabase.aspx.cs",
+      "fileName": "ManageEmailDatabase.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageEmailDatabase",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Setup page stub for managing an email database associated with CME. Currently contains only a skeletal LoadEmailDB method with no implementation. Session user ID and department ID are stored in hidden fields.",
+      "businessPurpose": "Intended to provide an interface for managing the CME email contact database; currently unimplemented.",
+      "keyMethods": [
+        "Page_Load - Stores logged-in user ID and department ID in hidden fields, calls empty LoadEmailDB on first load",
+        "LoadEmailDB - Empty stub method with no current implementation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": "Unimplemented stub page; no migration value in current state.",
+      "complexity": "trivial",
+      "lineCount": 26
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageEvents.aspx.cs",
+      "fileName": "ManageEvents.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageEvents",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Lists and manages CME events in a sortable, paginated GridView with soft-delete and restore functionality. Supports toggling between active and deleted event lists, with confirmation dialogs for delete and restore actions.",
+      "businessPurpose": "Allows CME administrators to view, sort, delete, and restore CME events, maintaining a soft-delete record of previously removed events that can be restored.",
+      "keyMethods": [
+        "Page_Load - Checks permissions, sets grid page sizes, and loads active events on first load",
+        "CheckForPermissions - Validates CmeEvents view privilege and hides Add button if lacking Create privilege",
+        "refreshGrid - Loads active or deleted event list from EventManager and applies sort and pagination",
+        "GenerateURL - Returns edit URL for an event ID",
+        "GetDeleteConfirmScript / GetRestoreConfirmScript - Returns JS confirm dialogs for delete and restore",
+        "lbtnShowAll_Click - Disables pagination to show all records",
+        "lbtnPrevious_Click / lbtnNext_Click - Navigate paginated event grid",
+        "btnAddEvent_Click - Redirects to Event.aspx for new event"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EventManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard event list/manage page with soft-delete; migrate as a React data table with API-backed CRUD and restore.",
+      "complexity": "moderate",
+      "lineCount": 548
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageMerchantServices.aspx.cs",
+      "fileName": "ManageMerchantServices.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageMerchantServices",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Setup page for configuring the CME merchant service provider, loading available merchant service names and wiring a JavaScript startup script to pre-load saved merchant service selection.",
+      "businessPurpose": "Allows CME administrators to select which payment/merchant service provider is configured for CME registration fee processing.",
+      "keyMethods": [
+        "Page_Load - On first load, loads merchant service names dropdown from CMEConnectivityManager and registers JS to populate previously saved selection"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "CMEConnectivityManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple settings page for merchant service integration; migrate as a settings API endpoint.",
+      "complexity": "trivial",
+      "lineCount": 26
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/ManageUploadUser.aspx.cs",
+      "fileName": "ManageUploadUser.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_ManageUploadUser",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Loads and displays a specific uploaded user record (by fileID and uploadID query parameters) from the CME email list upload system, showing first name, last name, email, and status.",
+      "businessPurpose": "Allows administrators to view the details of a specific user entry from an uploaded CME participant list file.",
+      "keyMethods": [
+        "Page_Load - Reads fileID and uploadID from query string, fetches user record via UploadNameOfList.GetCMEUploadUser, and populates form fields"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UploadNameOfList"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple read-only detail view for an uploaded user record; migrate as a detail API endpoint.",
+      "complexity": "trivial",
+      "lineCount": 35
+    },
+    {
+      "filePath": "Web/CMETracking/Setup/UploadList.aspx.cs",
+      "fileName": "UploadList.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_Setup_UploadList",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Handles upload of an Excel (.xls/.xlsx) participant list file into the CME email database system. Parses the Excel file using EPPlus, validates file type and size, saves file to the upload directory, and imports rows into the database via UploadNameOfList.Save.",
+      "businessPurpose": "Allows CME administrators to upload a participant list from an Excel spreadsheet, importing names and emails into the CME email database for mass communication or assignment.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, checks permissions, initializes page",
+        "InitializePage - Sets page title and loads edit mode data if applicable",
+        "FillInfoFromForm - Reads form inputs including file upload, validates extension and size",
+        "FileImporting - Parses Excel file with EPPlus, imports all rows into database via UploadNameOfList.Save, and saves file to server",
+        "btnSave_Click - Validates, calls FileImporting, redirects to ManageEmailDatabase",
+        "btnUpdate_Click - Update path (partially implemented, redirect only)",
+        "getLOList / GetLearningObjectiveListFromString - Learning objective serialization utilities (included as shared helpers)"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UploadNameOfList"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "File upload and Excel parsing for participant lists; migrate as a multipart upload API endpoint with server-side Excel parsing (e.g., ExcelJS in Node.js).",
+      "complexity": "moderate",
+      "lineCount": 387
+    },
+    {
+      "filePath": "Web/CMETracking/UndoCMEEvaluationInfo.aspx.cs",
+      "fileName": "UndoCMEEvaluationInfo.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_UndoCMEEvaluationInfo",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Displays details of a CME evaluation to be undone, including event name, department, start/end dates, expiry date, user name, creator, and completed date. Redirects to NoRecordFoundForAll if no matching evaluation found.",
+      "businessPurpose": "Provides a confirmation view showing the evaluation details before an administrator undoes or reverses a completed CME evaluation submission.",
+      "keyMethods": [
+        "Page_Load - Calls UndoCMEEvaluationInfo on first load",
+        "UndoCMEEvaluationInfo - Reads EvaluationID from query string, fetches evaluation undo info via EvaluationManager, populates labels or redirects if not found"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Undo/reverse evaluation confirmation page; the undo action itself should be a POST API endpoint in NestJS.",
+      "complexity": "trivial",
+      "lineCount": 58
+    },
+    {
+      "filePath": "Web/CMETracking/VerifyEvaluation.aspx.cs",
+      "fileName": "VerifyEvaluation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_VerifyEvaluation",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Attendance verification gate page for CME evaluations. Displays accreditation and disclosure statements from the schedule, checks if the user has already completed the evaluation or if the event hasn't started, and prompts the user to confirm attendance before proceeding to the evaluation.",
+      "businessPurpose": "Ensures users verify their physical attendance at a CME event before they can access and complete the CME evaluation, with credentialing statement display.",
+      "keyMethods": [
+        "InitializePage - Reads evaluation/template/schedule IDs, loads credentialing info from schedule, checks existing completion status, validates event start date, and renders appropriate attendance prompt or redirect",
+        "btnYes_Click - Verifies attendance via EvaluationManager.VerifyEvaluationAttendance and redirects to VerifyEvaluationAttendance page",
+        "btnNo_Click - Shows a message that attendance is required",
+        "GetRedirecctUrl - Builds redirect URL with evaluation/template/schedule IDs"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "TemplateManager",
+        "ScheduleTemplateManager",
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Critical attendance verification workflow gate; migrate as a NestJS API endpoint for attendance confirmation with frontend React modal.",
+      "complexity": "moderate",
+      "lineCount": 202
+    },
+    {
+      "filePath": "Web/CMETracking/VerifyEvaluationAttendance.aspx.cs",
+      "fileName": "VerifyEvaluationAttendance.aspx.cs",
+      "fileType": "code-behind",
+      "className": "CMETracking_VerifyEvaluationAttendance",
+      "inheritsFrom": "BasePage",
+      "module": "CMETracking",
+      "summary": "Second step of the CME attendance verification flow, allowing users to enter an attendance ID code to confirm their presence at a conference. Enforces a 45-day restriction on late verification and routes verified users to the CME evaluation.",
+      "businessPurpose": "Provides an attendance ID-based verification mechanism for CME events, ensuring only users who physically attended the conference can complete the associated evaluation and claim credits.",
+      "keyMethods": [
+        "Page_Load - Reads evaluation/template/schedule IDs, checks existing attendance status, displays event details for verification",
+        "btnOK_Click - Redirects to CMEEvaluate.aspx without further verification",
+        "btnSubmit_Click - Validates attendance ID, checks 45-day rule, verifies attendance via EvaluationManager.VerifyCMEEvaluationAttendance, and redirects on success",
+        "GetRedirecctUrl - Builds redirect URL to EvaluateCMEEvaluation.aspx with IDs"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Attendance ID verification with 45-day business rule; migrate as a NestJS API POST endpoint with validation logic.",
+      "complexity": "moderate",
+      "lineCount": 254
+    }
+  ],
+  "directoryOverview": "CME Tracking reports, setup, and schedule assignment pages covering the full administrative workflow for continuing medical education: event and credit type management, multi-schedule evaluation assignment, attendance verification, and a comprehensive suite of reporting pages including certificates, financial statements, detailed ledger credits, and summary event/evaluation reports.",
+  "keyWorkflows": [
+    "CME credit ledger reporting (detailed and summary)",
+    "Event setup and management",
+    "Multi-schedule assignment and topic selection",
+    "CME certificate generation",
+    "Attendance verification before evaluation",
+    "Commercial support source tracking",
+    "Financial statement reporting for CME events",
+    "Excel participant list upload to email database",
+    "Credit type and credentialing info setup"
+  ]
+}

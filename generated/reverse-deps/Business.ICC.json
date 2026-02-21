@@ -1,0 +1,15 @@
+{
+  "module": "Business.ICC",
+  "businessClasses": [
+    "NAGProgram",
+    "Nag_ICC"
+  ],
+  "dependents": {
+    "web": [],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 0,
+    "schedulers": 0
+  }
+}

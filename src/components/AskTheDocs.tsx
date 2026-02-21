@@ -207,6 +207,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
       {/* Floating chat panel */}
       {isOpen && (
         <div
+          className="ask-the-docs-panel"
           style={{
             position: 'fixed',
             bottom: '80px',
@@ -215,10 +216,9 @@ export default function AskTheDocs(): React.JSX.Element | null {
             maxWidth: 'calc(100vw - 40px)',
             height: '500px',
             maxHeight: 'calc(100vh - 120px)',
-            backgroundColor: 'var(--ifm-background-color)',
-            border: '1px solid var(--ifm-color-emphasis-300)',
+            border: '1px solid #d0d0d0',
             borderRadius: '12px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
             display: 'flex',
             flexDirection: 'column',
             zIndex: 9999,
@@ -335,7 +335,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
                   backgroundColor:
                     msg.role === 'user'
                       ? 'var(--ifm-color-primary)'
-                      : 'var(--ifm-background-surface-color)',
+                      : '#f0f0f0',
                   color: msg.role === 'user' ? '#fff' : 'var(--ifm-font-color-base)',
                   border:
                     msg.role === 'assistant'

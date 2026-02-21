@@ -1,0 +1,55 @@
+{
+  "module": "MyEvaluations.Business.LearningAssignment",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": false,
+  "overview": "The LearningAssignment module manages the creation, assignment, tracking, and reporting of learning assignments and literature resources within MyEvaluations. With 12 classes organized around three Manager classes, it provides functionality for administering learning assignment access by department, managing a literature/learning module library (including video content), generating ledger and detailed reports, and handling assignment comments and search criteria. This module supports both voluntary and non-voluntary learning modules for healthcare education programs.",
+  "architecture": "## Overview\n\nThe LearningAssignment module manages the creation, assignment, tracking, and reporting of learning assignments and literature resources within MyEvaluations. With 12 classes organized around three Manager classes, it provides functionality for administering learning assignment access by department, managing a literature/learning module library (including video content), generating ledger and detailed reports, and handling assignment comments and search criteria. This module supports both voluntary and non-voluntary learning modules for healthcare education programs.\n\n## Key Classes\n\n- **LearningAssignmentAdminManager** (extends Manager): Manages learning assignment administrator access control. Paired with LearningAssignmentAdminInfo. Calls stored procedures: GetLAAdmins, GetLAAdminByDepartment, AddLAAdmin, DeleteLAAdmin.\n- **LearningAssignmentReportManager** (extends Manager): Generates learning assignment reports using stored procedures: GetLearningAssignmentLedgerReport, GetDetailedLearningAssignmentReport.\n- **LiteratureManager** (extends Manager): The most feature-rich manager, handling CRUD operations for literature and learning modules. Calls 12 stored procedures.\n- **LearningAssignmentInfo / UserLearningAssignmentInfo**: Data transfer objects for learning assignment records.\n- **LiteratureInfo**: Info class paired with LiteratureManager.\n- **AssignmentCommentInfo**: Stores comments associated with learning assignments.\n- **LearningAssignmentReportFilter**: Filter criteria for report generation.\n- **LearningAssignmentSearchCriteria / LiteratureSearchCriteria**: Search parameter classes.\n\n## Patterns\n\n- **Manager/Info pattern detected**: Three Manager classes with explicit Info counterparts.\n- **Stored procedure-driven data access**: 18 total stored procedures across three managers.\n- **Search criteria pattern**: Dedicated search criteria classes encapsulate query parameters.\n- **Report filter pattern**: Structured report parameterization.\n\n## Notes\n\n- The DoesLiteratureExits stored procedure name contains a typo (legacy artifact).\n- Distinction between voluntary and non-voluntary learning modules suggests compliance-driven requirements.\n- 18 stored procedures require careful mapping during NestJS migration.\n- LiteratureManager handles video content (GetVideoTitle), indicating multimedia learning support.",
+  "managerPattern": "Manager/Info pattern detected",
+  "storedProcedures": "GetLAAdmins, GetLAAdminByDepartment, AddLAAdmin, DeleteLAAdmin, GetLearningAssignmentLedgerReport, GetDetailedLearningAssignmentReport, GetLiteratureInfo, GetLiteratureInfoByIDs, GetLearningAssignmentLiteratureList, DoesLiteratureExits, AddLiterature, UpdateLiterature, DeleteLiterature, UpdateNonVoluntaryLearningModule, DeleteLearningModuleDocument, GetVideoTitle, GetLearningModules, GetLearningAssignmentLiteratureList_Voluntary",
+  "keyClasses": [
+    {
+      "name": "LearningAssignmentAdminManager",
+      "purpose": "Manages learning assignment administrator access control by department",
+      "keyMethods": []
+    },
+    {
+      "name": "LearningAssignmentReportManager",
+      "purpose": "Generates ledger and detailed learning assignment reports",
+      "keyMethods": []
+    },
+    {
+      "name": "LiteratureManager",
+      "purpose": "CRUD operations for literature and learning modules including video content, voluntary and non-voluntary modules",
+      "keyMethods": []
+    },
+    {
+      "name": "LearningAssignmentAdminInfo",
+      "purpose": "Data transfer object for learning assignment admin records, paired with LearningAssignmentAdminManager",
+      "keyMethods": []
+    },
+    {
+      "name": "LearningAssignmentInfo",
+      "purpose": "Data transfer object for learning assignment records",
+      "keyMethods": []
+    },
+    {
+      "name": "LiteratureInfo",
+      "purpose": "Info class for literature/learning module records, paired with LiteratureManager",
+      "keyMethods": []
+    },
+    {
+      "name": "AssignmentCommentInfo",
+      "purpose": "Stores comments associated with learning assignments",
+      "keyMethods": []
+    },
+    {
+      "name": "LearningAssignmentReportFilter",
+      "purpose": "Filter criteria for learning assignment report generation",
+      "keyMethods": []
+    }
+  ],
+  "businessRules": [],
+  "migrationNotes": [],
+  "mermaidDiagram": null,
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.LearningAssignment\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.LearningAssignment module\"\nsidebar_label: \"LearningAssignment\"\ntags: [dotnet, business-layer]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Overview\n\nThe LearningAssignment module manages the creation, assignment, tracking, and reporting of learning assignments and literature resources within MyEvaluations. With 12 classes organized around three Manager classes, it provides functionality for administering learning assignment access by department, managing a literature/learning module library (including video content), generating ledger and detailed reports, and handling assignment comments and search criteria. This module supports both voluntary and non-voluntary learning modules for healthcare education programs.\n\n## Key Classes\n\n- **LearningAssignmentAdminManager** (extends Manager): Manages learning assignment administrator access control. Paired with LearningAssignmentAdminInfo. Calls stored procedures: `GetLAAdmins`, `GetLAAdminByDepartment`, `AddLAAdmin`, `DeleteLAAdmin`.\n- **LearningAssignmentAdminInfo**: Data transfer object for learning assignment admin records, serving as the Info counterpart to LearningAssignmentAdminManager.\n- **LearningAssignmentReportManager** (extends Manager): Generates learning assignment reports using stored procedures: `GetLearningAssignmentLedgerReport`, `GetDetailedLearningAssignmentReport`.\n- **LiteratureManager** (extends Manager): The most feature-rich manager in the module, handling CRUD operations for literature and learning modules. Paired with LiteratureInfo. Calls 12 stored procedures: `GetLiteratureInfo`, `GetLiteratureInfoByIDs`, `GetLearningAssignmentLiteratureList`, `DoesLiteratureExits`, `AddLiterature`, `UpdateLiterature`, `DeleteLiterature`, `UpdateNonVoluntaryLearningModule`, `DeleteLearningModuleDocument`, `GetVideoTitle`, `GetLearningModules`, `GetLearningAssignmentLiteratureList_Voluntary`.\n- **LearningAssignmentInfo / UserLearningAssignmentInfo**: Data transfer objects for learning assignment records and user-specific assignment data.\n- **LiteratureInfo**: Info class for literature/learning module records, paired with LiteratureManager.\n- **AssignmentCommentInfo**: Stores comments associated with learning assignments.\n- **LearningAssignmentReportFilter**: Filter criteria for learning assignment report generation.\n- **LearningAssignmentSearchCriteria / LiteratureSearchCriteria**: Search parameter classes for querying assignments and literature respectively.\n\n## Patterns\n\n- **Manager/Info pattern detected**: Three Manager classes extend the base Manager class, with explicit Info counterparts: LearningAssignmentAdminManager/LearningAssignmentAdminInfo and LiteratureManager/LiteratureInfo. LearningAssignmentReportManager handles reporting without a direct Info pairing.\n- **Stored procedure-driven data access**: All database operations are performed through 18 total stored procedures across the three managers, following the legacy .NET pattern of SQL Server stored procedure calls.\n- **Search criteria pattern**: Dedicated search criteria classes (LearningAssignmentSearchCriteria, LiteratureSearchCriteria) encapsulate query parameters.\n- **Report filter pattern**: LearningAssignmentReportFilter provides a structured way to parameterize report generation.\n\n## Notes\n\n- The `DoesLiteratureExits` stored procedure name contains a typo (\"Exits\" instead of \"Exists\"), which is a legacy artifact that must be preserved for backward compatibility.\n- The distinction between voluntary and non-voluntary learning modules (`GetLearningAssignmentLiteratureList_Voluntary`, `UpdateNonVoluntaryLearningModule`) suggests compliance-driven mandatory learning requirements common in GME programs.\n- With 18 stored procedures, this module has significant database coupling that will require careful mapping during NestJS migration.\n- The LiteratureManager handles video content (`GetVideoTitle`), indicating multimedia learning support.\n- Report generation (ledger and detailed reports) is a key feature for program administrators and would need to be replicated in the Node.js backend.\n\n---\n*This documentation was auto-generated from source code analysis. Last updated: 2026-02-20T16:00:00.000Z*"
+}

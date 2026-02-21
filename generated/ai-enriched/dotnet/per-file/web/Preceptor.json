@@ -1,0 +1,1269 @@
+{
+  "directory": "Web/Preceptor",
+  "layer": "web",
+  "generatedAt": "2026-02-21T02:30:00.000Z",
+  "fileCount": 50,
+  "files": [
+    {
+      "filePath": "Web/Preceptor/AddCalls.aspx.cs",
+      "fileName": "AddCalls.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddCalls",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for call schedules in the preceptor scheduling module. Populates time slot dropdowns in 15-minute increments, loads activity names, cluster names, and day-of-week enable/disable settings. Supports both create and edit modes via querystring ID.",
+      "businessPurpose": "Allows program administrators to define call schedule entries with start/end times, linked activities, enforced cohort settings, and day-of-week availability for clinical scheduling.",
+      "keyMethods": [
+        "Page_Load - Initializes form with activities, time slots, cluster names; loads existing call details in edit mode",
+        "PopulateTimeSlots - Generates time dropdown items in 15-minute intervals between start and end times",
+        "DataTableToJSONWithJSONNet - Serializes DataTable to JSON using Newtonsoft.Json"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "ActivityManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Part of the preceptor scheduling workflow; scheduling is a core feature that will need modern equivalent",
+      "complexity": "moderate",
+      "lineCount": 107
+    },
+    {
+      "filePath": "Web/Preceptor/AddCampusLocations.aspx.cs",
+      "fileName": "AddCampusLocations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddCampusLocations",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Simple add/edit form for campus locations used in the preceptor module. Checks privilege access for ManageCampusLocations submodule, loads state dropdown, and stores campus location ID and department ID in hidden fields.",
+      "businessPurpose": "Enables administrators to create or edit campus location records (name, address, state) used as scheduling and site management reference data.",
+      "keyMethods": [
+        "Page_Load - Validates permissions, loads states dropdown, sets campus location ID from querystring"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "LookUpManager",
+        "SessionManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Reference data management page; campus locations are shared across scheduling features",
+      "complexity": "simple",
+      "lineCount": 34
+    },
+    {
+      "filePath": "Web/Preceptor/AddClinics.aspx.cs",
+      "fileName": "AddClinics.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddClinics",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for clinic schedules, nearly identical to AddCalls.aspx.cs. Populates activities, time slots, cluster names, and day-of-week settings. Loads existing clinic details when editing via querystring ID.",
+      "businessPurpose": "Allows creation and editing of clinic schedule definitions with time ranges, activities, cohort enforcement, and weekly day availability.",
+      "keyMethods": [
+        "Page_Load - Initializes clinic form with activities, time slots, cluster names; loads clinic details in edit mode",
+        "PopulateTimeSlots - Generates time dropdown items in 15-minute intervals",
+        "DataTableToJSONWithJSONNet - Serializes DataTable to JSON"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "ActivityManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Part of the preceptor scheduling workflow for clinic schedule types",
+      "complexity": "moderate",
+      "lineCount": 108
+    },
+    {
+      "filePath": "Web/Preceptor/AddPreceptorRegistration.aspx.cs",
+      "fileName": "AddPreceptorRegistration.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddPreceptorRegistration",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Complex registration form for preceptors allowing them to self-register or be registered by admins. Collects personal details (name, email, phone, address, state), specialties, affiliated sites, campus, academic year, session availability with day/time schedules. Generates dynamic HTML tables for session and availability selection via server-side StringBuilder.",
+      "businessPurpose": "Supports the preceptor registration workflow where clinical preceptors provide their credentials, specialties, site affiliations, and availability for clinical rotation scheduling.",
+      "keyMethods": [
+        "Page_Load - Orchestrates page initialization",
+        "InitializePage - Binds years, specialties, campus, user details, states, sessions",
+        "BindUserDetails - Loads preceptor details if existing, or pre-fills from user profile",
+        "BindSpecialities - Loads specialty list for multi-select",
+        "BuildAMFMPoliciesAndDocumentsHTML - Generates dynamic HTML table for session/rotation/site selection",
+        "BuildDivs - Generates weekday availability time input HTML",
+        "BindSecondTable - Generates weekend (Saturday/Sunday) availability HTML",
+        "GetCalenderYears - Static helper to generate academic year dropdown list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "UserManager",
+        "PreceptorModuleManager",
+        "PreceptorManager",
+        "FieldsLookupManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core preceptor registration workflow with complex dynamic HTML generation; prime candidate for React-based form replacement",
+      "complexity": "very-complex",
+      "lineCount": 418
+    },
+    {
+      "filePath": "Web/Preceptor/AddShifts.aspx.cs",
+      "fileName": "AddShifts.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddShifts",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for shift schedules, structurally identical to AddCalls and AddClinics. Populates activities, time slots, cluster names (filtering out Patient, PGY-0, Staff), and day-of-week settings. Loads shift details in edit mode.",
+      "businessPurpose": "Enables creation and modification of shift schedule definitions with time ranges, cohort enforcement, and day-of-week availability settings.",
+      "keyMethods": [
+        "Page_Load - Initializes shift form with activities, time slots, filtered cluster names; loads shift details in edit mode",
+        "PopulateTimeSlots - Generates time dropdown items in 15-minute intervals",
+        "DataTableToJSONWithJSONNet - Serializes DataTable to JSON"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "ActivityManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Part of the preceptor scheduling workflow for shift schedule types",
+      "complexity": "moderate",
+      "lineCount": 117
+    },
+    {
+      "filePath": "Web/Preceptor/AddSiteName.aspx.cs",
+      "fileName": "AddSiteName.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddSiteName",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for clinical site names with affiliate agreement document management. Loads states, campus locations, and manages document uploads/downloads/deletions for site affiliate agreements. Includes grid row data binding for document display and encryption utilities for querystring parameters.",
+      "businessPurpose": "Manages clinical site definitions with associated affiliate agreement documents, supporting the compliance workflow for clinical placement site management.",
+      "keyMethods": [
+        "Page_Load - Initializes page with states, campus names, affiliate agreement documents",
+        "CheckForPermissions - Validates user has MyPortfolio view privileges",
+        "btnUploadCreateAgreement_Click - Handles affiliate agreement document upload",
+        "lnbtnDownload_Click - Downloads affiliate agreement documents",
+        "lnbtnDelete_Click - Deletes affiliate agreement documents",
+        "BindddlSponsoringStatus - Binds sponsoring name dropdown with deduplication",
+        "EncryptString/DecryptString - Static querystring encryption utilities"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MainPageBusiness",
+        "PreceptorManager",
+        "LookUpManager",
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Site management with document upload; affiliate agreements are compliance-related",
+      "complexity": "complex",
+      "lineCount": 208
+    },
+    {
+      "filePath": "Web/Preceptor/AddTopic.aspx.cs",
+      "fileName": "AddTopic.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_AddTopic",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for preceptor topics. Supports Add, Edit, and View page modes. Uses client-side JavaScript for save/update operations via ScriptManager. Sets page title dynamically based on current mode.",
+      "businessPurpose": "Allows administrators to create and manage topic definitions that can be linked to rotations for preceptor scheduling.",
+      "keyMethods": [
+        "Page_Load - Sets page mode and initializes page",
+        "InitializePage - Configures form for add/edit/view mode",
+        "SetPageTitle - Sets page title based on mode",
+        "btnSave_Click - Triggers client-side add mode save",
+        "btnUpdate_Click - Triggers client-side edit mode update",
+        "btnCancel_Click - Redirects to ManageTopicList"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple CRUD form for reference data (topics)",
+      "complexity": "simple",
+      "lineCount": 113
+    },
+    {
+      "filePath": "Web/Preceptor/BuildSchedules.aspx.cs",
+      "fileName": "BuildSchedules.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_BuildSchedules",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Complex schedule builder page with multi-step wizard for building rotation schedules. Supports user type filtering, PGY level selection, academic year selection, cluster/cohort binding, and archived user toggling. Contains multiple WebMethod endpoints for AJAX operations including inserting/updating build schedules, getting cluster names, user lists, and campus-linked trainees.",
+      "businessPurpose": "Core schedule building interface where administrators select academic year, user types, trainees, and cohorts to construct rotation schedules. Provides the foundation for automated schedule generation.",
+      "keyMethods": [
+        "Page_Load - Initializes filters, user types, PGY levels, years, clusters",
+        "BindUserTypes - Loads user type dropdown from GroupParticipantsManager",
+        "SetUserTypeSelectDefault - Auto-selects user type based on department training type",
+        "BindPGYList - Generates PGY/FPGY/MSY level list",
+        "BindClusterName - Loads cohort cluster names for campus",
+        "GetClusterNames (WebMethod) - Returns cluster names JSON for campus",
+        "InsertData (WebMethod) - Creates new build schedule record",
+        "UpdateData (WebMethod) - Updates existing build schedule record",
+        "GetUserList (WebMethod) - Returns filtered user list as JSON",
+        "BindDataonEdit (WebMethod) - Returns schedule data for editing",
+        "GetCampusLinkedTrainees (WebMethod) - Returns trainees linked to campus"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "BuildScheduleManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager",
+        "UserManager",
+        "PreceptorTemplateManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core scheduling workflow with complex AJAX interactions; high priority for modernization",
+      "complexity": "very-complex",
+      "lineCount": 592
+    },
+    {
+      "filePath": "Web/Preceptor/CompletePreceptorRegistration.aspx.cs",
+      "fileName": "CompletePreceptorRegistration.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_CompletePreceptorRegistration",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Comprehensive preceptor registration completion page with extensive profile data collection. Binds states, rotation settings, vaccination requirements, dress codes, rotation highlights, patient volume averages, credentials, specialties, topics, campus locations, and session availability. Generates dynamic HTML for session/rotation/site selection tables and weekly availability schedules. Handles document uploads and supports both preceptor self-registration and admin management.",
+      "businessPurpose": "Provides the complete preceptor profile and registration workflow where preceptors fill out detailed professional information, availability, site preferences, and compliance documentation for clinical placement eligibility.",
+      "keyMethods": [
+        "Page_Load - Orchestrates initialization, handles document save redirect",
+        "InitializePage - Binds 11+ data sources for form dropdowns and lists",
+        "BindStates - Loads US states filtered by country ID 224",
+        "BindRotationSettings - Loads rotation setting options",
+        "BindVaccinationRequirements - Loads vaccination requirement names",
+        "BindStudentDressCodes - Loads dress code options",
+        "BindRotationHighlights - Loads rotation highlight names",
+        "BindAvgNumofPatientsPerDay - Loads patient volume options",
+        "BindPreceptorCredentials - Loads credential type dropdown",
+        "BindSpecialities - Loads specialty multi-select",
+        "BindTopics - Loads topic list filtered by rotations",
+        "BuildAMFMPoliciesAndDocumentsHTML - Generates session/rotation/site selection HTML",
+        "BuildDivs - Generates weekday availability time input HTML",
+        "btnDummy1_Click - Triggers document save"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "PreceptorManager",
+        "UserManager",
+        "UserBusiness",
+        "FieldsLookupManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Largest preceptor registration form with extensive dynamic HTML; high priority for React migration",
+      "complexity": "very-complex",
+      "lineCount": 536
+    },
+    {
+      "filePath": "Web/Preceptor/CreateSchedule.aspx.cs",
+      "fileName": "CreateSchedule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_CreateSchedule",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Schedule creation and configuration page that sets up the parameters for automated schedule generation. Manages academic year, user types, PGY levels, rotation blocks, affiliations, cohorts, schedule templates (both rotation and allocation), preference collection settings with date ranges, and auto-generation options. Supports edit mode for existing schedules with complex state management.",
+      "businessPurpose": "Central configuration page for creating rotation schedules, defining which templates to use, setting preference collection windows, and configuring automatic schedule generation parameters.",
+      "keyMethods": [
+        "Page_Load - Complex initialization with edit mode support, preference state management, rotation JSON binding",
+        "BindYears - Populates academic year dropdowns",
+        "BindCohosts - Loads cohort/cluster name list and JSON",
+        "BindAffiliation - Loads institutional site affiliations",
+        "BindScheduleTemplates - Loads and separates schedule templates and allocation templates",
+        "BindUserTypes - Loads user type dropdown",
+        "SetUserTypeSelectDefault - Auto-selects user type based on training type",
+        "BindPGYList - Generates PGY category and rotation block lists",
+        "SetDepartmentDefaultDays - Sets default schedule start day from department settings",
+        "GetPGYCategoryTable - Builds PGY category DataTable with Calendar as PGY-0"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "BuildScheduleManager",
+        "DepartmentManager",
+        "GroupParticipantsManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core schedule configuration page with complex state and template management",
+      "complexity": "very-complex",
+      "lineCount": 399
+    },
+    {
+      "filePath": "Web/Preceptor/DefineRotationRequirements.aspx.cs",
+      "fileName": "DefineRotationRequirements.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_DefineRotationRequirements",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Configuration page for defining rotation requirements by campus, cluster, and academic year. Provides dropdowns for campus names, cluster names, rotations, academic year, and a numeric options selector (1-15). Uses client-side JavaScript change handlers for dynamic data updates.",
+      "businessPurpose": "Allows administrators to define how many rotations are required per cluster/cohort per academic year, supporting the rules engine for automated schedule generation.",
+      "keyMethods": [
+        "Page_Load - Initializes campus dropdown, options range, academic years, and department rotations",
+        "BindDepartmentRotations - Loads rotations filtered by campus and academic year",
+        "BindYears - Populates academic year dropdown",
+        "GetCalenderYears - Static helper for year list generation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Rotation requirement rules configuration; important for schedule generation logic",
+      "complexity": "moderate",
+      "lineCount": 89
+    },
+    {
+      "filePath": "Web/Preceptor/DefineSiteAllocation.aspx.cs",
+      "fileName": "DefineSiteAllocation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_DefineSiteAllocation",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Configuration page for defining site allocation limits (0-99 range) by campus, rotation, and academic year. Provides dropdowns for campus, academic year, rotations, and allocation count.",
+      "businessPurpose": "Allows administrators to set the maximum number of trainees that can be allocated to each site for a given rotation and academic year, controlling capacity for schedule generation.",
+      "keyMethods": [
+        "Page_Load - Initializes campus, year, and allocation dropdowns with change handlers",
+        "BindDepartmentRotations - Loads rotations filtered by campus and year",
+        "BindYears - Populates academic year dropdown",
+        "GetCalenderYears - Static helper for year list generation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Site allocation capacity settings; supports schedule generation constraints",
+      "complexity": "simple",
+      "lineCount": 93
+    },
+    {
+      "filePath": "Web/Preceptor/GenerateScheduleRequirementReport.aspx.cs",
+      "fileName": "GenerateScheduleRequirementReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_GenerateScheduleRequirementReport",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report generation page for schedule requirements. Accepts filter parameters (academic year, campus, cohorts, rotations) via form post or favourite report settings. Displays department info with logo and generates a loading screen overlay while the report processes.",
+      "businessPurpose": "Generates schedule requirements reports showing rotation capacity and trainee allocation across campuses and cohorts for administrative scheduling review.",
+      "keyMethods": [
+        "Page_Load - Loads filter parameters from post or favourite report settings",
+        "PrepareFormForEditMode - Loads saved report settings by ID",
+        "FillInfoFromDB - Deserializes PreceptorReportInfo JSON and populates hidden fields",
+        "GetLoadingScript - Returns inline JavaScript for hiding loading screen",
+        "LoadReportLoadingScreen - Returns HTML for loading overlay",
+        "ConvertToInteger - Safe integer parsing utility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Reporting page with dynamic HTML generation; part of the scheduling reports suite",
+      "complexity": "moderate",
+      "lineCount": 203
+    },
+    {
+      "filePath": "Web/Preceptor/ImportSchedule.aspx.cs",
+      "fileName": "ImportSchedule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ImportSchedule",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Schedule import configuration page that supports multiple external scheduling services: Amion, QGenda, Momentum, and LightningBolt. Checks department credentials for each service and dynamically populates the available services dropdown. Loads academic years for import targeting.",
+      "businessPurpose": "Enables importing clinical rotation schedules from external scheduling platforms (Amion, QGenda, Momentum, LightningBolt) into the MyEvaluations system, supporting departments that use third-party scheduling tools.",
+      "keyMethods": [
+        "Page_Load - Checks credentials for all four scheduling services, populates service dropdown and academic year"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "PreceptorManager",
+        "AmionAPI",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "External scheduling service integration; critical for departments using third-party scheduling",
+      "complexity": "moderate",
+      "lineCount": 95
+    },
+    {
+      "filePath": "Web/Preceptor/ImportScheduleData.aspx.cs",
+      "fileName": "ImportScheduleData.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ImportScheduleData",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Minimal page that stores the department ID in a hidden field for client-side schedule data import processing.",
+      "businessPurpose": "Provides a container page for client-side schedule data import functionality.",
+      "keyMethods": [
+        "Page_Load - Sets department ID hidden field"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Thin wrapper page; logic likely in client-side JavaScript",
+      "complexity": "trivial",
+      "lineCount": 18
+    },
+    {
+      "filePath": "Web/Preceptor/LinkSitesandRotations.aspx.cs",
+      "fileName": "LinkSitesandRotations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_LinkSitesandRotations",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Dual-listbox interface for linking clinical sites to rotations. Provides campus name, academic year, and rotation dropdowns. When a rotation is selected, populates selected sites from existing links. Supports add/remove/add-all/remove-all operations between available and selected site listboxes.",
+      "businessPurpose": "Manages the many-to-many relationship between clinical sites and rotations, determining which sites are available for each rotation in the scheduling system.",
+      "keyMethods": [
+        "Page_Load - Initializes campus, years, rotations, and site listboxes",
+        "BindDepartmentRotations - Loads rotations by campus/year and available sites",
+        "lstRotationNames_SelectedIndexChanged - Loads pre-selected sites for chosen rotation",
+        "btnAddAvailablePreceptors_Click - Moves selected sites from available to selected",
+        "btnRemoveAvailablePreceptors_Click - Moves sites from selected back to available",
+        "MoveDept - Generic listbox item transfer utility",
+        "MoveUsers - Selects all items then calls MoveDept"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "PreceptorManager",
+        "EvaluationTemplateBusiness",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Configuration mapping page for site-rotation relationships",
+      "complexity": "moderate",
+      "lineCount": 230
+    },
+    {
+      "filePath": "Web/Preceptor/LinkTopicsandRotations.aspx.cs",
+      "fileName": "LinkTopicsandRotations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_LinkTopicsandRotations",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Dual-listbox interface for linking topics to rotations. Provides rotation dropdown and available/selected topic lists. When a rotation is selected, loads previously linked topics. Supports add/remove operations between topic listboxes and saves via client-side JavaScript.",
+      "businessPurpose": "Manages the many-to-many relationship between topics and rotations, allowing administrators to define which educational topics are covered in each rotation.",
+      "keyMethods": [
+        "Page_Load - Initializes rotations and topic lists",
+        "BindDepartmentRotations - Loads rotations for schedule management",
+        "BindAvailableList - Loads all available topics",
+        "lstRotationNames_SelectedIndexChanged - Loads selected topics for chosen rotation",
+        "btnSave_Click - Triggers client-side save via ScriptManager",
+        "MoveDept - Generic listbox item transfer utility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "EvaluationTemplateBusiness",
+        "RotationManager",
+        "SyncAmionOnCallManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Configuration mapping page for topic-rotation relationships",
+      "complexity": "moderate",
+      "lineCount": 157
+    },
+    {
+      "filePath": "Web/Preceptor/LinkTraineestoCampusCluster.aspx.cs",
+      "fileName": "LinkTraineestoCampusCluster.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_LinkTraineestoCampusCluster",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Complex trainee-to-campus/cohort assignment page with user filtering, ranking positions, date ranges, and multiple WebMethod endpoints. Supports user type selection, PGY level filtering, academic year selection, campus/cluster binding, and AJAX-based operations for inserting assignments, getting cluster names, user lists, and linked trainees.",
+      "businessPurpose": "Enables administrators to assign trainees to campus locations and cohort clusters with ranking positions, controlling which trainees can be scheduled at specific campus locations for a given academic year.",
+      "keyMethods": [
+        "Page_Load - Initializes all filters, user types, PGY levels, years, campus names, ranking positions",
+        "GetClusterNames (WebMethod) - Returns cluster names for campus as JSON",
+        "GetUserList (WebMethod) - Returns filtered user list as JSON",
+        "CheckRotationRequirement (WebMethod) - Checks rotation requirements for cluster",
+        "InsertData (WebMethod) - Inserts trainee-to-campus-cluster assignment",
+        "GetCampusLinkedTrainees (WebMethod) - Returns trainees linked to campus/cluster",
+        "GetUserListByRole (WebMethod) - Returns users by role using MessageDistributionManager",
+        "CheckForPermissions - Role-based access control for AssignTraineestoCampusCohort"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "PreceptorTemplateManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager",
+        "UserManager",
+        "EvaluationsTemplateManager",
+        "MessageDistributionManager",
+        "DetailedConferenceTrackingReportManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core trainee assignment workflow with complex AJAX interactions; high priority for modernization",
+      "complexity": "very-complex",
+      "lineCount": 502
+    },
+    {
+      "filePath": "Web/Preceptor/ManageBuildSchedule.aspx.cs",
+      "fileName": "ManageBuildSchedule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageBuildSchedule",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Grid-based management page for viewing and managing built schedules. Provides academic year filter, grid with edit/delete/restore functionality, RBAC-based permission checking, and schedule cookie cleanup on page load. Contains substantial grid event handling code (RowDataBound, RowCommand, RowDeleting).",
+      "businessPurpose": "Provides the list view and management interface for all built rotation schedules, allowing administrators to view, edit, delete, and restore schedule definitions.",
+      "keyMethods": [
+        "Page_Load - Initializes page with years, department ID, role ID",
+        "InitializePage - Binds years, cleans up schedule cookies",
+        "CheckForPermissions - Validates rotation module privileges",
+        "refreshGrid - Reloads schedule grid data",
+        "grdViewSpeciality_RowDataBound - Configures delete/restore visibility per row",
+        "grdViewSpeciality_RowCommand - Handles delete command",
+        "grdViewSpeciality_RowDeleting - Executes rotation deletion"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness",
+        "RotationManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Schedule list management page; grid functionality is common pattern to modernize",
+      "complexity": "complex",
+      "lineCount": 319
+    },
+    {
+      "filePath": "Web/Preceptor/ManageCalls.aspx.cs",
+      "fileName": "ManageCalls.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageCalls",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Empty shell page for managing call schedules. Contains only an empty Page_Load handler; all logic is likely handled client-side.",
+      "businessPurpose": "Container page for the call schedule management list view, with rendering handled entirely by client-side JavaScript.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Shell page with client-side logic only",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/Preceptor/ManageCampusLocations.aspx.cs",
+      "fileName": "ManageCampusLocations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageCampusLocations",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Simple permission-gated page for managing campus locations. Only checks ManageCampusLocations privileges and role (SysAdmin or role 9) on load; redirects unauthorized users.",
+      "businessPurpose": "Container page for the campus locations management list view with role-based access control.",
+      "keyMethods": [
+        "Page_Load - Validates ManageCampusLocations permissions and role-based access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Thin permission wrapper; client-side rendering",
+      "complexity": "trivial",
+      "lineCount": 24
+    },
+    {
+      "filePath": "Web/Preceptor/ManageClinic.aspx.cs",
+      "fileName": "ManageClinic.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageClinic",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Empty shell page for managing clinic schedules. Contains only an empty Page_Load handler.",
+      "businessPurpose": "Container page for the clinic schedule management list view, with rendering handled entirely by client-side JavaScript.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Shell page with client-side logic only",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/Preceptor/ManageIndividualSchedule.aspx.cs",
+      "fileName": "ManageIndividualSchedule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageIndividualSchedule",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Individual schedule management page where administrators can view and modify individual trainee schedules. Provides campus, academic year, trainee, user type, and block section filters. Loads scheduled linked trainees with user type dropdown (filtering out ChiefResident, Nurse, Preceptor types).",
+      "businessPurpose": "Enables fine-grained management of individual trainee rotation schedules, allowing manual adjustments to auto-generated schedules.",
+      "keyMethods": [
+        "Page_Load - Initializes campus, years, trainees, user types, block sections with change handlers",
+        "BindYears - Populates academic year dropdown",
+        "GetCalenderYears - Static helper for year list generation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "UserManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Individual schedule management; important for manual schedule adjustments",
+      "complexity": "moderate",
+      "lineCount": 97
+    },
+    {
+      "filePath": "Web/Preceptor/ManagePreceptor.aspx.cs",
+      "fileName": "ManagePreceptor.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManagePreceptor",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Grid-based management page for preceptor records with filter support, edit/delete/restore functionality, and campus role-based main page detection. Nearly identical structure to ManageBuildSchedule and ManageSpecialtyNames.",
+      "businessPurpose": "Provides the primary list view for managing preceptor profiles, allowing administrators to view, filter, edit, delete, and restore preceptor records.",
+      "keyMethods": [
+        "Page_Load - Initializes with permission check, filter parameter handling",
+        "InitializePage - Sets department ID, role ID, campus role main page flag",
+        "CheckForPermissions - Validates rotation module privileges",
+        "refreshGrid - Reloads preceptor grid data",
+        "grdViewSpeciality_RowDataBound - Configures delete/restore visibility",
+        "grdViewSpeciality_RowCommand/RowDeleting - Handle delete operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness",
+        "RotationManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Preceptor list management; standard grid pattern",
+      "complexity": "complex",
+      "lineCount": 289
+    },
+    {
+      "filePath": "Web/Preceptor/ManageSchedules.aspx.cs",
+      "fileName": "ManageSchedules.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageSchedules",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Simple schedule management list page with academic year filter and role ID for permission control. Most logic is handled client-side.",
+      "businessPurpose": "Provides the list view for managing rotation schedules filtered by academic year.",
+      "keyMethods": [
+        "Page_Load - Binds academic years and stores role ID",
+        "BindYears - Populates academic year dropdown",
+        "GetCalenderYears - Static helper for year list generation"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Thin wrapper with year filter; client-side rendering",
+      "complexity": "simple",
+      "lineCount": 56
+    },
+    {
+      "filePath": "Web/Preceptor/ManageShifts.aspx.cs",
+      "fileName": "ManageShifts.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageShifts",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Empty shell page for managing shift schedules. Contains only an empty Page_Load handler.",
+      "businessPurpose": "Container page for the shift schedule management list view, with rendering handled entirely by client-side JavaScript.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Shell page with client-side logic only",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/Preceptor/ManageSiteNames.aspx.cs",
+      "fileName": "ManageSiteNames.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageSiteNames",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Site names management page with encrypted hidden field values for client-side AJAX operations. Contains WebMethod endpoints for encrypting strings, updating document status (active/inactive), and deleting affiliate agreements.",
+      "businessPurpose": "Provides the management interface for clinical site names with document status toggling and affiliate agreement deletion capabilities.",
+      "keyMethods": [
+        "Page_Load - Sets encrypted hidden field values for department, user, and filter defaults",
+        "EncryptString (WebMethod) - Encrypts input string for client use",
+        "UpdateDocumentStatus (WebMethod) - Toggles affiliate document active/inactive status",
+        "DeleteAgreement (WebMethod) - Deletes affiliate agreement record"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "MainPageBusiness",
+        "DocDetailsManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Site management with document operations; encryption pattern needs modernization",
+      "complexity": "moderate",
+      "lineCount": 49
+    },
+    {
+      "filePath": "Web/Preceptor/ManageSpecialRequests.aspx.cs",
+      "fileName": "ManageSpecialRequests.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageSpecialRequests",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Empty shell page for managing special scheduling requests. Contains only an empty Page_Load handler.",
+      "businessPurpose": "Container page for managing trainee special scheduling requests, with rendering handled entirely by client-side JavaScript.",
+      "keyMethods": [
+        "Page_Load - Empty handler"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Shell page with client-side logic only",
+      "complexity": "trivial",
+      "lineCount": 14
+    },
+    {
+      "filePath": "Web/Preceptor/ManageSpecialtyNames.aspx.cs",
+      "fileName": "ManageSpecialtyNames.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Security_ManageSpecialtyNames",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Grid-based management page for specialty names with edit/delete/restore functionality and RBAC permission checking. Identical structure to ManageBuildSchedule and ManagePreceptor. Note: class is named Security_ManageSpecialtyNames despite being in the Preceptor folder.",
+      "businessPurpose": "Provides the list view for managing medical specialty name definitions used across the preceptor and scheduling modules.",
+      "keyMethods": [
+        "Page_Load - Initializes with permission check",
+        "InitializePage - Sets department ID, role ID, refreshes grid",
+        "CheckForPermissions - Validates rotation module privileges",
+        "refreshGrid - Reloads specialty grid data",
+        "grdViewSpeciality_RowDataBound - Configures delete/restore visibility",
+        "grdViewSpeciality_RowCommand/RowDeleting - Handle delete operations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness",
+        "RotationManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Reference data management; standard grid pattern",
+      "complexity": "moderate",
+      "lineCount": 275
+    },
+    {
+      "filePath": "Web/Preceptor/ManageTopicList.aspx.cs",
+      "fileName": "ManageTopicList.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ManageTopicList",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Simple list management page for topics with navigation to add new topics and return to link topics and rotations.",
+      "businessPurpose": "Provides the list view for managing preceptor topic definitions with add and cancel navigation.",
+      "keyMethods": [
+        "Page_Load - Empty handler",
+        "btnAddRotation_Click - Navigates to AddTopic.aspx",
+        "btnCancel_Click - Navigates to LinkTopicsandRotations.aspx"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple navigation page for topic management",
+      "complexity": "trivial",
+      "lineCount": 37
+    },
+    {
+      "filePath": "Web/Preceptor/PreceptorAvailabilityReport.aspx.cs",
+      "fileName": "PreceptorAvailabilityReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_PreceptorAvailabilityReport",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Multi-step report filter page for preceptor availability reports. Provides user type selection, PGY filtering, academic year, campus/cluster selection, and archive toggle. Contains WebMethod endpoints for AJAX-based data retrieval. Supports favourite report settings for saved report configurations.",
+      "businessPurpose": "Provides the filter interface for generating preceptor availability reports showing which preceptors are available at various sites and rotations.",
+      "keyMethods": [
+        "Page_Load - Initializes filters, user types, PGY levels, years, campus, clusters",
+        "WebMethod endpoints for cluster names, user lists, and rotation data retrieval"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "PreceptorManager",
+        "DepartmentManager",
+        "GroupParticipantsManager",
+        "DutyHoursManager",
+        "EvaluationsTemplateManager",
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page; part of the scheduling reports suite",
+      "complexity": "complex",
+      "lineCount": 674
+    },
+    {
+      "filePath": "Web/Preceptor/PreceptorAvailabilityReportResult.aspx.cs",
+      "fileName": "PreceptorAvailabilityReportResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_PreceptorAvailabilityReportResult",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report results page for preceptor availability. Displays department info with logo, handles filter parameters from form post or saved report settings, and generates report output with loading screen.",
+      "businessPurpose": "Renders the preceptor availability report results based on selected filters.",
+      "keyMethods": [
+        "Page_Load - Loads department info and filter parameters",
+        "PrepareFormForEditMode - Loads saved report settings",
+        "FillInfoFromDB - Populates filter values from saved settings"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report rendering page; paired with PreceptorAvailabilityReport filter page",
+      "complexity": "moderate",
+      "lineCount": 284
+    },
+    {
+      "filePath": "Web/Preceptor/PreceptorRegistrationbyTrainee.aspx.cs",
+      "fileName": "PreceptorRegistrationbyTrainee.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_PreceptorRegistrationbyTrainee",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Trainee-facing preceptor registration page allowing trainees to register as preceptors. Collects personal details, specialties, sites, campus, credentials, availability, and session preferences. Uses dynamic HTML generation for session and availability tables, similar to CompletePreceptorRegistration but from the trainee perspective.",
+      "businessPurpose": "Enables trainees to submit preceptor registration requests, providing their credentials, availability, and site preferences for clinical placement consideration.",
+      "keyMethods": [
+        "Page_Load - Initializes with CKEditor, loads preceptor details or user details",
+        "Various binding methods for specialties, sites, campus, states, sessions, availability"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "PreceptorTemplateManager",
+        "UserManager",
+        "UserBusiness",
+        "FieldsLookupManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "User-facing registration form with dynamic HTML; high priority for React migration",
+      "complexity": "very-complex",
+      "lineCount": 650
+    },
+    {
+      "filePath": "Web/Preceptor/RankOrderCompletionStatusReport.aspx.cs",
+      "fileName": "RankOrderCompletionStatusReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_RankOrderCompletionStatusReport",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Multi-step report filter page for rank order completion status reports. Provides user type, PGY, academic year, campus, cluster, and rotation filters. Contains WebMethod endpoints for AJAX data retrieval. Supports favourite report settings.",
+      "businessPurpose": "Filter interface for generating reports showing the completion status of trainee rank order preferences for schedule allocation.",
+      "keyMethods": [
+        "Page_Load - Initializes multi-step filter wizard",
+        "WebMethod endpoints for cluster names, user lists, rotation data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager",
+        "UserManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page; part of the scheduling reports suite",
+      "complexity": "complex",
+      "lineCount": 726
+    },
+    {
+      "filePath": "Web/Preceptor/RankOrderCompletionStatusReportResult.aspx.cs",
+      "fileName": "RankOrderCompletionStatusReportResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_RankOrderCompletionStatusReportResult",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report results page for rank order completion status. Displays department info with logo and handles filter parameters from form post or saved report settings.",
+      "businessPurpose": "Renders the rank order completion status report results based on selected filters.",
+      "keyMethods": [
+        "Page_Load - Loads department info and filter parameters",
+        "PrepareFormForEditMode - Loads saved report settings"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "EvaluationsReportManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report rendering page; paired with RankOrderCompletionStatusReport filter page",
+      "complexity": "moderate",
+      "lineCount": 211
+    },
+    {
+      "filePath": "Web/Preceptor/RecordOfRotations.aspx.cs",
+      "fileName": "RecordOfRotations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_RecordOfRotations",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report filter page for the Record of Rotations report. Provides campus, academic year, user type, PGY level, and cluster name filters with change event handlers. Binds user types with automatic default selection based on department training type.",
+      "businessPurpose": "Filter interface for generating record of rotations reports showing trainee rotation history and assignments.",
+      "keyMethods": [
+        "Page_Load - Initializes campus, years, user types, PGY levels, cluster names",
+        "BindUserTypes/SetUserTypeSelectDefault/BindPGYList/BindClusterName/BindYears - Filter binding methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page with standard filter patterns",
+      "complexity": "moderate",
+      "lineCount": 187
+    },
+    {
+      "filePath": "Web/Preceptor/RecordOfRotationsResults.aspx.cs",
+      "fileName": "RecordOfRotationsResults.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_RecordOfRotationsResults",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report results page for Record of Rotations. Displays department info with logo and passes filter parameters (users, academic year, campus, cluster) from form post to the report renderer.",
+      "businessPurpose": "Renders the record of rotations report results showing trainee rotation history.",
+      "keyMethods": [
+        "Page_Load - Loads department info and filter parameters from form post"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple report output page",
+      "complexity": "simple",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/Preceptor/RequestedbyTrainee.aspx.cs",
+      "fileName": "RequestedbyTrainee.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_RequestedbyTrainee",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Simple page to view preceptor registration requests from a specific trainee. Reads session ID and preceptor user ID from querystring and triggers client-side data loading.",
+      "businessPurpose": "Displays the preceptor registration request details submitted by a specific trainee for administrative review.",
+      "keyMethods": [
+        "Page_Load - Reads querystring parameters and triggers client-side data binding"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple viewer page; client-side rendering",
+      "complexity": "trivial",
+      "lineCount": 18
+    },
+    {
+      "filePath": "Web/Preceptor/ReviewPreceptorRegistrationRequests.aspx.cs",
+      "fileName": "ReviewPreceptorRegistrationRequests.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ReviewPreceptorRegistrationRequests",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Management page for reviewing preceptor registration requests. Checks rotation module permissions and initializes the page with department and role information. Follows the same grid management pattern as ManageBuildSchedule.",
+      "businessPurpose": "Allows administrators to review and approve/reject preceptor registration requests submitted by trainees.",
+      "keyMethods": [
+        "Page_Load - Initializes with permission check",
+        "InitializePage - Sets department ID, role ID",
+        "CheckForPermissions - Validates rotation module privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Registration request review workflow",
+      "complexity": "simple",
+      "lineCount": 78
+    },
+    {
+      "filePath": "Web/Preceptor/ScheduleImporting.aspx.cs",
+      "fileName": "ScheduleImporting.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleImporting",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Schedule importing configuration page, similar to ImportSchedule but for a different import flow. Checks credentials for Amion, QGenda, Momentum, and LightningBolt scheduling services and populates available services dropdown. Loads academic years for import targeting.",
+      "businessPurpose": "Alternative entry point for importing schedules from external scheduling platforms into the MyEvaluations system.",
+      "keyMethods": [
+        "Page_Load - Checks scheduling service credentials and populates service/year dropdowns"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "PreceptorManager",
+        "AmionAPI",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "External scheduling integration; mirrors ImportSchedule functionality",
+      "complexity": "moderate",
+      "lineCount": 98
+    },
+    {
+      "filePath": "Web/Preceptor/ScheduleRankOrderSubmission.aspx.cs",
+      "fileName": "ScheduleRankOrderSubmission.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleRankOrderSubmission",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Trainee-facing rank order preference submission page. Allows trainees to submit their rotation schedule preferences. Loads academic year, trainees linked to schedules, and auto-selects the logged-in user. Provides year dropdown with change event handler for rank settings refresh.",
+      "businessPurpose": "Enables trainees to submit their ranked rotation preferences that feed into the automated schedule generation algorithm.",
+      "keyMethods": [
+        "Page_Load - Initializes years, trainee dropdown, auto-selects logged-in user",
+        "BindYears - Populates academic year dropdown"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "User-facing preference submission; important for schedule generation workflow",
+      "complexity": "simple",
+      "lineCount": 80
+    },
+    {
+      "filePath": "Web/Preceptor/ScheduleReports.aspx.cs",
+      "fileName": "ScheduleReports.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleReports",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "Preceptor",
+      "summary": "Schedule reports page with time interval selection (generated in 30-minute increments from midnight to midnight), user type filtering, PGY level selection, and default user type based on department training type.",
+      "businessPurpose": "Provides filter interface for generating time-based schedule reports showing who is scheduled at what time.",
+      "keyMethods": [
+        "Page_Load - Initializes time intervals, user types, PGY levels",
+        "GetTimeIntervals - Generates 30-minute time interval list",
+        "BindUserTypes - Loads user type dropdown",
+        "SetUserTypeSelectDefault - Auto-selects user type by department",
+        "BindPGYList - Generates PGY level list"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Schedule report filter with time intervals",
+      "complexity": "moderate",
+      "lineCount": 147
+    },
+    {
+      "filePath": "Web/Preceptor/ScheduleRequirementsReport.aspx.cs",
+      "fileName": "ScheduleRequirementsReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleRequirementsReport",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Multi-step report filter page for schedule requirements reports. Provides user type, PGY, academic year, campus, cluster, and rotation filters with WebMethod endpoints for AJAX operations. Supports favourite report settings and saved filter configurations.",
+      "businessPurpose": "Filter interface for generating schedule requirements reports showing rotation capacity, requirements, and allocation status.",
+      "keyMethods": [
+        "Page_Load - Initializes multi-step filter wizard with user types, PGY, years, campus, clusters",
+        "WebMethod endpoints for cluster names, user lists, campus data, rotation data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "GroupParticipantsManager",
+        "DepartmentManager",
+        "DutyHoursManager",
+        "UserManager",
+        "EvaluationsTemplateManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page; part of the scheduling reports suite",
+      "complexity": "complex",
+      "lineCount": 499
+    },
+    {
+      "filePath": "Web/Preceptor/ScheduleSettings.aspx.cs",
+      "fileName": "ScheduleSettings.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ScheduleSettings",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Schedule settings hub page that checks department configuration flags (IsChamberlainDepartment, EnableScheduleManagement) and the department's on-call service type to determine which scheduling features to display. Acts as a navigation/configuration entry point for the scheduling module.",
+      "businessPurpose": "Central settings page for the scheduling module that controls feature visibility based on department configuration and scheduling service integration.",
+      "keyMethods": [
+        "Page_Load - Checks department info for scheduling feature flags and on-call service type"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "DepartmentManager",
+        "UserManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Configuration hub; contains department-specific feature flag logic",
+      "complexity": "moderate",
+      "lineCount": 79
+    },
+    {
+      "filePath": "Web/Preceptor/SiteName.aspx.cs",
+      "fileName": "SiteName.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_SiteName",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Site name add/edit form with address fields (state dropdown filtered to US country ID 224), approved date defaulting to today, campus name binding, and specialty name dropdown. Supports both add and edit modes via querystring.",
+      "businessPurpose": "Form for creating and editing clinical site details including address, campus association, specialty, and approval date.",
+      "keyMethods": [
+        "Page_Load - Initializes date, states, campus, specialties; loads site details in edit mode"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "FieldsLookupManager",
+        "PreceptorManager",
+        "PreceptorModuleManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Site CRUD form with address management",
+      "complexity": "moderate",
+      "lineCount": 84
+    },
+    {
+      "filePath": "Web/Preceptor/SiteNamesReport.aspx.cs",
+      "fileName": "SiteNamesReport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_SiteNamesReport",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Report page that generates a clinical site names report. Displays department info with logo, generates loading screen overlay, and builds site name report from preceptor module data. Includes loading script and report rendering utilities.",
+      "businessPurpose": "Generates a printable/viewable report of all clinical site names and their details for administrative review.",
+      "keyMethods": [
+        "Page_Load - Initializes department info, loading screen, and report data",
+        "GetLoadingScript/LoadReportLoadingScreen - Report loading UI utilities"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorModuleManager",
+        "DepartmentManager"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Report rendering page with inline HTML generation",
+      "complexity": "moderate",
+      "lineCount": 145
+    },
+    {
+      "filePath": "Web/Preceptor/SpecialtyNames.aspx.cs",
+      "fileName": "SpecialtyNames.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Security_SpecialtyNames",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Add/edit form for specialty names with support for Add, Edit, and View page modes. Uses SpecialityTemplateManager for CRUD operations. Note: class is named Security_SpecialtyNames despite being in the Preceptor folder, suggesting the page was moved between modules.",
+      "businessPurpose": "Manages the creation and editing of medical specialty name definitions used in the preceptor scheduling system.",
+      "keyMethods": [
+        "Page_Load - Sets page mode, initializes page",
+        "Various form initialization and binding methods"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "SpecialityTemplateManager",
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "low",
+      "migrationNote": "Reference data CRUD form for specialty names",
+      "complexity": "complex",
+      "lineCount": 302
+    },
+    {
+      "filePath": "Web/Preceptor/TraineeRequests.aspx.cs",
+      "fileName": "TraineeRequests.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_TraineeRequests",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Management page for viewing trainee scheduling requests. Checks rotation module permissions and initializes with department and role information. Follows the standard grid management pattern.",
+      "businessPurpose": "Allows administrators to view and manage trainee scheduling and rotation requests.",
+      "keyMethods": [
+        "Page_Load - Initializes with permission check",
+        "InitializePage - Sets department ID, role ID",
+        "CheckForPermissions - Validates rotation module privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "EvaluationTemplateBusiness"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Trainee request management workflow",
+      "complexity": "simple",
+      "lineCount": 78
+    },
+    {
+      "filePath": "Web/Preceptor/UpdateSchedulePreferences.aspx.cs",
+      "fileName": "UpdateSchedulePreferences.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_UpdateSchedulePreferences",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Page for updating schedule preferences with academic year filter. Pre-selects the logged-in user in the preferences user dropdown and auto-selects the academic year from any pending schedule preferences.",
+      "businessPurpose": "Enables trainees to update their previously submitted rotation schedule preferences before the preference collection window closes.",
+      "keyMethods": [
+        "Page_Load - Initializes years, role ID, user dropdown, auto-selects pending preference year",
+        "BindYears - Populates academic year dropdown"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "medium",
+      "migrationNote": "Preference update workflow; complements ScheduleRankOrderSubmission",
+      "complexity": "simple",
+      "lineCount": 66
+    },
+    {
+      "filePath": "Web/Preceptor/ViewSchedule.aspx.cs",
+      "fileName": "ViewSchedule.aspx.cs",
+      "fileType": "code-behind",
+      "className": "Preceptor_ViewSchedule",
+      "inheritsFrom": "BasePage",
+      "module": "Preceptor",
+      "summary": "Complex schedule viewing page that displays generated rotation schedules with shifts, clinics, and calls in a calendar-like view. Uses multiple DataTables for shifts, clinics, and calls data. Provides campus, academic year, PGY level, and rotation block filters. Contains WebMethod endpoints and direct SQL connection for data operations.",
+      "businessPurpose": "Primary schedule viewing interface where administrators and trainees can view generated rotation schedules across campuses, blocks, and time periods.",
+      "keyMethods": [
+        "Page_Load - Initializes schedule view with campus, years, PGY levels, rotation blocks",
+        "Various binding methods for years, PGY list, user types, campus names",
+        "WebMethod endpoints for dynamic schedule data retrieval"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [
+        "PreceptorManager",
+        "DepartmentManager",
+        "GroupParticipantsManager",
+        "DutyHoursManager"
+      ],
+      "migrationRelevance": "high",
+      "migrationNote": "Core schedule viewing page with complex calendar rendering; high priority for React migration",
+      "complexity": "very-complex",
+      "lineCount": 453
+    }
+  ]
+}

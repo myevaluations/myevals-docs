@@ -1,0 +1,721 @@
+{
+  "directory": "Web/PatientLog",
+  "layer": "web",
+  "generatedAt": "2026-02-21T00:00:00.000Z",
+  "fileCount": 34,
+  "files": [
+    {
+      "filePath": "Web/PatientLog/AjaxOperations.aspx.cs",
+      "fileName": "AjaxOperations.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_AjaxOperations",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "PatientLog",
+      "summary": "Handles AJAX operations for the Patient Log module including fetching procedure certification status and saving lookup item information. Responds directly to HTTP requests with pipe-delimited data strings.",
+      "businessPurpose": "Provides real-time data lookups during patient log entry, such as procedure certification status and lookup item management, without full page reloads.",
+      "keyMethods": [
+        "Page_Load - Routes AJAX requests by operation type (GetProcedureStatus, SaveLookupItem) and returns formatted response data"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ProceduresManager", "PatientLogManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "AJAX endpoint pattern should be replaced with proper REST API endpoints in Node.js backend. Uses Response.Write/Response.End pattern.",
+      "complexity": "moderate",
+      "lineCount": 283
+    },
+    {
+      "filePath": "Web/PatientLog/EducationDX.aspx.cs",
+      "fileName": "EducationDX.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_EducationDX",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Add/Edit page for Education DX (Diagnosis Classification) entries. Manages DX classifications with PGY-level minimum requirements using dynamic controls.",
+      "businessPurpose": "Allows administrators to create and modify diagnosis classification entries with PGY-level specific minimum requirements for patient log tracking.",
+      "keyMethods": [
+        "Page_Load - Initializes page mode, checks permissions, sets up form",
+        "savePGYcmbMinReq - Saves PGY-level minimum requirement settings for a DX classification",
+        "PGYcmbMinReqGen - Dynamically generates PGY minimum requirement controls based on department max PGY"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EducationDXManager", "DutyHoursManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "DX classification management should be migrated to a React-based admin form. Dynamic control generation for PGY levels needs frontend refactoring.",
+      "complexity": "moderate",
+      "lineCount": 217
+    },
+    {
+      "filePath": "Web/PatientLog/EncounterType.aspx.cs",
+      "fileName": "EncounterType.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_EncounterType",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Standard CRUD form for managing encounter types (competence levels). Follows typical BasePage add/edit/view pattern with permission checks.",
+      "businessPurpose": "Allows administrators to create and edit encounter type definitions used in patient log submissions.",
+      "keyMethods": [
+        "Page_Load - Sets page mode and initializes form",
+        "CheckForPermissions - Validates PatientLog.EncounterTypes view privilege",
+        "PrepareFormForEditMode - Loads existing encounter type data into form fields",
+        "FillInfoFromDB - Populates form controls from EncounterTypeInfo object"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EncounterTypeManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple CRUD page; straightforward to replicate as a React form with REST API.",
+      "complexity": "simple",
+      "lineCount": 156
+    },
+    {
+      "filePath": "Web/PatientLog/ExportPatientLog.aspx.cs",
+      "fileName": "ExportPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ExportPatientLog",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Export page for patient log data. Allows users to export patient logs in Excel or other formats within a specified date range.",
+      "businessPurpose": "Enables administrators to export patient log records for reporting and external analysis, with date range filtering and format selection.",
+      "keyMethods": [
+        "Page_Load - Initializes form with academic year start date and current date defaults",
+        "btnBuildFile_Click - Triggers the export file generation process",
+        "CheckForPermissions - Controls export button visibility based on page mode and user privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["ExportPatientLogManager", "DepartmentManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Export functionality should be implemented as a server-side API endpoint generating file downloads. The Excel export logic in the business layer needs review.",
+      "complexity": "moderate",
+      "lineCount": 200
+    },
+    {
+      "filePath": "Web/PatientLog/ImportPatientLog.aspx.cs",
+      "fileName": "ImportPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ImportPatientLog",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "First step of the multi-step patient log import wizard. Handles file upload (XML or Excel) and routes to the appropriate next step based on file type.",
+      "businessPurpose": "Allows administrators to bulk-import patient log records from XML or Excel files, starting the multi-step import workflow.",
+      "keyMethods": [
+        "Page_Load - Initializes the import form and handles invalid data notifications",
+        "btnNext_Click - Processes uploaded file, determines format, and redirects to Step 2",
+        "GenerateFileName - Creates unique file names using GUIDs for uploaded files"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MainPageBusiness"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Multi-step import wizard uses server-side Cache for state management. Should be reimplemented with proper file upload API and client-side step management.",
+      "complexity": "moderate",
+      "lineCount": 157
+    },
+    {
+      "filePath": "Web/PatientLog/ImportPatientLogResult.aspx.cs",
+      "fileName": "ImportPatientLogResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ImportPatientLogResult",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Displays import results/errors after patient log import process completes. Shows a grid of error records from the CacheManager.",
+      "businessPurpose": "Shows administrators the results of a patient log import operation, highlighting any records that failed validation.",
+      "keyMethods": [
+        "Page_Load - Retrieves error data from cache and displays in grid",
+        "InitializePage - Binds error data table to grid view"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CacheManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple result display page. In migration, import results should be returned directly from the API response.",
+      "complexity": "trivial",
+      "lineCount": 66
+    },
+    {
+      "filePath": "Web/PatientLog/ImportPatientLogStep2.aspx.cs",
+      "fileName": "ImportPatientLogStep2.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ImportPatientLogStep2",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Second step of the patient log import wizard. Handles field mapping between imported file columns and MyEvaluations patient log fields.",
+      "businessPurpose": "Allows administrators to map columns from uploaded XML/Excel files to the corresponding patient log fields in the system.",
+      "keyMethods": [
+        "Page_Load - Initializes the field mapping step",
+        "InitializePage - Reads imported data from cache, builds field mapping dropdowns for each column"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogManager", "CacheManager", "PtLogImportFieldsManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Field mapping logic is tightly coupled with server-side cache state. Consider a client-side mapping interface with API validation.",
+      "complexity": "moderate",
+      "lineCount": 188
+    },
+    {
+      "filePath": "Web/PatientLog/ImportPatientLogStep3.aspx.cs",
+      "fileName": "ImportPatientLogStep3.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ImportPatientLogStep3",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Third step of the patient log import wizard. Displays preview of data to be imported in a grid and handles the actual import operation with validation.",
+      "businessPurpose": "Shows administrators a preview of mapped data before final import, then processes the bulk import with error handling.",
+      "keyMethods": [
+        "Page_Load - Initializes the preview grid with mapped data",
+        "InitializePage - Sets up grid columns and binds preview data from cache",
+        "GetDataToImport - Transforms the preview dataset into import-ready format"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CacheManager", "PatientLogManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Uses Obout.Grid component for data preview. Bulk import validation and processing should move to a background job in Node.js.",
+      "complexity": "complex",
+      "lineCount": 388
+    },
+    {
+      "filePath": "Web/PatientLog/Location.aspx.cs",
+      "fileName": "Location.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Location",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Standard CRUD form for managing location names used in patient logs. Follows typical BasePage add/edit/view pattern.",
+      "businessPurpose": "Allows administrators to create and edit location definitions available for selection during patient log submission.",
+      "keyMethods": [
+        "Page_Load - Sets page mode and initializes form",
+        "PrepareFormForEditMode - Loads existing location data into form",
+        "FillInfoFromDB - Populates form fields from LocationNameInfo object"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LocationNameManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple CRUD page; straightforward to replicate as a React form with REST API.",
+      "complexity": "simple",
+      "lineCount": 154
+    },
+    {
+      "filePath": "Web/PatientLog/ManageEducationDX.aspx.cs",
+      "fileName": "ManageEducationDX.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManageEducationDX",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Grid management page for Education DX (Diagnosis Classification) records. Supports sorting, paging, search, restore deleted mode, and RBAC-controlled create/edit/delete actions.",
+      "businessPurpose": "Provides a searchable, paginated list of DX classifications with administrative actions like add, edit, delete, and restore deleted items.",
+      "keyMethods": [
+        "CheckForPermissions - Controls visibility of add buttons based on user privileges",
+        "GridViewSortDirection/SortExpression - ViewState-backed grid sorting properties",
+        "SetActionText - Returns Edit/View text based on user permissions"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EducationDXManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard grid list page pattern. Migrate to React data table with server-side pagination API.",
+      "complexity": "complex",
+      "lineCount": 519
+    },
+    {
+      "filePath": "Web/PatientLog/ManageEncounterTypes.aspx.cs",
+      "fileName": "ManageEncounterTypes.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManageEncounterTypes",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Grid management page for encounter type records. Supports sorting, paging, and RBAC-controlled administrative actions.",
+      "businessPurpose": "Provides a searchable list of encounter types with add, edit, delete, and restore capabilities for administrators.",
+      "keyMethods": [
+        "CheckForPermissions - Controls add button visibility based on user privileges",
+        "GridViewSortDirection/SortExpression - ViewState-backed grid sorting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EncounterTypeManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Standard grid list page pattern. Same structure as ManageEducationDX.",
+      "complexity": "complex",
+      "lineCount": 519
+    },
+    {
+      "filePath": "Web/PatientLog/ManageLocationNames.aspx.cs",
+      "fileName": "ManageLocationNames.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManageLocationNames",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Grid management page for location name records. Supports sorting, paging, and RBAC-controlled actions with restore deleted mode.",
+      "businessPurpose": "Provides a searchable list of location names with administrative CRUD operations for patient log configuration.",
+      "keyMethods": [
+        "CheckForPermissions - Controls add button visibility",
+        "SetActionText - Returns Edit/View text based on user update/view privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["LocationNameManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Standard grid list page pattern. Same structure as ManageEducationDX and ManageEncounterTypes.",
+      "complexity": "complex",
+      "lineCount": 511
+    },
+    {
+      "filePath": "Web/PatientLog/ManagePatientLogCustomFields.aspx.cs",
+      "fileName": "ManagePatientLogCustomFields.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManagePatientLogCustomFields",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Grid management page for patient log custom fields. Lists configurable custom fields with add/edit/view operations controlled by role-based permissions.",
+      "businessPurpose": "Allows administrators to manage custom field definitions that extend the standard patient log form with institution-specific data fields.",
+      "keyMethods": [
+        "Page_Load - Initializes grid with department context and permissions",
+        "CheckForPermissions - Controls add custom field button visibility",
+        "SetActionText - Returns Edit/View based on user privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogFieldsManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Custom fields configuration is a key extensibility feature. Migration should preserve the dynamic field system.",
+      "complexity": "moderate",
+      "lineCount": 398
+    },
+    {
+      "filePath": "Web/PatientLog/ManagePatientLogFields.aspx.cs",
+      "fileName": "ManagePatientLogFields.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManagePatientLogFields",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Manages patient log field options including visibility, required status, locking, and display order. Supports drag-and-drop reordering of fields.",
+      "businessPurpose": "Allows administrators to configure which standard fields appear on the patient log form, set required/optional/hidden status, and reorder field display.",
+      "keyMethods": [
+        "Page_Load - Initializes field list grid with drag-and-drop support",
+        "refreshGrid - Rebinds grid with current field configuration",
+        "GetLinkCssClass - Returns CSS class based on field lock status"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogFieldsManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Field configuration system needs careful migration to preserve per-department customization capabilities.",
+      "complexity": "moderate",
+      "lineCount": 398
+    },
+    {
+      "filePath": "Web/PatientLog/ManagePatientLogs.aspx.cs",
+      "fileName": "ManagePatientLogs.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_ManagePatientLogs",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Primary management page for submitted patient logs. Features advanced filtering, sorting, paging, role-based view/edit/delete controls, and personal data restriction for non-admin users.",
+      "businessPurpose": "Central hub for viewing and managing all submitted patient log entries with filtering by user, date range, status, and other criteria.",
+      "keyMethods": [
+        "Page_Load - Initializes complex grid with multiple filter options",
+        "CheckForPermissions - Multi-level permission checks for view, edit, delete",
+        "ShowAllRec - Property controlling whether to show all records or filtered subset",
+        "CurrentSortDirection/SortExpression - ViewState-backed sorting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogManager", "ProceduresManager", "DutyHoursManager", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core patient log management page with complex filtering and permissions. High-priority migration candidate requiring careful API design for search/filter capabilities.",
+      "complexity": "very-complex",
+      "lineCount": 1185
+    },
+    {
+      "filePath": "Web/PatientLog/PatientCaseReview.aspx.cs",
+      "fileName": "PatientCaseReview.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_PatientCaseReview",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Patient case review page showing two grids: cases submitted by the user and cases the user needs to review. Enables the case review workflow.",
+      "businessPurpose": "Supports the peer review process where users can view cases they have submitted for review and cases assigned to them for review.",
+      "keyMethods": [
+        "InitializePage - Sets up both submitted-by and reviewed-by grids",
+        "refreshCaseSubmittedByGrid - Loads cases submitted by current user",
+        "refreshCaseReviewedByGrid - Loads cases assigned for review with optional sorting"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["CaseReviewManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Case review workflow is a distinct feature that should be migrated as a standalone module with proper review state management.",
+      "complexity": "moderate",
+      "lineCount": 276
+    },
+    {
+      "filePath": "Web/PatientLog/PatientLogCustomField.aspx.cs",
+      "fileName": "PatientLogCustomField.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_PatientLogCustomField",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Add/Edit form for individual patient log custom field definitions. Supports multiple field types (integer, float, short text, long text, date) with dynamic validation and lookup configuration.",
+      "businessPurpose": "Allows administrators to define custom fields for patient logs with type-specific validation, visibility settings, and lookup value options.",
+      "keyMethods": [
+        "Page_Load - Sets page mode and initializes field type controls",
+        "CheckPermissions - Multi-mode permission check with SysAdmin-only visibility options",
+        "InitilizePage - Sets up form with event handlers for field type changes",
+        "SetControlVisibility - Dynamically shows/hides form sections based on selected field type"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogFieldsManager", "SessionManager", "RoleManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Custom field definition page with dynamic form rendering. Field type system needs to be preserved in migration.",
+      "complexity": "complex",
+      "lineCount": 870
+    },
+    {
+      "filePath": "Web/PatientLog/PatientLogSetup.aspx.cs",
+      "fileName": "PatientLogSetup.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_PatientLogSetup",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Setup/configuration menu page for the Patient Log module. Dynamically shows/hides menu items based on user privileges across multiple sub-modules.",
+      "businessPurpose": "Serves as the administrative configuration hub for patient log settings, providing links to manage locations, encounter types, DX classifications, custom fields, field options, and supervisors.",
+      "keyMethods": [
+        "Page_Load - Initializes setup page with user context and help icons",
+        "InitializePage - Conditionally removes menu items based on user privileges for each sub-module",
+        "FillInfoFromDB - Loads configuration data",
+        "HideHelpIconBSN - Hides help icons for BSN department"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserManager", "SessionManager", "DepartmentManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Navigation/menu page. In React migration, this becomes part of the sidebar/navigation component with permission-based rendering.",
+      "complexity": "moderate",
+      "lineCount": 291
+    },
+    {
+      "filePath": "Web/PatientLog/PatientLogSubmitDetails.aspx.cs",
+      "fileName": "PatientLogSubmitDetails.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_PatientLogSubmitDetails",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "PatientLog",
+      "summary": "Read-only detail view for a submitted patient log entry. Displays user, supervisor, submission date, and creator/modifier information.",
+      "businessPurpose": "Shows the audit details of a patient log submission including who submitted it, the supervising physician, and modification history.",
+      "keyMethods": [
+        "Page_Load - Initializes the detail view",
+        "OnViewInitializeManagePatientLog - Loads submission details and populates literal controls with user, supervisor, and date information"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Simple detail display page. Can be integrated into the patient log detail view in the React frontend.",
+      "complexity": "simple",
+      "lineCount": 79
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DXDepartmentPatientLog.aspx.cs",
+      "fileName": "DXDepartmentPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DXDepartmentPatientLog",
+      "inheritsFrom": "BaseReportPage",
+      "module": "PatientLog",
+      "summary": "Report filter page for the DX Department Patient Log report. Handles permission checks with role-based and user-type-based access control.",
+      "businessPurpose": "Provides the filter/criteria selection interface for generating the DX Department Patient Log report, restricted to administrative roles.",
+      "keyMethods": [
+        "Page_Load - Initializes report filter with permission checks",
+        "CheckForPermissions - Complex permission logic based on role and user type (Resident, ChiefResident, Attending, Staff excluded)",
+        "ReportID - Returns the EvaluationReports.DXDepartmentPatientLog enum value"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Report filter page with complex role-based access. Report infrastructure should be redesigned for the Node.js backend.",
+      "complexity": "moderate",
+      "lineCount": 113
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DXDepartmentPatientLogResult.aspx.cs",
+      "fileName": "DXDepartmentPatientLogResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DXDepartmentPatientLogResult",
+      "inheritsFrom": "BaseReportResultPage",
+      "module": "PatientLog",
+      "summary": "Report result rendering page for the DX Department Patient Log report. Generates HTML report output directly via Response.Write with tables and embedded CSS/JS.",
+      "businessPurpose": "Renders the DX Department Patient Log report with department-specific formatting, including data tables and chart visualizations.",
+      "keyMethods": [
+        "Page_Load - Generates complete HTML report output using Response.Write pattern",
+        "GetReportFilterInfo - Retrieves filter criteria from the report filter page"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Uses Response.Write to generate HTML directly - a legacy pattern. Reports should be reimplemented with proper API endpoints returning JSON data for client-side rendering.",
+      "complexity": "complex",
+      "lineCount": 392
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DepartmentPatientLog.aspx.cs",
+      "fileName": "DepartmentPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DepartmentPatientLog",
+      "inheritsFrom": "BaseReportPage",
+      "module": "PatientLog",
+      "summary": "Report filter page for the Department Patient Log report. Follows same pattern as DXDepartmentPatientLog with role-based access control.",
+      "businessPurpose": "Provides filter/criteria selection for the Department-level Patient Log report, restricting access to administrative roles.",
+      "keyMethods": [
+        "Page_Load - Initializes report filter page with permissions",
+        "CheckForPermissions - Role and user-type based access control",
+        "ReportID - Returns EvaluationReports.DepartmentPatientLog"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard report filter page. Same pattern as DXDepartmentPatientLog.",
+      "complexity": "moderate",
+      "lineCount": 114
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DepartmentPatientLogResult.aspx.cs",
+      "fileName": "DepartmentPatientLogResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DepartmentPatientLogResult",
+      "inheritsFrom": "BaseReportResultPage",
+      "module": "PatientLog",
+      "summary": "Report result page for the Department Patient Log report. Generates HTML output with department branding and data tables via Response.Write.",
+      "businessPurpose": "Renders the Department Patient Log report showing aggregated patient log data by department with printable formatting.",
+      "keyMethods": [
+        "Page_Load - Generates HTML report with department logo, filter info, and data tables"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Response.Write report pattern. Same migration approach as DXDepartmentPatientLogResult.",
+      "complexity": "complex",
+      "lineCount": 366
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DetailedPatientLog.aspx.cs",
+      "fileName": "DetailedPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DetailedPatientLog",
+      "inheritsFrom": "BaseReportPage",
+      "module": "PatientLog",
+      "summary": "Report filter page for the Detailed Patient Log report with multi-step wizard, user selection, and archived data support. Includes CC Admin role restriction logic.",
+      "businessPurpose": "Provides a multi-step filter wizard for generating detailed patient log reports with user selection, date filtering, and archive controls.",
+      "keyMethods": [
+        "Page_Load - Initializes multi-step report filter with CC Admin permission correction",
+        "BindUsers - Populates user selection for report filtering",
+        "SetUserStep - Configures the user selection step in the wizard"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Multi-step report filter with complex permission logic. The CC Admin restriction is a documented critical issue.",
+      "complexity": "moderate",
+      "lineCount": 232
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/DetailedPatientLogResult.aspx.cs",
+      "fileName": "DetailedPatientLogResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_DetailedPatientLogResult",
+      "inheritsFrom": "BaseReportResultPage",
+      "module": "PatientLog",
+      "summary": "Renders the Detailed Patient Log report with encounter type and location field visibility checks. Generates HTML report with encrypted data links.",
+      "businessPurpose": "Displays detailed patient log records with per-entry data, respecting field visibility settings and generating encrypted links for drill-down.",
+      "keyMethods": [
+        "Page_Load - Generates detailed HTML report checking field visibility for encounter types and locations"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "PatientLogFieldsManager", "EncryptValue", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Complex report with field-level visibility checks and encrypted links. High-priority for migration due to data sensitivity.",
+      "complexity": "very-complex",
+      "lineCount": 537
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogByCategory.aspx.cs",
+      "fileName": "PatientLogByCategory.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogByCategory",
+      "inheritsFrom": "BaseReportPage",
+      "module": "PatientLog",
+      "summary": "Report filter page for Patient Log By Category report with multi-step wizard, personal data restrictions, and CC Admin limitation.",
+      "businessPurpose": "Provides filter criteria selection for categorized patient log reports with user type-based access control.",
+      "keyMethods": [
+        "Page_Load - Initializes category report filter with CC Admin restriction",
+        "CheckForPermissions - Complex role-based permission validation",
+        "SetFilterPanels - Configures multi-step filter panel visibility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard multi-step report filter. Same CC Admin issue as DetailedPatientLog.",
+      "complexity": "moderate",
+      "lineCount": 182
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogByCategoryResult.aspx.cs",
+      "fileName": "PatientLogByCategoryResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogByCategoryResult",
+      "inheritsFrom": "BaseReportResultPage",
+      "module": "PatientLog",
+      "summary": "Renders the Patient Log By Category report with personal data filtering and dynamic field visibility. Complex HTML generation with category grouping.",
+      "businessPurpose": "Displays patient log data organized by categories with field visibility controls and personal data restriction enforcement.",
+      "keyMethods": [
+        "Page_Load - Generates categorized HTML report with permission checks and field visibility"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "PatientLogFieldsManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Complex categorized report with dynamic columns. Report engine should be abstracted during migration.",
+      "complexity": "very-complex",
+      "lineCount": 771
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogByDXClassification.aspx.cs",
+      "fileName": "PatientLogByDXClassification.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogByDXClassification",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Report filter page for Patient Log By DX Classification report. Supports favorite reports, preceptor access, multi-step wizard with CC Admin restrictions.",
+      "businessPurpose": "Provides comprehensive filter criteria for DX classification-based patient log reports with saved favorite report support and preceptor-specific access.",
+      "keyMethods": [
+        "Page_Load - Complex initialization with favorite reports, preceptor checks, CC Admin restriction",
+        "CheckForPermissions - Permission validation for both standard and preceptor users"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Advanced report filter with favorite reports feature and preceptor access. The favorite reports system needs careful migration.",
+      "complexity": "complex",
+      "lineCount": 368
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogByDXClassificationResult.aspx.cs",
+      "fileName": "PatientLogByDXClassificationResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogByDXClassificationResult",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Renders DX Classification report results. Supports favorite report settings deserialization, multiple filter parameters, and complex data rendering with age group filtering.",
+      "businessPurpose": "Displays patient log data grouped by DX classification with support for saved report settings and extensive filter criteria.",
+      "keyMethods": [
+        "Page_Load - Renders report with favorite settings support",
+        "GetReportFilterInfo - Deserializes filter from either saved settings or request parameters"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Uses Newtonsoft.Json for favorite report deserialization. Complex filter parameter handling needs migration to API endpoints.",
+      "complexity": "very-complex",
+      "lineCount": 733
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogSummary.aspx.cs",
+      "fileName": "PatientLogSummary.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogSummary",
+      "inheritsFrom": "BaseReportPage",
+      "module": "PatientLog",
+      "summary": "Report filter page for Patient Log Summary report with multi-step wizard and personal data restriction.",
+      "businessPurpose": "Provides filter criteria for generating summary-level patient log reports across users and time periods.",
+      "keyMethods": [
+        "Page_Load - Initializes summary report filter with permissions",
+        "CheckForPermissions - Role and user-type based access control",
+        "ReportID - Returns EvaluationReports.PatientLogSummary"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Standard report filter page following established pattern.",
+      "complexity": "moderate",
+      "lineCount": 181
+    },
+    {
+      "filePath": "Web/PatientLog/Reports/PatientLogSummaryResult.aspx.cs",
+      "fileName": "PatientLogSummaryResult.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_Reports_PatientLogSummaryResult",
+      "inheritsFrom": "BaseReportResultPage",
+      "module": "PatientLog",
+      "summary": "Renders the Patient Log Summary report with department branding, filter details, and aggregated data tables via Response.Write.",
+      "businessPurpose": "Displays summarized patient log statistics with department logo and filter context information.",
+      "keyMethods": [
+        "Page_Load - Generates HTML summary report with department info, filters, and data tables"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogReportManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Response.Write report pattern. Standard migration approach for report rendering.",
+      "complexity": "complex",
+      "lineCount": 412
+    },
+    {
+      "filePath": "Web/PatientLog/RestoreDeletedSubmittedPatientLog.aspx.cs",
+      "fileName": "RestoreDeletedSubmittedPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_RestoreDeletedSubmittedPatientLog",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Management page for restoring previously deleted patient log submissions. Features grid with sorting, paging, and role-based filtering.",
+      "businessPurpose": "Allows administrators to view and restore patient log entries that were previously deleted, supporting data recovery workflows.",
+      "keyMethods": [
+        "Page_Load - Initializes restore grid with permissions and pagination",
+        "InitializePage - Sets up role-based filtering (User role sees only own data)",
+        "CheckForPermissions - Validates patient log view privileges"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogManager", "RoleManager", "SessionManager", "DutyHoursManager"],
+      "migrationRelevance": "low",
+      "migrationNote": "Restore/undelete functionality should be handled by soft-delete API endpoints.",
+      "complexity": "complex",
+      "lineCount": 461
+    },
+    {
+      "filePath": "Web/PatientLog/SelectPatientLogSupervisors.aspx.cs",
+      "fileName": "SelectPatientLogSupervisors.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_SelectSupervisors",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Supervisor selection and configuration page for patient logs. Manages supervisor assignment criteria (managed list, default preceptor supervisor, or default preceptor) per department.",
+      "businessPurpose": "Allows administrators to configure which users appear as supervisor options during patient log submission, with multiple selection criteria modes.",
+      "keyMethods": [
+        "Page_Load - Initializes supervisor selection page",
+        "InitializePage - Fills departments, user types, and loads supervisor data",
+        "DepartmentCriteriaType - Determines supervisor selection criteria type for department",
+        "StorePageStateParams - Builds search criteria and loads available/selected supervisors"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogSupervisorsManager", "SyncAmionUserManager", "SessionManager"],
+      "migrationRelevance": "medium",
+      "migrationNote": "Supervisor configuration with multiple criteria modes. The Amion sync integration adds complexity.",
+      "complexity": "complex",
+      "lineCount": 609
+    },
+    {
+      "filePath": "Web/PatientLog/SubmitPatientLog.aspx.cs",
+      "fileName": "SubmitPatientLog.aspx.cs",
+      "fileType": "code-behind",
+      "className": "PatientLog_SubmitPatientLog",
+      "inheritsFrom": "BasePage",
+      "module": "PatientLog",
+      "summary": "Primary patient log submission form - the most complex page in the module. Handles dynamic custom and system fields, case review workflow, supervisor review status, audit logging, and learner review mode.",
+      "businessPurpose": "The main form where users submit patient log entries including procedure details, supervisor assignment, custom fields, and case review initiation.",
+      "keyMethods": [
+        "Page_Load - Complex initialization with mode detection, permissions, audit logging",
+        "CheckForPermissions - Validates submit/view privileges",
+        "AddAuditData - Records review audit data for learner reviews",
+        "InitializePage - Sets up dynamic form fields and supervisor review controls"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["PatientLogManager", "ProceduresManager", "SessionManager", "CaseReviewManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Core submission form with dynamic fields, audit logging, and case review workflow. Highest priority for migration in the PatientLog module. Very complex state management.",
+      "complexity": "very-complex",
+      "lineCount": 1802
+    }
+  ],
+  "directoryOverview": "The PatientLog module manages clinical patient encounter logging for medical education programs. It provides comprehensive CRUD operations for patient log entries, supporting features including dynamic custom fields, encounter types, location tracking, DX (diagnosis) classifications, supervisor assignment, case review workflows, and data import/export. The module includes 6 reports with filter and result page pairs covering department-level, detailed, summary, category, and DX classification reporting. The architecture follows the standard WebForms pattern with BasePage inheritance, role-based access control, and business layer delegation.",
+  "keyWorkflows": [
+    "Patient log submission with dynamic custom/system fields and supervisor assignment",
+    "Multi-step patient log import from XML/Excel with field mapping and validation",
+    "Patient log export to Excel/other formats with date range filtering",
+    "Case review workflow (submit for review, review submitted cases)",
+    "Supervisor selection configuration with multiple criteria modes (managed list, default preceptor)",
+    "DX classification, encounter type, and location management with PGY requirements",
+    "Custom field definition and field option configuration",
+    "Six report types: Department, DX Department, Detailed, Summary, By Category, By DX Classification"
+  ]
+}

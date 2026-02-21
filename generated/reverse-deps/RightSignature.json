@@ -1,0 +1,23 @@
+{
+  "module": "RightSignature",
+  "businessClasses": [
+    "ApiHelper",
+    "Class1",
+    "SignatureConfiguration",
+    "DocumentApi",
+    "IDocument",
+    "ITemplate",
+    "Structs",
+    "TemplateApi",
+    "oAuthBase",
+    "OAuthRightSignature"
+  ],
+  "dependents": {
+    "web": [],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 0,
+    "schedulers": 0
+  }
+}

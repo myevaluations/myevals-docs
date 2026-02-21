@@ -1,0 +1,229 @@
+{
+  "module": "MyEvaluations.Business.DutyHours",
+  "generatedAt": "2026-02-20T16:00:00.000Z",
+  "isPriority": true,
+  "overview": "The DutyHours module is the platform's ACGME (Accreditation Council for Graduate Medical Education) compliance engine, responsible for tracking, validating, and reporting resident work hours across all programs. With 75 classes and 22 Manager classes, this is the largest and most complex business module in the MyEvaluations platform. The module manages the complete duty hours lifecycle: activity configuration, time logging, rotation block scheduling, compliance rule enforcement, violation detection and review, geofencing for location-based time tracking, conference attendance tracking, and external scheduling system integration (Amion and QGenda).",
+  "architecture": "## Architecture Overview\n\nThe **DutyHours** module is the platform's ACGME (Accreditation Council for Graduate Medical Education) compliance engine, responsible for tracking, validating, and reporting resident work hours across all programs. With **75 classes** and **22 Manager classes**, this is the largest and most complex business module in the MyEvaluations platform.\n\nThe module manages the complete duty hours lifecycle: activity configuration, time logging, rotation block scheduling, compliance rule enforcement, violation detection and review, geofencing for location-based time tracking, conference attendance tracking, and external scheduling system integration (Amion and QGenda). It also handles institutional-level reporting and data export.\n\nKey architectural characteristics:\n- **ACGME rule engine**: Configurable compliance rules per department and PGY level\n- **External system integration**: Four dedicated Sync managers handle bidirectional data mapping with Amion and QGenda\n- **Geofencing support**: Location-based check-in/check-out with geofence zone management\n- **Conference management**: Full conference lifecycle including scheduling, attendance, and reporting\n- **Block-based time structure**: Rotation blocks define the academic calendar for compliance calculations\n- **QR code integration**: Activity-based QR codes for rapid time logging\n- **Tangier integration**: Legacy SOAP-based web service for location data",
+  "managerPattern": "Manager/Info pattern detected",
+  "storedProcedures": "GetEnabledActivities, GetActivities, GetActivitiesByCategory, GetActivitiesByCategory_new, GetEnabledDepartmentActivitiesByCategory, GetSettingsByCategory, GetUCONNDepartments, GetQRCodeDetailsforActivity, GetDepartmentQRCodes, GetDepartmentScannedQRCodes, GetActivityInfoByID, SaveHoursforActivitiesBasedonQR, GetActivityCategories, GetActivityCategorySettings, AddDepartmentActivity, UpdateDepartmentActivity, DeleteDepartmentActivity, SetDepartmentActivityDisableFlag, DoesActivityNameExist, DoesActivityAbbreviationExist, RestoreDepartmentActivity, GetDHAdmins, AddDHAdmin, DeleteDHAdmin, UpdateDHAdminNonSubmittersStatus, usp_TraceUsersToRefreshTraineeSchedules, GetDepartmentRotationBlocks, AddRotationBlock, AddMilestonePeriod, DeleteMilestonePeriod, GetMilestonePeriod, DeleteDepartmentRotationBlocks, GetBlockPeriodForPGY, GetAcademicYearsForRotationBlocks, AddDefaultStartDayForDutyHoursByDepartment, CheckDHRotationBlockCalendarMapWithSetup, ResetDepartmentDefaultCalendarRotationBlocks, GetDepartmentClinics, GetMyEvalsDepartmentClinics, GetDepartmentClinicsListByCriteria, SetDepartmentClinicDisableFlag, DeleteDepartmentClinicInfo, GetClinicInfoByID, AddDepartmentClinics, UpdateDepartmentClinics, DoesClinicNameExist, GetDepartmentComplianceSettings, GetDepartmentACGMERules, GetComplianceActivityCategorySettings, RestoreGlobalComplianceSettings, CopyFromGloablComplianceSettings, RestoreToDefaultComplianceSettings, AddDepartmentComplianceSettings, DeleteDepartmentComplianceSettings, UpdateDepartmentComplianceSettingsCalculationRule, AddDepartmentACGMERule, VerifiedDepartmentACGMERule, UpdateExcludedCategoryForPGY, InsertConfigurationRulesSettingTypes, GetConferenceListByCriteria, GetConferenceListForReports, GetCurrentAcademicYearStartDate, GetDataForConferenceTrackingReport, UserID, GetProgramList, GetProgramACGMERules, IsMoonlightingEnable, AddProgramACGMERule, UpdateProgramMoonlighting, ApplyProgramDHRulesByCriteria, ApplyProgramDutyHoursRules, ExportDutyHours, GetDepartmentGeofenceNames, GetDepartmentGeofenceNames_New, SetDepartmentGeofenceStatus, DeleteDepartmentGeofenceName, AddDepartmentGeofenceNames, UpdateDepartmentGeofenceNames, GetGeofenceNamesInfoByID, GetDepartmentAddress, GetGroupParticipantsListByCriteriaForAllUsers, GetGroupParticipantsInfoByGroupIDForAllUsers, UpdateGroupParticipantsInfo, DeleteGroupParticipantsInfo, GetUserTypeList, GetPreceptorsList, GetUsersListByType, AddGroupParticipants, CopyGroupparticipants, DoesGroupNameExist, DoesGroupNameCopyExist, GetGroupParticipantsListByCriteriaForAllUsersRestore, UpdateParticipantsListByCriteria, AddGuestPresenters, UpdateGuestPresenters, GetConferenceGuestInfoByID, InstitutionalClinicalHoursDetailedReportInputs, GetInstitutionalDHDetailedReportData, GetDataForMonthlyConferenceReport, GetConferencePresentersInfoWithComma, GetMonthlyConferenceScheduleReportDataForDate, GetgeofenceHistory, GetUsergeofenceHistory, GetEntriedExitLocDetails, GetConferenceListByCriteria, GetConferences, GetDataForSummaryConferenceTrackingReport, GetDataForSummaryConferenceTrackingReportNew, GetDataForSummaryConferencePresentersTrackingReport, GetSummaryConferenceReportCalculationData, GetSummaryConferenceReportConferenceData, GetSummaryConferenceReportConferenceScheduleData, GetSummaryConferenceReportRequiredConferenceDataForUser, GetSummaryConferenceReportCalculationDataForUser, GetTableDataForSummaryConferenceTrackingReport, Conferencestable, GetSyncAmionClinics, GetSyncQGendaClinics, GetOnCallClinicsOffline, GetQGendaClinicsOffline, AddMatchedClinic, DeleteMatchedClinic, GetSyncAmionCallServices, GetSyncQGendaCallServices, AddMatchedActivity, DeleteMatchedActivity, GetTangierLocationSites, GetDepartmentInfoByID, GetOnCallServicesList, GetOnCallCallsOffline, GetQGendaCallsOffline, GetLastUpdatedDatesForSchedules, DepartmentID, GetSyncAmionRotations, GetSyncQGendaRotations, GetOnCallRotationsOffline, GetQgendaRotationsOffline, DeleteMatchedRotation, AddMatchedRotation, GetQueueListForTangierDataImport, GetSyncAmionUsers, AddMatchedUser, DeleteMatchedUser, GetDataUsersToSyncOffline, GetQgendaDataUsersToSyncOffline, GetAutoSyncDataUsersToSyncManuallyOffline, GetQGendaAutoSyncDataUsersToSyncManuallyOffline, GetDepartmentExplanations, GetDepartmentExplanations_New, GetDepartmentExplanationById, DoesDepartmentExplanationExists, AddDepartmentExplanation, UpdateDepartmentExplanation, DeleteDepartmentExplanation, GetViolationList, UpdateViolation, UpdateViolations, GetViolationDetails, GetDutyHourViolationToReviewCount, CheckDutyHoursAdminUserDepartmets, SaveUserViolationByAdminAfterSettingsChanged, CheckDutyHourAdminUserExist",
+  "keyClasses": [
+    {
+      "name": "ComplianceSettingManager",
+      "purpose": "ACGME compliance rule configuration engine -- manages department-level rules, calculation settings, and activity category exclusions",
+      "keyMethods": ["GetDepartmentACGMERules", "AddDepartmentACGMERule", "UpdateExcludedCategoryForPGY"]
+    },
+    {
+      "name": "ViolationReviewManager",
+      "purpose": "Duty hour violation detection, review workflow, and resolution tracking",
+      "keyMethods": ["GetViolationList", "UpdateViolation", "GetDutyHourViolationToReviewCount"]
+    },
+    {
+      "name": "ViolationExplanationManager",
+      "purpose": "Pre-defined violation explanation library for consistent violation documentation",
+      "keyMethods": ["AddDepartmentExplanation", "DoesDepartmentExplanationExists"]
+    },
+    {
+      "name": "ActivityManager",
+      "purpose": "Activity type configuration with QR code support for rapid time logging",
+      "keyMethods": ["GetEnabledActivities", "SaveHoursforActivitiesBasedonQR", "GetQRCodeDetailsforActivity"]
+    },
+    {
+      "name": "BlockManager",
+      "purpose": "Academic calendar rotation block management with milestone periods and schedule refresh triggers",
+      "keyMethods": ["GetDepartmentRotationBlocks", "AddRotationBlock", "AddMilestonePeriod"]
+    },
+    {
+      "name": "ClinicManager",
+      "purpose": "Clinic location management for duty hour scheduling and time logging",
+      "keyMethods": ["GetDepartmentClinics", "AddDepartmentClinics", "DoesClinicNameExist"]
+    },
+    {
+      "name": "GeofenceNamesManager",
+      "purpose": "Geofence zone configuration for location-based check-in/check-out tracking",
+      "keyMethods": ["GetDepartmentGeofenceNames", "AddDepartmentGeofenceNames", "GetDepartmentAddress"]
+    },
+    {
+      "name": "ReviewgeofenceHistoryManager",
+      "purpose": "Geofence event audit trail for administrative review of location-based time entries",
+      "keyMethods": ["GetgeofenceHistory", "GetUsergeofenceHistory", "GetEntriedExitLocDetails"]
+    },
+    {
+      "name": "DutyHourProgramRuleManager",
+      "purpose": "Program-level ACGME rule configuration including moonlighting policies",
+      "keyMethods": ["GetProgramACGMERules", "IsMoonlightingEnable", "ApplyProgramDutyHoursRules"]
+    },
+    {
+      "name": "SyncAmionUserManager",
+      "purpose": "User synchronization between MyEvaluations and Amion/QGenda scheduling systems",
+      "keyMethods": ["GetSyncAmionUsers", "AddMatchedUser", "GetDataUsersToSyncOffline"]
+    },
+    {
+      "name": "SyncAmionRotationManager",
+      "purpose": "Rotation synchronization between MyEvaluations and Amion/QGenda",
+      "keyMethods": ["GetSyncAmionRotations", "GetSyncQGendaRotations", "AddMatchedRotation"]
+    },
+    {
+      "name": "SyncAmionClinicManager",
+      "purpose": "Clinic synchronization between MyEvaluations and Amion/QGenda",
+      "keyMethods": ["GetSyncAmionClinics", "GetSyncQGendaClinics", "AddMatchedClinic"]
+    },
+    {
+      "name": "SyncAmionOnCallManager",
+      "purpose": "On-call service synchronization with Amion/QGenda and Tangier location integration",
+      "keyMethods": ["GetSyncAmionCallServices", "GetTangierLocationSites", "AddMatchedActivity"]
+    },
+    {
+      "name": "GroupParticipantsManager",
+      "purpose": "User group management for conference attendance and duty hour reporting",
+      "keyMethods": ["AddGroupParticipants", "CopyGroupparticipants", "DoesGroupNameExist"]
+    },
+    {
+      "name": "AdminsManager",
+      "purpose": "Duty hours administrator access management per department",
+      "keyMethods": ["GetDHAdmins", "AddDHAdmin", "UpdateDHAdminNonSubmittersStatus"]
+    },
+    {
+      "name": "SummaryConferenceTrackingReportManager",
+      "purpose": "Aggregate conference attendance reporting across departments and time periods",
+      "keyMethods": ["GetDataForSummaryConferenceTrackingReport", "GetSummaryConferenceReportCalculationData"]
+    },
+    {
+      "name": "DetailedConferenceTrackingReportManager",
+      "purpose": "Detailed per-conference attendance reporting with individual records",
+      "keyMethods": ["GetDataForConferenceTrackingReport", "GetConferenceListForReports"]
+    },
+    {
+      "name": "MonthlyConferenceReportManager",
+      "purpose": "Monthly conference schedule and attendance reporting with presenter data",
+      "keyMethods": ["GetDataForMonthlyConferenceReport", "GetConferencePresentersInfoWithComma"]
+    },
+    {
+      "name": "InstitutionalClinicalHoursDetailedReportManager",
+      "purpose": "Cross-department institutional-level clinical hours reporting",
+      "keyMethods": ["GetInstitutionalDHDetailedReportData"]
+    },
+    {
+      "name": "ExportDutyHourManager",
+      "purpose": "Bulk duty hour data export for ACGME reporting and external analysis",
+      "keyMethods": ["ExportDutyHours"]
+    },
+    {
+      "name": "GuestManager",
+      "purpose": "Conference guest presenter lifecycle management",
+      "keyMethods": ["AddGuestPresenters", "UpdateGuestPresenters"]
+    },
+    {
+      "name": "ComplianceSettingInfo",
+      "purpose": "Compliance settings DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ViolationReviewInfo",
+      "purpose": "Violation review DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ViolationExplanationInfo",
+      "purpose": "Violation explanation DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ActivityInfo",
+      "purpose": "Activity type DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ActivityCategoryInfo",
+      "purpose": "Activity category DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "BlockInfo",
+      "purpose": "Rotation block DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ClinicInfo",
+      "purpose": "Clinic DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "GeofenceNamesInfo",
+      "purpose": "Geofence zone DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "ConferenceInfo",
+      "purpose": "Conference definition DTO implementing ICheckInSettings",
+      "keyMethods": []
+    },
+    {
+      "name": "ConferenceScheduleInfo",
+      "purpose": "Conference schedule DTO implementing ICheckInSettings",
+      "keyMethods": []
+    },
+    {
+      "name": "DHConstants",
+      "purpose": "Module-level constants for duty hours configuration",
+      "keyMethods": []
+    },
+    {
+      "name": "QGendaInfo",
+      "purpose": "QGenda scheduling integration DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "DutyHourProgramRuleInfo",
+      "purpose": "Program-level ACGME rule DTO",
+      "keyMethods": []
+    },
+    {
+      "name": "StaffingServiceClient",
+      "purpose": "Amion SOAP web service client proxy for staff/role/assignment data",
+      "keyMethods": ["GetStaff", "GetRoles", "GetAssignments"]
+    },
+    {
+      "name": "LocationMaintenance",
+      "purpose": "Tangier SOAP web service client proxy for location/site data",
+      "keyMethods": ["MaintainLocations"]
+    }
+  ],
+  "businessRules": [
+    "ACGME duty hour limits are configurable per department AND per program, with program rules able to override department defaults",
+    "Compliance rules include: 80-hour weekly average, 24+4 hour shift maximum, minimum 8-hour rest between shifts, one day off per week, and moonlighting hour tracking",
+    "Activity categories can be excluded from compliance calculations on a per-PGY basis (e.g., educational time may not count toward the 80-hour limit for certain levels)",
+    "Compliance settings support three inheritance levels: global defaults, department overrides, and program overrides",
+    "Violations are automatically detected when logged hours exceed ACGME limits and must be reviewed by a designated DH admin",
+    "When compliance settings are changed, existing violations must be recalculated (SaveUserViolationByAdminAfterSettingsChanged)",
+    "Violation explanations are pre-defined per department for consistent documentation",
+    "Geofence zones define physical boundaries for location-based time tracking via the mobile app",
+    "Activity names and abbreviations must be unique within a department",
+    "Clinic names must be unique within a department",
+    "Group participant names must be unique (with copy uniqueness also validated)",
+    "Rotation blocks define the academic calendar and are validated for consistency with the duty hours setup",
+    "Block changes trigger trainee schedule refreshes (usp_TraceUsersToRefreshTraineeSchedules)",
+    "External system sync (Amion/QGenda) supports both automatic and manual matching for users, rotations, clinics, and on-call services",
+    "Conference attendance tracking supports check-in settings via the ICheckInSettings interface",
+    "QR code-based time logging allows rapid activity hour entry at clinical sites",
+    "Moonlighting must be explicitly enabled at the program level before residents can log moonlighting hours",
+    "Only designated DH admins can review violations; admin existence is validated before operations"
+  ],
+  "migrationNotes": [
+    "Highest complexity module: With 75 classes and 22 managers, plan a phased migration spanning multiple sprints",
+    "ACGME compliance is non-negotiable: The compliance calculation engine must produce identical results during and after migration. Extensive regression testing with production data snapshots is essential",
+    "Phase 1 -- Read-only operations: Migrate reporting managers first (SummaryConferenceTrackingReportManager, DetailedConferenceTrackingReportManager, MonthlyConferenceReportManager, InstitutionalClinicalHoursDetailedReportManager)",
+    "Phase 2 -- Configuration CRUD: Migrate ActivityManager, ClinicManager, GeofenceNamesManager, ViolationExplanationManager, AdminsManager",
+    "Phase 3 -- External integrations: Migrate all four Sync managers. Consider replacing the Tangier SOAP service with REST. Build comprehensive integration tests",
+    "Phase 4 -- Compliance engine: Migrate ComplianceSettingManager, DutyHourProgramRuleManager, and ViolationReviewManager together as a tightly coupled subsystem",
+    "Phase 5 -- Block management: Migrate BlockManager last, as it triggers cascading schedule refreshes affecting many subsystems",
+    "QR code system: The SaveHoursforActivitiesBasedonQR flow needs mobile app coordination. Ensure the NestJS API maintains the same contract",
+    "Geofencing: Map to NestJS with real-time event processing via BullMQ for check-in/check-out events",
+    "Conference attendance: Preserve the ICheckInSettings interface contract shared between ConferenceInfo and ConferenceScheduleInfo",
+    "Tangier SOAP deprecation: LocationMaintenance uses a legacy SOAP web reference that should be replaced with REST or deprecated",
+    "Stored procedure naming inconsistencies: Note typos like GetEntriedExitLocDetails, CopyFromGloablComplianceSettings, GetgeofenceHistory. Standardize naming in NestJS",
+    "Institution-specific customizations: GetUCONNDepartments indicates institution-specific logic. Extract into a configurable strategy pattern in NestJS",
+    "UserID as stored procedure parameter: Several managers reference UserID as a stored procedure call, suggesting context parameter passing. Ensure NestJS services propagate user context correctly"
+  ],
+  "mermaidDiagram": "graph TD\n    A[Program Admin] -->|Configures| B[ACGME Rules]\n    A -->|Configures| C[Activity Types]\n    A -->|Configures| D[Rotation Blocks]\n    A -->|Configures| E[Clinics]\n    A -->|Configures| F[Geofence Zones]\n\n    B -->|Department Level| G[ComplianceSettingManager]\n    B -->|Program Level| H[DutyHourProgramRuleManager]\n\n    I[Resident/Trainee] -->|Logs Hours| J[Time Entry]\n    I -->|Scans| K[QR Code Check-in]\n    I -->|Enters/Exits| L[Geofence Zone]\n\n    J --> M[Activity Log]\n    K -->|SaveHoursforActivitiesBasedonQR| M\n    L -->|Mobile App| N[Geofence History]\n\n    M -->|Checked Against| G\n    G -->|Detects| O[Violations]\n    O -->|Reviewed by| P[DH Admin]\n    P -->|Applies| Q[Violation Explanations]\n\n    R[External Systems] -->|Amion| S[SyncAmionUserManager]\n    R -->|Amion| T[SyncAmionRotationManager]\n    R -->|Amion| U[SyncAmionClinicManager]\n    R -->|Amion/QGenda| V[SyncAmionOnCallManager]\n\n    S -->|Maps Users| M\n    T -->|Maps Rotations| D\n    U -->|Maps Clinics| E\n    V -->|Maps On-Call| W[Call Services]\n\n    X[Conference Admin] -->|Schedules| Y[Conferences]\n    Y -->|Tracks| Z[Attendance]\n    Z -->|Reports| AA[Summary Reports]\n    Z -->|Reports| AB[Detailed Reports]\n    Z -->|Reports| AC[Monthly Reports]\n\n    M -->|Exports| AD[ExportDutyHourManager]\n    M -->|Reports| AE[InstitutionalClinicalHoursDetailedReportManager]",
+  "mdxContent": "---\ntitle: \"MyEvaluations.Business.DutyHours\"\ndescription: \"Auto-generated documentation for the MyEvaluations.Business.DutyHours module\"\nsidebar_label: \"DutyHours\"\ntags: [dotnet, business-layer, priority]\n---\n\n{/* Auto-generated by ai-enrich-dotnet.ts on 2026-02-20T16:00:00.000Z */}\n\n## Architecture Overview\n\nThe **DutyHours** module is the platform's ACGME compliance engine, responsible for tracking, validating, and reporting resident work hours across all programs. With **75 classes** and **22 Manager classes**, this is the largest and most complex business module in the MyEvaluations platform."
+}

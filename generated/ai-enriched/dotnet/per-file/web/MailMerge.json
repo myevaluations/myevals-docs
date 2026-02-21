@@ -1,0 +1,148 @@
+{
+  "directory": "Web/MailMerge",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 6,
+  "files": [
+    {
+      "filePath": "Web/MailMerge/DesignDataMerge.aspx.cs",
+      "fileName": "DesignDataMerge.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_DesignDataMerge",
+      "inheritsFrom": "BasePage",
+      "module": "MailMerge",
+      "summary": "Designs data merge templates for mail merge operations. Handles template and category selection with MailDistributionBusiness, includes permission checks and text formatting with regex-based space normalization.",
+      "businessPurpose": "Allows administrators to design data merge templates by selecting categories and configuring merge fields",
+      "keyMethods": [
+        "Page_Load - Initializes template design page with permission checks",
+        "CheckForPermissions - Validates user access to mail merge features",
+        "ddlTemplate_SelectedIndexChanged - Handles template selection changes",
+        "RemoveExtaSpaces - Normalizes whitespace in template content using regex",
+        "ddlCategory_SelectedIndexChanged - Handles category filter changes"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 139
+    },
+    {
+      "filePath": "Web/MailMerge/MailMergeDocument.aspx.cs",
+      "fileName": "MailMergeDocument.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_MailMergeDocument",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MailMerge",
+      "summary": "Generates and renders merged mail documents with export capabilities. Supports exporting to Word and XML formats, loading screen management, print functionality, and repeater-based user data rendering via MailDistributionBusiness.",
+      "businessPurpose": "Generates finalized mail merge documents and provides export to Word/XML and print capabilities",
+      "keyMethods": [
+        "Page_Load - Initializes document with user data and merge fields",
+        "GetLoadingScript - Generates JavaScript for loading screen display",
+        "GetLoadPrintScript - Generates print dialog JavaScript",
+        "GetLoadingSaveWord - Generates Word export JavaScript",
+        "GetLoadingSaveXML - Generates XML export JavaScript",
+        "LoadReportLoadingScreen - Creates loading indicator HTML",
+        "rptUsers_ItemDataBound - Binds individual user data to repeater items",
+        "btnSaveToXML_Click - Exports merged document as XML",
+        "btnSaveToWord_Click - Exports merged document as Word document",
+        "btnHidden_Click - Hidden button handler for postback triggers"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness", "UserManager"],
+      "migrationRelevance": "medium",
+      "complexity": "complex",
+      "lineCount": 291
+    },
+    {
+      "filePath": "Web/MailMerge/ManageCustomFieldTemplates.aspx.cs",
+      "fileName": "ManageCustomFieldTemplates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_ManageCustomFieldTemplates",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MailMerge",
+      "summary": "Manages custom field templates for mail merge operations. Supports template CRUD operations including save, delete, category/template selection, and text normalization.",
+      "businessPurpose": "Allows administrators to create, edit, and delete custom field templates used in mail merge operations",
+      "keyMethods": [
+        "Page_Load - Initializes custom field template management",
+        "ddlTemplate_SelectedIndexChanged - Loads selected template details",
+        "ddlCategory_SelectedIndexChanged - Filters templates by category",
+        "btnSaveCustom_Click - Saves custom field template",
+        "btnDeleteCustom_Click - Deletes selected custom field template",
+        "RemoveExtaSpaces - Normalizes whitespace using regex"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 147
+    },
+    {
+      "filePath": "Web/MailMerge/ManageMailMergeTemplates.aspx.cs",
+      "fileName": "ManageMailMergeTemplates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_ManageMailMergeTemplates",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MailMerge",
+      "summary": "Manages standard mail merge templates with full CRUD operations. Handles template selection, category filtering, template update/delete, and text normalization using MailDistributionBusiness.",
+      "businessPurpose": "Provides CRUD management for standard mail merge letter templates used across the platform",
+      "keyMethods": [
+        "Page_Load - Initializes template management page",
+        "ddlTemplate_SelectedIndexChanged - Loads selected template content",
+        "ddlCategory_SelectedIndexChanged - Filters by template category",
+        "btnUpdateTemplate_Click - Saves template changes",
+        "btnDeleteTemplate_Click - Removes selected template",
+        "RemoveExtaSpaces - Normalizes whitespace in template text"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness"],
+      "migrationRelevance": "medium",
+      "complexity": "moderate",
+      "lineCount": 174
+    },
+    {
+      "filePath": "Web/MailMerge/RestoreMailMergeCustomTemplates.aspx.cs",
+      "fileName": "RestoreMailMergeCustomTemplates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_RestoreMailMergeCustomTemplates",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MailMerge",
+      "summary": "Restores previously deleted custom mail merge templates. Uses a GridView with row command handling to restore individual templates via MailDistributionBusiness.",
+      "businessPurpose": "Allows administrators to recover deleted custom mail merge templates",
+      "keyMethods": [
+        "Page_Load - Loads list of deleted custom templates",
+        "gvTemplates_RowCommand - Handles restore action for individual templates"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 39
+    },
+    {
+      "filePath": "Web/MailMerge/RestoreMailMergeTemplates.aspx.cs",
+      "fileName": "RestoreMailMergeTemplates.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MailMerge_RestoreMailMergeTemplates",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MailMerge",
+      "summary": "Restores previously deleted standard mail merge templates. Uses GridView with row command handling for template recovery via MailDistributionBusiness.",
+      "businessPurpose": "Allows administrators to recover deleted standard mail merge templates",
+      "keyMethods": [
+        "Page_Load - Loads list of deleted standard templates",
+        "gvTemplates_RowCommand - Handles restore action for individual templates"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["MailDistributionBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 43
+    }
+  ],
+  "directoryOverview": "Mail merge module providing template management and document generation capabilities. Supports creating, editing, and managing both standard and custom mail merge templates, generating merged documents from user data, and exporting to Word/XML formats. All operations use MailDistributionBusiness as the primary business layer.",
+  "keyWorkflows": [
+    "Design and manage mail merge templates (standard and custom) with category-based organization",
+    "Generate merged documents by combining templates with user data",
+    "Export merged documents to Word and XML formats with print support",
+    "Restore previously deleted templates for both standard and custom types"
+  ]
+}

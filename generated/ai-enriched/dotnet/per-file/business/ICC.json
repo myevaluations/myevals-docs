@@ -1,0 +1,53 @@
+{
+  "directory": "Business.ICC",
+  "layer": "business",
+  "generatedAt": "2026-02-21T12:57:06.037Z",
+  "fileCount": 2,
+  "files": [
+    {
+      "filePath": "Business.ICC/NAGProgram.cs",
+      "fileName": "NAGProgram.cs",
+      "fileType": "business",
+      "className": "NAGProgram",
+      "inheritsFrom": null,
+      "module": "ICC",
+      "summary": "Implements Intraclass Correlation Coefficient (ICC) calculation using the NAG numerical library (G02.g02da for OLS regression and G01.g01fd for F-distribution critical values). Constructs a two-way mixed-effects model design matrix, computes between-subjects and within-subjects mean squares, and returns [lowerCI, ICC, upperCI].",
+      "businessPurpose": "Calculates ICC reliability statistics for evaluation scoring profiles, enabling program directors to assess inter-rater agreement for clinical evaluations — a key accreditation and quality-assurance metric in GME programs.",
+      "keyMethods": [
+        "ICC(double[,], double, double, int) - Entry point: handles missing values, builds design matrix, calls g02da twice for TSS and RSS, computes ICC with confidence interval",
+        "CalculateICC(double, double, double, double, double, double) - Computes ICC point estimate and CI bounds from mean squares using F-distribution quantiles",
+        "HandleMissingValues(double[,], double, int) - Filters rows with missing values according to the mishandle policy",
+        "CheckNAGError(string, int) - Validates NAG routine IFAIL return codes and throws on license or algorithm errors"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "This module has a hard dependency on the NAG numerical library (commercial, Windows-native DLL). For Node.js migration, the ICC computation would need to be replaced with an equivalent statistical library (e.g., ml-stat, jStat) or moved to a Python microservice using scipy.stats.icc.",
+      "complexity": "moderate",
+      "lineCount": 261
+    },
+    {
+      "filePath": "Business.ICC/Nag_ICC.cs",
+      "fileName": "Nag_ICC.cs",
+      "fileType": "business",
+      "className": "Nag_ICC",
+      "inheritsFrom": null,
+      "module": "ICC",
+      "summary": "Alternative ICC implementation that delegates directly to NAG's G04GAF routine via P/Invoke (both 32-bit ICC_DTW3A02DA.dll and 64-bit ICC_DTW6402DA.dll). Handles missing value filtering, transposes the data matrix for the column-major NAG convention, and returns [lowerCI, ICC, upperCI] while throwing typed NagICCError/NagICCWarning exceptions for specific IFAIL codes.",
+      "businessPurpose": "Provides a direct NAG-library-backed ICC calculation as a higher-fidelity alternative to NAGProgram.cs, used for inter-rater reliability computation in evaluation scoring profiles.",
+      "keyMethods": [
+        "ICC(double[,], double, double, int) - Main entry point: filters missing subjects, transposes data for NAG column-major convention, calls G04GAF32 or G04GAF64 based on pointer size, returns ICC with confidence interval",
+        "G04GAF32 (P/Invoke) - Calls 32-bit NAG G04GAF ICC routine",
+        "G04GAF64 (P/Invoke) - Calls 64-bit NAG G04GAF ICC routine"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Hard dependency on NAG Windows DLLs via P/Invoke prevents direct port to Node.js or Linux. Migration requires replacing with a pure managed implementation (like NAGProgram.cs approach) or a Python statistical microservice. NagICCWarning/NagICCError exception types must also be accounted for in calling code.",
+      "complexity": "moderate",
+      "lineCount": 171
+    }
+  ],
+  "directoryOverview": "ICC business module providing icc functionality for the MyEvaluations platform.",
+  "keyWorkflows": []
+}

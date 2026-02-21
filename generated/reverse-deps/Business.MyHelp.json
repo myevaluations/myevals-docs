@@ -1,0 +1,282 @@
+{
+  "module": "Business.MyHelp",
+  "businessClasses": [
+    "HelpGroupManager",
+    "SectionInfo",
+    "SectionInfoBusiness",
+    "SectionsGroupManager"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "AssignMenu.aspx.cs",
+        "filePath": "Web/CMETracking/AssignMenu.aspx.cs",
+        "directory": "Web/CMETracking",
+        "module": "CMETracking"
+      },
+      {
+        "fileName": "ConferenceSettings.aspx.cs",
+        "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceSettings.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "DesignConferenceEvaluationStep1.aspx.cs",
+        "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep1.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "ManageConferenceEvaluations.aspx.cs",
+        "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceEvaluations.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "MyEvaluationsHelpNew.aspx.cs",
+        "filePath": "Web/DutyHours/MyEvaluationsHelpNew.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "AnswerSet.aspx.cs",
+        "filePath": "Web/Evaluations/AnswerSet.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "Assignments360Menu.aspx.cs",
+        "filePath": "Web/Evaluations/Assignments360Menu.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "AssignmentsMenu.aspx.cs",
+        "filePath": "Web/Evaluations/AssignmentsMenu.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "CustomDesignSelectScale.aspx.cs",
+        "filePath": "Web/Evaluations/CustomDesignSelectScale.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "CustomDesignStep1.aspx.cs",
+        "filePath": "Web/Evaluations/CustomDesignStep1.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "CustomDesignStep2.aspx.cs",
+        "filePath": "Web/Evaluations/CustomDesignStep2.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "CustomDesignStep3.aspx.cs",
+        "filePath": "Web/Evaluations/CustomDesignStep3.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "EvaluationsMain.aspx.cs",
+        "filePath": "Web/Evaluations/EvaluationsMain.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ExportData.aspx.cs",
+        "filePath": "Web/Evaluations/ExportData.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ExpressDesignStep1.aspx.cs",
+        "filePath": "Web/Evaluations/ExpressDesignStep1.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ExpressDesignStep2.aspx.cs",
+        "filePath": "Web/Evaluations/ExpressDesignStep2.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ExpressDesignStep3.aspx.cs",
+        "filePath": "Web/Evaluations/ExpressDesignStep3.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ExpressDesignStep4.aspx.cs",
+        "filePath": "Web/Evaluations/ExpressDesignStep4.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "GenerateEvaluationAssignments.aspx.cs",
+        "filePath": "Web/Evaluations/GenerateEvaluationAssignments.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "Inbox.aspx.cs",
+        "filePath": "Web/Evaluations/Inbox.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "IntegratedOnCallAssignmentMenu.aspx.cs",
+        "filePath": "Web/Evaluations/IntegratedOnCallAssignmentMenu.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "LinkEvaluationsRotations.aspx.cs",
+        "filePath": "Web/Evaluations/LinkEvaluationsRotations.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "LogOfEvaluationAssignments.aspx.cs",
+        "filePath": "Web/Evaluations/LogOfEvaluationAssignments.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ManageAnswerScales.aspx.cs",
+        "filePath": "Web/Evaluations/ManageAnswerScales.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ManageEvaluations.aspx.cs",
+        "filePath": "Web/Evaluations/ManageEvaluations.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "Mail.aspx.cs",
+        "filePath": "Web/Mail/Mail.aspx.cs",
+        "directory": "Web/Mail",
+        "module": "Mail"
+      },
+      {
+        "fileName": "AddSection.aspx.cs",
+        "filePath": "Web/MyHelp/AddSection.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "ManageChapters.aspx.cs",
+        "filePath": "Web/MyHelp/ManageChapters.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "ManagePages.aspx.cs",
+        "filePath": "Web/MyHelp/ManagePages.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "ManageSections.aspx.cs",
+        "filePath": "Web/MyHelp/ManageSections.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "MyHelpContents.aspx.cs",
+        "filePath": "Web/MyHelp/MyHelpContents.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "MyHelpIndex.aspx.cs",
+        "filePath": "Web/MyHelp/MyHelpIndex.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "MyHelpLanding.aspx.cs",
+        "filePath": "Web/MyHelp/MyHelpLanding.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "MyHelpSearch.aspx.cs",
+        "filePath": "Web/MyHelp/MyHelpSearch.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "PrintPageContent.aspx.cs",
+        "filePath": "Web/MyHelp/PrintPageContent.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "ViewSections.aspx.cs",
+        "filePath": "Web/MyHelp/ViewSections.aspx.cs",
+        "directory": "Web/MyHelp",
+        "module": "MyHelp"
+      },
+      {
+        "fileName": "ErrorTrackingSetup.aspx.cs",
+        "filePath": "Web/Procedures/ErrorTrackingSetup.aspx.cs",
+        "directory": "Web/Procedures",
+        "module": "Procedures"
+      },
+      {
+        "fileName": "ExportProcedures.aspx.cs",
+        "filePath": "Web/Procedures/ExportProcedures.aspx.cs",
+        "directory": "Web/Procedures",
+        "module": "Procedures"
+      },
+      {
+        "fileName": "ManageProcedures.aspx.cs",
+        "filePath": "Web/Procedures/ManageProcedures.aspx.cs",
+        "directory": "Web/Procedures",
+        "module": "Procedures"
+      },
+      {
+        "fileName": "ProceduresMain.aspx.cs",
+        "filePath": "Web/Procedures/ProceduresMain.aspx.cs",
+        "directory": "Web/Procedures",
+        "module": "Procedures"
+      },
+      {
+        "fileName": "ProceduresSetup.aspx.cs",
+        "filePath": "Web/Procedures/ProceduresSetup.aspx.cs",
+        "directory": "Web/Procedures",
+        "module": "Procedures"
+      },
+      {
+        "fileName": "ReportsMain.aspx.cs",
+        "filePath": "Web/Reports/ReportsMain.aspx.cs",
+        "directory": "Web/Reports",
+        "module": "Reports"
+      },
+      {
+        "fileName": "MyEvaluationsHelp.aspx.cs",
+        "filePath": "Web/MyEvaluationsHelp.aspx.cs",
+        "directory": "Web",
+        "module": "Help System"
+      },
+      {
+        "fileName": "MyEvaluationsHelpNew.aspx.cs",
+        "filePath": "Web/MyEvaluationsHelpNew.aspx.cs",
+        "directory": "Web",
+        "module": "Help System"
+      }
+    ],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 44,
+    "schedulers": 0
+  }
+}

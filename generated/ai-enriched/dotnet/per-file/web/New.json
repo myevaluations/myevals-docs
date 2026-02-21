@@ -1,0 +1,222 @@
+{
+  "directory": "Web/New",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 11,
+  "files": [
+    {
+      "filePath": "Web/New/AccreditationDocumentation/Report.aspx.cs",
+      "fileName": "Report.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_AccreditationDocumentationReport",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Report page for accreditation documentation. Uses NewFrontend helper for React frontend integration and New_Auth for authentication. Checks permissions for accreditation access.",
+      "businessPurpose": "Renders accreditation documentation reports within the new React-based frontend shell",
+      "keyMethods": [
+        "Page_Load - Initializes page with React frontend and auth context",
+        "CheckForPermissions - Validates access to accreditation documentation reports"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 28
+    },
+    {
+      "filePath": "Web/New/AccreditationDocumentation.aspx.cs",
+      "fileName": "AccreditationDocumentation.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_AccreditationDocumentation",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Accreditation documentation landing page serving as a shell for the React frontend. Uses NewFrontend and New_Auth for modern frontend integration.",
+      "businessPurpose": "Hosts the React-based accreditation documentation interface within the .NET shell",
+      "keyMethods": [
+        "Page_Load - Initializes React frontend shell with authentication",
+        "CheckForPermissions - Validates accreditation documentation access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 29
+    },
+    {
+      "filePath": "Web/New/BasePage.aspx.cs",
+      "fileName": "BasePage.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_BasePage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Base page for the new React-integrated frontend pages. Initializes NewFrontend helper and New_Auth for all pages in the New directory that need React frontend integration.",
+      "businessPurpose": "Provides base authentication and React frontend initialization for all new-style pages",
+      "keyMethods": [
+        "Page_Load - Initializes React frontend and authentication context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 17
+    },
+    {
+      "filePath": "Web/New/CorePersonnel/Report.aspx.cs",
+      "fileName": "Report.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_CorePersonnelReport",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Core personnel report page in the new React frontend. Uses NewFrontend for rendering and checks Evaluations module permissions.",
+      "businessPurpose": "Renders core personnel reports within the React-based interface",
+      "keyMethods": [
+        "Page_Load - Initializes React shell with auth for personnel reports",
+        "CheckForPermissions - Validates core personnel report access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 36
+    },
+    {
+      "filePath": "Web/New/CorePersonnel.aspx.cs",
+      "fileName": "CorePersonnel.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_CorePersonnelPage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Core personnel management page using the React frontend. References Evaluations business module for personnel-related data access.",
+      "businessPurpose": "Hosts the React-based core personnel management interface",
+      "keyMethods": [
+        "Page_Load - Initializes React frontend for core personnel module",
+        "CheckForPermissions - Validates core personnel management access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 32
+    },
+    {
+      "filePath": "Web/New/InstitutionalProgramAssessments.aspx.cs",
+      "fileName": "InstitutionalProgramAssessments.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_InstitutionalProgramAssessmentsPage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Institutional program assessments page using React frontend. References Evaluations module for assessment data and permissions.",
+      "businessPurpose": "Hosts the React-based institutional program assessment interface",
+      "keyMethods": [
+        "Page_Load - Initializes React shell for institutional assessments",
+        "CheckForPermissions - Validates institutional assessment access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 40
+    },
+    {
+      "filePath": "Web/New/PrintBasePage.aspx.cs",
+      "fileName": "PrintBasePage.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_PrintBasePage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Print-optimized base page for the React frontend. Uses NewFrontend with print-specific rendering for generating printable views of React pages.",
+      "businessPurpose": "Provides print-optimized layout for React-based pages",
+      "keyMethods": [
+        "Page_Load - Initializes print-optimized React frontend"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 13
+    },
+    {
+      "filePath": "Web/New/ProgramAssessment.aspx.cs",
+      "fileName": "ProgramAssessment.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_ProgramAssessmentPage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Program assessment page using React frontend. Handles individual program-level assessments with Evaluations module integration.",
+      "businessPurpose": "Hosts the React-based program assessment interface for individual programs",
+      "keyMethods": [
+        "Page_Load - Initializes React shell for program assessments",
+        "CheckForPermissions - Validates program assessment access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 42
+    },
+    {
+      "filePath": "Web/New/ProgramAssessmentSettings/RequirementSet.aspx.cs",
+      "fileName": "RequirementSet.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_RequirementSet",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Requirement set configuration page for program assessments. Uses React frontend for the settings interface.",
+      "businessPurpose": "Manages requirement set definitions used in program assessment scoring and compliance",
+      "keyMethods": [
+        "Page_Load - Initializes React shell for requirement set configuration",
+        "CheckForPermissions - Validates requirement set management access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 29
+    },
+    {
+      "filePath": "Web/New/ProgramAssessmentSettingsPage.aspx.cs",
+      "fileName": "ProgramAssessmentSettingsPage.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_ProgramAssessmentSettingsPage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Settings page for program assessment configuration using React frontend. Manages assessment parameters and scoring criteria.",
+      "businessPurpose": "Provides configuration interface for program assessment settings within the React frontend",
+      "keyMethods": [
+        "Page_Load - Initializes React shell for assessment settings",
+        "CheckForPermissions - Validates assessment settings access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 29
+    },
+    {
+      "filePath": "Web/New/SimplImport.aspx.cs",
+      "fileName": "SimplImport.aspx.cs",
+      "fileType": "code-behind",
+      "className": "New_SimplImportPage",
+      "inheritsFrom": "BasePage",
+      "module": "New",
+      "summary": "Data import page using the React frontend for SIMPL (System for Improving and Measuring Procedural Learning) data integration.",
+      "businessPurpose": "Hosts the React-based SIMPL data import interface for procedural learning data",
+      "keyMethods": [
+        "Page_Load - Initializes React shell for SIMPL import",
+        "CheckForPermissions - Validates SIMPL import access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["NewFrontend", "New_Auth"],
+      "migrationRelevance": "high",
+      "complexity": "simple",
+      "lineCount": 29
+    }
+  ],
+  "directoryOverview": "Modern frontend integration layer (Web/New) serving as .NET shell pages that host React-based UI components. All pages follow the same pattern: initialize NewFrontend helper for React CDN embedding, authenticate via New_Auth, and check permissions. These represent the strangler fig migration pattern where React components progressively replace WebForms pages. Key areas migrated: program assessments, core personnel, accreditation documentation, requirement sets, and SIMPL data import.",
+  "keyWorkflows": [
+    "Initialize React frontend within .NET WebForms shell via NewFrontend helper",
+    "Authenticate users through New_Auth bridge between .NET sessions and React frontend",
+    "Permission-gated access to migrated React modules (assessments, personnel, accreditation)",
+    "Print-optimized rendering for React-based pages via PrintBasePage"
+  ]
+}

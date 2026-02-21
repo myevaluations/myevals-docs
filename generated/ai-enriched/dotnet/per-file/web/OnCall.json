@@ -1,0 +1,86 @@
+{
+  "directory": "Web/OnCall",
+  "layer": "web",
+  "generatedAt": "2026-02-20T21:00:00.000Z",
+  "fileCount": 4,
+  "files": [
+    {
+      "filePath": "Web/OnCall/Momentum.aspx.cs",
+      "fileName": "Momentum.aspx.cs",
+      "fileType": "code-behind",
+      "className": "OnCall_Momentum",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "OnCall",
+      "summary": "Integration page for Momentum on-call scheduling system. Initializes user context via UserBusiness and populates session/department data for the embedded Momentum interface.",
+      "businessPurpose": "Provides integration point for the Momentum third-party on-call scheduling system",
+      "keyMethods": [
+        "Page_Load - Sets up user context and department data for Momentum integration"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 37
+    },
+    {
+      "filePath": "Web/OnCall/OnCall.aspx.cs",
+      "fileName": "OnCall.aspx.cs",
+      "fileType": "code-behind",
+      "className": "OnCall_OnCall",
+      "inheritsFrom": "BasePage",
+      "module": "OnCall",
+      "summary": "Main on-call scheduling page integrating with duty hours and timesheet modules. Uses UserBusiness for user context and inherits BasePage for authentication.",
+      "businessPurpose": "Primary on-call schedule management interface for residents and staff",
+      "keyMethods": [
+        "Page_Load - Initializes on-call page with user session and department context"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserBusiness"],
+      "migrationRelevance": "medium",
+      "complexity": "simple",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/OnCall/QGenda.aspx.cs",
+      "fileName": "QGenda.aspx.cs",
+      "fileType": "code-behind",
+      "className": "OnCall_QGenda",
+      "inheritsFrom": "BasePage",
+      "module": "OnCall",
+      "summary": "Integration page for QGenda scheduling platform. Sets up user context and department data for embedded QGenda interface, with duty hours and timesheet module references.",
+      "businessPurpose": "Provides integration point for the QGenda third-party scheduling system",
+      "keyMethods": [
+        "Page_Load - Initializes user context for QGenda integration"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["UserBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 38
+    },
+    {
+      "filePath": "Web/OnCall/Tangier.aspx.cs",
+      "fileName": "Tangier.aspx.cs",
+      "fileType": "code-behind",
+      "className": "OnCall_Tangier",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "OnCall",
+      "summary": "Integration page for Tangier scheduling system. Initializes controls and sets up timesheet/security context for the embedded Tangier interface.",
+      "businessPurpose": "Provides integration point for the Tangier third-party scheduling system",
+      "keyMethods": [
+        "Page_Load - Initializes page for Tangier integration",
+        "InitControls - Sets up UI controls for Tangier embedding"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 23
+    }
+  ],
+  "directoryOverview": "On-call scheduling module providing integration points for three third-party scheduling systems (Momentum, QGenda, Tangier) plus a native on-call management page. Pages are thin wrappers that set up user context and embed external scheduling tools.",
+  "keyWorkflows": [
+    "Initialize user session context for third-party scheduling system integrations",
+    "Embed external on-call scheduling interfaces (Momentum, QGenda, Tangier) within the MyEvaluations shell"
+  ]
+}

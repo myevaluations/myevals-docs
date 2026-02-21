@@ -1,0 +1,320 @@
+{
+  "directory": "Web/MyHelp",
+  "layer": "web",
+  "generatedAt": "2026-02-21T00:00:00.000Z",
+  "fileCount": 14,
+  "files": [
+    {
+      "filePath": "Web/MyHelp/AddSection.aspx.cs",
+      "fileName": "AddSection.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_AddSection",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Form page for adding or editing a help section; enforces CheckPrivilegesForMode for the MyHelp/Sections module before allowing access.",
+      "businessPurpose": "Allows administrators to create and edit help content sections in the MyHelp knowledge base.",
+      "keyMethods": [
+        "Page_Load - checks privileges and initializes section form via SectionInfoBusiness",
+        "btnSave_Click - saves new or updated section record"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 97
+    },
+    {
+      "filePath": "Web/MyHelp/GeneralSurgery/ReviewBehaviorAnchors.aspx.cs",
+      "fileName": "ReviewBehaviorAnchors.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_GeneralSurgery_ReviewBehaviorAnchors",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "SysAdmin-only page (role ID 1) that displays evaluation user document counts by department; redirects non-admins with an error.",
+      "businessPurpose": "Provides system administrators a report of user document submission counts broken down by department for behavior anchor review.",
+      "keyMethods": [
+        "Page_Load - checks for SysAdmin role and loads department list and results",
+        "ddlDepartments_SelectedIndexChanged - refreshes results when department selection changes",
+        "BindResults - fetches user document counts via EvaluationsTemplateManager"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["EvaluationsTemplateManager", "LookUpTables"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 60
+    },
+    {
+      "filePath": "Web/MyHelp/ManageChapters.aspx.cs",
+      "fileName": "ManageChapters.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_ManageChapters",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MyHelp",
+      "summary": "Grid-based management of help chapters within a section; uses encrypted query strings for IDs and supports add, edit, delete, and view chapter actions.",
+      "businessPurpose": "Allows administrators to manage help content chapters within a selected section including creating, editing, and deleting chapters.",
+      "keyMethods": [
+        "Page_Load - initializes chapter management view via SectionInfoBusiness",
+        "ddlSelectSection_SelectedIndexChanged - loads chapter grid for selected section",
+        "DeleteRecord - deletes a chapter from the Obout grid callback",
+        "lbtnEdit_Click - redirects to chapter edit page with encrypted IDs",
+        "lbtnDelete_Click - deletes the selected chapter",
+        "lbtnView_Click - redirects to chapter view page",
+        "EncryptQueryString - encrypts query string parameters via SectionInfoBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "moderate",
+      "lineCount": 211
+    },
+    {
+      "filePath": "Web/MyHelp/ManagePages.aspx.cs",
+      "fileName": "ManagePages.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_ManagePages",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Stub management page for help pages; only implements navigation to AddPage.aspx with minimal logic.",
+      "businessPurpose": "Entry point for managing help content pages, redirecting to the page creation form.",
+      "keyMethods": [
+        "btnAddPageTop_Click - redirects to AddPage.aspx",
+        "btnAddPageBottom_Click - redirects to AddPage.aspx"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 45
+    },
+    {
+      "filePath": "Web/MyHelp/ManageSections.aspx.cs",
+      "fileName": "ManageSections.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_ManageSections",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Admin management grid for help sections; redirects non-admin users to ViewSections.aspx, logs page access via MyEvalLog, and provides edit/view/manage/delete actions.",
+      "businessPurpose": "Provides administrators the ability to manage all help sections with full CRUD operations and redirects standard users to the read-only view.",
+      "keyMethods": [
+        "CheckForPermissions - validates admin access and redirects non-admins to ViewSections",
+        "Page_Load - checks permissions and initializes section grid",
+        "lbtnEdit_Click - navigates to section edit page with encrypted ID",
+        "lbtnView_Click - navigates to section view page",
+        "lbtnManage_Click - navigates to MyHelpContents for section management",
+        "lbtnDelete_Click - deletes a section record"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "moderate",
+      "lineCount": 234
+    },
+    {
+      "filePath": "Web/MyHelp/MyHelpContents.aspx.cs",
+      "fileName": "MyHelpContents.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_MyHelpContents",
+      "inheritsFrom": "BasePage_Ajax",
+      "module": "MyHelp",
+      "summary": "Interactive tree-based help content management page using obout ASP tree view for drag-and-drop reordering; supports adding, saving, and deleting chapters and pages.",
+      "businessPurpose": "Allows administrators to manage help content by adding chapters and pages to sections with drag-and-drop reordering capability.",
+      "keyMethods": [
+        "Page_Load - initializes tree content view via SectionInfoBusiness",
+        "OnNodeDrop - handles tree drag-and-drop to reorder chapters and pages",
+        "OnNodeSelect - redirects to the selected node's content",
+        "btnAddChapter_Click - navigates to add chapter form",
+        "btnAddPage_Click - navigates to add page form",
+        "btnSaveChapter_Click - saves chapter and redirects back to tree",
+        "btnSavePage_Click - saves page and redirects back to tree",
+        "btnDeleteChapter_Click - deletes chapter and returns to tree",
+        "btnDeletePage_Click - deletes page and returns to tree"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "moderate",
+      "lineCount": 325
+    },
+    {
+      "filePath": "Web/MyHelp/MyHelpIndex.aspx.cs",
+      "fileName": "MyHelpIndex.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_MyHelpIndex",
+      "inheritsFrom": "BasePage_Ajax",
+      "module": "MyHelp",
+      "summary": "Tree-based help content index view using obout ASP tree; uses ASP.NET Cache to pass selected node info between callbacks without page redirects.",
+      "businessPurpose": "Provides users a navigable index of help content organized in a tree structure for quick browsing.",
+      "keyMethods": [
+        "Page_Load - initializes index tree or handles callback to display selected node content",
+        "OnNodeSelect - stores selected node info in Cache for callback rendering",
+        "btnContents_Click - navigates to ViewSections",
+        "btnIndex_Click - reloads MyHelpIndex",
+        "btnSearch_Click - navigates to MyHelpSearch"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 134
+    },
+    {
+      "filePath": "Web/MyHelp/MyHelpLanding.aspx.cs",
+      "fileName": "MyHelpLanding.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_MyHelpLanding",
+      "inheritsFrom": "BasePage_Ajax",
+      "module": "MyHelp",
+      "summary": "MyHelp landing hub page; performs HappyFox SSO via SAML 2.0 (same logic as MenuSupport), creates HappyFox user accounts via REST API, and conditionally shows Rocket.Chat connect links based on user role.",
+      "businessPurpose": "Serves as the main MyHelp entry point giving users access to help sections, SSO to HappyFox support portal, and Rocket.Chat customer success messaging.",
+      "keyMethods": [
+        "Page_Load - sets up privilege-driven menu, triggers HappyFox account creation and SAML SSO, sets Rocket.Chat link per role",
+        "CreateUserAccount - provisions user in HappyFox via REST API",
+        "GetSamlResponse - generates SAML 2.0 assertion for HappyFox SSO",
+        "AssetionElement - constructs SAML assertion XML with user subject",
+        "GetHelpVeiwSections - loads help sections into the landing tree"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["HelpGroupManager", "SectionInfoBusiness", "UserManager"],
+      "migrationRelevance": "high",
+      "migrationNote": "Contains both SAML SSO and Rocket.Chat integration; both integrations require careful handling in any Node.js migration.",
+      "complexity": "complex",
+      "lineCount": 493
+    },
+    {
+      "filePath": "Web/MyHelp/MyHelpMain.aspx.cs",
+      "fileName": "MyHelpMain.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_MyHelpMain",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "MyHelp administration navigation menu page that shows or hides menu items (Sections, Chapters, Pages, Contents) based on user submodule privileges.",
+      "businessPurpose": "Provides the administrative navigation entry point for the MyHelp module with privilege-driven menu visibility.",
+      "keyMethods": [
+        "Page_Load - checks submodule privileges and removes menu items the user cannot access"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 45
+    },
+    {
+      "filePath": "Web/MyHelp/MyHelpSearch.aspx.cs",
+      "fileName": "MyHelpSearch.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_MyHelpSearch",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Full-text keyword search page for help content; calls SectionInfoBusiness.ShowSearchContent on search button click.",
+      "businessPurpose": "Allows users to search the help knowledge base by keyword and view matching content.",
+      "keyMethods": [
+        "Page_Load - initializes search form and sets default button to Search",
+        "btnSearch_Click - executes content search via SectionInfoBusiness.ShowSearchContent",
+        "btnContents_Click - navigates to ViewSections",
+        "btnIndex_Click - navigates to MyHelpIndex",
+        "EncryptString - encrypts a string via QuizBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 135
+    },
+    {
+      "filePath": "Web/MyHelp/PrintPageContent.aspx.cs",
+      "fileName": "PrintPageContent.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_PrintPageContent",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Print view for a single help page content; initializes via SectionInfoBusiness.OnViewPrintInitialize.",
+      "businessPurpose": "Provides a printer-friendly view of a single help content page.",
+      "keyMethods": [
+        "Page_Load - loads print-formatted content via SectionInfoBusiness"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "none",
+      "complexity": "trivial",
+      "lineCount": 37
+    },
+    {
+      "filePath": "Web/MyHelp/RocketChatConnect.aspx.cs",
+      "fileName": "RocketChatConnect.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_RocketChatConnect",
+      "inheritsFrom": "BasePage",
+      "module": "MyHelp",
+      "summary": "Authenticates users into Rocket.Chat via the REST API, provisions accounts if needed, and renders an embedded iframe for direct messaging with support agents.",
+      "businessPurpose": "Provides authenticated in-app Rocket.Chat messaging for users to communicate directly with MyEvaluations client success team members.",
+      "keyMethods": [
+        "Page_Load - checks role permissions and invokes AuthenticateAndEmbed",
+        "AuthenticateAndEmbed - orchestrates admin token retrieval, user provisioning, user login, and iframe rendering",
+        "GetAdminToken - authenticates as Rocket.Chat admin to get management token",
+        "RocketChatUserExists - checks if a user account exists in Rocket.Chat",
+        "CreateRocketChatUser - provisions a new Rocket.Chat user account",
+        "RocketChatLogin - authenticates the current user in Rocket.Chat",
+        "CreateDMInBackground - creates a direct message channel with a target agent"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "high",
+      "migrationNote": "Rocket.Chat integration with hardcoded admin credentials is a security concern; migration should use environment variables and OAuth.",
+      "complexity": "moderate",
+      "lineCount": 314
+    },
+    {
+      "filePath": "Web/MyHelp/RocketChatMembers.aspx.cs",
+      "fileName": "RocketChatMembers.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_RocketChatMembers",
+      "inheritsFrom": "System.Web.UI.Page",
+      "module": "MyHelp",
+      "summary": "Displays a list of Rocket.Chat customer success team members (livechat-agent, livechat-manager, livechat-monitor roles) with availability status and links to initiate chat.",
+      "businessPurpose": "Shows users which MyEvaluations support team members are available in Rocket.Chat and provides direct chat links.",
+      "keyMethods": [
+        "Page_Load - loads team member list with status from Rocket.Chat API",
+        "GetAdminToken - authenticates as Rocket.Chat admin",
+        "GetTeamMembersFromRocketChat - queries user list and filters by target roles",
+        "GetStatusText - converts status code to human-readable text",
+        "GetStatusCssClass - maps status to CSS class for color indicator"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Contains hardcoded Rocket.Chat admin password; should be moved to environment configuration in any migration.",
+      "complexity": "moderate",
+      "lineCount": 184
+    },
+    {
+      "filePath": "Web/MyHelp/ViewSections.aspx.cs",
+      "fileName": "ViewSections.aspx.cs",
+      "fileType": "code-behind",
+      "className": "MyHelp_ViewSections",
+      "inheritsFrom": "BasePage_Ajax",
+      "module": "MyHelp",
+      "summary": "Read-only tree-based help section viewer using obout ASP tree; uses Cache for node selection between AJAX callbacks.",
+      "businessPurpose": "Provides all authenticated users a navigable tree view of help sections and their content pages.",
+      "keyMethods": [
+        "Page_Load - initializes section tree or handles callback to show selected content",
+        "CheckForPermissions - validates MyHelp/Sections view privilege",
+        "OnNodeSelect - stores selected node info in Cache for callback use",
+        "btnContents_Click - reloads ViewSections",
+        "btnIndex_Click - navigates to MyHelpIndex",
+        "btnSearch_Click - navigates to MyHelpSearch"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": ["SectionInfoBusiness"],
+      "migrationRelevance": "low",
+      "complexity": "simple",
+      "lineCount": 168
+    }
+  ],
+  "directoryOverview": "The MyHelp directory contains 14 code-behind files for the built-in help knowledge base system in MyEvaluations. The module provides an admin-facing content management system (sections, chapters, pages with tree-based reordering via ManageSections, ManageChapters, ManagePages, MyHelpContents) and a user-facing read-only viewer (ViewSections, MyHelpIndex, MyHelpSearch, PrintPageContent). The landing page (MyHelpLanding) integrates both HappyFox SSO via SAML 2.0 and Rocket.Chat for live customer support. Two pages handle Rocket.Chat integration (RocketChatConnect, RocketChatMembers) with hardcoded admin credentials that should be addressed. The module is built on the SectionInfoBusiness service class and the obout ASPTreeView component for hierarchical navigation.",
+  "keyWorkflows": [
+    "Help content authoring: ManageSections manages section CRUD, ManageChapters manages chapters within sections, MyHelpContents provides tree-based chapter/page creation with drag-and-drop reordering",
+    "User help browsing: MyHelpLanding serves as the entry hub, ViewSections shows section trees, MyHelpIndex provides indexed navigation, MyHelpSearch enables keyword lookup, PrintPageContent provides print view",
+    "HappyFox SSO integration: MyHelpLanding and MenuSupport both build SAML 2.0 assertions, create HappyFox user accounts via REST API, and redirect users into the HappyFox portal",
+    "Rocket.Chat integration: RocketChatMembers shows available support agents; RocketChatConnect authenticates the user and embeds a direct message iframe"
+  ]
+}

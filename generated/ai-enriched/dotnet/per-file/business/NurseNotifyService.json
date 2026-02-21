@@ -1,0 +1,29 @@
+{
+  "directory": "Business.NurseNotifyService",
+  "layer": "business",
+  "generatedAt": "2026-02-21T12:57:06.037Z",
+  "fileCount": 1,
+  "files": [
+    {
+      "filePath": "Business.NurseNotifyService/NurseActions.cs",
+      "fileName": "NurseActions.cs",
+      "fileType": "business",
+      "className": "NurseActions",
+      "inheritsFrom": null,
+      "module": "NurseNotifyService",
+      "summary": "Thin WCF client wrapper for the Nursys eNotify web service. Calls ManageNurseListAsync to subscribe or update nurse license monitoring subscriptions, enforcing TLS 1.2 for the connection.",
+      "businessPurpose": "Enables the platform to subscribe to Nursys license status notifications for nursing program participants, supporting automated license verification workflows for nursing education programs.",
+      "keyMethods": [
+        "GetNurses(ManageNurseListRequest) - Calls the Nursys eNotify ManageNurseListAsync WCF operation, iterates nurse responses, and logs per-license success or failure to Console"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "WCF client code cannot be directly ported to Node.js. The Nursys eNotify service uses SOAP/WCF; the Node.js migration would require a SOAP client (e.g., node-soap) or a direct REST API equivalent if Nursys provides one. Console.WriteLine-based response handling indicates this is early-stage integration code that needs proper error handling in migration.",
+      "complexity": "simple",
+      "lineCount": 57
+    }
+  ],
+  "directoryOverview": "NurseNotifyService business module providing nursenotifyservice functionality for the MyEvaluations platform.",
+  "keyWorkflows": []
+}

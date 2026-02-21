@@ -73,6 +73,16 @@
 .migration-progress__fill--partial { background: #ffc107; }
 .migration-progress__fill--none { background: #dc3545; }
 
+/* Ask the Docs popup — solid opaque panel */
+.ask-the-docs-panel {
+  background: #ffffff;
+  color: #1c1e21;
+}
+[data-theme='dark'] .ask-the-docs-panel {
+  background: #1b1b1d;
+  color: #e3e3e3;
+}
+
 /* Sproc map highlights */
 .sproc-highlight {
   background: rgba(26, 115, 232, 0.1);

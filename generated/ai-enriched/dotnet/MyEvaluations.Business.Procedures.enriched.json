@@ -1,0 +1,329 @@
+{
+  "module": "MyEvaluations.Business.Procedures",
+  "generatedAt": "2026-02-20T12:00:00.000Z",
+  "isPriority": false,
+  "overview": "Clinical procedures tracking and competency assessment module containing 56 classes. Manages procedure submission, supervision requirements, diagnoses, custom field configuration, error/complication tracking, patient management, import/export, and DNP student activity logging. Supports ACGME supervision requirements and both GME and nursing education programs. Highest stored procedure density of any business module (~130+ calls).",
+  "architecture": {
+    "classCount": 56,
+    "managerClasses": ["AccountRegistrationManager", "ComplicationTypeManager", "ConsentTypeManager", "DNPLogManager", "DiagnosesManager", "DiagnosesTabManager", "ErrorCategoryManager", "ErrorManager", "ErrorsSubmittedManager", "ExportProceduresManager", "FieldGroupsManager", "FieldsManager", "ImportProceduresManager", "LookUpItemManager", "LookUpItemManger", "PatientManager", "SupervisionRequirementsManager", "SupervisorsManager"],
+    "infoClasses": ["AccountRegistrationInfo", "ComplicationTypeInfo", "ConsentTypeInfo", "DNPInfoBusiness", "DiagnosesInfo", "CustomDiagnosesTab", "CustomDiagnosesTabInfo", "ErrorCategoryInfo", "ErrorInfo", "ErrorsSubmittedInfo", "ExportProceduresInfo", "FieldGroupsInfo", "FieldsInfo", "ImportProceduresInfo", "LookUpItemInfo", "LookUpValue", "PatientInfo", "ProcedureInfo", "ProcedureQuestionInfo", "ReportsProceduresInfo", "SubmittedProcedureInfo", "CustomFieldDetails", "SupervisorInfo"],
+    "searchCriteriaClasses": ["DiagnosesSearchCriteria", "ProcedureSearchCriteria", "SubmitedProcedureSearchCriteria"],
+    "operationClasses": ["OperationBase", "ResultlessOperation", "ResultfulOperation", "AddLevelOfSupervisionOperation", "EditLevelOfSupervisionOperation", "AddLevelOfSupervisionOperationImpl", "EditLevelOfSupervisionOperationImpl"],
+    "categoryClasses": ["ProcedureCategoryModel"],
+    "customizationClasses": ["SubmitProcedureCustomization", "ProceduresTemplateBusiness"],
+    "dnpClasses": ["DNPLogManager", "DNPInfoBusiness", "EssentialActivity"],
+    "utilityClasses": ["ListItem"],
+    "keyFiles": ["SupervisionRequirementsManager.cs", "DNPLogManager.cs", "FieldsManager.cs", "DiagnosesManager.cs", "ErrorManager.cs", "PatientManager.cs", "ProcedureCategoryModel.cs", "AccountRegistrationManager.cs"]
+  },
+  "managerPattern": {
+    "description": "17 manager classes (18 including the LookUpItemManger typo duplicate) following the Manager/Info pattern. 13 have explicit Info counterparts. SupervisionRequirementsManager is the most complex with 25 stored procedures.",
+    "managerInfoPairs": {
+      "AccountRegistrationManager": "AccountRegistrationInfo",
+      "ComplicationTypeManager": "ComplicationTypeInfo",
+      "ConsentTypeManager": "ConsentTypeInfo",
+      "DiagnosesManager": "DiagnosesInfo",
+      "ErrorCategoryManager": "ErrorCategoryInfo",
+      "ErrorManager": "ErrorInfo",
+      "ErrorsSubmittedManager": "ErrorsSubmittedInfo",
+      "ExportProceduresManager": "ExportProceduresInfo",
+      "FieldGroupsManager": "FieldGroupsInfo",
+      "FieldsManager": "FieldsInfo",
+      "ImportProceduresManager": "ImportProceduresInfo",
+      "LookUpItemManager": "LookUpItemInfo",
+      "PatientManager": "PatientInfo"
+    }
+  },
+  "storedProcedures": [
+    {
+      "name": "GetAllUserTypes",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Retrieve all available user type classifications"
+    },
+    {
+      "name": "GetUserCategoryCodes",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get user category code mappings"
+    },
+    {
+      "name": "AddProcedureAccountInfo",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Create a new procedure account registration"
+    },
+    {
+      "name": "GetPointOfContactUsersForEmail",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get point-of-contact users for registration notification emails"
+    },
+    {
+      "name": "GetOTSGMyEvalsRegistrationEmailTemplate",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get OTSG registration confirmation email template"
+    },
+    {
+      "name": "GetOTSGMyEvalsRegistrationApprovalEmailTemplate",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get OTSG registration approval email template"
+    },
+    {
+      "name": "GetOTSGMyEvalsRegistrationDeniedEmailTemplate",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get OTSG registration denial email template"
+    },
+    {
+      "name": "GetAccountApplicationDetails",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "List account applications"
+    },
+    {
+      "name": "GetAccountApplicationDetailsByID",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get account application by ID"
+    },
+    {
+      "name": "UpdateAccountApplicationsStatus",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Approve or deny account applications"
+    },
+    {
+      "name": "GetUserDetailsByEDIPI",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Look up user by EDIPI (military/DoD identifier)"
+    },
+    {
+      "name": "GetRanks",
+      "calledBy": "AccountRegistrationManager",
+      "purpose": "Get military rank lookup data"
+    },
+    {
+      "name": "GetComplicationTypeList",
+      "calledBy": "ComplicationTypeManager",
+      "purpose": "List all complication types"
+    },
+    {
+      "name": "GetConsentTypeList",
+      "calledBy": "ConsentTypeManager",
+      "purpose": "List all consent types"
+    },
+    {
+      "name": "GetDNPLogDetails",
+      "calledBy": "DNPLogManager",
+      "purpose": "Get DNP student activity log details"
+    },
+    {
+      "name": "GetDNPStudentDetails",
+      "calledBy": "DNPLogManager",
+      "purpose": "Get DNP student profile details"
+    },
+    {
+      "name": "GetEssentialActivityBasedOnCourse",
+      "calledBy": "DNPLogManager",
+      "purpose": "Get essential activities for a specific course"
+    },
+    {
+      "name": "GetDetailsForStudentLogFilters",
+      "calledBy": "DNPLogManager",
+      "purpose": "Get filter options for student log queries"
+    },
+    {
+      "name": "GenerateStudentLogReport",
+      "calledBy": "DNPLogManager",
+      "purpose": "Generate a comprehensive student activity log report"
+    },
+    {
+      "name": "GetDiagnosisList",
+      "calledBy": "DiagnosesManager",
+      "purpose": "List all available diagnoses"
+    },
+    {
+      "name": "GetDiagnosisCategoriesByProcedureSubmittedDate",
+      "calledBy": "DiagnosesManager",
+      "purpose": "Get diagnosis categories active at time of procedure submission"
+    },
+    {
+      "name": "GetDiagnosisSubCategoriesByCategory",
+      "calledBy": "DiagnosesManager",
+      "purpose": "Get diagnosis subcategories within a category"
+    },
+    {
+      "name": "GetErrorCategoriesList",
+      "calledBy": "ErrorCategoryManager",
+      "purpose": "List all error categories"
+    },
+    {
+      "name": "GetErrorList",
+      "calledBy": "ErrorManager",
+      "purpose": "List all procedure errors"
+    },
+    {
+      "name": "GetProceduresFieldsToDraw",
+      "calledBy": "FieldsManager",
+      "purpose": "Get custom fields to render on procedure form"
+    },
+    {
+      "name": "SetFieldHiddenFlag",
+      "calledBy": "FieldsManager",
+      "purpose": "Toggle field visibility"
+    },
+    {
+      "name": "SetFieldRequiredFlag",
+      "calledBy": "FieldsManager",
+      "purpose": "Toggle field required status"
+    },
+    {
+      "name": "GetDataForDetailProceduresExport",
+      "calledBy": "ExportProceduresManager",
+      "purpose": "Get detailed procedure data for export"
+    },
+    {
+      "name": "GetDataForSummaryProceduresExport",
+      "calledBy": "ExportProceduresManager",
+      "purpose": "Get summary procedure data for export"
+    },
+    {
+      "name": "GetProcedureImportInfo",
+      "calledBy": "ImportProceduresManager",
+      "purpose": "Get import metadata and configuration"
+    },
+    {
+      "name": "UpdateProceduresCertificationStatus",
+      "calledBy": "ImportProceduresManager",
+      "purpose": "Update certification status after import"
+    },
+    {
+      "name": "GetSupervisors",
+      "calledBy": "SupervisorsManager",
+      "purpose": "Get assigned supervisors"
+    },
+    {
+      "name": "GetLevelsOfSupervision",
+      "calledBy": "SupervisionRequirementsManager",
+      "purpose": "Get all supervision levels (e.g., direct, indirect, oversight)"
+    },
+    {
+      "name": "SetSupervisionRequirementsEnabled",
+      "calledBy": "SupervisionRequirementsManager",
+      "purpose": "Enable/disable supervision requirements for a department"
+    },
+    {
+      "name": "GetProcedureReportLanguages",
+      "calledBy": "SupervisionRequirementsManager",
+      "purpose": "Get available report language options"
+    },
+    {
+      "name": "GetProceduresWithoutCategoryByDepartment",
+      "calledBy": "ProcedureCategoryModel",
+      "purpose": "Find uncategorized procedures in a department"
+    },
+    {
+      "name": "CreateOrUpdateProceduresCategory",
+      "calledBy": "ProcedureCategoryModel",
+      "purpose": "Create or update a procedure category"
+    },
+    {
+      "name": "GetUsersPatientList",
+      "calledBy": "PatientManager",
+      "purpose": "Get patients associated with a specific user"
+    },
+    {
+      "name": "AddPatient",
+      "calledBy": "PatientManager",
+      "purpose": "Add a new patient record"
+    },
+    {
+      "name": "AddLookUp",
+      "calledBy": "LookUpItemManager",
+      "purpose": "Create a new lookup/dropdown field"
+    },
+    {
+      "name": "AddLookUpItem",
+      "calledBy": "LookUpItemManager",
+      "purpose": "Add an option to a lookup field"
+    }
+  ],
+  "keyClasses": [
+    {
+      "name": "SupervisionRequirementsManager",
+      "role": "Most complex class: manages supervision levels, participation types, and report language with 25 stored procedures. Enforces ACGME supervision requirements.",
+      "extends": "Manager",
+      "file": "SupervisionRequirementsManager.cs"
+    },
+    {
+      "name": "DNPLogManager",
+      "role": "Doctor of Nursing Practice activity logging subsystem with 21 stored procedures for student details, courses, sessions, activities, admin accounts, and reporting.",
+      "extends": "Manager",
+      "file": "DNPLogManager.cs"
+    },
+    {
+      "name": "FieldsManager",
+      "role": "Custom procedure form field management with 15 stored procedures for field CRUD, ordering, visibility, required flags, and lock states.",
+      "extends": "Manager",
+      "file": "FieldsManager.cs"
+    },
+    {
+      "name": "DiagnosesManager",
+      "role": "Diagnosis code and category management with hierarchical category/subcategory support.",
+      "extends": "Manager",
+      "file": "DiagnosesManager.cs"
+    },
+    {
+      "name": "PatientManager",
+      "role": "Shared patient registry serving both procedures and patient log modules.",
+      "extends": "Manager",
+      "file": "PatientManager.cs"
+    },
+    {
+      "name": "ProcedureCategoryModel",
+      "role": "Procedure categorization with CRUD, exclusion flags, defaults, and soft-delete/restore.",
+      "file": "ProcedureCategoryModel.cs"
+    },
+    {
+      "name": "AccountRegistrationManager",
+      "role": "OTSG (military/DoD) account registration with EDIPI lookup and email templates.",
+      "file": "AccountRegistrationManager.cs"
+    },
+    {
+      "name": "OperationBase",
+      "role": "Base class for command/operation pattern (CQRS-lite) used in supervision level management.",
+      "file": "OperationBase.cs"
+    }
+  ],
+  "businessRules": [
+    "Procedures require a defined supervision level (direct, indirect, oversight) per ACGME requirements",
+    "Custom fields support visibility, required, ordering, grouping, and lock-state configurations",
+    "Diagnosis codes use a hierarchical category > subcategory structure with date-sensitive availability",
+    "Procedure categories support soft-delete with restore, exclusion flags, and default marking",
+    "Error tracking categorizes by error category with nested error types",
+    "Patient records are shared between procedures and patient log modules",
+    "Certification status is tracked and updated through import sessions",
+    "OTSG accounts use EDIPI-based lookup for military personnel identification",
+    "DNP essential activities are course-specific with session-level tracking",
+    "Participation types (e.g., primary surgeon, first assist) are ordered and support soft-delete"
+  ],
+  "migrationNotes": {
+    "priority": "high",
+    "complexity": "very-high",
+    "notes": [
+      "Highest stored procedure density (~130+ calls) -- most complex module to migrate",
+      "SupervisionRequirementsManager (25 SPs) should be split into SupervisionLevelService and ParticipationTypeService in NestJS",
+      "DNPLogManager (21 SPs) warrants a dedicated NestJS module (dnp-logging) separate from procedures",
+      "FieldsManager custom field system is a mini-framework -- consider using a configurable field definition approach in NestJS",
+      "Fix typos during migration: LookUpItemManger -> LookUpItemManager, SubmitedProcedureSearchCriteria -> SubmittedProcedureSearchCriteria",
+      "OperationBase/ResultlessOperation/ResultfulOperation pattern maps to NestJS CQRS module (@nestjs/cqrs)",
+      "AccountRegistrationManager EDIPI/OTSG features indicate military deployment that may need special handling",
+      "PatientManager serves dual modules -- extract shared patient service during migration",
+      "DiagnosesTabManager spans both procedures and patient log -- indicates cross-module coupling to address"
+    ],
+    "nestjsEquivalents": {
+      "SupervisionRequirementsManager": "SupervisionLevelService + ParticipationTypeService",
+      "DNPLogManager": "DnpLogService (separate module)",
+      "FieldsManager": "ProcedureFieldService",
+      "DiagnosesManager": "DiagnosisService",
+      "PatientManager": "SharedPatientService",
+      "ErrorManager": "ProcedureErrorService",
+      "AccountRegistrationManager": "OtsgRegistrationService",
+      "OperationBase": "@nestjs/cqrs Command/Query handlers"
+    }
+  },
+  "mermaidDiagram": null,
+  "mdxContent": "See MyEvaluations.Business.Procedures.mdx"
+}

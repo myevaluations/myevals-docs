@@ -1,0 +1,361 @@
+{
+  "module": "Quiz",
+  "businessClasses": [
+    "AssignmentBussiness",
+    "AssignmentInfo",
+    "AssignmentInfoManager",
+    "AssignmentUsersManager",
+    "DepartmentInfo",
+    "DepartmentRotations",
+    "DesignQuizManager",
+    "EmailEntites",
+    "GetDetailsManager",
+    "GetQuizReportData",
+    "GetQuizUsers",
+    "GroupBusiness",
+    "IntegratedOnCallQuizAssignmentBusiness",
+    "ManageQuizAssignmentsBusiness",
+    "PreceptorInfo",
+    "Settings",
+    "QuestionsBySpecialtyInfo",
+    "QuizAssignmentUsersLogInfo",
+    "QuizBusiness",
+    "QuizList",
+    "QuizReportBusiness",
+    "UserInfo",
+    "FileUploadComponentWebService"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "CMECourse.aspx.cs",
+        "filePath": "Web/CMETracking/CMECourse.aspx.cs",
+        "directory": "Web/CMETracking",
+        "module": "CMETracking"
+      },
+      {
+        "fileName": "Main.aspx.cs",
+        "filePath": "Web/Common/Main.aspx.cs",
+        "directory": "Web/Common",
+        "module": "Common"
+      },
+      {
+        "fileName": "MainNew.aspx.cs",
+        "filePath": "Web/Common/MainNew.aspx.cs",
+        "directory": "Web/Common",
+        "module": "Common"
+      },
+      {
+        "fileName": "ScheduleConference.aspx.cs",
+        "filePath": "Web/DutyHours/ConferencesAndClinics/ScheduleConference.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "UpdateScheduleConference.aspx.cs",
+        "filePath": "Web/DutyHours/ConferencesAndClinics/UpdateScheduleConference.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "RecordOfRotators.aspx.cs",
+        "filePath": "Web/DutyHours/Reports/RecordOfRotators.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "AddMilestoneQuiz.aspx.cs",
+        "filePath": "Web/Evaluations/AddMilestoneQuiz.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "AddQuizQuestions.aspx.cs",
+        "filePath": "Web/Evaluations/AddQuizQuestions.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ManageRotationRequirements.aspx.cs",
+        "filePath": "Web/Evaluations/ManageRotationRequirements.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "AssignLearningModule.aspx.cs",
+        "filePath": "Web/LearningAssignment/AssignLearningModule.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "Assignment.aspx.cs",
+        "filePath": "Web/LearningAssignment/Assignment.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "EditLearningAssignment.aspx.cs",
+        "filePath": "Web/LearningAssignment/EditLearningAssignment.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "LearningModule.aspx.cs",
+        "filePath": "Web/LearningAssignment/LearningModule.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "LearningModuleReview.aspx.cs",
+        "filePath": "Web/LearningAssignment/LearningModuleReview.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "PendingLearningAssignments.aspx.cs",
+        "filePath": "Web/LearningAssignment/PendingLearningAssignments.aspx.cs",
+        "directory": "Web/LearningAssignment",
+        "module": "LearningAssignment"
+      },
+      {
+        "fileName": "AddLearningAssignments.aspx.cs",
+        "filePath": "Web/MyPortfolio/AddLearningAssignments.aspx.cs",
+        "directory": "Web/MyPortfolio",
+        "module": "MyPortfolio"
+      },
+      {
+        "fileName": "LearningAssignmentDetails.aspx.cs",
+        "filePath": "Web/MyPortfolio/LearningAssignmentDetails.aspx.cs",
+        "directory": "Web/MyPortfolio",
+        "module": "MyPortfolio"
+      },
+      {
+        "fileName": "AssignQuiz.aspx.cs",
+        "filePath": "Web/Quiz/AssignQuiz.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "CompletedQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/CompletedQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "DesignQuiz.aspx.cs",
+        "filePath": "Web/Quiz/DesignQuiz.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ImportQuizQuestions.aspx.cs",
+        "filePath": "Web/Quiz/ImportQuizQuestions.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "IntegratedOnCallQuizAssignmentMenu.aspx.cs",
+        "filePath": "Web/Quiz/IntegratedOnCallQuizAssignmentMenu.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ManageQuizAssignmentUsers.aspx.cs",
+        "filePath": "Web/Quiz/ManageQuizAssignmentUsers.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ManageQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/ManageQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ManageQuizQuestion.aspx.cs",
+        "filePath": "Web/Quiz/ManageQuizQuestion.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ModifyQuiz.aspx.cs",
+        "filePath": "Web/Quiz/ModifyQuiz.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizAnalysisReport.aspx.cs",
+        "filePath": "Web/Quiz/Pages/QuizAnalysisReport.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "PendingQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/PendingQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizAccessLogDetails.aspx.cs",
+        "filePath": "Web/Quiz/QuizAccessLogDetails.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizAutoClosedDetails.aspx.cs",
+        "filePath": "Web/Quiz/QuizAutoClosedDetails.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizLogDetails.aspx.cs",
+        "filePath": "Web/Quiz/QuizLogDetails.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizMain.aspx.cs",
+        "filePath": "Web/Quiz/QuizMain.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizQuestion.aspx.cs",
+        "filePath": "Web/Quiz/QuizQuestion.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizReminderScheduler.aspx.cs",
+        "filePath": "Web/Quiz/QuizReminderScheduler.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "QuizSubmissionMessage.aspx.cs",
+        "filePath": "Web/Quiz/QuizSubmissionMessage.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "DetailedQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/Reports/DetailedQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "DetailedQuizAssignmentsResult.aspx.cs",
+        "filePath": "Web/Quiz/Reports/DetailedQuizAssignmentsResult.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "LedgerOfQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "LedgerOfQuizAssignmentsResult.aspx.cs",
+        "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignmentsResult.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "SummaryQuizAssignments.aspx.cs",
+        "filePath": "Web/Quiz/Reports/SummaryQuizAssignments.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "SummaryQuizAssignmentsResult.aspx.cs",
+        "filePath": "Web/Quiz/Reports/SummaryQuizAssignmentsResult.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ReviewAttemptedQuiz.aspx.cs",
+        "filePath": "Web/Quiz/ReviewAttemptedQuiz.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ReviewCompletedQuizzes.aspx.cs",
+        "filePath": "Web/Quiz/ReviewCompletedQuizzes.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ShareQuizTemplates.aspx.cs",
+        "filePath": "Web/Quiz/ShareQuizTemplates.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "SubmitQuizAssignment.aspx.cs",
+        "filePath": "Web/Quiz/SubmitQuizAssignment.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "SubmitVoluntaryQuizAssignment.aspx.cs",
+        "filePath": "Web/Quiz/SubmitVoluntaryQuizAssignment.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "SubmitedQuizAssignmentResult.aspx.cs",
+        "filePath": "Web/Quiz/SubmitedQuizAssignmentResult.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "ViewQuiz.aspx.cs",
+        "filePath": "Web/Quiz/ViewQuiz.aspx.cs",
+        "directory": "Web/Quiz",
+        "module": "Quiz"
+      },
+      {
+        "fileName": "GetRotations.ascx.cs",
+        "filePath": "Web/UserControls/Common/GetRotations.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Common"
+      },
+      {
+        "fileName": "SelectDepartments.ascx.cs",
+        "filePath": "Web/UserControls/Mail/SelectDepartments.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/Mail"
+      },
+      {
+        "fileName": "PFReportsMenu.ascx.cs",
+        "filePath": "Web/UserControls/PrivateControls/PFReportsMenu.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/PrivateControls"
+      },
+      {
+        "fileName": "ReportsMenu.ascx.cs",
+        "filePath": "Web/UserControls/PrivateControls/ReportsMenu.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls/PrivateControls"
+      },
+      {
+        "fileName": "ReportsHeader.ascx.cs",
+        "filePath": "Web/UserControls/ReportsHeader.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls"
+      },
+      {
+        "fileName": "SubHeader.ascx.cs",
+        "filePath": "Web/UserControls/SubHeader.ascx.cs",
+        "directory": "Web/UserControls",
+        "module": "UserControls"
+      }
+    ],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 54,
+    "schedulers": 0
+  }
+}

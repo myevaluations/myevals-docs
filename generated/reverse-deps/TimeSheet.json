@@ -1,0 +1,84 @@
+{
+  "module": "TimeSheet",
+  "businessClasses": [
+    "ActivityInfo",
+    "ActivitySettingInfo",
+    "ActivityTypeInfo",
+    "AmionAPI",
+    "AmionAPIService",
+    "AmionBase",
+    "AmionClinic",
+    "AmionClinicService",
+    "AmionCrossCover",
+    "AmionManager",
+    "AmionOnCallSchedule",
+    "AmionOnCallService",
+    "AmionRotation",
+    "AmionRotationService",
+    "AmionScheduleTempTable",
+    "AmionStaff",
+    "AmionUser",
+    "CSVReader",
+    "CommonTypes",
+    "Constants",
+    "HttpUtil",
+    "QGendaAPI",
+    "RotationInfo",
+    "SubActivityInfo",
+    "TangierServiceModel",
+    "TimeSheetManager",
+    "TimeSheetRequest",
+    "TimeSheetViolation"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "DHPopupForViolation.aspx.cs",
+        "filePath": "Web/DutyHours/DHPopupForViolation.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "ImportDataSettings.aspx.cs",
+        "filePath": "Web/DutyHours/ImportDataSettings.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "DHRotationsRestore.aspx.cs",
+        "filePath": "Web/DutyHours/Setup/DHRotationsRestore.aspx.cs",
+        "directory": "Web/DutyHours",
+        "module": "DutyHours"
+      },
+      {
+        "fileName": "IntegratedOnCallAssignmentMenu.aspx.cs",
+        "filePath": "Web/Evaluations/IntegratedOnCallAssignmentMenu.aspx.cs",
+        "directory": "Web/Evaluations",
+        "module": "Evaluations"
+      },
+      {
+        "fileName": "ImportSchedule.aspx.cs",
+        "filePath": "Web/Preceptor/ImportSchedule.aspx.cs",
+        "directory": "Web/Preceptor",
+        "module": "Preceptor"
+      },
+      {
+        "fileName": "ScheduleImporting.aspx.cs",
+        "filePath": "Web/Preceptor/ScheduleImporting.aspx.cs",
+        "directory": "Web/Preceptor",
+        "module": "Preceptor"
+      }
+    ],
+    "schedulers": [
+      {
+        "fileName": "Program.cs",
+        "filePath": "MyEvaluations.AmionScheduleUpdater/Program.cs",
+        "directory": "Schedulers"
+      }
+    ]
+  },
+  "totals": {
+    "web": 6,
+    "schedulers": 1
+  }
+}

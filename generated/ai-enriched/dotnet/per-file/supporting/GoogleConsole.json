@@ -1,0 +1,69 @@
+{
+  "directory": "GoogleConsole",
+  "layer": "supporting",
+  "generatedAt": "2026-02-20T22:00:00.000Z",
+  "fileCount": 3,
+  "files": [
+    {
+      "filePath": "GoogleConsole/Class1.cs",
+      "fileName": "Class1.cs",
+      "fileType": "class",
+      "className": "Class1",
+      "inheritsFrom": null,
+      "module": "Google Integration",
+      "summary": "Empty placeholder class with no implementation. Likely a default project template class that was never removed.",
+      "businessPurpose": "No business purpose - empty scaffold class",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": null,
+      "complexity": "trivial",
+      "lineCount": 13
+    },
+    {
+      "filePath": "GoogleConsole/GoogleAPIAuthentication.cs",
+      "fileName": "GoogleAPIAuthentication.cs",
+      "fileType": "service",
+      "className": "GoogleAPIAuthentication",
+      "inheritsFrom": null,
+      "module": "Google Calendar Integration",
+      "summary": "Handles Google API OAuth2 authentication for Google Calendar integration. Manages OAuth2 flow including token refresh via REST API, authorization code exchange, and calendar service creation. Reads configuration from AppSettings (ClientID, ClientSecret, APIKey, RefreshToken, etc.). Uses Google.Apis.Calendar.v3 and Google.Apis.Oauth2.v2 libraries with FileDataStore for token persistence.",
+      "businessPurpose": "Enables Google Calendar integration for the MyEvaluations platform, allowing scheduling of evaluations, rotations, or events to sync with users' Google Calendars. Authenticates per-user via OAuth2 consent flow.",
+      "keyMethods": [
+        "RefreshToken - Refreshes the OAuth2 access token using the stored refresh token via REST API call to Google",
+        "GetRequestStreamCallback - Async callback for OAuth2 token exchange HTTP request",
+        "GetResponseCallback - Async callback for processing OAuth2 token response",
+        "VerifyAuthentication - Orchestrates the full Google OAuth2 flow: checks for auth code, exchanges code for token, creates CalendarService, verifies credentials"
+      ],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "medium",
+      "migrationNote": "Google Calendar integration may need to be migrated if still in use. Node.js has googleapis npm package with equivalent OAuth2 and Calendar API support. Token storage would move from FileDataStore to database.",
+      "complexity": "moderate",
+      "lineCount": 284
+    },
+    {
+      "filePath": "GoogleConsole/Properties/AssemblyInfo.cs",
+      "fileName": "AssemblyInfo.cs",
+      "fileType": "infrastructure",
+      "className": null,
+      "inheritsFrom": null,
+      "module": "Assembly Metadata",
+      "summary": "Standard .NET assembly info file with version and metadata attributes for the GoogleConsole project.",
+      "businessPurpose": "Assembly metadata configuration",
+      "keyMethods": [],
+      "storedProcedures": [],
+      "businessManagersUsed": [],
+      "migrationRelevance": "none",
+      "migrationNote": null,
+      "complexity": "trivial",
+      "lineCount": 37
+    }
+  ],
+  "directoryOverview": "Google API integration library for connecting MyEvaluations with Google Calendar via OAuth2. Handles the OAuth2 authorization flow (authorization code exchange, token refresh) and creates authenticated Google Calendar service instances. Configuration is driven by AppSettings. This project appears to have limited active use based on the empty Class1 placeholder and the fact that Google Calendar integration is not a core feature.",
+  "keyWorkflows": [
+    "OAuth2 Authorization: VerifyAuthentication -> check for auth code -> exchange code for token -> create CalendarService -> verify credentials",
+    "Token Refresh: RefreshToken -> POST to Google token endpoint with refresh_token grant type -> return new access token"
+  ]
+}

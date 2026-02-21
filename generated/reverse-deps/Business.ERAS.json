@@ -1,0 +1,23 @@
+{
+  "module": "Business.ERAS",
+  "businessClasses": [
+    "ConnectERAS",
+    "ERASManager",
+    "XMLToCSV"
+  ],
+  "dependents": {
+    "web": [
+      {
+        "fileName": "Department.aspx.cs",
+        "filePath": "Web/Security/Department.aspx.cs",
+        "directory": "Web/Security",
+        "module": "Security"
+      }
+    ],
+    "schedulers": []
+  },
+  "totals": {
+    "web": 1,
+    "schedulers": 0
+  }
+}
