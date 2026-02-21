@@ -23,6 +23,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'dotnet-backend/getting-started',
         'dotnet-backend/project-map',
+        'dotnet-backend/feature-map',
         {
           type: 'category',
           label: 'Patterns',

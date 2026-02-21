@@ -1,0 +1,110 @@
+---
+sidebar_position: 3
+title: Feature → Code Map
+description: "Where to look when you need to fix or modify a specific feature — maps user-facing features to code entry points across web, business, and data layers."
+---
+
+# Feature → Code Map
+
+> **Problem:** You're asked to fix a bug or add a feature. Where do you start?
+>
+> This page maps user-facing features to the exact files you need to touch, drawn from the enrichment data across 2,422 documented files.
+
+Each row links to the documentation for the relevant files. Use Ctrl+F to find your feature.
+
+---
+
+## Evaluations (Core Product)
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Submit an evaluation form** | [`EvaluateEvaluation.aspx.cs`](./web/pages/evaluations) | `EvaluationTemplateBusiness`, `EvaluationsTemplateManager` | 7,180 lines, very-complex. All evaluation types (Likert, numeric, free-text, 360°). |
+| **View completed evaluation results** | [`EvaluationDetails.aspx.cs`](./web/pages/evaluations) | `EvaluationTemplateBusiness`, `EvaluationsTemplateManager` | 3,615 lines. Scores, comments, milestone mapping, PDF generation. |
+| **Manage evaluation assignments** | [`ManageEvaluationAssignments.aspx.cs`](./web/pages/evaluations) | `EvaluationTemplateBusiness`, `EvaluationsTemplateManager` | Who evaluates whom, override assignment rules. |
+| **Create/edit evaluation templates** | [`ManageAnnualProgramEvaluations.aspx.cs`](./web/pages/evaluations) | `EvaluationsTemplateManager`, `AnnualProgramEvaluationBusiness` | 13,333 lines. Template design, question types, competency mapping. |
+| **Milestone/competency assessment** | [`MilestoneCompetencyWorkSheet.aspx.cs`](./web/pages/evaluations) | `EvaluationTemplateBusiness`, `EvaluationsTemplateManager` | CCC committee scoring, ACGME milestone levels. |
+| **Outcomes performance mapping** | [`ManageOutcomes.aspx.cs`](./web/pages/evaluations) | `EvaluationTemplateBusiness`, `EvaluationsTemplateManager` | MOV mapping, milestone narrative answer values. |
+| **Evaluation reporting / outcomes report** | [`OutcomesReportResults.aspx.cs`](./web/pages/evaluations) | `EvaluationsTemplateManager`, `AnnualProgramEvaluationBusiness` | 7,080 lines. Aggregate scores, trend charts, ACGME export. |
+| **Annual Program Evaluation (APE)** | [`ManageAnnualProgramEvaluations.aspx.cs`](./web/pages/evaluations) | `AnnualProgramEvaluationManager`, `AnnualProgramEvaluationBusiness` | ACGME annual program review. |
+| **Milestone progression reports** | [`MilestoneGroupProgressionReport.aspx.cs`](./web/pages/evaluations) | `EvaluationsTemplateManager`, `EvaluationsReportManager` | Resident milestone progress over time. |
+| **Evaluation business logic (all types)** | — | [`EvaluationsManager`](./business/files/evaluations) | Core evaluation CRUD, assignment rules, submission routing. |
+| **Evaluation template/form logic** | — | [`EvaluationsTemplateManager`](./business/files/evaluations) | Template versioning, question management, competency mapping. |
+
+---
+
+## User & Security Management
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Create/edit user account** | [`User.aspx.cs`](./web/pages/security) | `UserBusiness`, `UserManager` | 14,531 lines. Roles, program assignments, ERAS sync. |
+| **Manage users list / search** | [`ManageUsers.aspx.cs`](./web/pages/security) | `UserBusiness`, `UserManager` | Bulk operations, deactivate, export. |
+| **Department/program management** | [`Department.aspx.cs`](./web/pages/security) | `DepartmentManager`, `RoleManager` | 7,806 lines. Program settings, accreditation config. |
+| **Institution-level settings** | [`Institution.aspx.cs`](./web/pages/security) | `DepartmentManager`, `InstitutionManager` | Multi-institution configuration. |
+| **Audit trail / access logs** | [`AuditTrail.aspx.cs`](./web/pages/security) | `UserBusiness`, `AuditTrailManager` | Who did what and when. |
+| **Authentication / login** | [`Login.aspx.cs`](./web/pages/security) | `SecurityManager` | Username/password + SSO. Partially migrated to Node.js. |
+| **Role & permission logic** | — | [`SecurityManager`](./business/security) | Used by 829 web pages. Touch with extreme care. |
+
+---
+
+## Duty Hours
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Log duty hours (resident entry)** | [`DutyHours.aspx.cs`](./web/pages/dutyhours) | `DutyHoursManager` | Core entry form. Violation detection logic runs here. |
+| **View detailed duty hours report** | [`DetailedDutyHoursResults.aspx.cs`](./web/pages/dutyhours) | `DutyHoursManager`, `DepartmentManager` | 2,346 lines. Per-resident, per-rotation breakdown. |
+| **Institutional duty hours compliance** | [`InstitutionalDHComplianceResults.aspx.cs`](./web/pages/dutyhours) | `DutyHourReportManager`, `DutyHoursManager` | Program-level ACGME compliance overview. |
+| **Conference/schedule management** | [`UpdateScheduleConference.aspx.cs`](./web/pages/dutyhours) | `ConferenceSchedulesManager`, `AssignmentUsersManager` | Educational conference tracking for duty hours credit. |
+| **Duty hours business rules** | — | [`DutyHoursManager`](./business/duty-hours) | 80-hour rule, consecutive hours, rest period enforcement. |
+
+---
+
+## Procedures & Portfolio
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Log a procedure** | [`Procedures.aspx.cs`](./web/pages/procedures) | `ProceduresManager` | Resident procedural skill tracking. |
+| **View/manage portfolio** | [`Portfolio.aspx.cs`](./web/pages/myportfolio) | `PortfolioManager` | Resident learning portfolio. Links to evaluations. |
+| **Portfolio reporting** | [`PortfolioReport.aspx.cs`](./web/pages/myportfolio) | `PortfolioManager` | Summary reports for CCC review. |
+| **Procedure business logic** | — | [`ProceduresManager`](./business/procedures) | 134 web pages + 6 schedulers depend on this. |
+| **Portfolio business logic** | — | [`PortfolioManager`](./business/portfolio) | 124 web pages depend on this. |
+
+---
+
+## CME Tracking
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Log CME activity** | [`CMETracking.aspx.cs`](./web/pages/cmetracking) | `CMETrackingManager` | Credit hours, activity type, attestation. |
+| **CME reports** | [`CMEReports.aspx.cs`](./web/pages/cmetracking) | `CMETrackingManager` | Aggregate credits by physician/program. |
+| **CME business logic** | — | [`CMETrackingManager`](./business/cme-tracking) | 58 web pages depend on this. |
+
+---
+
+## Notifications & Email
+
+| Feature | Entry Point (Web) | Business Manager | Key Notes |
+|---------|-------------------|-----------------|-----------|
+| **Email notification templates** | Config in admin pages | `MailManager`, `MailGunManager` | Template-based email system. |
+| **Send evaluation reminder** | Triggered by scheduler | `EvaluationsManager`, `MailManager` | Reminder cadence configured per program. |
+| **Mail business logic** | — | [`MailManager`](./business/mail) | 35 web pages depend on this module. |
+
+---
+
+## Schedulers / Background Jobs
+
+| Feature | Scheduler File | Business Manager | Frequency |
+|---------|---------------|-----------------|-----------|
+| **Auto-assign evaluations** | Evaluations assignment scheduler | `EvaluationsManager` | Nightly |
+| **Send evaluation reminders** | Evaluation reminder scheduler | `EvaluationsManager`, `MailManager` | Daily |
+| **Duty hours violation alerts** | DH compliance scheduler | `DutyHoursManager` | Nightly |
+| **CME credit sync** | CME sync scheduler | `CMETrackingManager` | Weekly |
+| **Browse all 160 schedulers** | [Schedulers File Reference](./schedulers/files/schedulers) | — | — |
+
+---
+
+## Quick Tips
+
+- **Can't find your file?** Use the [File Reference Index](./file-index) — searchable table of all 2,422 files.
+- **Want to see what else a file touches?** Expand any row in a FileReference component for key methods, stored procedures, and business managers.
+- **Changing a business module?** Check the [Dependents Panel](./business/evaluations) on the module's overview page — it shows every web page and scheduler that will be affected.
+- **Looking for stored procedures?** See [Stored Procedures](./data-access/stored-procedures).
