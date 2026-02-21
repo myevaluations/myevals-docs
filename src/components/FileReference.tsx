@@ -133,7 +133,7 @@ function FileDetailRow({ file, isExpanded, onToggle }: {
         style={{ cursor: 'pointer' }}
         title="Click to expand details"
       >
-        <td style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>
+        <td style={{ fontFamily: 'monospace', fontSize: '0.85rem', wordBreak: 'break-word', minWidth: '140px' }}>
           <span style={{ marginRight: '4px' }}>{isExpanded ? '▼' : '▶'}</span>
           {file.fileName}
           <a
@@ -159,7 +159,7 @@ function FileDetailRow({ file, isExpanded, onToggle }: {
             color="#3b82f6"
           />
         </td>
-        <td style={{ fontSize: '0.85rem', maxWidth: '300px' }}>
+        <td style={{ fontSize: '0.85rem', overflowWrap: 'anywhere' }}>
           {file.summary}
         </td>
         <td>
@@ -514,8 +514,8 @@ export default function FileReference({
       </div>
 
       {/* Table */}
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+      <div>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', tableLayout: 'auto' }}>
           <thead>
             <tr style={{ borderBottom: '2px solid var(--ifm-color-emphasis-300)' }}>
               <th
