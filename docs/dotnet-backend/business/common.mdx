@@ -3,6 +3,7 @@ sidebar_position: 17
 title: Business.Common
 description: Shared base classes, caching infrastructure, event logging, and cross-cutting utilities used by all Business layer modules.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # Business.Common
 
@@ -20,6 +21,222 @@ Because this module has no dependencies on other Business modules, it sits at th
 | `CommonTypes` | ~60 | Shared enum definitions, type aliases, and DTO base interfaces used across all modules. |
 | `DashBoard` | ~110 | Dashboard data aggregation helper. Retrieves cross-module summary counts (pending evaluations, duty hour violations, due activities) for role-based dashboard pages. |
 | `Constants` | ~40 | Application-wide string constants, configuration keys, and magic number definitions. |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="Common"
+  webDependents={[
+  {
+    "fileName": "CMECourse.aspx.cs",
+    "filePath": "Web/CMETracking/CMECourse.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEventInformation.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEventInformation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DeclineCMEEvaluation.aspx.cs",
+    "filePath": "Web/CMETracking/DeclineCMEEvaluation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DeleteCMEEventInformation.aspx.cs",
+    "filePath": "Web/CMETracking/DeleteCMEEventInformation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "LearningObjectiveSelection.aspx.cs",
+    "filePath": "Web/CMETracking/LearningObjectiveSelection.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MultipleScheduleAssignment.aspx.cs",
+    "filePath": "Web/CMETracking/MultipleScheduleAssignment.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MultipleTopicsSelection.aspx.cs",
+    "filePath": "Web/CMETracking/MultipleTopicsSelection.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMECertificatesReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/CMECertificatesReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DetailedLedgerCreditsReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/DetailedLedgerCreditsReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryEventReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryEventReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryEventReportResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryEventReportResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryLedgerCreditsReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryLedgerCreditsReportBeta.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportBeta.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ScheduleAssignment.aspx.cs",
+    "filePath": "Web/CMETracking/ScheduleAssignment.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "Event.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/Event.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageEvents.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/ManageEvents.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ConferenceAttendanceImporting.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceAttendanceImporting.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ConferenceImporting.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceImporting.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DeclineConferenceEvaluation.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DeclineConferenceEvaluation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ImportNationalAverages.aspx.cs",
+    "filePath": "Web/Evaluations/ImportNationalAverages.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MileStoneCommitteeMemberDelete.aspx.cs",
+    "filePath": "Web/Evaluations/MileStoneCommitteeMemberDelete.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ImportPatientLogResult.aspx.cs",
+    "filePath": "Web/PatientLog/ImportPatientLogResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ImportPatientLogStep2.aspx.cs",
+    "filePath": "Web/PatientLog/ImportPatientLogStep2.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ImportPatientLogStep3.aspx.cs",
+    "filePath": "Web/PatientLog/ImportPatientLogStep3.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ImportProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ImportProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureCertificationReport.aspx.cs",
+    "filePath": "Web/Procedures/ProcedureCertificationReport.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "QuizLogDetails.aspx.cs",
+    "filePath": "Web/Quiz/QuizLogDetails.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "AuditTrailForAllReportsDetail.aspx.cs",
+    "filePath": "Web/Reports/AuditTrailForAllReportsDetail.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AuditTrailForLoginEvent.aspx.cs",
+    "filePath": "Web/Security/AuditTrailForLoginEvent.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Home.aspx.cs",
+    "filePath": "Web/Home.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "Login.aspx.cs",
+    "filePath": "Web/Login.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  }
+]}
+  schedulerDependents={[
+  {
+    "fileName": "EmailSender.cs",
+    "filePath": "Schedulers/FNPDeleteDroppedCourseEvaluation/FNPDeleteDroppedCourseEvaluation/EmailSender.cs",
+    "directory": "Schedulers"
+  },
+  {
+    "fileName": "EmailSender.cs",
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/EmailSender.cs",
+    "directory": "Schedulers"
+  },
+  {
+    "fileName": "LiabilityInsReminder.cs",
+    "filePath": "Schedulers/LiabilityInsReminder-Dotnet/LiabilityInsReminder.cs",
+    "directory": "Schedulers"
+  },
+  {
+    "fileName": "MailDistribution.cs",
+    "filePath": "Schedulers/MailDistribution-Dotnet/MailDistribution.cs",
+    "directory": "Schedulers"
+  }
+]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

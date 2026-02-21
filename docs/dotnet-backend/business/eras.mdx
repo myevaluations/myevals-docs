@@ -3,6 +3,7 @@ sidebar_position: 13
 title: ERAS Integration
 description: ERAS (Electronic Residency Application Service) integration in the MyEvaluations .NET backend. Application data import, match result processing, and NRMP integration.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # ERAS Integration
 
@@ -180,6 +181,21 @@ graph TD
 | Depends on | Mail | Interview invitations, match notifications, and onboarding communications |
 | Related to | Evaluations | Matched applicants become trainees who will be evaluated in the system |
 | Related to | Security | Trainee onboarding creates user accounts and role assignments |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="ERAS"
+  webDependents={[
+  {
+    "fileName": "Department.aspx.cs",
+    "filePath": "Web/Security/Department.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  }
+]}
+  schedulerDependents={[]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

@@ -3,6 +3,7 @@ sidebar_position: 4
 title: CME Tracking
 description: Continuing Medical Education credit management in the MyEvaluations .NET backend. 25+ classes for credit tracking, activity logging, and ACCME reporting.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # CME Tracking
 
@@ -177,6 +178,363 @@ graph TD
 | Depends on | Mail | Compliance reminders, certificate delivery, cycle notifications |
 | Depended on by | Portfolio | CME transcripts included in physician portfolios |
 | Related to | Quiz | Some CME activities include quiz-based assessments for credit |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="CMETracking"
+  webDependents={[
+  {
+    "fileName": "AssignCMEEvaluationInformation.aspx.cs",
+    "filePath": "Web/CMETracking/AssignCMEEvaluationInformation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMECourse.aspx.cs",
+    "filePath": "Web/CMETracking/CMECourse.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEvaluate.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEvaluate.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEvaluationDetailsForAudittrail.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEvaluationDetailsForAudittrail.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEvaluationInformation.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEvaluationInformation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEvaluationReminderEmailScheduler.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEvaluationReminderEmailScheduler.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEEventRegister.aspx.cs",
+    "filePath": "Web/CMETracking/CMEEventRegister.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEMain.aspx.cs",
+    "filePath": "Web/CMETracking/CMEMain.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMETemplateCopy.aspx.cs",
+    "filePath": "Web/CMETracking/CMETemplateCopy.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "Certificate.aspx.cs",
+    "filePath": "Web/CMETracking/Certificate.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DeclineCMEEvaluation.aspx.cs",
+    "filePath": "Web/CMETracking/DeclineCMEEvaluation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DeletedCMETemplateInfo.aspx.cs",
+    "filePath": "Web/CMETracking/DeletedCMETemplateInfo.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DeletedCmeEvaluationInformation.aspx.cs",
+    "filePath": "Web/CMETracking/DeletedCmeEvaluationInformation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DesignEvaluationStep1.aspx.cs",
+    "filePath": "Web/CMETracking/DesignEvaluationStep1.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DesignEvaluationStep2.aspx.cs",
+    "filePath": "Web/CMETracking/DesignEvaluationStep2.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DesignEvaluationStep3.aspx.cs",
+    "filePath": "Web/CMETracking/DesignEvaluationStep3.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DesignEvaluationStep4.aspx.cs",
+    "filePath": "Web/CMETracking/DesignEvaluationStep4.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "EvaluateCMEEvaluation.aspx.cs",
+    "filePath": "Web/CMETracking/EvaluateCMEEvaluation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignmentAddUsers.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignmentAddUsers.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignmentUsers.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignmentUsers.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignmentUsersMainPage.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignmentUsersMainPage.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignments.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignments.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMECourse.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMECourse.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEDeletedAssignments.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEDeletedAssignments.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMELearnerActivities.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMELearnerActivities.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCertificates.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCertificates.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCmeEvaluations.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCmeEvaluations.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MonthlyPopupCMEInfo.aspx.cs",
+    "filePath": "Web/CMETracking/MonthlyPopupCMEInfo.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MultipleScheduleAssignment.aspx.cs",
+    "filePath": "Web/CMETracking/MultipleScheduleAssignment.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MultipleTopicsSelection.aspx.cs",
+    "filePath": "Web/CMETracking/MultipleTopicsSelection.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEFinancialStatement.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/CMEFinancialStatement.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEFinancialStatementResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/CMEFinancialStatementResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DetailedLedgerCreditsReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/DetailedLedgerCreditsReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryCMEEvaluationReport.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryCMEEvaluationReport.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ScheduleAssignment.aspx.cs",
+    "filePath": "Web/CMETracking/ScheduleAssignment.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEConnectivity.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/CMEConnectivity.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMESatellitePrograms.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/CMESatellitePrograms.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CreditType.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/CreditType.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "Event.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/Event.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCreditTypes.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/ManageCreditTypes.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageDefaultCredentialingInfo.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/ManageDefaultCredentialingInfo.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageMerchantServices.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/ManageMerchantServices.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageUploadUser.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/ManageUploadUser.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "UploadList.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/UploadList.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "UndoCMEEvaluationInfo.aspx.cs",
+    "filePath": "Web/CMETracking/UndoCMEEvaluationInfo.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "VerifyEvaluation.aspx.cs",
+    "filePath": "Web/CMETracking/VerifyEvaluation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "VerifyEvaluationAttendance.aspx.cs",
+    "filePath": "Web/CMETracking/VerifyEvaluationAttendance.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ConferenceTemplateCopy.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceTemplateCopy.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DeleteConferenceEvaluation.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DeleteConferenceEvaluation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DesignConferenceEvaluationStep1.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep1.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DesignConferenceEvaluationStep2.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep2.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DesignConferenceEvaluationStep3.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep3.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DesignConferenceEvaluationStep4.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep4.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "EvaluateConferenceEvaluation.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/EvaluateConferenceEvaluation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "PublishConferenceEvaluation.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/PublishConferenceEvaluation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "EvaluationPublishInfo.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationPublishInfo.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "SubmitProcedure.aspx.cs",
+    "filePath": "Web/Procedures/SubmitProcedure.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "OutsideUserRegistration.aspx.cs",
+    "filePath": "Web/OutsideUserRegistration.aspx.cs",
+    "directory": "Web",
+    "module": "CME Event Registration"
+  }
+]}
+  schedulerDependents={[]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

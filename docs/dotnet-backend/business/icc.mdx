@@ -3,6 +3,7 @@ sidebar_position: 14
 title: ICC (Clinical Competency Committee)
 description: In-Training and Clinical Competency Committee support in the MyEvaluations .NET backend. Committee review workflows, milestone assessments, and semi-annual review processes.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # ICC (In-Training / Clinical Competency Committee)
 
@@ -191,6 +192,14 @@ graph TD
 | Depends on | Duty Hours | Compliance data reviewed during CCC meetings |
 | Depends on | Portfolio | Portfolio data provides comprehensive trainee context |
 | Depends on | Mail | Meeting notifications, decision communications, and reminder alerts |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="ICC"
+  webDependents={[]}
+  schedulerDependents={[]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

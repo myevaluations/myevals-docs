@@ -3,6 +3,7 @@ sidebar_position: 11
 title: Timesheet
 description: Timesheet management in the MyEvaluations .NET backend. Time entry, approval workflows, pay period management, and reporting.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # Timesheet
 
@@ -174,6 +175,57 @@ graph TD
 | Depends on | Security | Permission checks for time entry, approval authority, and payroll access |
 | Depends on | Mail | Approval notifications, submission confirmations, and leave request alerts |
 | Related to | Duty Hours | Both track time but for different purposes (payroll vs ACGME compliance); data may overlap |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="TimeSheet"
+  webDependents={[
+  {
+    "fileName": "DHPopupForViolation.aspx.cs",
+    "filePath": "Web/DutyHours/DHPopupForViolation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ImportDataSettings.aspx.cs",
+    "filePath": "Web/DutyHours/ImportDataSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DHRotationsRestore.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/DHRotationsRestore.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "IntegratedOnCallAssignmentMenu.aspx.cs",
+    "filePath": "Web/Evaluations/IntegratedOnCallAssignmentMenu.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ImportSchedule.aspx.cs",
+    "filePath": "Web/Preceptor/ImportSchedule.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleImporting.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleImporting.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  }
+]}
+  schedulerDependents={[
+  {
+    "fileName": "Program.cs",
+    "filePath": "MyEvaluations.AmionScheduleUpdater/Program.cs",
+    "directory": "Schedulers"
+  }
+]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

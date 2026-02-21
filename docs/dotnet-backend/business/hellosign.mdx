@@ -3,6 +3,7 @@ sidebar_position: 12
 title: E-Signatures
 description: E-signature integrations in the MyEvaluations .NET backend. HelloSign, AdobeSign, and RightSignature integration for document signing workflows.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # E-Signatures (HelloSign / AdobeSign / RightSignature)
 
@@ -185,6 +186,14 @@ graph TD
 | Depends on | Security | Permission checks for signature request creation and template management |
 | Depends on | Mail | Signer notifications and completion alerts |
 | Depended on by | Evaluations | Evaluation sign-off workflow can use e-signatures (when configured by institution) |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="HelloSign"
+  webDependents={[]}
+  schedulerDependents={[]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 

@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Security & Authentication
 description: Authentication, RBAC, session management, MFA, and SAML SSO in the MyEvaluations .NET backend. Core module that all other modules depend on.
 ---
+import DependentsPanel from '@site/src/components/DependentsPanel';
 
 # Security & Authentication
 
@@ -225,6 +226,4989 @@ graph TD
 | Mail | User email retrieval and notification preferences |
 | ERAS | Admin-only access controls for application data |
 | ICC | Committee membership verification |
+
+{/* DEPENDENTS-PANEL:START */}
+<DependentsPanel
+  module="Security"
+  webDependents={[
+  {
+    "fileName": "BasePage.cs",
+    "filePath": "Web/App_Code/BasePage.cs",
+    "directory": "Web/App_Code",
+    "module": "Infrastructure"
+  },
+  {
+    "fileName": "BasePage_Ajax.cs",
+    "filePath": "Web/App_Code/BasePage_Ajax.cs",
+    "directory": "Web/App_Code",
+    "module": "Infrastructure"
+  },
+  {
+    "fileName": "BaseReportPage.cs",
+    "filePath": "Web/App_Code/BaseReportPage.cs",
+    "directory": "Web/App_Code",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "BaseWebService.cs",
+    "filePath": "Web/App_Code/BaseWebService.cs",
+    "directory": "Web/App_Code",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "BaseWebService_Test.cs",
+    "filePath": "Web/App_Code/BaseWebService_Test.cs",
+    "directory": "Web/App_Code",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "New_Auth.cs",
+    "filePath": "Web/App_Code/New_Auth.cs",
+    "directory": "Web/App_Code",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddCourseCampusMembers.aspx.cs",
+    "filePath": "Web/BSNProgram/AddCourseCampusMembers.aspx.cs",
+    "directory": "Web/BSNProgram",
+    "module": "BSNProgram"
+  },
+  {
+    "fileName": "AssignEvaluations.aspx.cs",
+    "filePath": "Web/BSNProgram/AssignEvaluations.aspx.cs",
+    "directory": "Web/BSNProgram",
+    "module": "BSNProgram"
+  },
+  {
+    "fileName": "BSNProgramActivities.aspx.cs",
+    "filePath": "Web/BSNProgram/BSNProgramActivities.aspx.cs",
+    "directory": "Web/BSNProgram",
+    "module": "BSNProgram"
+  },
+  {
+    "fileName": "ManagePreceptorQualificationRequirements.aspx.cs",
+    "filePath": "Web/BSNProgram/ManagePreceptorQualificationRequirements.aspx.cs",
+    "directory": "Web/BSNProgram",
+    "module": "BSNProgram"
+  },
+  {
+    "fileName": "AssignMenu.aspx.cs",
+    "filePath": "Web/CMETracking/AssignMenu.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEMain.aspx.cs",
+    "filePath": "Web/CMETracking/CMEMain.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "EvaluateCMEEvaluation.aspx.cs",
+    "filePath": "Web/CMETracking/EvaluateCMEEvaluation.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignmentUsers.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignmentUsers.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEAssignments.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEAssignments.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ManageCMEDeletedAssignments.aspx.cs",
+    "filePath": "Web/CMETracking/ManageCMEDeletedAssignments.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "MultipleScheduleAssignment.aspx.cs",
+    "filePath": "Web/CMETracking/MultipleScheduleAssignment.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CMEFinancialStatementResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/CMEFinancialStatementResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "DetailedLedgerCreditsReportResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/DetailedLedgerCreditsReportResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryCMEEvaluationReportResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryCMEEvaluationReportResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryEventReportResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryEventReportResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryLedgerCreditsReportResults.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportResults.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "SummaryLedgerCreditsReportResultsBeta.aspx.cs",
+    "filePath": "Web/CMETracking/Reports/SummaryLedgerCreditsReportResultsBeta.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "CmeSetup.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/CmeSetup.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "Event.aspx.cs",
+    "filePath": "Web/CMETracking/Setup/Event.aspx.cs",
+    "directory": "Web/CMETracking",
+    "module": "CMETracking"
+  },
+  {
+    "fileName": "ForgotPassword.aspx.cs",
+    "filePath": "Web/CommercialNew/ForgotPassword.aspx.cs",
+    "directory": "Web/CommercialNew",
+    "module": "CommercialNew"
+  },
+  {
+    "fileName": "Home.aspx.cs",
+    "filePath": "Web/CommercialNew/Home.aspx.cs",
+    "directory": "Web/CommercialNew",
+    "module": "CommercialNew"
+  },
+  {
+    "fileName": "Login.aspx.cs",
+    "filePath": "Web/CommercialNew/Login.aspx.cs",
+    "directory": "Web/CommercialNew",
+    "module": "CommercialNew"
+  },
+  {
+    "fileName": "EpicService.aspx.cs",
+    "filePath": "Web/Common/EpicService.aspx.cs",
+    "directory": "Web/Common",
+    "module": "Common"
+  },
+  {
+    "fileName": "Main.aspx.cs",
+    "filePath": "Web/Common/Main.aspx.cs",
+    "directory": "Web/Common",
+    "module": "Common"
+  },
+  {
+    "fileName": "MainNew.aspx.cs",
+    "filePath": "Web/Common/MainNew.aspx.cs",
+    "directory": "Web/Common",
+    "module": "Common"
+  },
+  {
+    "fileName": "MainOldFile0407.aspx.cs",
+    "filePath": "Web/Common/MainOldFile0407.aspx.cs",
+    "directory": "Web/Common",
+    "module": "Common"
+  },
+  {
+    "fileName": "AddCourse.aspx.cs",
+    "filePath": "Web/Curriculum/AddCourse.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "AddInstructionUnit.aspx.cs",
+    "filePath": "Web/Curriculum/AddInstructionUnit.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "AddTeachUnit.aspx.cs",
+    "filePath": "Web/Curriculum/AddTeachUnit.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "AssignCourses.aspx.cs",
+    "filePath": "Web/Curriculum/AssignCourses.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ChooseTeachingUnits.aspx.cs",
+    "filePath": "Web/Curriculum/ChooseTeachingUnits.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "CurriculumReports.aspx.cs",
+    "filePath": "Web/Curriculum/CurriculumReports.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ManageCourses.aspx.cs",
+    "filePath": "Web/Curriculum/ManageCourses.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ManageCurriculum.aspx.cs",
+    "filePath": "Web/Curriculum/ManageCurriculum.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ManageCurriculumAssignments.aspx.cs",
+    "filePath": "Web/Curriculum/ManageCurriculumAssignments.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ManageInstructionUnits.aspx.cs",
+    "filePath": "Web/Curriculum/ManageInstructionUnits.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "ManageTeachingUnits.aspx.cs",
+    "filePath": "Web/Curriculum/ManageTeachingUnits.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "SearchCurriculum.aspx.cs",
+    "filePath": "Web/Curriculum/SearchCurriculum.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "SelectCourses.aspx.cs",
+    "filePath": "Web/Curriculum/SelectCourses.aspx.cs",
+    "directory": "Web/Curriculum",
+    "module": "Curriculum"
+  },
+  {
+    "fileName": "AddConference.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AddConference.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "AddGroupParticipants.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AddGroupParticipants.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ConferenceSettings.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ConferenceTemplateCopy.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceTemplateCopy.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DHScheduleJobHistory.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DHScheduleJobHistory.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DesignConferenceEvaluationStep1.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep1.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageClinics.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageClinics.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageConferenceEvaluations.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceEvaluations.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageConferenceSchedules.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceSchedules.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageConferences.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferences.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageGroupsParticipants.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageGroupsParticipants.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "MarkConferenceAttendance.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/MarkConferenceAttendance.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DetailedConferenceScheduleResults.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/DetailedConferenceScheduleResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SummaryConferencePresentersTrackingResults.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferencePresentersTrackingResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SummaryConferenceTrackingResults.aspx.cs",
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferenceTrackingResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DHUserVerification.aspx.cs",
+    "filePath": "Web/DutyHours/DHUserVerification.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHoursMain.aspx.cs",
+    "filePath": "Web/DutyHours/DutyHoursMain.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ImportClinicalHours.aspx.cs",
+    "filePath": "Web/DutyHours/ImportClinicalHours.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ImportDataSettings.aspx.cs",
+    "filePath": "Web/DutyHours/ImportDataSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "LockCHModifications.aspx.cs",
+    "filePath": "Web/DutyHours/LockCHModifications.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageDHVerification.aspx.cs",
+    "filePath": "Web/DutyHours/ManageDHVerification.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DailyBSNDutyHoursReport.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DailyBSNDutyHoursReport.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DailyBSNDutyHoursReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DailyBSNDutyHoursReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DailySummaryDutyHoursResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DailySummaryDutyHoursResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DetailedBSNDutyHours.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DetailedBSNDutyHours.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DetailedBSNDutyHoursReportResult.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DetailedBSNDutyHoursReportResult.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DetailedDutyHoursResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DetailedDutyHoursResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourCompletionStatusBeta.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusBeta.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourCompletionStatusResult.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusResult.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourCompletionStatusResultBeta.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusResultBeta.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourCompliance.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourCompliance.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourComplianceResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourComplianceResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstCompletionStatus.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstCompletionStatus.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstCompletionStatusResult.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstCompletionStatusResult.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstScheduleDiscrepancy.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstScheduleDiscrepancy.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstScheduleDiscrepancyResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstScheduleDiscrepancyResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstitutionScheduleImplementationStatus.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstitutionScheduleImplementationStatus.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourInstitutionSystemImplementationStatus.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourInstitutionSystemImplementationStatus.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourScheduleDiscrepancy.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourScheduleDiscrepancy.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourScheduleDiscrepancyResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourScheduleDiscrepancyResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourSummaryCompliance.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourSummaryCompliance.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHourSummaryComplianceResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/DutyHourSummaryComplianceResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "InstitutionScheduleImplementationStatusResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/InstitutionScheduleImplementationStatusResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "InstitutionSystemImplementationStatusResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/InstitutionSystemImplementationStatusResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "InstitutionalDHCompliance.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/InstitutionalDHCompliance.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "InstitutionalDHComplianceResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/InstitutionalDHComplianceResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "InstitutionalDetailedDutyHoursResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/InstitutionalDetailedDutyHoursResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "RecordOfRotationResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/RecordOfRotationResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "RecordOfRotations.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/RecordOfRotations.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "RecordOfRotators.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/RecordOfRotators.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "RecordofRotatorsReport.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/RecordofRotatorsReport.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "WeeklyBSNDutyHoursReport.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/WeeklyBSNDutyHoursReport.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "WeeklyBSNDutyHoursReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/WeeklyBSNDutyHoursReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "WeeklySummaryDutyHours.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/WeeklySummaryDutyHours.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "WeeklySummaryDutyHoursResults.aspx.cs",
+    "filePath": "Web/DutyHours/Reports/WeeklySummaryDutyHoursResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "RotationVerificationSettings.aspx.cs",
+    "filePath": "Web/DutyHours/RotationVerificationSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SelectDutyHoursAdmins.aspx.cs",
+    "filePath": "Web/DutyHours/SelectDutyHoursAdmins.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "Activity.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/Activity.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ActivityTypeQRCodes.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ActivityTypeQRCodes.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "AddDepartmentViolation.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/AddDepartmentViolation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHoursSettings.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/DutyHoursSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "DutyHoursSetup.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/DutyHoursSetup.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "GeofenceNames.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/GeofenceNames.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "LinkRotationsDutyHourActivities.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/LinkRotationsDutyHourActivities.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "LinkRotationsDutyHours.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/LinkRotationsDutyHours.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageActivityTypes.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ManageActivityTypes.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageComplianceSettings.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ManageComplianceSettings.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageProgramDHRules.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ManageProgramDHRules.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageRotationNames.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ManageRotationNames.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ManageViolations.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ManageViolations.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "QgendaTaskRoles.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/QgendaTaskRoles.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "Rotation.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/Rotation.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SetupDutyHourRotationBlocks.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SetupDutyHourRotationBlocks.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncCallServices.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncCallServices.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncCallServicesReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncCallServicesReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncClinics.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncClinics.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncClinicsReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncClinicsReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncQGendaCallServices.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncQGendaCallServices.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncQGendaClinics.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncQGendaClinics.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncQGendaRotations.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncQGendaRotations.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncRotations.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncRotations.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncRotationsReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncRotationsReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncUsers.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncUsers.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SyncUsersReportResults.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SyncUsersReportResults.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SynchQGendaUsers.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/SynchQGendaUsers.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ViewCurrentTaskRoles.aspx.cs",
+    "filePath": "Web/DutyHours/Setup/ViewCurrentTaskRoles.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "SubmitDutyHours.aspx.cs",
+    "filePath": "Web/DutyHours/SubmitDutyHours.aspx.cs",
+    "directory": "Web/DutyHours",
+    "module": "DutyHours"
+  },
+  {
+    "fileName": "ClinicalLogReviews.aspx.cs",
+    "filePath": "Web/EssentialActivities/ClinicalLogReviews.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "DevFNPRecords.aspx.cs",
+    "filePath": "Web/EssentialActivities/DevFNPRecords.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "EvaluationsAssignments.aspx.cs",
+    "filePath": "Web/EssentialActivities/EvaluationsAssignments.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "FNPClinicalLogForm.aspx.cs",
+    "filePath": "Web/EssentialActivities/FNPClinicalLogForm.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "FNPRecords.aspx.cs",
+    "filePath": "Web/EssentialActivities/FNPRecords.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "ManageSessionNames.aspx.cs",
+    "filePath": "Web/EssentialActivities/ManageSessionNames.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "UserAcknowledgement.aspx.cs",
+    "filePath": "Web/EssentialActivities/UserAcknowledgement.aspx.cs",
+    "directory": "Web/EssentialActivities",
+    "module": "EssentialActivities"
+  },
+  {
+    "fileName": "ACGMESurveyImporting.aspx.cs",
+    "filePath": "Web/Evaluations/ACGMESurveyImporting.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ACGMESurveyManualImporting.aspx.cs",
+    "filePath": "Web/Evaluations/ACGMESurveyManualImporting.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddAPEDefaultCaseLogCategories.aspx.cs",
+    "filePath": "Web/Evaluations/AddAPEDefaultCaseLogCategories.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddAPENewProject.aspx.cs",
+    "filePath": "Web/Evaluations/AddAPENewProject.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddConferences.aspx.cs",
+    "filePath": "Web/Evaluations/AddConferences.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddCurriculaMeasures.aspx.cs",
+    "filePath": "Web/Evaluations/AddCurriculaMeasures.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddEPAGroups.aspx.cs",
+    "filePath": "Web/Evaluations/AddEPAGroups.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddFileEvaluationScedule.aspx.cs",
+    "filePath": "Web/Evaluations/AddFileEvaluationScedule.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddMilestonePatientLog.aspx.cs",
+    "filePath": "Web/Evaluations/AddMilestonePatientLog.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddMilestoneProcedure.aspx.cs",
+    "filePath": "Web/Evaluations/AddMilestoneProcedure.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddMilestoneQuestion.aspx.cs",
+    "filePath": "Web/Evaluations/AddMilestoneQuestion.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddMilestoneQuiz.aspx.cs",
+    "filePath": "Web/Evaluations/AddMilestoneQuiz.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddQuizQuestions.aspx.cs",
+    "filePath": "Web/Evaluations/AddQuizQuestions.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AnnualProgramReport.aspx.cs",
+    "filePath": "Web/Evaluations/AnnualProgramReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AnnualProgramReportResults.aspx.cs",
+    "filePath": "Web/Evaluations/AnnualProgramReportResults.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AnswerSet.aspx.cs",
+    "filePath": "Web/Evaluations/AnswerSet.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "Assign360Evaluations.aspx.cs",
+    "filePath": "Web/Evaluations/Assign360Evaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AssignEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/AssignEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AssignProgArchEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/AssignProgArchEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AssignVoluntaryEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/AssignVoluntaryEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "Assignments360Menu.aspx.cs",
+    "filePath": "Web/Evaluations/Assignments360Menu.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AssignmentsMenu.aspx.cs",
+    "filePath": "Web/Evaluations/AssignmentsMenu.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AutoVoluntaryAssignment.aspx.cs",
+    "filePath": "Web/Evaluations/AutoVoluntaryAssignment.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CommonProgramReport.aspx.cs",
+    "filePath": "Web/Evaluations/CommonProgramReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CommonProgramReportResult.aspx.cs",
+    "filePath": "Web/Evaluations/CommonProgramReportResult.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ContactInformation.aspx.cs",
+    "filePath": "Web/Evaluations/ContactInformation.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CorePersonnel.aspx.cs",
+    "filePath": "Web/Evaluations/CorePersonnel.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CorePersonnelEdit.aspx.cs",
+    "filePath": "Web/Evaluations/CorePersonnelEdit.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CorePersonnelReport.aspx.cs",
+    "filePath": "Web/Evaluations/CorePersonnelReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CustomDesignSelectScale.aspx.cs",
+    "filePath": "Web/Evaluations/CustomDesignSelectScale.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CustomDesignStep1.aspx.cs",
+    "filePath": "Web/Evaluations/CustomDesignStep1.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CustomDesignStep2.aspx.cs",
+    "filePath": "Web/Evaluations/CustomDesignStep2.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "CustomDesignStep3.aspx.cs",
+    "filePath": "Web/Evaluations/CustomDesignStep3.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "DeclineEvaluation.aspx.cs",
+    "filePath": "Web/Evaluations/DeclineEvaluation.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "DeleteEvaluation.aspx.cs",
+    "filePath": "Web/Evaluations/DeleteEvaluation.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "DeleteFileSceduler.aspx.cs",
+    "filePath": "Web/Evaluations/DeleteFileSceduler.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "DownloadReport.aspx.cs",
+    "filePath": "Web/Evaluations/DownloadReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "DuplicateAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/DuplicateAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EditCompleteEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/EditCompleteEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvalTemplatePublish.aspx.cs",
+    "filePath": "Web/Evaluations/EvalTemplatePublish.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "Evaluate.aspx.cs",
+    "filePath": "Web/Evaluations/Evaluate.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluateACGMESurvey.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluateACGMESurvey.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluateEvaluation.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluateEvaluation.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluateEvaluationBeta.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluateEvaluationBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluateFeedback.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluateFeedback.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationDetails.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationDetails.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationQrCode.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationQrCode.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationsMain.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationsMain.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationsToReview.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationsToReview.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationsToSign.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationsToSign.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationstoCompleteNew.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationstoCompleteNew.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "EvaluationstoSignNew.aspx.cs",
+    "filePath": "Web/Evaluations/EvaluationstoSignNew.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExportData.aspx.cs",
+    "filePath": "Web/Evaluations/ExportData.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExportQuestionMapping.aspx.cs",
+    "filePath": "Web/Evaluations/ExportQuestionMapping.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExpressDesignStep1.aspx.cs",
+    "filePath": "Web/Evaluations/ExpressDesignStep1.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExpressDesignStep2.aspx.cs",
+    "filePath": "Web/Evaluations/ExpressDesignStep2.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExpressDesignStep3.aspx.cs",
+    "filePath": "Web/Evaluations/ExpressDesignStep3.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ExpressDesignStep4.aspx.cs",
+    "filePath": "Web/Evaluations/ExpressDesignStep4.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "FeedbackRevList.aspx.cs",
+    "filePath": "Web/Evaluations/FeedbackRevList.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "FellowEvaluateACGMESurvey.aspx.cs",
+    "filePath": "Web/Evaluations/FellowEvaluateACGMESurvey.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "GenerateEvaluationAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/GenerateEvaluationAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "GenerateMyInsights.aspx.cs",
+    "filePath": "Web/Evaluations/GenerateMyInsights.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "GenerateOutcomeReport.aspx.cs",
+    "filePath": "Web/Evaluations/GenerateOutcomeReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "GenerateOutcomeReportBeta.aspx.cs",
+    "filePath": "Web/Evaluations/GenerateOutcomeReportBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "GenerateWorkSheetPDF.aspx.cs",
+    "filePath": "Web/Evaluations/GenerateWorkSheetPDF.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ImportPatientPulseSurvey.aspx.cs",
+    "filePath": "Web/Evaluations/ImportPatientPulseSurvey.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "Inbox.aspx.cs",
+    "filePath": "Web/Evaluations/Inbox.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "InstitutionalAPECompliance.aspx.cs",
+    "filePath": "Web/Evaluations/InstitutionalAPECompliance.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "InstitutionalAnnualProgramReportResults.aspx.cs",
+    "filePath": "Web/Evaluations/InstitutionalAnnualProgramReportResults.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "InstitutionalAnnualProgramReports.aspx.cs",
+    "filePath": "Web/Evaluations/InstitutionalAnnualProgramReports.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "InstitutionalRequirementsReport.aspx.cs",
+    "filePath": "Web/Evaluations/InstitutionalRequirementsReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "InstitutionalRequirementsReportResult.aspx.cs",
+    "filePath": "Web/Evaluations/InstitutionalRequirementsReportResult.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "IntegratedOnCallAssignmentMenu.aspx.cs",
+    "filePath": "Web/Evaluations/IntegratedOnCallAssignmentMenu.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "LinkEvaluationsRotations.aspx.cs",
+    "filePath": "Web/Evaluations/LinkEvaluationsRotations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "LogOfEvaluationAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/LogOfEvaluationAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAPECategories.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAPECategories.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAPEProjects.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAPEProjects.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAllEvaluationAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAllEvaluationAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAnnualProgramEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAnnualProgramEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAnnualProgramEvaluationsGroup.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAnnualProgramEvaluationsGroup.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageAnswerScales.aspx.cs",
+    "filePath": "Web/Evaluations/ManageAnswerScales.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageBehaviors.aspx.cs",
+    "filePath": "Web/Evaluations/ManageBehaviors.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageClinicalCompetencyCommittee.aspx.cs",
+    "filePath": "Web/Evaluations/ManageClinicalCompetencyCommittee.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageCommonProgramRequirements.aspx.cs",
+    "filePath": "Web/Evaluations/ManageCommonProgramRequirements.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageCorePersonnel.aspx.cs",
+    "filePath": "Web/Evaluations/ManageCorePersonnel.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageCurriculumMilestones.aspx.cs",
+    "filePath": "Web/Evaluations/ManageCurriculumMilestones.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageDefaultCaselogCategories.aspx.cs",
+    "filePath": "Web/Evaluations/ManageDefaultCaselogCategories.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageDescriptiveCriteria.aspx.cs",
+    "filePath": "Web/Evaluations/ManageDescriptiveCriteria.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageEPAGroups.aspx.cs",
+    "filePath": "Web/Evaluations/ManageEPAGroups.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageEvaluationAssignmentUsers.aspx.cs",
+    "filePath": "Web/Evaluations/ManageEvaluationAssignmentUsers.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageEvaluationAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/ManageEvaluationAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/ManageEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageEvaluationsNew.aspx.cs",
+    "filePath": "Web/Evaluations/ManageEvaluationsNew.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageFileEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/ManageFileEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageGroupQuestions.aspx.cs",
+    "filePath": "Web/Evaluations/ManageGroupQuestions.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageInstitutionalRequirements.aspx.cs",
+    "filePath": "Web/Evaluations/ManageInstitutionalRequirements.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageLogOfEvaluationAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/ManageLogOfEvaluationAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageMileStoneQuestion.aspx.cs",
+    "filePath": "Web/Evaluations/ManageMileStoneQuestion.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageMilestoneReview.aspx.cs",
+    "filePath": "Web/Evaluations/ManageMilestoneReview.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageMilestones.aspx.cs",
+    "filePath": "Web/Evaluations/ManageMilestones.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageMilestonesBeta.aspx.cs",
+    "filePath": "Web/Evaluations/ManageMilestonesBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageNationalAverages.aspx.cs",
+    "filePath": "Web/Evaluations/ManageNationalAverages.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageOutcomeGroups.aspx.cs",
+    "filePath": "Web/Evaluations/ManageOutcomeGroups.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageOutcomeNarratives.aspx.cs",
+    "filePath": "Web/Evaluations/ManageOutcomeNarratives.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageOutcomes.aspx.cs",
+    "filePath": "Web/Evaluations/ManageOutcomes.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageOutcomesBeta.aspx.cs",
+    "filePath": "Web/Evaluations/ManageOutcomesBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageOutcomesBeta1.aspx.cs",
+    "filePath": "Web/Evaluations/ManageOutcomesBeta1.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManagePIPAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/ManagePIPAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManagePPVSettings.aspx.cs",
+    "filePath": "Web/Evaluations/ManagePPVSettings.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageProxyEvaluations.aspx.cs",
+    "filePath": "Web/Evaluations/ManageProxyEvaluations.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageQuestionDatabase.aspx.cs",
+    "filePath": "Web/Evaluations/ManageQuestionDatabase.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageQuestionGroups.aspx.cs",
+    "filePath": "Web/Evaluations/ManageQuestionGroups.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "ManageRotationRequirements.aspx.cs",
+    "filePath": "Web/Evaluations/ManageRotationRequirements.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MileStoneCommitteeMember.aspx.cs",
+    "filePath": "Web/Evaluations/MileStoneCommitteeMember.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MileStoneCommitteeMemberDelete.aspx.cs",
+    "filePath": "Web/Evaluations/MileStoneCommitteeMemberDelete.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MileStoneCommitteeMemberEdit.aspx.cs",
+    "filePath": "Web/Evaluations/MileStoneCommitteeMemberEdit.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneCompetencyWorkSheet.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneCompetencyWorkSheet.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneGroupIndividualReport.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneGroupIndividualReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneGroupIndividualReportBeta.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneGroupIndividualReportBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneGroupProgression.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneGroupProgression.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneGroupProgressionBeta.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneGroupProgressionBeta.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneGroupProgressionReport.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneGroupProgressionReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneIndividualReport.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneIndividualReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneLedgerAssessments.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneLedgerAssessments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneLedgerAssessmentsResults.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneLedgerAssessmentsResults.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneNarrativeSortOrder.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneNarrativeSortOrder.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestonePIPAssignments.aspx.cs",
+    "filePath": "Web/Evaluations/MilestonePIPAssignments.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestonePerformanceMapping.aspx.cs",
+    "filePath": "Web/Evaluations/MilestonePerformanceMapping.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneRotationReport.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneRotationReport.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneRotationReportResults.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneRotationReportResults.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneSectionHistory.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneSectionHistory.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneSetup.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneSetup.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneWorkSheetHistory.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneWorkSheetHistory.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "MilestoneWorksheetTimeHistory.aspx.cs",
+    "filePath": "Web/Evaluations/MilestoneWorksheetTimeHistory.aspx.cs",
+    "directory": "Web/Evaluations",
+    "module": "Evaluations"
+  },
+  {
+    "fileName": "AddCertificateTemplate.aspx.cs",
+    "filePath": "Web/Graduation/AddCertificateTemplate.aspx.cs",
+    "directory": "Web/Graduation",
+    "module": "Graduation"
+  },
+  {
+    "fileName": "AssignCertificateTemplate.aspx.cs",
+    "filePath": "Web/Graduation/AssignCertificateTemplate.aspx.cs",
+    "directory": "Web/Graduation",
+    "module": "Graduation"
+  },
+  {
+    "fileName": "EditUserCertificate.aspx.cs",
+    "filePath": "Web/Graduation/EditUserCertificate.aspx.cs",
+    "directory": "Web/Graduation",
+    "module": "Graduation"
+  },
+  {
+    "fileName": "ManageCertificationofCompletion.aspx.cs",
+    "filePath": "Web/Graduation/ManageCertificationofCompletion.aspx.cs",
+    "directory": "Web/Graduation",
+    "module": "Graduation"
+  },
+  {
+    "fileName": "LearningModule.aspx.cs",
+    "filePath": "Web/LearningAssignment/LearningModule.aspx.cs",
+    "directory": "Web/LearningAssignment",
+    "module": "LearningAssignment"
+  },
+  {
+    "fileName": "MenuSupport.aspx.cs",
+    "filePath": "Web/Mail/MenuSupport.aspx.cs",
+    "directory": "Web/Mail",
+    "module": "Mail"
+  },
+  {
+    "fileName": "MailMergeDocument.aspx.cs",
+    "filePath": "Web/MailMerge/MailMergeDocument.aspx.cs",
+    "directory": "Web/MailMerge",
+    "module": "MailMerge"
+  },
+  {
+    "fileName": "MyGMELogin.aspx.cs",
+    "filePath": "Web/MyGME/MyGMELogin.aspx.cs",
+    "directory": "Web/MyGME",
+    "module": "MyGME"
+  },
+  {
+    "fileName": "MyHelpLanding.aspx.cs",
+    "filePath": "Web/MyHelp/MyHelpLanding.aspx.cs",
+    "directory": "Web/MyHelp",
+    "module": "MyHelp"
+  },
+  {
+    "fileName": "AddAffiliateAgreementDocument.aspx.cs",
+    "filePath": "Web/MyPortfolio/AddAffiliateAgreementDocument.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "AddProgramHistory.aspx.cs",
+    "filePath": "Web/MyPortfolio/AddProgramHistory.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "AddTrainingGapHistory.aspx.cs",
+    "filePath": "Web/MyPortfolio/AddTrainingGapHistory.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "EditDocumentDetails.aspx.cs",
+    "filePath": "Web/MyPortfolio/EditDocumentDetails.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "EmployeeHealthDemographicsReport.aspx.cs",
+    "filePath": "Web/MyPortfolio/EmployeeHealthDemographicsReport.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "GeneralDemographicsResults.aspx.cs",
+    "filePath": "Web/MyPortfolio/GeneralDemographicsResults.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "MyPAssign.aspx.cs",
+    "filePath": "Web/MyPortfolio/MyPAssign.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "MyPortfolioMain.aspx.cs",
+    "filePath": "Web/MyPortfolio/MyPortfolioMain.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "MyPortfolioSummaryResults.aspx.cs",
+    "filePath": "Web/MyPortfolio/MyPortfolioSummaryResults.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "PortfolioDocumentUpload.aspx.cs",
+    "filePath": "Web/MyPortfolio/PortfolioDocumentUpload.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "QualityImprovementProjects.aspx.cs",
+    "filePath": "Web/MyPortfolio/QualityImprovementProjects.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "ShowImage.aspx.cs",
+    "filePath": "Web/MyPortfolio/ShowImage.aspx.cs",
+    "directory": "Web/MyPortfolio",
+    "module": "MyPortfolio"
+  },
+  {
+    "fileName": "AddCampuses.aspx.cs",
+    "filePath": "Web/MySchedule/AddCampuses.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "AddScheduleTemplate.aspx.cs",
+    "filePath": "Web/MySchedule/AddScheduleTemplate.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "AddUsers.aspx.cs",
+    "filePath": "Web/MySchedule/AddUsers.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "AffiliateAgreementReport.aspx.cs",
+    "filePath": "Web/MySchedule/AffiliateAgreementReport.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "EditSettings.aspx.cs",
+    "filePath": "Web/MySchedule/EditSettings.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "ScheduleSettings.aspx.cs",
+    "filePath": "Web/MySchedule/ScheduleSettings.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "Settings.aspx.cs",
+    "filePath": "Web/MySchedule/Settings.aspx.cs",
+    "directory": "Web/MySchedule",
+    "module": "MySchedule"
+  },
+  {
+    "fileName": "Momentum.aspx.cs",
+    "filePath": "Web/OnCall/Momentum.aspx.cs",
+    "directory": "Web/OnCall",
+    "module": "OnCall"
+  },
+  {
+    "fileName": "OnCall.aspx.cs",
+    "filePath": "Web/OnCall/OnCall.aspx.cs",
+    "directory": "Web/OnCall",
+    "module": "OnCall"
+  },
+  {
+    "fileName": "QGenda.aspx.cs",
+    "filePath": "Web/OnCall/QGenda.aspx.cs",
+    "directory": "Web/OnCall",
+    "module": "OnCall"
+  },
+  {
+    "fileName": "CropUserImage.aspx.cs",
+    "filePath": "Web/Onboarding/CropUserImage.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "DownloadOnboardingDocuments.aspx.cs",
+    "filePath": "Web/Onboarding/DownloadOnboardingDocuments.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "OnboardingDashboard.aspx.cs",
+    "filePath": "Web/Onboarding/OnboardingDashboard.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "OnboardingNotes.aspx.cs",
+    "filePath": "Web/Onboarding/OnboardingNotes.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "OnboardingReviewNotes.aspx.cs",
+    "filePath": "Web/Onboarding/OnboardingReviewNotes.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "PrintOnboardingDashboard.aspx.cs",
+    "filePath": "Web/Onboarding/PrintOnboardingDashboard.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "RestoreAssignments.aspx.cs",
+    "filePath": "Web/Onboarding/RestoreAssignments.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "SpouseDependentsEmergency.ascx.cs",
+    "filePath": "Web/Onboarding/SpouseDependentsEmergency.ascx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "TrainingGapHistory.ascx.cs",
+    "filePath": "Web/Onboarding/TrainingGapHistory.ascx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "UpdateOBCDocumentStatus.aspx.cs",
+    "filePath": "Web/Onboarding/UpdateOBCDocumentStatus.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "UploadMissingCertifications.aspx.cs",
+    "filePath": "Web/Onboarding/UploadMissingCertifications.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "ViewCustomFormDetails.aspx.cs",
+    "filePath": "Web/Onboarding/ViewCustomFormDetails.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "ViewDocumentDetails.aspx.cs",
+    "filePath": "Web/Onboarding/ViewDocumentDetails.aspx.cs",
+    "directory": "Web/Onboarding",
+    "module": "Onboarding"
+  },
+  {
+    "fileName": "ExportPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/ExportPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ManagePatientLogCustomFields.aspx.cs",
+    "filePath": "Web/PatientLog/ManagePatientLogCustomFields.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ManagePatientLogFields.aspx.cs",
+    "filePath": "Web/PatientLog/ManagePatientLogFields.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "ManagePatientLogs.aspx.cs",
+    "filePath": "Web/PatientLog/ManagePatientLogs.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientCaseReview.aspx.cs",
+    "filePath": "Web/PatientLog/PatientCaseReview.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogCustomField.aspx.cs",
+    "filePath": "Web/PatientLog/PatientLogCustomField.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogSetup.aspx.cs",
+    "filePath": "Web/PatientLog/PatientLogSetup.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DXDepartmentPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DXDepartmentPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DXDepartmentPatientLogResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DXDepartmentPatientLogResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DepartmentPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DepartmentPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DepartmentPatientLogResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DepartmentPatientLogResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DetailedPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DetailedPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "DetailedPatientLogResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/DetailedPatientLogResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogByCategory.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogByCategory.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogByCategoryResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogByCategoryResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogByDXClassification.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogByDXClassification.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogByDXClassificationResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogByDXClassificationResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogSummary.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogSummary.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "PatientLogSummaryResult.aspx.cs",
+    "filePath": "Web/PatientLog/Reports/PatientLogSummaryResult.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "RestoreDeletedSubmittedPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/RestoreDeletedSubmittedPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "SelectPatientLogSupervisors.aspx.cs",
+    "filePath": "Web/PatientLog/SelectPatientLogSupervisors.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "SubmitPatientLog.aspx.cs",
+    "filePath": "Web/PatientLog/SubmitPatientLog.aspx.cs",
+    "directory": "Web/PatientLog",
+    "module": "PatientLog"
+  },
+  {
+    "fileName": "AddCalls.aspx.cs",
+    "filePath": "Web/Preceptor/AddCalls.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddCampusLocations.aspx.cs",
+    "filePath": "Web/Preceptor/AddCampusLocations.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddClinics.aspx.cs",
+    "filePath": "Web/Preceptor/AddClinics.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddPreceptorRegistration.aspx.cs",
+    "filePath": "Web/Preceptor/AddPreceptorRegistration.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddShifts.aspx.cs",
+    "filePath": "Web/Preceptor/AddShifts.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddSiteName.aspx.cs",
+    "filePath": "Web/Preceptor/AddSiteName.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AddTopic.aspx.cs",
+    "filePath": "Web/Preceptor/AddTopic.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "BuildSchedules.aspx.cs",
+    "filePath": "Web/Preceptor/BuildSchedules.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "CompletePreceptorRegistration.aspx.cs",
+    "filePath": "Web/Preceptor/CompletePreceptorRegistration.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "CreateSchedule.aspx.cs",
+    "filePath": "Web/Preceptor/CreateSchedule.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "DefineRotationRequirements.aspx.cs",
+    "filePath": "Web/Preceptor/DefineRotationRequirements.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "DefineSiteAllocation.aspx.cs",
+    "filePath": "Web/Preceptor/DefineSiteAllocation.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "GenerateScheduleRequirementReport.aspx.cs",
+    "filePath": "Web/Preceptor/GenerateScheduleRequirementReport.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ImportSchedule.aspx.cs",
+    "filePath": "Web/Preceptor/ImportSchedule.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "LinkSitesandRotations.aspx.cs",
+    "filePath": "Web/Preceptor/LinkSitesandRotations.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "LinkTopicsandRotations.aspx.cs",
+    "filePath": "Web/Preceptor/LinkTopicsandRotations.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "LinkTraineestoCampusCluster.aspx.cs",
+    "filePath": "Web/Preceptor/LinkTraineestoCampusCluster.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ManageIndividualSchedule.aspx.cs",
+    "filePath": "Web/Preceptor/ManageIndividualSchedule.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "PreceptorAvailabilityReport.aspx.cs",
+    "filePath": "Web/Preceptor/PreceptorAvailabilityReport.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "PreceptorAvailabilityReportResult.aspx.cs",
+    "filePath": "Web/Preceptor/PreceptorAvailabilityReportResult.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "PreceptorRegistrationbyTrainee.aspx.cs",
+    "filePath": "Web/Preceptor/PreceptorRegistrationbyTrainee.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "RankOrderCompletionStatusReport.aspx.cs",
+    "filePath": "Web/Preceptor/RankOrderCompletionStatusReport.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "RankOrderCompletionStatusReportResult.aspx.cs",
+    "filePath": "Web/Preceptor/RankOrderCompletionStatusReportResult.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "RecordOfRotations.aspx.cs",
+    "filePath": "Web/Preceptor/RecordOfRotations.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "RecordOfRotationsResults.aspx.cs",
+    "filePath": "Web/Preceptor/RecordOfRotationsResults.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleImporting.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleImporting.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleRankOrderSubmission.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleRankOrderSubmission.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleReports.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleReports.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleRequirementsReport.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleRequirementsReport.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ScheduleSettings.aspx.cs",
+    "filePath": "Web/Preceptor/ScheduleSettings.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "SiteName.aspx.cs",
+    "filePath": "Web/Preceptor/SiteName.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "SiteNamesReport.aspx.cs",
+    "filePath": "Web/Preceptor/SiteNamesReport.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "SpecialtyNames.aspx.cs",
+    "filePath": "Web/Preceptor/SpecialtyNames.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "UpdateSchedulePreferences.aspx.cs",
+    "filePath": "Web/Preceptor/UpdateSchedulePreferences.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "ViewSchedule.aspx.cs",
+    "filePath": "Web/Preceptor/ViewSchedule.aspx.cs",
+    "directory": "Web/Preceptor",
+    "module": "Preceptor"
+  },
+  {
+    "fileName": "AccountApplicationDeniedReason.aspx.cs",
+    "filePath": "Web/Procedures/AccountApplicationDeniedReason.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "AccountApplications.aspx.cs",
+    "filePath": "Web/Procedures/AccountApplications.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "AddSupervisionRequirement.aspx.cs",
+    "filePath": "Web/Procedures/AddSupervisionRequirement.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "AjaxOperations.aspx.cs",
+    "filePath": "Web/Procedures/AjaxOperations.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "CustomField.aspx.cs",
+    "filePath": "Web/Procedures/CustomField.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "DetailedProcedureExport.aspx.cs",
+    "filePath": "Web/Procedures/DetailedProcedureExport.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "DetailedProcedureExporting.aspx.cs",
+    "filePath": "Web/Procedures/DetailedProcedureExporting.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ErrorTrackingSetup.aspx.cs",
+    "filePath": "Web/Procedures/ErrorTrackingSetup.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ExportProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ExportProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ImportProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ImportProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageCustomFields.aspx.cs",
+    "filePath": "Web/Procedures/ManageCustomFields.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageCustomFieldsPG1.aspx.cs",
+    "filePath": "Web/Procedures/ManageCustomFieldsPG1.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageCustomFieldsPG2.aspx.cs",
+    "filePath": "Web/Procedures/ManageCustomFieldsPG2.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageCustomFieldsPG3.aspx.cs",
+    "filePath": "Web/Procedures/ManageCustomFieldsPG3.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageDeletedProcedureCategories.aspx.cs",
+    "filePath": "Web/Procedures/ManageDeletedProcedureCategories.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageFields.aspx.cs",
+    "filePath": "Web/Procedures/ManageFields.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageProcedureCategories.aspx.cs",
+    "filePath": "Web/Procedures/ManageProcedureCategories.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageProcedureGroups.aspx.cs",
+    "filePath": "Web/Procedures/ManageProcedureGroups.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ManageProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ManageSubmittedProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ManageSubmittedProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "MergeProcedures.aspx.cs",
+    "filePath": "Web/Procedures/NiImport/MergeProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "Step1.aspx.cs",
+    "filePath": "Web/Procedures/NiImport/Step1.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PendingProcedures.aspx.cs",
+    "filePath": "Web/Procedures/PendingProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PrintProcedure.aspx.cs",
+    "filePath": "Web/Procedures/PrintProcedure.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcRev.aspx.cs",
+    "filePath": "Web/Procedures/ProcRev.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "Procedure.aspx.cs",
+    "filePath": "Web/Procedures/Procedure.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureCertification.aspx.cs",
+    "filePath": "Web/Procedures/ProcedureCertification.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureCertificationReport.aspx.cs",
+    "filePath": "Web/Procedures/ProcedureCertificationReport.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureDesignStep3.aspx.cs",
+    "filePath": "Web/Procedures/ProcedureDesignStep3.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureReview.aspx.cs",
+    "filePath": "Web/Procedures/ProcedureReview.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProceduresMain.aspx.cs",
+    "filePath": "Web/Procedures/ProceduresMain.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProceduresSetup.aspx.cs",
+    "filePath": "Web/Procedures/ProceduresSetup.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "DepartmentProcedures.aspx.cs",
+    "filePath": "Web/Procedures/Reports/DepartmentProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "DepartmentProceduresResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/DepartmentProceduresResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "Errors.aspx.cs",
+    "filePath": "Web/Procedures/Reports/Errors.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ErrorsResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/ErrorsResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "IndividualProcedures.aspx.cs",
+    "filePath": "Web/Procedures/Reports/IndividualProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "IndividualProceduresResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/IndividualProceduresResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PendingAuthorizations.aspx.cs",
+    "filePath": "Web/Procedures/Reports/PendingAuthorizations.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PendingAuthorizationsResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/PendingAuthorizationsResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PendingProceduresRequired.aspx.cs",
+    "filePath": "Web/Procedures/Reports/PendingProceduresRequired.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "PendingProceduresRequiredResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/PendingProceduresRequiredResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureTestingPerformance.aspx.cs",
+    "filePath": "Web/Procedures/Reports/ProcedureTestingPerformance.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ProcedureTestingPerformanceResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/ProcedureTestingPerformanceResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SummaryProcedures.aspx.cs",
+    "filePath": "Web/Procedures/Reports/SummaryProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SummaryProceduresResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/SummaryProceduresResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SupervisedProcedures.aspx.cs",
+    "filePath": "Web/Procedures/Reports/SupervisedProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SupervisedProceduresResults.aspx.cs",
+    "filePath": "Web/Procedures/Reports/SupervisedProceduresResults.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "RestoreDeletedSubmittedProcedures.aspx.cs",
+    "filePath": "Web/Procedures/RestoreDeletedSubmittedProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "ReviewPendingProcedures.aspx.cs",
+    "filePath": "Web/Procedures/ReviewPendingProcedures.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SelectSupervisors.aspx.cs",
+    "filePath": "Web/Procedures/SelectSupervisors.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SubmitError.aspx.cs",
+    "filePath": "Web/Procedures/SubmitError.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SubmitProcedure.aspx.cs",
+    "filePath": "Web/Procedures/SubmitProcedure.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SummaryProcedureExport.aspx.cs",
+    "filePath": "Web/Procedures/SummaryProcedureExport.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "SummaryProcedureExporting.aspx.cs",
+    "filePath": "Web/Procedures/SummaryProcedureExporting.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "WebADSCaseLogImporting.aspx.cs",
+    "filePath": "Web/Procedures/WebADSCaseLogImporting.aspx.cs",
+    "directory": "Web/Procedures",
+    "module": "Procedures"
+  },
+  {
+    "fileName": "QuizAnalysis.aspx.cs",
+    "filePath": "Web/Quiz/Pages/QuizAnalysis.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "PendingQuizAssignments.aspx.cs",
+    "filePath": "Web/Quiz/PendingQuizAssignments.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "QuizMain.aspx.cs",
+    "filePath": "Web/Quiz/QuizMain.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "DetailedQuizAssignments.aspx.cs",
+    "filePath": "Web/Quiz/Reports/DetailedQuizAssignments.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "LedgerOfQuizAssignments.aspx.cs",
+    "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignments.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "LedgerOfQuizAssignmentsResult.aspx.cs",
+    "filePath": "Web/Quiz/Reports/LedgerOfQuizAssignmentsResult.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "SummaryQuizAssignments.aspx.cs",
+    "filePath": "Web/Quiz/Reports/SummaryQuizAssignments.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "SummaryQuizAssignmentsResult.aspx.cs",
+    "filePath": "Web/Quiz/Reports/SummaryQuizAssignmentsResult.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "ShareQuizTemplates.aspx.cs",
+    "filePath": "Web/Quiz/ShareQuizTemplates.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "SubmitQuizAssignment.aspx.cs",
+    "filePath": "Web/Quiz/SubmitQuizAssignment.aspx.cs",
+    "directory": "Web/Quiz",
+    "module": "Quiz"
+  },
+  {
+    "fileName": "360Evaluations.aspx.cs",
+    "filePath": "Web/Reports/360Evaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "360EvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/360EvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMEComments.aspx.cs",
+    "filePath": "Web/Reports/ACGMEComments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMECommentsResult.aspx.cs",
+    "filePath": "Web/Reports/ACGMECommentsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMEIMSurvey.aspx.cs",
+    "filePath": "Web/Reports/ACGMEIMSurvey.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMEIMSurveyResult.aspx.cs",
+    "filePath": "Web/Reports/ACGMEIMSurveyResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMEPGY3Survey.aspx.cs",
+    "filePath": "Web/Reports/ACGMEPGY3Survey.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMEPGY3SurveyResult.aspx.cs",
+    "filePath": "Web/Reports/ACGMEPGY3SurveyResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMESurvey.aspx.cs",
+    "filePath": "Web/Reports/ACGMESurvey.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ACGMESurveyResult.aspx.cs",
+    "filePath": "Web/Reports/ACGMESurveyResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AnonymousEvaluations.aspx.cs",
+    "filePath": "Web/Reports/AnonymousEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AttendingScoringProfile.aspx.cs",
+    "filePath": "Web/Reports/AttendingScoringProfile.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AttendingScoringProfileResult.aspx.cs",
+    "filePath": "Web/Reports/AttendingScoringProfileResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CheckResultCount.aspx.cs",
+    "filePath": "Web/Reports/CheckResultCount.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ClassRank.aspx.cs",
+    "filePath": "Web/Reports/ClassRank.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ClassRankResult.aspx.cs",
+    "filePath": "Web/Reports/ClassRankResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ClosedEvaluations.aspx.cs",
+    "filePath": "Web/Reports/ClosedEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ClosedEvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/ClosedEvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "Comments.aspx.cs",
+    "filePath": "Web/Reports/Comments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CommentsResult.aspx.cs",
+    "filePath": "Web/Reports/CommentsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CompletedEvaluations.aspx.cs",
+    "filePath": "Web/Reports/CompletedEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CompletedEvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/CompletedEvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CompletionStatus.aspx.cs",
+    "filePath": "Web/Reports/CompletionStatus.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "CompletionStatusResult.aspx.cs",
+    "filePath": "Web/Reports/CompletionStatusResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DeclinedEvaluations.aspx.cs",
+    "filePath": "Web/Reports/DeclinedEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DeclinedEvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/DeclinedEvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DetailedProgramEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/DetailedProgramEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DetailedandSummaryProgramEvaluation.aspx.cs",
+    "filePath": "Web/Reports/DetailedandSummaryProgramEvaluation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DetailedandSummaryProgramEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/DetailedandSummaryProgramEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EarlyWarningDetailed.aspx.cs",
+    "filePath": "Web/Reports/EarlyWarningDetailed.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EarlyWarningDetailedResult.aspx.cs",
+    "filePath": "Web/Reports/EarlyWarningDetailedResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EarlyWarningOverView.aspx.cs",
+    "filePath": "Web/Reports/EarlyWarningOverView.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EarlyWarningOverViewResult.aspx.cs",
+    "filePath": "Web/Reports/EarlyWarningOverViewResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "GradeRegister.aspx.cs",
+    "filePath": "Web/Reports/GradeRegister.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "GradeRegisterResult.aspx.cs",
+    "filePath": "Web/Reports/GradeRegisterResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "IndividualEvaluation.aspx.cs",
+    "filePath": "Web/Reports/IndividualEvaluation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "IndividualEvaluationDemo.aspx.cs",
+    "filePath": "Web/Reports/IndividualEvaluationDemo.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "IndividualEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/IndividualEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "IndividualEvaluationResultDemo.aspx.cs",
+    "filePath": "Web/Reports/IndividualEvaluationResultDemo.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "Accreditation.aspx.cs",
+    "filePath": "Web/Reports/Institution/Accreditation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AccreditationReport.aspx.cs",
+    "filePath": "Web/Reports/Institution/AccreditationReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AffiliateAgreementReport.aspx.cs",
+    "filePath": "Web/Reports/Institution/AffiliateAgreementReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "AffiliateAgreementReportResult.aspx.cs",
+    "filePath": "Web/Reports/Institution/AffiliateAgreementReportResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ConferenceCompliance.aspx.cs",
+    "filePath": "Web/Reports/Institution/ConferenceCompliance.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ConferenceComplianceResults.aspx.cs",
+    "filePath": "Web/Reports/Institution/ConferenceComplianceResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EvaluationCompliance.aspx.cs",
+    "filePath": "Web/Reports/Institution/EvaluationCompliance.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EvaluationComplianceResults.aspx.cs",
+    "filePath": "Web/Reports/Institution/EvaluationComplianceResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "InstitutionalClinicalHoursDetailedReport.aspx.cs",
+    "filePath": "Web/Reports/Institution/InstitutionalClinicalHoursDetailedReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "InstitutionalClinicalHoursDetailedResults.aspx.cs",
+    "filePath": "Web/Reports/Institution/InstitutionalClinicalHoursDetailedResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ProcedureCompliance.aspx.cs",
+    "filePath": "Web/Reports/Institution/ProcedureCompliance.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ProcedureComplianceReport.aspx.cs",
+    "filePath": "Web/Reports/Institution/ProcedureComplianceReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "LedgerofEvaluations.aspx.cs",
+    "filePath": "Web/Reports/LedgerofEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "LedgerofEvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/LedgerofEvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "LedgerofEvaluationsResultDemo.aspx.cs",
+    "filePath": "Web/Reports/LedgerofEvaluationsResultDemo.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MPAS712Register.aspx.cs",
+    "filePath": "Web/Reports/MPAS712Register.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MPAS712RegisterResult.aspx.cs",
+    "filePath": "Web/Reports/MPAS712RegisterResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MoodleGrade.aspx.cs",
+    "filePath": "Web/Reports/MoodleGrade.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MoodlegradeResult.aspx.cs",
+    "filePath": "Web/Reports/MoodlegradeResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyEvalsGraphPopup.aspx.cs",
+    "filePath": "Web/Reports/MyEvalsGraphPopup.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsAPEReport.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsAPEReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsAPEReportResult.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsAPEReportResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsAPESummaryReport.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsAPESummaryReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsNarrativeReport.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsNarrativeReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsNarrativeReportResults.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsNarrativeReportResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsRotationSummaryResult.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsRotationSummaryResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsSummaryReport.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsSummaryReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "MyInsightsTraineeSummaryResult.aspx.cs",
+    "filePath": "Web/Reports/MyInsightsTraineeSummaryResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "NPVReport.aspx.cs",
+    "filePath": "Web/Reports/NPVReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "NPVReportResults.aspx.cs",
+    "filePath": "Web/Reports/NPVReportResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "OverDueEvaluations.aspx.cs",
+    "filePath": "Web/Reports/OverDueEvaluations.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "OverDueEvaluationsResult.aspx.cs",
+    "filePath": "Web/Reports/OverDueEvaluationsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PeerEvaluation.aspx.cs",
+    "filePath": "Web/Reports/PeerEvaluation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PeerEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/PeerEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalComments.aspx.cs",
+    "filePath": "Web/Reports/PersonalComments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalCommentsResult.aspx.cs",
+    "filePath": "Web/Reports/PersonalCommentsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalEvaluation.aspx.cs",
+    "filePath": "Web/Reports/PersonalEvaluation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalEvaluationReport.aspx.cs",
+    "filePath": "Web/Reports/PersonalEvaluationReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalEvaluationReportResult.aspx.cs",
+    "filePath": "Web/Reports/PersonalEvaluationReportResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "PersonalEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/PersonalEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ProgramComments.aspx.cs",
+    "filePath": "Web/Reports/ProgramComments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ProgramCommentsResult.aspx.cs",
+    "filePath": "Web/Reports/ProgramCommentsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ReportsMain.aspx.cs",
+    "filePath": "Web/Reports/ReportsMain.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryCompetency.aspx.cs",
+    "filePath": "Web/Reports/SummaryCompetency.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryCompetencyResult.aspx.cs",
+    "filePath": "Web/Reports/SummaryCompetencyResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryEvaluation.aspx.cs",
+    "filePath": "Web/Reports/SummaryEvaluation.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryEvaluationFilters.aspx.cs",
+    "filePath": "Web/Reports/SummaryEvaluationFilters.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryEvaluationFiltersResults.aspx.cs",
+    "filePath": "Web/Reports/SummaryEvaluationFiltersResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/SummaryEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryPeerToPeer.aspx.cs",
+    "filePath": "Web/Reports/SummaryPeerToPeer.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryPeerToPeerResult.aspx.cs",
+    "filePath": "Web/Reports/SummaryPeerToPeerResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryPerformance.aspx.cs",
+    "filePath": "Web/Reports/SummaryPerformance.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryPerformanceResult.aspx.cs",
+    "filePath": "Web/Reports/SummaryPerformanceResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryProgramEvaluationResult.aspx.cs",
+    "filePath": "Web/Reports/SummaryProgramEvaluationResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryProgramEvaluationResultBeta.aspx.cs",
+    "filePath": "Web/Reports/SummaryProgramEvaluationResultBeta.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SystemComments.aspx.cs",
+    "filePath": "Web/Reports/SystemComments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SystemCommentsResults.aspx.cs",
+    "filePath": "Web/Reports/SystemCommentsResults.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SystemProgramComments.aspx.cs",
+    "filePath": "Web/Reports/SystemProgramComments.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SystemProgramCommentsResult.aspx.cs",
+    "filePath": "Web/Reports/SystemProgramCommentsResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "TrendingPerformance.aspx.cs",
+    "filePath": "Web/Reports/TrendingPerformance.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "TrendingPerformanceResult.aspx.cs",
+    "filePath": "Web/Reports/TrendingPerformanceResult.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "DetailedDemographicsReport.aspx.cs",
+    "filePath": "Web/Reports/User/DetailedDemographicsReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ManageDetailedDemoLayouts.aspx.cs",
+    "filePath": "Web/Reports/User/ManageDetailedDemoLayouts.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ManageSummaryDemoLayouts.aspx.cs",
+    "filePath": "Web/Reports/User/ManageSummaryDemoLayouts.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "ManageSummaryDemographicsReport.aspx.cs",
+    "filePath": "Web/Reports/User/ManageSummaryDemographicsReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "SummaryDemographicsReport.aspx.cs",
+    "filePath": "Web/Reports/User/SummaryDemographicsReport.aspx.cs",
+    "directory": "Web/Reports",
+    "module": "Reports"
+  },
+  {
+    "fileName": "EmailVerificationAuditTrailLogs.aspx.cs",
+    "filePath": "Web/Security/EmailVerificationAuditTrailLogs.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EvaluationSharedDetails.aspx.cs",
+    "filePath": "Web/Security/EvaluationSharedDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "GMEAdmin.aspx.cs",
+    "filePath": "Web/Security/GMEAdmin.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "GenerateProcedureVerificationUrl.aspx.cs",
+    "filePath": "Web/Security/GenerateProcedureVerificationUrl.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "GetServiceDetails.aspx.cs",
+    "filePath": "Web/Security/GetServiceDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ImportUserImages.aspx.cs",
+    "filePath": "Web/Security/ImportUserImages.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Institution.aspx.cs",
+    "filePath": "Web/Security/Institution.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "LinkDepartments.aspx.cs",
+    "filePath": "Web/Security/LinkDepartments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MailHistory.aspx.cs",
+    "filePath": "Web/Security/MailHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageAIResponses.aspx.cs",
+    "filePath": "Web/Security/ManageAIResponses.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageAccesstoDashboardControls.aspx.cs",
+    "filePath": "Web/Security/ManageAccesstoDashboardControls.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageAdobeDocumentTypes.aspx.cs",
+    "filePath": "Web/Security/ManageAdobeDocumentTypes.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageAdobeSignatureTemplates.aspx.cs",
+    "filePath": "Web/Security/ManageAdobeSignatureTemplates.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageArchivedUserList.aspx.cs",
+    "filePath": "Web/Security/ManageArchivedUserList.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageBaseEvaluationQuestions.aspx.cs",
+    "filePath": "Web/Security/ManageBaseEvaluationQuestions.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageCustomForms.aspx.cs",
+    "filePath": "Web/Security/ManageCustomForms.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageDepartmentLinks.aspx.cs",
+    "filePath": "Web/Security/ManageDepartmentLinks.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageDepartments.aspx.cs",
+    "filePath": "Web/Security/ManageDepartments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageDiagnosis.aspx.cs",
+    "filePath": "Web/Security/ManageDiagnosis.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageDocumentTypes.aspx.cs",
+    "filePath": "Web/Security/ManageDocumentTypes.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageEmployerNames.aspx.cs",
+    "filePath": "Web/Security/ManageEmployerNames.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageEvaluationQuestionCategories.aspx.cs",
+    "filePath": "Web/Security/ManageEvaluationQuestionCategories.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageEvaluationTemplates.aspx.cs",
+    "filePath": "Web/Security/ManageEvaluationTemplates.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageGMEAdmin.aspx.cs",
+    "filePath": "Web/Security/ManageGMEAdmin.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageInstitutionDepartments.aspx.cs",
+    "filePath": "Web/Security/ManageInstitutionDepartments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageInstitutionFields.aspx.cs",
+    "filePath": "Web/Security/ManageInstitutionFields.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageInstitutionalGA.aspx.cs",
+    "filePath": "Web/Security/ManageInstitutionalGA.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageInstitutions.aspx.cs",
+    "filePath": "Web/Security/ManageInstitutions.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageMedicalSchools.aspx.cs",
+    "filePath": "Web/Security/ManageMedicalSchools.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageMyGMEDemographics.aspx.cs",
+    "filePath": "Web/Security/ManageMyGMEDemographics.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageNewsAndEvents.aspx.cs",
+    "filePath": "Web/Security/ManageNewsAndEvents.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageOBCAdmins.aspx.cs",
+    "filePath": "Web/Security/ManageOBCAdmins.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageOBCCustomFields.aspx.cs",
+    "filePath": "Web/Security/ManageOBCCustomFields.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageOnboardingGroupsParticipants.aspx.cs",
+    "filePath": "Web/Security/ManageOnboardingGroupsParticipants.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManagePreceptors.aspx.cs",
+    "filePath": "Web/Security/ManagePreceptors.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AccessHistory.aspx.cs",
+    "filePath": "Web/Security/AccessHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AccessHistoryDetails.aspx.cs",
+    "filePath": "Web/Security/AccessHistoryDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddAOCAndMOS.aspx.cs",
+    "filePath": "Web/Security/AddAOCAndMOS.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddAdobeDocumentType.aspx.cs",
+    "filePath": "Web/Security/AddAdobeDocumentType.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddAdobeSignatureTemplate.aspx.cs",
+    "filePath": "Web/Security/AddAdobeSignatureTemplate.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddAdobeSignatureTemplateNew.aspx.cs",
+    "filePath": "Web/Security/AddAdobeSignatureTemplateNew.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddAdobeSignatureTemplateTest.aspx.cs",
+    "filePath": "Web/Security/AddAdobeSignatureTemplateTest.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddCustomField.aspx.cs",
+    "filePath": "Web/Security/AddCustomField.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddDepartmentsGroup.aspx.cs",
+    "filePath": "Web/Security/AddDepartmentsGroup.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddDiagnosis.aspx.cs",
+    "filePath": "Web/Security/AddDiagnosis.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddDiagnosisCategory.aspx.cs",
+    "filePath": "Web/Security/AddDiagnosisCategory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddDocumentType.aspx.cs",
+    "filePath": "Web/Security/AddDocumentType.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddEditEmailAddress.aspx.cs",
+    "filePath": "Web/Security/AddEditEmailAddress.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddEmployeeHealth.aspx.cs",
+    "filePath": "Web/Security/AddEmployeeHealth.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddEmployerName.aspx.cs",
+    "filePath": "Web/Security/AddEmployerName.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddEvaluationBaseQuestions.aspx.cs",
+    "filePath": "Web/Security/AddEvaluationBaseQuestions.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddEvaluationQuestionCategories.aspx.cs",
+    "filePath": "Web/Security/AddEvaluationQuestionCategories.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddIGAAdmin.aspx.cs",
+    "filePath": "Web/Security/AddIGAAdmin.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddInstitutePhoto.aspx.cs",
+    "filePath": "Web/Security/AddInstitutePhoto.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddInstitutionDepartments.aspx.cs",
+    "filePath": "Web/Security/AddInstitutionDepartments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddMedicalSchool.aspx.cs",
+    "filePath": "Web/Security/AddMedicalSchool.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddNewsAndEvents.aspx.cs",
+    "filePath": "Web/Security/AddNewsAndEvents.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddOnboardingGroupParticipants.aspx.cs",
+    "filePath": "Web/Security/AddOnboardingGroupParticipants.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddRightSignatureTemplate.aspx.cs",
+    "filePath": "Web/Security/AddRightSignatureTemplate.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddSignatureTemplate.aspx.cs",
+    "filePath": "Web/Security/AddSignatureTemplate.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddTestimonials.aspx.cs",
+    "filePath": "Web/Security/AddTestimonials.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserCertificates.aspx.cs",
+    "filePath": "Web/Security/AddUserCertificates.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserContract.aspx.cs",
+    "filePath": "Web/Security/AddUserContract.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserDependentsInfo.aspx.cs",
+    "filePath": "Web/Security/AddUserDependentsInfo.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserGeneralDocumentation.aspx.cs",
+    "filePath": "Web/Security/AddUserGeneralDocumentation.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserMoonlightingHistory.aspx.cs",
+    "filePath": "Web/Security/AddUserMoonlightingHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserProgramHistory.aspx.cs",
+    "filePath": "Web/Security/AddUserProgramHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserSpecialMedicalActivityHistory.aspx.cs",
+    "filePath": "Web/Security/AddUserSpecialMedicalActivityHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserStipend.aspx.cs",
+    "filePath": "Web/Security/AddUserStipend.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserSupplementalPayments.aspx.cs",
+    "filePath": "Web/Security/AddUserSupplementalPayments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserTrainingAgreement.aspx.cs",
+    "filePath": "Web/Security/AddUserTrainingAgreement.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserTrainingGapHistory.aspx.cs",
+    "filePath": "Web/Security/AddUserTrainingGapHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserTrainingHistory.aspx.cs",
+    "filePath": "Web/Security/AddUserTrainingHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserTrainingHistoryComments.aspx.cs",
+    "filePath": "Web/Security/AddUserTrainingHistoryComments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AddUserUniformInventoryLockers.aspx.cs",
+    "filePath": "Web/Security/AddUserUniformInventoryLockers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ArchiveUserPrint.aspx.cs",
+    "filePath": "Web/Security/ArchiveUserPrint.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ArchiveUserSelect.aspx.cs",
+    "filePath": "Web/Security/ArchiveUserSelect.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ArchivingProcess.aspx.cs",
+    "filePath": "Web/Security/ArchivingProcess.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Assign.aspx.cs",
+    "filePath": "Web/Security/Assign.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AssignAdobeRequirementGroup.aspx.cs",
+    "filePath": "Web/Security/AssignAdobeRequirementGroup.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AssignRequirementGroup.aspx.cs",
+    "filePath": "Web/Security/AssignRequirementGroup.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AuditTrail.aspx.cs",
+    "filePath": "Web/Security/AuditTrail.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AuditTrailDetails.aspx.cs",
+    "filePath": "Web/Security/AuditTrailDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AuditTrailForUserLockAndUnLockDetails.aspx.cs",
+    "filePath": "Web/Security/AuditTrailForUserLockAndUnLockDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "AutoSchedulerEvaluationClosedPendingDetails.aspx.cs",
+    "filePath": "Web/Security/AutoSchedulerEvaluationClosedPendingDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "BouncedMails.aspx.cs",
+    "filePath": "Web/Security/BouncedMails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ClosedDepartment.aspx.cs",
+    "filePath": "Web/Security/ClosedDepartment.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ConferenceAttendanceCheckInChekOut.aspx.cs",
+    "filePath": "Web/Security/ConferenceAttendanceCheckInChekOut.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ConferenceAttendanceDetail.aspx.cs",
+    "filePath": "Web/Security/ConferenceAttendanceDetail.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Connect.aspx.cs",
+    "filePath": "Web/Security/Connect.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ContractDetails.aspx.cs",
+    "filePath": "Web/Security/ContractDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "CreateDepartmentGroup.aspx.cs",
+    "filePath": "Web/Security/CreateDepartmentGroup.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DeleteDiagnosis.aspx.cs",
+    "filePath": "Web/Security/DeleteDiagnosis.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DeleteDiagnosisCategory.aspx.cs",
+    "filePath": "Web/Security/DeleteDiagnosisCategory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DeleteEvaluationBaseQuestions.aspx.cs",
+    "filePath": "Web/Security/DeleteEvaluationBaseQuestions.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DeleteInstitution.aspx.cs",
+    "filePath": "Web/Security/DeleteInstitution.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Department.aspx.cs",
+    "filePath": "Web/Security/Department.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DepartmentDemographics.aspx.cs",
+    "filePath": "Web/Security/DepartmentDemographics.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DesignCustomFormStep1.aspx.cs",
+    "filePath": "Web/Security/DesignCustomFormStep1.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DesignCustomFormStep2.aspx.cs",
+    "filePath": "Web/Security/DesignCustomFormStep2.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DesignRequirementGroupStep1.aspx.cs",
+    "filePath": "Web/Security/DesignRequirementGroupStep1.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DesignRequirementGroupStep2.aspx.cs",
+    "filePath": "Web/Security/DesignRequirementGroupStep2.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DesignRequirementGroupStep3.aspx.cs",
+    "filePath": "Web/Security/DesignRequirementGroupStep3.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DetailedOfUnArchiveUsers.aspx.cs",
+    "filePath": "Web/Security/DetailedOfUnArchiveUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "DocumentTypeDetails.aspx.cs",
+    "filePath": "Web/Security/DocumentTypeDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EditAdobeDocument.aspx.cs",
+    "filePath": "Web/Security/EditAdobeDocument.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EditCompletedRequirements.aspx.cs",
+    "filePath": "Web/Security/EditCompletedRequirements.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EditDiagnosis.aspx.cs",
+    "filePath": "Web/Security/EditDiagnosis.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EditHelloSignDocument.aspx.cs",
+    "filePath": "Web/Security/EditHelloSignDocument.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "EmailChange.aspx.cs",
+    "filePath": "Web/Security/EmailChange.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageRequirementGroupAssignmentUsers.aspx.cs",
+    "filePath": "Web/Security/ManageRequirementGroupAssignmentUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageRequirementGroupAssignments.aspx.cs",
+    "filePath": "Web/Security/ManageRequirementGroupAssignments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageRequirementGroups.aspx.cs",
+    "filePath": "Web/Security/ManageRequirementGroups.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageRightSignatureDocuments.aspx.cs",
+    "filePath": "Web/Security/ManageRightSignatureDocuments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageRoles.aspx.cs",
+    "filePath": "Web/Security/ManageRoles.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageStipendLevels.aspx.cs",
+    "filePath": "Web/Security/ManageStipendLevels.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageTestimonials.aspx.cs",
+    "filePath": "Web/Security/ManageTestimonials.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageUserDemographics.aspx.cs",
+    "filePath": "Web/Security/ManageUserDemographics.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageUserDocuments.aspx.cs",
+    "filePath": "Web/Security/ManageUserDocuments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageUserFilter.aspx.cs",
+    "filePath": "Web/Security/ManageUserFilter.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ManageUsers.aspx.cs",
+    "filePath": "Web/Security/ManageUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MedicalSchools.aspx.cs",
+    "filePath": "Web/Security/MedicalSchools.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MenuUsers.aspx.cs",
+    "filePath": "Web/Security/MenuUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MergeInstitutions.aspx.cs",
+    "filePath": "Web/Security/MergeInstitutions.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MergeOnboardingBatchAssignments.aspx.cs",
+    "filePath": "Web/Security/MergeOnboardingBatchAssignments.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "MessagesToReview.aspx.cs",
+    "filePath": "Web/Security/MessagesToReview.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "OnBoardingAjaxOperations.aspx.cs",
+    "filePath": "Web/Security/OnBoardingAjaxOperations.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "OnboardingEmailReminderSettings.aspx.cs",
+    "filePath": "Web/Security/OnboardingEmailReminderSettings.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "OpenMobileApp.aspx.cs",
+    "filePath": "Web/Security/OpenMobileApp.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PasswordChange.aspx.cs",
+    "filePath": "Web/Security/PasswordChange.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PendingMergeUserDelete.aspx.cs",
+    "filePath": "Web/Security/PendingMergeUserDelete.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Preceptor.aspx.cs",
+    "filePath": "Web/Security/Preceptor.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PreceptorDelete.aspx.cs",
+    "filePath": "Web/Security/PreceptorDelete.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PreceptorEdit.aspx.cs",
+    "filePath": "Web/Security/PreceptorEdit.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PreceptorLogDetails.aspx.cs",
+    "filePath": "Web/Security/PreceptorLogDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PrintOnboardingGroupParticipants.aspx.cs",
+    "filePath": "Web/Security/PrintOnboardingGroupParticipants.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PromotionProcess.aspx.cs",
+    "filePath": "Web/Security/PromotionProcess.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PromotionUserPrint.aspx.cs",
+    "filePath": "Web/Security/PromotionUserPrint.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "PromotionUserSelect.aspx.cs",
+    "filePath": "Web/Security/PromotionUserSelect.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "OnBoardingDocumentAndCompletion.aspx.cs",
+    "filePath": "Web/Security/Reports/OnBoardingDocumentAndCompletion.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "OnBoardingDocumentAndCompletionResult.aspx.cs",
+    "filePath": "Web/Security/Reports/OnBoardingDocumentAndCompletionResult.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SystemImplementation.aspx.cs",
+    "filePath": "Web/Security/Reports/SystemImplementation.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SystemImplementationResult.aspx.cs",
+    "filePath": "Web/Security/Reports/SystemImplementationResult.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "RequirementAssignementsDetails.aspx.cs",
+    "filePath": "Web/Security/RequirementAssignementsDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "RightSignatureDocumentDetails.aspx.cs",
+    "filePath": "Web/Security/RightSignatureDocumentDetails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "Role.aspx.cs",
+    "filePath": "Web/Security/Role.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SecurityMain.aspx.cs",
+    "filePath": "Web/Security/SecurityMain.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SelectRotatingUsers.aspx.cs",
+    "filePath": "Web/Security/SelectRotatingUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SelectUserType.aspx.cs",
+    "filePath": "Web/Security/SelectUserType.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SendUserReminderEmails.aspx.cs",
+    "filePath": "Web/Security/SendUserReminderEmails.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ServiceMessage.aspx.cs",
+    "filePath": "Web/Security/ServiceMessage.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SingleSignOnLogs.aspx.cs",
+    "filePath": "Web/Security/SingleSignOnLogs.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SingleSignOnSettings.aspx.cs",
+    "filePath": "Web/Security/SingleSignOnSettings.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SynchronizeUser.aspx.cs",
+    "filePath": "Web/Security/SynchronizeUser.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "SystemManagement.aspx.cs",
+    "filePath": "Web/Security/SystemManagement.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "TestERASConnection.aspx.cs",
+    "filePath": "Web/Security/TestERASConnection.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "TestManageUsers.aspx.cs",
+    "filePath": "Web/Security/TestManageUsers.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "User.aspx.cs",
+    "filePath": "Web/Security/User.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserDelete.aspx.cs",
+    "filePath": "Web/Security/UserDelete.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserExportingtoOnCall.aspx.cs",
+    "filePath": "Web/Security/UserExportingtoOnCall.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserImporting.aspx.cs",
+    "filePath": "Web/Security/UserImporting.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserLinkedDept.aspx.cs",
+    "filePath": "Web/Security/UserLinkedDept.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserMergeHistory.aspx.cs",
+    "filePath": "Web/Security/UserMergeHistory.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserMerger.aspx.cs",
+    "filePath": "Web/Security/UserMerger.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserMove.aspx.cs",
+    "filePath": "Web/Security/UserMove.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "UserRegistration.aspx.cs",
+    "filePath": "Web/Security/UserRegistration.aspx.cs",
+    "directory": "Web/Security",
+    "module": "Security"
+  },
+  {
+    "fileName": "ChangeText.ascx.cs",
+    "filePath": "Web/UserControls/ChangeText.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "ClientSideUserFilter.ascx.cs",
+    "filePath": "Web/UserControls/ClientSideUserFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "ArchiveUserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/ArchiveUserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "AttendingScoringProfileUserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/AttendingScoringProfileUserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "AvailableUsers.ascx.cs",
+    "filePath": "Web/UserControls/Common/AvailableUsers.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "AvailableUsersPostBack.ascx.cs",
+    "filePath": "Web/UserControls/Common/AvailableUsersPostBack.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "CommitteeUserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/CommitteeUserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "DateField.ascx.cs",
+    "filePath": "Web/UserControls/Common/DateField.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "DiagnosisSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/DiagnosisSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "DiagnosisSelectNoPostBack.ascx.cs",
+    "filePath": "Web/UserControls/Common/DiagnosisSelectNoPostBack.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "EducationDXSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/EducationDXSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "EncounterTypeSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/EncounterTypeSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "ErrorSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/ErrorSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "FNPDiagnosisLog.ascx.cs",
+    "filePath": "Web/UserControls/Common/FNPDiagnosisLog.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "LocationSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/LocationSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "LookupField.ascx.cs",
+    "filePath": "Web/UserControls/Common/LookupField.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "MultiDepartmentSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/MultiDepartmentSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "MultiDepartmentUserSelection.ascx.cs",
+    "filePath": "Web/UserControls/Common/MultiDepartmentUserSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "PatientLogReportFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/PatientLogReportFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "PatientSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/PatientSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "PatientSelectNoPostBack.ascx.cs",
+    "filePath": "Web/UserControls/Common/PatientSelectNoPostBack.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "ProcedureQuestions.ascx.cs",
+    "filePath": "Web/UserControls/Common/ProcedureQuestions.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "ProcedureSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/ProcedureSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "ProcedureUsersDepartments.ascx.cs",
+    "filePath": "Web/UserControls/Common/ProcedureUsersDepartments.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "PtLogProceduresSupervisorSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/PtLogProceduresSupervisorSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "SecurityCommitteeUserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/SecurityCommitteeUserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "SelectDepartments.ascx.cs",
+    "filePath": "Web/UserControls/Common/SelectDepartments.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "SelectSubmittedProcedures.ascx.cs",
+    "filePath": "Web/UserControls/Common/SelectSubmittedProcedures.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "SelectSubmittedProceduresNoPostBack.ascx.cs",
+    "filePath": "Web/UserControls/Common/SelectSubmittedProceduresNoPostBack.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "SupervisorSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/SupervisorSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserFilterDeptSelection.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserFilterDeptSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserFilterPreceptorControl.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserFilterPreceptorControl.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserFilterSelection.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserFilterSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelect.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelectFilterForCMEReports.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelectFilterForCMEReports.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelectFilterNew.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelectFilterNew.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelection.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserSelectionWithAcademicYear.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserSelectionWithAcademicYear.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserTypeMailUserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserTypeMailUserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UserTypeSelection.ascx.cs",
+    "filePath": "Web/UserControls/Common/UserTypeSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "UsersDepartments.ascx.cs",
+    "filePath": "Web/UserControls/Common/UsersDepartments.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Common"
+  },
+  {
+    "fileName": "AvailablePGYs.ascx.cs",
+    "filePath": "Web/UserControls/DutyHours/AvailablePGYs.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/DutyHours"
+  },
+  {
+    "fileName": "EvaluateFinalGrade.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/EvaluateFinalGrade.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "EvaluationSelect.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/EvaluationSelect.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "EvaluationSelectLinked.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/EvaluationSelectLinked.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "FinalGrade.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/FinalGrade.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "OverallFinalGrade.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/OverallFinalGrade.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "ReportManagementMenuList.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/ReportManagementMenuList.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "ReportMenuList.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/ReportMenuList.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "SelectEvaluationFilter.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/SelectEvaluationFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "SelectEvaluations.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/SelectEvaluations.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "SelectTemplateOptions.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/SelectTemplateOptions.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "UserSelectFilter.ascx.cs",
+    "filePath": "Web/UserControls/Evaluations/UserSelectFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Evaluations"
+  },
+  {
+    "fileName": "Footer.ascx.cs",
+    "filePath": "Web/UserControls/Footer.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "Header.ascx.cs",
+    "filePath": "Web/UserControls/Header.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "GenericLookup.ascx.cs",
+    "filePath": "Web/UserControls/Lookups/GenericLookup.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Lookups"
+  },
+  {
+    "fileName": "GenericLookupWithEvents.ascx.cs",
+    "filePath": "Web/UserControls/Lookups/GenericLookupWithEvents.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Lookups"
+  },
+  {
+    "fileName": "GenericLookupWithEventsAndState.ascx.cs",
+    "filePath": "Web/UserControls/Lookups/GenericLookupWithEventsAndState.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Lookups"
+  },
+  {
+    "fileName": "GenericLookupWithState.ascx.cs",
+    "filePath": "Web/UserControls/Lookups/GenericLookupWithState.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Lookups"
+  },
+  {
+    "fileName": "MailMergeUserFilter.ascx.cs",
+    "filePath": "Web/UserControls/Mail/MailMergeUserFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Mail"
+  },
+  {
+    "fileName": "SelectDepartments.ascx.cs",
+    "filePath": "Web/UserControls/Mail/SelectDepartments.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Mail"
+  },
+  {
+    "fileName": "MyScheduleDetails.ascx.cs",
+    "filePath": "Web/UserControls/MyScheduleDetails.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "BreadCrumbs.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/BreadCrumbs.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "CustomBreadCrumbs.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/CustomBreadCrumbs.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "CustomBreadCrumbsForReports.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/CustomBreadCrumbsForReports.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "DepartmentList.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/DepartmentList.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "ImpersonationNotice.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/ImpersonationNotice.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "Notice.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/Notice.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "PFReportsHeader.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/PFReportsHeader.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "TabsMenu.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/TabsMenu.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "TabsMenuRedQuiz.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/TabsMenuRedQuiz.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "TopMenu.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/TopMenu.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "VoluntaryBreadCrumbs.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/VoluntaryBreadCrumbs.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "WelcomeMessage.ascx.cs",
+    "filePath": "Web/UserControls/PrivateControls/WelcomeMessage.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/PrivateControls"
+  },
+  {
+    "fileName": "UserTypeDepartmentSelection.ascx.cs",
+    "filePath": "Web/UserControls/Quiz/UserTypeDepartmentSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Quiz"
+  },
+  {
+    "fileName": "UserTypeSelection.ascx.cs",
+    "filePath": "Web/UserControls/Quiz/UserTypeSelection.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Quiz"
+  },
+  {
+    "fileName": "ReportHeader.ascx.cs",
+    "filePath": "Web/UserControls/ReportHeader.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "ReportsFooter.ascx.cs",
+    "filePath": "Web/UserControls/ReportsFooter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "ReportsHeader.ascx.cs",
+    "filePath": "Web/UserControls/ReportsHeader.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "RequirementGroupFilter.ascx.cs",
+    "filePath": "Web/UserControls/Security/RequirementGroupFilter.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectCustomFields.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectCustomFields.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectDemographicFields.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectDemographicFields.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectFormDocumentLearningAssignment.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectFormDocumentLearningAssignment.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectOBCAdmins.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectOBCAdmins.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectOBCCustomForm.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectOBCCustomForm.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectOBCDocumentType.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectOBCDocumentType.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SelectRequirementGroup.ascx.cs",
+    "filePath": "Web/UserControls/Security/SelectRequirementGroup.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls/Security"
+  },
+  {
+    "fileName": "SessionTimeout.ascx.cs",
+    "filePath": "Web/UserControls/SessionTimeout.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "SessionTimeoutModalPopup.ascx.cs",
+    "filePath": "Web/UserControls/SessionTimeoutModalPopup.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "SubHeader.ascx.cs",
+    "filePath": "Web/UserControls/SubHeader.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "UserFilterAJAX.ascx.cs",
+    "filePath": "Web/UserControls/UserFilterAJAX.ascx.cs",
+    "directory": "Web/UserControls",
+    "module": "UserControls"
+  },
+  {
+    "fileName": "AboutUs.aspx.cs",
+    "filePath": "Web/AboutUs.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "Agreement.aspx.cs",
+    "filePath": "Web/Agreement.aspx.cs",
+    "directory": "Web",
+    "module": "User Onboarding"
+  },
+  {
+    "fileName": "Contact.aspx.cs",
+    "filePath": "Web/Contact.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "DNPLogin.aspx.cs",
+    "filePath": "Web/DNPLogin.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "Demo.aspx.cs",
+    "filePath": "Web/Demo.aspx.cs",
+    "directory": "Web",
+    "module": "Marketing"
+  },
+  {
+    "fileName": "FAQ.aspx.cs",
+    "filePath": "Web/FAQ.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "ForgotPassword.aspx.cs",
+    "filePath": "Web/ForgotPassword.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "Global.asax.cs",
+    "filePath": "Web/Global.asax.cs",
+    "directory": "Web",
+    "module": "Application Lifecycle"
+  },
+  {
+    "fileName": "Home.aspx.cs",
+    "filePath": "Web/Home.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "ImportElogData.aspx.cs",
+    "filePath": "Web/ImportElogData.aspx.cs",
+    "directory": "Web",
+    "module": "Data Import"
+  },
+  {
+    "fileName": "Login.aspx.cs",
+    "filePath": "Web/Login.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "Logout.aspx.cs",
+    "filePath": "Web/Logout.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "MasterPage.master.cs",
+    "filePath": "Web/MasterPage.master.cs",
+    "directory": "Web",
+    "module": "Layout"
+  },
+  {
+    "fileName": "MyEvaluationsHelpNew.aspx.cs",
+    "filePath": "Web/MyEvaluationsHelpNew.aspx.cs",
+    "directory": "Web",
+    "module": "Help System"
+  },
+  {
+    "fileName": "OpenFile.aspx.cs",
+    "filePath": "Web/OpenFile.aspx.cs",
+    "directory": "Web",
+    "module": "Document Management"
+  },
+  {
+    "fileName": "PasswordChangeNew.aspx.cs",
+    "filePath": "Web/PasswordChangeNew.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "PasswordRequest.aspx.cs",
+    "filePath": "Web/PasswordRequest.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "SaveFavoriteSettings.aspx.cs",
+    "filePath": "Web/SaveFavoriteSettings.aspx.cs",
+    "directory": "Web",
+    "module": "Reporting"
+  },
+  {
+    "fileName": "Services.aspx.cs",
+    "filePath": "Web/Services.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "StopImpersonate.aspx.cs",
+    "filePath": "Web/StopImpersonate.aspx.cs",
+    "directory": "Web",
+    "module": "User Impersonation"
+  },
+  {
+    "fileName": "Support.aspx.cs",
+    "filePath": "Web/Support.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "ValidateEmail.aspx.cs",
+    "filePath": "Web/ValidateEmail.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "VerifyEmail.aspx.cs",
+    "filePath": "Web/VerifyEmail.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  },
+  {
+    "fileName": "acgme2023.aspx.cs",
+    "filePath": "Web/acgme2023.aspx.cs",
+    "directory": "Web",
+    "module": "Conference/Event Registration"
+  },
+  {
+    "fileName": "medcomreg.aspx.cs",
+    "filePath": "Web/medcomreg.aspx.cs",
+    "directory": "Web",
+    "module": "User Registration"
+  },
+  {
+    "fileName": "privacy_policy.aspx.cs",
+    "filePath": "Web/privacy_policy.aspx.cs",
+    "directory": "Web",
+    "module": "Authentication"
+  }
+]}
+  schedulerDependents={[]}
+/>
+{/* DEPENDENTS-PANEL:END */}
 
 ## File Reference
 
