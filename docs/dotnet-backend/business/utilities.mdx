@@ -1,0 +1,26 @@
+---
+sidebar_position: 18
+title: Business.Utilities
+description: Cross-cutting utility services including email delivery, Excel generation, encryption, SMS, and request rate limiting used throughout the Business layer.
+---
+
+# Business.Utilities
+
+The `Business.Utilities` module provides reusable utility services consumed by multiple Business layer modules. Unlike `Business.Common` (which provides infrastructure for Manager classes), Utilities offers concrete service implementations: outbound email via `EmailUtility`, Excel report generation via `ExcelProcess`, encryption key management via `EncryptKeyGen`, SMS messaging via `TelnyxSmsService`, HTTP persistence helpers via `PersistComponent`, and API rate limiting via `RequestRateLimiter`.
+
+These utilities are stateless service classes — they expose static or instance methods and have no module-specific business logic, making them safely reusable across Security, Mail, Evaluations, and other modules.
+
+## Key Classes
+
+| Class | Lines | Purpose |
+|-------|-------|---------|
+| `EmailUtility` | ~180 | Outbound email construction and delivery via Mailgun SMTP/API. Handles HTML templates, attachments, bounce tracking, and retry logic. |
+| `ExcelProcess` | ~220 | Excel workbook generation using EPPlus. Produces formatted spreadsheets for evaluation results, duty hour exports, CME transcripts, and roster reports. |
+| `EncryptKeyGen` | ~90 | Symmetric encryption and decryption for sensitive fields (SSNs, API keys, patient identifiers) stored in the database. |
+| `PersistComponent` | ~75 | HTTP session and ViewState persistence helpers for multi-step wizard workflows (evaluation setup, import processes). |
+| `TelnyxSmsService` | ~110 | SMS message delivery via Telnyx API. Used for MFA codes, duty hour violation alerts, and urgent notifications. |
+| `RequestRateLimiter` | ~85 | In-memory rate limiting for API endpoints and scheduler invocations. Prevents runaway loops and protects third-party API quotas. |
+
+## File Reference
+
+- [**Business.Utilities Implementation Files**](./files/utilities) — 18 classes with per-file summaries, key methods, stored procedures, and migration notes

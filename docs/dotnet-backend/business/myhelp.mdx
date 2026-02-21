@@ -1,0 +1,23 @@
+---
+sidebar_position: 20
+title: Business.MyHelp
+description: In-app contextual help system — manages help groups, sections, and content for the MyEvaluations web application's built-in help documentation.
+---
+
+# Business.MyHelp
+
+The `Business.MyHelp` module powers the **in-app help system** embedded in the MyEvaluations web application. Rather than redirecting users to an external knowledge base, MyEvaluations serves contextual help content inline via a dedicated help panel. This module manages the content hierarchy (groups → sections → articles), controls which help items are visible to which user roles, and provides the Business layer API used by the `Web/MyHelp/` pages to render help content.
+
+Help content is managed by administrators through the web UI and stored in the database — no content is hard-coded in source files.
+
+## Key Classes
+
+| Class | Lines | Purpose |
+|-------|-------|---------|
+| `HelpGroupManager` | ~95 | CRUD operations for top-level help groups (e.g., "Evaluations", "Duty Hours"). Controls group visibility by user role and institution. |
+| `SectionsGroupManager` | ~110 | Manages the mapping between help sections and groups. Handles ordering, visibility rules, and section-to-page context bindings. |
+| `SectionInfoBusiness` | ~130 | Retrieves and updates individual help section content (title, body HTML, related links). Provides the primary read API for rendering help panels in the web UI. |
+
+## File Reference
+
+- [**Business.MyHelp Implementation Files**](./files/myhelp) — 4 classes with per-file summaries, key methods, stored procedures, and migration notes

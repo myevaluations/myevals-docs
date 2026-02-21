@@ -1,0 +1,26 @@
+---
+sidebar_position: 17
+title: Business.Common
+description: Shared base classes, caching infrastructure, event logging, and cross-cutting utilities used by all Business layer modules.
+---
+
+# Business.Common
+
+The `Business.Common` module provides the foundational infrastructure shared across every Business layer module in the MyEvaluations .NET backend. It defines the abstract `Manager` base class that all module managers inherit from, the `CacheManager` for in-process caching, the `EventManager` for application event logging, and common types, constants, and dashboard utilities used throughout the system.
+
+Because this module has no dependencies on other Business modules, it sits at the lowest layer of the dependency stack — every other module depends on it either directly or transitively.
+
+## Key Classes
+
+| Class | Lines | Purpose |
+|-------|-------|---------|
+| `Manager` | ~80 | Abstract base class for all Business layer Manager classes. Provides shared constructor patterns, database connection initialization, and common helper methods. |
+| `CacheManager` | ~120 | In-process caching for frequently accessed lookup data (roles, permissions, institution config). Wraps `System.Runtime.Caching.MemoryCache` with typed get/set/invalidate helpers. |
+| `EventManager` | ~95 | Application event logging. Writes structured events (user actions, system events, errors) to the `EventLog` table for audit and debugging purposes. |
+| `CommonTypes` | ~60 | Shared enum definitions, type aliases, and DTO base interfaces used across all modules. |
+| `DashBoard` | ~110 | Dashboard data aggregation helper. Retrieves cross-module summary counts (pending evaluations, duty hour violations, due activities) for role-based dashboard pages. |
+| `Constants` | ~40 | Application-wide string constants, configuration keys, and magic number definitions. |
+
+## File Reference
+
+- [**Business.Common Implementation Files**](./files/common) — 12 classes with per-file summaries, key methods, stored procedures, and migration notes

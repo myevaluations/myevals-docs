@@ -1,0 +1,21 @@
+---
+sidebar_position: 19
+title: Business.MailGunService
+description: Inbound email processing via Mailgun POP3 polling — reads replies to system-generated emails and routes them back into the application.
+---
+
+# Business.MailGunService
+
+The `Business.MailGunService` module handles **inbound email** by polling a dedicated Mailgun POP3 mailbox. When the system sends emails (evaluation reminders, notifications, assignment alerts), recipients sometimes reply directly. This module retrieves those replies, parses headers to identify the originating workflow, and routes the content back into the appropriate module (e.g., attaching a reply to an evaluation thread or logging a response to a notification).
+
+This module is deliberately small — it contains a single class (`MailgunPOP3`) and is invoked on a schedule by the corresponding Windows Service scheduler.
+
+## Key Classes
+
+| Class | Lines | Purpose |
+|-------|-------|---------|
+| `MailgunPOP3` | ~160 | POP3 client that authenticates with the Mailgun inbound mailbox, retrieves new messages, parses `X-MyEvals-*` headers to identify workflow context, and dispatches reply content to the appropriate Business module handler. |
+
+## File Reference
+
+- [**Business.MailGunService Implementation Files**](./files/mailgunservice) — 1 class with per-file summary, key methods, stored procedures, and migration notes

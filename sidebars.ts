@@ -54,6 +54,10 @@ const sidebars: SidebarsConfig = {
             'dotnet-backend/business/icc',
             'dotnet-backend/business/essential-activities',
             'dotnet-backend/business/nurse-notify',
+            'dotnet-backend/business/common',
+            'dotnet-backend/business/utilities',
+            'dotnet-backend/business/mailgun-service',
+            'dotnet-backend/business/myhelp',
             {
               type: 'category',
               label: 'File Reference',
