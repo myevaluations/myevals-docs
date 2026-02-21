@@ -18,6 +18,7 @@ import * as path from 'path';
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const REV_DEPS_DIR = path.join(PROJECT_ROOT, 'generated', 'reverse-deps');
 const BIZ_DOCS_DIR = path.join(PROJECT_ROOT, 'docs', 'dotnet-backend', 'business');
+const STATIC_REV_DEPS_DIR = path.join(PROJECT_ROOT, 'static', 'reverse-deps');
 
 interface DependentFile {
   fileName: string;
@@ -68,14 +69,8 @@ const PANEL_START_MARKER = '{/* DEPENDENTS-PANEL:START */}';
 const PANEL_END_MARKER = '{/* DEPENDENTS-PANEL:END */}';
 
 function buildPanelMdx(data: ModuleRevDeps): string {
-  const webJson = JSON.stringify(data.dependents.web, null, 2);
-  const schedJson = JSON.stringify(data.dependents.schedulers, null, 2);
   return `${PANEL_START_MARKER}
-<DependentsPanel
-  module="${data.module}"
-  webDependents={${webJson}}
-  schedulerDependents={${schedJson}}
-/>
+<DependentsPanel module="${data.module}" />
 ${PANEL_END_MARKER}`;
 }
 
@@ -139,6 +134,12 @@ async function processModule(moduleName: string, mdxSlug: string): Promise<boole
   }
 
   await fs.writeFile(mdxPath, mdxContent, 'utf-8');
+
+  // Also copy JSON to static/reverse-deps/ so it's served at runtime
+  const staticDest = path.join(STATIC_REV_DEPS_DIR, `${moduleName}.json`);
+  await fs.mkdir(STATIC_REV_DEPS_DIR, { recursive: true });
+  await fs.copyFile(revDepsPath, staticDest);
+
   console.log(`  ✓ ${moduleName} → ${mdxSlug}.mdx (${data.totals.web} web, ${data.totals.schedulers} scheduler dependents)`);
   return true;
 }

@@ -13,6 +13,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 interface Message {
+  id: number;
   role: 'user' | 'assistant';
   content: string;
 }
@@ -86,6 +87,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const msgIdRef = React.useRef(0);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -126,7 +128,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
     async (userMessage: string) => {
       if (!userMessage.trim() || isLoading) return;
 
-      const newMessages: Message[] = [...messages, { role: 'user', content: userMessage }];
+      const newMessages: Message[] = [...messages, { id: ++msgIdRef.current, role: 'user', content: userMessage }];
       setMessages(newMessages);
       setInput('');
       setIsLoading(true);
@@ -165,7 +167,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
         };
         const assistantMessage = data.choices[0]?.message?.content || 'No response.';
 
-        setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
+        setMessages([...newMessages, { id: ++msgIdRef.current, role: 'assistant', content: assistantMessage }]);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to get response');
       } finally {
@@ -312,9 +314,9 @@ export default function AskTheDocs(): React.JSX.Element | null {
               </div>
             )}
 
-            {messages.map((msg, idx) => (
+            {messages.map((msg) => (
               <div
-                key={idx}
+                key={msg.id}
                 style={{
                   maxWidth: '90%',
                   alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
@@ -406,6 +408,7 @@ export default function AskTheDocs(): React.JSX.Element | null {
             <button
               onClick={() => sendMessage(input)}
               disabled={isLoading || !input.trim() || !docsIndex}
+              aria-label="Send message"
               style={{
                 padding: '8px 12px',
                 borderRadius: '6px',

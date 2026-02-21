@@ -308,9 +308,10 @@ export default function FileReference({
   const migrations = [...new Set(data.map((f) => f.migrationRelevance))];
 
   const handleExport = () => {
-    const module = filtered.length > 0 ? filtered[0].module : 'Files';
+    const modules = [...new Set(filtered.map((f) => f.module).filter(Boolean))];
+    const moduleLabel = modules.length === 1 ? modules[0] : modules.length > 1 ? `${modules.join(', ')}` : 'Files';
     const lines = [
-      `## Files to Review — ${module} (${filtered.length} files)`,
+      `## Files to Review — ${moduleLabel} (${filtered.length} files)`,
       '',
       ...filtered.map((f) => `- [ ] ${f.fileName} (${f.complexity}) — ${f.summary}`),
     ];

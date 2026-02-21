@@ -123,8 +123,15 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
   // Fetch 3-tier web callers data lazily — only on first user interaction
   function fetchWebCallers(thenExpandSproc?: string) {
     fetch('/sproc-web-callers.json')
-      .then((r) => r.json())
-      .then((data: Record<string, WebCaller[]>) => {
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((raw: unknown) => {
+        const data: Record<string, WebCaller[]> =
+          raw !== null && typeof raw === 'object' && !Array.isArray(raw)
+            ? (raw as Record<string, WebCaller[]>)
+            : {};
         setWebCallers(data);
         if (thenExpandSproc) {
           setWebCallersExpanded((prev) => {

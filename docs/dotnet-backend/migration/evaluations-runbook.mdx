@@ -140,10 +140,12 @@ These are high-complexity but lower priority for the initial migration — they 
 
 ## Phase 3: Migrate Stored Procedures to PostgreSQL
 
-The Business layer enrichment documents these stored procedures used by Evaluations managers:
+:::caution Illustrative SP names
+The stored procedure names below follow the naming convention observed in the codebase but are **representative examples, not verified names**. Run `npm run parse:dotnet:sprocs` against the actual source to extract the real SP inventory, then cross-reference in the [Stored Procedures](/docs/dotnet-backend/data-access/stored-procedures) page.
+:::
 
-| SP Name (from enrichment) | Called By | PostgreSQL Strategy |
-|--------------------------|-----------|---------------------|
+| SP Name (illustrative) | Called By | PostgreSQL Strategy |
+|------------------------|-----------|---------------------|
 | `sp_Evaluation_GetRotationSchedule` | `EvaluationAssignmentManager` | → Prisma query + raw SQL |
 | `sp_Evaluation_InsertTemplate` | `EvaluationsTemplateManager` | → `evaluationsTemplate.create()` |
 | `sp_Evaluation_InsertQuestions` | `EvaluationsTemplateManager` | → `question.createMany()` |

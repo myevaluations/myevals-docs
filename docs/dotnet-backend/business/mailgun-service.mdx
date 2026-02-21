@@ -18,29 +18,7 @@ This module is deliberately small — it contains a single class (`MailgunPOP3`)
 | `MailgunPOP3` | ~160 | POP3 client that authenticates with the Mailgun inbound mailbox, retrieves new messages, parses `X-MyEvals-*` headers to identify workflow context, and dispatches reply content to the appropriate Business module handler. |
 
 {/* DEPENDENTS-PANEL:START */}
-<DependentsPanel
-  module="MailGunService"
-  webDependents={[
-  {
-    "fileName": "MailHistoryAPIData.aspx.cs",
-    "filePath": "Web/Security/MailHistoryAPIData.aspx.cs",
-    "directory": "Web/Security",
-    "module": "Security"
-  }
-]}
-  schedulerDependents={[
-  {
-    "fileName": "MailBounceLog.cs",
-    "filePath": "Schedulers/MailgunService/MailgunService/MailBounceLog.cs",
-    "directory": "Schedulers"
-  },
-  {
-    "fileName": "MailBounceLog.cs",
-    "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailBounceLog.cs",
-    "directory": "Schedulers"
-  }
-]}
-/>
+<DependentsPanel module="MailGunService" />
 {/* DEPENDENTS-PANEL:END */}
 
 ## File Reference

@@ -14,7 +14,11 @@ const config: Config = {
   onBrokenLinks: 'warn',
   noIndex: true,
 
-  // Custom fields for runtime config (embedded into client bundle at build time)
+  // Custom fields for runtime config (embedded into client bundle at build time).
+  // SECURITY NOTE: The OpenAI API key is visible in the compiled JS bundle.
+  // This is acceptable for an internal-only site protected by nginx basic auth,
+  // but you MUST set a monthly spend cap on the key at platform.openai.com to
+  // prevent runaway charges if the site ever loses its auth protection.
   customFields: {
     openaiApiKey: process.env.OPENAI_API_KEY ?? '',
   },

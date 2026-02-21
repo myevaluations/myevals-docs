@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface DependentFile {
   fileName: string;
@@ -7,11 +7,18 @@ interface DependentFile {
   module?: string;
 }
 
-interface DependentsPanelProps {
-  /** Module name (e.g., "Evaluations") — matches reverse-deps/{Module}.json filename */
+interface RevDepsData {
   module: string;
-  webDependents?: DependentFile[];
-  schedulerDependents?: DependentFile[];
+  dependents: {
+    web: DependentFile[];
+    schedulers: DependentFile[];
+  };
+  totals: { web: number; schedulers: number };
+}
+
+interface DependentsPanelProps {
+  /** Module name (e.g., "Evaluations") — fetches /reverse-deps/{module}.json */
+  module: string;
 }
 
 const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
@@ -70,15 +77,26 @@ function FileLink({ file }: { file: DependentFile }) {
   );
 }
 
-export default function DependentsPanel({
-  module,
-  webDependents = [],
-  schedulerDependents = [],
-}: DependentsPanelProps) {
+export default function DependentsPanel({ module }: DependentsPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showAllWeb, setShowAllWeb] = useState(false);
   const [showAllSched, setShowAllSched] = useState(false);
+  const [data, setData] = useState<RevDepsData | null>(null);
+  const [loadError, setLoadError] = useState(false);
 
+  // Fetch reverse-deps data on mount (small per-module JSON, cached by browser)
+  useEffect(() => {
+    fetch(`/reverse-deps/${module}.json`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json() as Promise<RevDepsData>;
+      })
+      .then((d) => setData(d))
+      .catch(() => setLoadError(true));
+  }, [module]);
+
+  const webDependents = data?.dependents.web ?? [];
+  const schedulerDependents = data?.dependents.schedulers ?? [];
   const totalDependents = webDependents.length + schedulerDependents.length;
 
   const WEB_PREVIEW = 8;
@@ -96,10 +114,14 @@ export default function DependentsPanel({
       ? '#eab308'
       : '#22c55e';
 
+  // Show neutral color while loading
+  const borderColor = data === null && !loadError ? 'var(--ifm-color-emphasis-200)' : `${severityColor}40`;
+  const bgColor = data === null && !loadError ? 'var(--ifm-color-emphasis-50)' : `${severityColor}10`;
+
   return (
     <div
       style={{
-        border: `1px solid ${severityColor}40`,
+        border: `1px solid ${borderColor}`,
         borderRadius: '8px',
         marginBottom: '20px',
         overflow: 'hidden',
@@ -108,13 +130,14 @@ export default function DependentsPanel({
       {/* Header — always visible */}
       <button
         onClick={() => setIsOpen((o) => !o)}
+        aria-expanded={isOpen}
         style={{
           width: '100%',
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
           padding: '12px 16px',
-          background: `${severityColor}10`,
+          background: bgColor,
           border: 'none',
           cursor: 'pointer',
           textAlign: 'left',
@@ -123,7 +146,7 @@ export default function DependentsPanel({
       >
         <span style={{ fontSize: '1rem' }}>{isOpen ? '▼' : '▶'}</span>
         <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>
-          Who depends on this module?
+          Who depends on {module}?
         </span>
         <span
           style={{
@@ -134,7 +157,17 @@ export default function DependentsPanel({
             flexShrink: 0,
           }}
         >
-          {webDependents.length > 0 && (
+          {data === null && !loadError && (
+            <span style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-400)' }}>
+              loading…
+            </span>
+          )}
+          {loadError && (
+            <span style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-400)' }}>
+              unavailable
+            </span>
+          )}
+          {data !== null && webDependents.length > 0 && (
             <span
               style={{
                 padding: '2px 10px',
@@ -149,7 +182,7 @@ export default function DependentsPanel({
               {webDependents.length} web pages
             </span>
           )}
-          {schedulerDependents.length > 0 && (
+          {data !== null && schedulerDependents.length > 0 && (
             <span
               style={{
                 padding: '2px 10px',
@@ -164,7 +197,7 @@ export default function DependentsPanel({
               {schedulerDependents.length} schedulers
             </span>
           )}
-          {totalDependents === 0 && (
+          {data !== null && totalDependents === 0 && (
             <span style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-500)' }}>
               No tracked dependents
             </span>
@@ -175,7 +208,15 @@ export default function DependentsPanel({
       {/* Expanded content */}
       {isOpen && (
         <div style={{ padding: '12px 16px' }}>
-          {totalDependents === 0 ? (
+          {loadError ? (
+            <p style={{ color: 'var(--ifm-color-emphasis-500)', fontSize: '0.85rem', margin: 0 }}>
+              Could not load dependency data. Run <code>npm run generate:reverse-deps</code> to regenerate.
+            </p>
+          ) : data === null ? (
+            <p style={{ color: 'var(--ifm-color-emphasis-400)', fontSize: '0.85rem', margin: 0 }}>
+              Loading…
+            </p>
+          ) : totalDependents === 0 ? (
             <p style={{ color: 'var(--ifm-color-emphasis-500)', fontSize: '0.85rem', margin: 0 }}>
               No web pages or schedulers reference classes from this module in the enrichment data.
             </p>
