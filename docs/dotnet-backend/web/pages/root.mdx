@@ -8,7 +8,24 @@ import FileReference from '@site/src/components/FileReference';
 
 # Web File Reference
 
-> **50 files** | **11,046 lines** | Generated 2/20/2026
+**50 files** · **11,046 lines** · Generated 2/20/2026
+
+Root-level Web files include the main entry points, global handlers, dashboard pages, and utility pages that serve the entire application. This directory contains the primary login/authentication pages (Login.aspx, Home.aspx, DNPLogin.aspx), user onboarding flow (Agreement.aspx, PasswordChangeNew.aspx, ForgotPassword.aspx), document handling (DownLoadDocument.aspx, OpenFile.aspx), payment processing integration (PaymentGatewayIntegration.aspx, OutsideUserRegistration.aspx), help system (MyEvaluationsHelp.aspx, MyHelpVideo.aspx), MEDCOM military registration (medcomreg.aspx), and various public-facing marketing pages that now redirect to the React frontend. A significant pattern is the duplication of login authentication logic across 8+ pages (AboutUs, FAQ, Contact, Services, Support, privacy_policy, Demo, DNPLogin), which should be consolidated during migration. The Global.asax.cs handles application lifecycle including spell-check initialization and session cleanup.
+
+**Key Workflows**
+
+- User authentication and login (duplicated across 8+ pages, being consolidated via UserAuthentication class)
+- User onboarding: Agreement acceptance, password change, email verification
+- Password management: forgot password, password reset with department-specific policies
+- Document download and inline viewing from Azure Blob storage, HelloSign, and local storage
+- Payment processing via Clover, Square, and Authorize.Net for CME event registration
+- MEDCOM military user self-registration
+- User impersonation start/stop for admin users
+- Help system with context-sensitive content and Azure Blob-hosted training videos
+- Report favorite settings management across all reporting modules
+- Google Calendar integration (prototype, not production)
+- Conference/event registration (ACGME, AHME)
+- React frontend routing: multiple .aspx pages now redirect to React routes
 
 <FileReference
   files={[
@@ -1223,6 +1240,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 264
   }
 ]}
-  directoryOverview="Root-level Web files include the main entry points, global handlers, dashboard pages, and utility pages that serve the entire application. This directory contains the primary login/authentication pages (Login.aspx, Home.aspx, DNPLogin.aspx), user onboarding flow (Agreement.aspx, PasswordChangeNew.aspx, ForgotPassword.aspx), document handling (DownLoadDocument.aspx, OpenFile.aspx), payment processing integration (PaymentGatewayIntegration.aspx, OutsideUserRegistration.aspx), help system (MyEvaluationsHelp.aspx, MyHelpVideo.aspx), MEDCOM military registration (medcomreg.aspx), and various public-facing marketing pages that now redirect to the React frontend. A significant pattern is the duplication of login authentication logic across 8+ pages (AboutUs, FAQ, Contact, Services, Support, privacy_policy, Demo, DNPLogin), which should be consolidated during migration. The Global.asax.cs handles application lifecycle including spell-check initialization and session cleanup."
-  keyWorkflows={["User authentication and login (duplicated across 8+ pages, being consolidated via UserAuthentication class)","User onboarding: Agreement acceptance, password change, email verification","Password management: forgot password, password reset with department-specific policies","Document download and inline viewing from Azure Blob storage, HelloSign, and local storage","Payment processing via Clover, Square, and Authorize.Net for CME event registration","MEDCOM military user self-registration","User impersonation start/stop for admin users","Help system with context-sensitive content and Azure Blob-hosted training videos","Report favorite settings management across all reporting modules","Google Calendar integration (prototype, not production)","Conference/event registration (ACGME, AHME)","React frontend routing: multiple .aspx pages now redirect to React routes"]}
 />

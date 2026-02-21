@@ -8,7 +8,17 @@ import FileReference from '@site/src/components/FileReference';
 
 # Mail File Reference
 
-> **21 files** | **4,667 lines** | Generated 2/20/2026
+**21 files** · **4,667 lines** · Generated 2/20/2026
+
+The Mail directory contains 21 code-behind files handling all email-related functionality in the MyEvaluations platform. It covers bulk mail distribution, message composition, training seminar management and registration (both for authenticated and external users), customer and technical support ticket submission, reusable mail templates, scheduled distribution management, and HappyFox help desk integration via SAML 2.0 SSO. The primary business class is MailDistributionBusiness with MailDistributionManager for data access. Several pages do not extend BasePage and handle authentication differently. The training seminar subsystem (AddTrainingSeminar, AvailableSeminars, ManageTrainingSeminar, Training, TrainingList, TrainingSeminar, TrainingSeminarForNonUser) is the most complex subsection.
+
+**Key Workflows**
+
+- Bulk email composition and scheduling via MailDistribution.aspx with CKEditor, template reuse via MailTemplate.aspx, and schedule management via ManageMailDistributionSchedules.aspx
+- Training seminar lifecycle: admin creates seminar (AddTrainingSeminar), users register (TrainingSeminar or TrainingSeminarForNonUser), admin views registrants (Training) and individual records (TrainingList)
+- Customer/technical support ticket submission with auto-detected environment info (ContactCustomerSupport, ContactTechnicalSupport)
+- HappyFox SSO via SAML 2.0: MenuSupport.aspx creates HappyFox user account via REST API and generates signed SAML assertion for seamless portal access
+- Evaluation reminder triggering via EvalReminder.aspx and manual trigger via secret key in Mail.aspx
 
 <FileReference
   files={[
@@ -463,6 +473,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 265
   }
 ]}
-  directoryOverview="The Mail directory contains 21 code-behind files handling all email-related functionality in the MyEvaluations platform. It covers bulk mail distribution, message composition, training seminar management and registration (both for authenticated and external users), customer and technical support ticket submission, reusable mail templates, scheduled distribution management, and HappyFox help desk integration via SAML 2.0 SSO. The primary business class is MailDistributionBusiness with MailDistributionManager for data access. Several pages do not extend BasePage and handle authentication differently. The training seminar subsystem (AddTrainingSeminar, AvailableSeminars, ManageTrainingSeminar, Training, TrainingList, TrainingSeminar, TrainingSeminarForNonUser) is the most complex subsection."
-  keyWorkflows={["Bulk email composition and scheduling via MailDistribution.aspx with CKEditor, template reuse via MailTemplate.aspx, and schedule management via ManageMailDistributionSchedules.aspx","Training seminar lifecycle: admin creates seminar (AddTrainingSeminar), users register (TrainingSeminar or TrainingSeminarForNonUser), admin views registrants (Training) and individual records (TrainingList)","Customer/technical support ticket submission with auto-detected environment info (ContactCustomerSupport, ContactTechnicalSupport)","HappyFox SSO via SAML 2.0: MenuSupport.aspx creates HappyFox user account via REST API and generates signed SAML assertion for seamless portal access","Evaluation reminder triggering via EvalReminder.aspx and manual trigger via secret key in Mail.aspx"]}
 />

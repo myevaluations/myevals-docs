@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # CommercialNew File Reference
 
-> **10 files** | **1,466 lines** | Generated 2/20/2026
+**10 files** · **1,466 lines** · Generated 2/20/2026
+
+Commercial/public-facing website pages for MyEvaluations. Contains institution-branded login pages with full authentication (XSRF protection, account lockout, CAPTCHA), password reset workflow, and static marketing pages (features, pricing, contact, privacy policy). Login pages are the most complex components with security-critical authentication logic.
+
+**Key Workflows**
+
+- Institution-branded user authentication with XSRF protection and account lockout
+- Password reset via encrypted email verification tokens
+- Static commercial pages for marketing (features, pricing, contact)
+- Failed login notification emails to administrators
 
 <FileReference
   files={[
@@ -212,6 +221,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 14
   }
 ]}
-  directoryOverview="Commercial/public-facing website pages for MyEvaluations. Contains institution-branded login pages with full authentication (XSRF protection, account lockout, CAPTCHA), password reset workflow, and static marketing pages (features, pricing, contact, privacy policy). Login pages are the most complex components with security-critical authentication logic."
-  keyWorkflows={["Institution-branded user authentication with XSRF protection and account lockout","Password reset via encrypted email verification tokens","Static commercial pages for marketing (features, pricing, contact)","Failed login notification emails to administrators"]}
 />

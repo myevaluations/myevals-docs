@@ -8,7 +8,15 @@ import FileReference from '@site/src/components/FileReference';
 
 # ChatbotAdmin File Reference
 
-> **5 files** | **312 lines** | Generated 2/20/2026
+**5 files** · **312 lines** · Generated 2/20/2026
+
+Chatbot administration module providing CRUD operations for chatbot knowledge base content. Most pages are thin code-behinds (likely using client-side JavaScript), except ChatbotUploadFiles which handles Azure Blob Storage file management with SAS token authentication.
+
+**Key Workflows**
+
+- Upload chatbot training files to Azure Blob Storage with SAS token security
+- CRUD operations on chatbot knowledge base content metadata via stored procedures
+- Admin review of chatbot feedback and conversation history
 
 <FileReference
   files={[
@@ -115,6 +123,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 256
   }
 ]}
-  directoryOverview="Chatbot administration module providing CRUD operations for chatbot knowledge base content. Most pages are thin code-behinds (likely using client-side JavaScript), except ChatbotUploadFiles which handles Azure Blob Storage file management with SAS token authentication."
-  keyWorkflows={["Upload chatbot training files to Azure Blob Storage with SAS token security","CRUD operations on chatbot knowledge base content metadata via stored procedures","Admin review of chatbot feedback and conversation history"]}
 />

@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # Business.Procedures File Reference
 
-> **51 files** | **11,882 lines** | Generated 2/21/2026
+**51 files** · **11,882 lines** · Generated 2/21/2026
+
+Business.Procedures is the core module for medical procedure tracking in MyEvaluations. It manages procedure definitions, submitted procedure records, supervision requirements, custom form fields, diagnoses, errors (quality tracking), patient data, export functionality, and comprehensive reporting. The module serves both GME residency programs and DNP nursing programs, with heavy use of stored procedures and department-level customization. Key classes include ProceduresManager (1336 lines) and SubmittedProcedureManager (1437 lines) which together handle the full procedure lifecycle.
+
+**Key Workflows**
+
+- Procedure Definition: Create/update procedure types with audience restrictions, certification requirements, and assessment questions (ProceduresManager, ProcedureInfo)
+- Procedure Submission: Submit procedures with patient data, diagnoses, errors, custom fields, and supervisor assignment (SubmittedProcedureManager, SubmittedProcedureInfo)
+- Supervisor Review: Review pending procedures, accept/reject with comments, batch operations (SubmittedProcedureManager, SupervisorsManager)
+- Form Customization: Configure custom fields, field groups, lookups, visibility, and required flags per department (FieldsManager, FieldGroupsManager, LookUpItemManager)
+- Supervision Configuration: Define levels of supervision, participation types, and CAW (Competency Assessment Worksheet) settings (SupervisionRequirementsManager)
+- Reporting: Generate supervised procedure summaries, department PGY reports, error reports, pending authorization reports (ProceduresReportManager)
+- Data Export: Export procedure data to Excel, CSV, Access, XML formats with encrypted patient data handling (ExportProceduresManager)
+- Bulk Import: Import procedures and patient logs from Excel spreadsheets with field mapping (NiImportManager)
+- DNP Program Management: Manage Doctor of Nursing Practice student activity logs, essential activities, and admin accounts (DNPInfoBusiness, DNPLogManager)
+- Diagnosis Management: Search, categorize, and organize diagnoses with custom tabs shared between Procedures and PatientLog (DiagnosesManager, DiagnosesTabManager)
 
 <FileReference
   files={[
@@ -1426,6 +1441,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 370
   }
 ]}
-  directoryOverview="Business.Procedures is the core module for medical procedure tracking in MyEvaluations. It manages procedure definitions, submitted procedure records, supervision requirements, custom form fields, diagnoses, errors (quality tracking), patient data, export functionality, and comprehensive reporting. The module serves both GME residency programs and DNP nursing programs, with heavy use of stored procedures and department-level customization. Key classes include ProceduresManager (1336 lines) and SubmittedProcedureManager (1437 lines) which together handle the full procedure lifecycle."
-  keyWorkflows={["Procedure Definition: Create/update procedure types with audience restrictions, certification requirements, and assessment questions (ProceduresManager, ProcedureInfo)","Procedure Submission: Submit procedures with patient data, diagnoses, errors, custom fields, and supervisor assignment (SubmittedProcedureManager, SubmittedProcedureInfo)","Supervisor Review: Review pending procedures, accept/reject with comments, batch operations (SubmittedProcedureManager, SupervisorsManager)","Form Customization: Configure custom fields, field groups, lookups, visibility, and required flags per department (FieldsManager, FieldGroupsManager, LookUpItemManager)","Supervision Configuration: Define levels of supervision, participation types, and CAW (Competency Assessment Worksheet) settings (SupervisionRequirementsManager)","Reporting: Generate supervised procedure summaries, department PGY reports, error reports, pending authorization reports (ProceduresReportManager)","Data Export: Export procedure data to Excel, CSV, Access, XML formats with encrypted patient data handling (ExportProceduresManager)","Bulk Import: Import procedures and patient logs from Excel spreadsheets with field mapping (NiImportManager)","DNP Program Management: Manage Doctor of Nursing Practice student activity logs, essential activities, and admin accounts (DNPInfoBusiness, DNPLogManager)","Diagnosis Management: Search, categorize, and organize diagnoses with custom tabs shared between Procedures and PatientLog (DiagnosesManager, DiagnosesTabManager)"]}
 />

@@ -8,7 +8,20 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyEvaluations.Business.DutyHours File Reference
 
-> **76 files** | **29,667 lines** | Generated 2/21/2026
+**76 files** · **29,667 lines** · Generated 2/21/2026
+
+The Business.DutyHours module manages ACGME-compliant duty hour tracking for medical residency programs. It encompasses clinical activity management, rotation/block calendar configuration, ACGME compliance rule enforcement, conference management with attendance tracking (manual/QR/geofence), violation review workflows, multi-vendor schedule integration (Amion, QGenda, Tangier, Momentum, LightningBolt), and comprehensive reporting (compliance, completion, conference tracking, institutional). The module is heavily used by 900+ institutions and contains critical regulatory compliance logic.
+
+**Key Workflows**
+
+- Activity Management: CRUD operations for duty hour activities organized by categories (clinical, on-call, educational), with QR code-based attendance scanning
+- Rotation & Block Calendar: Academic year block period configuration, rotation definitions with linked activities, PGY-level settings, and campus/site management
+- ACGME Compliance: Rule configuration at department and program levels, compliance calculation, violation detection, and violation review with explanation workflow
+- Conference Management: Conference CRUD, schedule instances, attendance tracking (manual/QR/geofence), CME credit management, presenter/guest management, evaluation integration, and conference importing from CSV/Excel
+- External Schedule Sync: Multi-vendor integration (Amion, QGenda, Tangier, Momentum, LightningBolt) for importing on-call schedules, mapping external entities (users, rotations, clinics, activities) to MyEvaluations records
+- Reporting: Detailed/summary compliance reports, completion status, conference tracking (detailed/summary/monthly), institutional aggregate reports, record-of-rotations, schedule discrepancy, and BSN nursing reports
+- Duty Hour Verification: Verification workflow for submitted hours, batch verification/undo, admin approval process
+- Email Notifications: Violation alerts, non-submitter reminders, personal violation notifications to trainees and administrators
 
 <FileReference
   files={[
@@ -1990,6 +2003,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 149
   }
 ]}
-  directoryOverview="The Business.DutyHours module manages ACGME-compliant duty hour tracking for medical residency programs. It encompasses clinical activity management, rotation/block calendar configuration, ACGME compliance rule enforcement, conference management with attendance tracking (manual/QR/geofence), violation review workflows, multi-vendor schedule integration (Amion, QGenda, Tangier, Momentum, LightningBolt), and comprehensive reporting (compliance, completion, conference tracking, institutional). The module is heavily used by 900+ institutions and contains critical regulatory compliance logic."
-  keyWorkflows={["Activity Management: CRUD operations for duty hour activities organized by categories (clinical, on-call, educational), with QR code-based attendance scanning","Rotation & Block Calendar: Academic year block period configuration, rotation definitions with linked activities, PGY-level settings, and campus/site management","ACGME Compliance: Rule configuration at department and program levels, compliance calculation, violation detection, and violation review with explanation workflow","Conference Management: Conference CRUD, schedule instances, attendance tracking (manual/QR/geofence), CME credit management, presenter/guest management, evaluation integration, and conference importing from CSV/Excel","External Schedule Sync: Multi-vendor integration (Amion, QGenda, Tangier, Momentum, LightningBolt) for importing on-call schedules, mapping external entities (users, rotations, clinics, activities) to MyEvaluations records","Reporting: Detailed/summary compliance reports, completion status, conference tracking (detailed/summary/monthly), institutional aggregate reports, record-of-rotations, schedule discrepancy, and BSN nursing reports","Duty Hour Verification: Verification workflow for submitted hours, batch verification/undo, admin approval process","Email Notifications: Violation alerts, non-submitter reminders, personal violation notifications to trainees and administrators"]}
 />

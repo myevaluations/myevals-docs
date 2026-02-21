@@ -8,7 +8,17 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyEvalsExportImportService File Reference
 
-> **5 files** | **4,888 lines** | Generated 2/20/2026
+**5 files** · **4,888 lines** · Generated 2/20/2026
+
+WCF-based web service providing evaluation data export and import capabilities for external system integration. Exposes RESTful XML endpoints for retrieving evaluations, templates, template questions, answer scales, final grades, user details, and BSN pending review counts. Features two parallel service implementations (stream-based and string-based) for different client integration patterns. All requests are validated against XSD schemas, authenticated via credential verification, and logged for audit. Uses stored procedures for all database access and supports AES encryption for sensitive data exchange.
+
+**Key Workflows**
+
+- Evaluation Export: Client POST XML -> ValidateXML (XSD) -> VerifyLogin -> VerifyDepartmentPrivileges -> GetExportData (stored proc) -> Build XML response -> Log request/response
+- Template Export: Client POST XML -> ValidateDepartmentXML -> GetTemplatesByDepartments (stored proc) -> Build template list XML
+- User Details Export: Client POST XML -> ValidateUserDetailsXML -> VerifyLogin -> GetUsersByDepartment (stored proc) -> Build user details XML
+- BSN Pending Reviews: Client POST encrypted data -> DecryptStringAES -> ValidateBSNCounts -> GetBSNPendingReviewCount (stored proc) -> Return counts
+- Request Logging: AddServiceRequestLog (stored proc) -> Process request -> UpdateServiceResponsesLog (stored proc)
 
 <FileReference
   files={[
@@ -203,6 +213,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 921
   }
 ]}
-  directoryOverview="WCF-based web service providing evaluation data export and import capabilities for external system integration. Exposes RESTful XML endpoints for retrieving evaluations, templates, template questions, answer scales, final grades, user details, and BSN pending review counts. Features two parallel service implementations (stream-based and string-based) for different client integration patterns. All requests are validated against XSD schemas, authenticated via credential verification, and logged for audit. Uses stored procedures for all database access and supports AES encryption for sensitive data exchange."
-  keyWorkflows={["Evaluation Export: Client POST XML -> ValidateXML (XSD) -> VerifyLogin -> VerifyDepartmentPrivileges -> GetExportData (stored proc) -> Build XML response -> Log request/response","Template Export: Client POST XML -> ValidateDepartmentXML -> GetTemplatesByDepartments (stored proc) -> Build template list XML","User Details Export: Client POST XML -> ValidateUserDetailsXML -> VerifyLogin -> GetUsersByDepartment (stored proc) -> Build user details XML","BSN Pending Reviews: Client POST encrypted data -> DecryptStringAES -> ValidateBSNCounts -> GetBSNPendingReviewCount (stored proc) -> Return counts","Request Logging: AddServiceRequestLog (stored proc) -> Process request -> UpdateServiceResponsesLog (stored proc)"]}
 />

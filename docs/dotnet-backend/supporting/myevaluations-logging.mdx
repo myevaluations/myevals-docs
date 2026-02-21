@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyEvaluations.Logging File Reference
 
-> **4 files** | **311 lines** | Generated 2/20/2026
+**4 files** · **311 lines** · Generated 2/20/2026
+
+Application-wide logging infrastructure built on Microsoft Enterprise Library. MyEvalLog is the central static class used by every module for error, warning, and information logging. Contains comprehensive LogFor enum cataloging all 40+ system modules and schedulers, making it a valuable reference for understanding the full scope of the application.
+
+**Key Workflows**
+
+- Structured logging with severity levels (Error, Warning, Information)
+- Module-categorized logging via LogFor enum (WebApplication, Security, Evaluations, 40+ schedulers, etc.)
+- Config-driven log level filtering via MyEvalLogType AppSetting
+- Exception logging with full stack trace and error data capture
 
 <FileReference
   files={[
@@ -89,6 +98,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 37
   }
 ]}
-  directoryOverview="Application-wide logging infrastructure built on Microsoft Enterprise Library. MyEvalLog is the central static class used by every module for error, warning, and information logging. Contains comprehensive LogFor enum cataloging all 40+ system modules and schedulers, making it a valuable reference for understanding the full scope of the application."
-  keyWorkflows={["Structured logging with severity levels (Error, Warning, Information)","Module-categorized logging via LogFor enum (WebApplication, Security, Evaluations, 40+ schedulers, etc.)","Config-driven log level filtering via MyEvalLogType AppSetting","Exception logging with full stack trace and error data capture"]}
 />

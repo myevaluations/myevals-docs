@@ -20,7 +20,9 @@ interface FileEntry {
 
 interface FileReferenceProps {
   files?: FileEntry[];
+  /** @deprecated — overview is now rendered in MDX body, not inside the component */
   directoryOverview?: string;
+  /** @deprecated — workflows are now rendered in MDX body, not inside the component */
   keyWorkflows?: (string | { name: string; description?: string; [key: string]: unknown })[];
   showExpandedDetails?: boolean;
 }
@@ -297,14 +299,20 @@ export default function FileReference({
 
   // Summary stats
   const totalLines = data.reduce((s, f) => s + f.lineCount, 0);
-  const avgComplexity =
-    data.length > 0
-      ? complexityOrder[
-          Math.round(
-            data.reduce((s, f) => s + complexityOrder.indexOf(f.complexity), 0) / data.length,
-          )
-        ]
-      : 'unknown';
+
+  // Complexity distribution counts
+  const complexityDist = complexityOrder.map((c) => ({
+    label: c,
+    count: data.filter((f) => f.complexity === c).length,
+    color: COMPLEXITY_COLORS[c],
+  })).filter((d) => d.count > 0);
+
+  // Migration distribution counts
+  const migrationDist = ['high', 'medium', 'low', 'none'].map((m) => ({
+    label: m,
+    count: data.filter((f) => f.migrationRelevance === m).length,
+    color: MIGRATION_COLORS[m],
+  })).filter((d) => d.count > 0);
 
   return (
     <div>
@@ -323,40 +331,56 @@ export default function FileReference({
         </div>
       )}
 
-      {directoryOverview && (
-        <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{directoryOverview}</p>
-      )}
-
-      {keyWorkflows && keyWorkflows.length > 0 && (
-        <details style={{ marginBottom: '16px' }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 600 }}>
-            Key Workflows ({keyWorkflows.length})
-          </summary>
-          <ul style={{ marginTop: '8px' }}>
-            {keyWorkflows.map((w, i) => (
-              <li key={i}>{typeof w === 'string' ? w : (w.description ? `${w.name} - ${w.description}` : w.name)}</li>
-            ))}
-          </ul>
-        </details>
-      )}
-
-      {/* Stats bar */}
+      {/* Stats cards */}
       <div
         style={{
-          display: 'flex',
-          gap: '16px',
-          padding: '8px 12px',
-          backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)',
-          borderRadius: '8px',
-          marginBottom: '12px',
-          fontSize: '0.85rem',
-          flexWrap: 'wrap',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gap: '10px',
+          marginBottom: '16px',
         }}
       >
-        <span><strong>{data.length}</strong> files</span>
-        <span><strong>{totalLines.toLocaleString()}</strong> lines</span>
-        <span>Avg complexity: <strong>{avgComplexity}</strong></span>
-        <span>Showing: <strong>{filtered.length}</strong></span>
+        {/* File / line count card */}
+        <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
+          <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '4px' }}>Files</div>
+          <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1 }}>{data.length.toLocaleString()}</div>
+          <div style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-600)', marginTop: '2px' }}>{totalLines.toLocaleString()} lines</div>
+        </div>
+
+        {/* Complexity breakdown card */}
+        <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
+          <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '6px' }}>Complexity</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+            {complexityDist.map(({ label, count, color }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem' }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: color, flexShrink: 0 }} />
+                <span style={{ color: 'var(--ifm-color-emphasis-700)', minWidth: '80px' }}>{label}</span>
+                <span style={{ fontWeight: 600 }}>{count}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Migration breakdown card */}
+        <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
+          <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '6px' }}>Migration Priority</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+            {migrationDist.map(({ label, count, color }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem' }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: color, flexShrink: 0 }} />
+                <span style={{ color: 'var(--ifm-color-emphasis-700)', minWidth: '55px' }}>{label}</span>
+                <span style={{ fontWeight: 600 }}>{count}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Filter status card */}
+        <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
+          <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '4px' }}>Showing</div>
+          <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1 }}>{filtered.length.toLocaleString()}</div>
+          <div style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-600)', marginTop: '2px' }}>of {data.length} files</div>
+        </div>
       </div>
 
       {/* Filters */}

@@ -8,7 +8,18 @@ import FileReference from '@site/src/components/FileReference';
 
 # LearningAssignment File Reference
 
-> **17 files** | **9,636 lines** | Generated 2/20/2026
+**17 files** · **9,636 lines** · Generated 2/20/2026
+
+The LearningAssignment directory contains 17 code-behind files covering the full lifecycle of learning module assignments in MyEvaluations. The module handles learning module creation and management (LearningModule, ManageLearningModules), assignment creation (AssignLearningModule, EditLearningAssignment), learner-facing submission (Assignment, SubmitLearningAssignment, SubmitVoluntaryAssignment, PendingLearningAssignments), admin review (LearningModuleReview), master admin views (ManageAssignments, ManageLearningAssignmentUsers), compliance notifications (NonComplianceAdminEmails), and reporting (four report files). The module integrates with the quiz system (DesignQuizManager), file upload service (FileUploadComponentWebService), and New Relic monitoring. Several files are among the most complex in the entire codebase (Assignment.aspx.cs at 1024 lines, ManageAssignments.aspx.cs at 1172 lines).
+
+**Key Workflows**
+
+- Module management: administrators create modules via LearningModule.aspx, manage existing ones via ManageLearningModules.aspx
+- Assignment creation: AssignLearningModule creates assignments with optional inline module creation, file upload, and quiz linking; EditLearningAssignment modifies existing assignments
+- Learner experience: PendingLearningAssignments shows outstanding work, SubmitVoluntaryAssignment allows self-enrollment, SubmitLearningAssignment and Assignment.aspx handle submission
+- Admin review: LearningModuleReview provides review queue, Assignment.aspx in review mode handles approve/reject
+- Compliance notifications: NonComplianceAdminEmails configures who receives overdue alerts; AssignmentsReminderScheduler triggers reminder emails
+- Reporting: DetailedLearningAssignments and LedgerOfLearningAssignments provide filter configuration with saved favorites; corresponding Result pages render HTML reports
 
 <FileReference
   files={[
@@ -402,6 +413,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 343
   }
 ]}
-  directoryOverview="The LearningAssignment directory contains 17 code-behind files covering the full lifecycle of learning module assignments in MyEvaluations. The module handles learning module creation and management (LearningModule, ManageLearningModules), assignment creation (AssignLearningModule, EditLearningAssignment), learner-facing submission (Assignment, SubmitLearningAssignment, SubmitVoluntaryAssignment, PendingLearningAssignments), admin review (LearningModuleReview), master admin views (ManageAssignments, ManageLearningAssignmentUsers), compliance notifications (NonComplianceAdminEmails), and reporting (four report files). The module integrates with the quiz system (DesignQuizManager), file upload service (FileUploadComponentWebService), and New Relic monitoring. Several files are among the most complex in the entire codebase (Assignment.aspx.cs at 1024 lines, ManageAssignments.aspx.cs at 1172 lines)."
-  keyWorkflows={["Module management: administrators create modules via LearningModule.aspx, manage existing ones via ManageLearningModules.aspx","Assignment creation: AssignLearningModule creates assignments with optional inline module creation, file upload, and quiz linking; EditLearningAssignment modifies existing assignments","Learner experience: PendingLearningAssignments shows outstanding work, SubmitVoluntaryAssignment allows self-enrollment, SubmitLearningAssignment and Assignment.aspx handle submission","Admin review: LearningModuleReview provides review queue, Assignment.aspx in review mode handles approve/reject","Compliance notifications: NonComplianceAdminEmails configures who receives overdue alerts; AssignmentsReminderScheduler triggers reminder emails","Reporting: DetailedLearningAssignments and LedgerOfLearningAssignments provide filter configuration with saved favorites; corresponding Result pages render HTML reports"]}
 />

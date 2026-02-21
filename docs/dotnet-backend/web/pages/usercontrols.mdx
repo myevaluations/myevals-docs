@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # UserControls File Reference
 
-> **142 files** | **77,838 lines** | Generated 2/21/2026
+**142 files** · **77,838 lines** · Generated 2/21/2026
+
+Web/UserControls contains reusable ASP.NET user controls (.ascx) shared across multiple pages - navigation menus, data grids, filter panels, date pickers, file uploaders, and modal dialogs. This second batch covers evaluation-specific controls (audience selectors, template pickers, grade selectors, report menus, user filters), navigation controls (breadcrumbs, tabs, top menu), lookup controls (generic dropdown variants), mail distribution controls, security/OBC configuration controls, session management, and common layout controls (headers, footers, sub-headers, message displays).
+
+**Key Workflows**
+
+- Shared UI components for page composition (headers, footers, sub-headers, breadcrumbs)
+- Evaluation report filter controls (evaluation selection, rotation selection, user selection, evaluator selection)
+- Report navigation menus with extensive role-based access control (ReportMenuList, ReportManagementMenuList)
+- Generic lookup dropdown controls with multiple variants (state, events, events+state)
+- User selection dual-listbox controls with rich filtering (PGY, groups, types, specialty, departments)
+- Evaluation template configuration controls (template options, audience, grades)
+- Session timeout management and modal popup controls
+- Mail distribution recipient selection with template persistence
+- OBC/security configuration controls for custom fields, document types, requirement groups
+- Navigation and menu components (TabsMenu, TopMenu) with role-based module visibility
 
 <FileReference
   files={[
@@ -3417,6 +3432,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 39
   }
 ]}
-  directoryOverview="Web/UserControls contains reusable ASP.NET user controls (.ascx) shared across multiple pages - navigation menus, data grids, filter panels, date pickers, file uploaders, and modal dialogs. This second batch covers evaluation-specific controls (audience selectors, template pickers, grade selectors, report menus, user filters), navigation controls (breadcrumbs, tabs, top menu), lookup controls (generic dropdown variants), mail distribution controls, security/OBC configuration controls, session management, and common layout controls (headers, footers, sub-headers, message displays)."
-  keyWorkflows={["Shared UI components for page composition (headers, footers, sub-headers, breadcrumbs)","Evaluation report filter controls (evaluation selection, rotation selection, user selection, evaluator selection)","Report navigation menus with extensive role-based access control (ReportMenuList, ReportManagementMenuList)","Generic lookup dropdown controls with multiple variants (state, events, events+state)","User selection dual-listbox controls with rich filtering (PGY, groups, types, specialty, departments)","Evaluation template configuration controls (template options, audience, grades)","Session timeout management and modal popup controls","Mail distribution recipient selection with template persistence","OBC/security configuration controls for custom fields, document types, requirement groups","Navigation and menu components (TabsMenu, TopMenu) with role-based module visibility"]}
 />

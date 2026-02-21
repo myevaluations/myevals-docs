@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # Reports File Reference
 
-> **112 files** | **94,394 lines** | Generated 2/20/2026
+**112 files** · **94,394 lines** · Generated 2/20/2026
+
+The Web/Reports directory contains 112 code-behind files implementing the evaluation reporting module of MyEvaluations. Reports follow a filter-page/result-page pattern where users configure parameters on a filter page (e.g., 360Evaluations.aspx.cs) and view results on a corresponding result page (e.g., 360EvaluationsResult.aspx.cs). The module supports extensive role-based access control with different report visibility for SysAdmin, Admin, ProgramDirector, TraineeAdmin, User, Preceptor, and other roles. Reports cover 360-degree evaluations, ACGME compliance surveys, competency assessments, milestone tracking, early warning systems, peer evaluations, and program evaluations. The ReportsMain.aspx.cs serves as the central navigation hub with complex menu configuration logic spanning 1200+ lines.
+
+**Key Workflows**
+
+- Report parameter selection -> Result generation via Response.Write HTML output
+- Role-based report menu visibility on ReportsMain (15+ user type/role combinations)
+- ACGME survey report generation for accreditation compliance
+- 360-degree multi-source evaluation aggregation across user types
+- Early warning detection for at-risk trainees based on evaluation scores
+- Favorite reports system for saved report configurations
+- MyInsights analytical dashboard reports (APE, narrative, rotation summary)
+- Audit trail tracking for report access compliance
+- Institutional reports (accreditation, affiliate agreements, conference compliance)
+- Personal vs Management report segregation based on user privileges
 
 <FileReference
   files={[
@@ -3835,6 +3850,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 505
   }
 ]}
-  directoryOverview="The Web/Reports directory contains 112 code-behind files implementing the evaluation reporting module of MyEvaluations. Reports follow a filter-page/result-page pattern where users configure parameters on a filter page (e.g., 360Evaluations.aspx.cs) and view results on a corresponding result page (e.g., 360EvaluationsResult.aspx.cs). The module supports extensive role-based access control with different report visibility for SysAdmin, Admin, ProgramDirector, TraineeAdmin, User, Preceptor, and other roles. Reports cover 360-degree evaluations, ACGME compliance surveys, competency assessments, milestone tracking, early warning systems, peer evaluations, and program evaluations. The ReportsMain.aspx.cs serves as the central navigation hub with complex menu configuration logic spanning 1200+ lines."
-  keyWorkflows={["Report parameter selection -> Result generation via Response.Write HTML output","Role-based report menu visibility on ReportsMain (15+ user type/role combinations)","ACGME survey report generation for accreditation compliance","360-degree multi-source evaluation aggregation across user types","Early warning detection for at-risk trainees based on evaluation scores","Favorite reports system for saved report configurations","MyInsights analytical dashboard reports (APE, narrative, rotation summary)","Audit trail tracking for report access compliance","Institutional reports (accreditation, affiliate agreements, conference compliance)","Personal vs Management report segregation based on user privileges"]}
 />

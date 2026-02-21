@@ -8,7 +8,18 @@ import FileReference from '@site/src/components/FileReference';
 
 # Onboarding File Reference
 
-> **13 files** | **3,395 lines** | Generated 2/20/2026
+**13 files** · **3,395 lines** · Generated 2/20/2026
+
+The Onboarding directory contains 13 code-behind files (including 2 user controls: .ascx.cs) for the Onboarding Credentialing (OBC) module in MyEvaluations. This module manages the credentialing and document submission workflow for new trainees (residents, nurses, PA students). Key features include the primary OBC dashboard (OnboardingDashboard), custom form submission with signature integration (ViewCustomFormDetails), bulk document download as ZIP with HelloSign support (DownloadOnboardingDocuments), PDF report generation using iTextSharp (PrintOnboardingDashboard), review notes exchange between admins and users (OnboardingNotes, OnboardingReviewNotes), and utility maintenance tools (UpdateOBCDocumentStatus, UploadMissingCertifications). Two user controls handle dependent/emergency contact info (SpouseDependentsEmergency) and training gap recording (TrainingGapHistory). The module integrates with HelloSign (now Dropbox Sign) for legally binding signature requests.
+
+**Key Workflows**
+
+- OBC dashboard: OnboardingDashboard is the main entry point for admins with feature-flag-based redirect to the new React interface; displays document status grid per user/requirement group
+- Document submission: ViewCustomFormDetails handles both custom form filling and document upload with view/edit modes; supports HelloSign signature requests and PII masking
+- Bulk download: DownloadOnboardingDocuments streams all documents as a ZIP, DownloadOnboardingDashboard PDF button generates a PDF report via PrintOnboardingDashboard
+- Review notes workflow: OnboardingNotes popup and OnboardingReviewNotes page allow bidirectional admin-user note exchange on specific document assignments
+- Assignment management: RestoreAssignments allows recovery of soft-deleted assignments
+- Data maintenance: UpdateOBCDocumentStatus reconciles upload status flags; UploadMissingCertifications re-uploads files found on file system via FileUploadComponentWebService
 
 <FileReference
   files={[
@@ -312,6 +323,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 36
   }
 ]}
-  directoryOverview="The Onboarding directory contains 13 code-behind files (including 2 user controls: .ascx.cs) for the Onboarding Credentialing (OBC) module in MyEvaluations. This module manages the credentialing and document submission workflow for new trainees (residents, nurses, PA students). Key features include the primary OBC dashboard (OnboardingDashboard), custom form submission with signature integration (ViewCustomFormDetails), bulk document download as ZIP with HelloSign support (DownloadOnboardingDocuments), PDF report generation using iTextSharp (PrintOnboardingDashboard), review notes exchange between admins and users (OnboardingNotes, OnboardingReviewNotes), and utility maintenance tools (UpdateOBCDocumentStatus, UploadMissingCertifications). Two user controls handle dependent/emergency contact info (SpouseDependentsEmergency) and training gap recording (TrainingGapHistory). The module integrates with HelloSign (now Dropbox Sign) for legally binding signature requests."
-  keyWorkflows={["OBC dashboard: OnboardingDashboard is the main entry point for admins with feature-flag-based redirect to the new React interface; displays document status grid per user/requirement group","Document submission: ViewCustomFormDetails handles both custom form filling and document upload with view/edit modes; supports HelloSign signature requests and PII masking","Bulk download: DownloadOnboardingDocuments streams all documents as a ZIP, DownloadOnboardingDashboard PDF button generates a PDF report via PrintOnboardingDashboard","Review notes workflow: OnboardingNotes popup and OnboardingReviewNotes page allow bidirectional admin-user note exchange on specific document assignments","Assignment management: RestoreAssignments allows recovery of soft-deleted assignments","Data maintenance: UpdateOBCDocumentStatus reconciles upload status flags; UploadMissingCertifications re-uploads files found on file system via FileUploadComponentWebService"]}
 />

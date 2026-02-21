@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # FusionChartLibrary File Reference
 
-> **20 files** | **3,809 lines** | Generated 2/20/2026
+**20 files** · **3,809 lines** · Generated 2/20/2026
+
+Server-side charting library wrapping FusionCharts (originally Flash-based, later JavaScript) for evaluation data visualization. Provides a class hierarchy (BaseChart -> SingleSeriesChart, MultiSeriesChart, BulletedChart, WidgetChart, Annotations) that transforms DataTable query results into FusionCharts XML/JSON. Used extensively throughout the WebForms application for evaluation score dashboards, competency assessment charts, survey response distributions, and gauge-style KPI widgets. Includes its own data access layer and configuration management.
+
+**Key Workflows**
+
+- Single-Series Chart: Create SingleSeriesChart with DataTable -> BuildXml (generate XML from data) -> RenderChart (output HTML/JS)
+- Multi-Series Chart: Create MultiSeriesChart -> BuildData (extract categories + datasets via LINQ) -> BuildXml -> RenderChart
+- Bullet/Gauge Chart: Create BulletedChart -> buildQuartiles (set score bands) -> buildColourRange -> BuildXml -> RenderChart
+- Widget Gauge: Create WidgetChart -> buildColourRange (set color bands) -> buildDials (set value pointers) -> BuildXml -> RenderChart
 
 <FileReference
   files={[
@@ -428,6 +437,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 37
   }
 ]}
-  directoryOverview="Server-side charting library wrapping FusionCharts (originally Flash-based, later JavaScript) for evaluation data visualization. Provides a class hierarchy (BaseChart -> SingleSeriesChart, MultiSeriesChart, BulletedChart, WidgetChart, Annotations) that transforms DataTable query results into FusionCharts XML/JSON. Used extensively throughout the WebForms application for evaluation score dashboards, competency assessment charts, survey response distributions, and gauge-style KPI widgets. Includes its own data access layer and configuration management."
-  keyWorkflows={["Single-Series Chart: Create SingleSeriesChart with DataTable -> BuildXml (generate XML from data) -> RenderChart (output HTML/JS)","Multi-Series Chart: Create MultiSeriesChart -> BuildData (extract categories + datasets via LINQ) -> BuildXml -> RenderChart","Bullet/Gauge Chart: Create BulletedChart -> buildQuartiles (set score bands) -> buildColourRange -> BuildXml -> RenderChart","Widget Gauge: Create WidgetChart -> buildColourRange (set color bands) -> buildDials (set value pointers) -> BuildXml -> RenderChart"]}
 />

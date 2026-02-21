@@ -8,7 +8,18 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyEvaluations.Web File Reference
 
-> **4 files** | **3,240 lines** | Generated 2/20/2026
+**4 files** · **3,240 lines** · Generated 2/20/2026
+
+Web infrastructure layer containing authentication, navigation routing, and the critical React frontend integration bridge. UserAuthentication.cs (2888 lines) is the most complex file, orchestrating the entire login flow with institution-specific rules for 900+ institutions. NewFrontend.cs enables the strangler fig migration by embedding React partials in the .NET shell, with 20 pages already migrated. HomeRedirect handles post-login routing based on department and role.
+
+**Key Workflows**
+
+- User login flow with account lockout, password expiration, and institution-specific rules
+- Post-login routing based on department ID, role, and user type
+- React frontend HTML partial loading from Azure CDN with caching and versioning
+- SSO/token-based cross-system authentication
+- Session expiry handling and auto-login via encrypted tokens
+- Mobile app and QR code authentication
 
 <FileReference
   files={[
@@ -117,6 +128,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 114
   }
 ]}
-  directoryOverview="Web infrastructure layer containing authentication, navigation routing, and the critical React frontend integration bridge. UserAuthentication.cs (2888 lines) is the most complex file, orchestrating the entire login flow with institution-specific rules for 900+ institutions. NewFrontend.cs enables the strangler fig migration by embedding React partials in the .NET shell, with 20 pages already migrated. HomeRedirect handles post-login routing based on department and role."
-  keyWorkflows={["User login flow with account lockout, password expiration, and institution-specific rules","Post-login routing based on department ID, role, and user type","React frontend HTML partial loading from Azure CDN with caching and versioning","SSO/token-based cross-system authentication","Session expiry handling and auto-login via encrypted tokens","Mobile app and QR code authentication"]}
 />

@@ -8,7 +8,15 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyGME File Reference
 
-> **1 files** | **167 lines** | Generated 2/20/2026
+**1 files** · **167 lines** · Generated 2/20/2026
+
+Single-file module implementing SSO login integration for MyGME (Graduate Medical Education) systems. Uses RC4 encryption for secure token exchange and handles external authentication flow into the MyEvaluations platform.
+
+**Key Workflows**
+
+- Receive SSO request from MyGME external system
+- Decrypt RC4-encrypted credentials and validate user
+- Authenticate and redirect user into the MyEvaluations session
 
 <FileReference
   files={[
@@ -35,6 +43,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 167
   }
 ]}
-  directoryOverview="Single-file module implementing SSO login integration for MyGME (Graduate Medical Education) systems. Uses RC4 encryption for secure token exchange and handles external authentication flow into the MyEvaluations platform."
-  keyWorkflows={["Receive SSO request from MyGME external system","Decrypt RC4-encrypted credentials and validate user","Authenticate and redirect user into the MyEvaluations session"]}
 />

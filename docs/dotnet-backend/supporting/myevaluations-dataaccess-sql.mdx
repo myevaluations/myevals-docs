@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyEvaluations.DataAccess.SQL File Reference
 
-> **4 files** | **561 lines** | Generated 2/20/2026
+**4 files** · **561 lines** · Generated 2/20/2026
+
+Core data access layer providing the foundational database interaction classes for the entire MyEvaluations .NET backend. CustomCommand wraps SqlCommand with parameter management, and DBDataAccess provides all static execution methods (ExecuteTable, ExecuteNonQuery, ExecuteScalar, ExecuteTransaction, etc.) that every business manager depends on. All database calls in the legacy system flow through these two classes.
+
+**Key Workflows**
+
+- SQL command building with CustomCommand parameter management
+- Database query execution (DataTable, DataSet, DataReader, Scalar, NonQuery)
+- Transaction management with parent-child command patterns
+- Error logging with ApplicationCustomErrorEvent for health monitoring
 
 <FileReference
   files={[
@@ -102,6 +111,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 36
   }
 ]}
-  directoryOverview="Core data access layer providing the foundational database interaction classes for the entire MyEvaluations .NET backend. CustomCommand wraps SqlCommand with parameter management, and DBDataAccess provides all static execution methods (ExecuteTable, ExecuteNonQuery, ExecuteScalar, ExecuteTransaction, etc.) that every business manager depends on. All database calls in the legacy system flow through these two classes."
-  keyWorkflows={["SQL command building with CustomCommand parameter management","Database query execution (DataTable, DataSet, DataReader, Scalar, NonQuery)","Transaction management with parent-child command patterns","Error logging with ApplicationCustomErrorEvent for health monitoring"]}
 />

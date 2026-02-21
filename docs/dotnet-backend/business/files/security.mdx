@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # Business.Security File Reference
 
-> **128 files** | **81,451 lines** | Generated 2/21/2026
+**128 files** · **81,451 lines** · Generated 2/21/2026
+
+Business.Security is the largest and most critical business layer module in the MyEvaluations .NET backend, serving as the central hub for authentication, authorization, user management, and institutional administration. This second batch (files 65-128) covers the core managers and data models including: SessionManager (authentication/JWT/SAML), PasswordManager (password policies/BCrypt), UserManager (19,603 lines - the single largest file in the codebase), UserBusiness (21,190 lines - complete user profile UI orchestration), RoleManager (RBAC authorization), MultiFactorAuthentication (email/SMS/password MFA), OnboardingCredentialingManager (credentialing workflows), PreceptorManager (clinical scheduling), and 30+ data model classes for resident demographics, program history, stipends, training records, and military information.
+
+**Key Workflows**
+
+- User authentication: SessionManager handles login with BCrypt password verification, JWT token generation, SAML SSO, and session management
+- Multi-factor authentication: MultiFactorAuthentication orchestrates email, SMS (Telnyx), and password verification factors with rate limiting
+- Password management: PasswordManager enforces configurable password policies, expiration, history-based reuse prevention, and account lockout
+- User profile CRUD: UserManager + UserBusiness manage complete user demographics across 15+ subsections (personal, professional, financial, training, credentialing)
+- Role-based access control: RoleManager + RoleInfo + PrivilegeInfo + SubModulePrivilegeInfo define hierarchical RBAC with module/sub-module CRUD permissions
+- User impersonation: UserImpersonation + SessionManager enable admin users to act as other users with role hierarchy enforcement
+- Onboarding credentialing: OnboardingCredentialingManager + OnboardingCredentialingBusiness manage custom forms, document types, requirement groups, and assignment tracking
+- Preceptor scheduling: PreceptorManager + PreceptorModuleManager + PreceptorTemplateManager handle clinical site management, trainee placement, and schedule generation
+- User merge and archive: UserManager handles merging duplicate users and archiving/promoting users with email notifications
+- Configurable fields: ManageFieldsManager allows institution-specific customization of which profile fields are visible/required
 
 <FileReference
   files={[
@@ -3171,6 +3186,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 1957
   }
 ]}
-  directoryOverview="Business.Security is the largest and most critical business layer module in the MyEvaluations .NET backend, serving as the central hub for authentication, authorization, user management, and institutional administration. This second batch (files 65-128) covers the core managers and data models including: SessionManager (authentication/JWT/SAML), PasswordManager (password policies/BCrypt), UserManager (19,603 lines - the single largest file in the codebase), UserBusiness (21,190 lines - complete user profile UI orchestration), RoleManager (RBAC authorization), MultiFactorAuthentication (email/SMS/password MFA), OnboardingCredentialingManager (credentialing workflows), PreceptorManager (clinical scheduling), and 30+ data model classes for resident demographics, program history, stipends, training records, and military information."
-  keyWorkflows={["User authentication: SessionManager handles login with BCrypt password verification, JWT token generation, SAML SSO, and session management","Multi-factor authentication: MultiFactorAuthentication orchestrates email, SMS (Telnyx), and password verification factors with rate limiting","Password management: PasswordManager enforces configurable password policies, expiration, history-based reuse prevention, and account lockout","User profile CRUD: UserManager + UserBusiness manage complete user demographics across 15+ subsections (personal, professional, financial, training, credentialing)","Role-based access control: RoleManager + RoleInfo + PrivilegeInfo + SubModulePrivilegeInfo define hierarchical RBAC with module/sub-module CRUD permissions","User impersonation: UserImpersonation + SessionManager enable admin users to act as other users with role hierarchy enforcement","Onboarding credentialing: OnboardingCredentialingManager + OnboardingCredentialingBusiness manage custom forms, document types, requirement groups, and assignment tracking","Preceptor scheduling: PreceptorManager + PreceptorModuleManager + PreceptorTemplateManager handle clinical site management, trainee placement, and schedule generation","User merge and archive: UserManager handles merging duplicate users and archiving/promoting users with email notifications","Configurable fields: ManageFieldsManager allows institution-specific customization of which profile fields are visible/required"]}
 />

@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # New File Reference
 
-> **11 files** | **324 lines** | Generated 2/20/2026
+**11 files** · **324 lines** · Generated 2/20/2026
+
+Modern frontend integration layer (Web/New) serving as .NET shell pages that host React-based UI components. All pages follow the same pattern: initialize NewFrontend helper for React CDN embedding, authenticate via New_Auth, and check permissions. These represent the strangler fig migration pattern where React components progressively replace WebForms pages. Key areas migrated: program assessments, core personnel, accreditation documentation, requirement sets, and SIMPL data import.
+
+**Key Workflows**
+
+- Initialize React frontend within .NET WebForms shell via NewFrontend helper
+- Authenticate users through New_Auth bridge between .NET sessions and React frontend
+- Permission-gated access to migrated React modules (assessments, personnel, accreditation)
+- Print-optimized rendering for React-based pages via PrintBasePage
 
 <FileReference
   files={[
@@ -253,6 +262,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 29
   }
 ]}
-  directoryOverview="Modern frontend integration layer (Web/New) serving as .NET shell pages that host React-based UI components. All pages follow the same pattern: initialize NewFrontend helper for React CDN embedding, authenticate via New_Auth, and check permissions. These represent the strangler fig migration pattern where React components progressively replace WebForms pages. Key areas migrated: program assessments, core personnel, accreditation documentation, requirement sets, and SIMPL data import."
-  keyWorkflows={["Initialize React frontend within .NET WebForms shell via NewFrontend helper","Authenticate users through New_Auth bridge between .NET sessions and React frontend","Permission-gated access to migrated React modules (assessments, personnel, accreditation)","Print-optimized rendering for React-based pages via PrintBasePage"]}
 />

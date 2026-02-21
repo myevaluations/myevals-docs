@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # MyHelp File Reference
 
-> **14 files** | **2,482 lines** | Generated 2/20/2026
+**14 files** · **2,482 lines** · Generated 2/20/2026
+
+The MyHelp directory contains 14 code-behind files for the built-in help knowledge base system in MyEvaluations. The module provides an admin-facing content management system (sections, chapters, pages with tree-based reordering via ManageSections, ManageChapters, ManagePages, MyHelpContents) and a user-facing read-only viewer (ViewSections, MyHelpIndex, MyHelpSearch, PrintPageContent). The landing page (MyHelpLanding) integrates both HappyFox SSO via SAML 2.0 and Rocket.Chat for live customer support. Two pages handle Rocket.Chat integration (RocketChatConnect, RocketChatMembers) with hardcoded admin credentials that should be addressed. The module is built on the SectionInfoBusiness service class and the obout ASPTreeView component for hierarchical navigation.
+
+**Key Workflows**
+
+- Help content authoring: ManageSections manages section CRUD, ManageChapters manages chapters within sections, MyHelpContents provides tree-based chapter/page creation with drag-and-drop reordering
+- User help browsing: MyHelpLanding serves as the entry hub, ViewSections shows section trees, MyHelpIndex provides indexed navigation, MyHelpSearch enables keyword lookup, PrintPageContent provides print view
+- HappyFox SSO integration: MyHelpLanding and MenuSupport both build SAML 2.0 assertions, create HappyFox user accounts via REST API, and redirect users into the HappyFox portal
+- Rocket.Chat integration: RocketChatMembers shows available support agents; RocketChatConnect authenticates the user and embeds a direct message iframe
 
 <FileReference
   files={[
@@ -343,6 +352,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 168
   }
 ]}
-  directoryOverview="The MyHelp directory contains 14 code-behind files for the built-in help knowledge base system in MyEvaluations. The module provides an admin-facing content management system (sections, chapters, pages with tree-based reordering via ManageSections, ManageChapters, ManagePages, MyHelpContents) and a user-facing read-only viewer (ViewSections, MyHelpIndex, MyHelpSearch, PrintPageContent). The landing page (MyHelpLanding) integrates both HappyFox SSO via SAML 2.0 and Rocket.Chat for live customer support. Two pages handle Rocket.Chat integration (RocketChatConnect, RocketChatMembers) with hardcoded admin credentials that should be addressed. The module is built on the SectionInfoBusiness service class and the obout ASPTreeView component for hierarchical navigation."
-  keyWorkflows={["Help content authoring: ManageSections manages section CRUD, ManageChapters manages chapters within sections, MyHelpContents provides tree-based chapter/page creation with drag-and-drop reordering","User help browsing: MyHelpLanding serves as the entry hub, ViewSections shows section trees, MyHelpIndex provides indexed navigation, MyHelpSearch enables keyword lookup, PrintPageContent provides print view","HappyFox SSO integration: MyHelpLanding and MenuSupport both build SAML 2.0 assertions, create HappyFox user accounts via REST API, and redirect users into the HappyFox portal","Rocket.Chat integration: RocketChatMembers shows available support agents; RocketChatConnect authenticates the user and embeds a direct message iframe"]}
 />

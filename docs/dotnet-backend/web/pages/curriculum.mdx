@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # Curriculum File Reference
 
-> **18 files** | **605 lines** | Generated 2/20/2026
+**18 files** · **605 lines** · Generated 2/20/2026
+
+The Curriculum directory contains 18 code-behind files for the MyEvaluations curriculum management module. It covers course and teaching unit CRUD, curriculum creation and assignment to users, instruction unit management, and basic reporting stubs. The module is relatively thin on the web layer, with almost all logic delegated to the CurriculumBusiness class. Several files are unimplemented stubs (CurriculumMain, GhanChart, HarizontalAnalysis, VerticalAnalysis). The module appears to be a secondary feature with lower adoption relative to Evaluations or DutyHours, as evidenced by the prevalence of stub implementations.
+
+**Key Workflows**
+
+- Curriculum CRUD: ManageCurriculum lists all curricula, Curriculum.aspx handles add/edit (stub), AssignCourses assigns courses to curricula
+- Teaching unit hierarchy: AddTeachUnit creates units, AddInstructionUnit creates instruction units and links to teaching units via ChooseTeachingUnits
+- Curriculum assignment to users managed via ManageCurriculumAssignments
+- Curriculum reporting: CurriculumReports selects report type, routing to VerticalAnalysis or HarizontalAnalysis (both stubs)
 
 <FileReference
   files={[
@@ -359,6 +368,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 19
   }
 ]}
-  directoryOverview="The Curriculum directory contains 18 code-behind files for the MyEvaluations curriculum management module. It covers course and teaching unit CRUD, curriculum creation and assignment to users, instruction unit management, and basic reporting stubs. The module is relatively thin on the web layer, with almost all logic delegated to the CurriculumBusiness class. Several files are unimplemented stubs (CurriculumMain, GhanChart, HarizontalAnalysis, VerticalAnalysis). The module appears to be a secondary feature with lower adoption relative to Evaluations or DutyHours, as evidenced by the prevalence of stub implementations."
-  keyWorkflows={["Curriculum CRUD: ManageCurriculum lists all curricula, Curriculum.aspx handles add/edit (stub), AssignCourses assigns courses to curricula","Teaching unit hierarchy: AddTeachUnit creates units, AddInstructionUnit creates instruction units and links to teaching units via ChooseTeachingUnits","Curriculum assignment to users managed via ManageCurriculumAssignments","Curriculum reporting: CurriculumReports selects report type, routing to VerticalAnalysis or HarizontalAnalysis (both stubs)"]}
 />

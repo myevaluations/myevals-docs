@@ -8,7 +8,14 @@ import FileReference from '@site/src/components/FileReference';
 
 # GoogleConsole File Reference
 
-> **3 files** | **334 lines** | Generated 2/20/2026
+**3 files** · **334 lines** · Generated 2/20/2026
+
+Google API integration library for connecting MyEvaluations with Google Calendar via OAuth2. Handles the OAuth2 authorization flow (authorization code exchange, token refresh) and creates authenticated Google Calendar service instances. Configuration is driven by AppSettings. This project appears to have limited active use based on the empty Class1 placeholder and the fact that Google Calendar integration is not a core feature.
+
+**Key Workflows**
+
+- OAuth2 Authorization: VerifyAuthentication -> check for auth code -> exchange code for token -> create CalendarService -> verify credentials
+- Token Refresh: RefreshToken -> POST to Google token endpoint with refresh_token grant type -> return new access token
 
 <FileReference
   files={[
@@ -69,6 +76,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 37
   }
 ]}
-  directoryOverview="Google API integration library for connecting MyEvaluations with Google Calendar via OAuth2. Handles the OAuth2 authorization flow (authorization code exchange, token refresh) and creates authenticated Google Calendar service instances. Configuration is driven by AppSettings. This project appears to have limited active use based on the empty Class1 placeholder and the fact that Google Calendar integration is not a core feature."
-  keyWorkflows={["OAuth2 Authorization: VerifyAuthentication -> check for auth code -> exchange code for token -> create CalendarService -> verify credentials","Token Refresh: RefreshToken -> POST to Google token endpoint with refresh_token grant type -> return new access token"]}
 />

@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # FileUploadService File Reference
 
-> **3 files** | **5,196 lines** | Generated 2/20/2026
+**3 files** · **5,196 lines** · Generated 2/20/2026
+
+ASMX SOAP web service for file upload and Excel import operations. Contains three tightly coupled classes: FileUploadComponentWebService (SOAP endpoints), FileUploadComponent (core upload logic with image processing), and ExcelProcess (Excel file reading and data import). Handles document uploads, photo uploads with resizing, video uploads, and bulk data import from Excel spreadsheets. Files are stored on a network file server via configurable UNC paths. Authentication uses a time-based SOAP header mechanism.
+
+**Key Workflows**
+
+- Document Upload: SOAP UploadFile -> FileUploadComponent.UploadFile -> FileUploading (write bytes to network path with extension validation)
+- Photo Upload: SOAP UploadPhoto -> FileUploadComponent.PhotoUploading -> FileUploading + ResizeImage + CreateThumbnail
+- Excel Import: SOAP GetExcelSheetNames -> ExcelProcess.GetWorksSheetsNames -> SOAP GetExcelFileHeaders -> ExcelProcess.GetExcelFileHeaders -> SOAP ImportUsersFromExcel -> ExcelProcess.ImportUsers
+- Video Upload: SOAP UploadVideo -> FileUploadComponent.UploadFile (video flag) -> FileUploading to video server path
 
 <FileReference
   files={[
@@ -88,6 +97,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 919
   }
 ]}
-  directoryOverview="ASMX SOAP web service for file upload and Excel import operations. Contains three tightly coupled classes: FileUploadComponentWebService (SOAP endpoints), FileUploadComponent (core upload logic with image processing), and ExcelProcess (Excel file reading and data import). Handles document uploads, photo uploads with resizing, video uploads, and bulk data import from Excel spreadsheets. Files are stored on a network file server via configurable UNC paths. Authentication uses a time-based SOAP header mechanism."
-  keyWorkflows={["Document Upload: SOAP UploadFile -> FileUploadComponent.UploadFile -> FileUploading (write bytes to network path with extension validation)","Photo Upload: SOAP UploadPhoto -> FileUploadComponent.PhotoUploading -> FileUploading + ResizeImage + CreateThumbnail","Excel Import: SOAP GetExcelSheetNames -> ExcelProcess.GetWorksSheetsNames -> SOAP GetExcelFileHeaders -> ExcelProcess.GetExcelFileHeaders -> SOAP ImportUsersFromExcel -> ExcelProcess.ImportUsers","Video Upload: SOAP UploadVideo -> FileUploadComponent.UploadFile (video flag) -> FileUploading to video server path"]}
 />

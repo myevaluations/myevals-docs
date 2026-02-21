@@ -8,7 +8,25 @@ import FileReference from '@site/src/components/FileReference';
 
 # Evaluations File Reference
 
-> **214 files** | **192,121 lines** | Generated 2/21/2026
+**214 files** · **192,121 lines** · Generated 2/21/2026
+
+The Web/Evaluations directory is the largest and most complex directory in the entire .NET WebForms monolith, containing the complete web layer for the MyEvaluations core business. It spans the full evaluation lifecycle: template management, scheduling assignments, evaluation completion (standard ACGME v4/v5, SAGE, voluntary), program director review, evaluatee acknowledgment/signing, milestone narrative outcome reporting, ACGME compliance reporting (milestones, EPAs, PIPs), and Annual Program Evaluation (APE) workflows. Files range from trivial stubs (SAGE placeholders, empty feature pages) to massive very-complex pages over 2,000 lines that render entire report workflows inline. The ACGME milestone framework is pervasive: outcome narratives, sub-competencies, EPAs, PIP (Performance Improvement Plans), CAW (Curricular Assessment Worksheets), and MEC national averages all appear throughout. Authentication uses BasePage RBAC with SubModule-level privilege checks and RolePrivilegesRequired enum. Query string parameters are encrypted via CommonFunctions.EncryptString/DecryptString. New Relic APM integration appears in PrimaryEvaluationDetails, SignEvaluation, and ReviewEvaluation for production error tracking.
+
+**Key Workflows**
+
+- Evaluation Completion: EvaluateEvaluation / ResidentEvaluateACGMESurvey / ResidentEvaluateACGME5Survey / SageEvaluateEvaluation
+- Evaluation Review: ReviewEvaluation (program director step)
+- Evaluation Signing: SignEvaluation (evaluatee acknowledgment step)
+- Evaluation Undo: UndoEvaluation (reset acknowledgment)
+- Voluntary Evaluations: VoluntaryMain -> AssignVoluntaryEvaluations
+- Milestone Outcome Reporting: OutcomesReportResults / OutcomesReportResultsBeta / OutcomeGraphicalReportResults / OutcomeSummaryReportResults
+- PIP Management: ReviewMilestonePIPAssignments / ViewPIPMilestoneData / PIPEvalReport / PIPReportResults
+- ACGME Surveys: ResidentEvaluateACGMESurvey (v4) / ResidentEvaluateACGME5Survey (v5) / ViewACGMESurvey / ViewACGMESurveyV4
+- Template Management: Question / QuestionGroup / QuestionGroupAddQuestion / TemplateCopy
+- Scheduling Navigation: ScheduleMenu / TargetScheduleMenu / SelectRotations
+- Milestone Configuration: SetupMilestonePeriods / SelectMilestoneSubCompetency / ViewMilestoneNarratives / ViewRotationRequirements
+- APE Workflows: ProgramArchivedMenu / PrintProgramEvaluationPerformance / PrintSelfStudySurveyResults / TakeActionDetails
+- Audit and Admin: WorksheetAuditTrail / UpdateNarrativeUserScores / RetrieveWrongSyncData
 
 <FileReference
   files={[
@@ -5866,6 +5884,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 61
   }
 ]}
-  directoryOverview="The Web/Evaluations directory is the largest and most complex directory in the entire .NET WebForms monolith, containing the complete web layer for the MyEvaluations core business. It spans the full evaluation lifecycle: template management, scheduling assignments, evaluation completion (standard ACGME v4/v5, SAGE, voluntary), program director review, evaluatee acknowledgment/signing, milestone narrative outcome reporting, ACGME compliance reporting (milestones, EPAs, PIPs), and Annual Program Evaluation (APE) workflows. Files range from trivial stubs (SAGE placeholders, empty feature pages) to massive very-complex pages over 2,000 lines that render entire report workflows inline. The ACGME milestone framework is pervasive: outcome narratives, sub-competencies, EPAs, PIP (Performance Improvement Plans), CAW (Curricular Assessment Worksheets), and MEC national averages all appear throughout. Authentication uses BasePage RBAC with SubModule-level privilege checks and RolePrivilegesRequired enum. Query string parameters are encrypted via CommonFunctions.EncryptString/DecryptString. New Relic APM integration appears in PrimaryEvaluationDetails, SignEvaluation, and ReviewEvaluation for production error tracking."
-  keyWorkflows={["Evaluation Completion: EvaluateEvaluation / ResidentEvaluateACGMESurvey / ResidentEvaluateACGME5Survey / SageEvaluateEvaluation","Evaluation Review: ReviewEvaluation (program director step)","Evaluation Signing: SignEvaluation (evaluatee acknowledgment step)","Evaluation Undo: UndoEvaluation (reset acknowledgment)","Voluntary Evaluations: VoluntaryMain -> AssignVoluntaryEvaluations","Milestone Outcome Reporting: OutcomesReportResults / OutcomesReportResultsBeta / OutcomeGraphicalReportResults / OutcomeSummaryReportResults","PIP Management: ReviewMilestonePIPAssignments / ViewPIPMilestoneData / PIPEvalReport / PIPReportResults","ACGME Surveys: ResidentEvaluateACGMESurvey (v4) / ResidentEvaluateACGME5Survey (v5) / ViewACGMESurvey / ViewACGMESurveyV4","Template Management: Question / QuestionGroup / QuestionGroupAddQuestion / TemplateCopy","Scheduling Navigation: ScheduleMenu / TargetScheduleMenu / SelectRotations","Milestone Configuration: SetupMilestonePeriods / SelectMilestoneSubCompetency / ViewMilestoneNarratives / ViewRotationRequirements","APE Workflows: ProgramArchivedMenu / PrintProgramEvaluationPerformance / PrintSelfStudySurveyResults / TakeActionDetails","Audit and Admin: WorksheetAuditTrail / UpdateNarrativeUserScores / RetrieveWrongSyncData"]}
 />

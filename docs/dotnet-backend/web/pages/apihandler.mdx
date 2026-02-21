@@ -8,7 +8,21 @@ import FileReference from '@site/src/components/FileReference';
 
 # Web File Reference
 
-> **1 files** | **2,973 lines** | Generated 2/20/2026
+**1 files** · **2,973 lines** · Generated 2/20/2026
+
+The ApiHandler is the central API gateway for the entire .NET web application's React dashboard, handling 18 active JSON endpoints across all functional modules including dashboard widgets, messaging, system implementation tracking, scholarly activities, quality improvement, quizzes, clinical hours, procedures, patient logs, performance metrics, and AI-powered curricular assessment insights. All requests are dispatched through a single ProcessRequest method using a cmd query parameter pattern.
+
+**Key Workflows**
+
+- API request routing via cmd query parameter dispatch in a single if/else-if chain
+- Dashboard data aggregation (messages, shortcuts, things-to-do, system implementation progress)
+- Portfolio and scholarly activity tracking with PGY-level group comparisons
+- Clinical hours monitoring with violation rate tracking over time
+- Quiz performance analytics with score histograms and trending
+- Procedure and patient log acceptance rate tracking with per-objective breakdowns
+- Performance evaluation turnaround metrics (days to complete, pending, overdue)
+- AI-generated curricular assessment worksheet (CAW) insights parsing and storage
+- Cross-cutting authorization pattern: session validation > entity existence check > role-based authorization > data retrieval
 
 <FileReference
   files={[
@@ -295,6 +309,4 @@ import FileReference from '@site/src/components/FileReference';
     ]
   }
 ]}
-  directoryOverview="The ApiHandler is the central API gateway for the entire .NET web application's React dashboard, handling 18 active JSON endpoints across all functional modules including dashboard widgets, messaging, system implementation tracking, scholarly activities, quality improvement, quizzes, clinical hours, procedures, patient logs, performance metrics, and AI-powered curricular assessment insights. All requests are dispatched through a single ProcessRequest method using a cmd query parameter pattern."
-  keyWorkflows={["API request routing via cmd query parameter dispatch in a single if/else-if chain","Dashboard data aggregation (messages, shortcuts, things-to-do, system implementation progress)","Portfolio and scholarly activity tracking with PGY-level group comparisons","Clinical hours monitoring with violation rate tracking over time","Quiz performance analytics with score histograms and trending","Procedure and patient log acceptance rate tracking with per-objective breakdowns","Performance evaluation turnaround metrics (days to complete, pending, overdue)","AI-generated curricular assessment worksheet (CAW) insights parsing and storage","Cross-cutting authorization pattern: session validation > entity existence check > role-based authorization > data retrieval"]}
 />

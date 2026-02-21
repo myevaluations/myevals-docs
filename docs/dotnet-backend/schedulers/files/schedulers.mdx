@@ -8,7 +8,20 @@ import FileReference from '@site/src/components/FileReference';
 
 # Schedulers File Reference
 
-> **160 files** | **38,478 lines** | Generated 2/21/2026
+**160 files** · **38,478 lines** · Generated 2/21/2026
+
+Batch 3 of the scheduler projects covers 22 scheduler applications spanning patient data encryption (PatientLog, PatientName, SsnEncrypt), email dispatch (SendApplicationEmails - the central 2800-line email engine), AI/ML-powered insights (SendSystemComments - the 2000-line MyInsights AI engine), external integrations (SalesForce, Tangier, HelloSign/RightSignature), compliance reminders (state license, PIP re-evaluation, quiz assignments), program-specific notifications (FNP immersion, practicum hours, student review logs), user lifecycle management (archiving, DeVry archiving), milestone score processing, conference evaluation reminders (attendee and presenter), and manual assignment reminders. The most critical schedulers in this batch are SendApplicationEmails (central email dispatch), SendSystemComments (AI insights engine), and the credential/compliance reminder schedulers.
+
+**Key Workflows**
+
+- Central Email Dispatch - SendApplicationEmails reads from a queued email table and dispatches 30+ email types using threaded processing, covering virtually every notification in the platform.
+- AI/MyInsights Generation - SendSystemComments generates AI-powered narrative analysis, NPV milestone score predictions, and competency comments by sending evaluation data to an external AI API service. Handles APE, rotation, survey, and resident/faculty insights.
+- Patient Data Encryption - PatientLog, PatientName, and SsnEncrypt schedulers ensure sensitive patient and user data (SSN, patient names, log entries) are encrypted at rest using AES encryption with file-based key management.
+- Compliance Credential Reminders - State License #1 and #2 reminders, PIP re-evaluation notices, and quiz assignment reminders ensure healthcare providers maintain current credentials and complete required assessments.
+- External System Integration - TangierScheduleUpdater syncs shift schedules from Tangier, SalesForceIntegration exports data to CRM, and SignatureDocumentsScheduler retrieves signed documents from RightSignature/HelloSign.
+- Conference Evaluation Reminders - Separate schedulers for attendee and presenter conference evaluation reminders, with status tracking and department-specific email templates.
+- User Lifecycle Management - UserArchivingScheduler automates account archiving based on rules, while SendDevryArchivedNotices handles DeVry-specific user archiving. Both send notification emails.
+- Nursing Program Notifications - FNP-specific schedulers for immersion notifications, practicum hours tracking, student log review reminders, and rotation requirement tracking.
 
 <FileReference
   files={[
@@ -3813,6 +3826,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 761
   }
 ]}
-  directoryOverview="Batch 3 of the scheduler projects covers 22 scheduler applications spanning patient data encryption (PatientLog, PatientName, SsnEncrypt), email dispatch (SendApplicationEmails - the central 2800-line email engine), AI/ML-powered insights (SendSystemComments - the 2000-line MyInsights AI engine), external integrations (SalesForce, Tangier, HelloSign/RightSignature), compliance reminders (state license, PIP re-evaluation, quiz assignments), program-specific notifications (FNP immersion, practicum hours, student review logs), user lifecycle management (archiving, DeVry archiving), milestone score processing, conference evaluation reminders (attendee and presenter), and manual assignment reminders. The most critical schedulers in this batch are SendApplicationEmails (central email dispatch), SendSystemComments (AI insights engine), and the credential/compliance reminder schedulers."
-  keyWorkflows={["Central Email Dispatch - SendApplicationEmails reads from a queued email table and dispatches 30+ email types using threaded processing, covering virtually every notification in the platform.","AI/MyInsights Generation - SendSystemComments generates AI-powered narrative analysis, NPV milestone score predictions, and competency comments by sending evaluation data to an external AI API service. Handles APE, rotation, survey, and resident/faculty insights.","Patient Data Encryption - PatientLog, PatientName, and SsnEncrypt schedulers ensure sensitive patient and user data (SSN, patient names, log entries) are encrypted at rest using AES encryption with file-based key management.","Compliance Credential Reminders - State License #1 and #2 reminders, PIP re-evaluation notices, and quiz assignment reminders ensure healthcare providers maintain current credentials and complete required assessments.","External System Integration - TangierScheduleUpdater syncs shift schedules from Tangier, SalesForceIntegration exports data to CRM, and SignatureDocumentsScheduler retrieves signed documents from RightSignature/HelloSign.","Conference Evaluation Reminders - Separate schedulers for attendee and presenter conference evaluation reminders, with status tracking and department-specific email templates.","User Lifecycle Management - UserArchivingScheduler automates account archiving based on rules, while SendDevryArchivedNotices handles DeVry-specific user archiving. Both send notification emails.","Nursing Program Notifications - FNP-specific schedulers for immersion notifications, practicum hours tracking, student log review reminders, and rotation requirement tracking."]}
 />

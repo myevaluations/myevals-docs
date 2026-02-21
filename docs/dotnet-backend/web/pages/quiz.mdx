@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # Quiz File Reference
 
-> **32 files** | **16,961 lines** | Generated 2/20/2026
+**32 files** · **16,961 lines** · Generated 2/20/2026
+
+The Quiz module provides a comprehensive assessment and testing system for medical education programs. It supports the full lifecycle of quiz management including quiz design, question bank management (organized by specialty/topic), question import, assignment creation with multi-step wizards, quiz taking with timed responses and browser logging, results review, and template sharing across departments. The module integrates with learning assignments and on-call scheduling, and includes three report types (Detailed, Ledger, Summary) plus a comprehensive analysis report with FusionCharts visualization. The architecture uses extensive business layer delegation through QuizBusiness and ManageQuizAssignmentsBusiness classes.
+
+**Key Workflows**
+
+- Quiz design with multi-step wizard for question creation and quiz configuration
+- Quiz assignment with user/group selection, scheduling, and period configuration
+- Quiz taking with timed responses, browser logging, and access audit trail
+- Quiz results review with pass/fail scoring and question-level analysis
+- Question bank management organized by specialty and topic hierarchy
+- Quiz question import from external files
+- Quiz template sharing across departments
+- Voluntary quiz self-enrollment for self-directed learning
+- Quiz reminder scheduling via automated endpoints
+- Three report types: Detailed Assignments, Ledger, Summary Performance plus Analysis Report with charts
 
 <FileReference
   files={[
@@ -746,6 +761,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 69
   }
 ]}
-  directoryOverview="The Quiz module provides a comprehensive assessment and testing system for medical education programs. It supports the full lifecycle of quiz management including quiz design, question bank management (organized by specialty/topic), question import, assignment creation with multi-step wizards, quiz taking with timed responses and browser logging, results review, and template sharing across departments. The module integrates with learning assignments and on-call scheduling, and includes three report types (Detailed, Ledger, Summary) plus a comprehensive analysis report with FusionCharts visualization. The architecture uses extensive business layer delegation through QuizBusiness and ManageQuizAssignmentsBusiness classes."
-  keyWorkflows={["Quiz design with multi-step wizard for question creation and quiz configuration","Quiz assignment with user/group selection, scheduling, and period configuration","Quiz taking with timed responses, browser logging, and access audit trail","Quiz results review with pass/fail scoring and question-level analysis","Question bank management organized by specialty and topic hierarchy","Quiz question import from external files","Quiz template sharing across departments","Voluntary quiz self-enrollment for self-directed learning","Quiz reminder scheduling via automated endpoints","Three report types: Detailed Assignments, Ledger, Summary Performance plus Analysis Report with charts"]}
 />

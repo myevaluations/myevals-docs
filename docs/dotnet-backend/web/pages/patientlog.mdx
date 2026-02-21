@@ -8,7 +8,20 @@ import FileReference from '@site/src/components/FileReference';
 
 # PatientLog File Reference
 
-> **34 files** | **14,128 lines** | Generated 2/20/2026
+**34 files** · **14,128 lines** · Generated 2/20/2026
+
+The PatientLog module manages clinical patient encounter logging for medical education programs. It provides comprehensive CRUD operations for patient log entries, supporting features including dynamic custom fields, encounter types, location tracking, DX (diagnosis) classifications, supervisor assignment, case review workflows, and data import/export. The module includes 6 reports with filter and result page pairs covering department-level, detailed, summary, category, and DX classification reporting. The architecture follows the standard WebForms pattern with BasePage inheritance, role-based access control, and business layer delegation.
+
+**Key Workflows**
+
+- Patient log submission with dynamic custom/system fields and supervisor assignment
+- Multi-step patient log import from XML/Excel with field mapping and validation
+- Patient log export to Excel/other formats with date range filtering
+- Case review workflow (submit for review, review submitted cases)
+- Supervisor selection configuration with multiple criteria modes (managed list, default preceptor)
+- DX classification, encounter type, and location management with PGY requirements
+- Custom field definition and field option configuration
+- Six report types: Department, DX Department, Detailed, Summary, By Category, By DX Classification
 
 <FileReference
   files={[
@@ -823,6 +836,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 1802
   }
 ]}
-  directoryOverview="The PatientLog module manages clinical patient encounter logging for medical education programs. It provides comprehensive CRUD operations for patient log entries, supporting features including dynamic custom fields, encounter types, location tracking, DX (diagnosis) classifications, supervisor assignment, case review workflows, and data import/export. The module includes 6 reports with filter and result page pairs covering department-level, detailed, summary, category, and DX classification reporting. The architecture follows the standard WebForms pattern with BasePage inheritance, role-based access control, and business layer delegation."
-  keyWorkflows={["Patient log submission with dynamic custom/system fields and supervisor assignment","Multi-step patient log import from XML/Excel with field mapping and validation","Patient log export to Excel/other formats with date range filtering","Case review workflow (submit for review, review submitted cases)","Supervisor selection configuration with multiple criteria modes (managed list, default preceptor)","DX classification, encounter type, and location management with PGY requirements","Custom field definition and field option configuration","Six report types: Department, DX Department, Detailed, Summary, By Category, By DX Classification"]}
 />

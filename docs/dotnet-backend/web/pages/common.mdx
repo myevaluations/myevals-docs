@@ -8,7 +8,18 @@ import FileReference from '@site/src/components/FileReference';
 
 # Common File Reference
 
-> **9 files** | **10,537 lines** | Generated 2/20/2026
+**9 files** · **10,537 lines** · Generated 2/20/2026
+
+Core common module containing the platform's central dashboard (Main.aspx at 3765 lines), its updated version (MainNew.aspx at 3045 lines), and shared infrastructure pages. The dashboard is the most complex page in the application, aggregating counts from all modules (evaluations, duty hours, quizzes, learning assignments, patient logs, conferences, messages) with role-based menu configuration. Also includes critical SSO/SAML authentication endpoints, Epic EHR FHIR integration, and iCal schedule exports.
+
+**Key Workflows**
+
+- Central dashboard rendering with role-based navigation and pending action counts across all modules
+- Department and academic year filtering for dashboard statistics
+- Epic EHR integration via FHIR DSTU2/R4 OAuth2 authentication flow
+- SAML SSO and generic single sign-on authentication flows
+- iCalendar schedule export for external calendar applications
+- Internal messaging system with message detail viewing
 
 <FileReference
   files={[
@@ -247,6 +258,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 75
   }
 ]}
-  directoryOverview="Core common module containing the platform's central dashboard (Main.aspx at 3765 lines), its updated version (MainNew.aspx at 3045 lines), and shared infrastructure pages. The dashboard is the most complex page in the application, aggregating counts from all modules (evaluations, duty hours, quizzes, learning assignments, patient logs, conferences, messages) with role-based menu configuration. Also includes critical SSO/SAML authentication endpoints, Epic EHR FHIR integration, and iCal schedule exports."
-  keyWorkflows={["Central dashboard rendering with role-based navigation and pending action counts across all modules","Department and academic year filtering for dashboard statistics","Epic EHR integration via FHIR DSTU2/R4 OAuth2 authentication flow","SAML SSO and generic single sign-on authentication flows","iCalendar schedule export for external calendar applications","Internal messaging system with message detail viewing"]}
 />

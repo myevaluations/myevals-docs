@@ -8,7 +8,16 @@ import FileReference from '@site/src/components/FileReference';
 
 # SAMLServiceProvider File Reference
 
-> **18 files** | **8,340 lines** | Generated 2/20/2026
+**18 files** · **8,340 lines** · Generated 2/20/2026
+
+SAML 2.0 Service Provider and Identity Provider library supporting SSO integration for MyEvaluations. Acts as both an IdP (generating signed/encrypted SAML responses for third-party service providers) and an SP (consuming SAML responses from external identity providers like Salesforce). Also includes JWT token generation for the React frontend authentication. Key integration point for institutional SSO where hospitals and medical schools authenticate users through their own identity providers.
+
+**Key Workflows**
+
+- IdP Flow: SamlIntegrationSteps.BuildEncodedSamlResponse -> SamlAssertionAlgorithms.Create -> Sign -> Encrypt -> SamlResponseAlgorithms.Create -> Sign -> Base64 encode
+- SP Flow: ConsumeResponse.LoadXmlFromBase64 -> isAuthenticated (signature verification) -> extract user attributes (username, email, name)
+- JWT Flow: JwtToken.GenerateToken -> GetIdentity (build claims) -> GenerateTokenFromIdentity (sign with HMAC-SHA256)
+- External Supervisor JWT: JwtToken.GenerateExternalToken -> GetExtrenalSupervisorIdentity -> GenerateTokenFromIdentity (with separate key)
 
 <FileReference
   files={[
@@ -385,6 +394,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 7055
   }
 ]}
-  directoryOverview="SAML 2.0 Service Provider and Identity Provider library supporting SSO integration for MyEvaluations. Acts as both an IdP (generating signed/encrypted SAML responses for third-party service providers) and an SP (consuming SAML responses from external identity providers like Salesforce). Also includes JWT token generation for the React frontend authentication. Key integration point for institutional SSO where hospitals and medical schools authenticate users through their own identity providers."
-  keyWorkflows={["IdP Flow: SamlIntegrationSteps.BuildEncodedSamlResponse -> SamlAssertionAlgorithms.Create -> Sign -> Encrypt -> SamlResponseAlgorithms.Create -> Sign -> Base64 encode","SP Flow: ConsumeResponse.LoadXmlFromBase64 -> isAuthenticated (signature verification) -> extract user attributes (username, email, name)","JWT Flow: JwtToken.GenerateToken -> GetIdentity (build claims) -> GenerateTokenFromIdentity (sign with HMAC-SHA256)","External Supervisor JWT: JwtToken.GenerateExternalToken -> GetExtrenalSupervisorIdentity -> GenerateTokenFromIdentity (with separate key)"]}
 />

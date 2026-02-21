@@ -62,9 +62,67 @@ function slugify(name: string): string {
     .toLowerCase();
 }
 
+/**
+ * Format a directoryOverview string as clean MDX markdown.
+ *
+ * Handles two common patterns from enrichment agents:
+ *   1. "Intro sentence. This covers: (1) Foo bar; (2) Baz qux; and (3) Last."
+ *      → Intro paragraph + ordered list
+ *   2. Plain prose (possibly multi-sentence) → one or more paragraphs
+ *
+ * Also strips batch-run artifacts like "(batch 2, indices 100-184)".
+ */
+function formatOverviewAsMdx(raw: string): string {
+  if (!raw || !raw.trim()) return '';
+
+  // Strip batch/index artifacts injected by multi-run enrichment
+  let text = raw
+    .replace(/\s*\(batch\s+\d+,\s*indices?\s+[\d-]+\)/gi, '')
+    .replace(/\s*\(indices?\s+[\d-]+\)/gi, '')
+    .trim();
+
+  // Detect numbered-list pattern: text ending with colon, then "(1) ... ; (2) ... ; (N) ..."
+  const colonIdx = text.search(/:\s*\(1\)/);
+  if (colonIdx !== -1) {
+    const intro = text.slice(0, colonIdx + 1).trim(); // up to and including the colon
+    const listPart = text.slice(colonIdx + 1).trim(); // "(1) Foo; (2) Bar; ..."
+
+    // Split on "; (N)" boundaries (including "; and (N)")
+    const rawItems = listPart.split(/;\s*(?:and\s+)?\(\d+\)/);
+
+    // First item still has its own "(1)" prefix; subsequent items don't (split consumed them)
+    const items = rawItems.map((item, idx) => {
+      // Remove leading "(N) " from item 0
+      const cleaned = item.replace(/^\s*\(\d+\)\s*/, '').replace(/[;.]+$/, '').trim();
+      return cleaned;
+    }).filter(Boolean);
+
+    const listLines = items.map((item) => `1. ${item}`).join('\n');
+    return `${intro}\n\n${listLines}\n`;
+  }
+
+  // Plain prose: split on double-newlines for paragraph breaks; otherwise single paragraph
+  const paragraphs = text.split(/\n{2,}/);
+  return paragraphs.map((p) => p.trim()).filter(Boolean).join('\n\n') + '\n';
+}
+
+/** Format keyWorkflows as an MDX section (always visible, not collapsed). */
+function formatWorkflowsAsMdx(workflows: (string | { name: string; description?: string; [key: string]: unknown })[]): string {
+  if (!workflows || workflows.length === 0) return '';
+  const lines = workflows.map((w) => {
+    const label = typeof w === 'string' ? w : (w.description ? `**${w.name}** — ${w.description}` : w.name);
+    return `- ${label}`;
+  });
+  return `**Key Workflows**\n\n${lines.join('\n')}\n`;
+}
+
 function generateDirectoryMdx(data: DirectoryEnrichment, docId: string): string {
   const title = data.directory.replace(/^Web\//, '').replace(/\//g, ' > ');
   const label = title || data.directory;
+  const totalLines = data.files.reduce((s, f) => s + f.lineCount, 0);
+
+  const overviewMdx = formatOverviewAsMdx(data.directoryOverview || '');
+  const workflowsMdx = formatWorkflowsAsMdx(data.keyWorkflows || []);
 
   return `---
 title: "${label} Files"
@@ -76,12 +134,12 @@ import FileReference from '@site/src/components/FileReference';
 
 # ${label} File Reference
 
-> **${data.fileCount} files** | **${data.files.reduce((s, f) => s + f.lineCount, 0).toLocaleString()} lines** | Generated ${new Date(data.generatedAt).toLocaleDateString()}
+**${data.fileCount} files** · **${totalLines.toLocaleString()} lines** · Generated ${new Date(data.generatedAt).toLocaleDateString()}
 
+${overviewMdx}
+${workflowsMdx}
 <FileReference
   files={${JSON.stringify(data.files, null, 2)}}
-  directoryOverview="${(data.directoryOverview || '').replace(/"/g, '\\"')}"
-  keyWorkflows={${JSON.stringify(data.keyWorkflows || [])}}
 />
 `;
 }

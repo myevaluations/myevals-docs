@@ -8,7 +8,42 @@ import FileReference from '@site/src/components/FileReference';
 
 # Security File Reference
 
-> **185 files** | **74,155 lines** | Generated 2/21/2026
+**185 files** · **74,155 lines** · Generated 2/21/2026
+
+The Security directory contains 85 code-behind files spanning the full breadth of the MyEvaluations security and user management subsystem. This batch covers:
+
+1. Administrative management pages for departments, institutions, roles, and organizational hierarchy (ManageDepartments, ManageInstitutions, ManageRoles, Role)
+1. User lifecycle pages from creation through deletion (SelectUserType, User.aspx at 14,531 lines, UserDelete, UserMove, UserMerger)
+1. Onboarding Credentialing (OBC) management including requirement groups, assignments, document types, custom fields, stipend levels, and email reminders
+1. Preceptor management for teaching faculty relationships (Preceptor, PreceptorEdit at 1,066 lines, PreceptorDelete, ManagePreceptors)
+1. External system integrations including ERAS import (TestERASConnection at 1,577 lines, UserImporting), AMION OnCall sync (UserExportingtoOnCall, SynchronizeUser), and HelloSign e-signatures (ManageRightSignatureDocuments/Templates, RightSignatureDocumentDetails)
+1. Authentication infrastructure including SSO SAML configuration, password policy enforcement with MFA, and mobile app deep linking
+1. Reporting pages for OBC completion and system implementation tracking
+1. User promotion workflows for annual PGY advancement
+1. Navigation menu pages that dynamically control access based on RBAC permissions
+
+**Key Workflows**
+
+- User login/logout
+- Role and permission management
+- Institution setup
+- User profile management
+- SSO/SAML integration
+- Password management
+- Account creation and deactivation
+- Access history and audit trail tracking
+- Adobe Sign OAuth and template management
+- HelloSign/RightSignature e-signature integration
+- Onboarding/credentialing requirement group design (3-step wizard)
+- Onboarding requirement group assignment with e-signature creation
+- Custom form and custom field design for OBC
+- Department configuration (7806-line master form)
+- User archiving and unarchiving lifecycle
+- Evaluation assignment configuration
+- Diagnosis and medical code management
+- User demographics (certificates, stipends, contracts, training history, dependents, moonlighting)
+- Institution and department linking management
+- News, events, and testimonials content management
 
 <FileReference
   files={[
@@ -3028,7 +3063,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Part of OBC workflow. Uses NewRelic for monitoring which should be maintained in migration.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 468
   },
   {
@@ -3055,7 +3090,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Complex OBC batch operations page. Node.js equivalent would need bulk assignment API endpoints.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 1385
   },
   {
@@ -3081,7 +3116,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "OBC requirement group template management. Part of onboarding workflow being migrated.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 105
   },
   {
@@ -3105,7 +3140,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "HelloSign integration document management. Node.js may use different e-signature APIs.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 406
   },
   {
@@ -3127,7 +3162,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "medium",
     "migrationNote": "HelloSign template management. E-signature integration may change during migration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 306
   },
   {
@@ -3152,7 +3187,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Role management is critical for RBAC. Node.js backend must replicate equivalent role definitions.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 146
   },
   {
@@ -3177,7 +3212,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Financial configuration page; niche feature for programs that track stipend levels.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 655
   },
   {
@@ -3202,7 +3237,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Content management page; low priority for migration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 242
   },
   {
@@ -3221,7 +3256,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Empty stub; no logic to migrate.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 14
   },
   {
@@ -3246,7 +3281,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Demographics data is required for ACGME compliance. Node.js backend needs equivalent demographics API.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 635
   },
   {
@@ -3267,7 +3302,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Admin utility page; low migration priority.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 31
   },
   {
@@ -3293,7 +3328,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Key user management page. React frontend likely has equivalent user search/filter component.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 859
   },
   {
@@ -3310,7 +3345,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Empty stub; no logic to migrate.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 19
   },
   {
@@ -3338,7 +3373,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Core user management page. React frontend should have equivalent ManageUsers component.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 2012
   },
   {
@@ -3359,7 +3394,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Simple lookup page; can be replaced by API-driven component.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 39
   },
   {
@@ -3385,7 +3420,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Navigation menu page; React frontend uses different navigation patterns.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 748
   },
   {
@@ -3407,7 +3442,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Incomplete implementation; may need to be built properly in Node.js if institution merging is needed.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 40
   },
   {
@@ -3429,7 +3464,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Niche OBC batch operation; low migration priority.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 77
   },
   {
@@ -3454,7 +3489,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Message/notification system needs equivalent in Node.js. Direct stored procedure call should be abstracted.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 218
   },
   {
@@ -3481,7 +3516,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "AJAX operations should become proper REST API endpoints in Node.js.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 176
   },
   {
@@ -3500,7 +3535,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Navigation menu; replaced by React routing in modern frontend.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 36
   },
   {
@@ -3519,7 +3554,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Navigation menu; replaced by React routing.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 42
   },
   {
@@ -3543,7 +3578,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Email reminder configuration. Node.js BullMQ workers handle similar reminder scheduling.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 186
   },
   {
@@ -3566,7 +3601,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Mobile app integration. Auto-login token generation should be in Node.js auth service.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 43
   },
   {
@@ -3593,7 +3628,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Password policy enforcement is security-critical. Node.js auth module must replicate all policy checks.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 702
   },
   {
@@ -3612,7 +3647,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Audit display page; low complexity migration.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 19
   },
   {
@@ -3633,7 +3668,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Merge queue management utility; part of user merge workflow.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 49
   },
   {
@@ -3658,7 +3693,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Preceptor management is fundamental to evaluation workflows. Node.js needs equivalent preceptor CRUD.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 328
   },
   {
@@ -3680,7 +3715,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Preceptor deletion; part of preceptor management workflow.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 53
   },
   {
@@ -3706,7 +3741,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Complex preceptor editing; needs equivalent Node.js API with group management.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 1066
   },
   {
@@ -3727,7 +3762,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Audit log display; can be rebuilt as React component.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 46
   },
   {
@@ -3749,7 +3784,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Print view; can be replaced by browser print functionality in React.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 115
   },
   {
@@ -3775,7 +3810,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Annual promotion process is critical for program management. Node.js needs equivalent batch promotion API.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 409
   },
   {
@@ -3796,7 +3831,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Print report; can use browser print in React.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 69
   },
   {
@@ -3822,7 +3857,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Part of promotion workflow; can be React multi-select component.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 152
   },
   {
@@ -3847,7 +3882,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "OBC reporting filter; part of reporting module migration.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 352
   },
   {
@@ -3872,7 +3907,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "OBC reporting results; complex report rendering needs Node.js report generation API.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 658
   },
   {
@@ -3897,7 +3932,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Internal implementation tracking report; low external usage.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 455
   },
   {
@@ -3921,7 +3956,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Internal report; low priority for migration.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 549
   },
   {
@@ -3944,7 +3979,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "OBC assignment detail view; part of onboarding workflow.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 238
   },
   {
@@ -3967,7 +4002,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "HelloSign integration detail view. E-signature API integration may change during migration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 356
   },
   {
@@ -3994,7 +4029,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "RBAC privilege configuration is security-critical. Node.js must replicate the module/submodule privilege model.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 821
   },
   {
@@ -4014,7 +4049,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "medium",
     "migrationNote": "Windows Service monitoring. Node.js uses BullMQ workers instead; equivalent monitoring via Bull Board or similar.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 79
   },
   {
@@ -4038,7 +4073,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Navigation menu page; React frontend uses different navigation architecture.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 423
   },
   {
@@ -4061,7 +4096,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Niche rotation management feature; low usage.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 76
   },
   {
@@ -4083,7 +4118,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "User creation entry point; React user creation form likely handles type selection inline.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 59
   },
   {
@@ -4102,7 +4137,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Simple audit log display.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 27
   },
   {
@@ -4128,7 +4163,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "Email reminder sending. Node.js BullMQ handles similar notification workflows.",
-    "complexity": "high",
+    "complexity": "complex",
     "lineCount": 367
   },
   {
@@ -4151,7 +4186,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "System banner management; can be simple API endpoint in Node.js.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 92
   },
   {
@@ -4174,7 +4209,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "SSO monitoring is important for enterprise deployments. Node.js auth module needs equivalent SSO logging.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 154
   },
   {
@@ -4197,7 +4232,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "SSO configuration is critical for enterprise customers. Node.js auth must support equivalent SAML configuration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 91
   },
   {
@@ -4216,7 +4251,7 @@ import FileReference from '@site/src/components/FileReference';
     "businessManagersUsed": [],
     "migrationRelevance": "low",
     "migrationNote": "Simple audit log display page.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 27
   },
   {
@@ -4241,7 +4276,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "AMION integration sync. Node.js may handle this via scheduled job or API integration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 182
   },
   {
@@ -4262,7 +4297,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Internal admin menu; low external impact.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 49
   },
   {
@@ -4288,7 +4323,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "ERAS integration is critical for residency programs. Node.js needs equivalent ERAS API client.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 1577
   },
   {
@@ -4312,7 +4347,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Test/staging page; not needed in migration.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 189
   },
   {
@@ -4363,9 +4398,9 @@ import FileReference from '@site/src/components/FileReference';
       "PortfolioManager",
       "AOCAndMOSManager"
     ],
-    "migrationRelevance": "critical",
+    "migrationRelevance": "high",
     "migrationNote": "The most critical page to migrate. At 14,531 lines, this monolithic user profile page covers every aspect of user management. Node.js/React migration should decompose into multiple focused components and API endpoints. Many sections (~21) have already been migrated to React via Plasmic partials.",
-    "complexity": "extreme",
+    "complexity": "very-complex",
     "lineCount": 14531
   },
   {
@@ -4387,7 +4422,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "User deletion logic with data association checks should be in Node.js user management API.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 71
   },
   {
@@ -4413,7 +4448,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "AMION integration. Node.js may handle OnCall sync via scheduled BullMQ worker.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 102
   },
   {
@@ -4439,7 +4474,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "ERAS import is critical for annual residency match. Node.js needs equivalent ERAS integration.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 632
   },
   {
@@ -4461,7 +4496,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "low",
     "migrationNote": "Simple display page; user department info available via Node.js user API.",
-    "complexity": "low",
+    "complexity": "simple",
     "lineCount": 46
   },
   {
@@ -4493,7 +4528,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "User merge audit trail. Node.js user merge API should log equivalent history.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 278
   },
   {
@@ -4526,7 +4561,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "User merge is a critical operation. Node.js needs equivalent merge API with queue processing and identity validation.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 498
   },
   {
@@ -4554,7 +4589,7 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "medium",
     "migrationNote": "User department transfer. Node.js needs equivalent user move API with permission checks.",
-    "complexity": "medium",
+    "complexity": "moderate",
     "lineCount": 161
   },
   {
@@ -4581,10 +4616,8 @@ import FileReference from '@site/src/components/FileReference';
     ],
     "migrationRelevance": "high",
     "migrationNote": "Self-registration is user-facing and critical for MEDCOM programs. React frontend likely has equivalent registration flow.",
-    "complexity": "very high",
+    "complexity": "very-complex",
     "lineCount": 484
   }
 ]}
-  directoryOverview="The Security directory (batch 2, indices 100-184) contains 85 code-behind files spanning the full breadth of the MyEvaluations security and user management subsystem. This batch covers: (1) Administrative management pages for departments, institutions, roles, and organizational hierarchy (ManageDepartments, ManageInstitutions, ManageRoles, Role); (2) User lifecycle pages from creation through deletion (SelectUserType, User.aspx at 14,531 lines, UserDelete, UserMove, UserMerger); (3) Onboarding Credentialing (OBC) management including requirement groups, assignments, document types, custom fields, stipend levels, and email reminders; (4) Preceptor management for teaching faculty relationships (Preceptor, PreceptorEdit at 1,066 lines, PreceptorDelete, ManagePreceptors); (5) External system integrations including ERAS import (TestERASConnection at 1,577 lines, UserImporting), AMION OnCall sync (UserExportingtoOnCall, SynchronizeUser), and HelloSign e-signatures (ManageRightSignatureDocuments/Templates, RightSignatureDocumentDetails); (6) Authentication infrastructure including SSO SAML configuration, password policy enforcement with MFA, and mobile app deep linking; (7) Reporting pages for OBC completion and system implementation tracking; (8) User promotion workflows for annual PGY advancement; and (9) Navigation menu pages that dynamically control access based on RBAC permissions."
-  keyWorkflows={["User login/logout","Role and permission management","Institution setup","User profile management","SSO/SAML integration","Password management","Account creation and deactivation","Access history and audit trail tracking","Adobe Sign OAuth and template management","HelloSign/RightSignature e-signature integration","Onboarding/credentialing requirement group design (3-step wizard)","Onboarding requirement group assignment with e-signature creation","Custom form and custom field design for OBC","Department configuration (7806-line master form)","User archiving and unarchiving lifecycle","Evaluation assignment configuration","Diagnosis and medical code management","User demographics (certificates, stipends, contracts, training history, dependents, moonlighting)","Institution and department linking management","News, events, and testimonials content management"]}
 />

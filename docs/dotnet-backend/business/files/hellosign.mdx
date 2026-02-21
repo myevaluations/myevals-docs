@@ -8,7 +8,19 @@ import FileReference from '@site/src/components/FileReference';
 
 # Business.HelloSign File Reference
 
-> **30 files** | **2,513 lines** | Generated 2/21/2026
+**30 files** · **2,513 lines** · Generated 2/21/2026
+
+Business.HelloSign is a comprehensive HelloSign (now Dropbox Sign) e-signature SDK integration library. It provides a complete C# client for the HelloSign REST API, including data models for accounts, templates, signature requests (both file-based and template-based), embedded signing, teams, events/webhooks, and OAuth. The main Client class (HelloSign.cs at 1,458 lines) implements the full API surface using RestSharp for HTTP communication. This module enables MyEvaluations to send documents for electronic signature, manage templates, handle webhook callbacks for signature status updates, and support embedded signing within the application UI.
+
+**Key Workflows**
+
+- Send file-based signature requests with uploaded documents
+- Send template-based signature requests with role-based signers
+- Embedded signing within MyEvaluations UI via JavaScript SDK
+- Template creation and management via embedded editor
+- Webhook event processing for signature status tracking
+- Document download after signing completion
+- Team and account management
 
 <FileReference
   files={[
@@ -552,6 +564,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 13
   }
 ]}
-  directoryOverview="Business.HelloSign is a comprehensive HelloSign (now Dropbox Sign) e-signature SDK integration library. It provides a complete C# client for the HelloSign REST API, including data models for accounts, templates, signature requests (both file-based and template-based), embedded signing, teams, events/webhooks, and OAuth. The main Client class (HelloSign.cs at 1,458 lines) implements the full API surface using RestSharp for HTTP communication. This module enables MyEvaluations to send documents for electronic signature, manage templates, handle webhook callbacks for signature status updates, and support embedded signing within the application UI."
-  keyWorkflows={["Send file-based signature requests with uploaded documents","Send template-based signature requests with role-based signers","Embedded signing within MyEvaluations UI via JavaScript SDK","Template creation and management via embedded editor","Webhook event processing for signature status tracking","Document download after signing completion","Team and account management"]}
 />

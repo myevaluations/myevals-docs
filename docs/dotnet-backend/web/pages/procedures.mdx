@@ -8,7 +8,22 @@ import FileReference from '@site/src/components/FileReference';
 
 # Procedures File Reference
 
-> **78 files** | **26,923 lines** | Generated 2/20/2026
+**78 files** · **26,923 lines** · Generated 2/20/2026
+
+The Web/Procedures directory contains 78 code-behind files implementing the clinical procedures tracking module. This module allows trainees to log medical procedures they have performed, observed, or assisted with. It includes procedure submission forms, supervisor verification workflows, procedure certification tracking, error reporting, and comprehensive reporting. The module also handles patient log management, custom field configuration, and data import/export (including integration with WebADS and NI/New Innovations). ProceduresMain.aspx.cs serves as the central hub with extensive role-based menu control. The directory includes a Reports subdirectory with procedure-specific reports and an NiImport subdirectory for competitor data migration.
+
+**Key Workflows**
+
+- Procedure submission -> Supervisor review -> Authorization/certification workflow
+- Patient log submission with custom fields and diagnosis search
+- Procedure certification tracking for graduation requirements
+- Error reporting and tracking for patient safety/quality improvement
+- Bulk data import from WebADS case logs and NI (New Innovations)
+- Procedure export for external analysis and record keeping
+- Custom field management for program-specific procedure forms
+- Role-based menu visibility on ProceduresMain (procedures, patient logs, reports)
+- Procedure category management with wizard-based setup
+- Supervision requirement configuration and supervisor selection
 
 <FileReference
   files={[
@@ -2583,6 +2598,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 25
   }
 ]}
-  directoryOverview="The Web/Procedures directory contains 78 code-behind files implementing the clinical procedures tracking module. This module allows trainees to log medical procedures they have performed, observed, or assisted with. It includes procedure submission forms, supervisor verification workflows, procedure certification tracking, error reporting, and comprehensive reporting. The module also handles patient log management, custom field configuration, and data import/export (including integration with WebADS and NI/New Innovations). ProceduresMain.aspx.cs serves as the central hub with extensive role-based menu control. The directory includes a Reports subdirectory with procedure-specific reports and an NiImport subdirectory for competitor data migration."
-  keyWorkflows={["Procedure submission -> Supervisor review -> Authorization/certification workflow","Patient log submission with custom fields and diagnosis search","Procedure certification tracking for graduation requirements","Error reporting and tracking for patient safety/quality improvement","Bulk data import from WebADS case logs and NI (New Innovations)","Procedure export for external analysis and record keeping","Custom field management for program-specific procedure forms","Role-based menu visibility on ProceduresMain (procedures, patient logs, reports)","Procedure category management with wizard-based setup","Supervision requirement configuration and supervisor selection"]}
 />

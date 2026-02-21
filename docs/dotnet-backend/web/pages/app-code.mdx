@@ -8,7 +8,18 @@ import FileReference from '@site/src/components/FileReference';
 
 # App_Code File Reference
 
-> **12 files** | **4,495 lines** | Generated 2/20/2026
+**12 files** · **4,495 lines** · Generated 2/20/2026
+
+The App_Code directory contains the foundational infrastructure classes for the MyEvaluations .NET WebForms application. It includes two base page classes (BasePage for standard pages, BasePage_Ajax for Obout AJAX pages) that provide session management, RBAC privilege checking, error handling, and UI utilities inherited by all pages. Two report base classes (BaseReportPage, BaseReportResultPage) support saved report filter state. Two abstract HTTP handlers (BaseWebService, BaseWebService_Test) define the XML-based API for duty hours timesheet operations. Infrastructure utilities include dropdown grouping adapters, ViewState-preserving controls, and HTML-to-PDF conversion. Security classes handle encryption (TripleDES, RC4) and the React frontend auth bridge (New_Auth). A direct-SQL ManageUsers class supports the admin user management grid.
+
+**Key Workflows**
+
+- Page lifecycle: Every page inherits BasePage/BasePage_Ajax -> OnPreInit validates session -> OnInit loads privileges -> page-specific logic runs -> OnError handles exceptions with NewRelic logging
+- RBAC privilege checking: BasePage.OnInit loads privileges via RoleManager -> UserHasPrivilege/CheckPrivilegesForMode called on each page to enforce access control
+- Report filter persistence: BaseReportPage loads saved settings from DB -> auto-populates controls -> user runs report -> BaseReportResultPage stores params in session for back-navigation
+- Duty hours timesheet API: BaseWebService.ProcessRequest receives XML -> routes by EventType -> subclass handles Initialize/Search/Save/Explanation -> returns XML response
+- React auth bridge: New_Auth constructor assembles user identity from session managers -> serialized to JSON -> passed to React frontend for RBAC enforcement
+- PDF report generation: HtmlToPdfBuilder.RenderPdf converts styled HTML pages to PDF with iTextSharp -> handles page breaks, images, footers for downloadable reports
 
 <FileReference
   files={[
@@ -335,6 +346,4 @@ import FileReference from '@site/src/components/FileReference';
     "lineCount": 111
   }
 ]}
-  directoryOverview="The App_Code directory contains the foundational infrastructure classes for the MyEvaluations .NET WebForms application. It includes two base page classes (BasePage for standard pages, BasePage_Ajax for Obout AJAX pages) that provide session management, RBAC privilege checking, error handling, and UI utilities inherited by all pages. Two report base classes (BaseReportPage, BaseReportResultPage) support saved report filter state. Two abstract HTTP handlers (BaseWebService, BaseWebService_Test) define the XML-based API for duty hours timesheet operations. Infrastructure utilities include dropdown grouping adapters, ViewState-preserving controls, and HTML-to-PDF conversion. Security classes handle encryption (TripleDES, RC4) and the React frontend auth bridge (New_Auth). A direct-SQL ManageUsers class supports the admin user management grid."
-  keyWorkflows={["Page lifecycle: Every page inherits BasePage/BasePage_Ajax -> OnPreInit validates session -> OnInit loads privileges -> page-specific logic runs -> OnError handles exceptions with NewRelic logging","RBAC privilege checking: BasePage.OnInit loads privileges via RoleManager -> UserHasPrivilege/CheckPrivilegesForMode called on each page to enforce access control","Report filter persistence: BaseReportPage loads saved settings from DB -> auto-populates controls -> user runs report -> BaseReportResultPage stores params in session for back-navigation","Duty hours timesheet API: BaseWebService.ProcessRequest receives XML -> routes by EventType -> subclass handles Initialize/Search/Save/Explanation -> returns XML response","React auth bridge: New_Auth constructor assembles user identity from session managers -> serialized to JSON -> passed to React frontend for RBAC enforcement","PDF report generation: HtmlToPdfBuilder.RenderPdf converts styled HTML pages to PDF with iTextSharp -> handles page breaks, images, footers for downloadable reports"]}
 />
