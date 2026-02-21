@@ -1,0 +1,167 @@
+---
+sidebar_position: 2
+title: Onboarding Learning Path
+description: "Curated 2-week reading sequence for new engineers joining the MyEvaluations team. Covers architecture, the .NET codebase, Evaluations module, and migration context."
+---
+
+import ReadingProgress from '@site/src/components/ReadingProgress';
+
+# Onboarding Learning Path
+
+> **Welcome to the MyEvaluations engineering team.** This is a 25-year-old healthcare SaaS platform serving 10,000+ users at 900+ institutions across GME, CME, Nursing, and PA programs.
+>
+> Use this checklist to track your reading progress — it's saved in your browser.
+
+<ReadingProgress
+  storageKey="myevals-onboarding"
+  title="Onboarding Progress"
+  items={[
+    {
+      id: "arch-overview",
+      week: 1,
+      label: "Architecture Overview",
+      href: "/docs/architecture/overview",
+      description: "Four codebases, two backends, two databases. Start here.",
+      tag: "architecture"
+    },
+    {
+      id: "arch-auth",
+      week: 1,
+      label: "Authentication Flow",
+      href: "/docs/architecture/authentication",
+      description: "Session-based auth shared between .NET and Node.js backends.",
+      tag: "security"
+    },
+    {
+      id: "arch-dataflow",
+      week: 1,
+      label: "Data Flow",
+      href: "/docs/architecture/data-flow",
+      description: "How requests flow from browser → Traefik → .NET/Node.js → SQL Server.",
+      tag: "architecture"
+    },
+    {
+      id: "dotnet-overview",
+      week: 1,
+      label: ".NET Backend Overview",
+      href: "/docs/dotnet-backend/overview",
+      description: ".NET 4.6.1 WebForms monolith — the legacy core. 74 Windows Services, 2,400+ files.",
+      tag: "architecture"
+    },
+    {
+      id: "dotnet-getting-started",
+      week: 1,
+      label: "Getting Started in .NET",
+      href: "/docs/dotnet-backend/getting-started",
+      description: "How to set up, build, and deploy the .NET backend locally.",
+      tag: "architecture"
+    },
+    {
+      id: "dotnet-patterns",
+      week: 1,
+      label: "Manager-Info Pattern",
+      href: "/docs/dotnet-backend/patterns/manager-info",
+      description: "The core architectural pattern used throughout the codebase: Manager classes + Info DTOs.",
+      tag: "patterns"
+    },
+    {
+      id: "dotnet-data-access",
+      week: 1,
+      label: "Data Access Patterns",
+      href: "/docs/dotnet-backend/patterns/data-access",
+      description: "How stored procedures, parameters, and SQL connections work in the .NET backend.",
+      tag: "patterns"
+    },
+    {
+      id: "security-module",
+      week: 1,
+      label: "Security Module",
+      href: "/docs/dotnet-backend/business/security",
+      description: "SecurityManager is called by 829 web pages. Understand roles, permissions, and session management here.",
+      tag: "security"
+    },
+    {
+      id: "evaluations-overview",
+      week: 2,
+      label: "Evaluations Module",
+      href: "/docs/dotnet-backend/business/evaluations",
+      description: "The core product — 47 business files, 214 web pages, 192K lines. Start with the overview.",
+      tag: "evaluations"
+    },
+    {
+      id: "evaluations-web",
+      week: 2,
+      label: "Evaluations Web Pages",
+      href: "/docs/dotnet-backend/web/pages/evaluations",
+      description: "Browse all 214 web pages: EvaluateEvaluation.aspx, ManageEvaluationAssignments.aspx, and more.",
+      tag: "evaluations"
+    },
+    {
+      id: "feature-map",
+      week: 2,
+      label: "Feature → Code Map",
+      href: "/docs/dotnet-backend/feature-map",
+      description: "Where to look when you need to fix or modify a specific feature.",
+      tag: "reference"
+    },
+    {
+      id: "module-health",
+      week: 2,
+      label: "Module Health Dashboard",
+      href: "/docs/dotnet-backend/module-health",
+      description: "Risk assessment for all 22 modules — critical before making changes to shared code.",
+      tag: "reference"
+    },
+    {
+      id: "migration-strategy",
+      week: 2,
+      label: "Migration Strategy",
+      href: "/docs/dotnet-backend/migration/strategy",
+      description: "The strangler fig pattern — how Node.js is progressively replacing .NET functionality.",
+      tag: "migration"
+    },
+    {
+      id: "migration-evaluations",
+      week: 2,
+      label: "Evaluations Migration Runbook",
+      href: "/docs/dotnet-backend/migration/evaluations-runbook",
+      description: "The concrete phased plan for migrating the largest module to NestJS.",
+      tag: "migration"
+    },
+    {
+      id: "file-index",
+      week: 2,
+      label: "File Reference Index",
+      href: "/docs/dotnet-backend/file-index",
+      description: "Master index of all 2,422 documented files — useful when you need to find something specific.",
+      tag: "reference"
+    }
+  ]}
+/>
+
+---
+
+## After Onboarding
+
+Once you've completed the above, these resources will help you day-to-day:
+
+| Task | Resource |
+|------|----------|
+| Fix a bug in a feature you don't know | [Feature → Code Map](./dotnet-backend/feature-map) |
+| Understand blast radius before changing shared code | [Module Health Dashboard](./dotnet-backend/module-health) |
+| Find a specific file's purpose | [File Reference Index](./dotnet-backend/file-index) |
+| Understand a stored procedure chain | [Stored Procedures](./dotnet-backend/data-access/stored-procedures) |
+| Plan a migration | [Evaluations Runbook](./dotnet-backend/migration/evaluations-runbook) as a template |
+| Check Node.js backend | [Node.js Backend](./nodejs-backend/overview) |
+
+---
+
+## Platform Context
+
+**What we do:** Healthcare education management — residency training (GME), continuing medical education (CME), nursing and PA programs.
+
+**Who uses it:** Program coordinators, residents/trainees, attending physicians, administrators, accreditation bodies.
+
+**Why it matters:** ACGME accreditation compliance, resident milestone tracking, and evaluation data directly affect residency programs. Downtime or data errors have real consequences for hospitals and physicians.
+
+**The migration:** We're progressively replacing the 25-year-old .NET WebForms monolith with NestJS + React using the strangler fig pattern. New features go in Node.js. Old features get migrated as pages are rewritten in React/Plasmic.
