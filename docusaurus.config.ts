@@ -14,6 +14,11 @@ const config: Config = {
   onBrokenLinks: 'warn',
   noIndex: true,
 
+  // Custom fields for runtime config (embedded into client bundle at build time)
+  customFields: {
+    openaiApiKey: process.env.OPENAI_API_KEY ?? '',
+  },
+
   headTags: [
     {
       tagName: 'meta',
