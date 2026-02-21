@@ -43,9 +43,9 @@ npm run build:full              # sync-repos + generate:all + build
 - **AI enrichment:** Two modes — Claude API (automated, weekly) + Claude CLI Task agents (bulk, manual)
 
 ## Key Directories
-- `docs/` — 135 MDX documentation pages
-- `docs/dotnet-backend/` — 115 pages covering the .NET backend (primary focus)
-  - `docs/dotnet-backend/business/` — 16 module overview pages
+- `docs/` — 139 MDX documentation pages
+- `docs/dotnet-backend/` — 119 pages covering the .NET backend (primary focus)
+  - `docs/dotnet-backend/business/` — 20 module overview pages (16 original + Common, Utilities, MailGunService, MyHelp)
   - `docs/dotnet-backend/business/files/` — 22 per-file reference pages (generated)
   - `docs/dotnet-backend/web/pages/` — 32 per-directory web reference pages (generated)
   - `docs/dotnet-backend/schedulers/files/` — 1 scheduler file reference page (generated)
@@ -115,3 +115,6 @@ Each enrichment JSON file follows this structure:
 - Skip auto-generated files: `AssemblyInfo.cs`, `Settings.Designer.cs`, `Web References/*/Reference.cs`, `obj/Release/TemporaryGeneratedFile_*.cs`
 - After `enrich:build`: run `npm run build` to verify no Docusaurus errors before committing
 - Use `node /tmp/script.js` for inline scripts (not `node -e "..."`) to avoid shell escaping issues with `!`
+- `tree-sitter` peer dependency requires `--legacy-peer-deps` for npm install (handled automatically by `.npmrc`)
+- `generated/` is **git-ignored** — per-file enrichment JSONs (`generated/ai-enriched/dotnet/per-file/**`) are NOT committed to git; regenerate locally before running `enrich:pages`. The **MDX pages** produced from them (`docs/dotnet-backend/business/files/*.mdx`, `docs/dotnet-backend/web/pages/*.mdx`, etc.) ARE committed and deployed.
+- Every business module overview page links to its per-file reference page via a `## File Reference` section at the bottom. Keep this cross-linking consistent when adding new modules.

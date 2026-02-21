@@ -19,12 +19,12 @@ This documentation site solves that by:
 
 ## Documentation Coverage
 
-### 135 pages across 8 sections:
+### 139 pages across 8 sections:
 
 | Section | Pages | Description |
 |---------|-------|-------------|
 | **Architecture** | 5 | System overview, data flows, deployment, auth, database schema |
-| **.NET Backend** | 115 | Solution map, 22 business modules, 10 scheduler groups, patterns, data access, web structure, integrations, migration, **file reference (2,422 files)** |
+| **.NET Backend** | 119 | Solution map, 20 business module overviews, 10 scheduler groups, patterns, data access, web structure, integrations, migration, **file reference (2,422 files)** |
 | **Node.js Backend** | 2 | NestJS overview, getting started |
 | **React Frontend** | 2 | Next.js + Plasmic overview, getting started |
 | **MAUI Mobile App** | 2 | .NET MAUI overview, getting started |
@@ -37,7 +37,7 @@ This documentation site solves that by:
 The legacy .NET backend gets the most comprehensive treatment:
 
 - **Project Map** — Visual dependency graph of all 27 projects (interactive D3.js)
-- **22 Business Modules** — Security, Evaluations, DutyHours, CMETracking, PatientLog, Procedures, Portfolio, LearningAssignment, Quiz, Mail, TimeSheet, HelloSign, ERAS, ICC, EssentialActivities, NurseNotify, AdobeSign, Common, RightSignature, Utilities, MailGunService
+- **20 Business Module Overviews** — Security, Evaluations, DutyHours, CMETracking, PatientLog, Procedures, Portfolio, LearningAssignment, Quiz, Mail, TimeSheet, HelloSign, ERAS, ICC, EssentialActivities, NurseNotify, Common, Utilities, MailGunService, MyHelp — each with a `## File Reference` link to its per-file documentation
 - **70+ Schedulers** — Cataloged across 10 domain groups with per-file reference
 - **Data Access Layer** — ADO.NET patterns, stored procedure catalog, connection management
 - **Web Application** — ASPX structure, ApiHandler.ashx (React bridge), NewFrontend.cs (CDN embedding), user controls
@@ -170,7 +170,7 @@ myevals-docs/
 │   │   ├── overview.mdx
 │   │   ├── project-map.mdx           # Interactive dependency graph
 │   │   ├── file-index.mdx            # Master index: 2,422 files across 4 layers
-│   │   ├── business/                 # 16 business module overview pages
+│   │   ├── business/                 # 20 business module overview pages (each cross-links to per-file reference)
 │   │   │   └── files/               # 22 per-file reference pages (generated)
 │   │   ├── schedulers/               # 10 scheduler group pages + index
 │   │   │   └── files/               # 1 scheduler file reference page (generated)
