@@ -1,0 +1,908 @@
+---
+title: "MyEvaluations.Business.CMETracking Files"
+sidebar_label: "MyEvaluations.Business.CMETracking"
+description: "Per-file reference for MyEvaluations.Business.CMETracking (42 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyEvaluations.Business.CMETracking File Reference
+
+> **42 files** | **15,790 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/AssignmentInfo.cs",
+    "fileName": "AssignmentInfo.cs",
+    "fileType": "info",
+    "className": "AssignmentInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data transfer object holding assignment state for a CME evaluation assigned to a user, including completion and verification dates.",
+    "businessPurpose": "Represents a single CME evaluation assignment record with completion, verification, and soft-delete flags.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 62
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/AssignmentManager.cs",
+    "fileName": "AssignmentManager.cs",
+    "fileType": "manager",
+    "className": "AssignmentManager",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Stub manager class with no implemented methods, acting as a placeholder for CME assignment operations.",
+    "businessPurpose": "Reserved entry point for CME assignment management logic; currently unimplemented.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 10
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEBusinessClass.cs",
+    "fileName": "CMEBusinessClass.cs",
+    "fileType": "business",
+    "className": "CMEBusinessClass",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Handles CME conference banner image upload, resizing to 600x285, and saving to the server DeptImages directory.",
+    "businessPurpose": "Provides image upload and resize logic for CME conference banners displayed on scheduling pages.",
+    "keyMethods": [
+      "SaveCMEConferenceBanner - uploads and saves a banner image after resizing",
+      "resizeImageAndSave - resizes image to 600x285 using high-quality bicubic interpolation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationManager",
+      "FileUploadComponentWebService"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 176
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEBussiness.cs",
+    "fileName": "CMEBussiness.cs",
+    "fileType": "business",
+    "className": "CMEBussiness",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Orchestrates multi-topic CME evaluation view initialization, calculates total claimed credits, and validates completion state for final submission.",
+    "businessPurpose": "Controls CME evaluation completion workflow including credit aggregation, graded-out topic handling, and submission eligibility checks.",
+    "keyMethods": [
+      "OnViewInitializeEvaluateCMEEvaluation - binds repeater and computes claimed credits for a schedule+evaluation pair",
+      "GetTotalClaimedCredits - sums credits across completed topics, tracks pending/graded-out topics, validates submission readiness",
+      "IsNumaric - numeric string validation helper",
+      "IsDecimal - decimal string validation helper"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 1303
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMECertificateInfo.cs",
+    "fileName": "CMECertificateInfo.cs",
+    "fileType": "info",
+    "className": "CMECertificateInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object holding certificate template configuration including logo, dual signature blocks, descriptors, headings, and credit category.",
+    "businessPurpose": "Stores all fields required to render a department-branded CME credit certificate.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 170
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEConnectivityInfo.cs",
+    "fileName": "CMEConnectivityInfo.cs",
+    "fileType": "info",
+    "className": "CMEConnectivityInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object storing connectivity credentials for external integrations including satellite programs and payment processors (Authorize.Net, Clover, Square).",
+    "businessPurpose": "Holds department-level credentials for CME satellite program connectivity and merchant payment gateway configuration.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 117
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEConnectivityManager.cs",
+    "fileName": "CMEConnectivityManager.cs",
+    "fileType": "manager",
+    "className": "CMEConnectivityManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages persistence and retrieval of CME external connectivity settings for satellite programs and payment gateway merchant services.",
+    "businessPurpose": "Saves and loads department connectivity credentials for CME satellite programs and payment providers (Authorize.Net, Clover, Square).",
+    "keyMethods": [
+      "GetConnectivityNamesForDepartment - lists available connectivity category names",
+      "SaveDepartmentConnectivityInfo - saves satellite program credentials",
+      "GetDepartmentConnectivityInfo - retrieves saved connectivity info",
+      "GetCMESatellitePrograms - lists satellite program departments",
+      "SaveSatelliteProgramDepartments - saves satellite program department list",
+      "GetMerchantServiceNames - lists payment gateway options",
+      "GetSavedMerchantServiceInfo - retrieves saved merchant gateway config",
+      "SaveMerchantServiceInfo - saves Authorize.Net/Clover/Square credentials",
+      "GetSavedMerchantServiceInfoforpayments - retrieves merchant info as DataTable for payment processing"
+    ],
+    "storedProcedures": [
+      "GetConnectivityNames",
+      "SaveDepartmentConnectivityInfo",
+      "GetDepartmentConnectivityInfo",
+      "GetCMESatelliteProgramsDepartments",
+      "GetSavedSatelliteProgramsDepartments",
+      "SaveSatelliteProgramDepartments",
+      "GetMerchantServiceNames",
+      "GetSavedMerchantServiceInfo",
+      "SaveDepartmentMerchantServiceInfo"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 165
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMECredentialInfo.cs",
+    "fileName": "CMECredentialInfo.cs",
+    "fileType": "info",
+    "className": "CMECredentialInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object holding department CME credentialing text including acknowledgment, disclosure, accreditation statement, and credit statement.",
+    "businessPurpose": "Stores regulatory compliance text fields displayed on CME evaluation forms and certificates.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 65
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMECredentialManager.cs",
+    "fileName": "CMECredentialManager.cs",
+    "fileType": "manager",
+    "className": "CMECredentialManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages saving and retrieval of department CME credentialing statements and maximum event credit limits.",
+    "businessPurpose": "Persists accreditation statements, disclosures, and credit limits used in CME evaluations and certificate generation.",
+    "keyMethods": [
+      "Save - upserts credential info via ManageCMECredentialingInformation SP and raises business event",
+      "GetCredentialInfoByDepartment - fetches credential text for the logged-in department",
+      "FetchCredentialInfo - maps DataTable row to CMECredentialInfo object",
+      "GeCMEMaxEventCredits(eventid) - returns max credits for a specific event",
+      "GeCMEMaxEventCredits() - returns default max credits for the department"
+    ],
+    "storedProcedures": [
+      "ManageCMECredentialingInformation",
+      "GetCMECredentialingInformation",
+      "GetCMEMaxEventCredits"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 129
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEFinancialBussiness.cs",
+    "fileName": "CMEFinancialBussiness.cs",
+    "fileType": "business",
+    "className": "CMEFinancialBussiness",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Orchestrates CME financial statement report generation by populating WebForms page controls with event/speaker filtered data across a date range.",
+    "businessPurpose": "Bridges WebForms page controls with CMEFinancialManager to populate financial statement and results reports by event or speaker.",
+    "keyMethods": [
+      "OnViewInitializeGetCMEFinancialStatementReport - loads event or speaker list into page list boxes",
+      "GetCMEFinancialStatementReport - returns financial report DataSet filtered by events or speakers",
+      "GetCMEFinancialStatementResultsReport - returns detailed results report DataSet",
+      "GetCMEFinancialReport - populates page controls with report data",
+      "PrepareIDList - converts ListBox items to comma-delimited ID string",
+      "GetFilteredEvents - filters events to current department if applicable"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CMEFinancialManager",
+      "EvaluationManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 262
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CMEFinancialManager.cs",
+    "fileName": "CMEFinancialManager.cs",
+    "fileType": "manager",
+    "className": "CMEFinancialManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Provides data access and report rendering utilities for CME financial reports including summary, results, and HTML print output methods.",
+    "businessPurpose": "Retrieves CME financial data by event or speaker and renders printable HTML report headers and footers.",
+    "keyMethods": [
+      "GetCMEFinancialReport - fetches CME financial summary by event or speaker with date range",
+      "GetAcedamicYearStartDate - returns current academic year start date",
+      "GetFavouriteReportSettingsinfoByID - retrieves saved report settings",
+      "GetCMEFinancialResultsReport - fetches detailed financial results report",
+      "GetReportInputInfo - builds ReportInfo from HTTP request parameters",
+      "PrintReportHTMLHeader - writes HTML head section with CSS/JS to response",
+      "PrintReportFooter - writes footer and HideWait script to response",
+      "StartHTML/EndHTML/StartBODY/EndBODY - HTTP response HTML structure helpers"
+    ],
+    "storedProcedures": [
+      "GetCMEFinancialReport",
+      "GetCurrentYearStartDate",
+      "GetFavouriteReportSettingsinfoByID",
+      "GetCMEFinancialResultsReport"
+    ],
+    "businessManagersUsed": [
+      "TemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 227
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CertificateManager.cs",
+    "fileName": "CertificateManager.cs",
+    "fileType": "manager",
+    "className": "CerificateManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages CRUD operations for CME certificate templates including logo, signatures, descriptors, and heading fields with cache invalidation.",
+    "businessPurpose": "Provides full lifecycle management for department certificate templates used to generate printed CME credit certificates.",
+    "keyMethods": [
+      "GetCertificateList - returns typed list of all department certificates",
+      "GetCertificates - returns DataTable with cache-aside pattern",
+      "GetCertificateInfoByID - fetches single certificate by ID",
+      "GetCertificateInfoByDepartment - fetches active department certificate",
+      "GetCertificatesForLookup - returns certificates for dropdown population",
+      "Save - inserts certificate and raises business event",
+      "FetchCertificateInfo/FetchCertificateList - DataTable-to-object mapping helpers"
+    ],
+    "storedProcedures": [
+      "GetCMECertificateList",
+      "GetCertificatesForLookup",
+      "GetCertificateInfoByID",
+      "GetCertificateForDepartment",
+      "AddCertificate"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 332
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CmeEventInfo.cs",
+    "fileName": "CmeEventInfo.cs",
+    "fileType": "info",
+    "className": "CmeEventInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Empty stub class with no properties or methods.",
+    "businessPurpose": "Placeholder for CME event info model; no functionality implemented.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 10
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CmeEventManager.cs",
+    "fileName": "CmeEventManager.cs",
+    "fileType": "manager",
+    "className": "CmeEventManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Empty stub manager class with no implemented methods.",
+    "businessPurpose": "Placeholder for CME event management; no functionality implemented.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 11
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CourseHandOutInfo.cs",
+    "fileName": "CourseHandOutInfo.cs",
+    "fileType": "info",
+    "className": "CourseHandOutInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object representing a course handout file attachment with path, filename, and change-tracking flags for CRUD operations.",
+    "businessPurpose": "Tracks the state of handout documents attached to a CME course for transactional insert/update/delete processing.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 70
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CourseInfo.cs",
+    "fileName": "CourseInfo.cs",
+    "fileType": "info",
+    "className": "CourseInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object representing a CME online course including metadata, linked event/template/quiz, and child collections for speakers, objectives, videos, and handouts.",
+    "businessPurpose": "Aggregates all data required to create or edit a CME self-study course with associated lecturers, learning objectives, and content files.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 187
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CourseManager.cs",
+    "fileName": "CourseManager.cs",
+    "fileType": "manager",
+    "className": "CourseManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages creation and update of CME courses using transactional batch execution of stored procedures for the course and all child entities.",
+    "businessPurpose": "Persists CME course records along with lecturers, learning objectives, handouts, and videos in a single atomic database transaction.",
+    "keyMethods": [
+      "AddCourse - inserts course and all child records in one transaction via AddCMECourse SP",
+      "UpdateCourse - updates course and delta-processes child collections (add/delete for lecturers/objectives/handouts/videos)"
+    ],
+    "storedProcedures": [
+      "AddCMECourse",
+      "UpdateCMECourse",
+      "AddCourseLecturer",
+      "DeleteCourseLecturer",
+      "AddCourseLearningObjective",
+      "AddCourseHandOuts",
+      "AddCourseVideo"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 568
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CourseVideoInfo.cs",
+    "fileName": "CourseVideoInfo.cs",
+    "fileType": "info",
+    "className": "CourseVideoInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object representing a video attached to a CME course with path, filename, and change-tracking flags.",
+    "businessPurpose": "Tracks the state of video files attached to a CME course for transactional insert/update/delete processing.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 70
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CreditTypeInfo.cs",
+    "fileName": "CreditTypeInfo.cs",
+    "fileType": "info",
+    "className": "CreditTypeInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object for a CME credit type record including description, dual activity director/signature fields, and accreditation statement.",
+    "businessPurpose": "Represents a department-defined CME credit category with its associated director signatures used on credit certificates.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 118
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/CreditTypeManager.cs",
+    "fileName": "CreditTypeManager.cs",
+    "fileType": "manager",
+    "className": "CreditTypeManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Provides full CRUD operations for CME credit types with cache-aside pattern for list retrieval and business event raising on changes.",
+    "businessPurpose": "Manages CME credit type lifecycle including creation, update, soft-delete, and GUID-based signature image naming.",
+    "keyMethods": [
+      "GetCreditTypesList - returns typed list using cache-aside",
+      "GetCreditTypes - returns DataTable with cache-aside",
+      "GetCreditTypesForLookup - returns simplified list for dropdowns",
+      "GetCreditTypeInfoByID - fetches single credit type",
+      "Save - inserts credit type and raises business event",
+      "Update - updates credit type and invalidates cache",
+      "Delete - soft-deletes credit type",
+      "GenerateSignatureImageName - generates GUID for signature image filename"
+    ],
+    "storedProcedures": [
+      "GetCreditTypeList",
+      "GetCreditTypesForLookup",
+      "GetCreditTypeInfoByID",
+      "AddCreditType",
+      "UpdateCreditType",
+      "DeleteCreditType"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 251
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EmailDatabaseManager.cs",
+    "fileName": "EmailDatabaseManager.cs",
+    "fileType": "manager",
+    "className": "EmailDatabaseManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages retrieval and saving of CME email distribution lists used for scheduling conference notification emails.",
+    "businessPurpose": "Provides data access for CME email database lists enabling administrators to schedule bulk email notifications to attendees.",
+    "keyMethods": [
+      "GetEmailDBList - retrieves active email lists by criteria",
+      "GetDeletedEmailDBList - retrieves deleted email lists",
+      "GetSelectedEmailList - retrieves a specific email list by ID and event",
+      "Save - saves a scheduled email list for a CME event"
+    ],
+    "storedProcedures": [
+      "GetEmailDBListByCriteria",
+      "GetDeletedEmailDBListByCriteria",
+      "GetEmailDBListByID",
+      "SaveScheduleList"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 75
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EvaluationInfo.cs",
+    "fileName": "EvaluationInfo.cs",
+    "fileType": "info",
+    "className": "EvaluationInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Rich aggregate data object for a completed CME evaluation including credits, MOC fields, answers, barriers, learning objectives, quiz info, and topic credits.",
+    "businessPurpose": "Represents the full state of a user's CME evaluation submission including all answer data needed for reporting and credit calculation.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 549
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EvaluationManager.cs",
+    "fileName": "EvaluationManager.cs",
+    "fileType": "manager",
+    "className": "EvaluationManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Core CME evaluation manager handling retrieval, submission, and multi-topic data mapping including answers, quiz status, learning objectives, and barrier responses.",
+    "businessPurpose": "Orchestrates all CME evaluation data access operations from pending evaluation lists through full submission with quiz and MOC credit tracking.",
+    "keyMethods": [
+      "GetEvalauationsToComplete - lists pending CME evaluations for current user",
+      "GetCmeEvaluationInfoByID - loads full evaluation aggregate from 8-table DataSet",
+      "SubmitEvaluation - persists completed evaluation in add or edit mode",
+      "FetchEvaluationInfo - maps multi-table DataSet to EvaluationInfo aggregate",
+      "FetchEvaluationAnswers - maps evaluation answers from DataTable",
+      "FetchBarrierEvaluationAnswers - maps barrier question answers",
+      "FetchEvaluationLearningObjectives - maps learning objective responses",
+      "FetchCMEQuizInfoAnswers - maps CME quiz attempt info",
+      "GetCMEMultiTopics - retrieves multi-topic schedule data"
+    ],
+    "storedProcedures": [
+      "GetCmeEvaluationsToComplete",
+      "GetCmeEvaluationInfoByID",
+      "GetCMEMultiTopics"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 1645
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EvaluationSearchCriteria.cs",
+    "fileName": "EvaluationSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "EvaluationSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Search filter object for CME evaluation queries supporting user, admin, event, schedule, sort, and academic year parameters.",
+    "businessPurpose": "Carries filter parameters for evaluation list queries including event type and academic year filtering.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 93
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EvaluationsReportManager.cs",
+    "fileName": "EvaluationsReportManager.cs",
+    "fileType": "manager",
+    "className": "EvaluationsReportManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Large report manager providing HTTP response-based HTML print output, answer lookups, and report parameter parsing for CME evaluation reports.",
+    "businessPurpose": "Generates printable CME evaluation reports by rendering HTML directly to the HTTP response stream with configurable filters and scoring options.",
+    "keyMethods": [
+      "GetReportInputInfo / GetReportInputInfo(name) - builds ReportInfo from HTTP request params",
+      "GetAnswersByAnswerType - fetches answer options for a given answer type",
+      "StartHTML/EndHTML/StartBODY/StartBODYWithBG - response HTML scaffolding methods",
+      "PrintReportHTMLHeader - writes full HTML head with CSS and JS includes",
+      "PrintReportFooter - writes report footer HTML to response"
+    ],
+    "storedProcedures": [
+      "GetAnswersByAnswerTypeID"
+    ],
+    "businessManagersUsed": [
+      "TemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 2382
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EventInfo.cs",
+    "fileName": "EventInfo.cs",
+    "fileType": "info",
+    "className": "EventInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Rich aggregate data object for a CME event including credit type, ACCME activity/outcome fields, financial income/expense fields, learning objectives, and schedule info.",
+    "businessPurpose": "Represents the full configuration of a CME event including ACCME compliance data, financial tracking fields, and associated schedules.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 452
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EventManager.cs",
+    "fileName": "EventManager.cs",
+    "fileType": "manager",
+    "className": "EventManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages CME event lifecycle including list retrieval with search criteria, full event detail loading, creation with child objects, update, and delete operations.",
+    "businessPurpose": "Provides comprehensive data access for CME events including ACCME activity type data, financial fields, learning objectives, and support sources.",
+    "keyMethods": [
+      "GetEventList - retrieves all events using default criteria",
+      "GetEventListBySearchCriteria - searches events by name/creator/department",
+      "GetEventInfoByID - loads full event aggregate from 3-table DataSet",
+      "GetEventListByCriteriaForReports - filtered event list for report selectors",
+      "GetEventListByCriteriaForSummaryEventReport - event list for summary reports",
+      "FetchEventInfo - maps multi-table DataSet to EventInfo",
+      "FetchMasterEventInfo - maps all scalar event fields",
+      "FetchEventLearningObjectives - maps event learning objectives",
+      "FetchEventSupportSources - maps commercial support sources"
+    ],
+    "storedProcedures": [
+      "GetEventListByCriteria",
+      "GetEventListByCriteriaForReports",
+      "GetEventListByCriteriaForSummaryEventReport",
+      "GetCMEEventInfoByID"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 833
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/EventSearchCriteria.cs",
+    "fileName": "EventSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "EventSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Simple search filter object for CME event list queries with department, name, and creator filters.",
+    "businessPurpose": "Carries optional filter parameters for CME event list queries.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 34
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/GuestInfo.cs",
+    "fileName": "GuestInfo.cs",
+    "fileType": "info",
+    "className": "GuestInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Serializable data object for a CME guest presenter with name, title, suffix fields, and first/last name validation.",
+    "businessPurpose": "Represents an external guest speaker who is not a system user but can be assigned as a CME event presenter.",
+    "keyMethods": [
+      "Validate - checks that first and last name are non-empty"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 86
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/GuestManager.cs",
+    "fileName": "GuestManager.cs",
+    "fileType": "manager",
+    "className": "GuestManager",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Manages save, update, and retrieval of CME guest presenter records.",
+    "businessPurpose": "Persists external guest presenter information for CME events where the presenter is not a registered system user.",
+    "keyMethods": [
+      "Save - inserts guest presenter record via AddCMEGuestPresenters SP",
+      "Update - updates guest presenter via UpdateCMEGuestPresenters SP",
+      "GetScheduleGuestInfoByID - fetches guest info by schedule guest ID",
+      "FetchCMEGuestInfo - maps DataTable row to GuestInfo object"
+    ],
+    "storedProcedures": [
+      "AddCMEGuestPresenters",
+      "UpdateCMEGuestPresenters",
+      "GetCMEGuestInfoByID"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 105
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/LearningObjectiveInfo.cs",
+    "fileName": "LearningObjectiveInfo.cs",
+    "fileType": "info",
+    "className": "LearningObjectiveInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Serializable data object for a CME learning objective with answer type/scale, marginal values, individual evaluation flag, and change-tracking state.",
+    "businessPurpose": "Represents a single learning objective attached to an event or schedule template, used to assess learner achievement.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 123
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/LearningObjectiveManager.cs",
+    "fileName": "LearningObjectiveManager.cs",
+    "fileType": "manager",
+    "className": "LearningObjectiveManager",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Empty stub class with no implemented methods.",
+    "businessPurpose": "Placeholder for learning objective management; no functionality implemented.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 10
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/LecturerInfo.cs",
+    "fileName": "LecturerInfo.cs",
+    "fileType": "info",
+    "className": "LecturerInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Serializable data object for a CME event lecturer (internal user or guest) with change-tracking flags for transactional delta processing.",
+    "businessPurpose": "Tracks a presenter assignment to a CME schedule or course with new/deleted/updated state for batch CRUD operations.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 88
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/QuestionInfo.cs",
+    "fileName": "QuestionInfo.cs",
+    "fileType": "info",
+    "className": "QuestionInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object for a CME question record with category, description, retire flag, and comment box requirement.",
+    "businessPurpose": "Represents a reusable CME evaluation question that can be categorized and retired.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 60
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/QuestionManager.cs",
+    "fileName": "QuestionManager.cs",
+    "fileType": "manager",
+    "className": "QuestionManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Provides lookup data retrieval for CME audience types and question categories used in evaluation question filtering.",
+    "businessPurpose": "Supplies reference data for CME question categorization by audience and category lookups.",
+    "keyMethods": [
+      "GetCMEAdience - retrieves CME audience list",
+      "GetCMEQuestionCategories - retrieves question categories filtered by audience ID"
+    ],
+    "storedProcedures": [
+      "GetCMEAudienceList",
+      "GetCMEQuestionCategories"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/RegisterCMEEvent.cs",
+    "fileName": "RegisterCMEEvent.cs",
+    "fileType": "info",
+    "className": "RegisterCMEEvent",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Data object for CME event registration capturing attendee personal info, billing address, payment card details, attendance type, and registration status.",
+    "businessPurpose": "Represents the full registration record for a user signing up for a CME event including payment processing fields.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 310
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/ScheduleTemplateInfo.cs",
+    "fileName": "ScheduleTemplateInfo.cs",
+    "fileType": "info",
+    "className": "ScheduleTemplateInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Large serializable aggregate data object for a CME conference schedule instance including dates, credits, registration settings, ACCME fields, financial fields, and child collections for lecturers, objectives, and support sources.",
+    "businessPurpose": "Represents the complete configuration of a scheduled CME conference occurrence including all metadata required for registration, evaluation, and ACCME reporting.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 823
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/ScheduleTemplateManager.cs",
+    "fileName": "ScheduleTemplateManager.cs",
+    "fileType": "manager",
+    "className": "ScheduleTemplateManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Core schedule manager persisting CME conference schedules with all child data including topics, lecturers, learning objectives, and commercial support sources in transactional batches.",
+    "businessPurpose": "Creates and updates CME schedule instances with full ACCME compliance data, registration configuration, and financial tracking in a single atomic operation.",
+    "keyMethods": [
+      "ScheduleTemplate - creates a new schedule via CreateSchedule SP with all child objects",
+      "UpdateSchedule - updates existing schedule and delta-processes child collections",
+      "GetScheduleList - retrieves schedule list for event",
+      "GetScheduleInfoByID - loads full schedule aggregate"
+    ],
+    "storedProcedures": [
+      "CreateSchedule",
+      "AddCMEScheduleTopics",
+      "AddLecturer",
+      "AddScheduleLearningObjective",
+      "AddScheduleEventSupportSources",
+      "UpdateSchedule",
+      "GetScheduleList",
+      "GetScheduleInfoByID"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 1644
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/SupportSourceInfo.cs",
+    "fileName": "SupportSourceInfo.cs",
+    "fileType": "info",
+    "className": "SupportSourceInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Serializable data object for a CME commercial support source entry tracking monetary and in-kind support with change-tracking flags.",
+    "businessPurpose": "Records ACCME-required commercial support disclosures including source name, monetary amount, and in-kind support categories.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 151
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/TemplateInfo.cs",
+    "fileName": "TemplateInfo.cs",
+    "fileType": "info",
+    "className": "TemplateInfo",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Serializable data object for a CME evaluation template with name, comment/barrier/conflict settings, questions list, answer type/scale, and validation against duplicate names.",
+    "businessPurpose": "Represents a reusable CME evaluation form template with configurable sections for conflicts, barriers, and competency improvement.",
+    "keyMethods": [
+      "Validate(validationMessages, pageMode) - checks name required and uniqueness for template",
+      "Validate(validationMessages) - checks name required and uniqueness for conference"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 240
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/TemplateManager.cs",
+    "fileName": "TemplateManager.cs",
+    "fileType": "manager",
+    "className": "TemplateManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.CMETracking",
+    "summary": "Manages the full lifecycle of CME evaluation templates including CRUD, duplicate name checks, question list management, publishing, and conference template operations.",
+    "businessPurpose": "Controls CME evaluation template creation, editing, publishing, deletion, and question assignment with cache management and business event raising.",
+    "keyMethods": [
+      "DoesTemplateNameExists - validates template name uniqueness",
+      "DoseConferenceNameExist - validates conference template name uniqueness",
+      "GetTemplateList / GetDeleteTemplateList - retrieves active/deleted template lists",
+      "GetTemplateInfoByID - loads full template with questions from 2-table DataSet",
+      "FetchTemplateInfo - maps DataSet to TemplateInfo aggregate",
+      "FetchTemplateQuestionList - maps question rows to TemplateQuestionInfo list",
+      "Save - inserts template",
+      "Update - updates template",
+      "GetCMETemplateListForSummaryEventReport - filtered list for report context"
+    ],
+    "storedProcedures": [
+      "DoesCMETemplateNameExists",
+      "GetCMETemplateList",
+      "GetCMETemplateListForSummaryEventReport",
+      "GetCmeTemplateInfoByID"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 1342
+  },
+  {
+    "filePath": "MyEvaluations.Business.CMETracking/UploadNameOfList.cs",
+    "fileName": "UploadNameOfList.cs",
+    "fileType": "info",
+    "className": "UploadNameOfList",
+    "inheritsFrom": null,
+    "module": "Business.CMETracking",
+    "summary": "Combined data/business class for managing named email distribution lists uploaded via CSV, including validation, duplicate checking, and bulk insert via SqlBulkCopy.",
+    "businessPurpose": "Allows administrators to upload named attendee email lists for CME event email scheduling, with duplicate name validation.",
+    "keyMethods": [
+      "Validate - checks name required and uniqueness for the upload list",
+      "DoesUploadNameExists - SP-backed duplicate name check",
+      "Save(tbl, uploadInfo) - bulk-inserts upload list rows via AddUploadEmailDBList SP and SqlBulkCopy",
+      "ConvertToInteger - local DBNull-safe integer conversion helper"
+    ],
+    "storedProcedures": [
+      "DoesUploadNameExists",
+      "AddUploadEmailDBList"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 391
+  }
+]}
+  directoryOverview="Business layer for continuing medical education courses, events, evaluations, and credit certificates."
+  keyWorkflows={["CME event registration","Evaluation template design","Credit certificate generation","Schedule template management","CME financial reporting","Multi-topic evaluation tracking","Guest presenter management","Email distribution list upload"]}
+/>

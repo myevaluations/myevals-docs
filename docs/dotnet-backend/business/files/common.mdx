@@ -1,0 +1,277 @@
+---
+title: "Business.Common Files"
+sidebar_label: "Business.Common"
+description: "Per-file reference for Business.Common (12 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.Common File Reference
+
+> **12 files** | **2,301 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.Common/BusinessObject.cs",
+    "fileName": "BusinessObject.cs",
+    "fileType": "business",
+    "className": "BusinessObject",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Abstract base class intended as a common ancestor for all business objects in the system. The class body is empty, serving as a marker or future extension point.",
+    "businessPurpose": "Establishes the type hierarchy root for business domain objects, enabling future cross-cutting behavior (e.g., validation, serialization) to be added in one place.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Empty abstract class with no logic. No migration action required; the Node.js layer uses TypeScript interfaces and classes naturally without requiring a common base.",
+    "complexity": "trivial",
+    "lineCount": 12
+  },
+  {
+    "filePath": "Business.Common/CacheManager.cs",
+    "fileName": "CacheManager.cs",
+    "fileType": "business",
+    "className": "CacheManager",
+    "inheritsFrom": "Manager",
+    "module": "Common",
+    "summary": "Wrapper around ASP.NET HttpContext.Current.Cache and HttpRuntime.Cache providing static methods to store, retrieve, and invalidate cached data. Supports optional TTL-based expiry.",
+    "businessPurpose": "Provides a centralized in-process caching mechanism used by business Manager classes to avoid repeated database queries for entity lists (e.g., users, roles, departments) within a single request context.",
+    "keyMethods": [
+      "StoreToCache(string, object) - Inserts an object into the HTTP request cache without expiry",
+      "StoreToCache(string, object, double) - Inserts an object into the cache with an absolute expiry in seconds",
+      "RetrieveFromCache(string) - Retrieves a cached object by key from HttpContext.Current.Cache",
+      "RetrieveFromCacheConsole(string) - Retrieves a cached object using HttpRuntime.Cache (works outside HttpContext)",
+      "InvalidateDataInCache(string) - Removes a cached entry by key"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Manager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "The ASP.NET Cache is .NET-WebForms-specific. The Node.js backend uses Redis for distributed caching. Any cache invalidation patterns should be reviewed when migrating business logic to ensure cache consistency.",
+    "complexity": "simple",
+    "lineCount": 38
+  },
+  {
+    "filePath": "Business.Common/CalculateTimeDiff.cs",
+    "fileName": "CalculateTimeDiff.cs",
+    "fileType": "business",
+    "className": "CalculateDateDifference",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Utility class that calculates the difference between two DateTime values and returns the result broken down into years, months, and days. Handles leap years and month-boundary arithmetic during construction.",
+    "businessPurpose": "Used to compute human-readable time spans (e.g., years of training, duration of rotations) displayed in GME program evaluation and reporting interfaces.",
+    "keyMethods": [
+      "CalculateDateDifference(DateTime, DateTime) - Constructor that computes and stores the year, month, and day components of the date difference",
+      "ToString() - Returns a formatted string like '2 Year(s), 3 month(s), 15 day(s)'",
+      "Years (property) - Returns the year component of the computed difference",
+      "Months (property) - Returns the month component of the computed difference",
+      "Days (property) - Returns the day component of the computed difference"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple date math utility. In Node.js this is trivially replaced with date-fns differenceInYears/Months/Days or the built-in Date arithmetic. No special migration effort needed.",
+    "complexity": "moderate",
+    "lineCount": 118
+  },
+  {
+    "filePath": "Business.Common/CommonTypes.cs",
+    "fileName": "CommonTypes.cs",
+    "fileType": "business",
+    "className": "EventData",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Defines shared data transfer objects and enumerations used throughout the business layer: EventData (audit event payload), EventInfo (user context for audit), BusinessEventType (enum of event categories), and BusinessEntity (enum of all auditable system entities). The file acts as a shared type library for the audit and event system.",
+    "businessPurpose": "Provides the common type vocabulary for audit trail event logging across all business manager classes, enabling consistent tracking of user actions (login, CRUD, impersonation, session events) against all business entities.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "The BusinessEventType and BusinessEntity enumerations define the audit vocabulary used across all 900+ institutions. These enums should be replicated as TypeScript enums or constants in the Node.js audit logging service to ensure feature parity.",
+    "complexity": "complex",
+    "lineCount": 507
+  },
+  {
+    "filePath": "Business.Common/Constants.cs",
+    "fileName": "Constants.cs",
+    "fileType": "business",
+    "className": "Constants",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Sealed class defining system-wide null sentinel values for primitive types (DateTime, decimal, double, Guid, int, long, float, string), SQL Server date boundaries, and UI loading indicator HTML constants.",
+    "businessPurpose": "Provides a centralized set of sentinel null values used in data layer comparisons and UI loading indicators throughout the ASP.NET WebForms application.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Null sentinel values (e.g., Int32.MinValue for null int) are a .NET pattern. The Node.js layer uses null/undefined natively. SQL Server date boundaries are still relevant for any stored procedure calls using MSSQL.",
+    "complexity": "simple",
+    "lineCount": 68
+  },
+  {
+    "filePath": "Business.Common/DashBoard.cs",
+    "fileName": "DashBoard.cs",
+    "fileType": "business",
+    "className": "DashBoard",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Container file for dashboard-related data transfer objects: ToDos, DashboardSystemImplementation, ModulesSystemImplementation, DashBoardShortcuts, Schedule, RotationData, DashboardMessages, and many nested types. The DashBoard class itself is empty; the file's value is in the DTO definitions used for JSON serialization.",
+    "businessPurpose": "Defines the data shapes serialized as JSON for the dashboard API responses, including to-do items, module implementation progress, shortcuts, messages, and schedule events.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Dashboard DTOs need to be replicated as TypeScript interfaces in the Node.js API. The module implementation progress and to-do structures are directly user-facing and must match existing frontend expectations.",
+    "complexity": "complex",
+    "lineCount": 670
+  },
+  {
+    "filePath": "Business.Common/EmailValidation.cs",
+    "fileName": "EmailValidation.cs",
+    "fileType": "business",
+    "className": "EmailValidation",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Provides stored-procedure-backed email address verification status checks. Queries the database via CheckEmailStatus and CheckEventEmailStatus stored procedures to determine if an email address is verified, not verified, or rejected.",
+    "businessPurpose": "Used during user registration and event invitation flows to validate whether an email address has been pre-verified or is blacklisted before sending communications.",
+    "keyMethods": [
+      "CheckEmailStatus(string) - Queries CheckEmailStatus SP and returns EmailStatus enum (NotVerified/Verified/Rejected) for a given email address",
+      "CheckEventEmailStatus(string) - Queries CheckEventEmailStatus SP and returns EmailStatus enum for event-specific email validation"
+    ],
+    "storedProcedures": [
+      "CheckEmailStatus",
+      "CheckEventEmailStatus"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Email validation via stored procedures must be replicated in the Node.js backend. If MSSQL stored procedures are preserved during the strangler-fig migration, the NestJS service can call these SPs directly via MikroORM raw query.",
+    "complexity": "moderate",
+    "lineCount": 101
+  },
+  {
+    "filePath": "Business.Common/EventManager.cs",
+    "fileName": "EventManager.cs",
+    "fileType": "business",
+    "className": "EventManager",
+    "inheritsFrom": "Manager",
+    "module": "Common",
+    "summary": "Core audit trail manager that logs user actions to the database via the LogEvent and LogEventDetail stored procedures. Provides multiple HandleEvent overloads supporting various combinations of event type, user context, entity, keys, info text, report name, and browser details. Uses ThreadPool.QueueUserWorkItem for asynchronous logging.",
+    "businessPurpose": "Records every significant user action (login, logout, CRUD operations, impersonation, session events) to the event audit log tables, which are critical for compliance, security investigation, and activity reporting at 900+ institutions.",
+    "keyMethods": [
+      "LogEventToDatabase(object) - Worker method that calls LogEvent and LogEventDetail SPs with full event context",
+      "HandleEvent(BusinessEventType, EventInfo) - Queues a simple event without entity or key context",
+      "HandleEvent(BusinessEventType, EventInfo, BusinessEntity, int) - Queues an event with single entity key",
+      "HandleEvent(BusinessEventType, EventInfo, BusinessEntity, int, string) - Queues an event with info message",
+      "HandleEvent(BusinessEventType, EventInfo, BusinessEntity, int, out int) - Queues an event and returns the generated EventID for preceptor linking",
+      "HandleEvent(BusinessEventType, EventInfo, BusinessEntity, List<int>) - Queues an event with multiple entity keys",
+      "HandleEvent(BusinessEventType, EventInfo, BusinessEntity, List<int>, string, string) - Queues an event with info text and report name",
+      "HandleEvent(BusinessEventType, EventInfo, string, BusinessEntity, List<int>) - Queues an event with browser details"
+    ],
+    "storedProcedures": [
+      "LogEvent",
+      "LogEventDetail"
+    ],
+    "businessManagersUsed": [
+      "Manager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Audit trail logging is a compliance-critical feature used across all modules. The Node.js migration must implement equivalent audit event logging. The existing LogEvent/LogEventDetail stored procedures can be called from NestJS via MikroORM raw queries to maintain continuity with the MSSQL audit tables.",
+    "complexity": "moderate",
+    "lineCount": 173
+  },
+  {
+    "filePath": "Business.Common/FilePaths.cs",
+    "fileName": "FilePaths.cs",
+    "fileType": "business",
+    "className": "FilePaths",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Defines a FolderStructure enum with StringValue attributes mapping logical folder names to relative filesystem paths (e.g., Users/, Departments/, Importing/). Provides FilePaths.GetStringValue() to resolve the path string from enum values via reflection.",
+    "businessPurpose": "Centralizes file storage path resolution for document uploads across multiple modules (user documents, department files, quiz questions, accreditation documents, conference imports), ensuring consistent path usage throughout the application.",
+    "keyMethods": [
+      "GetStringValue(Enum) - Uses reflection to retrieve the StringValue attribute from a FolderStructure enum value, returning the associated relative folder path"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "File path resolution is needed in any system that handles document uploads. The Node.js migration should map these logical folder names to Azure Blob Storage container paths or equivalent cloud storage paths.",
+    "complexity": "simple",
+    "lineCount": 88
+  },
+  {
+    "filePath": "Business.Common/LoggingManager.cs",
+    "fileName": "LoggingManager.cs",
+    "fileType": "business",
+    "className": "LoggingManager",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Defines ASP.NET health monitoring event classes: AuthenticationFailureAuditEvent (for failed logins) and ApplicationCustomErrorEvent (for application errors), both extending the built-in System.Web.Management health monitoring infrastructure.",
+    "businessPurpose": "Enables integration with ASP.NET health monitoring for routing authentication failures and application errors to configured health monitoring providers (e.g., Windows Event Log, email alerts).",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "ASP.NET health monitoring is .NET WebForms-specific. The Node.js backend should use structured logging (Winston/Pino) and application monitoring (Application Insights or equivalent) instead of these custom health event classes.",
+    "complexity": "simple",
+    "lineCount": 39
+  },
+  {
+    "filePath": "Business.Common/Manager.cs",
+    "fileName": "Manager.cs",
+    "fileType": "business",
+    "className": "Manager",
+    "inheritsFrom": null,
+    "module": "Common",
+    "summary": "Abstract base class for all business manager classes, providing protected helpers for cache key construction, cache read/write/invalidation (delegating to CacheManager), event raising (delegating to EventManager), and data type conversion utilities (boolean, datetime, integer, decimal, string conversions from DB values).",
+    "businessPurpose": "Establishes the standard infrastructure contract for all business managers in the system, ensuring consistent cache keying by entity/scope/user, uniform audit event firing, and safe DB-to-.NET type coercion.",
+    "keyMethods": [
+      "BuildKey(BusinessEntity, int, int, DataScope) - Constructs a cache key string from entity type, user/department IDs, and scope",
+      "BuildKey(BusinessEntity, int, int, int, DataScope) - Overload including primary role in key generation",
+      "BuildKeyWithSuffix(BusinessEntity, int, int, DataScope, string) - Appends a custom suffix to the cache key",
+      "RaiseEvent(BusinessEventType, EventInfo) - Fires an audit event for the current user action",
+      "AddDataToCache(BusinessEntity, DataScope, int, int, object) - Stores data in the ASP.NET cache with a computed key",
+      "RetrieveDataFromCache(BusinessEntity, DataScope, int, int) - Retrieves data from cache by computed key",
+      "InvalidateDataInCache(BusinessEntity, DataScope, int, int) - Removes a cache entry by computed key",
+      "ConvertToBoolean(object) - Converts a DB integer value (1/0) to bool",
+      "ConvertToDateTime(object) - Safely converts a DB value to DateTime, returning DateTime.MinValue for DBNull",
+      "ConvertToInteger(object) - Safely converts a DB value to int",
+      "ConvertToDecimal(object) - Safely converts a DB value to decimal",
+      "ConvertToString(object) - Safely converts a DB value to string"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CacheManager",
+      "EventManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "This is the foundational class for all business managers. Understanding its cache key strategy (entity+scope+user+department) and type conversion patterns is essential for replicating manager behavior in Node.js services. The DataScope enum and cache key scheme must be understood when migrating any manager.",
+    "complexity": "complex",
+    "lineCount": 469
+  },
+  {
+    "filePath": "Business.Common/UserFriendlyException.cs",
+    "fileName": "UserFriendlyException.cs",
+    "fileType": "business",
+    "className": "UserFriendlyException",
+    "inheritsFrom": "Exception",
+    "module": "Common",
+    "summary": "Custom exception class used to surface user-readable error messages from business logic to the presentation layer. Extends System.Exception with no additional members.",
+    "businessPurpose": "Allows business layer code to throw exceptions that are safe to display to end users, distinguishing them from internal/system exceptions that should be masked.",
+    "keyMethods": [
+      "UserFriendlyException(string) - Creates an exception with a user-displayable message",
+      "UserFriendlyException(string, Exception) - Creates an exception wrapping an inner exception with a user-displayable message"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "The concept maps to custom HTTP error classes in NestJS (e.g., HttpException, BadRequestException). No direct migration needed; adopt NestJS exception filters instead.",
+    "complexity": "trivial",
+    "lineCount": 18
+  }
+]}
+  directoryOverview="Common business module providing common functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

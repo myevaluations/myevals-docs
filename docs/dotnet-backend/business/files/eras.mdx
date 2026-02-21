@@ -1,0 +1,97 @@
+---
+title: "Business.ERAS Files"
+sidebar_label: "Business.ERAS"
+description: "Per-file reference for Business.ERAS (3 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.ERAS File Reference
+
+> **3 files** | **1,870 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.ERAS/ConnectERAS.cs",
+    "fileName": "ConnectERAS.cs",
+    "fileType": "business",
+    "className": "ConnectERAS",
+    "inheritsFrom": null,
+    "module": "ERAS",
+    "summary": "Connects to the ERAS (Electronic Residency Application Service) API using mutual TLS certificate authentication, retrieves paginated applicant data as JSON, converts it to XML, and generates a CSV file. Handles multi-page responses by looping through all pages and appending to the same CSV file.",
+    "businessPurpose": "Imports residency applicant data from AAMC's ERAS system into MyEvaluations, enabling GME programs to access and process residency applications alongside their evaluation workflows.",
+    "keyMethods": [
+      "RetrieveERASData(long, ref string, int, ref bool) - Orchestrates the full paginated ERAS data retrieval, XML conversion, and CSV file generation for a given department",
+      "ConnectToERAS(long, long, long, DateTime, int) - Makes authenticated HTTPS requests to the ERAS REST API with certificate-based auth and returns raw JSON response",
+      "GetCSVPathDocument(string, ref string, ref string, DateTime) - Resolves the file system path for the output CSV file",
+      "UpdateERASConnection(long, DateTime, bool, string, int) - Updates the database with the ERAS connection status after each retrieval attempt"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ERASManager",
+      "XMLToCSV"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "ERAS integration is specific to GME programs that use the AAMC ERAS system. The certificate-based mutual TLS authentication pattern must be replicated in Node.js if this integration is carried forward. Consider whether this is a candidate for the strangler-fig approach with a dedicated NestJS ERAS module.",
+    "complexity": "very-complex",
+    "lineCount": 1194
+  },
+  {
+    "filePath": "Business.ERAS/ERASManager.cs",
+    "fileName": "ERASManager.cs",
+    "fileType": "business",
+    "className": "ERASManager",
+    "inheritsFrom": null,
+    "module": "ERAS",
+    "summary": "Database manager for ERAS integration data. Provides stored-procedure-backed methods to log ERAS API responses, retrieve ERAS field mappings, update connection status, retrieve error codes, and update dual accreditation details.",
+    "businessPurpose": "Persists ERAS API interaction results and configuration data to the database, supporting audit logging of ERAS data imports and managing ERAS connection health status for GME programs.",
+    "keyMethods": [
+      "AddERASData(long, string, bool, string, string, DateTime) - Calls AddERASData SP to log a raw ERAS API response with error indicators",
+      "GetERASFields() - Calls GetERASFields SP to retrieve the ERAS field name mapping table used for CSV conversion",
+      "UpdateERASConnectionStatus(long, DateTime, bool, string, int) - Calls UpdateERASConnectionStatus SP to record the success or failure of an ERAS connection attempt",
+      "GetERASErrorCodes() - Calls GetERASErrorCodes SP to retrieve the list of known ERAS error codes",
+      "UpdateERASDualAccreditationDetail(long, string, string) - Calls UpdateERASDualAccreditation SP to store dual accreditation error details"
+    ],
+    "storedProcedures": [
+      "AddERASData",
+      "GetERASFields",
+      "UpdateERASConnectionStatus",
+      "GetERASErrorCodes",
+      "UpdateERASDualAccreditation"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "All ERAS data persistence operations use stored procedures against MSSQL. If ERAS integration is migrated to Node.js, these stored procedures should be called via MikroORM raw queries or migrated to ORM-based entities.",
+    "complexity": "simple",
+    "lineCount": 102
+  },
+  {
+    "filePath": "Business.ERAS/XMLToCSV.cs",
+    "fileName": "XMLToCSV.cs",
+    "fileType": "business",
+    "className": "XMLToCSV",
+    "inheritsFrom": null,
+    "module": "ERAS",
+    "summary": "Complex XML-to-CSV converter specialized for ERAS applicant data. Parses ERAS XML applicant records, maps fields using a database-driven field name table, handles medical score sub-elements (COMLEX, USMLE), date formatting, ERAS-specific CSV quoting rules, and optionally appends to an existing file. Uploads the resulting CSV via a FileUploadComponent web service.",
+    "businessPurpose": "Transforms raw ERAS XML applicant data into a CSV file format suitable for import into the MyEvaluations system, supporting the AAMC ERAS applicant data ingestion workflow for GME residency programs.",
+    "keyMethods": [
+      "ConvertXmlToCSV(XmlDocument, string, string, string, DataArrange, RowDelimit, ColumnDelimit, bool) - Main conversion method: iterates ERAS XML records, maps fields, handles medical scores/dates, builds CSV rows and uploads",
+      "FetchRowSeparater(RowDelimit, out string) - Resolves the row delimiter character from the RowDelimit enum",
+      "FetchColumnSeparater(ColumnDelimit, out string) - Resolves the column delimiter character from the ColumnDelimit enum",
+      "ParseMyFormatDateTime(string) - Parses ERAS date strings with multiple format fallbacks",
+      "CSVRules(string) - Applies CSV escaping rules (quoting strings containing commas or quotes)"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ERASManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "The field mapping from GetERASFields SP and the COMLEX/USMLE score sub-element handling represent significant domain knowledge that must be preserved during migration. The FileUploadComponentWebService upload call is a SOAP web service dependency that needs replacement.",
+    "complexity": "complex",
+    "lineCount": 574
+  }
+]}
+  directoryOverview="ERAS business module providing eras functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

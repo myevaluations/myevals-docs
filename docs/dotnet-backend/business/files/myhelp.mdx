@@ -1,0 +1,138 @@
+---
+title: "Business.MyHelp Files"
+sidebar_label: "Business.MyHelp"
+description: "Per-file reference for Business.MyHelp (4 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.MyHelp File Reference
+
+> **4 files** | **2,298 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.MyHelp/HelpGroupManager.cs",
+    "fileName": "HelpGroupManager.cs",
+    "fileType": "business",
+    "className": "HelpGroupManager",
+    "inheritsFrom": "Manager",
+    "module": "MyHelp",
+    "summary": "Manager class (569 lines) for managing the MyHelp documentation system's sections, chapters, and page content, providing add/edit/delete operations for help sections, chapters, pages, and images via stored procedures.",
+    "businessPurpose": "Manages the content structure of the in-application help system (MyHelp), enabling administrators to create and maintain hierarchical help documentation with sections, chapters, and content pages accessible to users based on their role.",
+    "keyMethods": [
+      "GetListOfHelpSectionsDetails - Retrieves help sections visible to a given role ID",
+      "GetHelpSectionInfoBySecID - Fetches detail of a specific help section by section ID",
+      "DeleteHelpSectionInfoBySecID - Deletes a help section and raises delete event with cache invalidation",
+      "AddHelpSections - Inserts or updates a help section with name, description, active flag, and access level",
+      "GetHelpUserAccessList - Retrieves the user access level lookup list for help sections",
+      "GetListOfHelpChapters - Retrieves chapters under a section for hierarchy display",
+      "AddHelpChapters - Inserts or updates a chapter within a section"
+    ],
+    "storedProcedures": [
+      "GetListOfHelpSectionsDetails",
+      "GetHelpSectionInfoBySecID",
+      "DeleteHelpSectionInfoBySecID",
+      "AddHelpSections",
+      "GetHelpUserAccessList",
+      "GetListOfHelpChapters",
+      "AddHelpChapters"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Internal help documentation system. Not a core GME/CME workflow feature. Low migration priority; could be replaced by a standalone documentation platform rather than migrated to Node.js.",
+    "complexity": "complex",
+    "lineCount": 569
+  },
+  {
+    "filePath": "Business.MyHelp/SectionInfo.cs",
+    "fileName": "SectionInfo.cs",
+    "fileType": "business",
+    "className": "SectionInfo",
+    "inheritsFrom": null,
+    "module": "MyHelp",
+    "summary": "Minimal data model for a MyHelp section, holding SectionID, Name, Description, and IsActive flag.",
+    "businessPurpose": "Represents a top-level section in the in-application help documentation hierarchy used by SectionsGroupManager for CRUD operations.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple DTO for the internal help system section entity. Minimal migration value.",
+    "complexity": "trivial",
+    "lineCount": 36
+  },
+  {
+    "filePath": "Business.MyHelp/SectionInfoBusiness.cs",
+    "fileName": "SectionInfoBusiness.cs",
+    "fileType": "business",
+    "className": "SectionInfoBusiness",
+    "inheritsFrom": null,
+    "module": "MyHelp",
+    "summary": "Page-orchestration business class (1488 lines) for the MyHelp sections UI, handling view initialization with role-based panel visibility, section CRUD operations bridging HelpGroupManager and SectionsGroupManager, chapter and page content management, and ASP.NET WebForms control binding using Obout.Grid.",
+    "businessPurpose": "Drives the administrator and user-facing views of the MyHelp documentation system, rendering help section lists, managing section/chapter/page CRUD, and populating UI controls based on user role privileges.",
+    "keyMethods": [
+      "Validate - Server-side validation of SectionInfo (name and description required)",
+      "onViewIntialize - Initializes the help sections page, applies role-based panel visibility and binds the sections grid",
+      "DeleteHelpSectionInfoBySecID - Deletes a section and refreshes the grid",
+      "GetHelpUserAccessList - Loads access level dropdown",
+      "GetHelpSectionInfoBySecID - Loads section detail into edit form controls",
+      "AddHelpSections - Saves a new or updated help section from form input"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.MyHelp.HelpGroupManager",
+      "MyEvaluations.Business.MyHelp.SectionsGroupManager",
+      "MyEvaluations.Business.Security.SessionManager",
+      "MyEvaluations.Business.Security.RoleManager",
+      "MyEvaluations.Business.Utilities.Controlers"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Tightly coupled to ASP.NET WebForms and Obout.Grid third-party control. This class is effectively a code-behind page helper and would not migrate to Node.js directly; its logic would be replaced by API endpoints and a React UI.",
+    "complexity": "very-complex",
+    "lineCount": 1488
+  },
+  {
+    "filePath": "Business.MyHelp/SectionsGroupManager.cs",
+    "fileName": "SectionsGroupManager.cs",
+    "fileType": "business",
+    "className": "SectionsGroupManager",
+    "inheritsFrom": "Manager",
+    "module": "MyHelp",
+    "summary": "Manager class for MyHelp section CRUD operations including listing all sections, saving new sections, updating existing sections, deleting sections, fetching section details by ID, and retrieving chapter tree views for navigation.",
+    "businessPurpose": "Provides the data access layer for the MyHelp sections feature, managing the section hierarchy used to organize in-application help content.",
+    "keyMethods": [
+      "GetListOfSections - Retrieves all help sections via GetListOfHelpSections stored procedure",
+      "Delete - Deletes a help section and raises delete event with cache invalidation",
+      "Save - Inserts a new help section via AddMyHelpSection stored procedure with event and cache invalidation",
+      "Update - Updates an existing help section via UpdateMyHelpSection stored procedure",
+      "FetchListOfSectionsOnID - Retrieves section details for a given SectionID using a data reader",
+      "GetChaptersTreeView - Returns the chapter hierarchy for a section for tree navigation",
+      "GetChaptersTreeForView - Returns chapters tree filtered by role ID for read-only view"
+    ],
+    "storedProcedures": [
+      "GetListOfHelpSections",
+      "DeleteMyHelpSection",
+      "AddMyHelpSection",
+      "UpdateMyHelpSection",
+      "GetHelpSectionDetails",
+      "GetChaptersTreeView",
+      "GetChaptersTreeViewOnView"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager",
+      "MyEvaluations.Business.Utilities.Utility"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Internal help documentation manager. Not a core GME/CME workflow. Low migration priority.",
+    "complexity": "moderate",
+    "lineCount": 205
+  }
+]}
+  directoryOverview="MyHelp business module providing myhelp functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

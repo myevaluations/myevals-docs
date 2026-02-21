@@ -1,0 +1,300 @@
+---
+title: "Business.LearningAssignment Files"
+sidebar_label: "Business.LearningAssignment"
+description: "Per-file reference for Business.LearningAssignment (12 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.LearningAssignment File Reference
+
+> **12 files** | **4,323 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.LearningAssignment/AssignmentCommentInfo.cs",
+    "fileName": "AssignmentCommentInfo.cs",
+    "fileType": "business",
+    "className": "AssignmentCommentInfo",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Data transfer object holding all properties for a learning assignment comment, including the comment text, author, date, and any attached document metadata.",
+    "businessPurpose": "Supports the comment thread on a learning assignment where learners and administrators exchange feedback, and optionally attach supporting documents.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Required for feature parity when migrating learning assignment comments to Node.js backend. Holds file upload reference (System.Web.UI.WebControls.FileUpload) that will need to be replaced with a modern file-handling approach.",
+    "complexity": "simple",
+    "lineCount": 101
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentAdminInfo.cs",
+    "fileName": "LearningAssignmentAdminInfo.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentAdminInfo",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Serializable data model representing a Learning Assignment administrator record, tracking the user, department, and dirty-flag state for CRUD tracking (NewEntry, DeletedEntry, UpdatedEntry, DBEntry).",
+    "businessPurpose": "Supports the management of Learning Assignment admins within a department, enabling administrators to be added or removed from the LA admin role.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple DTO with dirty-flag pattern used for batch save operations. Low migration priority; the pattern itself should be replaced with proper request/response models in the Node.js service.",
+    "complexity": "simple",
+    "lineCount": 84
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentAdminManager.cs",
+    "fileName": "LearningAssignmentAdminManager.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentAdminManager",
+    "inheritsFrom": "Manager",
+    "module": "LearningAssignment",
+    "summary": "Manager class providing CRUD operations for Learning Assignment administrators, including fetching admins by department, adding new admins, and deleting admins with cache invalidation.",
+    "businessPurpose": "Manages which users are designated as Learning Assignment administrators within a department, controlling who can create and oversee learning assignments.",
+    "keyMethods": [
+      "GetLAAdmins - Retrieves all LA admins for the logged-in user's department with caching",
+      "GetLAAdminByDepartment - Retrieves LA admins for a specific department with optional linked-department filtering",
+      "GetLAAdminList - Returns a sorted typed list of LearningAssignmentAdminInfo objects",
+      "Save(LearningAssignmentAdminInfo) - Stub save for a single admin (returns true)",
+      "Save(List<LearningAssignmentAdminInfo>) - Batch save; inserts new admins and deletes removed admins, invalidates cache on change"
+    ],
+    "storedProcedures": [
+      "GetLAAdmins",
+      "GetLAAdminByDepartment",
+      "AddLAAdmin",
+      "DeleteLAAdmin"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Manages department-scoped LA admin roles. Needs migration as part of the learning assignment feature parity work on the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 135
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentBusiness.cs",
+    "fileName": "LearningAssignmentBusiness.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentBusiness",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "LearningAssignment",
+    "summary": "Page-derived business class (1204 lines) implementing the email scheduler for learning assignments and document upload handling for assignment comments. It coordinates sending notification emails for future, expiring, and reminder assignments across learners, assessors, and preceptors, and handles file upload persistence for comment documents.",
+    "businessPurpose": "Powers the automated learning assignment email notification scheduler (run as a Windows Service job) and handles saving comment documents uploaded by learners or administrators during the assignment review process.",
+    "keyMethods": [
+      "OnViewInitializeLearningAssignmentScheduler - Main scheduler entry point; processes future, expiry, and reminder emails for all departments and logs results",
+      "SaveLearningAssignmentCommentDocdetails - Saves an uploaded document attached to a learning assignment comment and returns updated comment info",
+      "SendMail - Iterates a DataTable of assignment email records and dispatches emails (referenced internally)",
+      "GetReminderAssignmentsForPreceptors - Fetches and sends reminder email notifications to preceptors for their assigned learners",
+      "SendLogAsMail - Sends the scheduler run log as an email to system administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.LearningAssignment.LearningAssignmentManager",
+      "MyEvaluations.Business.LearningAssignment.AssignmentUsersManager",
+      "MyEvaluations.Business.LearningAssignment.FileUploadComponentWebService",
+      "MyEvaluations.Business.Security.UserManager",
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains the learning assignment email scheduler logic which is a core operational job. Scheduling logic should be migrated to a BullMQ worker in the Node.js backend. The Page inheritance is a WebForms artifact and should be removed entirely.",
+    "complexity": "very-complex",
+    "lineCount": 1204
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentInfo.cs",
+    "fileName": "LearningAssignmentInfo.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentInfo",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Rich data model representing a learning assignment (332 lines), holding assignment configuration such as literature reference, quiz settings, date range, assigned users (parsed from a comma-separated ID string), document attachment, video, and requirement group linkage.",
+    "businessPurpose": "Serves as the primary data carrier for creating and editing learning assignments, encompassing all user selection, quiz configuration, file attachment, and scheduling parameters needed by LearningAssignmentManager.Save.",
+    "keyMethods": [
+      "Users (getter) - Parses AssignedUsers comma-separated string into a typed List<UserInfo> on demand"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Security.UserInfo"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Central DTO for learning assignment creation. All fields map to database columns written via AddLearninAssignmentWithUsers stored procedure. Must be fully modeled in the Node.js migration as a request schema.",
+    "complexity": "complex",
+    "lineCount": 332
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentManager.cs",
+    "fileName": "LearningAssignmentManager.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentManager",
+    "inheritsFrom": "Manager",
+    "module": "LearningAssignment",
+    "summary": "Core manager class (1425 lines) for learning assignment lifecycle: creating assignments with user lists, saving quiz details, sending assignment notification emails, fetching assignment data for learners and admins, and processing email notice scheduling for future, expiry, and reminder scenarios.",
+    "businessPurpose": "Orchestrates the end-to-end creation, retrieval, and notification of learning assignments, including quiz association, document attachment, user assignment, and automated email dispatch.",
+    "keyMethods": [
+      "Save - Creates a learning assignment with associated users, saves quiz details if present, handles document upload or copy, sends assignment notification emails, and invalidates cache",
+      "SaveQuizDetails - Inserts quiz assignment configuration (pass percent, retakes, time limit, question display) linked to a learning assignment",
+      "GetLearningModuleAssignmentEmailNoticeInformation - Fetches email notice data for future, expiry, or reminder scenarios",
+      "GetLearningAssignmentDepartmentDetails - Retrieves departments with active learning assignments for scheduler processing",
+      "GetPreceptorDetailsByDepartmentID - Fetches preceptors for a given department for reminder emails",
+      "GetLearningAssignmentEmailTemplates - Retrieves rendered email templates for a specific user and assignment"
+    ],
+    "storedProcedures": [
+      "AddLearninAssignmentWithUsers",
+      "AddAssignmentDetails"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager",
+      "MyEvaluations.Business.Security.UserManager",
+      "MyEvaluations.Business.Security.UserBusiness",
+      "MyEvaluations.Business.Utilities.EmailUtility",
+      "MyEvaluations.Business.Utilities.EmailValidation"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Primary business logic for learning assignment creation and notification. This class is highly coupled to WebForms infrastructure (FileUpload, Page) and must be fully refactored for the Node.js migration. Email notifications should move to BullMQ workers.",
+    "complexity": "very-complex",
+    "lineCount": 1425
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentReportFilter.cs",
+    "fileName": "LearningAssignmentReportFilter.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentReportFilter",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Data filter DTO for learning assignment reports, capturing user, department, literature, date range, archived status, completion status, sort order, report format, user scope, user types, PGY levels, groups, and speciality types.",
+    "businessPurpose": "Encapsulates all filter parameters needed to generate ledger and detailed learning assignment reports, supporting multi-dimensional filtering by users, departments, literature, date range, and completion status.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report filter model required for feature parity when migrating learning assignment reporting to the Node.js backend. Should be represented as a validated query parameter schema.",
+    "complexity": "moderate",
+    "lineCount": 189
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentReportManager.cs",
+    "fileName": "LearningAssignmentReportManager.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentReportManager",
+    "inheritsFrom": "Manager",
+    "module": "LearningAssignment",
+    "summary": "Manager class providing data retrieval for learning assignment reports: ledger summary report and detailed assignment report, both with multi-user and multi-literature filtering support.",
+    "businessPurpose": "Generates learning assignment compliance and completion reports used by administrators to track which users have completed their assigned learning modules.",
+    "keyMethods": [
+      "GetLedgerOfAssignmentsReportData - Executes the ledger report stored procedure with full filter set including multi-user and multi-literature IDs, status, and sort",
+      "GetDetailedAssignmentsReportData - Executes the detailed report for a single user and single literature with archived flag filter",
+      "GetDetailedAssignmentsReportDataFilter - Executes the detailed report with multi-user and multi-literature filter support including status and sort"
+    ],
+    "storedProcedures": [
+      "GetLearningAssignmentLedgerReport",
+      "GetDetailedLearningAssignmentReport"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Reporting manager needed for feature parity. Both stored procedures will need equivalent query logic in the Node.js/PostgreSQL migration.",
+    "complexity": "simple",
+    "lineCount": 87
+  },
+  {
+    "filePath": "Business.LearningAssignment/LearningAssignmentSearchCriteria.cs",
+    "fileName": "LearningAssignmentSearchCriteria.cs",
+    "fileType": "business",
+    "className": "LearningAssignmentSearchCriteria",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Search/filter criteria DTO for querying learning assignments, with fields for user, admin user, sort order, department, OBC batch, assignment scope, scope user, selected assignment IDs, report type, status, and pagination.",
+    "businessPurpose": "Parameterizes learning assignment list queries for both learner and admin views, supporting filtering by department, scope, status, and pagination.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Search criteria model used for driving learning assignment list queries. Needs to be migrated as a validated query parameter type in the Node.js API.",
+    "complexity": "simple",
+    "lineCount": 96
+  },
+  {
+    "filePath": "Business.LearningAssignment/LiteratureInfo.cs",
+    "fileName": "LiteratureInfo.cs",
+    "fileType": "business",
+    "className": "LiteratureInfo",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Data model representing a Learning Module (Literature) record, including name, description, assignment details, optional quiz configuration (pass percentage, retakes, time limit), document attachment, video reference, and a server-side Validate method checking uniqueness.",
+    "businessPurpose": "Represents the core Learning Module entity that administrators create to define required reading or learning content, optionally associating it with a quiz and document or video resource.",
+    "keyMethods": [
+      "Validate - Validates that Name is non-empty and that no duplicate literature name exists for the department/page mode, populating validation messages on failure"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.LearningAssignment.LiteratureManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core entity model for the Learning Module feature. All fields including quiz linkage and document path must be represented in the Node.js backend entity schema.",
+    "complexity": "moderate",
+    "lineCount": 181
+  },
+  {
+    "filePath": "Business.LearningAssignment/LiteratureManager.cs",
+    "fileName": "LiteratureManager.cs",
+    "fileType": "business",
+    "className": "LiteratureManager",
+    "inheritsFrom": "Manager",
+    "module": "LearningAssignment",
+    "summary": "Manager class (433 lines) for CRUD operations on Learning Module (Literature) records: fetching by ID or list, checking for duplicates, saving new records, updating existing ones, archiving, and deleting, all with cache management and event raising.",
+    "businessPurpose": "Manages the lifecycle of Learning Modules that administrators define as required content for learners; these modules form the catalog from which assignments are created.",
+    "keyMethods": [
+      "GetLiteratureInfo - Fetches a single LiteratureInfo by ID via GetLiteratureInfo stored procedure",
+      "GetLiteratureInfoByIDs - Fetches multiple LiteratureInfo records by comma-separated ID string",
+      "GetLiteratureList - Retrieves the filtered literature list for the current department with caching",
+      "DoesLiteratureExits - Checks whether a literature record with the same name already exists in the department",
+      "Save - Inserts a new literature record via AddLiterature stored procedure with event raising and cache invalidation"
+    ],
+    "storedProcedures": [
+      "GetLiteratureInfo",
+      "GetLiteratureInfoByIDs",
+      "GetLearningAssignmentLiteratureList",
+      "DoesLiteratureExits",
+      "AddLiterature"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common.Manager",
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core manager for the Learning Module catalog. All CRUD operations and duplicate-check logic must be migrated to the Node.js backend with equivalent PostgreSQL queries.",
+    "complexity": "complex",
+    "lineCount": 433
+  },
+  {
+    "filePath": "Business.LearningAssignment/LiteratureSearchCriteria.cs",
+    "fileName": "LiteratureSearchCriteria.cs",
+    "fileType": "business",
+    "className": "LiteratureSearchCriteria",
+    "inheritsFrom": null,
+    "module": "LearningAssignment",
+    "summary": "Search/filter criteria DTO for querying the literature (Learning Module) list, with fields for department, page mode, deleted flag, archived flag, selected user IDs, and assignment scope.",
+    "businessPurpose": "Parameterizes queries to the learning module catalog, supporting admin and learner views with archived/deleted filtering and user-specific scope.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Security.SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Criteria DTO needed alongside LiteratureManager migration. Fields like AssignmentScope and FlagArchived map to filter parameters in the GetLearningAssignmentLiteratureList stored procedure.",
+    "complexity": "simple",
+    "lineCount": 56
+  }
+]}
+  directoryOverview="LearningAssignment business module providing learningassignment functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

@@ -1,0 +1,531 @@
+---
+title: "MyEvaluations.Business.TimeSheet Files"
+sidebar_label: "MyEvaluations.Business.TimeSheet"
+description: "Per-file reference for MyEvaluations.Business.TimeSheet (28 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyEvaluations.Business.TimeSheet File Reference
+
+> **28 files** | **5,805 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/ActivityInfo.cs",
+    "fileName": "ActivityInfo.cs",
+    "fileType": "info",
+    "className": "ActivityInfo",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Data model representing a single resident duty-hours activity with rotation, site, dates, and computed hour/minute properties.",
+    "businessPurpose": "Holds all fields for one timesheet activity entry, including calculated ActivityHours and ActivityMinutes from start/end dates.",
+    "keyMethods": [
+      "ActivityHours (computed) - calculates duration in hours",
+      "ActivityMinutes (computed) - calculates duration in minutes",
+      "ToString - formatted debug string"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 144
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/ActivitySettingInfo.cs",
+    "fileName": "ActivitySettingInfo.cs",
+    "fileType": "info",
+    "className": "ActivitySettingInfo",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an activity setting that classifies whether a timesheet activity counts as rest or work.",
+    "businessPurpose": "Provides setting metadata (name, ID, IsRest, IsWork flags) used to categorize duty-hour activities for compliance reporting.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 50
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/ActivityTypeInfo.cs",
+    "fileName": "ActivityTypeInfo.cs",
+    "fileType": "info",
+    "className": "ActivityTypeInfo",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an activity type, including display name, abbreviation, sort order, setting, and color.",
+    "businessPurpose": "Represents a category of duty-hours activity (e.g., on-call, conference) used to classify timesheet entries in the UI.",
+    "keyMethods": [
+      "ToString - formatted debug string"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 63
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionAPI.cs",
+    "fileName": "AmionAPI.cs",
+    "fileType": "api",
+    "className": "AmionAPI",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Core API client for the Amion scheduling service that fetches, parses, and stores rotation, on-call, clinic, cross-cover, and shift schedule data.",
+    "businessPurpose": "Provides all HTTP communication with the Amion scheduling system, parsing CSV responses into typed objects and persisting schedule data to the database via stored procedures.",
+    "keyMethods": [
+      "GetAmionLastUpdatedDate - checks if schedule data is current",
+      "GetAmionScheduleStyle - retrieves schedule format type",
+      "GetAmionClinic - fetches clinic schedule data",
+      "Decrypt - decrypts stored Amion passwords using 3DES",
+      "UpdateIsValidAMIONPassword - updates credential validity flag"
+    ],
+    "storedProcedures": [
+      "usp_UpdateIsValidAMIONPassword"
+    ],
+    "businessManagersUsed": [
+      "TimeSheetManager",
+      "AmionAPIService"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 1573
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionAPIService.cs",
+    "fileName": "AmionAPIService.cs",
+    "fileType": "infrastructure",
+    "className": "AmionAPIService",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Centralized HTTP client service with SQL and New Relic audit logging for all external Amion API calls.",
+    "businessPurpose": "Provides a single tracked HTTP GET wrapper used by AmionAPI so every external schedule fetch is logged with correlation ID, duration, success/failure, and response hash.",
+    "keyMethods": [
+      "GetText - tracked HTTP GET with SQL and NewRelic audit logging"
+    ],
+    "storedProcedures": [
+      "usp_InsertApiResponseAudit"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 310
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionBase.cs",
+    "fileName": "AmionBase.cs",
+    "fileType": "info",
+    "className": "AmionBase",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Abstract base class for Amion schedule entities that holds a list of date-range assignments and provides helper methods to concatenate dates.",
+    "businessPurpose": "Provides shared assignment list and date serialization helpers (GetStartDates, GetEndDates) inherited by all Amion schedule model classes.",
+    "keyMethods": [
+      "GetStartDates - concatenates all assignment start dates with separator",
+      "GetEndDates - concatenates all assignment end dates with separator"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 62
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionClinic.cs",
+    "fileName": "AmionClinic.cs",
+    "fileType": "info",
+    "className": "AmionClinic",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion clinic schedule entry, extending AmionBase with staff identity and clinic assignment IDs.",
+    "businessPurpose": "Represents one staff member's clinic schedule from Amion, used during schedule sync to map clinic assignments to department users.",
+    "keyMethods": [
+      "GetClinicIDs - concatenates clinic IDs from assignments with separator"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 71
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionClinicService.cs",
+    "fileName": "AmionClinicService.cs",
+    "fileType": "info",
+    "className": "AmionClinicService",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model representing an Amion clinic service definition with name, ID, backup ID, and unique reference.",
+    "businessPurpose": "Holds clinic service metadata from Amion used to map schedule import data to department clinic configurations.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 42
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionCrossCover.cs",
+    "fileName": "AmionCrossCover.cs",
+    "fileType": "info",
+    "className": "AmionCrossCover",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion cross-cover schedule entry representing a staff member's cross-coverage assignments.",
+    "businessPurpose": "Captures cross-cover scheduling data from Amion for import into duty hours tracking, identifying which resident covered which service.",
+    "keyMethods": [
+      "GetServiceIDs - concatenates service IDs from cross-cover assignments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 63
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionManager.cs",
+    "fileName": "AmionManager.cs",
+    "fileType": "manager",
+    "className": "AmionManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.TimeSheet",
+    "summary": "Cache-enabled wrapper manager for Amion API data that delegates to AmionAPI with a 1-hour TTL (all methods are currently commented out).",
+    "businessPurpose": "Intended to layer session-level caching over Amion schedule data fetches, reducing repeat API calls; all active logic is stubbed pending re-enable.",
+    "keyMethods": [
+      "BuildKey - constructs department+year cache key"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "AmionAPI"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 127
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionOnCallSchedule.cs",
+    "fileName": "AmionOnCallSchedule.cs",
+    "fileType": "info",
+    "className": "AmionOnCallSchedule",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data models for Amion on-call and shift schedules, including staff assignments with rotation and service IDs.",
+    "businessPurpose": "Holds on-call and shift schedule data parsed from Amion for persistence into duty hours tracking tables.",
+    "keyMethods": [
+      "GetServiceIDs - concatenates service IDs from on-call assignments",
+      "GetRotationsIDs - concatenates rotation IDs from assignments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 210
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionOnCallService.cs",
+    "fileName": "AmionOnCallService.cs",
+    "fileType": "info",
+    "className": "AmionOnCallService",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion on-call service definition with name, unique ID, backup ID, and rotation reference.",
+    "businessPurpose": "Holds on-call service metadata from Amion used during schedule sync to link call services to department rotations.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 68
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionRotation.cs",
+    "fileName": "AmionRotation.cs",
+    "fileType": "info",
+    "className": "AmionRotation",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion rotation schedule entry with staff identity and service ID helper.",
+    "businessPurpose": "Represents one staff member's rotation assignment from Amion, used during schedule sync to map Amion rotations to program rotations.",
+    "keyMethods": [
+      "GetServiceIDs - concatenates service IDs from rotation assignments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 64
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionRotationService.cs",
+    "fileName": "AmionRotationService.cs",
+    "fileType": "info",
+    "className": "AmionRotationService",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion rotation service definition with name, ID, backup ID, unique reference, and shift flag.",
+    "businessPurpose": "Holds rotation service metadata from Amion, distinguishing shift-based rotations from standard call rotations during schedule import.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 50
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionScheduleTempTable.cs",
+    "fileName": "AmionScheduleTempTable.cs",
+    "fileType": "info",
+    "className": "AmionScheduleTempTable",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Data transfer object holding temp table names for all Amion schedule entity types plus last-update metadata.",
+    "businessPurpose": "Carries the SQL temp table names for each schedule category (users, rotations, clinics, calls, shifts) returned during an Amion sync operation.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 49
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionStaff.cs",
+    "fileName": "AmionStaff.cs",
+    "fileType": "info",
+    "className": "AmionStaff",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Minimal data model mapping an Amion staff ID to a staff name.",
+    "businessPurpose": "Used during Amion schedule sync to resolve numeric staff IDs to names when matching against local user records.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 25
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/AmionUser.cs",
+    "fileName": "AmionUser.cs",
+    "fileType": "info",
+    "className": "AmionUser",
+    "inheritsFrom": "AmionBase",
+    "module": "Business.TimeSheet",
+    "summary": "Data model for an Amion user record with staff name, unique ID, backup ID, staff type, and Amion reference key.",
+    "businessPurpose": "Represents a staff member as returned from the Amion user roster API, used to match Amion accounts to local MyEvaluations users.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/CSVReader.cs",
+    "fileName": "CSVReader.cs",
+    "fileType": "infrastructure",
+    "className": "CSVReader",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Utility class that parses Amion CSV response text into a list of string arrays, handling Amion's quoted CSV format.",
+    "businessPurpose": "Converts raw Amion API response text (comma-separated, quote-delimited) into structured field arrays for further processing by AmionAPI.",
+    "keyMethods": [
+      "ReadAmionResponse - splits Amion CSV response into rows and fields"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 41
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/CommonTypes.cs",
+    "fileName": "CommonTypes.cs",
+    "fileType": "infrastructure",
+    "className": "CommonTypes",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Defines shared enumerations used across the TimeSheet module: EventType, TimeSheetSource, AmionReportType, and ViolationType.",
+    "businessPurpose": "Provides strongly-typed enum constants for timesheet event lifecycle stages, schedule data sources, Amion report codes, and duty-hour violation categories.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "trivial",
+    "lineCount": 45
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/Constants.cs",
+    "fileName": "Constants.cs",
+    "fileType": "infrastructure",
+    "className": "Constants",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Sealed class holding integer constants for time unit conversions used in duty-hours calculations.",
+    "businessPurpose": "Provides shared numeric constants (minutes per hour, per day, 30 days) used by ActivityInfo and other classes to compute activity duration.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 17
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/HttpUtil.cs",
+    "fileName": "HttpUtil.cs",
+    "fileType": "infrastructure",
+    "className": "HttpUtil",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Legacy HTTP utility using HttpWebRequest (POST) to retrieve external URL content, superseded by AmionAPIService.",
+    "businessPurpose": "Original HTTP client for Amion API calls; replaced by AmionAPIService with logging; retained for compatibility with QGendaAPI references.",
+    "keyMethods": [
+      "GetText - synchronous HTTP POST to retrieve response text from a URL"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/QGendaAPI.cs",
+    "fileName": "QGendaAPI.cs",
+    "fileType": "api",
+    "className": "QGendaAPI",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Stub API client for the QGenda scheduling service that mirrors Amion URL construction and decryption but has incomplete response parsing.",
+    "businessPurpose": "Intended to integrate with QGenda's v1 schedule API as an alternative scheduling source; the response parsing is unimplemented, making this a placeholder.",
+    "keyMethods": [
+      "GetAmionScheduleStyle - checks schedule style from QGenda-like URL",
+      "GetAmionRotationsService - stub rotation fetch (parsing incomplete)",
+      "Decrypt - 3DES decryption of stored credentials"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 103
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/RotationInfo.cs",
+    "fileName": "RotationInfo.cs",
+    "fileType": "info",
+    "className": "RotationInfo",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Simple data model for a clinical rotation with ID, name, and optional site ID.",
+    "businessPurpose": "Represents a rotation program entry returned by TimeSheetManager for populating timesheet rotation dropdowns.",
+    "keyMethods": [
+      "ToString - formatted debug string"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "trivial",
+    "lineCount": 36
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/SubActivityInfo.cs",
+    "fileName": "SubActivityInfo.cs",
+    "fileType": "info",
+    "className": "SubActivityInfo",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Minimal data model for a sub-activity time segment with start/end dates and computed hours.",
+    "businessPurpose": "Holds a child time block within a composite activity, used in duty-hours violation calculations.",
+    "keyMethods": [
+      "ActivityHours (computed) - calculates sub-activity duration in hours"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 32
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/TangierServiceModel.cs",
+    "fileName": "TangierServiceModel.cs",
+    "fileType": "info",
+    "className": "TangierServiceModel",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Auto-generated XSD-derived model classes for deserializing Tangier scheduling system XML responses.",
+    "businessPurpose": "Provides the full object graph for XML deserialization of Tangier schedule feeds including schedules, locations, dates, and activities.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 779
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/TimeSheetManager.cs",
+    "fileName": "TimeSheetManager.cs",
+    "fileType": "manager",
+    "className": "TimeSheetManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.TimeSheet",
+    "summary": "Primary business manager for duty-hours timesheets, providing CRUD operations for activities, rotations, violations, and Amion credential management.",
+    "businessPurpose": "Orchestrates all timesheet data access including fetching activity types, rotations, saving/deleting resident activities, and retrieving Amion passwords for schedule sync.",
+    "keyMethods": [
+      "GetActivityDetails - load activity types for UI",
+      "GetRotationDetails - load rotations for department",
+      "GetEnableRotations - load active rotations with BSN special case",
+      "GetAmionPassword - retrieve encrypted Amion credentials",
+      "GetGetExcludeSettingDetails - load excluded activity settings",
+      "GetGetExcludedActivityDetails - load excluded activity entries"
+    ],
+    "storedProcedures": [
+      "GetActivityDetails",
+      "GetExcludeSettingDetails",
+      "GetExcludedActivityDetails",
+      "GetRotationDetails",
+      "GetEnableRotations",
+      "GetBSNCoursesForDutyHours"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 1425
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/TimeSheetRequest.cs",
+    "fileName": "TimeSheetRequest.cs",
+    "fileType": "info",
+    "className": "TimeSheetRequest",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Defines the request DTOs for timesheet operations: BaseRequest, InitializeRequest, SearchRequest, SaveRequest, and ExplanationRequest.",
+    "businessPurpose": "Provides strongly-typed parameter objects passed to TimeSheetManager methods for initialize, search, save, and violation explanation workflows.",
+    "keyMethods": [
+      "Clone (SearchRequest) - shallow copy for request reuse"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 165
+  },
+  {
+    "filePath": "MyEvaluations.Business.TimeSheet/TimeSheetViolation.cs",
+    "fileName": "TimeSheetViolation.cs",
+    "fileType": "info",
+    "className": "TimeSheetViolation",
+    "inheritsFrom": null,
+    "module": "Business.TimeSheet",
+    "summary": "Data model for a duty-hours violation, capturing the type, description, shift hours, rest hours, and resident explanation.",
+    "businessPurpose": "Represents one detected ACGME duty-hour rule violation (10-hour rest or 24+6 rule) with all fields needed to display and record resident explanations.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 89
+  }
+]}
+  directoryOverview="Business layer for Amion/QGenda/Tangier schedule APIs and timesheet management."
+  keyWorkflows={["Amion schedule sync","QGenda API calls","Tangier schedule import","Timesheet submission"]}
+/>

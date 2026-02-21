@@ -1,0 +1,41 @@
+---
+title: "Business.MailGunService Files"
+sidebar_label: "Business.MailGunService"
+description: "Per-file reference for Business.MailGunService (1 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.MailGunService File Reference
+
+> **1 files** | **585 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.MailGunService/MailgunPOP3.cs",
+    "fileName": "MailgunPOP3.cs",
+    "fileType": "business",
+    "className": "MailgunPOP3",
+    "inheritsFrom": null,
+    "module": "MailGunService",
+    "summary": "Wraps the Mailgun REST API using RestSharp to retrieve email delivery logs and events. Provides methods to fetch all logs, paginated logs (skip/limit), and event history filtered by recipient email address. Formats retrieved email events as an HTML table for display. Reads Mailgun API credentials and domain from Web.config.",
+    "businessPurpose": "Allows administrators to view email delivery status and troubleshoot notification failures, supporting the email notification audit and monitoring workflows used by platform administrators at healthcare institutions.",
+    "keyMethods": [
+      "GetMailgunLogs() - Retrieves all Mailgun log entries for the configured domain",
+      "GetMailgunLogs(int, int) - Retrieves paginated Mailgun log entries with skip and limit parameters",
+      "GetMailgunLogsByEmailID(int, string) - Retrieves Mailgun events filtered by recipient email address",
+      "GetMailgunLogEntitiesByEmailID(string) - Parses raw Mailgun event JSON and formats it as an HTML table for display",
+      "UnixTimeStampToDateTime(double) - Converts a Unix timestamp to a .NET DateTime"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Mailgun integration for log retrieval is admin tooling. The Node.js backend already handles email sending; a Mailgun webhook or API polling approach in NestJS can replace this for event monitoring. The HTML-table formatting should be moved to the frontend.",
+    "complexity": "complex",
+    "lineCount": 585
+  }
+]}
+  directoryOverview="MailGunService business module providing mailgunservice functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

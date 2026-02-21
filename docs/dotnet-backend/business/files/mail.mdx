@@ -1,0 +1,189 @@
+---
+title: "Business.Mail Files"
+sidebar_label: "Business.Mail"
+description: "Per-file reference for Business.Mail (6 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.Mail File Reference
+
+> **6 files** | **15,427 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.Mail/MailDistributionBusiness.cs",
+    "fileName": "MailDistributionBusiness.cs",
+    "fileType": "business",
+    "className": "MailDistributionBusiness",
+    "inheritsFrom": null,
+    "module": "Mail",
+    "summary": "Very large business logic class (5287 lines) orchestrating the full mail distribution campaign workflow in the WebForms UI: initializing pages with template dropdowns, loading and saving mail merge templates, selecting recipient groups, scheduling and sending bulk email campaigns, managing attachments, and tracking send status. Integrates with MailGun service for high-volume delivery.",
+    "businessPurpose": "Powers the administrator-facing Mail Distribution module that allows institutional administrators to compose HTML email campaigns using mail merge templates, select recipient groups (departments, user types, rotations), optionally schedule delivery, and track campaign status.",
+    "keyMethods": [
+      "onViewIntialize - populates page template dropdowns and restores form state from query string parameters for scheduled mail views",
+      "onViewIntializeManageTemplate - initializes the template management page with the template dropdown",
+      "FillTemplateInfo - loads a mail merge template's subject and body into the compose form",
+      "SendMailToSelectedUsers - orchestrates the bulk send to all selected recipients, calling EmailUtility per user with merge field substitution",
+      "ScheduleMail - saves the composed mail campaign as a scheduled item for later delivery",
+      "GetMailDistributionRecipients - retrieves the list of users who should receive the campaign based on filter criteria",
+      "SaveMailMergeTemplate - persists a new or updated mail merge template to the database"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionManager",
+      "DocDetailsManager",
+      "EmailUtility",
+      "CommonFunctions",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Mail distribution is a core admin feature that must be replicated in the Node.js backend with BullMQ for bulk sending, React for the compose UI, and a proper campaign tracking data model. The MailGun integration already partially exists in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 5287
+  },
+  {
+    "filePath": "Business.Mail/MailDistributionManager.cs",
+    "fileName": "MailDistributionManager.cs",
+    "fileType": "business",
+    "className": "MailDistributionManager",
+    "inheritsFrom": "Manager",
+    "module": "Mail",
+    "summary": "Data access manager (2204 lines) for the mail distribution system, providing stored procedure wrappers for all CRUD operations on mail merge templates, mail distribution schedules, merge sections, merge fields, recipient group queries, and campaign send-status tracking.",
+    "businessPurpose": "Serves as the data layer for the Mail Distribution admin module, encapsulating all database interactions for template management, campaign scheduling, recipient list construction, and send history.",
+    "keyMethods": [
+      "GetMailDistributionSchedulersInfo - retrieves all mail distribution scheduler records",
+      "AddMailMergeTemplate - inserts or updates a mail merge template for a department",
+      "GetMailMergeTemplateInfo - retrieves all mail merge templates for a department",
+      "GetMailMergeCustomTemplateInfoByDepartmentID - retrieves custom mail merge templates for a department",
+      "GetMailMergeTemplateInfoByID - retrieves a specific template by ID",
+      "GetMailMergeSections - retrieves all available mail merge field sections",
+      "GetCustomMailMergeSections - retrieves custom mail merge sections",
+      "GetMailMergeFieldsBySectionID - retrieves available merge fields for a given section and department"
+    ],
+    "storedProcedures": [
+      "GetMailDistributionSchedulersInfo",
+      "AddMailMergeTemplate",
+      "GetMailMergeTemplateInfoByDepartmentID",
+      "GetMailMergeCustomTemplateInfoByDepartmentID",
+      "GetMailMergeTemplateInfoByID",
+      "GetMailMergeSections",
+      "GetCustomMailMergeSections",
+      "GetMailMergeFieldsBySectionID"
+    ],
+    "businessManagersUsed": [
+      "Manager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "All stored procedures enumerated here need Node.js service equivalents with MikroORM or raw SQL. The mail merge template and section/field metadata schemas are foundational to migrating the campaign composer.",
+    "complexity": "very-complex",
+    "lineCount": 2204
+  },
+  {
+    "filePath": "Business.Mail/MessageDistributionBusiness.cs",
+    "fileName": "MessageDistributionBusiness.cs",
+    "fileType": "business",
+    "className": "MessageDistributionBusiness",
+    "inheritsFrom": null,
+    "module": "Mail",
+    "summary": "Business logic class (5253 lines) nearly parallel to MailDistributionBusiness, orchestrating the internal Message Distribution feature which allows sending application-level messages (not just email) to user groups. Manages page initialization, template selection, recipient group selection, message composing, scheduling, and delivery via email and in-app messaging.",
+    "businessPurpose": "Powers the Message Distribution admin feature, enabling administrators to send rich HTML messages to selected groups of users (by department, user type, rotation, etc.) with support for scheduling and mail merge field substitution.",
+    "keyMethods": [
+      "onViewIntialize - populates page template dropdowns and restores state from scheduled message query string parameters",
+      "onViewIntializeManageTemplate - initializes the template management page",
+      "FillTemplateInfo - loads a template's subject and body into the compose form",
+      "SendMessageToSelectedUsers - sends composed messages to all selected recipients with merge field substitution",
+      "ScheduleMessage - saves a message campaign for later delivery",
+      "GetMessageRecipients - retrieves the target user list for the message based on filter criteria"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MessageDistributionManager",
+      "DocDetailsManager",
+      "EmailUtility",
+      "CommonFunctions",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Closely mirrors MailDistributionBusiness; both must be analyzed together during migration. The in-app message delivery path (separate from email) needs a dedicated channel in the Node.js notification system.",
+    "complexity": "very-complex",
+    "lineCount": 5253
+  },
+  {
+    "filePath": "Business.Mail/MessageDistributionManager.cs",
+    "fileName": "MessageDistributionManager.cs",
+    "fileType": "business",
+    "className": "MessageDistributionManager",
+    "inheritsFrom": "Manager",
+    "module": "Mail",
+    "summary": "Data access manager (2287 lines) for the Message Distribution system, providing stored procedure wrappers for message CRUD, mail merge template operations, user message inbox retrieval, schedule management, and bulk recipient list construction. Shares many stored procedures with MailDistributionManager.",
+    "businessPurpose": "Serves as the data layer for the Message Distribution feature, managing all database operations for message composition, template management, recipient selection, scheduling, and delivery tracking.",
+    "keyMethods": [
+      "GetMessages - retrieves messages for the logged-in user's inbox with pagination, filter, and sort support",
+      "GetMailDistributionSchedulersInfo - retrieves all message distribution scheduler records",
+      "AddMailMergeTemplate - inserts or updates a mail merge template",
+      "GetMailMergeTemplateInfo - retrieves templates for a department",
+      "GetMailMergeCustomTemplateInfoByDepartmentID - retrieves custom templates for a department",
+      "GetMailMergeTemplateInfoByID - retrieves a specific template by ID",
+      "GetMailMergeSections - retrieves all available mail merge field sections",
+      "GetCustomMailMergeSections - retrieves custom mail merge sections"
+    ],
+    "storedProcedures": [
+      "GetUserMessages",
+      "GetMailDistributionSchedulersInfo",
+      "AddMailMergeTemplate",
+      "GetMailMergeTemplateInfoByDepartmentID",
+      "GetMailMergeCustomTemplateInfoByDepartmentID",
+      "GetMailMergeTemplateInfoByID",
+      "GetMailMergeSections",
+      "GetCustomMailMergeSections"
+    ],
+    "businessManagersUsed": [
+      "Manager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Very similar to MailDistributionManager; shared stored procedures must be carefully mapped during migration to avoid duplication. GetUserMessages is particularly important as it powers the user-facing message inbox.",
+    "complexity": "very-complex",
+    "lineCount": 2287
+  },
+  {
+    "filePath": "Business.Mail/TrainingEventsInfo.cs",
+    "fileName": "TrainingEventsInfo.cs",
+    "fileType": "business",
+    "className": "TrainingEventsInfo",
+    "inheritsFrom": null,
+    "module": "Mail",
+    "summary": "Data-transfer object representing a training event (seminar/CME event), carrying fields for event identity, title, description, registration dates, maximum registrations, file attachment, open/closed status, outside-registration flag, and creator ID.",
+    "businessPurpose": "Used to pass training event data between the mail/notification layer and the database when sending event invitation/notification emails and managing event registration workflows.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Maps to a Training Event entity in the Node.js data model. The outside-registration and closed-status flags need to be preserved in any migrated event management feature.",
+    "complexity": "simple",
+    "lineCount": 120
+  },
+  {
+    "filePath": "Business.Mail/TrainingSeminarInfo.cs",
+    "fileName": "TrainingSeminarInfo.cs",
+    "fileType": "business",
+    "className": "TrainingSeminarInfo",
+    "inheritsFrom": null,
+    "module": "Mail",
+    "summary": "Data-transfer object for a training seminar registration record, carrying full registrant details: institution, department, name, address, contact info, credit card payment fields (card number, expiry, CVN), check payment fields, attendance type, meal preferences for up to three days, registration status, and audit timestamps.",
+    "businessPurpose": "Carries the complete registration and payment data for seminar sign-ups, used by the mail system when sending registration confirmation emails and by the seminar management workflow for processing attendee information.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Credit card fields stored as plain strings are a PCI compliance concern that must be addressed during migration; payment processing should be delegated to a payment processor with tokenization rather than storing card details in the application layer.",
+    "complexity": "moderate",
+    "lineCount": 276
+  }
+]}
+  directoryOverview="Mail business module providing mail functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>

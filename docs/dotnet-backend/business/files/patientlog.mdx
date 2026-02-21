@@ -1,0 +1,662 @@
+---
+title: "MyEvaluations.Business.PatientLog Files"
+sidebar_label: "MyEvaluations.Business.PatientLog"
+description: "Per-file reference for MyEvaluations.Business.PatientLog (29 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyEvaluations.Business.PatientLog File Reference
+
+> **29 files** | **7,623 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/CaseReviewInfo.cs",
+    "fileName": "CaseReviewInfo.cs",
+    "fileType": "info",
+    "className": "CaseReviewInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a clinical case review record including reviewer, comments, course outcome, and closure metadata; also contains LearnerReviewInfo.",
+    "businessPurpose": "Holds all fields needed to record a supervisor's case review and a learner's self-review response for a submitted patient log encounter.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 162
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/CaseReviewManager.cs",
+    "fileName": "CaseReviewManager.cs",
+    "fileType": "manager",
+    "className": "CaseReviewManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for case review workflows including fetching submitted/reviewed cases, saving supervisor and learner reviews, and closing cases.",
+    "businessPurpose": "Provides all data access for the case review lifecycle: listing cases for review, saving review details, recording learner acknowledgment, and closing reviewed cases.",
+    "keyMethods": [
+      "GetCasesSubmittedByUser - list user's submitted cases",
+      "GetCasesReviewedByUser - list cases pending supervisor review",
+      "SaveCaseReview - persist supervisor review record",
+      "SaveLearnerReview - persist learner acknowledgment",
+      "CloseCase - mark case as closed",
+      "GetPatientCasesToReviewCount - count pending reviews for dashboard"
+    ],
+    "storedProcedures": [
+      "GetPatientLogsSubmittedByUser",
+      "GetPatientLogsTobeReviewedByUser",
+      "GetLearnerReviewsForPatientLog",
+      "GetPatientCasesToReviewCount",
+      "AddPatientLogForReview",
+      "GetCaseReviewForPatientLog",
+      "AddLearnerReviewForPatientLog",
+      "CloseCase"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 211
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EducationDXInfo.cs",
+    "fileName": "EducationDXInfo.cs",
+    "fileType": "info",
+    "className": "EducationDXInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a patient log diagnosis classification (Education DX) with validation logic.",
+    "businessPurpose": "Represents a department-level diagnosis classification entry used to categorize patient encounters, with built-in uniqueness and required-field validation.",
+    "keyMethods": [
+      "Validate - checks name required and uniqueness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EducationDXManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 67
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EducationDXManager.cs",
+    "fileName": "EducationDXManager.cs",
+    "fileType": "manager",
+    "className": "EducationDXManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for diagnosis classification (Education DX) CRUD operations with cache invalidation and event raising.",
+    "businessPurpose": "Provides full lifecycle management of patient log diagnosis classifications including search, save, update, delete, restore, and duplicate checking.",
+    "keyMethods": [
+      "GetEducationDX - search by criteria",
+      "FetchEducationDXInfo - load single record by ID",
+      "DoesEducationDXExist - duplicate check",
+      "Save - create new classification",
+      "Update - update existing classification",
+      "RestoreDxClassification - undelete by IDs"
+    ],
+    "storedProcedures": [
+      "GetPatientLogEducationDX",
+      "GetPatientLogEducationDXById",
+      "DoesPatientLogEducationDXExists",
+      "AddPatientLogEducationDX",
+      "UpdatePatientLogEducationDX",
+      "RestoreDxClassification"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 300
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EducationDXSearchCriteria.cs",
+    "fileName": "EducationDXSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "EducationDXSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Search criteria DTO for filtering education diagnosis classifications by department, user, patient log, page mode, and deleted status.",
+    "businessPurpose": "Encapsulates filter parameters passed to EducationDXManager queries to support admin listing and patient log view modes.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EncounterTypeInfo.cs",
+    "fileName": "EncounterTypeInfo.cs",
+    "fileType": "info",
+    "className": "EncounterTypeInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a patient log encounter type (competence level) with name, description, sort order, and validation.",
+    "businessPurpose": "Represents a department-level encounter type used to classify patient encounters by clinical competency, with built-in uniqueness and required-field validation.",
+    "keyMethods": [
+      "Validate - checks name required and uniqueness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EncounterTypeManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 75
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EncounterTypeManager.cs",
+    "fileName": "EncounterTypeManager.cs",
+    "fileType": "manager",
+    "className": "EncounterTypeManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for encounter type CRUD operations with cache invalidation, event raising, and name-to-ID lookup.",
+    "businessPurpose": "Provides full lifecycle management of patient log encounter types including search, save, update, delete, restore, duplicate checking, and ID resolution by name for import.",
+    "keyMethods": [
+      "GetEncounterTypes - search by criteria",
+      "FetchEncounterTypeInfo - load single record",
+      "DoesEncounterTypeExist - duplicate check",
+      "Save - create new type",
+      "Update - update existing type",
+      "Delete - soft delete",
+      "GetEncounterTypeIdByName - resolve name to ID for import"
+    ],
+    "storedProcedures": [
+      "GetPatientLogEncounterType",
+      "GetPatientLogEncounterTypeDetailsById",
+      "DoesPatientLogEncounterTypeExists",
+      "AddPatientLogEncounterType",
+      "UpdatePatientLogEncounterType",
+      "DeletePatientLogEncounterType",
+      "GetEncounterTypeIdByName",
+      "RestoreEncounterTypes"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 252
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/EncounterTypeSearchCriteria.cs",
+    "fileName": "EncounterTypeSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "EncounterTypeSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Search criteria DTO for filtering encounter types by department, user, patient log, page mode, and deleted status.",
+    "businessPurpose": "Encapsulates filter parameters passed to EncounterTypeManager queries to support admin listing and patient log view modes.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/ExportPatientLogInfo.cs",
+    "fileName": "ExportPatientLogInfo.cs",
+    "fileType": "info",
+    "className": "ExportPatientLogInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model holding start/end date range for a patient log export request with basic date validation.",
+    "businessPurpose": "Carries the date range parameters submitted by users when exporting patient log data to Excel, CSV, XML, XSL, or Access formats.",
+    "keyMethods": [
+      "Validate - checks start and end dates are provided"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 50
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/ExportPatientLogManager.cs",
+    "fileName": "ExportPatientLogManager.cs",
+    "fileType": "manager",
+    "className": "ExportPatientLogManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager that exports patient log data to multiple formats (Excel, CSV, XML, XSL, Access) with PII decryption for DOB and MRN fields.",
+    "businessPurpose": "Handles all patient log export workflows by fetching data with decrypted PII, then writing output files in the requested format for download.",
+    "keyMethods": [
+      "GetDataForpatientLogsExport - fetch and decrypt export data",
+      "ExportPatientLogsToExcel - write XLSX file",
+      "ExportPatientLogsToCSV - write CSV text file",
+      "ExportPatientLogsToXML - write XML document",
+      "ExportPatientLogsToAccess - write MDB database file",
+      "CreateMDB - copy Access template for export"
+    ],
+    "storedProcedures": [
+      "GetDataForPatientLogExport"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "complex",
+    "lineCount": 420
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/ImportPatientLogInfo.cs",
+    "fileName": "ImportPatientLogInfo.cs",
+    "fileType": "info",
+    "className": "ImportPatientLogInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a single patient log row parsed from an import file, containing all encounter and procedure fields.",
+    "businessPurpose": "Holds the raw string fields extracted from a CSV import row before resolution and validation by ImportPatientLogManager.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 201
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/ImportPatientLogManager.cs",
+    "fileName": "ImportPatientLogManager.cs",
+    "fileType": "manager",
+    "className": "ImportPatientLogManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager that resolves import row data (names to IDs, lookups) and calls PatientLogManager to persist each imported patient log record.",
+    "businessPurpose": "Orchestrates the full patient log import pipeline: resolving user, supervisor, procedure, location, and DX IDs by name, then persisting valid rows while collecting error messages for invalid ones.",
+    "keyMethods": [
+      "ImportpatientLog - resolve and save one import row",
+      "GetUserIdByFirstAndLastName - resolve resident/supervisor name to ID",
+      "GetProcedureIDByName - resolve procedure name to ID",
+      "GetEncounterTypeIdByName - resolve encounter type name to ID",
+      "GetLocationIdByName - resolve location name to ID"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "PatientLogManager",
+      "LocationNameManager",
+      "EducationDXManager",
+      "EncounterTypeManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "complex",
+    "lineCount": 487
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/LocationNameInfo.cs",
+    "fileName": "LocationNameInfo.cs",
+    "fileType": "info",
+    "className": "LocationNameInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a patient log location name with ID, department, name, sort order, and uniqueness validation.",
+    "businessPurpose": "Represents a department-configured clinical location (e.g., ER, ICU) used to tag patient encounters, with built-in duplicate checking.",
+    "keyMethods": [
+      "Validate - checks name required and uniqueness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "LocationNameManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 66
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/LocationNameManager.cs",
+    "fileName": "LocationNameManager.cs",
+    "fileType": "manager",
+    "className": "LocationNameManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log location name CRUD operations with cache invalidation, event raising, and name-to-ID lookup.",
+    "businessPurpose": "Provides full lifecycle management of clinical locations including search, save, update, delete, restore, and ID resolution by name for import workflows.",
+    "keyMethods": [
+      "GetLocationNames - search by criteria",
+      "FetchLocationNameInfo - load single record",
+      "DoesLocationNameExist - duplicate check",
+      "Save - create new location",
+      "Update - update existing location",
+      "Delete - soft delete",
+      "GetLocationIdByName - resolve name to ID for import"
+    ],
+    "storedProcedures": [
+      "GetPatientLogLocationNames",
+      "GetPatientLogLocationDetailsById",
+      "DoesPatientLogLocationNameExists",
+      "AddPatientLogLocation",
+      "UpdatePatientLogLocation",
+      "DeletePatientLogLocation",
+      "GetLocationIdByName",
+      "RestoreLocations"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 244
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/LocationNameSearchCriteria.cs",
+    "fileName": "LocationNameSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "LocationNameSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Search criteria DTO for filtering location names by department, user, patient log, page mode, and deleted status.",
+    "businessPurpose": "Encapsulates filter parameters passed to LocationNameManager queries to support admin listing and patient log view modes.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 51
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogFieldGroupsInfo.cs",
+    "fileName": "PatientLogFieldGroupsInfo.cs",
+    "fileType": "info",
+    "className": "PatientLogFieldGroupsInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a patient log field group with ID, name, required flag, and hidden flag.",
+    "businessPurpose": "Represents a logical grouping of custom patient log fields that can be shown/hidden or marked required at the department level.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 42
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogFieldInfo.cs",
+    "fileName": "PatientLogFieldInfo.cs",
+    "fileType": "info",
+    "className": "PatientLogFieldInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a configurable patient log field with display settings, field type, bounds, lookup, and validation.",
+    "businessPurpose": "Represents one custom field definition on the patient log form, supporting field configuration (visibility, required, type, bounds) per department.",
+    "keyMethods": [
+      "Validate - checks field name required and uniqueness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "PatientLogFieldsManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 139
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogFieldsGroupManager.cs",
+    "fileName": "PatientLogFieldsGroupManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogFieldsGroupManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log field group configuration: setting hidden/required flags and swapping display order.",
+    "businessPurpose": "Allows administrators to control field group visibility, required status, and ordering on the patient log form at the department level.",
+    "keyMethods": [
+      "SetFieldGroupHiddenFlag - toggle group visibility",
+      "SetFieldGroupRequiredFlag - toggle group required status",
+      "SwapFieldGroupOrder - reorder two field groups"
+    ],
+    "storedProcedures": [
+      "SetPatientLogFieldGroupHiddenFlag",
+      "SetPatientLogFieldGroupRequiredFlag",
+      "SwapPatientLogFieldGroupOrder"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 86
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogFieldsManager.cs",
+    "fileName": "PatientLogFieldsManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogFieldsManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log custom field configuration: fetching fields for rendering, setting flags, swapping order, and CRUD for field definitions.",
+    "businessPurpose": "Provides complete management of configurable patient log fields including retrieval with caching, visibility/required flag toggling, reordering, and field CRUD operations.",
+    "keyMethods": [
+      "GetPatientLogsFieldsToDraw - fetch fields for form rendering",
+      "SetFieldHiddenFlag - toggle field visibility",
+      "SetFieldRequiredFlag - toggle field required",
+      "SwapFieldOrder - reorder two fields",
+      "GetFields - fetch all field definitions",
+      "DoesFieldNameExist - duplicate check"
+    ],
+    "storedProcedures": [
+      "GetPatientLogFieldsToDraw",
+      "SetPatientLogFieldHiddenFlag",
+      "SetPatientLogFieldRequiredFlag",
+      "SwapPatientLogFieldOrder",
+      "SwapPatientLogFieldAndGroupOrder"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 531
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogInfo.cs",
+    "fileName": "PatientLogInfo.cs",
+    "fileType": "info",
+    "className": "PatientLogInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Primary data model for a submitted patient log encounter including patient demographics, encounter details, supervisor, diagnoses, and custom field values.",
+    "businessPurpose": "Represents the complete patient encounter record submitted by a resident, holding all standard and custom fields required for persistence and reporting.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 371
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogLookupItemInfo.cs",
+    "fileName": "PatientLogLookupItemInfo.cs",
+    "fileType": "info",
+    "className": "PatientLogLookupItemInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Data model for a custom lookup list used by patient log fields, including the list header and its collection of lookup values.",
+    "businessPurpose": "Represents a named dropdown list configurable per department, used to populate custom lookup-type fields on the patient log form.",
+    "keyMethods": [
+      "Validate - checks lookup name required and uniqueness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "PatientLogLookupItemManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 119
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogLookupItemManager.cs",
+    "fileName": "PatientLogLookupItemManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogLookupItemManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log custom lookup list CRUD using transactional operations to save/update the list header and all its items atomically.",
+    "businessPurpose": "Manages custom dropdown lists for patient log fields, persisting header and items in a single transaction to maintain list integrity.",
+    "keyMethods": [
+      "Save - create lookup with items in transaction",
+      "Update - update lookup and items in transaction",
+      "SaveLookupInfo - combined insert/update dispatch",
+      "FetchLookUpInfo - load lookup with values",
+      "FetchLookUpValues - load items for a lookup",
+      "DoesLookUpNameExist - duplicate check"
+    ],
+    "storedProcedures": [
+      "AddPatientLogLookup",
+      "AddPatientLogLookupItem",
+      "UpdatePatientLogLookup",
+      "UpdatePatientLogLookupItem",
+      "GetPatientLogLookUpItemInfoByID",
+      "GetPatientLogLookUpValuesByLookUpID",
+      "GetPatientLogCustomLookupItems",
+      "DoesPatientLogLookUpNameExist"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 236
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogManager.cs",
+    "fileName": "PatientLogManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Core manager for patient log submission, search, status updates, acceptance workflow, and dynamic SQL report generation.",
+    "businessPurpose": "Orchestrates the full patient log lifecycle including submission, search with pagination, supervisor review status updates, bulk acceptance, and dynamic SQL construction for flexible reporting.",
+    "keyMethods": [
+      "GetSubmittedPatientLogByCriteria - paginated search",
+      "AcceptListOfPtLogs - bulk accept patient logs",
+      "UpdateSubmittedPatientLogSupervisorReviewStatus - update review status",
+      "GetPatientLogDetailedData - fetch report data with dynamic SQL",
+      "GetPatientLogSubmittedInfo - data reader for report view"
+    ],
+    "storedProcedures": [
+      "GetPatientLogSubmittedInfo",
+      "GetSubmittedPatientLogs",
+      "GetDeletedSubmittedPatientLogs",
+      "AcceptListOfPtLogs",
+      "AcceptPatientLogList",
+      "UpdateSubmittedPatientLogStatus",
+      "SetDischargeStatusForSubmittedPatientLog"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 2054
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogReportManager.cs",
+    "fileName": "PatientLogReportManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogReportManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log reporting with a rich filter model (PatientLogReportFilter) supporting age groups, diagnoses, encounter types, locations, supervisors, and saved report settings.",
+    "businessPurpose": "Provides data retrieval and filter state management for the patient log report page, supporting multi-dimensional filtering, saved report preferences, and archived data views.",
+    "keyMethods": [
+      "GetPatientLogReport - fetch report data by filter",
+      "SaveReportSettings - persist user report preferences",
+      "GetSavedReportSettings - load saved preferences",
+      "GetAgeGroups - fetch age group lookup"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "PatientLogManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 898
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogSearchCriteria.cs",
+    "fileName": "PatientLogSearchCriteria.cs",
+    "fileType": "criteria",
+    "className": "PatientLogSearchCriteria",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Search criteria DTO for patient log queries with pagination, sorting, supervisor filter, date range, and patient search text.",
+    "businessPurpose": "Encapsulates all filter and pagination parameters for PatientLogManager search methods, including supervisor review status and free-text patient lookup.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 114
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogSupervisorInfo.cs",
+    "fileName": "PatientLogSupervisorInfo.cs",
+    "fileType": "info",
+    "className": "PatientLogSupervisorInfo",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Serializable data model for a patient log supervisor with change-tracking flags (new, deleted, updated, DB entry).",
+    "businessPurpose": "Represents a supervisor assigned to patient log review with state flags used by PatientLogSupervisorsManager to determine which records to insert or delete.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 69
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/PatientLogSupervisorsManager.cs",
+    "fileName": "PatientLogSupervisorsManager.cs",
+    "fileType": "manager",
+    "className": "PatientLogSupervisorsManager",
+    "inheritsFrom": "Manager",
+    "module": "Business.PatientLog",
+    "summary": "Manager for patient log supervisor assignments including fetching, saving, deleting, and verifying active supervisor status.",
+    "businessPurpose": "Manages the list of supervisors eligible to review patient logs for a department, supporting add/remove operations and checking if a supervisor is currently active.",
+    "keyMethods": [
+      "GetSuperVisorsList - list supervisors for department",
+      "GetSupervisorsListForEdit - list with user type filter",
+      "Save - batch insert/delete supervisors",
+      "DoesPatientLogSupervisorActive - check supervisor active status",
+      "GetDepartmentCriteriaTypeID - check department criteria configuration",
+      "GetUserType - fetch user type for IDs"
+    ],
+    "storedProcedures": [
+      "GetPatientLogSupervisors",
+      "GetPatientLogSupervisorList",
+      "AddPatientLogSupervisor",
+      "DeletePatientLogSupervisor",
+      "DoesPatientLogSupervisorActive",
+      "GetDepartmentCriteriaTypeID",
+      "GetUserType"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 253
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/ProcedureSelection.cs",
+    "fileName": "ProcedureSelection.cs",
+    "fileType": "info",
+    "className": "ProcedureSelection",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Minimal DTO holding a procedure name and ID for use in patient log procedure selection UI.",
+    "businessPurpose": "Provides a simple name/id pair used to populate procedure selection dropdowns when submitting a patient log with associated procedures.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "MyEvaluations.Business.PatientLog/SubmitPatientLogCustomizations.cs",
+    "fileName": "SubmitPatientLogCustomizations.cs",
+    "fileType": "info",
+    "className": "SubmitPatientLogCustomizations",
+    "inheritsFrom": null,
+    "module": "Business.PatientLog",
+    "summary": "Configuration DTO controlling whether a maximum submission age limit is enforced for patient log entries.",
+    "businessPurpose": "Holds department-level customization settings that restrict how many days after the encounter date a resident can submit a patient log.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 9
+  }
+]}
+  directoryOverview="Business layer for patient encounter logging, case review, and clinical education tracking."
+  keyWorkflows={["Patient log submission","Case review workflow","Patient log import/export","Encounter type management"]}
+/>

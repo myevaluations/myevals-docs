@@ -1,0 +1,421 @@
+---
+title: "Business.Utilities Files"
+sidebar_label: "Business.Utilities"
+description: "Per-file reference for Business.Utilities (18 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Business.Utilities File Reference
+
+> **18 files** | **9,220 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Business.Utilities/Action.cs",
+    "fileName": "Action.cs",
+    "fileType": "business",
+    "className": "Action",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Defines a set of generic Action delegate signatures (0- to 4-argument void delegates) inside the MyEvaluations.Business.Utilities namespace. These supplement .NET 2.0/3.0 environments where the built-in Action<T> generics were not fully available.",
+    "businessPurpose": "Provides reusable callback/event delegate types used throughout the business layer for event-driven patterns and asynchronous callbacks.",
+    "keyMethods": [
+      "Action - void delegate with no parameters",
+      "Action<T> - void delegate with one contravariant parameter",
+      "Action<T1,T2> - void delegate with two contravariant parameters",
+      "Action<T1,T2,T3> - void delegate with three contravariant parameters",
+      "Action<T1,T2,T3,T4> - void delegate with four contravariant parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Pure infrastructure delegate definitions; the Node.js backend uses TypeScript function types natively. No migration action needed.",
+    "complexity": "trivial",
+    "lineCount": 13
+  },
+  {
+    "filePath": "Business.Utilities/ApplicationEmailSchedule.cs",
+    "fileName": "ApplicationEmailSchedule.cs",
+    "fileType": "business",
+    "className": "ApplicationEmailSchedule",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Manages the application email scheduling queue, providing methods to insert new scheduled email records, retrieve pending emails awaiting delivery, and mark emails as sent. Works directly with SQL Server via stored procedures.",
+    "businessPurpose": "Supports the application-level email queue system that batches and schedules transactional emails (evaluations, reminders, notifications) for background delivery rather than immediate sending.",
+    "keyMethods": [
+      "InsertApplicationEmailSchedules - inserts a new email into the scheduling queue with full metadata (from, to, subject, HTML template, BCC, SMTP settings, priority)",
+      "GetApplicationEmailSend (DataTable overload) - retrieves all pending emails from the scheduling queue",
+      "GetApplicationEmailSend (bool overload) - marks a specific scheduled email as sent and returns success status"
+    ],
+    "storedProcedures": [
+      "InsertApplicationEmailSchedules",
+      "GetApplicationEmailSend",
+      "UpdateApplicationEmailSend"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "Email scheduling is actively used by the Node.js backend via BullMQ workers. The queue logic and stored procedure contracts must be replicated or bridged during migration.",
+    "complexity": "simple",
+    "lineCount": 103
+  },
+  {
+    "filePath": "Business.Utilities/CSVExporter.cs",
+    "fileName": "CSVExporter.cs",
+    "fileType": "business",
+    "className": "CSVExporter",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Provides a static utility to stream CSV file downloads directly through the ASP.NET HTTP response. Writes column headers followed by row data to the response stream with correct content-disposition and MIME type headers.",
+    "businessPurpose": "Enables users to export evaluation reports, user lists, and other tabular data as downloadable CSV files from the web application.",
+    "keyMethods": [
+      "WriteToCSV - sets response headers and streams column names plus data to the client as a CSV download"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "CSV export functionality must be replicated in the Node.js/React layer; the pattern is simple and can be replaced with a streaming response utility in Express.",
+    "complexity": "simple",
+    "lineCount": 73
+  },
+  {
+    "filePath": "Business.Utilities/CommonFunctions.cs",
+    "fileName": "CommonFunctions.cs",
+    "fileType": "business",
+    "className": "CommonFunctions",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Central utility class providing Triple-DES encryption/decryption, simple Base64 encode/decode, and IANA-to-Windows timezone conversion helpers used across the entire business layer. Contains a hardcoded symmetric key constant (SECURITYKEY) for Triple-DES operations.",
+    "businessPurpose": "Provides cross-cutting security and data-handling utilities called by virtually every module: URL parameter encryption, connection string obfuscation, timezone-aware date display, and Qgenda integration decryption.",
+    "keyMethods": [
+      "Encrypt - Triple-DES encrypts a plaintext string with optional MD5 key hashing, returns Base64 ciphertext",
+      "Decrypt - Triple-DES decrypts a Base64 ciphertext with Base64 validation guard added in 2018",
+      "IsBase64String - validates whether a string is well-formed Base64 before attempting decryption",
+      "DecryptString - simple Base64 decode of ASCII-encoded connection strings",
+      "EncryptString - simple Base64 encode of ASCII strings",
+      "Decrypt_Qgenda - Triple-DES decryption variant used specifically for Qgenda integration credentials",
+      "ConvertToTimeZone - converts a DateTime to a target IANA timezone using TZConvert",
+      "GetTimeZoneOffSet - converts a DateTimeOffset to a target IANA timezone, defaults to Eastern on failure"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "The hardcoded Triple-DES key and ECB mode are a known security concern; Node.js migration should replace with AES-256-GCM or similar. The decryption logic must be replicated during transition to maintain backward compatibility with existing encrypted data in the database.",
+    "complexity": "moderate",
+    "lineCount": 296
+  },
+  {
+    "filePath": "Business.Utilities/Controlers.cs",
+    "fileName": "Controlers.cs",
+    "fileType": "business",
+    "className": "Controlers",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Utilities",
+    "summary": "A large WebForms-specific utility class (3359 lines) that provides dozens of static helper methods for managing ASP.NET Web Controls: finding controls on pages, filling/reading textboxes and dropdowns, showing/hiding panels, attaching validators, and navigating Obout SlideMenu/SuperForm composite controls.",
+    "businessPurpose": "Provides the shared UI controller scaffolding used by all WebForms pages to dynamically configure form fields, validation, visibility, and default values based on department-level field configuration rules.",
+    "keyMethods": [
+      "FillCheckBoxValue - sets a CheckBox control value on the page by control ID",
+      "GetCheckBoxValue - reads a CheckBox control value from the page",
+      "ManageFieldsTextBox - configures a TextBox field: visibility, required validation, datatype regex validators, and default value",
+      "ManageFieldsSuperFormTextBox - same as ManageFieldsTextBox but navigates into Obout SlideMenu/SuperForm nested controls",
+      "FillTextBoxValue - fills a TextBox control with a string value",
+      "GetTextBoxValue - reads a TextBox control value",
+      "FillDropDownValue - populates a DropDownList from a DataTable",
+      "FillLabelValue - sets a Label control text",
+      "VisibleControl - toggles visibility of a control by ID",
+      "GetLabelText - reads the current text of a Label control"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "This class is entirely WebForms/ASP.NET UI infrastructure. It has no equivalent in the React/Node.js stack; its logic is replaced by React component state management and form validation libraries.",
+    "complexity": "very-complex",
+    "lineCount": 3359
+  },
+  {
+    "filePath": "Business.Utilities/EmailClientSettings.cs",
+    "fileName": "EmailClientSettings.cs",
+    "fileType": "business",
+    "className": "EmailClientSettings",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Contains two classes: EmailClientSettings, which reads primary and alternate SMTP configuration from Web.config AppSettings (host, port, SSL, credentials, from address); and EmailSendEntities, a data-transfer object carrying all metadata for a single email send operation including BCC, reply-to, priority, and scheduling fields.",
+    "businessPurpose": "Provides the SMTP connection configuration model and the email message entity used by EmailUtility and ApplicationEmailSchedule to send or queue emails throughout the application.",
+    "keyMethods": [
+      "SmtpServer (property) - returns primary SMTP host from configuration",
+      "SmtpPort (property) - returns primary SMTP port from configuration",
+      "SecureMailEnabled (property) - returns whether SMTP authentication is required",
+      "SSLMailEnabled (property) - returns whether TLS/SSL is enabled",
+      "AlternateSmtpServer (property) - returns fallback SMTP host",
+      "SystemEmailAddress (property) - returns the system-wide sender address"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "SMTP settings must be migrated to Node.js environment variables. EmailSendEntities maps to the NestJS mail module's DTO. The alternate SMTP logic should be validated during migration.",
+    "complexity": "moderate",
+    "lineCount": 279
+  },
+  {
+    "filePath": "Business.Utilities/EmailModel.cs",
+    "fileName": "EmailModel.cs",
+    "fileType": "business",
+    "className": "EmailModel",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Minimal data-transfer object for email sending, carrying FromEmail, ToEmail, Subject, HtmlTemplate, and DepartmentID as auto-properties.",
+    "businessPurpose": "Used by EmailUtility.SendMailNewThread to pass batched email payloads when sending emails asynchronously for a specific department.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Trivial DTO; equivalent to a TypeScript interface in the Node.js layer. Already superseded by the more complete EmailSendEntities.",
+    "complexity": "trivial",
+    "lineCount": 15
+  },
+  {
+    "filePath": "Business.Utilities/EmailUtility.cs",
+    "fileName": "EmailUtility.cs",
+    "fileType": "business",
+    "className": "EmailUtility",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Core email sending utility (2004 lines) providing multiple overloaded SendMail methods supporting plain+HTML multipart messages, HTML-only messages, reply-to headers, BCC, department image attachments, alternate SMTP routing, and email validation checks. Also supports threaded batch sending via SendMailNewThread.",
+    "businessPurpose": "The central gateway for all outbound email in the .NET backend, used by evaluation notifications, reminders, user registration, mail distribution campaigns, and all other system emails requiring SMTP delivery.",
+    "keyMethods": [
+      "SendMailNewThread - iterates a list of EmailModel objects and sends each after email validation check",
+      "SendMail (from, to, subject, htmlBody, textBody, departmentID) - sends multipart MIME email via primary SMTP",
+      "SendUserMail - sends multipart email for user-to-user messaging",
+      "SendMail (from, to, subject, htmlBody) - sends HTML-only email via primary SMTP",
+      "SendMail (with replyTo, isReplyToRequired) - sends email with optional reply-to header override",
+      "GetCompositeEmails - parses semicolon-delimited email address strings into a list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EmailClientSettings",
+      "EmailModel",
+      "EmailValidation"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Email sending is already partially migrated to the NestJS backend using BullMQ workers and MailGun/SMTP. The alternate SMTP routing, BCC logic, and department image attachment patterns must be fully covered in Node.js before the .NET mailer can be retired.",
+    "complexity": "very-complex",
+    "lineCount": 2004
+  },
+  {
+    "filePath": "Business.Utilities/EncryptKeyGen.cs",
+    "fileName": "EncryptKeyGen.cs",
+    "fileType": "business",
+    "className": "EncryptKeyGen",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Manages a 256-character random encryption key stored in a filesystem text file, with a CacheManager-backed in-memory cache layer. Provides key generation, file persistence, and read-back for both web and console contexts. Separate read methods exist for web (HttpContext cache) and console application (static cache).",
+    "businessPurpose": "Supplies the long-lived symmetric encryption key used for encrypting sensitive data fields (beyond the hardcoded Triple-DES key in CommonFunctions), stored persistently across application restarts.",
+    "keyMethods": [
+      "ReadKeyFromFile - retrieves the encryption key from cache or file; generates and stores a new key if the file is empty",
+      "CreatingNewKey - generates a fresh random key and writes it to the key file",
+      "ReadKeyFromFileConsole - same as ReadKeyFromFile but uses the console application's static cache store"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CacheManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Key management must be replaced with a secrets manager (Azure Key Vault or environment-based secrets) in the Node.js stack. The file-based key pattern is not suitable for containerized deployment.",
+    "complexity": "complex",
+    "lineCount": 488
+  },
+  {
+    "filePath": "Business.Utilities/ExcelProcess.cs",
+    "fileName": "ExcelProcess.cs",
+    "fileType": "business",
+    "className": "ExcelProcess",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Large Excel processing utility (1115 lines) using both the MyXls (.xls) and EPPlus (.xlsx) libraries. Handles Excel import workflows including worksheet enumeration, header extraction, header matching against database field definitions, and row-level data reading. Also delegates some operations to a remote FileUploadComponent web service.",
+    "businessPurpose": "Supports bulk data import features such as user imports and question imports where administrators upload Excel files with institution/program data that the system maps to database fields.",
+    "keyMethods": [
+      "GetWorksSheetsCount - returns the number of worksheets in an XLS file",
+      "GetWorksSheetsNames - retrieves worksheet names via the remote FileUploadComponent web service",
+      "GetExcelFileHeaders - reads first-row column names from an XLS worksheet as a DataTable",
+      "GetMatchingHeaders - cross-references Excel column headers against database-defined field names and alias names, returning matched and unmatched sets"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Excel import functionality needs to be replicated in the Node.js layer using a library such as ExcelJS or SheetJS. The header-matching logic and field alias resolution are domain-specific and must be preserved.",
+    "complexity": "very-complex",
+    "lineCount": 1115
+  },
+  {
+    "filePath": "Business.Utilities/Factory.cs",
+    "fileName": "Factory.cs",
+    "fileType": "business",
+    "className": "Factory",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "A generic object factory using reflection to map IDataReader column values to typed object properties by name. Handles DBNull values with sensible defaults per type (Int32 = -1, String = empty, Boolean = false, DateTime = null). Also provides a diagnostic method to serialize all properties of an object to a string.",
+    "businessPurpose": "Reduces boilerplate data-reader mapping code throughout the business layer, providing a lightweight ORM-like capability before the project adopted full ORM tools.",
+    "keyMethods": [
+      "GetObject<T> - maps a DataReader row to a new instance of T by matching column names to property names via reflection",
+      "SetProperty - sets a default value on a property when the DataReader value is DBNull",
+      "GetPropertyInfo<T> - serializes all properties and values of an object instance to a diagnostic string"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Replaced by MikroORM entity mapping in the Node.js backend. No direct migration needed; serves as documentation of legacy data-mapping patterns.",
+    "complexity": "moderate",
+    "lineCount": 164
+  },
+  {
+    "filePath": "Business.Utilities/FileManager.cs",
+    "fileName": "FileManager.cs",
+    "fileType": "business",
+    "className": "FileManager",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Static utility for server-side file operations: reading file bytes from the configured upload server path, deleting files, and copying/moving files between virtual folder paths with automatic directory creation.",
+    "businessPurpose": "Supports document management features where evaluation forms, certifications, and user uploads need to be read, relocated, or deleted from the centralized file storage server.",
+    "keyMethods": [
+      "ReadFile - reads a file from the upload server path into a byte array, computing file size in MB",
+      "DeleteFile - deletes a file at the configured upload server virtual folder path",
+      "CopyFile - moves a file from a source folder to a destination folder, creating intermediate directories as needed"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "File management must migrate to Azure Blob Storage in the Node.js stack. Local filesystem paths and UNC-style paths used here are not compatible with containerized/cloud deployments.",
+    "complexity": "moderate",
+    "lineCount": 150
+  },
+  {
+    "filePath": "Business.Utilities/Func.cs",
+    "fileName": "Func.cs",
+    "fileType": "business",
+    "className": "Func",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Defines a set of generic Func delegate signatures (0- to 4-argument delegates with a return value) in the MyEvaluations.Business.Utilities namespace, mirroring the .NET built-in Func<T> family for compatibility in older framework targets.",
+    "businessPurpose": "Provides reusable function delegate types for callback and strategy patterns in the business layer.",
+    "keyMethods": [
+      "Func<TResult> - function delegate returning TResult with no parameters",
+      "Func<T,TResult> - function delegate with one input returning TResult",
+      "Func<T1,T2,TResult> - function delegate with two inputs returning TResult",
+      "Func<T1,T2,T3,TResult> - function delegate with three inputs returning TResult",
+      "Func<T1,T2,T3,T4,TResult> - function delegate with four inputs returning TResult"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Pure infrastructure delegate definitions superseded by TypeScript function types. No migration action needed.",
+    "complexity": "trivial",
+    "lineCount": 12
+  },
+  {
+    "filePath": "Business.Utilities/PersistComponent.cs",
+    "fileName": "PersistComponent.cs",
+    "fileType": "business",
+    "className": "PersistComponent",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Utilities",
+    "summary": "WebForms base page class (519 lines) that encapsulates file upload and persistence operations using the legacy ASPUpload COM component. Handles remote server authentication, folder creation, file extension validation, file name sanitization, file upload processing, and JPEG image resizing via the ASPJpeg COM component.",
+    "businessPurpose": "Provides the server-side infrastructure for document and image uploads used by profile photos, evaluation form attachments, and department-level document management pages.",
+    "keyMethods": [
+      "CreateFolder - authenticates to the document server and creates a directory at the specified path",
+      "FileNameSpecialCharacterReplace - sanitizes file names by replacing special characters with underscores",
+      "FileExtentionVerifying - validates that an uploaded file extension is in the allowed list (doc, docx, xls, xlsx, images, pdf, csv, txt)",
+      "Validation (IUploadedFile overload) - validates file metadata from ASPUpload stream before saving",
+      "Validation (string overload) - validates file name, size, and extension from raw parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "The ASPUpload COM dependency is a Windows/IIS-only component. Migration requires replacing with multipart form upload handling in Express/Node.js with Azure Blob Storage as the target. JPEG resizing should use a cross-platform library such as Sharp.",
+    "complexity": "complex",
+    "lineCount": 519
+  },
+  {
+    "filePath": "Business.Utilities/RequestRateLimiter.cs",
+    "fileName": "RequestRateLimiter.cs",
+    "fileType": "business",
+    "className": "RequestRateLimiter",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Thread-safe in-memory sliding-window rate limiter using a ConcurrentDictionary of ConcurrentQueues keyed by an arbitrary string. Defaults to 3 requests per 1-minute window with configurable overrides. Also provides a custom exception type for rate limit violations.",
+    "businessPurpose": "Protects sensitive endpoints (e.g., login, password reset, email sending) from abuse by limiting the number of requests a key (typically a user or IP) can make within a time window.",
+    "keyMethods": [
+      "AllowRequest (key) - checks the default rate limit (3/min) for a key and enqueues the request timestamp if allowed",
+      "AllowRequest (key, maxRequests, windowSizeMinutes) - checks a configurable rate limit for a key",
+      "GetTimeUntilNextAllowedRequest - returns a TimeSpan indicating how long until the key is allowed to make another request"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Rate limiting is implemented in the Node.js backend using middleware (e.g., express-rate-limit or BullMQ throttling). This class documents the business rules (3 req/min default) that should be preserved in Node.js rate limit configuration.",
+    "complexity": "simple",
+    "lineCount": 61
+  },
+  {
+    "filePath": "Business.Utilities/SearchCriteria.cs",
+    "fileName": "SearchCriteria.cs",
+    "fileType": "business",
+    "className": "SearchCriteria",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "A large data-transfer object (310 lines) carrying all possible search, filter, sort, and pagination parameters used across the application's grid and list views. Properties include user/department/template/rotation/location IDs, date ranges, sort direction, sort expression, page size, and various evaluation-specific filter flags.",
+    "businessPurpose": "Provides a standardized search parameter bag passed to stored procedures for filtered, sorted, paginated data retrieval across evaluation lists, user lists, report grids, and other system views.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "SearchCriteria maps to query parameter DTOs in the Node.js layer. The full set of filter fields must be covered in API endpoint validation schemas to ensure feature parity.",
+    "complexity": "moderate",
+    "lineCount": 310
+  },
+  {
+    "filePath": "Business.Utilities/TelnyxSmsService.cs",
+    "fileName": "TelnyxSmsService.cs",
+    "fileType": "business",
+    "className": "TelnyxSmsService",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "SMS delivery service using the Telnyx API to send outbound text messages. Supports both US E.164 (+1XXXXXXXXXX) and international E.164 phone number formatting. Reads API key, messaging profile ID, and outbound number from Web.config. Wraps the async Telnyx SDK call synchronously.",
+    "businessPurpose": "Enables SMS notification delivery to users for evaluation reminders, alerts, and other time-sensitive communications where email alone is insufficient.",
+    "keyMethods": [
+      "SendSms - synchronously sends an SMS to a recipient phone number with configurable US or global E.164 format",
+      "FormatToUSE164 - formats a phone number string to US E.164 (+1XXXXXXXXXX) format",
+      "FormatToE164 - formats a phone number string to international E.164 format"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "SMS sending via Telnyx should be migrated to the Node.js backend using the official Telnyx Node.js SDK. The phone number formatting logic and async/await patterns translate directly.",
+    "complexity": "simple",
+    "lineCount": 111
+  },
+  {
+    "filePath": "Business.Utilities/ZipUtil.cs",
+    "fileName": "ZipUtil.cs",
+    "fileType": "business",
+    "className": "ZipUtil",
+    "inheritsFrom": null,
+    "module": "Utilities",
+    "summary": "Provides static ZIP archive utilities using ICSharpCode.SharpZipLib: compressing an entire folder tree into a ZIP file (skipping nested ZIPs) and extracting a ZIP archive to a target folder with optional password support and post-extraction deletion of the source ZIP.",
+    "businessPurpose": "Supports bulk document download and report packaging features where multiple files (e.g., evaluation PDFs, exports) are bundled into a single ZIP archive for user download.",
+    "keyMethods": [
+      "ZipFiles - compresses all files in a folder (recursively) into a ZIP archive at the specified output path",
+      "GenerateFileList - recursively enumerates all files in a directory tree as an ArrayList",
+      "UnZipFiles - extracts a ZIP archive to a destination folder with optional password and cleanup"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "ZIP functionality can be replaced with the built-in Node.js archiver package or JSZip in the migration. The class is not in the Business namespace (missing namespace declaration) which may indicate it is a standalone utility.",
+    "complexity": "moderate",
+    "lineCount": 148
+  }
+]}
+  directoryOverview="Utilities business module providing utilities functionality for the MyEvaluations platform."
+  keyWorkflows={[]}
+/>
