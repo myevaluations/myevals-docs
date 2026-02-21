@@ -345,7 +345,7 @@ export default function FileReference({
       count: data.filter((f) => f.complexity === c).length,
       color: COMPLEXITY_COLORS[c],
     })).filter((d) => d.count > 0);
-    const migrationDist = ['high', 'medium', 'low', 'none'].map((m) => ({
+    const migrationDist = [...MIGRATION_ORDER].reverse().map((m) => ({
       label: m,
       count: data.filter((f) => f.migrationRelevance === m).length,
       color: MIGRATION_COLORS[m],

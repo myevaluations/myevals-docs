@@ -5,38 +5,42 @@ interface ArchitectureDiagramProps {
   title?: string;
 }
 
+// Attempt to load the Mermaid component once at module scope.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let MermaidComponent: React.ComponentType<{ value: string }> | null = null;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  MermaidComponent = require('@docusaurus/theme-mermaid/lib/theme/Mermaid').default;
+} catch {
+  console.warn('ArchitectureDiagram: @docusaurus/theme-mermaid not available, falling back to code block');
+}
+
 /**
- * Attempts to import and render the Mermaid component from @docusaurus/theme-mermaid.
- * If not available, falls back to rendering the chart definition as a code block.
+ * Renders the Mermaid diagram if the theme component is available,
+ * otherwise falls back to a raw code block.
  */
 function MermaidRenderer({ chart }: { chart: string }): React.JSX.Element {
-  // Attempt to use Docusaurus Mermaid theme component
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const Mermaid = require('@docusaurus/theme-mermaid/lib/theme/Mermaid').default;
-    return <Mermaid value={chart} />;
-  } catch {
-    console.warn('ArchitectureDiagram: @docusaurus/theme-mermaid not available, falling back to code block');
-    // Mermaid theme not available - render as code block fallback
-    return (
-      <div>
-        <p style={{ fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)', marginBottom: '0.5rem' }}>
-          Mermaid rendering is not available. Showing raw diagram definition:
-        </p>
-        <pre
-          style={{
-            background: 'var(--ifm-code-background)',
-            padding: '1rem',
-            borderRadius: '4px',
-            overflow: 'auto',
-            fontSize: '0.85rem',
-          }}
-        >
-          <code>{chart}</code>
-        </pre>
-      </div>
-    );
+  if (MermaidComponent) {
+    return <MermaidComponent value={chart} />;
   }
+  return (
+    <div>
+      <p style={{ fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)', marginBottom: '0.5rem' }}>
+        Mermaid rendering is not available. Showing raw diagram definition:
+      </p>
+      <pre
+        style={{
+          background: 'var(--ifm-code-background)',
+          padding: '1rem',
+          borderRadius: '4px',
+          overflow: 'auto',
+          fontSize: '0.85rem',
+        }}
+      >
+        <code>{chart}</code>
+      </pre>
+    </div>
+  );
 }
 
 export default function ArchitectureDiagram({ chart, title }: ArchitectureDiagramProps): React.JSX.Element {
