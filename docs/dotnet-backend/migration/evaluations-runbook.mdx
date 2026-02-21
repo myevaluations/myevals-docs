@@ -1,0 +1,213 @@
+---
+sidebar_position: 4
+title: Evaluations Migration Runbook
+description: "Phased plan for migrating the Evaluations module — 47 business files + 214 web pages + 192K lines — to NestJS/PostgreSQL using the strangler fig pattern."
+---
+
+# Evaluations Migration Runbook
+
+> **Scope**: 47 business files + 214 web pages + 192,121 lines — the largest and most complex module in the codebase.
+>
+> **Strategy**: [Strangler Fig](./strategy) — build NestJS equivalents alongside the .NET code, redirect traffic incrementally, decommission after verification.
+
+## Prerequisite: Migrate First
+
+These modules must be partially or fully migrated before Evaluations can follow:
+
+| Module | Why Required | Status |
+|--------|-------------|--------|
+| **Security** | Authentication/permission checks are called in every evaluation operation | In progress (partially migrated) |
+| **Mail** | Notification delivery for evaluation reminders and completions | Not started |
+| **DutyHours** | Rotation schedule context used for evaluation assignment | Not started |
+
+---
+
+## Phase 1: Port the Business Layer (47 files)
+
+Port in order of migration relevance + complexity. Start with core data managers that web pages depend on.
+
+### Phase 1a — Core Data Managers (Port First)
+
+These 5 files are the engine of the Evaluations module. Everything else depends on them.
+
+| Priority | .NET Class | Lines | NestJS Target | Notes |
+|----------|-----------|-------|---------------|-------|
+| 1 | `EvaluationsTemplateManager.cs` | 12,531 | `evaluations-template.service.ts` | Primary template CRUD + publication. Most heavily used class. |
+| 2 | `EvaluationsManager.cs` | 8,147 | `evaluations.service.ts` | Core submission, retrieval, assignment routing. |
+| 3 | `EvaluationsReportManager.cs` | 8,646 | `evaluations-report.service.ts` | 72+ report types. May split into sub-services. |
+| 4 | `EvaluationTemplateBusiness.cs` | 8,927 | `evaluation-template-business.service.ts` | WebForms-specific UI logic — evaluate for which parts are reusable vs UI-specific. |
+| 5 | `AnnualProgramEvaluationManager.cs` | 5,380 | `ape.service.ts` | APE (ACGME annual program evaluation) CRUD. |
+
+**Checklist:**
+```markdown
+- [ ] Port EvaluationsTemplateManager.cs → evaluations-template.service.ts
+- [ ] Port EvaluationsManager.cs → evaluations.service.ts
+- [ ] Port EvaluationsReportManager.cs → evaluations-report.service.ts
+- [ ] Port EvaluationTemplateBusiness.cs → evaluation-template-business.service.ts
+- [ ] Port AnnualProgramEvaluationManager.cs → ape.service.ts
+```
+
+### Phase 1b — Supporting Managers
+
+| .NET Class | Lines | Migration Relevance | Notes |
+|-----------|-------|---------------------|-------|
+| `AnnualProgramEvaluationBusiness.cs` | 5,324 | high | APE WebForms UI orchestration |
+| `AnswerTypeManager.cs` | 866 | high | Scoring scales (Likert, numeric, yes/no) |
+| `QuestionManager.cs` | 769 | high | Question library CRUD |
+| `EvaluationSchedulesManager.cs` | 298 | high | Evaluation schedule generation |
+| `EvaluationsRotationsManager.cs` | 340 | high | Template-to-rotation linking |
+| `QuestionGroupManager.cs` | 209 | high | Question grouping logic |
+| `AnnualProgramReportBusiness.cs` | 1,893 | high | APE report generation |
+| `AnnualProgramReportManager.cs` | 69 | medium | APE demographic data |
+| `ExportEvaluationManager.cs` | 487 | medium | Export to Excel/PDF |
+| `DescriptiveCriteriaManager.cs` | 219 | medium | Free-text criteria CRUD |
+| `ClinicalSummaryManager.cs` | 154 | medium | EBM clinical summary data |
+| `QuickEvaluations.cs` | 135 | medium | Quick eval configuration |
+| `PatientProblemDiagnosisManager.cs` | 243 | medium | Mini-CEX patient encounter data |
+
+### Phase 1c — DTOs / Info Classes (Port with Managers)
+
+Port alongside their corresponding managers. Define as TypeScript interfaces or Prisma schema types.
+
+| .NET DTO | Lines | NestJS Target |
+|---------|-------|---------------|
+| `EvaluationsInfo.cs` | 407 | DTO/interface for evaluation assignment record |
+| `EvaluationsTemplateInfo.cs` | 618 | DTO for template definition |
+| `AnnualProgramEvaluationInfo.cs` | 8,324 | DTO for APE sections (very large — likely maps to multiple Prisma models) |
+| `EvaluateInfo.cs` | 682 | DTO for completed evaluation submission |
+| `QuestionInfo.cs` | 187 | DTO for evaluation question |
+| `AnswerTypeInfo.cs` | 217 | DTO for answer type/scale |
+| `EvaluationScheduleInfo.cs` | 147 | DTO for schedule configuration |
+| `EvaluationsRotationsInfo.cs` | 153 | DTO for template-rotation linking |
+| `PrimaryEvaluationsTemplateInfo.cs` | 597 | Mirror DTO for primary evaluations |
+| `ClinicalSummaryInfo.cs` | 145 | DTO for EBM clinical summary |
+
+**Skip (low priority, can add later):**
+`ContactAdminInfo.cs`, `ContactInfo.cs`, `ContactSearchCriteria.cs`, `EvaluationAssignmentUsersInfoLog.cs`, `EvaluationSearchCriteria.cs`, `FavoriteSettingsInfo.cs`, `SchedulerInformation.cs`, `UserInfo.cs` — all `trivial` complexity, `low` migration relevance.
+
+**Skip entirely:** `AnswerManager.cs` (empty stub, no implemented methods).
+
+---
+
+## Phase 2: Port the Web Pages (214 files)
+
+Port pages in order of business criticality. **Prioritize the submission and review flows first** — these are core user-facing features that will immediately validate the new backend.
+
+### Phase 2a — Critical Submission Flow (Port First)
+
+These pages are in the primary evaluation workflow. Any developer or trainee uses them daily.
+
+| Priority | .NET Page | Lines | React Equivalent | Notes |
+|----------|----------|-------|-----------------|-------|
+| 1 | `EvaluateEvaluation.aspx.cs` | 7,180 | `pages/evaluations/evaluate.tsx` | The core evaluation form. All evaluation types. Highest ROI to migrate. |
+| 2 | `ReviewEvaluation.aspx.cs` | 2,430 | `pages/evaluations/review.tsx` | Reviewer sees evaluation before approval. |
+| 3 | `SignEvaluation.aspx.cs` | 2,638 | `pages/evaluations/sign.tsx` | Electronic signature capture. |
+| 4 | `EvaluationDetails.aspx.cs` | 3,615 | `pages/evaluations/details/[id].tsx` | Post-submission view of completed evaluation. |
+
+### Phase 2b — Assignment Management
+
+| .NET Page | Lines | React Equivalent | Notes |
+|----------|-------|-----------------|-------|
+| `ManageEvaluationAssignments.aspx.cs` | 2,971 | `pages/admin/evaluation-assignments.tsx` | Who evaluates whom — multi-filter grid. |
+| `ManageAllEvaluationAssignments.aspx.cs` | 2,318 | `pages/admin/all-assignments.tsx` | Institution-wide assignment view. |
+| `AssignEvaluations.aspx.cs` | 2,398 | `pages/admin/assign.tsx` | Manual assignment creation. |
+| `ManageEvaluations.aspx.cs` | 1,810 | `pages/admin/evaluations.tsx` | Admin evaluation list management. |
+
+### Phase 2c — Template Design (Complex)
+
+| .NET Page | Lines | React Equivalent | Notes |
+|----------|-------|-----------------|-------|
+| `ManageAnnualProgramEvaluations.aspx.cs` | 13,333 | `pages/admin/ape-management.tsx` | Largest file — APE + template creation. Split into sub-components. |
+| `CustomDesignStep3.aspx.cs` | 2,642 | `pages/admin/template-design/custom-step3.tsx` | Template question design wizard. |
+| `ManageOutcomes.aspx.cs` | 3,161 | `pages/admin/outcomes.tsx` | Milestone/outcome mapping. |
+| `ManageMilestones.aspx.cs` | 2,248 | `pages/admin/milestones.tsx` | ACGME milestone management. |
+
+### Phase 2d — Reporting (Defer to later)
+
+These are high-complexity but lower priority for the initial migration — they depend on Phase 2a-c being stable.
+
+| .NET Page | Lines | Notes |
+|----------|-------|-------|
+| `OutcomesReportResults.aspx.cs` | 7,080 | Complex aggregate reporting. Port after core data layer is stable. |
+| `MilestoneCompetencyWorkSheet.aspx.cs` | 4,902 | CCC committee scoring worksheets. |
+| `MilestoneGroupProgressionReport.aspx.cs` | 3,381 | Resident progression over time. |
+| `AnnualProgramReportResults.aspx.cs` | 6,106 | APE reporting. |
+| `GenerateWorkSheetPDF.aspx.cs` | 3,019 | PDF generation — may integrate a PDF library (puppeteer, pdfkit). |
+
+**Low priority (100 files):** The 100 `medium` migration relevance web pages can be migrated last. Most are secondary admin pages or variations of already-migrated features.
+
+---
+
+## Phase 3: Migrate Stored Procedures to PostgreSQL
+
+The Business layer enrichment documents these stored procedures used by Evaluations managers:
+
+| SP Name (from enrichment) | Called By | PostgreSQL Strategy |
+|--------------------------|-----------|---------------------|
+| `sp_Evaluation_GetRotationSchedule` | `EvaluationAssignmentManager` | → Prisma query + raw SQL |
+| `sp_Evaluation_InsertTemplate` | `EvaluationsTemplateManager` | → `evaluationsTemplate.create()` |
+| `sp_Evaluation_InsertQuestions` | `EvaluationsTemplateManager` | → `question.createMany()` |
+| `sp_Evaluation_InsertCompetencyMappings` | `EvaluationTemplateBusiness` | → `competencyMapping.createMany()` |
+| `sp_Evaluation_Submit` | `EvaluationsManager` | → `evaluation.update()` with transaction |
+| `sp_Evaluation_GetResults` | `EvaluationsReportManager` | → Complex query — evaluate for materialized view |
+
+> **Note**: The web layer enrichment data shows many Evaluations web pages have empty `storedProcedures[]` arrays — they call stored procedures indirectly through business managers. The full SP inventory requires parsing the actual .NET source code (run `npm run parse:dotnet:sprocs`).
+
+---
+
+## Phase 4: Migrate Schedulers
+
+The Schedulers enrichment identifies 2 scheduler files that reference Evaluations business classes:
+
+- **Evaluation assignment scheduler** → `EvaluationsManager` — nightly auto-assignment based on rotation schedule
+- **Evaluation reminder scheduler** → `EvaluationsManager`, `MailManager` — sends reminder emails at configured intervals
+
+**NestJS equivalents:**
+```typescript
+// apps/api/src/workers/evaluation-assignment.worker.ts (BullMQ)
+// apps/api/src/workers/evaluation-reminder.worker.ts (BullMQ)
+```
+
+---
+
+## Phase 5: Decommission .NET Code
+
+Once React/NestJS equivalents are live and verified:
+
+1. **Remove Web/Evaluations/** pages — 214 ASPX/CS files
+2. **Deprecate Business.Evaluations managers** — Remove from .NET solution
+3. **Archive stored procedures** — Mark `sp_Evaluation_*` as deprecated in DB
+4. **Update ACGME reporting integrations** — Ensure reporting data flows from PostgreSQL
+
+---
+
+## Complexity Summary
+
+| Layer | Files | Lines | Very-Complex | High Migration Priority |
+|-------|-------|-------|--------------|------------------------|
+| Business | 47 | ~80K | 5 files | 22 files |
+| Web | 214 | 192,121 | 44 files | 68 files |
+| **Total** | **261** | **~272K** | **49 files** | **90 files** |
+
+**Estimated effort (rough):** 6–12 months for a dedicated 2-engineer team, given the scope of the APE system, milestone tracking, and reporting complexity.
+
+---
+
+## Key Risks
+
+1. **`AnnualProgramEvaluationInfo.cs` (8,324 lines)** — This DTO is enormous. It likely represents a complex ACGME APE form with dozens of sections. Map carefully to Prisma schema before writing any code.
+2. **`EvaluationsTemplateManager.cs` (12,531 lines)** — Template publication, versioning, and distribution logic is complex. Isolate and test each method independently.
+3. **Reporting layer** — 72+ report types in `EvaluationsReportManager.cs`. Consider caching strategies (materialized views in PostgreSQL) for performance-critical aggregate queries.
+4. **Session state** — The .NET WebForms pages use ViewState extensively. React + NestJS will need explicit state management (React Query, Zustand) as a replacement.
+5. **The 100 `medium` priority web pages** — These are variations and secondary flows. Defer until core flows are stable.
+
+---
+
+## Related Documentation
+
+- [Migration Strategy](./strategy) — Strangler fig pattern, overall approach
+- [Shared Database](./shared-database) — How both backends share MSSQL during transition
+- [Migration Status](./status) — Current progress across all modules
+- [Evaluations Business Module](../business/evaluations) — Detailed class documentation
+- [Evaluations Web Files](../web/pages/evaluations) — 214 web page reference
+- [Business Modules Who-Depends-On](../business/evaluations) — 415 web pages + 2 schedulers that will be affected

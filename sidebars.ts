@@ -152,6 +152,7 @@ const sidebars: SidebarsConfig = {
             'dotnet-backend/migration/status',
             'dotnet-backend/migration/strategy',
             'dotnet-backend/migration/shared-database',
+            'dotnet-backend/migration/evaluations-runbook',
           ],
         },
       ],
