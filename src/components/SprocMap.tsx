@@ -1,4 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+
+const GITHUB_BASE = 'https://github.com/myevaluations/myevals-dotnet-backend/blob/master/';
+
+interface WebCaller {
+  fileName: string;
+  filePath: string;
+  directory: string;
+  viaManager: string;
+}
 
 interface CalledByEntry {
   class: string;
@@ -108,6 +117,25 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
 
   const [searchText, setSearchText] = useState('');
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [webCallersExpanded, setWebCallersExpanded] = useState<Set<string>>(new Set());
+  const [webCallers, setWebCallers] = useState<Record<string, WebCaller[]> | null>(null);
+
+  // Lazy-load 3-tier web callers data
+  useEffect(() => {
+    fetch('/sproc-web-callers.json')
+      .then((r) => r.json())
+      .then((data: Record<string, WebCaller[]>) => setWebCallers(data))
+      .catch(() => setWebCallers({}));
+  }, []);
+
+  function toggleWebCallers(sproc: string) {
+    setWebCallersExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(sproc)) next.delete(sproc);
+      else next.add(sproc);
+      return next;
+    });
+  }
 
   const filteredMappings = useMemo(() => {
     const query = searchText.toLowerCase();
@@ -186,6 +214,8 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
                 const hasMultiple = m.calledBy.length > 1;
                 const isExpanded = expandedRows.has(m.sproc);
                 const displayEntries = hasMultiple && !isExpanded ? [m.calledBy[0]] : m.calledBy;
+                const webCallersForSp = webCallers?.[m.sproc] ?? [];
+                const showWebCallers = webCallersExpanded.has(m.sproc);
 
                 return (
                   <React.Fragment key={m.sproc}>
@@ -195,7 +225,7 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
                         className={idx === 0 && searchText ? 'sproc-highlight' : undefined}
                         style={{
                           borderBottom:
-                            idx === displayEntries.length - 1
+                            idx === displayEntries.length - 1 && !showWebCallers
                               ? '1px solid var(--ifm-color-emphasis-200)'
                               : 'none',
                         }}
@@ -246,6 +276,27 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
                                 ({m.calledBy.length} callers)
                               </span>
                             )}
+                            {webCallers !== null && (
+                              <div style={{ marginTop: '4px' }}>
+                                <button
+                                  onClick={() => toggleWebCallers(m.sproc)}
+                                  style={{
+                                    background: 'none',
+                                    border: `1px solid ${webCallersForSp.length > 0 ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-300)'}`,
+                                    borderRadius: '4px',
+                                    cursor: webCallersForSp.length > 0 ? 'pointer' : 'default',
+                                    fontSize: '0.7rem',
+                                    color: webCallersForSp.length > 0 ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-400)',
+                                    padding: '1px 6px',
+                                    lineHeight: 1.4,
+                                  }}
+                                  title={webCallersForSp.length > 0 ? 'Show web page callers' : 'No web page chain data'}
+                                  disabled={webCallersForSp.length === 0}
+                                >
+                                  {showWebCallers ? '▲' : '▶'} {webCallersForSp.length} web pages
+                                </button>
+                              </div>
+                            )}
                           </td>
                         ) : null}
 
@@ -273,6 +324,38 @@ export default function SprocMap({ mappings }: SprocMapProps): React.JSX.Element
                         </td>
                       </tr>
                     ))}
+                    {/* 3rd Tier: Web page callers */}
+                    {showWebCallers && webCallersForSp.length > 0 && (
+                      <tr>
+                        <td />
+                        <td colSpan={3} style={{ padding: '0 0.75rem 0.75rem', borderBottom: '1px solid var(--ifm-color-emphasis-200)' }}>
+                          <div
+                            style={{
+                              backgroundColor: 'var(--ifm-background-surface-color)',
+                              border: '1px solid var(--ifm-color-emphasis-200)',
+                              borderRadius: '6px',
+                              padding: '8px 12px',
+                            }}
+                          >
+                            <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '6px' }}>
+                              Web Page Callers (via manager chain)
+                            </div>
+                            {webCallersForSp.map((wc) => (
+                              <div key={wc.filePath} style={{ display: 'flex', alignItems: 'baseline', gap: '6px', padding: '2px 0', fontSize: '0.8rem' }}>
+                                <span style={{ fontFamily: 'monospace', color: 'var(--ifm-font-color-base)' }}>{wc.fileName}</span>
+                                <span style={{ fontSize: '0.72rem', color: 'var(--ifm-color-emphasis-500)' }}>via {wc.viaManager}</span>
+                                <a
+                                  href={`${GITHUB_BASE}${wc.filePath}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{ marginLeft: 'auto', fontSize: '0.72rem', color: 'var(--ifm-color-emphasis-400)', textDecoration: 'none' }}
+                                >↗</a>
+                              </div>
+                            ))}
+                          </div>
+                        </td>
+                      </tr>
+                    )}
                   </React.Fragment>
                 );
               })
