@@ -1,14 +1,14 @@
 ---
-title: "Schedulers (Batch 3) Files"
-sidebar_label: "Schedulers (Batch 3)"
-description: "Per-file reference for Schedulers (Batch 3) (74 files)"
+title: "Schedulers Files"
+sidebar_label: "Schedulers"
+description: "Per-file reference for Schedulers (160 files)"
 ---
 
 import FileReference from '@site/src/components/FileReference';
 
-# Schedulers (Batch 3) File Reference
+# Schedulers File Reference
 
-> **74 files** | **20,399 lines** | Generated 2/21/2026
+> **160 files** | **38,478 lines** | Generated 2/21/2026
 
 <FileReference
   files={[
@@ -1940,6 +1940,1877 @@ import FileReference from '@site/src/components/FileReference';
     "migrationNote": "Should be consolidated with the attendee reminder into a single conference reminder service with role-based targeting in Node.js.",
     "complexity": "moderate",
     "lineCount": 229
+  },
+  {
+    "filePath": "Schedulers/ExportBSNLogs/ExportBSNLogs/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - ExportBSNLogs",
+    "summary": "Console app that exports BSN (Bachelor of Science in Nursing) notification and attendance-tracking logs to Salesforce via XML REST API calls.",
+    "businessPurpose": "Syncs BSN clinical log data and attendance records from MyEvaluations to the Banner/Salesforce external system for Chamberlain BSN programs.",
+    "keyMethods": [
+      "Main - orchestrates two export operations with independent error handling",
+      "ExportNotificationsToSalesForce - fetches XML from SP, POSTs to SalesForce REST endpoint, parses JSON response for failures",
+      "ExportAttendenceLogs - fetches attendance XML from SP, POSTs to Banner API endpoint, handles 502/empty responses",
+      "GetNotificationLogs - executes ExportBSNDatatoSalesforce SP to retrieve pending notifications",
+      "GetBSNAttendanceLogs - executes ExportBSNAttendanceTracking SP to retrieve attendance records",
+      "UpdateBSNSalesforceStatus - executes UpdateBSNSalesforceStatus SP to mark failed notification records",
+      "UpdateBSNAttendanceTrackingStatus - executes UpdateBSNAttendanceTrackingStatus SP to mark failed attendance records",
+      "ConfigureServices - reads appsettings.json config values"
+    ],
+    "storedProcedures": [
+      "ExportBSNDatatoSalesforce",
+      "ExportBSNAttendanceTracking",
+      "UpdateBSNSalesforceStatus",
+      "UpdateBSNAttendanceTrackingStatus"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 333
+  },
+  {
+    "filePath": "Schedulers/FNPClinicalLogsReminder/FNPClinicalLogsReminder/FNPClinicalLogsReminderBusiness.cs",
+    "fileName": "FNPClinicalLogsReminderBusiness.cs",
+    "fileType": "helper",
+    "className": "FNPClinicalLogsReminderBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPClinicalLogsReminder",
+    "summary": "Business orchestration layer that invokes stored-procedure-backed reminder methods for FNP midterm/final evaluations and week-8 reminders.",
+    "businessPurpose": "Coordinates sending of FNP clinical logs reminder emails (midterm, final, week-8) and logs job history to the database.",
+    "keyMethods": [
+      "OnViewInitializeMidtermAndFinalEvaluation - triggers SendFNPClinicalLogsReminderEmail SP and logs results",
+      "OnViewInitializeMidtermAndFinalEvaluationWeek8 - triggers SendFNPClinicalLogsReminderEmailWeek8 SP",
+      "OnViewInitializeGetFNPStudentLogReview - triggers GetFNPStudentLogReview SP (moved to separate scheduler, currently commented out)",
+      "OnViewInitializeSendNotificationsToStudentsMidtermAndFinalEvaluationsScheduler - triggers notifications SP (commented out)"
+    ],
+    "storedProcedures": [
+      "SendFNPClinicalLogsReminderEmail",
+      "SendFNPClinicalLogsReminderEmailWeek8",
+      "GetFNPStudentLogReview",
+      "SendNotificationsToStudentsMidtermAndFinalEvaluationsScheduler",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MidtermAndFinalEvaluationRemManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 135
+  },
+  {
+    "filePath": "Schedulers/FNPClinicalLogsReminder/FNPClinicalLogsReminder/MidtermAndFinalEvaluationRemManager.cs",
+    "fileName": "MidtermAndFinalEvaluationRemManager.cs",
+    "fileType": "manager",
+    "className": "MidtermAndFinalEvaluationRemManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPClinicalLogsReminder",
+    "summary": "Data access manager that wraps stored procedure calls for FNP clinical log reminder emails and scheduler job history recording.",
+    "businessPurpose": "Provides thin SP-calling methods used by the business layer to send FNP reminder emails and record scheduler run history.",
+    "keyMethods": [
+      "InsertSchedulerJobHistory - inserts scheduler run record via InsertSchedulerJobHistory SP",
+      "SendFNPClinicalLogsReminderEmail - executes SendFNPClinicalLogsReminderEmail SP",
+      "GetFNPStudentLogReview - executes GetFNPStudentLogReview SP",
+      "SendNotificationsToStudentsMidtermAndFinalEvaluationsScheduler - executes notifications SP",
+      "SendFNPClinicalLogsReminderEmailWeek8 - executes week-8 reminder SP"
+    ],
+    "storedProcedures": [
+      "InsertSchedulerJobHistory",
+      "SendFNPClinicalLogsReminderEmail",
+      "GetFNPStudentLogReview",
+      "SendNotificationsToStudentsMidtermAndFinalEvaluationsScheduler",
+      "SendFNPClinicalLogsReminderEmailWeek8"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 100
+  },
+  {
+    "filePath": "Schedulers/FNPClinicalLogsReminder/FNPClinicalLogsReminder/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPClinicalLogsReminder",
+    "summary": "Shared static logging utility using Enterprise Library Logging with LogType and LogFor enums for categorized scheduler logging.",
+    "businessPurpose": "Provides standardized file-based logging for scheduler events (Information, Warning, Error, Success) using Microsoft Enterprise Library.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes a LogEntry to the configured sink",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - overload that appends exception details to the log entry"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/FNPClinicalLogsReminder/FNPClinicalLogsReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPClinicalLogsReminder",
+    "summary": "Entry point that invokes the midterm/final and week-8 FNP clinical log reminder workflows.",
+    "businessPurpose": "Bootstraps the FNP clinical logs reminder scheduler to send email reminders for Chamberlain FNP program evaluations.",
+    "keyMethods": [
+      "Main - calls OnViewInitializeMidtermAndFinalEvaluation and OnViewInitializeMidtermAndFinalEvaluationWeek8"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPClinicalLogsReminderBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 30
+  },
+  {
+    "filePath": "Schedulers/FNPDeleteDroppedCourseEvaluation/FNPDeleteDroppedCourseEvaluation/EmailSender.cs",
+    "fileName": "EmailSender.cs",
+    "fileType": "helper",
+    "className": "EmailSender",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPDeleteDroppedCourseEvaluation",
+    "summary": "Static helper that sends an HTML error notification email to administrators when an exception occurs in the FNP delete scheduler.",
+    "businessPurpose": "Alerts the admin team via email when the FNP dropped course evaluation deletion process fails.",
+    "keyMethods": [
+      "SendErrorEmail(methodName, exceptionMessage) - validates email address then sends formatted HTML error email via EmailUtility"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EmailValidation",
+      "EmailUtility"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 87
+  },
+  {
+    "filePath": "Schedulers/FNPDeleteDroppedCourseEvaluation/FNPDeleteDroppedCourseEvaluation/FNPEvaluations.cs",
+    "fileName": "FNPEvaluations.cs",
+    "fileType": "helper",
+    "className": "FNPEvaluations",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPDeleteDroppedCourseEvaluation",
+    "summary": "Orchestrator that calls the DeleteFNPDroppedCourseEvaluations stored procedure to remove evaluations for FNP students who dropped courses.",
+    "businessPurpose": "Automatically deletes pending evaluations for FNP students who have dropped a course, keeping the evaluation queue clean.",
+    "keyMethods": [
+      "Start - runs DeleteEvaluation and logs DroppedEvaluationIDs returned by the SP",
+      "DeleteEvaluation - executes DeleteFNPDroppedCourseEvaluations SP and returns affected evaluation IDs"
+    ],
+    "storedProcedures": [
+      "DeleteFNPDroppedCourseEvaluations"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 57
+  },
+  {
+    "filePath": "Schedulers/FNPDeleteDroppedCourseEvaluation/FNPDeleteDroppedCourseEvaluation/MyEvalLogs.cs",
+    "fileName": "MyEvalLogs.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPDeleteDroppedCourseEvaluation",
+    "summary": "Namespaced copy of the standard MyEvalLogs Enterprise Library logging utility with LogType and LogFor enums.",
+    "businessPurpose": "Provides scheduler-scoped logging using Enterprise Library, identical pattern to other scheduler projects.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception detail"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 144
+  },
+  {
+    "filePath": "Schedulers/FNPDeleteDroppedCourseEvaluation/FNPDeleteDroppedCourseEvaluation/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPDeleteDroppedCourseEvaluation",
+    "summary": "Entry point that instantiates FNPEvaluations and calls Start to delete dropped course evaluations.",
+    "businessPurpose": "Bootstraps the FNP dropped course evaluation cleanup scheduler.",
+    "keyMethods": [
+      "Main - creates FNPEvaluations instance and calls Start; sends error email on exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPEvaluations",
+      "EmailSender"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 28
+  },
+  {
+    "filePath": "Schedulers/FNPFIleDownload/FNPFIleDownload/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPFIleDownload",
+    "summary": "Generates XML case-log files per session from the database and fulfills FNP clinical report download requests by composing filtered Excel/XML files from pre-built XML data.",
+    "businessPurpose": "Enables FNP program coordinators to download clinical case log reports as Excel or XML files by processing pending download requests from the database.",
+    "keyMethods": [
+      "Main - reads config, calls GetCaseLogSessions SP, writes XML files per session, processes download requests",
+      "GetSessions - queries database to get sessions matching student/course/preceptor filters",
+      "ToStringWithoutCharacterChecking - serializes XElement to string without invalid XML character filtering"
+    ],
+    "storedProcedures": [
+      "GetCaseLogSessions",
+      "GenerateFNPCaseLogJSONBySession",
+      "GetClinicalLogDownloadRequests"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 551
+  },
+  {
+    "filePath": "Schedulers/FNPSalesForceIntegration/FNPSalesForceIntegration/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPSalesForceIntegration",
+    "summary": "Standard MyEvalLogs Enterprise Library logging utility, identical pattern to other scheduler projects (global static class).",
+    "businessPurpose": "Provides logging infrastructure for the FNP Salesforce integration scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception detail"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 146
+  },
+  {
+    "filePath": "Schedulers/FNPSalesForceIntegration/FNPSalesForceIntegration/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPSalesForceIntegration",
+    "summary": "Entry point that checks scheduler enable flags via DNPLogManager and conditionally triggers the SalesForce export.",
+    "businessPurpose": "Gates the FNP Salesforce data export based on department-level scheduler enable settings, then delegates to SalesForceExport.",
+    "keyMethods": [
+      "Main - reads IsEnableAllSchedulers/IsEnableSalesForce flags from DB, conditionally runs SalesForceExport.ExportDataToSalesForce"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "SalesForceExport"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 40
+  },
+  {
+    "filePath": "Schedulers/FNPSalesForceIntegration/FNPSalesForceIntegration/SalesForceExport.cs",
+    "fileName": "SalesForceExport.cs",
+    "fileType": "helper",
+    "className": "SalesForceExport",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPSalesForceIntegration",
+    "summary": "Posts FNP practicum log data as XML to the Salesforce/Banner REST API and marks failed records back in the database.",
+    "businessPurpose": "Synchronizes FNP student practicum log data from MyEvaluations to Salesforce external system, handling error responses from the API.",
+    "keyMethods": [
+      "ExportDataToSalesForce - fetches XML via FNPLogManager, POSTs to REST API with client_id/client_secret headers, parses error Representations, calls UpdateFNPSalesForceFailedData on failure"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 114
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/AutoFileEvaluations.cs",
+    "fileName": "AutoFileEvaluations.cs",
+    "fileType": "helper",
+    "className": "AutoFileEvaluations",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Scheduler worker that queues and files FNP evaluations automatically based on start-date criteria fetched from the database.",
+    "businessPurpose": "Auto-files overdue FNP evaluations by querying scheduled evaluation data and delegating the filing operation to EvaluationsData.",
+    "keyMethods": [
+      "Start - initiates PrepareQueueToFileEvaluations and logs result message",
+      "PrepareQueueToFileEvaluations - filters evaluations by start date and calls EvaluationsData.AutoFileEvaluations with joined IDs",
+      "GetRequiredEvaluationsData - fetches scheduler configuration and pending evaluation list via EvaluationsData"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationsData"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 109
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/EmailSender.cs",
+    "fileName": "EmailSender.cs",
+    "fileType": "helper",
+    "className": "EmailSender",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Static helper that sends HTML error alert emails to admin when an exception occurs in the FNP student log review scheduler.",
+    "businessPurpose": "Provides admin error notification emails for the FNPStudentLogReview scheduler, identical pattern to FNPDeleteDroppedCourseEvaluation EmailSender.",
+    "keyMethods": [
+      "SendErrorEmail(methodName, exceptionMessage) - validates email address and sends formatted HTML error email"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EmailValidation",
+      "EmailUtility"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "simple",
+    "lineCount": 87
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/EssentialLogManager.cs",
+    "fileName": "EssentialLogManager.cs",
+    "fileType": "manager",
+    "className": "EssentialLogManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Data access manager that executes the GetFNPStudentLogReview stored procedure and records scheduler job history.",
+    "businessPurpose": "Drives the FNP student log review process by calling the core SP and persisting run history for audit.",
+    "keyMethods": [
+      "InsertSchedulerJobHistory - inserts job run record via InsertSchedulerJobHistory SP",
+      "GetFNPStudentLogReview - executes GetFNPStudentLogReview SP",
+      "OnViewInitializeGetFNPStudentLogReview - orchestrates review call, job history insert, and error email on failure"
+    ],
+    "storedProcedures": [
+      "GetFNPStudentLogReview",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 79
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/FNPStudentLogReview.cs",
+    "fileName": "FNPStudentLogReview.cs",
+    "fileType": "helper",
+    "className": "FNPStudentLogReview",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Thin orchestrator that delegates to EssentialLogManager to perform the FNP student log review process.",
+    "businessPurpose": "Entry class for the FNP student log review scheduler, wrapping the core logic with start/end log messages and error handling.",
+    "keyMethods": [
+      "Start - logs start/end, calls EssentialLogManager.OnViewInitializeGetFNPStudentLogReview, sends error email on failure"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EssentialLogManager",
+      "EmailSender"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 39
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/MyEvalLogs.cs",
+    "fileName": "MyEvalLogs.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Namespaced copy of the standard Enterprise Library logging utility for the FNPStudentLogReview scheduler project.",
+    "businessPurpose": "Provides logging for the FNP student log review scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 144
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Global-scope (non-namespaced) copy of the standard MyEvalLogs Enterprise Library logging utility used in FNPStudentLogReview.",
+    "businessPurpose": "Duplicate logging utility providing the same interface as MyEvalLogs.cs for the FNPStudentLogReview project.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/FNPStudentLogReview/FNPStudentLogReview/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPStudentLogReview",
+    "summary": "Entry point that instantiates FNPStudentLogReview and calls Start to run the log review process.",
+    "businessPurpose": "Bootstraps the FNP student log review scheduler.",
+    "keyMethods": [
+      "Main - creates FNPStudentLogReview and calls Start; logs and emails error on exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPStudentLogReview",
+      "EmailSender"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 27
+  },
+  {
+    "filePath": "Schedulers/GenerateCourseInstructorWeeklyNotifications/GenerateCourseInstructorWeeklyNotifications/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - GenerateCourseInstructorWeeklyNotifications",
+    "summary": "Global-scope copy of the standard MyEvalLogs Enterprise Library logging utility for the weekly notifications scheduler.",
+    "businessPurpose": "Provides logging for the course instructor weekly notifications scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/GenerateCourseInstructorWeeklyNotifications/GenerateCourseInstructorWeeklyNotifications/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - GenerateCourseInstructorWeeklyNotifications",
+    "summary": "Entry point that checks IsEnableAllSchedulers/IsEnableArchive flags before running the weekly course instructor notification workflow.",
+    "businessPurpose": "Gates the weekly course instructor notification generation behind department-level scheduler configuration flags.",
+    "keyMethods": [
+      "Main - reads scheduler enable settings via DNPLogManager.GetActSchedulerSettings, conditionally calls SendEmails.Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "SendEmails"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 40
+  },
+  {
+    "filePath": "Schedulers/GenerateCourseInstructorWeeklyNotifications/GenerateCourseInstructorWeeklyNotifications/SendEmails.cs",
+    "fileName": "SendEmails.cs",
+    "fileType": "helper",
+    "className": "SendEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - GenerateCourseInstructorWeeklyNotifications",
+    "summary": "Executes the GenerateCourseInstructorWeeklyNotifications stored procedure to trigger weekly notification emails for course instructors.",
+    "businessPurpose": "Sends weekly summary notifications to course instructors by delegating to a stored procedure that handles email generation.",
+    "keyMethods": [
+      "Start - logs job start and calls GenerateCourseInstructorWeeklyNotifications",
+      "GenerateCourseInstructorWeeklyNotifications - executes the GenerateCourseInstructorWeeklyNotifications SP with DepartmentID"
+    ],
+    "storedProcedures": [
+      "GenerateCourseInstructorWeeklyNotifications"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 48
+  },
+  {
+    "filePath": "Schedulers/ImportBannerLogsScheduler/ImportBannerLogsScheduler/ImportData.cs",
+    "fileName": "ImportData.cs",
+    "fileType": "helper",
+    "className": "ImportData",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportBannerLogsScheduler",
+    "summary": "Fetches DNP course and student data from the Banner REST API (XML format) and imports it into MyEvaluations via DNPLogManager, also handles onboarding email dispatch.",
+    "businessPurpose": "Imports Banner student enrollment and course data for DNP programs into MyEvaluations on a scheduled basis, keeping academic records synchronized.",
+    "keyMethods": [
+      "GetCourseInfo(programType) - GETs course XML from Banner API and calls ImportDevryCourseData on DNPLogManager",
+      "GetStudentInfo(programType) - GETs student enrollment XML from Banner API for 7-day window and calls ImportDevryLogData",
+      "SendOnboardingEmails - retrieves pending onboarding email queue via DNPLogManager.GetACTOnboardingEmailQueue and processes sends"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 279
+  },
+  {
+    "filePath": "Schedulers/ImportBannerLogsScheduler/ImportBannerLogsScheduler/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportBannerLogsScheduler",
+    "summary": "Global-scope copy of the standard MyEvalLogs Enterprise Library logging utility for the Banner import scheduler.",
+    "businessPurpose": "Provides logging for the Banner logs import scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/ImportBannerLogsScheduler/ImportBannerLogsScheduler/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportBannerLogsScheduler",
+    "summary": "Entry point that checks IsEnableBanner scheduler flag before importing DNP course and student data from Banner, then unconditionally sends onboarding emails.",
+    "businessPurpose": "Orchestrates the Banner data import pipeline for DNP programs and always triggers the onboarding email queue processing.",
+    "keyMethods": [
+      "Main - checks IsEnableAllSchedulers/IsEnableBanner flags, calls GetCourseInfo(DNP) and GetStudentInfo(DNP) if enabled, always calls SendOnboardingEmails"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "ImportData"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 42
+  },
+  {
+    "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/ImportData.cs",
+    "fileName": "ImportData.cs",
+    "fileType": "helper",
+    "className": "ImportData",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportFNPBannerLogs",
+    "summary": "Fetches FNP course, student, and preceptor data from the Banner REST API and imports it into MyEvaluations using DNPLogManager and FNPLogManager, also dispatches onboarding emails.",
+    "businessPurpose": "Synchronizes Banner academic data (courses, FNP student enrollments, preceptor assignments) into MyEvaluations for the Chamberlain FNP program.",
+    "keyMethods": [
+      "GetCourseInfo(programType) - GETs course XML from Banner API, calls ImportDevryCourseData via DNPLogManager",
+      "GetFNPStudentInfo(programType) - GETs FNP student enrollment XML for 7-day window, calls ImportFNPLogData via DNPLogManager",
+      "GetPreceptorInfo(programType) - GETs preceptor XML from Banner API, calls ImportDevryPreceptorData via FNPLogManager",
+      "GetPreceptorInfoWithLastUpdatedDate(programType) - variant fetching preceptors since last activity date",
+      "SendOnboardingEmails - processes pending onboarding email queue"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 664
+  },
+  {
+    "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportFNPBannerLogs",
+    "summary": "Global-scope copy of the standard MyEvalLogs Enterprise Library logging utility for the FNP Banner import scheduler.",
+    "businessPurpose": "Provides logging for the FNP Banner logs import scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportFNPBannerLogs",
+    "summary": "Entry point that reads scheduler enable flags and conditionally imports FNP Banner course/student data and preceptor assignments, then sends onboarding emails.",
+    "businessPurpose": "Orchestrates the full FNP Banner data synchronization pipeline (courses, students, preceptors) with flag-based enable controls per data type.",
+    "keyMethods": [
+      "Main - checks IsEnableBanner and IsEnablePreceptor flags separately, calls GetCourseInfo/GetFNPStudentInfo/GetPreceptorInfo accordingly, always calls SendOnboardingEmails"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "ImportData"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 57
+  },
+  {
+    "filePath": "Schedulers/ImportPatientPulse/ImportPatientPulse/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - ImportPatientPulse",
+    "summary": "Polls the PatientPulse REST API to retrieve patient survey submissions and responses per department, then imports them into MyEvaluations using a stored procedure.",
+    "businessPurpose": "Imports patient satisfaction survey data from PatientPulse for participating departments into MyEvaluations to track clinical encounter feedback.",
+    "keyMethods": [
+      "Main - calls ImportPatientPulse",
+      "ImportPatientPulse - iterates departments, authenticates, loops date windows calling SubmitPulsePatients, parses JSON, calls ImportPulseSurveySubmissions SP",
+      "GetToken - authenticates with PatientPulse API and retrieves JWT token",
+      "SubmitPulsePatients - GETs survey submissions JSON for a date range",
+      "SubmitPulsePatientsResponses - GETs survey responses JSON for a date range",
+      "GetAllAppointments(dtAppointments) - fetches appointment details for distinct appointment IDs",
+      "GetAllPulsePatients(dtPatients) - fetches patient details for distinct patient IDs",
+      "ImportPulseSurveySubmissions - executes ImportPulseSurveySubmissions SP with combined data tables",
+      "GetPatientPulseDepartments - executes GetPatientPulseDepartments SP"
+    ],
+    "storedProcedures": [
+      "GetPatientPulseDepartments",
+      "ImportPulseSurveySubmissions"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 522
+  },
+  {
+    "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/InCorrectSyncBusiness.cs",
+    "fileName": "InCorrectSyncBusiness.cs",
+    "fileType": "helper",
+    "className": "InCorrectSyncBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - InCorrectSyncReminderToAdmins",
+    "summary": "Business logic class that iterates all departments, detects incorrectly synced users/rotations/calls/clinics via stored procedures, builds HTML tables, and triggers reminder emails to admins.",
+    "businessPurpose": "Alerts administrators to AMION/OnCall sync mismatches (users, rotations, calls, clinics) so they can correct incorrect schedule synchronizations.",
+    "keyMethods": [
+      "OnViewInitializeInCorrectSync - loops departments from GetDepartmentListForIncorrectSync SP, fetches wrong sync data per department, builds HTML summary tables, calls SendRemindersForIncorrectSync if issues found"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "InCorrectSyncManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "complex",
+    "lineCount": 248
+  },
+  {
+    "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/InCorrectSyncManager.cs",
+    "fileName": "InCorrectSyncManager.cs",
+    "fileType": "manager",
+    "className": "InCorrectSyncManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - InCorrectSyncReminderToAdmins",
+    "summary": "Data access manager that retrieves wrong-sync data sets and sends reminder notifications for incorrect AMION sync records.",
+    "businessPurpose": "Provides the data layer for detecting and notifying about incorrectly synchronized AMION/OnCall records across departments.",
+    "keyMethods": [
+      "GetWrongSyncEntireData(departmentID) - executes GetWrongSyncAndWrongSyncText SP returning multi-table DataSet",
+      "GetDepartmentListForIncorrectSync - executes GetDepartmentListForIncorrectSync SP",
+      "SendRemindersForIncorrectSync(departmentID, incorrectSyncData) - executes SendRemindersForIncorrectSync SP with HTML data"
+    ],
+    "storedProcedures": [
+      "GetWrongSyncAndWrongSyncText",
+      "GetDepartmentListForIncorrectSync",
+      "SendRemindersForIncorrectSync"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 70
+  },
+  {
+    "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - InCorrectSyncReminderToAdmins",
+    "summary": "Entry point that calls InCorrectSyncBusiness.OnViewInitializeInCorrectSync to run the incorrect sync reminder process.",
+    "businessPurpose": "Bootstraps the incorrect AMION sync reminder scheduler for all departments.",
+    "keyMethods": [
+      "Main - calls OnViewInitializeInCorrectSync; logs error on exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "InCorrectSyncBusiness"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 27
+  },
+  {
+    "filePath": "Schedulers/InboxReminder/InboxReminder/InboxReminder.cs",
+    "fileName": "InboxReminder.cs",
+    "fileType": "scheduler",
+    "className": "InboxReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - InboxReminder",
+    "summary": "Scans all active departments for new evaluations in user inboxes since the last run and sends personalized reminder emails to evaluators.",
+    "businessPurpose": "Drives the platform-wide inbox evaluation reminder system, notifying users across all departments when they have pending evaluations.",
+    "keyMethods": [
+      "Start - initializes encryption key, calls GenerateInboxEmailReminders, sends admin log email on completion",
+      "GenerateInboxEmailReminders - queries all departments with reminders enabled, loops each to track evaluation counts and dispatch emails",
+      "GetOldEvaluationID - reads previously stored max EvaluationID from Eval_EvaluationsCount table",
+      "GetNewEvaluationID - computes current max EvaluationID from Eval_Templates/EVAL_Evaluations join",
+      "GetLastScheduleDate - retrieves last scheduler run date from EVAL_EvaluationsCount",
+      "InsertNewEvaluationID - upserts current EvaluationID for the department",
+      "GetEmailTemplate - retrieves and sends evaluation reminder emails using GetNewEvaluations and GetUserInboxCount SPs"
+    ],
+    "storedProcedures": [
+      "GetNewEvaluations",
+      "GetUserInboxCount"
+    ],
+    "businessManagersUsed": [
+      "EmailUtility"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 515
+  },
+  {
+    "filePath": "Schedulers/InboxReminder/InboxReminder/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - InboxReminder",
+    "summary": "Global-scope copy of the standard MyEvalLogs Enterprise Library logging utility for the InboxReminder scheduler.",
+    "businessPurpose": "Provides logging infrastructure for the inbox reminder scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, logType, logFor) - writes log entry",
+      "LoggingIntoText(msg, method, logType, logFor, ex) - writes log entry with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/InboxReminder/InboxReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - InboxReminder",
+    "summary": "Entry point that instantiates InboxReminder and calls Start to run the inbox evaluation reminder process.",
+    "businessPurpose": "Bootstraps the global inbox evaluation reminder scheduler.",
+    "keyMethods": [
+      "Main - creates InboxReminder instance and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "InboxReminder"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 17
+  },
+  {
+    "filePath": "Schedulers/InitiateProcedureMVCApplication/InitiateProcedureMVCApplication/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - InitiateProcedureMVCApplication",
+    "summary": "Entry point that generates a JWT token and fires HTTP GET requests to the MVC app's Home and Procedures endpoints to warm up application caches.",
+    "businessPurpose": "Warm-start the Procedure MVC application by hitting key routes so IIS pre-compiles views before users arrive.",
+    "keyMethods": [
+      "Main - generates JWT, calls Home/Index and Procedures/Index via RestSharp"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "JwtToken",
+      "SAMLServiceProvider"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 48
+  },
+  {
+    "filePath": "Schedulers/LiabilityInsReminder-Dotnet/LiabilityInsReminder.cs",
+    "fileName": "LiabilityInsReminder.cs",
+    "fileType": "scheduler",
+    "className": "LiabilityInsReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - LiabilityInsReminder",
+    "summary": "Scans all departments for users with expiring or expired liability insurance certifications and sends HTML reminder emails at 90/60/30/7/0-day thresholds and weekly after expiry.",
+    "businessPurpose": "Ensure physicians and nurses renew liability insurance by sending automated expiration reminder emails to maintain compliance.",
+    "keyMethods": [
+      "Start - orchestrates scan and sends job-log email",
+      "GenerateLiabilityInsReminder - loops departments and users, calculates days diff, builds HTML email",
+      "AgreementInfoExpiredDate - fetches users with expiry data per department",
+      "SendMailForMailDistribution - sends HTML email via SMTP",
+      "SendLogAsMail - sends job log summary email",
+      "UpdateMailSendDate - marks email as sent in DB"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand",
+      "EmailUtility",
+      "EmailValidation",
+      "EmailClientSettings"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 337
+  },
+  {
+    "filePath": "Schedulers/LiabilityInsReminder-Dotnet/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - LiabilityInsReminder",
+    "summary": "Static logging helper using Microsoft Enterprise Library that writes structured log entries with severity, category, and optional exception details.",
+    "businessPurpose": "Provide consistent file/Enterprise Library logging for scheduler events and errors.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, type, task) - logs message without exception",
+      "LoggingIntoText(msg, method, type, task, ex) - logs message with exception stack trace"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Microsoft.Practices.EnterpriseLibrary.Logging"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/LiabilityInsReminder-Dotnet/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - LiabilityInsReminder",
+    "summary": "Console entry point that instantiates LiabilityInsReminder and calls Start().",
+    "businessPurpose": "Bootstrap the liability insurance reminder scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates LiabilityInsReminder instance and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "LiabilityInsReminder"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/LicenseReminders/LicenseReminders/LicenseReminders/License.cs",
+    "fileName": "License.cs",
+    "fileType": "scheduler",
+    "className": "License",
+    "inheritsFrom": null,
+    "module": "Scheduler - LicenseReminders",
+    "summary": "Sends expiration reminder emails for ECFMG, AOA, and ACOS medical license certifications across all departments, using the same 90/60/30/7/0-day and weekly-post-expiry cadence.",
+    "businessPurpose": "Keep physicians compliant with ECFMG, AOA, and ACOS certification requirements by sending timely renewal reminders.",
+    "keyMethods": [
+      "Start - loads departments and delegates to three reminder generators",
+      "GenerateECFMGReminder - sends ECFMG expiration emails",
+      "GenerateAOAReminder - sends AOA expiration emails",
+      "GenerateACOSReminder - sends ACOS expiration emails",
+      "AgreementInfoExpiredDate - queries users with a specific cert expiry column"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand",
+      "EmailUtility"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 730
+  },
+  {
+    "filePath": "Schedulers/LicenseReminders/LicenseReminders/LicenseReminders/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - LicenseReminders",
+    "summary": "Identical static Enterprise Library logging helper copied from LiabilityInsReminder project.",
+    "businessPurpose": "Provide structured logging for the license reminder scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, type, task) - log without exception",
+      "LoggingIntoText(msg, method, type, task, ex) - log with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Microsoft.Practices.EnterpriseLibrary.Logging"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/LicenseReminders/LicenseReminders/LicenseReminders/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - LicenseReminders",
+    "summary": "Console entry point that instantiates License and calls Start().",
+    "businessPurpose": "Bootstrap the license reminder scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates License instance and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "License"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/MailDistribution-Dotnet/MailDistribution.cs",
+    "fileName": "MailDistribution.cs",
+    "fileType": "scheduler",
+    "className": "MailDistribution",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailDistribution",
+    "summary": "Fetches queued mail distribution records from the database, validates recipient addresses, sends HTML emails with optional file attachments, and updates the send timestamp.",
+    "businessPurpose": "Process the platform's outgoing mail queue to deliver bulk institutional emails with document attachments.",
+    "keyMethods": [
+      "Start - orchestrates mail run and sends job-log email",
+      "GenerateMailDistribution - fetches queue, validates emails, sends each",
+      "SendMailForMailDistribution - builds SmtpClient and sends HTML email with attachment",
+      "UpdateMailSendDate - marks distribution record as sent",
+      "ReadKeyFromFile - reads encryption key from file",
+      "SendLogAsMail - sends job log summary"
+    ],
+    "storedProcedures": [
+      "GetMailDistributionSchedulersInfo",
+      "UpdateMailDistributionInfo"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand",
+      "EmailUtility",
+      "EmailValidation",
+      "EmailClientSettings"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 436
+  },
+  {
+    "filePath": "Schedulers/MailDistribution-Dotnet/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailDistribution",
+    "summary": "Identical static Enterprise Library logging helper copied into the MailDistribution project.",
+    "businessPurpose": "Provide structured logging for the mail distribution scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, type, task) - log without exception",
+      "LoggingIntoText(msg, method, type, task, ex) - log with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Microsoft.Practices.EnterpriseLibrary.Logging"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/MailDistribution-Dotnet/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailDistribution",
+    "summary": "Console entry point that instantiates MailDistribution and calls Start().",
+    "businessPurpose": "Bootstrap the mail distribution scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates MailDistribution instance and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistribution"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/ApplicationCustomErrorEvent.cs",
+    "fileName": "ApplicationCustomErrorEvent.cs",
+    "fileType": "helper",
+    "className": "ApplicationCustomErrorEvent",
+    "inheritsFrom": "System.Web.Management.WebErrorEvent",
+    "module": "Scheduler - MailgunService",
+    "summary": "Custom ASP.NET health-monitoring error event with a fixed event code (104006) used for application-level error reporting.",
+    "businessPurpose": "Provide a typed error event for ASP.NET health monitoring integration in the Mailgun service.",
+    "keyMethods": [
+      "FormatCustomEventDetails - appends custom detail text to event formatter"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/CustomCommand.cs",
+    "fileName": "CustomCommand.cs",
+    "fileType": "helper",
+    "className": "CustomCommand",
+    "inheritsFrom": "IDisposable",
+    "module": "Scheduler - MailgunService",
+    "summary": "Thin wrapper around SqlCommand that normalizes null/DateTime.MinValue parameter values and closes the connection on disposal.",
+    "businessPurpose": "Provide a safe, reusable SQL command builder for the Mailgun service's database operations.",
+    "keyMethods": [
+      "AddParameterWithValue - adds SQL parameter, treating null/MinValue as DBNull",
+      "Dispose - closes connection and nulls command"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 112
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/MailBounceLog.cs",
+    "fileName": "MailBounceLog.cs",
+    "fileType": "scheduler",
+    "className": "MailBounceLog",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunService",
+    "summary": "Fetches Mailgun bounce and log events since the last execution timestamp and persists them to the database, skipping the 02:25-03:30 DB backup window.",
+    "businessPurpose": "Keep the system informed of bounced and failed email deliveries by syncing Mailgun event data into the platform database.",
+    "keyMethods": [
+      "Start - checks maintenance window then calls SyncMailBounce and SyncMailLog",
+      "GetLastExecutionTime - reads/writes last-run timestamp file",
+      "GetSessionSleep - checks if current time is in the maintenance window",
+      "SyncMailBounce - fetches bounce records from Mailgun API and saves to DB",
+      "SyncMailLog - fetches mail log events and updates email statuses"
+    ],
+    "storedProcedures": [
+      "ChangeBounceEmailStatus"
+    ],
+    "businessManagersUsed": [
+      "MailgunPOP3",
+      "DBDataAccess",
+      "MyEvalLog"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 816
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/MailgunPOP3.cs",
+    "fileName": "MailgunPOP3.cs",
+    "fileType": "helper",
+    "className": "MailgunPOP3",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunService",
+    "summary": "Calls the Mailgun REST API to retrieve mail logs and bounce records, parses the JSON response into entity lists filtered by last execution time.",
+    "businessPurpose": "Abstract Mailgun API communication and parse delivery event data for bounce tracking.",
+    "keyMethods": [
+      "GetMailgunLogs() / GetMailgunLogs(skip,limit) - fetch log events from Mailgun",
+      "GetMailgunLogEntities - parse JSON response into MailgunResponseEntity list",
+      "GetMailBouncegunLogEntities - parse bounce JSON into entity list",
+      "GetMailgunBounces() / GetMailgunBounces(skip,limit) - fetch bounce list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "RestSharp",
+      "MyEvalLog"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 468
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/MailgunResponseEntity.cs",
+    "fileName": "MailgunResponseEntity.cs",
+    "fileType": "model",
+    "className": "MailgunResponseEntity",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunService",
+    "summary": "POCO representing a single Mailgun log or bounce event with fields for delivery status, error codes, timestamps, and message metadata.",
+    "businessPurpose": "Hold parsed Mailgun event data (bounces, failures) for database persistence.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 89
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunService/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunService",
+    "summary": "Console entry point that instantiates MailBounceLog and calls Start() to sync Mailgun bounce data.",
+    "businessPurpose": "Bootstrap the Mailgun bounce sync scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates MailBounceLog and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailBounceLog"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 20
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailBounceLog.cs",
+    "fileName": "MailBounceLog.cs",
+    "fileType": "scheduler",
+    "className": "MailBounceLog",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunWebhookService",
+    "summary": "Enhanced version of the Mailgun bounce log syncer that uses paginated webhook event polling with next/last/first/previous page navigation and sends error notification emails.",
+    "businessPurpose": "Incrementally sync Mailgun delivery events (including clicks, opens, failures) from webhook logs into the platform database.",
+    "keyMethods": [
+      "Start - enforces maintenance window, calls SyncMailLog",
+      "GetLastExecutionTime - reads/writes last-run timestamp file",
+      "GetNextExecutionTime - calculates next scheduled run",
+      "GetSessionSleep - waits during DB backup window (03:00-03:30)",
+      "SyncMailLog - paginates through Mailgun events and persists results",
+      "SendErrorEmail - sends error notification to admin"
+    ],
+    "storedProcedures": [
+      "ChangeBounceEmailStatus"
+    ],
+    "businessManagersUsed": [
+      "MailgunPOP3",
+      "DBDataAccess",
+      "MyEvalLog",
+      "EmailUtility"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 1079
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunPOP3.cs",
+    "fileName": "MailgunPOP3.cs",
+    "fileType": "helper",
+    "className": "MailgunPOP3",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunWebhookService",
+    "summary": "Extended Mailgun API client that adds webhook event polling with date-range filtering and paginated navigation for the webhook service.",
+    "businessPurpose": "Retrieve Mailgun delivery events via the Events API with date-bounded, paginated polling for the webhook-based sync variant.",
+    "keyMethods": [
+      "GetMailgunLogs() / GetMailgunLogs(skip,limit) - fetch log events",
+      "GetMailgunLogEntities - parse JSON log events into entities",
+      "GetMailgunBounces() / GetMailgunBounces(skip,limit) - fetch bounces",
+      "GetWebhooks(begin,end) - fetch events in date range",
+      "GetWebhooksWithURL - fetch next page by URL"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "RestSharp",
+      "MyEvalLog"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 361
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunResponseEntity.cs",
+    "fileName": "MailgunResponseEntity.cs",
+    "fileType": "model",
+    "className": "MailgunResponseEntity",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunWebhookService",
+    "summary": "POCO for a Mailgun log/bounce event, identical in shape to the MailgunService version but in the MailgunWebhookService namespace.",
+    "businessPurpose": "Hold parsed Mailgun event data for the webhook service's database persistence.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 84
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunWebHookResponseEntity.cs",
+    "fileName": "MailgunWebHookResponseEntity.cs",
+    "fileType": "model",
+    "className": "MailgunWebHookResponseEntity",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunWebhookService",
+    "summary": "Extended Mailgun event POCO that additionally captures geolocation, device, user-agent, and pagination URL fields from webhook payloads.",
+    "businessPurpose": "Store enriched Mailgun webhook event data including click/open tracking metadata for analytics.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 175
+  },
+  {
+    "filePath": "Schedulers/MailgunService/MailgunWebhookService/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - MailgunWebhookService",
+    "summary": "Console entry point that instantiates MailBounceLog and calls Start() for the webhook-based Mailgun sync.",
+    "businessPurpose": "Bootstrap the Mailgun webhook sync scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates MailBounceLog and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailBounceLog"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 18
+  },
+  {
+    "filePath": "Schedulers/MidtermFinalEvaluationReminderFacultyPrecep/MidtermFinalEvaluationReminderFacultyPrecep/MidtermAndFinalEvaluationRemBusiness.cs",
+    "fileName": "MidtermAndFinalEvaluationRemBusiness.cs",
+    "fileType": "scheduler",
+    "className": "MidtermAndFinalEvaluationRemBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - MidtermFinalEvaluationReminderFacultyPrecep",
+    "summary": "Iterates departments and triggers stored-procedure-based email sends for midterm and final (week-8) evaluation reminders to faculty and preceptors.",
+    "businessPurpose": "Notify faculty and preceptors to complete midterm and final evaluations on schedule for each clinical department.",
+    "keyMethods": [
+      "OnViewInitializeMidtermAndFinalEvaluation - sends midterm reminder emails per department",
+      "OnViewInitializeMidtermAndFinalEvaluationWeek8 - sends final/week-8 reminder emails per department",
+      "SendLogAsMail - emails job log summary to admins"
+    ],
+    "storedProcedures": [
+      "GetMidtermAndFinalEvaluationRemDepartments",
+      "SendMidtermAndFinalEvaluationRemEmail",
+      "SendFinalEvaluationRemEmail",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MidtermAndFinalEvaluationRemManager",
+      "EmailUtility"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 148
+  },
+  {
+    "filePath": "Schedulers/MidtermFinalEvaluationReminderFacultyPrecep/MidtermFinalEvaluationReminderFacultyPrecep/MidtermAndFinalEvaluationRemManager.cs",
+    "fileName": "MidtermAndFinalEvaluationRemManager.cs",
+    "fileType": "manager",
+    "className": "MidtermAndFinalEvaluationRemManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - MidtermFinalEvaluationReminderFacultyPrecep",
+    "summary": "Data-access manager that wraps stored procedure calls for fetching departments, triggering email sends, and recording scheduler job history.",
+    "businessPurpose": "Provide a clean data-access layer for midterm/final evaluation reminder stored procedures.",
+    "keyMethods": [
+      "GetMidtermAndFinalEvaluationRemDepartments - fetch eligible departments",
+      "SendMidtermAndFinalEvaluationRemDepartmentsEmail - trigger midterm email SP per department",
+      "SendFinalEvaluationRemEmail - trigger final email SP per department",
+      "InsertSchedulerJobHistory - log scheduler run metadata"
+    ],
+    "storedProcedures": [
+      "GetMidtermAndFinalEvaluationRemDepartments",
+      "SendMidtermAndFinalEvaluationRemEmail",
+      "SendFinalEvaluationRemEmail",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 105
+  },
+  {
+    "filePath": "Schedulers/MidtermFinalEvaluationReminderFacultyPrecep/MidtermFinalEvaluationReminderFacultyPrecep/MyEvalsLogger.cs",
+    "fileName": "MyEvalsLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - MidtermFinalEvaluationReminderFacultyPrecep",
+    "summary": "Identical static Enterprise Library logging helper copied into the MidtermFinal reminder project.",
+    "businessPurpose": "Provide structured logging for the midterm/final evaluation reminder scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, type, task) - log without exception",
+      "LoggingIntoText(msg, method, type, task, ex) - log with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Microsoft.Practices.EnterpriseLibrary.Logging"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/MidtermFinalEvaluationReminderFacultyPrecep/MidtermFinalEvaluationReminderFacultyPrecep/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - MidtermFinalEvaluationReminderFacultyPrecep",
+    "summary": "Console entry point that runs both midterm and week-8 final evaluation reminder flows sequentially.",
+    "businessPurpose": "Bootstrap the midterm/final evaluation reminder scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - calls OnViewInitializeMidtermAndFinalEvaluation and OnViewInitializeMidtermAndFinalEvaluationWeek8"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MidtermAndFinalEvaluationRemBusiness"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 29
+  },
+  {
+    "filePath": "MyEvaluations.AmionScheduleUpdater/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - AmionScheduleUpdater",
+    "summary": "Fetches queued departments from Amion and QGenda, imports on-call schedule data for each via their respective API managers, then refreshes the combined schedule cache table.",
+    "businessPurpose": "Sync resident on-call schedules from Amion and QGenda (Momentum, Lightning Bolt) into the platform database for auto-assignment processing.",
+    "keyMethods": [
+      "Main - starts stopwatch, calls process, writes log file",
+      "process - drives Amion and QGenda import loops then refreshes combined cache",
+      "getDepartmentDataByYear - imports Amion + Momentum + LightningBolt data for one department/year",
+      "getQGendaDepartmentDataByYear - imports QGenda data for one department/year",
+      "GetRefreshRequiredDepartmentsForScheduleData - calls SP to refresh schedule cache",
+      "GetCombinedUniqueRowsF - merges two department queue DataTables deduplicating by dept+year"
+    ],
+    "storedProcedures": [
+      "usp_GetRefreshRequiredDepartmentsForScheduleData"
+    ],
+    "businessManagersUsed": [
+      "AmionAPI",
+      "RetrieveOnCall_ScheduleManager",
+      "RetrieveQGendaScheduleManager",
+      "SyncAmionRotationManager",
+      "DBDataAccess"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 180
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Android/AndroidNotificationSender.cs",
+    "fileName": "AndroidNotificationSender.cs",
+    "fileType": "scheduler",
+    "className": "AndroidNotificationSender",
+    "inheritsFrom": "BaseNotificationSender",
+    "module": "Scheduler - NotificationService",
+    "summary": "Sends push notifications to Android devices via the FCM v1 API, obtaining a Bearer token from the MyEvaluations OAuth endpoint and posting a JSON payload to FCM.",
+    "businessPurpose": "Deliver in-app push notifications to Android users (residents, faculty) for evaluation assignments and reminders.",
+    "keyMethods": [
+      "SendNotification - obtains OAuth Bearer token, posts notification payload to FCM v1 API"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BaseNotificationSender",
+      "myevaluationsDEVEntities1"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 111
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/BaseNotificationSender.cs",
+    "fileName": "BaseNotificationSender.cs",
+    "fileType": "helper",
+    "className": "BaseNotificationSender",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Abstract base class for notification senders that holds an INotification, exposes an Execute() method, and raises a NotificationSend event after delivery.",
+    "businessPurpose": "Provide the template-method foundation for platform-specific push notification senders.",
+    "keyMethods": [
+      "Execute - calls SendNotification and returns result",
+      "SendNotification - virtual method overridden by platform-specific senders",
+      "OnNotificationSend - raises the NotificationSend event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 36
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/INotification.cs",
+    "fileName": "INotification.cs",
+    "fileType": "interface",
+    "className": "INotification",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Interface defining the contract for a push notification: Title, Message, Url, and AndroidRegisterUID.",
+    "businessPurpose": "Decouple notification data from platform-specific senders.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 17
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/INotificationSendResult.cs",
+    "fileName": "INotificationSendResult.cs",
+    "fileType": "interface",
+    "className": "INotificationSendResult",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Interface exposing a single NotificationSendResult property for classes that carry send outcome data.",
+    "businessPurpose": "Enable polymorphic access to send results across notification types.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 13
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/Notification.cs",
+    "fileName": "Notification.cs",
+    "fileType": "model",
+    "className": "Notification",
+    "inheritsFrom": "GetSysNotificationsForSending_Result",
+    "module": "Scheduler - NotificationService",
+    "summary": "Concrete notification entity that extends the EF result class and implements INotification and INotificationSendResult, copying properties via reflection.",
+    "businessPurpose": "Bridge database query results to the notification sender framework with send-result tracking.",
+    "keyMethods": [
+      "Notification(result) - copies all properties from DB result via reflection"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GetSysNotificationsForSending_Result"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationSendResult.cs",
+    "fileName": "NotificationSendResult.cs",
+    "fileType": "model",
+    "className": "NotificationSendResult",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Simple result DTO holding a NotificationStatuses enum value and a message string returned by senders.",
+    "businessPurpose": "Carry send outcome (Completed/Sending/Error) and response message for logging.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationSendResultEventArgs.cs",
+    "fileName": "NotificationSendResultEventArgs.cs",
+    "fileType": "model",
+    "className": "NotificationSendResultEventArgs",
+    "inheritsFrom": "EventArgs",
+    "module": "Scheduler - NotificationService",
+    "summary": "EventArgs subclass carrying a NotificationSendResult for the NotificationSend event on BaseNotificationSender.",
+    "businessPurpose": "Enable event subscribers to receive send outcome details.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 13
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationStatuses.cs",
+    "fileName": "NotificationStatuses.cs",
+    "fileType": "model",
+    "className": "NotificationStatuses",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Enum defining the three possible push notification send statuses: Completed, Sending, and Error.",
+    "businessPurpose": "Standardize notification delivery status codes across the service.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 15
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/CommonImpl/NotificationSenderManager.cs",
+    "fileName": "NotificationSenderManager.cs",
+    "fileType": "manager",
+    "className": "NotificationSenderManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Factory and dispatcher that selects the correct platform sender (currently AndroidNotificationSender for all ServiceIDs) and executes it, capturing errors into the result.",
+    "businessPurpose": "Route each notification to its platform-specific sender and return the enriched Notification with result status.",
+    "keyMethods": [
+      "Send - executes the platform sender and stores result on the Notification",
+      "GetSender - factory switch on ServiceID returning a BaseNotificationSender"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "AndroidNotificationSender",
+      "BaseNotificationSender"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 47
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/GetSysNotificationsForSending_Result.cs",
+    "fileName": "GetSysNotificationsForSending_Result.cs",
+    "fileType": "model",
+    "className": "GetSysNotificationsForSending_Result",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF stored procedure result class mapping GetSysNotificationsForSending output columns to typed properties.",
+    "businessPurpose": "Hold a single pending push notification record retrieved from the database for dispatch.",
+    "keyMethods": [],
+    "storedProcedures": [
+      "GetSysNotificationsForSending"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/MyEvaluationsModel.Context.cs",
+    "fileName": "MyEvaluationsModel.Context.cs",
+    "fileType": "model",
+    "className": "myevaluationsDEVEntities1",
+    "inheritsFrom": "DbContext",
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF DbContext exposing notification-related entity sets and stored procedure wrappers for GetSysNotificationsForSending and error_register.",
+    "businessPurpose": "Provide Entity Framework data access for all push notification tables in the notification service.",
+    "keyMethods": [
+      "GetSysNotificationsForSending - executes SP to fetch pending notifications",
+      "error_register - logs errors to DB"
+    ],
+    "storedProcedures": [
+      "GetSysNotificationsForSending",
+      "error_register"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 56
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationServices.cs",
+    "fileName": "SYS_NotificationServices.cs",
+    "fileType": "model",
+    "className": "SYS_NotificationServices",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity for the SYS_NotificationServices lookup table (service name, sort order).",
+    "businessPurpose": "Represent notification platform types (e.g. Android) stored in the system lookup table.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 22
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationStatuses.cs",
+    "fileName": "SYS_NotificationStatuses.cs",
+    "fileType": "model",
+    "className": "SYS_NotificationStatuses",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity for the SYS_NotificationStatuses lookup table.",
+    "businessPurpose": "Represent notification delivery status codes stored in the system.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 22
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_Notifications.cs",
+    "fileName": "SYS_Notifications.cs",
+    "fileType": "model",
+    "className": "SYS_Notifications",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity for the SYS_Notifications table holding pending notification title, message, and URL per user.",
+    "businessPurpose": "Represent a queued push notification record in the database.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 24
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationsLog.cs",
+    "fileName": "SYS_NotificationsLog.cs",
+    "fileType": "model",
+    "className": "SYS_NotificationsLog",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity for the SYS_NotificationsLog table recording send outcome per notification and user notification setting.",
+    "businessPurpose": "Audit each push notification delivery attempt with its status and response message.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 24
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_SystemNotificationSettings.cs",
+    "fileName": "SYS_SystemNotificationSettings.cs",
+    "fileType": "model",
+    "className": "SYS_SystemNotificationSettings",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity storing system-level Android API key and project number for push notifications.",
+    "businessPurpose": "Hold GCM/FCM credentials at the system level for push notification configuration.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 22
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_UserNotificationSettings.cs",
+    "fileName": "SYS_UserNotificationSettings.cs",
+    "fileType": "model",
+    "className": "SYS_UserNotificationSettings",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Auto-generated EF entity for per-user notification settings including device registration UID, service type, and enabled flag.",
+    "businessPurpose": "Store user opt-in settings and Android device tokens for push notification targeting.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 24
+  },
+  {
+    "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - NotificationService",
+    "summary": "Console entry point that fetches all pending notifications from the database and dispatches them in parallel batches of up to 20 concurrent tasks, logging results to SYS_NotificationsLog.",
+    "businessPurpose": "Dispatch queued push notifications in parallel with bounded concurrency, logging each outcome.",
+    "keyMethods": [
+      "Main - parses optional maxTasks arg and calls Process",
+      "Process - batches notifications into Tasks, calls NotificationSenderManager.Send, logs results"
+    ],
+    "storedProcedures": [
+      "GetSysNotificationsForSending",
+      "error_register"
+    ],
+    "businessManagersUsed": [
+      "myevaluationsDEVEntities1",
+      "NotificationSenderManager",
+      "Notification"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 68
+  },
+  {
+    "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/OnCallBusiness.cs",
+    "fileName": "OnCallBusiness.cs",
+    "fileType": "scheduler",
+    "className": "OnCallBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnCallAutoAssignment",
+    "summary": "Core scheduler logic that iterates departments with auto-assignment enabled, checks for updated Amion/QGenda schedules, dequeues pending evaluation slots, and generates evaluation assignments by specialty level and schedule type.",
+    "businessPurpose": "Automatically create evaluation assignments for residents based on their on-call schedule data from Amion and QGenda.",
+    "keyMethods": [
+      "Start - main loop over departments with auto-assignment enabled",
+      "GenerateAssignments - dispatches per-queue-row assignment generation by QueryNumber",
+      "sendEmails - builds and sends assignment summary emails to departments"
+    ],
+    "storedProcedures": [
+      "GetDepartmentListForAutoAssignments",
+      "SearchEvalAmionSchedule",
+      "GenerateEvaluationSchedulesForAuto",
+      "GetPendingEvaluationQueuesForAuto",
+      "GetLogOfEvaluationAssignments",
+      "SendNoAttendingOverlapNotifications"
+    ],
+    "businessManagersUsed": [
+      "OnCallManager",
+      "EmailUtility",
+      "MyEvalLog"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 3686
+  },
+  {
+    "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/OnCallManager.cs",
+    "fileName": "OnCallManager.cs",
+    "fileType": "manager",
+    "className": "OnCallManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnCallAutoAssignment",
+    "summary": "Data-access manager wrapping all stored procedure calls needed by OnCallBusiness: department lists, schedule checks, queue management, assignment logging, and notification sends.",
+    "businessPurpose": "Provide a typed data-access layer for the on-call auto-assignment scheduler's numerous database operations.",
+    "keyMethods": [
+      "GetDepartmentListForAutoAssignments - fetch auto-assignment-enabled departments",
+      "UpdateLastRunDateForDepartment - stamp last-run date per department",
+      "CheckScheduleUpdated - verify Amion schedule freshness",
+      "GenerateEvaluationSchedulesForAuto - populate evaluation queue from schedule",
+      "GetPendingEvaluationQueuesForAuto - fetch unprocessed queue entries",
+      "UpdateLogofAssignments - refresh assignment cache table",
+      "SendNoAttendingOverlapNotifications - notify where attending overlap found",
+      "DropIndexesForRotationAssignmentDetailAuto - performance index management"
+    ],
+    "storedProcedures": [
+      "GetDepartmentListForAutoAssignments",
+      "UpdateLastRunDateForDepartment",
+      "SearchEvalAmionSchedule",
+      "GenerateEvaluationSchedulesForAuto",
+      "GetPendingEvaluationQueuesForAuto",
+      "GetLogOfEvaluationAssignments",
+      "SendNoAttendingOverlapNotifications",
+      "DropIndexesForRotationAssignmentDetailAuto"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand",
+      "MyEvalLog"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 1288
+  },
+  {
+    "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnCallAutoAssignment",
+    "summary": "Console entry point that instantiates OnCallBusiness and calls Start().",
+    "businessPurpose": "Bootstrap the on-call auto-assignment scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates OnCallBusiness and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "OnCallBusiness"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 18
+  },
+  {
+    "filePath": "Schedulers/OnboardingAssignmentReminder/OnboardingAssignmentReminder/OnboardingAssignmentReminder/MyEvalsOnbordingLogger.cs",
+    "fileName": "MyEvalsOnbordingLogger.cs",
+    "fileType": "helper",
+    "className": "MyEvalsOnbordingLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnboardingAssignmentReminder",
+    "summary": "Namespace-scoped static Enterprise Library logging helper for the onboarding reminder scheduler, functionally identical to other MyEvalsLogger copies.",
+    "businessPurpose": "Provide structured logging for the onboarding assignment reminder scheduler.",
+    "keyMethods": [
+      "LoggingIntoText(msg, method, type, task) - log without exception",
+      "LoggingIntoText(msg, method, type, task, ex) - log with exception"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Microsoft.Practices.EnterpriseLibrary.Logging"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 148
+  },
+  {
+    "filePath": "Schedulers/OnboardingAssignmentReminder/OnboardingAssignmentReminder/OnboardingAssignmentReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "scheduler",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnboardingAssignmentReminder",
+    "summary": "Console entry point that instantiates RequirementGroupAssignmentReminder and calls Start().",
+    "businessPurpose": "Bootstrap the onboarding assignment reminder scheduler as a Windows scheduled task.",
+    "keyMethods": [
+      "Main - creates RequirementGroupAssignmentReminder and calls Start"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "RequirementGroupAssignmentReminder"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 17
+  },
+  {
+    "filePath": "Schedulers/OnboardingAssignmentReminder/OnboardingAssignmentReminder/OnboardingAssignmentReminder/RequirementGroupAssignmentReminder.cs",
+    "fileName": "RequirementGroupAssignmentReminder.cs",
+    "fileType": "scheduler",
+    "className": "RequirementGroupAssignmentReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - OnboardingAssignmentReminder",
+    "summary": "Sends onboarding requirement assignment emails with configurable reminder frequencies (initial, pending, overdue, admin verification) and generates requirement-group change notification emails.",
+    "businessPurpose": "Drive completion of onboarding compliance assignments by reminding users of due and overdue requirements on a per-department schedule.",
+    "keyMethods": [
+      "Start - runs SendRequirementGroupAssignmentMail, GenerateOBCAssignmentReminderDetails, and group-change emails",
+      "GenerateOBCAssignmentReminderDetails - calculates which assignments need initial/pending/overdue/final emails",
+      "GenerateOBCRequirementGroupEmail - sends notification for edited requirement groups",
+      "GetRequirementGroupEmailQueueDetails - fetches queued group-change emails",
+      "SendRequirementGroupAssignmentMail - sends initial assignment notification emails"
+    ],
+    "storedProcedures": [
+      "GenerateOBCAssignmentReminderDetails",
+      "GeneratePendingVerficationAdminEmails",
+      "GetRequirementGroupEmailQueueDetails"
+    ],
+    "businessManagersUsed": [
+      "DBDataAccess",
+      "CustomCommand",
+      "EmailUtility",
+      "MyEvalsOnbordingLogs"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 761
   }
 ]}
   directoryOverview="Batch 3 of the scheduler projects covers 22 scheduler applications spanning patient data encryption (PatientLog, PatientName, SsnEncrypt), email dispatch (SendApplicationEmails - the central 2800-line email engine), AI/ML-powered insights (SendSystemComments - the 2000-line MyInsights AI engine), external integrations (SalesForce, Tangier, HelloSign/RightSignature), compliance reminders (state license, PIP re-evaluation, quiz assignments), program-specific notifications (FNP immersion, practicum hours, student review logs), user lifecycle management (archiving, DeVry archiving), milestone score processing, conference evaluation reminders (attendee and presenter), and manual assignment reminders. The most critical schedulers in this batch are SendApplicationEmails (central email dispatch), SendSystemComments (AI insights engine), and the credential/compliance reminder schedulers."

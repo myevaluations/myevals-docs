@@ -1,0 +1,468 @@
+---
+title: "Mail Files"
+sidebar_label: "Mail"
+description: "Per-file reference for Web/Mail (21 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Mail File Reference
+
+> **21 files** | **4,667 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/Mail/AddTrainingSeminar.aspx.cs",
+    "fileName": "AddTrainingSeminar.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_AddTrainingSeminar",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Add or edit training seminar event records, including document upload via FileUploadComponentWebService and pricing configuration. Supports both add and edit page modes.",
+    "businessPurpose": "Enables administrators to create and manage training seminars with early-bird and standard pricing, capacity limits, and downloadable seminar documents.",
+    "keyMethods": [
+      "Page_Load - initializes form for add or edit mode based on query string",
+      "btnSaveTop_Click - saves seminar data and handles file upload",
+      "btnSaveBottom_Click - duplicate save button handler for bottom of form",
+      "BindResults - populates form fields from existing seminar record"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Training seminar feature may need migration if the events module is modernized in Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 270
+  },
+  {
+    "filePath": "Web/Mail/AvailableSeminars.aspx.cs",
+    "fileName": "AvailableSeminars.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_AvailableSeminars",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Lists available training seminars for user registration, binding data from MailDistributionBusiness on page load.",
+    "businessPurpose": "Allows authenticated users to browse and register for available training seminars.",
+    "keyMethods": [
+      "Page_Load - initializes seminar listing on first load",
+      "BindResults - fetches and binds seminar data to grid"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 84
+  },
+  {
+    "filePath": "Web/Mail/ContactCustomerSupport.aspx.cs",
+    "fileName": "ContactCustomerSupport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ContactCustomerSupport",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Customer support ticket submission form with role-based access control; restricts access to GAUserViewAccess, GAEmergency, and GAConfMyQMyP roles.",
+    "businessPurpose": "Enables users to submit customer support requests while enforcing role-based visibility.",
+    "keyMethods": [
+      "Page_Load - checks privileges and initializes form",
+      "btnSend_Click - submits support ticket via MailDistributionBusiness"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 96
+  },
+  {
+    "filePath": "Web/Mail/ContactTechnicalSupport.aspx.cs",
+    "fileName": "ContactTechnicalSupport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ContactTechnicalSupport",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Technical support ticket submission form that auto-detects operating system and browser info from the user agent string for inclusion in the support request.",
+    "businessPurpose": "Allows users to submit technical support tickets with automatically-captured environment details.",
+    "keyMethods": [
+      "Page_Load - detects OS and browser from user agent, initializes form",
+      "btnSend_Click - submits technical support ticket"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 109
+  },
+  {
+    "filePath": "Web/Mail/EvalReminder.aspx.cs",
+    "fileName": "EvalReminder.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_EvalReminder",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Trigger page that fires evaluation reminder emails by calling MailDistributionBusiness.OnViewInitializeEvalReminders on page load.",
+    "businessPurpose": "Provides a web-accessible endpoint to manually trigger evaluation reminder email sending.",
+    "keyMethods": [
+      "Page_Load - invokes eval reminder initialization logic"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Likely replaced by Node.js BullMQ scheduler for reminders.",
+    "complexity": "trivial",
+    "lineCount": 40
+  },
+  {
+    "filePath": "Web/Mail/Mail.aspx.cs",
+    "fileName": "Mail.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_Mail",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Mail module landing page that initializes navigation menus based on user privileges and supports manual eval reminder triggering via a secret key anti-CSRF mechanism.",
+    "businessPurpose": "Serves as the Mail module hub page with role-based menu control and an admin-only manual reminder trigger.",
+    "keyMethods": [
+      "Page_Load - checks for secret key in query string to trigger reminders, binds menu",
+      "BindMenu - shows or hides mail module navigation items based on role privileges"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "EvaluationsManager",
+      "HelpGroupManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 373
+  },
+  {
+    "filePath": "Web/Mail/MailDistribution.aspx.cs",
+    "fileName": "MailDistribution.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_MailDistribution",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Compose and send or schedule bulk email distributions to selected users with CKEditor rich text editing; access restricted to admin and client services roles.",
+    "businessPurpose": "Allows administrators to compose rich-text bulk emails and send or schedule them to groups of users.",
+    "keyMethods": [
+      "Page_Load - checks admin/client services permissions, initializes CKEditor and recipient dropdowns",
+      "btnSend_Click - sends or schedules the email distribution",
+      "btnSaveTemplate_Click - saves current composition as a reusable template"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 230
+  },
+  {
+    "filePath": "Web/Mail/MailTemplate.aspx.cs",
+    "fileName": "MailTemplate.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_MailTemplate",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "CRUD page for reusable mail templates with CKEditor rich text editing; does not extend BasePage, handling authentication separately.",
+    "businessPurpose": "Allows administrators to create, edit, and delete reusable email templates for mail distribution.",
+    "keyMethods": [
+      "Page_Load - loads template list or specific template for editing",
+      "btnSave_Click - saves new or updated template",
+      "btnDelete_Click - removes template"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 174
+  },
+  {
+    "filePath": "Web/Mail/ManageMailDistributionSchedules.aspx.cs",
+    "fileName": "ManageMailDistributionSchedules.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ManageMailDistributionSchedules",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "View and delete scheduled mail distribution records; does not extend BasePage.",
+    "businessPurpose": "Lets administrators review and cancel pending scheduled email distributions.",
+    "keyMethods": [
+      "Page_Load - loads scheduled distributions list",
+      "btnDelete_Click - removes a scheduled distribution"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 98
+  },
+  {
+    "filePath": "Web/Mail/ManageMessageDistribution.aspx.cs",
+    "fileName": "ManageMessageDistribution.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ManageMessageDistribution",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Menu or landing page for message distribution with a single permission check; minimal business logic.",
+    "businessPurpose": "Entry point for the message distribution sub-module with access control.",
+    "keyMethods": [
+      "Page_Load - checks privileges for MessageDistribution submodule"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 30
+  },
+  {
+    "filePath": "Web/Mail/ManageTrainingSeminar.aspx.cs",
+    "fileName": "ManageTrainingSeminar.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ManageTrainingSeminar",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Grid-based management of training events with delete and close (cancel) operations using MailDistributionBusiness and MailDistributionManager.",
+    "businessPurpose": "Allows administrators to view, delete, and close training seminar events.",
+    "keyMethods": [
+      "Page_Load - binds training seminar grid",
+      "lbtnDelete_Click - deletes a training seminar",
+      "lbtnClose_Click - closes/cancels a training seminar"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 182
+  },
+  {
+    "filePath": "Web/Mail/Meeting.aspx.cs",
+    "fileName": "Meeting.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_Meeting",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "Online meeting access page that performs a privilege check for the OnlineMeeting submodule; minimal implementation.",
+    "businessPurpose": "Controls access to the online meeting join page based on user role privileges.",
+    "keyMethods": [
+      "Page_Load - checks OnlineMeeting submodule privilege"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 56
+  },
+  {
+    "filePath": "Web/Mail/MenuSupport.aspx.cs",
+    "fileName": "MenuSupport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_MenuSupport",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Support center landing page that integrates SAML 2.0 SSO to the HappyFox help desk and creates HappyFox user accounts via REST API on first visit.",
+    "businessPurpose": "Enables authenticated users to access the HappyFox customer support portal via seamless SAML-based single sign-on.",
+    "keyMethods": [
+      "Page_Load - initializes SSO flow and creates HappyFox account if not exists",
+      "CreateUserAccount - provisions user in HappyFox via REST API",
+      "GetSamlResponse - builds and signs SAML 2.0 assertion for HappyFox SSO",
+      "AssetionElement - constructs the SAML assertion XML element"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "SAML SSO integration with HappyFox is a critical feature; Node.js migration should preserve this SSO flow.",
+    "complexity": "complex",
+    "lineCount": 485
+  },
+  {
+    "filePath": "Web/Mail/MessageDistribution.aspx.cs",
+    "fileName": "MessageDistribution.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_MessageDistribution",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Compose and send or update messages to selected individual users with AJAX-driven user lookup via WebMethod.",
+    "businessPurpose": "Allows administrators to send targeted messages to specific users selected from a searchable user list.",
+    "keyMethods": [
+      "Page_Load - initializes compose form",
+      "btnSend_Click - sends message to selected users",
+      "GetUsers - WebMethod returning available user list for AJAX calls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MessageDistributionBusiness",
+      "MessageDistributionManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 327
+  },
+  {
+    "filePath": "Web/Mail/RedirectMessage.aspx.cs",
+    "fileName": "RedirectMessage.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_RedirectMessage",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "Empty stub page with no implemented logic; inherits directly from System.Web.UI.Page.",
+    "businessPurpose": "Placeholder page, likely reserved for future message redirect functionality.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Web/Mail/ResendMail.aspx.cs",
+    "fileName": "ResendMail.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_ResendMail",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "Resends a previously scheduled mail distribution by ID using MailDistributionBusiness.",
+    "businessPurpose": "Provides the ability to resend a previously created scheduled mail distribution.",
+    "keyMethods": [
+      "Page_Load - reads DistributionID from query string and calls resend"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 46
+  },
+  {
+    "filePath": "Web/Mail/Training.aspx.cs",
+    "fileName": "Training.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_Training",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Displays and manages the registrant list for a training seminar with Excel export capability.",
+    "businessPurpose": "Allows administrators to view seminar registrant lists and export attendance data to Excel.",
+    "keyMethods": [
+      "Page_Load - loads seminar registrant list",
+      "btnExport_Click - exports registrant data to Excel"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 191
+  },
+  {
+    "filePath": "Web/Mail/TrainingList.aspx.cs",
+    "fileName": "TrainingList.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_TrainingList",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "View and optionally edit training seminar registration details for a specific registration record.",
+    "businessPurpose": "Lets administrators review individual seminar registration records and update registration information.",
+    "keyMethods": [
+      "Page_Load - loads registration detail in view or edit mode",
+      "btnSave_Click - updates registration record"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 173
+  },
+  {
+    "filePath": "Web/Mail/TrainingSeminar.aspx.cs",
+    "fileName": "TrainingSeminar.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_TrainingSeminar",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Full training seminar registration form for authenticated users supporting add, edit, and view modes with early-bird versus standard pricing logic.",
+    "businessPurpose": "Allows authenticated users to register for training seminars with dynamic pricing based on registration date.",
+    "keyMethods": [
+      "Page_Load - determines page mode and initializes registration form",
+      "btnRegister_Click - submits registration and calculates applicable price tier",
+      "BindResults - populates form with existing registration data for edit/view"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "very-complex",
+    "lineCount": 1030
+  },
+  {
+    "filePath": "Web/Mail/TrainingSeminarForNonUser.aspx.cs",
+    "fileName": "TrainingSeminarForNonUser.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_TrainingSeminarForNonUser",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Mail",
+    "summary": "Training seminar registration form for external or unauthenticated users; on successful registration redirects to the login page after 5 seconds.",
+    "businessPurpose": "Allows external participants to register for training seminars without an existing account and then prompts login.",
+    "keyMethods": [
+      "Page_Load - initializes public registration form",
+      "btnRegister_Click - submits registration and initiates redirect to login"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness",
+      "MailDistributionManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 389
+  },
+  {
+    "filePath": "Web/Mail/UsertypeMail.aspx.cs",
+    "fileName": "UsertypeMail.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Mail_UsertypeMail",
+    "inheritsFrom": "BasePage",
+    "module": "Mail",
+    "summary": "Send email to selected users filtered by user type with contextual help icon management.",
+    "businessPurpose": "Allows administrators to send bulk emails to specific user type groups.",
+    "keyMethods": [
+      "Page_Load - initializes user type dropdown and help icons",
+      "btnSend_Click - sends email to selected user type group"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MailDistributionBusiness"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 265
+  }
+]}
+  directoryOverview="The Mail directory contains 21 code-behind files handling all email-related functionality in the MyEvaluations platform. It covers bulk mail distribution, message composition, training seminar management and registration (both for authenticated and external users), customer and technical support ticket submission, reusable mail templates, scheduled distribution management, and HappyFox help desk integration via SAML 2.0 SSO. The primary business class is MailDistributionBusiness with MailDistributionManager for data access. Several pages do not extend BasePage and handle authentication differently. The training seminar subsystem (AddTrainingSeminar, AvailableSeminars, ManageTrainingSeminar, Training, TrainingList, TrainingSeminar, TrainingSeminarForNonUser) is the most complex subsection."
+  keyWorkflows={["Bulk email composition and scheduling via MailDistribution.aspx with CKEditor, template reuse via MailTemplate.aspx, and schedule management via ManageMailDistributionSchedules.aspx","Training seminar lifecycle: admin creates seminar (AddTrainingSeminar), users register (TrainingSeminar or TrainingSeminarForNonUser), admin views registrants (Training) and individual records (TrainingList)","Customer/technical support ticket submission with auto-detected environment info (ContactCustomerSupport, ContactTechnicalSupport)","HappyFox SSO via SAML 2.0: MenuSupport.aspx creates HappyFox user account via REST API and generates signed SAML assertion for seamless portal access","Evaluation reminder triggering via EvalReminder.aspx and manual trigger via secret key in Mail.aspx"]}
+/>

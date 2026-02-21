@@ -1,0 +1,317 @@
+---
+title: "Onboarding Files"
+sidebar_label: "Onboarding"
+description: "Per-file reference for Web/Onboarding (13 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Onboarding File Reference
+
+> **13 files** | **3,395 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/Onboarding/CropUserImage.aspx.cs",
+    "fileName": "CropUserImage.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_CropUserImage",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Image cropping page for user profile or onboarding document photos; reads source image path and document ID from query string and triggers the fnCropImage JavaScript function on load.",
+    "businessPurpose": "Allows users to crop a profile or onboarding-related photo before it is saved as part of their credentialing documents.",
+    "keyMethods": [
+      "Page_Load - sets image source from query string, prepares hidden fields for file path and update flag, triggers crop script"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 39
+  },
+  {
+    "filePath": "Web/Onboarding/DownloadOnboardingDocuments.aspx.cs",
+    "fileName": "DownloadOnboardingDocuments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_DownloadOnboardingDocuments",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Generates and streams a ZIP archive of onboarding documents for a given user, department, and requirement group; supports both file-system documents and HelloSign signature requests.",
+    "businessPurpose": "Enables administrators to bulk-download all onboarding documents submitted by a user as a single ZIP file including HelloSign-signed PDFs.",
+    "keyMethods": [
+      "Page_Load - parses query parameters, fetches document assignments, downloads each file or HelloSign PDF, streams as ZIP",
+      "IsBase64String - validates whether a query param is base64 encoded",
+      "DownLoadFileFromURL - downloads a file from a URL as a byte array"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "UserBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "HelloSign (now Dropbox Sign) integration is business-critical; migration must preserve document download and signature workflow.",
+    "complexity": "moderate",
+    "lineCount": 213
+  },
+  {
+    "filePath": "Web/Onboarding/OnboardingDashboard.aspx.cs",
+    "fileName": "OnboardingDashboard.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_OnboardingDashboard",
+    "inheritsFrom": "BasePage",
+    "module": "Onboarding",
+    "summary": "Main onboarding credentialing dashboard; handles complex permission logic including BSN program campus leaders, requirement group filtering, user dropdowns, and feature-flag-based redirect to a new React interface.",
+    "businessPurpose": "Provides administrators, preceptors, and campus leaders a dashboard to view and manage onboarding document submission status for trainees.",
+    "keyMethods": [
+      "Page_Load - validates permissions including campus leader status, initializes all dashboard controls",
+      "EnableNewInterface - checks feature flags and redirects to React-based onboarding if enabled",
+      "AcademicYear_listSelectedIndexChangeHandler - refreshes requirement groups and forms when academic year changes",
+      "ddlRequirementGroup_OnSelectedIndexChanged - loads forms for selected requirement group",
+      "ddlOnboardingDepartments_OnSelectedIndexChanged - reloads users for selected department"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserBusiness",
+      "BSNProgramManager",
+      "FeatureManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "This is the primary OBC dashboard; the FeatureManager redirect suggests a React replacement is in progress for the new Node.js/React stack.",
+    "complexity": "moderate",
+    "lineCount": 225
+  },
+  {
+    "filePath": "Web/Onboarding/OnboardingNotes.aspx.cs",
+    "fileName": "OnboardingNotes.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_OnboardingNotes",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Popup dialog for adding or viewing admin and user review notes on a specific onboarding document assignment; supports bidirectional notes (admin-to-user and user-to-admin).",
+    "businessPurpose": "Allows administrators and users to exchange review notes on onboarding document submissions.",
+    "keyMethods": [
+      "Page_Load - loads existing notes for the document assignment from query string parameters",
+      "btnSendMessage_Click - saves new note and closes the popup window"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 137
+  },
+  {
+    "filePath": "Web/Onboarding/OnboardingReviewNotes.aspx.cs",
+    "fileName": "OnboardingReviewNotes.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_OnboardingReviewNotes",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Similar to OnboardingNotes but after saving redirects to Main.aspx instead of closing a popup; used for the standalone review notes page flow.",
+    "businessPurpose": "Enables administrators and users to add review notes on onboarding documents in the full-page (non-popup) flow.",
+    "keyMethods": [
+      "Page_Load - loads existing notes for the document assignment",
+      "btnSendMessage_Click - saves note and redirects to Main.aspx"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 134
+  },
+  {
+    "filePath": "Web/Onboarding/PrintOnboardingDashboard.aspx.cs",
+    "fileName": "PrintOnboardingDashboard.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_PrintOnboardingDashboard",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Generates a detailed completion status report for onboarding documents as both an HTML page and a downloadable PDF using iTextSharp; also supports bulk document ZIP download via HelloSign integration.",
+    "businessPurpose": "Produces a printable or downloadable PDF report of all onboarding document statuses (pending, unverified, completed) for a user across requirement groups.",
+    "keyMethods": [
+      "Page_Load - builds HTML and PDF-ready HTML from onboarding assignment dataset with status color coding",
+      "btnSavePDF_Click - renders stored HTML as iTextSharp PDF and streams as download",
+      "btnDownloadDocuments_Click - bulk downloads all documents as ZIP from file system or HelloSign",
+      "GetPDFHeader - builds PDF report header HTML",
+      "GetPDFFooter - builds PDF report footer HTML",
+      "ConvertToDataTable - converts LINQ query result to DataTable"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "UserBusiness",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "iTextSharp PDF generation is a legacy library; migration should consider modern PDF generation alternatives.",
+    "complexity": "very-complex",
+    "lineCount": 682
+  },
+  {
+    "filePath": "Web/Onboarding/RestoreAssignments.aspx.cs",
+    "fileName": "RestoreAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_RestoreAssignments",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Popup page that lists soft-deleted onboarding document assignments for a user and allows administrators to restore selected ones.",
+    "businessPurpose": "Allows administrators to restore previously deleted onboarding document assignments for a specific user.",
+    "keyMethods": [
+      "Page_Load - loads deleted assignment list via UserManager",
+      "BindAssignments - fetches soft-deleted assignments and shows or hides restore button",
+      "btnRestore_click - iterates repeater items and restores checked assignments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 118
+  },
+  {
+    "filePath": "Web/Onboarding/SpouseDependentsEmergency.ascx.cs",
+    "fileName": "SpouseDependentsEmergency.ascx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_SpouseDependentsEmergency",
+    "inheritsFrom": "System.Web.UI.UserControl",
+    "module": "Onboarding",
+    "summary": "User control for managing spouse, dependent, and emergency contact information as part of onboarding; binds dependent type dropdown and loads existing dependent details.",
+    "businessPurpose": "Captures and displays dependent and emergency contact information for users during the onboarding credentialing process.",
+    "keyMethods": [
+      "Page_Load - initializes dependent type dropdown and triggers JavaScript binding",
+      "GetDependentType - loads dependent types from LookUpTables and selects the current user's type"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "OnboardingCredentialingBusiness",
+      "LookUpTables"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "trivial",
+    "lineCount": 70
+  },
+  {
+    "filePath": "Web/Onboarding/TrainingGapHistory.ascx.cs",
+    "fileName": "TrainingGapHistory.ascx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_TrainingGapHistory",
+    "inheritsFrom": "System.Web.UI.UserControl",
+    "module": "Onboarding",
+    "summary": "User control for recording training gap history (LOA, remediation) with date range, gap type, remediation flag, and comments; loads existing gap data if an assignment ID is provided.",
+    "businessPurpose": "Records leave-of-absence and training gap periods during onboarding credentialing to track training continuity.",
+    "keyMethods": [
+      "Page_Load - initializes gap type dropdown and loads existing gap details if RequirementGroupAssignmentID is set"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "OnboardingCredentialingBusiness",
+      "FieldsLookupManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 105
+  },
+  {
+    "filePath": "Web/Onboarding/UpdateOBCDocumentStatus.aspx.cs",
+    "fileName": "UpdateOBCDocumentStatus.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_UpdateOBCDocumentStatus",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Admin utility page that scans all OBC documents and updates their upload status flags based on whether the file physically exists on the file system.",
+    "businessPurpose": "Batch maintenance tool that reconciles document upload status flags against actual file system presence for data integrity.",
+    "keyMethods": [
+      "btnSave_Click - iterates all OBC documents, checks file system, and updates upload status in database"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "UserBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Utility/admin tool for data maintenance; unlikely to need migration but useful for data migration verification.",
+    "complexity": "simple",
+    "lineCount": 45
+  },
+  {
+    "filePath": "Web/Onboarding/UploadMissingCertifications.aspx.cs",
+    "fileName": "UploadMissingCertifications.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_UploadMissingCertifications",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Admin utility page that retrieves all missing OCD certifications, locates their files on the file system, and re-uploads them via FileUploadComponentWebService to reconcile records.",
+    "businessPurpose": "Batch migration utility to re-upload missing onboarding certification documents that exist in an old file structure but were not uploaded via the standard service.",
+    "keyMethods": [
+      "btnUpload_Click - iterates missing certification records, locates files, calls FileUploadComponentWebService to upload each"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "UserBusiness",
+      "FileUploadComponentWebService"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "One-time data migration utility; valuable during cloud migration to move files to new storage.",
+    "complexity": "simple",
+    "lineCount": 91
+  },
+  {
+    "filePath": "Web/Onboarding/ViewCustomFormDetails.aspx.cs",
+    "fileName": "ViewCustomFormDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_ViewCustomFormDetails",
+    "inheritsFrom": "BasePage",
+    "module": "Onboarding",
+    "summary": "Complex form view/submit page for custom onboarding forms and document uploads; handles both custom form fields and uploaded document viewing, HelloSign signature status, PII field masking, and status tracking.",
+    "businessPurpose": "Provides users and administrators a combined interface to fill out custom onboarding forms, upload credentialing documents, view signature request status, and track completion state.",
+    "keyMethods": [
+      "Page_Init - parses all encrypted query string parameters, loads form or document data from dataset, sets button visibility based on view/edit/user/admin mode",
+      "btnFinish_Click - saves form completion and marks assignment as complete",
+      "btnSaveLater_Click - saves partial form progress without marking complete",
+      "btnEdit_Click - switches from view mode to edit mode"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "UserBusiness",
+      "OnboardingCredentialingManager",
+      "OnboardingCredentialingBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core onboarding form submission workflow with HelloSign and RightSignature integration; extremely complex and high-priority for migration planning.",
+    "complexity": "very-complex",
+    "lineCount": 1500
+  },
+  {
+    "filePath": "Web/Onboarding/ViewDocumentDetails.aspx.cs",
+    "fileName": "ViewDocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Onboarding_ViewDocumentDetails",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Onboarding",
+    "summary": "Read-only view of an individual onboarding document's details (upload date, requirement group, file name, size, status, uploader) by document ID.",
+    "businessPurpose": "Allows administrators and users to inspect metadata for a specific uploaded onboarding document.",
+    "keyMethods": [
+      "Page_Load - reads document ID from query string and binds document details from UserManager"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 36
+  }
+]}
+  directoryOverview="The Onboarding directory contains 13 code-behind files (including 2 user controls: .ascx.cs) for the Onboarding Credentialing (OBC) module in MyEvaluations. This module manages the credentialing and document submission workflow for new trainees (residents, nurses, PA students). Key features include the primary OBC dashboard (OnboardingDashboard), custom form submission with signature integration (ViewCustomFormDetails), bulk document download as ZIP with HelloSign support (DownloadOnboardingDocuments), PDF report generation using iTextSharp (PrintOnboardingDashboard), review notes exchange between admins and users (OnboardingNotes, OnboardingReviewNotes), and utility maintenance tools (UpdateOBCDocumentStatus, UploadMissingCertifications). Two user controls handle dependent/emergency contact info (SpouseDependentsEmergency) and training gap recording (TrainingGapHistory). The module integrates with HelloSign (now Dropbox Sign) for legally binding signature requests."
+  keyWorkflows={["OBC dashboard: OnboardingDashboard is the main entry point for admins with feature-flag-based redirect to the new React interface; displays document status grid per user/requirement group","Document submission: ViewCustomFormDetails handles both custom form filling and document upload with view/edit modes; supports HelloSign signature requests and PII masking","Bulk download: DownloadOnboardingDocuments streams all documents as a ZIP, DownloadOnboardingDashboard PDF button generates a PDF report via PrintOnboardingDashboard","Review notes workflow: OnboardingNotes popup and OnboardingReviewNotes page allow bidirectional admin-user note exchange on specific document assignments","Assignment management: RestoreAssignments allows recovery of soft-deleted assignments","Data maintenance: UpdateOBCDocumentStatus reconciles upload status flags; UploadMissingCertifications re-uploads files found on file system via FileUploadComponentWebService"]}
+/>
