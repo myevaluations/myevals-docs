@@ -1,0 +1,396 @@
+{
+  "projectName": "AutoFileEvaluations",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/AutoFileEvaluations",
+  "parsedAt": "2026-02-20T17:11:05.187Z",
+  "fileCount": 7,
+  "totalLines": 632,
+  "files": [
+    {
+      "fileName": "AutoFileEvaluations.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/AutoFileEvaluations.cs",
+      "lineCount": 111,
+      "className": "AutoFileEvaluations",
+      "namespace": "AutoFileEvaluations",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.IO",
+        "System.Configuration",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Utilities",
+        "System.Xml",
+        "System.Data.SqlClient"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsData",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareQueueToFileEvaluations",
+          "returnType": "returns>\n        protected DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsData",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetRequiredEvaluationsData",
+          "returnType": "returns>\n        protected DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsData",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "EmailSender.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/EmailSender.cs",
+      "lineCount": 86,
+      "className": "EmailSender",
+      "namespace": "AutoFileEvaluations",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Utilities",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "SendErrorEmail",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "String MethodName",
+            "String ExceptionMessage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "EvaluationsData.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/EvaluationsData.cs",
+      "lineCount": 76,
+      "className": "EvaluationsData",
+      "namespace": "AutoFileEvaluations",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetAutoFileEvaluations",
+          "returnType": "returns>\n        public DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AutoFileEvaluations",
+          "returnType": "returns>\n        public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string EvaluationsIds",
+            "Int64 SchedulerId",
+            "Int32 SchedulerStatus"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AutoFileEvaluations",
+          "returnType": " Error ocurred while executing the scheduler process for",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetAutoFileEvaluations",
+        "AutoFileEvaluations"
+      ]
+    },
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/MyEvalLogs.cs",
+      "lineCount": 144,
+      "className": "MyEvalLogs",
+      "namespace": "AutoFileEvaluations",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/Program.cs",
+      "lineCount": 31,
+      "className": "Program",
+      "namespace": "AutoFileEvaluations",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "param>\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AutoFileEvaluations",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

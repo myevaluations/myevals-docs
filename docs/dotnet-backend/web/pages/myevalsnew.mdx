@@ -1,0 +1,204 @@
+---
+title: "MyEvalsNew Files"
+sidebar_label: "MyEvalsNew"
+description: "Per-file reference for Web/MyEvalsNew (10 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyEvalsNew File Reference
+
+> **10 files** | **330 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/MyEvalsNew/AccessibilityStatement.aspx.cs",
+    "fileName": "AccessibilityStatement.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_AccessibilityStatement",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static accessibility statement page for the new MyEvaluations site design. Minimal code-behind.",
+    "businessPurpose": "Displays accessibility compliance statement on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Contact.aspx.cs",
+    "fileName": "Contact.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Contact",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static contact page for the new MyEvaluations site design. Minimal code-behind.",
+    "businessPurpose": "Displays contact information on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Features.aspx.cs",
+    "fileName": "Features.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Features",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static features page for the new site design. Minimal code-behind.",
+    "businessPurpose": "Displays platform features on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyEvalsNew/ForgotPassword.aspx.cs",
+    "fileName": "ForgotPassword.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_ForgotPassword",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Simple forgot password page that redirects to the main forgot password handler via client-side script registration.",
+    "businessPurpose": "Entry point for password reset on the new site design, redirects to shared password recovery logic",
+    "keyMethods": [
+      "Page_Load - Default page initialization",
+      "btnLogin_Click - Registers client redirect script for password reset"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 23
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Help.aspx.cs",
+    "fileName": "Help.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Help",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static help page for the new site design. Minimal code-behind.",
+    "businessPurpose": "Displays help resources on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Home.aspx.cs",
+    "fileName": "Home.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Home",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Landing/home page for the new MyEvaluations site design. Includes a login button that redirects to the main login page via client script.",
+    "businessPurpose": "Landing page with login redirect for the redesigned MyEvaluations public site",
+    "keyMethods": [
+      "Page_Load - Default page initialization",
+      "btnLogin_Click - Registers client redirect script to login page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 25
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Login.aspx.cs",
+    "fileName": "Login.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Login",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Primary login page for the new site design. References Security, Mail, Utilities, and Common business modules plus SAML service provider for SSO. Includes client-side redirect logic for login processing.",
+    "businessPurpose": "Main authentication entry point for the redesigned site with SAML SSO support",
+    "keyMethods": [
+      "Page_Load - Initializes login page with SAML and security context",
+      "btnLogin_Click - Handles login button with client-side redirect"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 46
+  },
+  {
+    "filePath": "Web/MyEvalsNew/MyEvals.master.cs",
+    "fileName": "MyEvals.master.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_MyEvals",
+    "inheritsFrom": "System.Web.UI.MasterPage",
+    "module": "MyEvalsNew",
+    "summary": "Master page for the new site design providing shared layout. Includes contact/support email functionality with SendMail methods and navigation message handling.",
+    "businessPurpose": "Defines the common layout template with integrated support email capability for the redesigned site",
+    "keyMethods": [
+      "Page_Load - Initializes master page layout",
+      "btnSendMail_Click - Handles support email form submission",
+      "SendMail - Sends support/contact email via SMTP",
+      "btnSendMessage_Click - Alternative message sending handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "moderate",
+    "lineCount": 152
+  },
+  {
+    "filePath": "Web/MyEvalsNew/Pricing.aspx.cs",
+    "fileName": "Pricing.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_Pricing",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static pricing page for the new site design. Minimal code-behind.",
+    "businessPurpose": "Displays pricing information on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyEvalsNew/PrivacyPolicy.aspx.cs",
+    "fileName": "PrivacyPolicy.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvalsNew_PrivacyPolicy",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyEvalsNew",
+    "summary": "Static privacy policy page for the new site design. Minimal code-behind.",
+    "businessPurpose": "Displays privacy policy on the redesigned site",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "complexity": "trivial",
+    "lineCount": 14
+  }
+]}
+  directoryOverview="Redesigned public-facing website (MyEvalsNew) that largely mirrors CommercialNew but with updated branding. Most pages are thin code-behinds with static content. Login page references SAML SSO for modern authentication. The master page includes integrated support email functionality. This appears to be the newer iteration of the commercial site."
+  keyWorkflows={["User login with SAML SSO support on redesigned site","Password reset redirect to shared recovery workflow","Support/contact email sending from master page","Static marketing pages (features, pricing, help, privacy, accessibility)"]}
+/>

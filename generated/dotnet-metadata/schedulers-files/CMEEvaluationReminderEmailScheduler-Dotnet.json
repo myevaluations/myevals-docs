@@ -1,0 +1,262 @@
+{
+  "projectName": "CMEEvaluationReminderEmailScheduler-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet",
+  "parsedAt": "2026-02-20T17:11:05.229Z",
+  "fileCount": 4,
+  "totalLines": 277,
+  "files": [
+    {
+      "fileName": "CMEEvaluationReminderEmailBusiness.cs",
+      "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailBusiness.cs",
+      "lineCount": 138,
+      "className": "CMEEvaluationReminderEmailBusiness",
+      "namespace": "CMEEvaluationReminderEmailScheduler_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "System.Data",
+        "MyEvaluations.Business.Common"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "OnViewInitializeCMEEvaluationReminderEmailScheduler",
+          "returnType": "region CME Evaluation Reminder Email Scheduler\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow rowRemindersInfo in dtCMERemindersInfo.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow rowAssignmentInfo in CMEAssignmentInfo.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in EmailTemplateResult.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": ", true,",
+          "visibility": "private",
+          "parameters": [
+            "rowRemindersInfo[\"DepartmentID\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": ", true,",
+          "visibility": "private",
+          "parameters": [
+            "rowRemindersInfo[\"DepartmentID\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "rowRemindersInfo[\"DepartmentID\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "rowAssignmentInfo[\"ScheduleID\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "endregion\n\n        protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "CMEEvaluationReminderEmailManager.cs",
+      "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailManager.cs",
+      "lineCount": 77,
+      "className": "CMEEvaluationReminderEmailManager",
+      "namespace": "CMEEvaluationReminderEmailScheduler_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "MyEvaluations.DataAccess.SQL"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "CmeReminderInfo",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CMEAssignmentInfo",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int32 DepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCMEAssignmentEmail",
+          "returnType": " Added by sardeep on 20120822, Getting Email template\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int32 ScheduleID",
+            "String UserIDs",
+            "string EmailTemplateID",
+            "string EncryptText",
+            "Boolean IsMultiTopic",
+            "Int32 DepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateCMEScheduleMailStatusByUserID",
+          "returnType": "\n\n        public static Int64",
+          "visibility": "private",
+          "parameters": [
+            "Int64 UserID",
+            "Int64 DepartmentID",
+            "Int64 ScheduleID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "CmeReminderInfo",
+        "CMEAssignmentInfo",
+        "GetCMEEval_NotRequired_Attendence_Email_Summary",
+        "UpdateCMEScheduleMailStatusByUserID"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/Program.cs",
+      "lineCount": 25,
+      "className": "Program",
+      "namespace": "CMEEvaluationReminderEmailScheduler_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

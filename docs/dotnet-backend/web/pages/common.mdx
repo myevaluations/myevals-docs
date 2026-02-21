@@ -1,0 +1,252 @@
+---
+title: "Common Files"
+sidebar_label: "Common"
+description: "Per-file reference for Web/Common (9 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Common File Reference
+
+> **9 files** | **10,537 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/Common/EpicService.aspx.cs",
+    "fileName": "EpicService.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_EPICService",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Common",
+    "summary": "Integration page for Epic EHR system using FHIR DSTU2/R4 APIs. Handles OAuth2 authentication flow with JWT token validation, patient data retrieval via FHIR endpoints, and Epic SMART on FHIR authorization using RestSharp and HtmlAgilityPack.",
+    "businessPurpose": "Provides Epic EHR single sign-on and patient data exchange via FHIR APIs for clinical integration",
+    "keyMethods": [
+      "Page_Load - Orchestrates Epic OAuth2 flow: metadata discovery, authorization, token exchange, patient lookup, and user info retrieval"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "complex",
+    "lineCount": 187
+  },
+  {
+    "filePath": "Web/Common/Main.aspx.cs",
+    "fileName": "Main.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_Main",
+    "inheritsFrom": "BasePage",
+    "module": "Common",
+    "summary": "Primary dashboard/main page of the MyEvaluations application. Massive code-behind that renders the user's personalized dashboard with counts for pending evaluations, duty hours violations, quiz assignments, learning assignments, patient cases, messages, conference attendance, and training events. Manages department/academic year selection, menu visibility based on role privileges, and navigation to all major modules.",
+    "businessPurpose": "Central dashboard providing role-based navigation, pending action counts, and access to all platform modules for authenticated users",
+    "keyMethods": [
+      "Page_Load - Initializes dashboard with department, academic year, and all module counts",
+      "BindAcademicYear - Populates academic year dropdown with department filtering",
+      "FillCountDetails - Loads all pending count details for dashboard badges",
+      "SetMenuItems - Configures menu visibility based on user role privileges",
+      "SetInboxMenu - Configures inbox/evaluation pending counts",
+      "SetEvaluationsCompleteByProxyMenu - Sets proxy evaluation completion counts",
+      "SetCompletedEvaluationsMenu - Sets completed evaluation menu visibility",
+      "SetDutyHoursViolationToReviewMenu - Sets duty hours violation review counts",
+      "SetDutyHoursVerificationMenu - Sets duty hours verification pending counts",
+      "SetEvaluationsToSignMenu - Sets evaluation signature pending counts",
+      "SetQuizToCompleteMenu - Sets quiz assignment pending counts",
+      "SetLearningAssignmentSubmitCount - Sets learning assignment submission counts",
+      "PatientCasesToReviewCount - Sets patient case review pending counts",
+      "SetSubmitConferencesAttendance - Sets conference attendance submission counts",
+      "SetDutyHoursToSubmitMenu - Sets duty hours submission pending counts",
+      "SetMessagesAndInterimEvaluations - Sets message and interim evaluation counts",
+      "SetTrainingSeminarEventCount - Sets training seminar event counts",
+      "EnableNewInterface - Toggles between legacy and new React-based interface",
+      "ShowDepartmentSummaryProfile - Renders department summary statistics",
+      "ShowInstitutionDepartments - Displays institution department hierarchy",
+      "ddlDepartments_SelectedIndexChanged - Handles department filter change",
+      "AcademicYear_listSelectedIndexChangeHandler - Handles academic year change",
+      "LoadDashBoardScripts - Registers dashboard JavaScript"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DepartmentManager",
+      "DocDetailsBusiness",
+      "UserBusiness",
+      "MailDistributionBusiness",
+      "MailDistributionManager",
+      "TrainingEventsInfo",
+      "MainPageBusiness",
+      "DesignQuizManager",
+      "UserManager",
+      "PreceptorModuleManager",
+      "EvaluationsTemplateManager",
+      "PreceptorManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 3765
+  },
+  {
+    "filePath": "Web/Common/MainNew.aspx.cs",
+    "fileName": "MainNew.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_Main",
+    "inheritsFrom": "BasePage",
+    "module": "Common",
+    "summary": "Updated version of the main dashboard (MainNew) with additional module support for Procedures and PatientLog. Same dashboard pattern as Main.aspx but with expanded navigation, onboarding department support, outcome group bindings, and requirement group filtering. Shares the Common_Main class name.",
+    "businessPurpose": "Enhanced central dashboard with additional module navigation including procedures, patient logs, and onboarding workflows",
+    "keyMethods": [
+      "Page_Load - Initializes enhanced dashboard with all module counts",
+      "SetMenuItems - Configures expanded menu with procedure/patient log navigation",
+      "SetDashboard - Configures dashboard layout and data",
+      "SetDashboardData - Loads dashboard statistics with department filtering",
+      "ShowAdministrative - Manages administrative section visibility",
+      "SetInboxMenu - Configures evaluation inbox with formatted counts",
+      "SetEvaluationsCompleteByProxyMenu - Sets proxy completion counts",
+      "SetCompletedEvaluationsMenu - Sets completed evaluation counts",
+      "SetDutyHoursViolationToReviewMenu - Sets duty hours violation counts",
+      "SetProceduresToReviewCount - Sets procedure review counts",
+      "SetPendingProceduresCount - Sets pending procedure counts",
+      "SetVerifyProcedureCertification - Sets procedure certification verification counts",
+      "SetSubmitPatientLogLink - Configures patient log submission link",
+      "BindOutcomeGroups - Binds outcome/competency groups for department",
+      "IsDeptSpecificDashBoard - Checks if department uses custom dashboard",
+      "CountLenghtValue - Formats count values for display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DepartmentManager",
+      "UserBusiness",
+      "MailDistributionBusiness",
+      "MailDistributionManager",
+      "TrainingEventsInfo",
+      "MainPageBusiness",
+      "DesignQuizManager",
+      "UserManager",
+      "EvaluationsTemplateManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "complexity": "very-complex",
+    "lineCount": 3045
+  },
+  {
+    "filePath": "Web/Common/MainOldFile0407.aspx.cs",
+    "fileName": "MainOldFile0407.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_Main",
+    "inheritsFrom": "BasePage",
+    "module": "Common",
+    "summary": "Archived version of the main dashboard (dated April 2007). Preserved for reference as a snapshot of the dashboard before major updates. Same class name and similar structure as Main.aspx.",
+    "businessPurpose": "Historical backup of the main dashboard page, retained for rollback reference",
+    "keyMethods": [
+      "Page_Load - Legacy dashboard initialization",
+      "SetMenuItems - Legacy menu configuration",
+      "SetDashboard - Legacy dashboard layout"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DepartmentManager",
+      "UserBusiness",
+      "MailDistributionBusiness",
+      "MainPageBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "none",
+    "complexity": "very-complex",
+    "lineCount": 2857
+  },
+  {
+    "filePath": "Web/Common/Messages.aspx.cs",
+    "fileName": "Messages.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_Messages",
+    "inheritsFrom": "BasePage",
+    "module": "Common",
+    "summary": "Simple messages display page. Renders user messages/notifications with BasePage authentication.",
+    "businessPurpose": "Displays system messages and notifications to authenticated users",
+    "keyMethods": [
+      "Page_Load - Initializes messages page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "simple",
+    "lineCount": 30
+  },
+  {
+    "filePath": "Web/Common/ScheduleIcal.aspx.cs",
+    "fileName": "ScheduleIcal.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_ScheduleIcal",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Common",
+    "summary": "Generates iCalendar (.ics) format schedule exports. Queries rotation/schedule data and formats as RFC 5545 compliant iCal events for calendar application integration.",
+    "businessPurpose": "Enables users to export their rotation schedules to external calendar applications (Outlook, Google Calendar) via iCal format",
+    "keyMethods": [
+      "Page_Load - Generates iCal output from schedule data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "moderate",
+    "lineCount": 417
+  },
+  {
+    "filePath": "Web/Common/ServiceProviderRequest.aspx.cs",
+    "fileName": "ServiceProviderRequest.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_ServiceProviderRequest",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Common",
+    "summary": "Handles SAML service provider authentication requests. Processes incoming SSO requests from identity providers and establishes user sessions.",
+    "businessPurpose": "SAML service provider endpoint for processing SSO authentication from institutional identity providers",
+    "keyMethods": [
+      "Page_Load - Processes SAML authentication request and establishes session"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "moderate",
+    "lineCount": 130
+  },
+  {
+    "filePath": "Web/Common/SingleSignOn.aspx.cs",
+    "fileName": "SingleSignOn.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_SingleSignOn",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Common",
+    "summary": "Generic single sign-on handler page. Processes SSO tokens and redirects authenticated users to the appropriate landing page.",
+    "businessPurpose": "Provides a generic SSO endpoint for third-party authentication integrations",
+    "keyMethods": [
+      "Page_Load - Processes SSO token and redirects to dashboard"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "complexity": "simple",
+    "lineCount": 31
+  },
+  {
+    "filePath": "Web/Common/UserMailMessageDetails.aspx.cs",
+    "fileName": "UserMailMessageDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Common_UserMailMessageDetails",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Common",
+    "summary": "Displays detailed view of user mail/message content. Renders individual message details for the internal messaging system.",
+    "businessPurpose": "Shows full message content when users click on a message in their inbox",
+    "keyMethods": [
+      "Page_Load - Loads and displays message details"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 75
+  }
+]}
+  directoryOverview="Core common module containing the platform's central dashboard (Main.aspx at 3765 lines), its updated version (MainNew.aspx at 3045 lines), and shared infrastructure pages. The dashboard is the most complex page in the application, aggregating counts from all modules (evaluations, duty hours, quizzes, learning assignments, patient logs, conferences, messages) with role-based menu configuration. Also includes critical SSO/SAML authentication endpoints, Epic EHR FHIR integration, and iCal schedule exports."
+  keyWorkflows={["Central dashboard rendering with role-based navigation and pending action counts across all modules","Department and academic year filtering for dashboard statistics","Epic EHR integration via FHIR DSTU2/R4 OAuth2 authentication flow","SAML SSO and generic single sign-on authentication flows","iCalendar schedule export for external calendar applications","Internal messaging system with message detail viewing"]}
+/>

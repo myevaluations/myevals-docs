@@ -1,0 +1,4335 @@
+{
+  "directory": "App_Code",
+  "directoryPath": "Web/App_Code",
+  "parsedAt": "2026-02-20T17:10:51.468Z",
+  "fileCount": 12,
+  "totalLines": 4495,
+  "files": [
+    {
+      "fileName": "BasePage.cs",
+      "filePath": "Web/App_Code/BasePage.cs",
+      "lineCount": 1595,
+      "className": "BasePage",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.IO",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.Evaluations",
+        "System.Collections",
+        "MyEvaluations.Business.Common",
+        "System.Security.Cryptography",
+        "System.Text",
+        "System.Text.RegularExpressions",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "DutyHours",
+        "Evaluations",
+        "Common",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "ClearInputPanel",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "Panel destPanel"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Control ctrl in destPanel.Controls"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Init",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnLoadComplete",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnInit",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnError",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ApplicationCustomErrorEvent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "exceptionToLog.Message",
+            "null",
+            "\"\"",
+            "exceptionToLog"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddUserMessageControl",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Control control in page.Controls"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnPreInit",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddUserMessageControl",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetProfileImagePath",
+          "returnType": "\r\n\r\n    protected String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsPictureFile",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "HttpPostedFile postedFile"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String stateKey",
+            "Object stateObject"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RetrievePageState",
+          "returnType": "\r\n\r\n    protected Object",
+          "visibility": "private",
+          "parameters": [
+            "String stateKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindDataToGrid",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Obout.Grid.Grid grdDestination",
+            "Object objDataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsValidDateTime",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string dateTimeToCheck"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddItems",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "ListBox sourceList",
+            "ListBox destinationList",
+            "Boolean selectedOnly"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Int32 selectedIndex in selectedIndices"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCSSFilesPath",
+          "returnType": "\r\n\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlAnchor",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetGridPageSize",
+          "returnType": "\r\n\r\n    public static Int32",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetResetToolTip",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillPageListCombo",
+          "returnType": "\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 totalPages",
+            "DropDownList targetControl"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSortColumnIndex",
+          "returnType": "\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "GridView Source",
+            "String sortExpression"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataControlField field in Source.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddSortImage",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 columnIndex",
+            "GridViewRow HeaderRow",
+            "SortDirection gridViewDirection",
+            "Boolean showImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Image",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddSortImage",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 columnIndex",
+            "GridViewRow HeaderRow",
+            "SortDirection gridViewDirection",
+            "Boolean showImage",
+            "string imageDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Image",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortGridView",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "String sortExpression",
+            "String direction",
+            "GridView Source"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dataTable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserHasPrivilege",
+          "returnType": "\r\n\r\n    public static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "SubModule currentSubModule",
+            "RolePrivilegesRequired privilegeRequired"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckPrivilegesForMode",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Module module",
+            "SubModule subModule",
+            "PageMode mode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r\n\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Redirect",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "string url"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RedirectToMainPage",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String Pagename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n    protected PageMode",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n        return",
+          "visibility": "private",
+          "parameters": [
+            "\"ID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageModeForFavoriteReports",
+          "returnType": "\r\n    protected PageMode",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n        return",
+          "visibility": "private",
+          "parameters": [
+            "\"ReportSettingID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n    protected PageMode",
+          "visibility": "private",
+          "parameters": [
+            "String keyToCheck"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageTitle",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "PageMode mode",
+            "Literal titleSpan",
+            "String pageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToBoolean",
+          "returnType": "\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToBoolean",
+          "returnType": "\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "String booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsBooleanValue",
+          "returnType": "\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "\r\n    protected static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "Object inputDateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "\r\n\r\n    protected static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "String inputDateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "\r\n\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInt16",
+          "returnType": "\r\n    protected static Int16",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInt64",
+          "returnType": "\r\n\r\n    protected static Int64",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertFromUI",
+          "returnType": "\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "DateTime inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Double inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDouble",
+          "returnType": "\r\n\r\n    protected static Double",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDouble",
+          "returnType": "\r\n\r\n    protected static Double",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDecimal",
+          "returnType": "\r\n    protected static Decimal",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOboutGridTotalCount",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetGridTotalCount",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCombo",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "DropDownList targetControl",
+            "DataTable dtResult",
+            "String dataTextField",
+            "String dataValueField",
+            "String defaultSelection"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "defaultSelection",
+            "\"-1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ToArray",
+          "returnType": "\r\n\r\n    public static ListItem[]",
+          "visibility": "private",
+          "parameters": [
+            "ListItemCollection items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref System.Web.UI.WebControls.ListBox listBox",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref listBox",
+            "0",
+            "listBox.Items.Count",
+            "comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref System.Web.UI.WebControls.ListBox listBox",
+            "Int32 index",
+            "Int32 length",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref items",
+            "index",
+            "length",
+            "comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListItem[] items",
+            "Int32 index",
+            "Int32 length",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItemTextComparer",
+          "returnType": "\r\n\r\n        public",
+          "visibility": "private",
+          "parameters": [
+            "bool bIsCaseSensitive"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Compare",
+          "returnType": "\r\n\r\n        public Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object x",
+            "Object y"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItemValueComparer",
+          "returnType": "\r\n\r\n        public",
+          "visibility": "private",
+          "parameters": [
+            "Boolean bIsCaseSensitive"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Compare",
+          "returnType": "\r\n\r\n        public Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object x",
+            "Object y"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYText",
+          "returnType": "endregion\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMaxPGY",
+          "returnType": "\r\n\r\n    public Int32",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYText",
+          "returnType": "\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "TrainingType trainingType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYText",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "BaseAudience currentUserType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYText",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "UserTypes currentUserType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTraineeTypeListForDepartment",
+          "returnType": "\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String seperator"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCopyRightEndYear",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowPersonalDataOnly",
+          "returnType": "\r\n    public static Boolean",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FormatEditorTextSafe",
+          "returnType": "\r\n    public String",
+          "visibility": "private",
+          "parameters": [
+            "String txt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReplaceText",
+          "returnType": "\r\n\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String Expression",
+            "String SearchText",
+            "String ReplaceText",
+            "CompareMethods Method"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLIMenuItemLink",
+          "returnType": "\r\n\r\n\r\n    public static HtmlGenericControl",
+          "visibility": "private",
+          "parameters": [
+            "String text",
+            "String navigationURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlGenericControl",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"li\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HyperLink",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLIMenuItemLinkWithAnchor",
+          "returnType": "\r\n\r\n    public static HtmlGenericControl",
+          "visibility": "private",
+          "parameters": [
+            "String text",
+            "String navigationURL",
+            "Int32 targetID",
+            "String keyValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlGenericControl",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"li\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HyperLink",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LiteralControl",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": "\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 number"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItem",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListBox source",
+            "ref ListBox destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref destination",
+            "new BasePage.ListItemTextComparer(true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItems",
+          "returnType": "\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListBox source",
+            "ref ListBox destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item in source.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItem",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref source",
+            "ref destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItemLinked",
+          "returnType": "Added by adilakshmi for New Program Evaluation\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListBox source",
+            "ref ListBox destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref destination",
+            "new BasePage.ListItemTextComparer(true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItemsLinked",
+          "returnType": "Added by adilakshmi for New Program Evaluation\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListBox source",
+            "ref ListBox destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item in source.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MoveItemLinked",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref source",
+            "ref destination"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetReprotFooter",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetReprotFooterForUI",
+          "returnType": "2016\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DepartmentHasFeatureEnabled",
+          "returnType": "\r\n\r\n    public static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Feature requiredFeature"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Encrypt",
+          "returnType": "returns>\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String toEncrypt",
+            "Boolean useHashing"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MD5CryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TripleDESCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Decrypt",
+          "returnType": "String",
+          "visibility": "public",
+          "parameters": [
+            "String cipherString",
+            "Boolean useHashing"
+          ],
+          "isStatic": true,
+          "isAsync": false
+        },
+        {
+          "name": "MD5CryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TripleDESCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsBase64String",
+          "returnType": "2017\r\n\r\n    public static bool",
+          "visibility": "private",
+          "parameters": [
+            "string value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Decrypt",
+          "returnType": "\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String cipherString",
+            "Boolean useHashing"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MD5CryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TripleDESCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Decrypt_Qgenda",
+          "returnType": "2018\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String cipherString",
+            "Boolean useHashing"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MD5CryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TripleDESCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "BasePage_Ajax.cs",
+      "filePath": "Web/App_Code/BasePage_Ajax.cs",
+      "lineCount": 838,
+      "className": "BasePage_Ajax",
+      "namespace": "",
+      "baseClass": "oboutAJAXPage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.IO",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.DutyHours",
+        "System.Collections",
+        "OboutInc"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "DutyHours"
+      ],
+      "methods": [
+        {
+          "name": "ClearInputPanel",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "Panel destPanel"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Control ctrl in destPanel.Controls"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Init",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnPreInit",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetProfileImagePath",
+          "returnType": "\r\n\r\n    protected String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsPictureFile",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "HttpPostedFile postedFile"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String stateKey",
+            "Object stateObject"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RetrievePageState",
+          "returnType": "\r\n\r\n    protected Object",
+          "visibility": "private",
+          "parameters": [
+            "String stateKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindDataToGrid",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "GridView grdDestination",
+            "Object objDataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsValidDateTime",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string dateTimeToCheck"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddItems",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "ListBox sourceList",
+            "ListBox destinationList",
+            "Boolean selectedOnly"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Int32 selectedIndex in selectedIndices"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCSSFilesPath",
+          "returnType": "\r\n\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlAnchor",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetGridPageSize",
+          "returnType": "\r\n\r\n    public static Int32",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetResetToolTip",
+          "returnType": "\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillPageListCombo",
+          "returnType": "\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 totalPages",
+            "DropDownList targetControl"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSortColumnIndex",
+          "returnType": "\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "GridView Source",
+            "String sortExpression"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataControlField field in Source.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddSortImage",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 columnIndex",
+            "GridViewRow HeaderRow",
+            "SortDirection gridViewDirection",
+            "Boolean showImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Image",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddSortImage",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 columnIndex",
+            "GridViewRow HeaderRow",
+            "SortDirection gridViewDirection",
+            "Boolean showImage",
+            "string imageDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Image",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortGridView",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "String sortExpression",
+            "String direction",
+            "GridView Source"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dataTable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserHasPrivilege",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "SubModule currentSubModule",
+            "RolePrivilegesRequired privilegeRequired"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckPrivilegesForMode",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Module module",
+            "SubModule subModule",
+            "PageMode mode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n\r\n    public PageMode",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n        return",
+          "visibility": "private",
+          "parameters": [
+            "\"ID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCurrentPageMode",
+          "returnType": "\r\n\r\n    public PageMode",
+          "visibility": "private",
+          "parameters": [
+            "String keyToCheck"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageTitle",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "PageMode mode",
+            "Literal titleSpan",
+            "String pageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToBoolean",
+          "returnType": "\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToBoolean",
+          "returnType": "\r\n\r\n    protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "String booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "\r\n\r\n    protected static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "Object inputDateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "\r\n\r\n    protected static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "String inputDateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "\r\n\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertFromUI",
+          "returnType": "\r\n\r\n    protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "DateTime inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToUIOutput",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Double inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDouble",
+          "returnType": "\r\n\r\n    protected static Double",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDouble",
+          "returnType": "\r\n\r\n    protected static Double",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetGridTotalCount",
+          "returnType": "\r\n\r\n    protected static String",
+          "visibility": "private",
+          "parameters": [
+            "Object inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCombo",
+          "returnType": "\r\n\r\n    protected static void",
+          "visibility": "private",
+          "parameters": [
+            "DropDownList targetControl",
+            "DataTable dtResult",
+            "String dataTextField",
+            "String dataValueField",
+            "String defaultSelection"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "defaultSelection",
+            "\"-1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ToArray",
+          "returnType": "\r\n\r\n    public static ListItem[]",
+          "visibility": "private",
+          "parameters": [
+            "ListItemCollection items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref System.Web.UI.WebControls.ListBox listBox",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref listBox",
+            "0",
+            "listBox.Items.Count",
+            "comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref System.Web.UI.WebControls.ListBox listBox",
+            "Int32 index",
+            "Int32 length",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ref items",
+            "index",
+            "length",
+            "comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SortItems",
+          "returnType": "\r\n\r\n\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "ref ListItem[] items",
+            "Int32 index",
+            "Int32 length",
+            "IComparer comparer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItemTextComparer",
+          "returnType": "\r\n\r\n        public",
+          "visibility": "private",
+          "parameters": [
+            "bool bIsCaseSensitive"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Compare",
+          "returnType": "\r\n\r\n        public Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object x",
+            "Object y"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItemValueComparer",
+          "returnType": "\r\n\r\n        public",
+          "visibility": "private",
+          "parameters": [
+            "Boolean bIsCaseSensitive"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Compare",
+          "returnType": "\r\n\r\n        public Int32",
+          "visibility": "private",
+          "parameters": [
+            "Object x",
+            "Object y"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYText",
+          "returnType": "endregion\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMaxPGY",
+          "returnType": "\r\n\r\n    public Int32",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTraineeTypeListForDepartment",
+          "returnType": "\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String seperator"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowPersonalDataOnly",
+          "returnType": "\r\n\r\n    public static Boolean",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FormatEditorTextSafe",
+          "returnType": "\r\n    public String",
+          "visibility": "private",
+          "parameters": [
+            "String txt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReplaceText",
+          "returnType": "\r\n  \r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String Expression",
+            "String SearchText",
+            "String ReplaceText",
+            "CompareMethods Method"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLIMenuItemLink",
+          "returnType": "\r\n\r\n\r\n    public static HtmlGenericControl",
+          "visibility": "private",
+          "parameters": [
+            "String text",
+            "String navigationURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlGenericControl",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"li\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HyperLink",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptString",
+          "returnType": "returns>\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": "returns>\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "BaseReportPage.cs",
+      "filePath": "Web/App_Code/BaseReportPage.cs",
+      "lineCount": 168,
+      "className": "BaseReportPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "Newtonsoft.Json",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "SetListValues",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "ListBox ctrl",
+            "string value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item in ctrl.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnLoad",
+          "returnType": "\n\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnLoadComplete",
+          "returnType": "\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetControlsValues",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "reportSettings"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetControlsValues",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Dictionary<string",
+            "string> reportSettings"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var item in reportSettings"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "BaseReportResultPage.cs",
+      "filePath": "Web/App_Code/BaseReportResultPage.cs",
+      "lineCount": 98,
+      "className": "BaseReportResultPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "Newtonsoft.Json",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "OnLoad",
+          "returnType": "\n\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StoreRequestParams",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StoreRequestParams",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormParams",
+          "returnType": "\n\n    Dictionary<string, string>",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "BaseWebService.cs",
+      "filePath": "Web/App_Code/BaseWebService.cs",
+      "lineCount": 320,
+      "className": "BaseWebService",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [
+        "IHttpHandler",
+        "IRequiresSessionState"
+      ],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Web.SessionState",
+        "System.Xml",
+        "MyEvaluations.Business.TimeSheet",
+        "MyEvaluations.Business.Security",
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Text"
+      ],
+      "businessModuleRefs": [
+        "TimeSheet",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "ProcessRequest",
+          "returnType": "\n\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "HttpContext context"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoInitialize",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "initRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSearch",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "searchRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoExplanation",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "expRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSave",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "saveRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoInitialize",
+          "returnType": "region abstract members\n\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "InitializeRequest iq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSearch",
+          "returnType": "\n\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "SearchRequest sq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSave",
+          "returnType": "\n\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "SaveRequest sq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoExplanation",
+          "returnType": "\n\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "ExplanationRequest eq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseEventType",
+          "returnType": "region protected members\n\n    protected EventType",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSessionData",
+          "returnType": "\n\n    protected BaseRequest",
+          "visibility": "private",
+          "parameters": [
+            "BaseRequest request"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseInitializeRequest",
+          "returnType": "\n\n    protected InitializeRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "XmlDocument outputdoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseSearchRequest",
+          "returnType": "\n\n    protected SearchRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "XmlDocument outputdoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SearchRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseSaveRequest",
+          "returnType": "\n\n    protected SaveRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "XmlDocument outputdoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDateTimeByXPath",
+          "returnType": " sq.IsRecursion ?",
+          "visibility": "private",
+          "parameters": [
+            "doc",
+            "\"//INPUT/RECURSIVE/@DUTYENDDATE\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ActivityInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseExplanationRequest",
+          "returnType": "\n\n    private ExplanationRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "XmlDocument outputdoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExplanationRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode node in nodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TimeSheetViolation",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStringByXPath",
+          "returnType": "\n\n    protected String",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\n\n    protected Int32",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath",
+            "Int32 defaultValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\n\n    protected Int32",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\n        return",
+          "visibility": "private",
+          "parameters": [
+            "doc",
+            "xpath",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDateTimeByXPath",
+          "returnType": "\n\n    protected DateTime",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetInitializeDateTimeByXPath",
+          "returnType": "\n\n    protected DateTime",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "BaseWebService_Test.cs",
+      "filePath": "Web/App_Code/BaseWebService_Test.cs",
+      "lineCount": 269,
+      "className": "BaseWebService_Test",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [
+        "IHttpHandler",
+        "IRequiresSessionState"
+      ],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Web.SessionState",
+        "System.Xml",
+        "MyEvaluations.Business.TimeSheet",
+        "MyEvaluations.Business.Security",
+        "System.Collections.Generic"
+      ],
+      "businessModuleRefs": [
+        "TimeSheet",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "ProcessRequest",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "HttpContext context"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoInitialize",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "initRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSearch",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "searchRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoExplanation",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "expRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSave",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "saveRequest",
+            "outputDoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoInitialize",
+          "returnType": "region abstract members\r\n\r\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "InitializeRequest iq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSearch",
+          "returnType": "\r\n\r\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "SearchRequest sq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoSave",
+          "returnType": "\r\n\r\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "SaveRequest sq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DoExplanation",
+          "returnType": "   \r\n\r\n    public abstract void",
+          "visibility": "private",
+          "parameters": [
+            "ExplanationRequest eq",
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseEventType",
+          "returnType": "region protected members\r\n\r\n    protected EventType",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSessionData",
+          "returnType": "\r\n\r\n    protected BaseRequest",
+          "visibility": "private",
+          "parameters": [
+            "BaseRequest request"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseInitializeRequest",
+          "returnType": "\r\n\r\n    protected InitializeRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseSearchRequest",
+          "returnType": "\r\n\r\n    protected SearchRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SearchRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseSaveRequest",
+          "returnType": "\r\n\r\n    protected SaveRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDateTimeByXPath",
+          "returnType": " sq.IsRecursion ?",
+          "visibility": "private",
+          "parameters": [
+            "doc",
+            "\"//INPUT/RECURSIVE/@DUTYENDDATE\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ActivityInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ParseExplanationRequest",
+          "returnType": "\r\n\r\n    private ExplanationRequest",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExplanationRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode node in nodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TimeSheetViolation",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStringByXPath",
+          "returnType": "\r\n\r\n    protected String",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\r\n\r\n    protected Int32",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath",
+            "Int32 defaultValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\r\n\r\n    protected Int32",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIntByXPath",
+          "returnType": "\r\n        return",
+          "visibility": "private",
+          "parameters": [
+            "doc",
+            "xpath",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDateTimeByXPath",
+          "returnType": "\r\n\r\n    protected DateTime",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetInitializeDateTimeByXPath",
+          "returnType": "\r\n\r\n    protected DateTime",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode doc",
+            "String xpath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "DropDownListAdapter.cs",
+      "filePath": "Web/App_Code/DropDownListAdapter.cs",
+      "lineCount": 146,
+      "className": "DropDownListAdapter",
+      "namespace": "",
+      "baseClass": "WebControlAdapter",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Collections",
+        "System.Collections.Generic",
+        "System.Web.UI.WebControls.Adapters"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "RenderContents",
+          "returnType": "\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "HtmlTextWriter writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item in list.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderListItem",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "item",
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderListItem",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "item",
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderOptionGroupEndTag",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderOptionGroupBeginTag",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "currentOptionGroup",
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderListItem",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "item",
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderOptionGroupEndTag",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderOptionGroupBeginTag",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string name",
+            "HtmlTextWriter writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderOptionGroupEndTag",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "HtmlTextWriter writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderListItem",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item",
+            "HtmlTextWriter writer"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string key in item.Attributes.Keys"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveAdapterViewState",
+          "returnType": "\r\n    protected override object",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem item in list.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Hash",
+          "returnType": "\r\n\r\n    private static int",
+          "visibility": "private",
+          "parameters": [
+            "ListItemCollection listItems"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem listItem in listItems"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadAdapterViewState",
+          "returnType": "\r\n\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "object state"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnPreRender",
+          "returnType": "\r\n    protected override void",
+          "visibility": "private",
+          "parameters": [
+            "System.EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ViewStateException",
+          "returnType": "throw new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "HtmlToPdfBuilder.cs",
+      "filePath": "Web/App_Code/HtmlToPdfBuilder.cs",
+      "lineCount": 654,
+      "className": "HtmlToPdfBuilder",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Xml.Linq",
+        "System.Collections.Generic",
+        "iTextSharp.text.html.simpleparser",
+        "System.Text.RegularExpressions",
+        "System.IO",
+        "iTextSharp.text",
+        "iTextSharp.text.pdf",
+        "iTextSharp.text.html",
+        "System.Text",
+        "System.Collections"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "StyleSheet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddPage",
+          "returnType": "summary>\r\n    public HtmlPdfPage",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlPdfPage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemovePage",
+          "returnType": "summary>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "HtmlPdfPage page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddStyle",
+          "returnType": "summary>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string selector",
+            "string styles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ImportStylesheet",
+          "returnType": "summary>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string path"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "use a little regular expression magic",
+          "visibility": "private",
+          "parameters": [
+            "Match match in Regex.Matches(content",
+            "HtmlToPdfBuilder.REGEX_GET_STYLES"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertBefore",
+          "returnType": "summary>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "HtmlPdfPage page",
+            "HtmlPdfPage before"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertAfter",
+          "returnType": "summary>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "HtmlPdfPage page",
+            "HtmlPdfPage after"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderDirectHtmltoPDF",
+          "returnType": "region Rendering The Document\r\n\r\n    public byte[]",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Document",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "this.PageSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Phrase",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"Page: \"",
+            "FontFactory.GetFont(FontFactory.TIMES_ROMAN",
+            "8",
+            "iTextSharp.text.Font.NORMAL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HeaderFooter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "footPhraseImg",
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Header",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "Markup.HTML_ATTR_STYLESHEET",
+            "string.Empty"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "HtmlPdfPage page in this._Pages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "output",
+            "Encoding.UTF8"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "output.ToArray("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "generate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "var item in (IEnumerable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "object objRows in pt.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "object objCell in row.Cells"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "iTextSharp.text.Chunk comElement in arryElements"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderPdf",
+          "returnType": "summary>\r\n    public byte[]",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Document",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "this.PageSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Phrase",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"Page: \"",
+            "FontFactory.GetFont(FontFactory.TIMES_ROMAN",
+            "8",
+            "iTextSharp.text.Font.NORMAL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HeaderFooter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "footPhraseImg",
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Header",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "Markup.HTML_ATTR_STYLESHEET",
+            "string.Empty"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "render each page that has been added",
+          "visibility": "private",
+          "parameters": [
+            "HtmlPdfPage page in this._Pages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "output",
+            "Encoding.UTF8"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "output.ToArray("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "generate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "var item in (IEnumerable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "Find Rows In Table",
+          "visibility": "private",
+          "parameters": [
+            "object objRows in pt.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "Find cells in table row",
+          "visibility": "private",
+          "parameters": [
+            "object objCell in row.Cells"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "iTextSharp.text.Chunk comElement in arryElements"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ManipulatePdf",
+          "returnType": "\r\n\r\n\r\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "byte[] src"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PdfReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "src"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PdfStamper",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "reader",
+            "ms"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAcroFields",
+          "returnType": "void",
+          "visibility": "public",
+          "parameters": [
+            "byte[] file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PdfReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "KeyValuePair<string",
+            "AcroFields.Item> kvp in form.Fields"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlPdfPage",
+          "returnType": "summary>\r\n    public",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AppendHtml",
+          "returnType": "summary>\r\n    public virtual void",
+          "visibility": "private",
+          "parameters": [
+            "string content",
+            "params object[] values"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderEvent",
+          "returnType": "summary>\r\npublic delegate void",
+          "visibility": "private",
+          "parameters": [
+            "PdfWriter writer",
+            "Document document"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "ManageUsers.cs",
+      "filePath": "Web/App_Code/ManageUsers.cs",
+      "lineCount": 165,
+      "className": "ManageUsers",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Collections",
+        "System.Data.SqlClient",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "GetOrders",
+          "returnType": "\r\n    public IEnumerable",
+          "visibility": "private",
+          "parameters": [
+            "string userType",
+            "string fliterColumn",
+            "string filterValue",
+            "Int64 departmentID",
+            "string sortExpression",
+            "int maximumRows",
+            "int startRowIndex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetUserDetailsByCriteria\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterUserType\"",
+            "userType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterColumn\"",
+            "fliterColumn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterValue\"",
+            "\"\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOrdersCount",
+          "returnType": "\r\n\r\n    public int",
+          "visibility": "private",
+          "parameters": [
+            "string userType",
+            "string fliterColumn",
+            "string filterValue",
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetManageUsersCount\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterUserType\"",
+            "userType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterColumn\"",
+            "fliterColumn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterValue\"",
+            "\"\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOrders1",
+          "returnType": "\r\n\r\n    public IEnumerable",
+          "visibility": "private",
+          "parameters": [
+            "string sortExpression",
+            "int maximumRows",
+            "int startRowIndex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\" + System.Web.HttpContext.Current.Server.MapPath(\"../App_Data/Northwind.mdb\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": " SELECT TOP 10 FROM Orders WHERE OrderID NOT",
+          "visibility": "private",
+          "parameters": [
+            "SELECT TOP 20 FROM Orders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": "OrderID NOT",
+          "visibility": "private",
+          "parameters": [
+            "SELECT TOP \" + startRowIndex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "commandText",
+            "myConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetUserDetailsByCriteria\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "335"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterUserType\"",
+            "\"All\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterColumn\"",
+            "\"LastName\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterValue\"",
+            "\"\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOrdersCount1",
+          "returnType": "\r\n\r\n    public int",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetManageUsersCount\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "335"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterUserType\"",
+            "\"All\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterColumn\"",
+            "\"LastName\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FilterValue\"",
+            "\"\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "DepartmentID"
+      ],
+      "fileType": "class"
+    },
+    {
+      "fileName": "NewControls.cs",
+      "filePath": "Web/App_Code/NewControls.cs",
+      "lineCount": 73,
+      "className": "NewDropDownList",
+      "namespace": "NewControls",
+      "baseClass": "DropDownList",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.ComponentModel",
+        "System.Security.Permissions",
+        "System.Text",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SaveViewState",
+          "returnType": "]\r\n\r\n        protected override object",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " now loop through and save each Style attribute for the List",
+          "visibility": "private",
+          "parameters": [
+            "ListItem li in this.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string attribute in li.Attributes.Keys"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadViewState",
+          "returnType": "\r\n\r\n        protected override void",
+          "visibility": "private",
+          "parameters": [
+            "object savedState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ListItem li in this.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " loop through and restore each style attribute",
+          "visibility": "private",
+          "parameters": [
+            "string[] attribute in (string[][]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "New_Auth.cs",
+      "filePath": "Web/App_Code/New_Auth.cs",
+      "lineCount": 58,
+      "className": "New_Auth",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "Newtonsoft.Json"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "GetPrivileges",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildPrivilegesDictionary",
+          "returnType": "\n    private Dictionary<object, List<string>>",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in table.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    },
+    {
+      "fileName": "RC4.cs",
+      "filePath": "Web/App_Code/RC4.cs",
+      "lineCount": 111,
+      "className": "RC4",
+      "namespace": "RC4EnDeCrypt",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "EnDeCrypt",
+          "returnType": "\r\n\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RC4Initialize",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StrToHexStr",
+          "returnType": "\r\n\r\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "string str"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HexStrToStr",
+          "returnType": "\r\n\r\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "string hexStr"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RC4Initialize",
+          "returnType": "\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "class"
+    }
+  ]
+}

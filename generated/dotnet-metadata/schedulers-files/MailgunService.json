@@ -1,0 +1,2358 @@
+{
+  "projectName": "MailgunService",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/MailgunService",
+  "parsedAt": "2026-02-20T17:11:05.698Z",
+  "fileCount": 13,
+  "totalLines": 3322,
+  "files": [
+    {
+      "fileName": "ApplicationCustomErrorEvent.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/ApplicationCustomErrorEvent.cs",
+      "lineCount": 26,
+      "className": "ApplicationCustomErrorEvent",
+      "namespace": "MailgunService",
+      "baseClass": "System.Web.Management.WebErrorEvent",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "FormatCustomEventDetails",
+          "returnType": "\n        public override void",
+          "visibility": "private",
+          "parameters": [
+            "System.Web.Management.WebEventFormatter formatter"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "CustomCommand.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/CustomCommand.cs",
+      "lineCount": 112,
+      "className": "CustomCommand",
+      "namespace": "MailgunService",
+      "baseClass": null,
+      "interfaces": [
+        "IDisposable"
+      ],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data.Common",
+        "System.Data.SqlClient",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCommand",
+          "returnType": "\n\n        internal SqlCommand",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddParameterWithValue",
+          "returnType": "\n\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsNullValue",
+          "returnType": "\n\n        private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Dispose",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MailBounceLog.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/MailBounceLog.cs",
+      "lineCount": 816,
+      "className": "MailBounceLog",
+      "namespace": "MailgunService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Logging",
+        "RestSharp",
+        "System.IO",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration",
+        "System.Threading",
+        "System.Xml",
+        "Newtonsoft.Json",
+        "System.Xml.Linq",
+        "Newtonsoft.Json.Linq"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetSessionSleep",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "summary>\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastExecutionTime",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JsonStringToDataTable",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailBounce",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailLog",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "MailgunService",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JsonStringToDataTable",
+          "returnType": "void",
+          "visibility": "public",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlNodeReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "xmldoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int32"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "XElement data in xDoc.Descendants(\"items\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastExecutionTime",
+          "returnType": "summary>\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Pathinfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailBounce",
+          "returnType": "returns>\r\n        private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int32"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgunres in ilMailBounce"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ChangeBounceEmailStatus",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "filteredDt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailGunLogData",
+          "returnType": "\r\n\r\n\r\n\r\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtUserData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JsonStringToDataTable",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlNodeReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "xmldoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int32"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "XElement data in xDoc.Descendants(\"items\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ChangeBounceEmailStatus",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "filteredDt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ChangeBounceEmailStatus",
+          "returnType": "\r\n\r\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtUserData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertListToDataTable",
+          "returnType": "\r\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "IList<MailgunResponseEntity> list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgunres in list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailLog",
+          "returnType": "returns>\r\n        private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailBounceLog",
+          "returnType": "returns>\r\n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgun"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateMailBounceLog",
+          "returnType": "returns>\r\n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgun"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailBounces",
+          "returnType": "returns>\r\n        private DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailBouncesForQuery",
+          "returnType": "\r\n\r\n        private DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string messageId",
+            "string to",
+            "string createdat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "ChangeBounceEmailStatus",
+        "InsertMailGunLogData",
+        "InsertMailBounceLog",
+        "UpdateMailBounceLog",
+        "GetMailBounces",
+        "GetMailBouncesForQuery"
+      ]
+    },
+    {
+      "fileName": "MailgunPOP3.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/MailgunPOP3.cs",
+      "lineCount": 468,
+      "className": "MailgunPOP3",
+      "namespace": "MailgunService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration",
+        "RestSharp",
+        "MyEvaluations.Logging",
+        "System.Xml.Linq",
+        "System.Xml",
+        "System.Data",
+        "System.Data.SqlClient",
+        "Newtonsoft.Json",
+        "Newtonsoft.Json.Linq"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetConnectionString",
+          "returnType": "\r\n\r\n        public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunLogs",
+          "returnType": "\r\n        public IRestResponse",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpBasicAuthenticator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiUserName",
+            "apiPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunLogs",
+          "returnType": "\r\n\r\n        public IRestResponse",
+          "visibility": "private",
+          "parameters": [
+            "int skipCount",
+            "int limit"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpBasicAuthenticator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiUserName",
+            "apiPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunLogEntities",
+          "returnType": "\r\n\r\n        public IList<MailgunResponseEntity>",
+          "visibility": "private",
+          "parameters": [
+            "string content",
+            "DateTime lastExecutionTime",
+            "IList<MailgunResponseEntity> ilMailgunResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string entity in entites"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunResponseEntity",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string attribute in attributes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MailgunResponseEntity.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/MailgunResponseEntity.cs",
+      "lineCount": 89,
+      "className": "MailgunResponseEntity",
+      "namespace": "MailgunService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/Program.cs",
+      "lineCount": 20,
+      "className": "Program",
+      "namespace": "MailgunService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "RestSharp"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailBounceLog",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/MailgunService/MailgunService/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MailBounceLog.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailBounceLog.cs",
+      "lineCount": 1079,
+      "className": "MailBounceLog",
+      "namespace": "MailgunWebhookService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Logging",
+        "RestSharp",
+        "System.IO",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration",
+        "System.Threading",
+        "System.Xml",
+        "System.Xml.Linq",
+        "Newtonsoft.Json",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Common"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "summary>\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetNextExecutionTime",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessionSleep",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastExecutionTime",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailLog",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "MailgunService",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"MailgunService Start("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastExecutionTime",
+          "returnType": "summary>\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Pathinfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"GetLastExecutionTime\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailBounce",
+          "returnType": "bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgunres in ilMailBounce"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailBounceLog",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "mailgunres"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailBounceLog",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "mailgunres"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailGunLogData",
+          "returnType": "\n\n\n\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtUserData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"InsertMailGunLogData\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailGunSchedulerLastExecutionTime",
+          "returnType": "\n\n\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DateTime LastExecutionStartTime",
+            "DateTime LastExecutionEndTime",
+            "Int64 MailBounceCount"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailGunSchedulerExecutionTime",
+          "returnType": "\n\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertWebHookListToDataTable",
+          "returnType": "\n\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "IList<MailgunWebHookResponseEntity> list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "MailgunWebHookResponseEntity mailgunres in list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"ConvertWebHookListToDataTable\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertListToDataTable",
+          "returnType": "\n\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "IList<MailgunResponseEntity> list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgunres in list"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SyncMailLog",
+          "returnType": "returns>\n        private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunPOP3",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunBounceWebHookEntities",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "response.Content.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunBounceWebHookEntities",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "response.Content.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailGunSchedulerLastExecutionTime",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "startDateTime",
+            "endDateTime",
+            "Convert.ToInt64(ilMailBounce.Count.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"SyncMailLog\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetNextExecutionTime",
+          "returnType": "\n\n\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "String MethodName",
+            "String ExceptionMessage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunBounceWebHookEntities",
+          "returnType": "\n        public IList<MailgunWebHookResponseEntity>",
+          "visibility": "private",
+          "parameters": [
+            "String tmpContent",
+            "IList<MailgunWebHookResponseEntity> ilMailgunResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlNodeReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "xmldoc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement data in xDoc.Descendants(\"items\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunWebHookResponseEntity",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "id,subject",
+          "visibility": "private",
+          "parameters": [
+            "XElement innnerval in data.Elements(\"message\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement childval in innnerval.Elements(\"headers\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement childvalinner in childval.Elements("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement geolocationElements in data.Elements(\"geolocation\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement childvalinner in geolocationElements.Elements("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement clientinfoElements in data.Elements(\"client-info\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement childvalinner in clientinfoElements.Elements("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XElement data in xDoc.Descendants(\"paging\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"GetMailgunBounceWebHookEntities\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertMailBounceLog",
+          "returnType": "returns>\n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgun"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"InsertMailBounceLog\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateMailBounceLog",
+          "returnType": "returns>\n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "MailgunResponseEntity mailgun"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendErrorEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"UpdateMailBounceLog\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailBounces",
+          "returnType": "DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UnixTimeStampToDateTime",
+          "returnType": "\n        public static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "double unixTimeStamp"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "1970",
+            "1",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "System.DateTimeKind.Utc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailBouncesForQuery",
+          "returnType": "\n        private DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string messageId",
+            "string to",
+            "string createdat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "InsertMailGunLogData",
+        "InsertMailGunSchedulerLastExecutionTime",
+        "GetMailGunSchedulerExecutionTime",
+        "InsertMailBounceLog",
+        "UpdateMailBounceLog",
+        "GetMailBounces",
+        "GetMailBouncesForQuery"
+      ]
+    },
+    {
+      "fileName": "MailgunPOP3.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunPOP3.cs",
+      "lineCount": 361,
+      "className": "MailgunPOP3",
+      "namespace": "MailgunWebhookService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration",
+        "RestSharp",
+        "MyEvaluations.Logging",
+        "System.Xml",
+        "System.Xml.Linq",
+        "Newtonsoft.Json"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetMailgunLogs",
+          "returnType": "\n        public IRestResponse",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpBasicAuthenticator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiUserName",
+            "apiPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunLogs",
+          "returnType": "\n\n        public IRestResponse",
+          "visibility": "private",
+          "parameters": [
+            "int skipCount",
+            "int limit"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpBasicAuthenticator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiUserName",
+            "apiPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMailgunLogEntities",
+          "returnType": "\n\n        public IList<MailgunResponseEntity>",
+          "visibility": "private",
+          "parameters": [
+            "string content",
+            "DateTime lastExecutionTime",
+            "IList<MailgunResponseEntity> ilMailgunResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string entity in entites"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailgunResponseEntity",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string attribute in attributes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MailgunResponseEntity.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunResponseEntity.cs",
+      "lineCount": 84,
+      "className": "MailgunResponseEntity",
+      "namespace": "MailgunWebhookService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MailgunWebHookResponseEntity.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/MailgunWebHookResponseEntity.cs",
+      "lineCount": 175,
+      "className": "MailgunWebHookResponseEntity",
+      "namespace": "MailgunWebhookService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/Program.cs",
+      "lineCount": 18,
+      "className": "Program",
+      "namespace": "MailgunWebhookService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "RestSharp"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailBounceLog",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/MailgunService/MailgunWebhookService/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

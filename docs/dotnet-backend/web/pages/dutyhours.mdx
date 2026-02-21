@@ -1,0 +1,3396 @@
+---
+title: "DutyHours Files"
+sidebar_label: "DutyHours"
+description: "Per-file reference for Web/DutyHours (145 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# DutyHours File Reference
+
+> **145 files** | **83,687 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AddClinic.aspx.cs",
+    "fileName": "AddClinic.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_AddClinic",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for adding and editing clinic definitions within the DutyHours Conferences and Clinics module. Manages clinic name, activity type, days of week, start/end times, and AMION clinic synchronization.",
+    "businessPurpose": "Allows administrators to create or update clinic definitions including scheduling details and AMION integration for automated rotation syncing.",
+    "keyMethods": [
+      "Page_Load - Initializes page mode, checks permissions, sets up form",
+      "CheckForPermissions - Enforces DutyHour/Clinics module privileges and toggles button visibility by mode",
+      "BindActivityTypes - Populates activity type dropdown via ConferenceManager.GetActivityForDepartment",
+      "FillAmionClinics - Loads and binds AMION clinic data for synchronization",
+      "btnSave_Click - Validates and saves new clinic via ClinicManager.Save",
+      "btnUpdate_Click - Validates and updates existing clinic via ClinicManager.Update",
+      "FillInfoFromForm - Maps form controls to ClinicInfo object"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceManager",
+      "ClinicManager",
+      "SyncAmionClinicManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Clinic CRUD with AMION sync integration; could be modernized as Node.js API endpoint with React form.",
+    "complexity": "moderate",
+    "lineCount": 354
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AddConference.aspx.cs",
+    "fileName": "AddConference.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_AddConference",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for adding and editing conference definitions. Handles conference name, activity type, schedule days, start/end time, attendance required flag, document subjects, check-in settings, and excused rotation management with dual list box UI.",
+    "businessPurpose": "Allows administrators to create or modify conference templates including scheduling parameters, rotation excusal rules, and academic year-specific settings.",
+    "keyMethods": [
+      "Page_Load - Initializes page, sets up academic year change handler",
+      "BindRotations - Loads synchronized AMION rotations or schedule rotations/shifts/clinics/calls based on OnCallServiceID",
+      "BindDocumentSubjects - Populates portfolio document subject dropdown",
+      "FillInfoFromForm - Assembles ConferenceInfo from form controls including excused rotations",
+      "btnSave_Click - Validates and saves conference via ConferenceManager.Save",
+      "btnUpdate_Click - Validates and updates conference via ConferenceManager.Update",
+      "MoveUser - Dual list box transfer logic for rotation selection"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceManager",
+      "DutyHoursManager",
+      "ConferenceSchedulesManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Conference definition CRUD with complex rotation management; foundational configuration for conference scheduling workflow.",
+    "complexity": "complex",
+    "lineCount": 654
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AddGroupParticipants.aspx.cs",
+    "fileName": "AddGroupParticipants.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_AddGroupParticipants",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for adding, editing, and copying conference group participants. Supports multi-department user selection, group naming, admin special groups, and cross-department copy functionality with Task Force variant for department 1433.",
+    "businessPurpose": "Allows administrators to define participant groups for conferences, assign users from multiple departments, and copy groups across linked departments.",
+    "keyMethods": [
+      "Page_Load - Initializes page, handles IsCopy mode and department-specific Task Force branding",
+      "PrepareFormForEditMode - Loads existing group data including assigned users and departments",
+      "FillInfoFromForm - Assembles GroupParticipantsInfo from form controls",
+      "btnOK_Click - Saves new group via GroupParticipantsManager.Save",
+      "btnUpdate_Click - Updates existing group via GroupParticipantsManager.Update",
+      "btncopy_Click - Copies group to another department via GroupParticipantsManager.CopyGroupParticipants"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GroupParticipantsManager",
+      "DepartmentManager",
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Group participant management with cross-department copy; uses ucUserFilter user control for complex user selection.",
+    "complexity": "complex",
+    "lineCount": 499
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/AttendanceConferenceSchedule.aspx.cs",
+    "fileName": "AttendanceConferenceSchedule.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_AttendanceConferenceSchedule",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Large code-behind for the conference attendance sign-in sheet. Displays conference schedule details, supports multiple sort modes (by name, department, user type, user level), splits attendees into left/right grid columns for print layout, and handles attendance status updates (present/absent/excused/late) with check-in/check-out features.",
+    "businessPurpose": "Enables administrators to view and update attendance records for scheduled conferences, generate printable sign-in sheets sorted by various criteria, and trigger evaluation email assignments when attendance is marked.",
+    "keyMethods": [
+      "Page_Load - Sets up sort order, loads conference info and presenter info, binds attendance grids",
+      "GetConferenceScheduleInfo - Fetches conference schedule details via ConferenceSchedulesManager",
+      "BindGrid - Binds attendance data in single-column or dual-column layout by user type",
+      "BindGridByDept - Binds attendance data grouped by department with complex sorting",
+      "btnUpdateSignin_Click - Processes attendance updates across all repeater items and triggers evaluation emails",
+      "GetDataFromGrid - Extracts user IDs and attendance status from grid rows",
+      "SetCheckInSettingsForGridView - Configures late/check-out column visibility based on check-in settings"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "DutyHoursManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core attendance tracking page with complex sorting and print layout; significant UI/UX candidate for React modernization.",
+    "complexity": "very-complex",
+    "lineCount": 1436
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceAttendanceImporting.aspx.cs",
+    "fileName": "ConferenceAttendanceImporting.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ConferenceAttendanceImporting",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Multi-step wizard for importing conference attendance data from Excel/CSV files. Handles file upload, sheet selection, field mapping between import and system fields, data preview, and final import with success/failure reporting and email notifications.",
+    "businessPurpose": "Allows administrators to bulk-import conference attendance records from spreadsheet files, mapping external columns to system fields and sending notification emails for newly recorded attendance.",
+    "keyMethods": [
+      "btnStep1Next_Click - Processes uploaded file and initializes step 2",
+      "btnStep2Next_Click - Handles Excel sheet name selection",
+      "btnMatch_Click - Maps import columns to MyEvaluations fields",
+      "btnUnMatch_Click - Removes field mapping",
+      "btnStep3Next_Click - Validates matched fields and previews import data",
+      "btnConfirmDataImport_Click - Executes actual import via ConferenceBusiness and sends emails"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "CacheManager",
+      "EmailUtility",
+      "EmailValidation"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Conference attendance import wizard; delegates most logic to ConferenceBusiness class.",
+    "complexity": "complex",
+    "lineCount": 353
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceImporting.aspx.cs",
+    "fileName": "ConferenceImporting.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ConferenceImporting",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Multi-step wizard for importing conference definitions from Excel/CSV. Nearly identical structure to ConferenceAttendanceImporting with file upload, sheet selection, field mapping, and data import with email notifications.",
+    "businessPurpose": "Allows administrators to bulk-import conference schedule data from spreadsheet files, mapping external columns to system fields.",
+    "keyMethods": [
+      "btnStep1Next_Click - File upload processing and step 2 initialization",
+      "btnStep2Next_Click - Sheet name selection handler",
+      "btnMatch_Click - Column mapping between import and system fields",
+      "btnStep3Next_Click - Preview mapped data before import",
+      "btnConfirmDataImport_Click - Executes import and sends notification emails"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "CacheManager",
+      "EmailUtility",
+      "EmailValidation"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Conference data import wizard; nearly identical to ConferenceAttendanceImporting, delegates to ConferenceBusiness.",
+    "complexity": "complex",
+    "lineCount": 353
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceQuestion.aspx.cs",
+    "fileName": "ConferenceQuestion.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ConferenceQuestion",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for adding and editing conference evaluation questions. Manages question categories, question codes (auto-generated), question descriptions via CKEditor, comment box requirements, and sliding scale detection.",
+    "businessPurpose": "Allows administrators to create or modify questions used in conference evaluation templates, with auto-generated question codes and rich text editing.",
+    "keyMethods": [
+      "Page_Load - Sets mode, initializes page, fills question categories",
+      "fillQuestionCategory - Loads CME question categories by audience",
+      "FillInfoFromForm - Assembles QuestionInfo with sliding scale detection",
+      "btnSave_Click - Saves or updates question via QuestionManager",
+      "GetQuestionCode - Auto-generates next question code from category prefix"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "QuestionManager",
+      "MyEvaluations.Business.CMETracking.QuestionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Question management for conference evaluations; shares question infrastructure with CME tracking.",
+    "complexity": "moderate",
+    "lineCount": 224
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceSettings.aspx.cs",
+    "fileName": "ConferenceSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ConferenceSettings",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Settings/navigation page that controls visibility of conference module menu items based on user role privileges. Manages help icons for design evaluations, manage evaluations, questions, conferences, groups, and importing features.",
+    "businessPurpose": "Serves as the settings hub for the Conferences and Clinics module, conditionally showing menu options based on the logged-in user's permissions.",
+    "keyMethods": [
+      "Page_Load - Checks privileges for each sub-feature and toggles menu item visibility",
+      "SetHelpIcons - Loads help content by key IDs and configures help icon visibility for admin vs. regular users"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "RoleManager",
+      "SessionManager",
+      "HelpGroupManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Navigation/settings page; role-based menu visibility would be handled differently in React.",
+    "complexity": "moderate",
+    "lineCount": 204
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ConferenceTemplateCopy.aspx.cs",
+    "fileName": "ConferenceTemplateCopy.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ConferenceTemplateCopy",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for copying conference evaluation templates to the same or linked departments. Loads the source template, allows renaming, selects a target department, and performs the copy via TemplateManager.",
+    "businessPurpose": "Enables administrators to duplicate conference evaluation templates across departments to avoid recreating complex evaluation forms.",
+    "keyMethods": [
+      "InitializePage - Loads source template and fills department dropdown",
+      "btnCopy_Click - Copies template to selected department using SaveConferenceTemplate or ConferenceTemplateCopy",
+      "FillCopyDepartment - Populates linked department list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager",
+      "DepartmentManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Template copy utility; straightforward CRUD operation.",
+    "complexity": "simple",
+    "lineCount": 120
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/CreateGuest.aspx.cs",
+    "fileName": "CreateGuest.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_CreateGuest",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Popup code-behind for creating and editing guest presenters for conference schedules. Captures first name, last name, title, and suffix, then passes data back to parent window via JavaScript callback.",
+    "businessPurpose": "Allows users to add external guest presenters to conference schedules when the presenter is not a system user.",
+    "keyMethods": [
+      "Page_Load - Sets mode, checks permissions, loads guest info for edit mode",
+      "FillInfoFromForm - Assembles GuestInfo from form fields",
+      "btnSubmit_Click - Saves guest via GuestManager.Save and closes popup with callback",
+      "btnUpdate_Click - Updates guest via GuestManager.Update and closes popup with callback"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GuestManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple guest CRUD popup; uses JavaScript callbacks to communicate with parent page.",
+    "complexity": "simple",
+    "lineCount": 173
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DHScheduleJobHistory.aspx.cs",
+    "fileName": "DHScheduleJobHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DHScheduleJobHistory",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for viewing duty hours schedule job history. Provides a searchable, sortable, paginated grid of conference scheduling job records with filters for date range, conference, and status.",
+    "businessPurpose": "Allows administrators to review the history of automated conference scheduling jobs to monitor and troubleshoot scheduling operations.",
+    "keyMethods": [
+      "Page_Load - Initializes filters, binds conference dropdown, refreshes grid",
+      "refreshGrid - Loads job history data with search criteria and applies sorting",
+      "FillFilterCombo - Populates date range and page size filter dropdowns",
+      "BindAvailableConferences - Loads conference list for filter dropdown",
+      "lbtnRefresh_Click - Applies search criteria and refreshes grid"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Administrative history/audit page; standard grid with search and pagination.",
+    "complexity": "moderate",
+    "lineCount": 438
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DeclineConferenceEvaluation.aspx.cs",
+    "fileName": "DeclineConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DeclineConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for declining a conference evaluation assignment. Records the decline with comments, sends notification email to the assigning party, and closes the popup via JavaScript.",
+    "businessPurpose": "Allows evaluators to decline a conference evaluation assignment with comments, triggering email notification to the evaluation coordinator.",
+    "keyMethods": [
+      "Page_Load - Basic initialization",
+      "btnDecline_Click - Declines evaluation via ConferenceSchedulesManager.DeclineConferenceEvaluation, sends email, closes popup"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "EmailUtility",
+      "EmailValidation"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple decline action with email notification; popup-based UI.",
+    "complexity": "simple",
+    "lineCount": 78
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DeleteConferenceEvaluation.aspx.cs",
+    "fileName": "DeleteConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DeleteConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for deleting or restoring conference evaluation templates. Checks if the template has existing assignments before allowing permanent delete, and supports soft-delete/restore workflow.",
+    "businessPurpose": "Allows administrators to delete conference evaluation templates (with assignment check) or restore previously deleted templates.",
+    "keyMethods": [
+      "Page_Load - Loads template info, checks assignment count to determine delete vs. archive flow",
+      "btnOK_Click - Executes delete or restore via RestoreEvaluationTemplate",
+      "RestoreEvaluationTemplate - Routes to TemplateManager.RestoreConferenceTemplate or DeleteCCEvaluationTemplate based on mode"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Delete/restore utility page for conference evaluation templates.",
+    "complexity": "simple",
+    "lineCount": 151
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep1.aspx.cs",
+    "fileName": "DesignConferenceEvaluationStep1.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DesignEvaluationStep1",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Step 1 of the conference evaluation template designer wizard. Captures template name, mandatory comments setting, confidential comments toggle, and voluntary evaluation flag. Uses session-based state to persist template across wizard steps.",
+    "businessPurpose": "First step in creating or editing conference evaluation templates where administrators define basic template properties.",
+    "keyMethods": [
+      "Page_Load - Initializes page and loads help icons",
+      "PrepareFormForEditMode - Loads existing template from TemplateManager or session",
+      "btnNext_Click - Validates template name uniqueness and navigates to Step 2",
+      "SetHelpIcons - Configures context-sensitive help icons"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager",
+      "RoleManager",
+      "HelpGroupManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Part of 4-step evaluation template wizard; session-based state management pattern.",
+    "complexity": "moderate",
+    "lineCount": 333
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep2.aspx.cs",
+    "fileName": "DesignConferenceEvaluationStep2.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DesignEvaluationStep2",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Step 2 of the conference evaluation template designer. Displays available event-type questions (audience CCT1) with checkboxes for selection, answer scale assignment, and sliding scale support. Manages question selection state across wizard navigation.",
+    "businessPurpose": "Allows administrators to select event-related questions for the conference evaluation template, configuring answer scales and early warning marginal values.",
+    "keyMethods": [
+      "DrawQuestions - Renders question list with checkboxes, answer scale indicators, and selection state from template",
+      "btnBack_Click - Persists selections and navigates back to Step 1",
+      "btnNext_Click - Persists selections and navigates to Step 3"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "QuestionManager",
+      "EvaluationManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Complex question selection UI with dynamic HTML rendering; candidate for React component modernization.",
+    "complexity": "complex",
+    "lineCount": 397
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep3.aspx.cs",
+    "fileName": "DesignConferenceEvaluationStep3.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DesignEvaluationStep3",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Step 3 of the conference evaluation template designer. Displays available speaker-type questions (audience CCT2) with the same checkbox/answer scale pattern as Step 2 but for speaker evaluation questions.",
+    "businessPurpose": "Allows administrators to select speaker-related questions for the conference evaluation template.",
+    "keyMethods": [
+      "DrawQuestions - Renders speaker question list with checkboxes and answer scale indicators",
+      "btnBack_Click - Persists selections and navigates back to Step 2",
+      "btnNext_Click - Persists selections and navigates to Step 4 preview"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "QuestionManager",
+      "EvaluationManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Speaker question selection step; similar pattern to Step 2.",
+    "complexity": "complex",
+    "lineCount": 324
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/DesignConferenceEvaluationStep4.aspx.cs",
+    "fileName": "DesignConferenceEvaluationStep4.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_DesignEvaluationStep4",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Step 4 (final) of the conference evaluation template designer. Previews the complete evaluation with drag-and-drop question reordering, answer scale rendering (sliding scale, free-form, dropdown), conflict of interest questions, and custom comments. Handles template save/update and display order management.",
+    "businessPurpose": "Provides a preview of the conference evaluation template with drag-and-drop reordering capabilities, then saves or updates the complete template.",
+    "keyMethods": [
+      "FillGroupAndQuestions - Loads and renders all question categories with answer types, grouped by event/speaker",
+      "grdQuestions_RowDataBound - Renders individual question rows with appropriate answer controls (sliding, free-form, dropdown)",
+      "btnFinish_Click - Saves or updates complete template via TemplateManager.SaveConferenceTemplate/UpdateConferenceTemplate",
+      "AddDragDropScript - Injects jQuery Sortable drag-and-drop JavaScript for question and category reordering",
+      "GetQuestionsOrder - Extracts display order from drag-drop state for persistence",
+      "dlstConflicts_ItemDataBound - Renders conflict of interest questions with conditional display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager",
+      "EvaluationsTemplateManager",
+      "EvaluationManager",
+      "AnswerTypeManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Most complex page in evaluation template wizard; heavy inline JavaScript, drag-drop, dynamic HTML. High-priority modernization target.",
+    "complexity": "very-complex",
+    "lineCount": 1192
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/EvaluateConferenceEvaluation.aspx.cs",
+    "fileName": "EvaluateConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_EvaluateConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Large code-behind for the conference evaluation form used by evaluators. Renders event and speaker questions with answer scales, handles partial completion (save for later), full submission, proxy evaluation, decline, and evaluation result persistence with email notifications.",
+    "businessPurpose": "The primary evaluation form where users rate conferences and speakers using assigned evaluation templates, supporting partial saves, proxy evaluations, and post-submission email workflows.",
+    "keyMethods": [
+      "Page_Load - Loads template info, handles proxy evaluation mode, sets up evaluation form",
+      "InitializePage - Loads conference evaluation data and renders question groups",
+      "FillGroupAndQuestions - Renders question categories with answer controls for event and speaker sections",
+      "btnFinish_Click - Submits completed evaluation and triggers email notifications",
+      "btnSavePartial_Click - Saves partial evaluation progress for later completion"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "TemplateManager",
+      "EvaluationsTemplateManager",
+      "AnswerTypeManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core evaluation form with complex rendering logic; already partially migrated patterns exist in the React frontend. High-priority candidate.",
+    "complexity": "very-complex",
+    "lineCount": 1932
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageClinics.aspx.cs",
+    "fileName": "ManageClinics.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageClinics",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Listing page for clinic management with sortable, paginated grid. Displays clinics with actions for add, edit, enable/disable based on user privileges.",
+    "businessPurpose": "Provides administrators with a management interface to view, sort, and navigate to add/edit clinics within the DutyHours module.",
+    "keyMethods": [
+      "Page_Load - Sets mode, checks permissions, initializes grid with default sort",
+      "CheckForPermissions - Hides add button if user lacks create privilege",
+      "refreshGrid - Loads and sorts clinic data for grid display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ClinicManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard management grid page with CRUD navigation.",
+    "complexity": "moderate",
+    "lineCount": 420
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceEvaluations.aspx.cs",
+    "fileName": "ManageConferenceEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageConferenceEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Listing page for managing conference evaluation templates. Delegates initialization to ConferenceBusiness, supports grid display of active and deleted templates, and includes help icons.",
+    "businessPurpose": "Provides administrators with a management interface to view, design, copy, publish, delete, and restore conference evaluation templates.",
+    "keyMethods": [
+      "Page_Load - Delegates to ConferenceBusiness.OnViewInitializeManageConferenceEvaluations",
+      "SetHelpIcons - Configures context-sensitive help icons for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "HelpGroupManager",
+      "RoleManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Template management page; delegates most logic to business layer.",
+    "complexity": "moderate",
+    "lineCount": 450
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceQuestionDatabase.aspx.cs",
+    "fileName": "ManageConferenceQuestionDatabase.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageConferenceQuestionDatabase",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Listing page for managing the conference question database. Delegates initialization to ConferenceBusiness and displays questions organized by category with Obout.Grid.",
+    "businessPurpose": "Provides administrators with an interface to browse, add, edit, and manage conference evaluation questions organized by category.",
+    "keyMethods": [
+      "Page_Load - Delegates to ConferenceBusiness.OnViewInitializeManageConferenceQuestionDatabase",
+      "SetHelpIcons - Configures help icons"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "QuestionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Question database management; uses Obout.Grid third-party control.",
+    "complexity": "moderate",
+    "lineCount": 383
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferenceSchedules.aspx.cs",
+    "fileName": "ManageConferenceSchedules.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageConferenceSchedules",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Main management page for conference schedules with sortable, paginated grid. Supports filtering by date range, conference, and status with session-persisted search criteria. Includes schedule creation, editing, attendance sheet generation, and deletion actions.",
+    "businessPurpose": "Central hub for administrators to view, filter, and manage all scheduled conferences, with links to create new schedules, edit existing ones, and access attendance sheets.",
+    "keyMethods": [
+      "Page_Load - Sets permissions, initializes filters, loads grid data",
+      "CheckForPermissions - Controls schedule creation button visibility",
+      "refreshGrid - Loads conference schedule data with search criteria"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core conference schedule management page; high-traffic admin page.",
+    "complexity": "very-complex",
+    "lineCount": 1378
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageConferences.aspx.cs",
+    "fileName": "ManageConferences.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageConferences",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for conference definitions with sortable, paginated grids for active and restored conferences. Supports add, edit, disable/enable, and restore functionality with role-based permissions.",
+    "businessPurpose": "Provides administrators with a management interface for conference definitions including activation, deactivation, and restoration.",
+    "keyMethods": [
+      "Page_Load - Sets mode, checks permissions, initializes default grid and restore grid",
+      "CheckForPermissions - Controls add conference button visibility",
+      "refreshGrid - Loads conference data for both active and restore grids"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Conference definition management with active/archived views.",
+    "complexity": "complex",
+    "lineCount": 713
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ManageGroupsParticipants.aspx.cs",
+    "fileName": "ManageGroupsParticipants.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ManageGroupsParticipants",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for group participants with sortable, paginated grid. Supports adding, editing, deleting, and copying participant groups, with committee member access checks and Task Force branding for department 1433.",
+    "businessPurpose": "Provides administrators with a management interface to view and manage conference participant groups including copy and delete operations.",
+    "keyMethods": [
+      "CheckForPermissions - Complex permission logic including committee member verification",
+      "Page_Load - Initializes grid, checks permissions, loads group data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GroupParticipantsManager",
+      "EvaluationsTemplateManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Group management with committee member access pattern.",
+    "complexity": "complex",
+    "lineCount": 540
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/MarkConferenceAttendance.aspx.cs",
+    "fileName": "MarkConferenceAttendance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_MarkConferenceAttendance",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for marking conference attendance. Displays scheduled conferences for the current user with attendance tracking, supporting personal data mode for individual users.",
+    "businessPurpose": "Allows users (or administrators) to mark attendance for conferences, supporting self-service attendance logging.",
+    "keyMethods": [
+      "Page_Load - Initializes page, loads scheduled conferences for attendance marking"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "User-facing attendance marking page.",
+    "complexity": "moderate",
+    "lineCount": 256
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/MonthlyPopupInfo.aspx.cs",
+    "fileName": "MonthlyPopupInfo.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_MonthlyPopupInfo",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Empty popup page stub. Contains only an empty Page_Load handler with no functionality implemented.",
+    "businessPurpose": "Placeholder or minimal popup page for monthly conference schedule information display.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Empty stub page; may be unused or content rendered client-side.",
+    "complexity": "trivial",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/PrintAttendanceConferenceSchedule.aspx.cs",
+    "fileName": "PrintAttendanceConferenceSchedule.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_PrintAttendanceConferenceSchedule",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Print-optimized version of the conference attendance schedule. Generates printable sign-in sheets with QR codes, department logos, sorting by multiple criteria, and split-column layouts for large attendee lists.",
+    "businessPurpose": "Generates printable conference attendance sign-in sheets with institutional branding and QR code support for digital check-in.",
+    "keyMethods": [
+      "Page_Load - Loads conference schedule data and renders printable layout",
+      "BindGrid - Populates attendance grids with department/user type grouping",
+      "GenerateQRCode - Creates QR code for digital conference check-in"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Print layout with QR codes; could be replaced with PDF generation service.",
+    "complexity": "very-complex",
+    "lineCount": 1353
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/PrintGroupsParticipants.aspx.cs",
+    "fileName": "PrintGroupsParticipants.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_PrintGroupsParticipants",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Print-optimized page for displaying group participants with department logo, copyright footer, and sortable participant grid.",
+    "businessPurpose": "Generates printable reports of conference group participant lists with institutional branding.",
+    "keyMethods": [
+      "Page_Load - Loads department logo, group info, and binds participant grid"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GroupParticipantsManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Print layout page; could be a PDF export endpoint.",
+    "complexity": "simple",
+    "lineCount": 119
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/PublishConferenceEvaluation.aspx.cs",
+    "fileName": "PublishConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_PublishConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for publishing or unpublishing conference evaluation templates. Loads template info and toggles published status via TemplateManager.",
+    "businessPurpose": "Allows administrators to publish evaluation templates making them available for use in conference schedules, or unpublish them.",
+    "keyMethods": [
+      "Page_Load - Loads template info and displays publish/unpublish confirmation",
+      "btnOK_Click - Toggles template publish status"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TemplateManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple publish toggle page.",
+    "complexity": "simple",
+    "lineCount": 75
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/RePrintAttendanceConferenceSchedule.aspx.cs",
+    "fileName": "RePrintAttendanceConferenceSchedule.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_RePrintAttendanceConferenceSchedule",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Reprint variant of the conference attendance schedule print page. Allows reprinting of previously generated sign-in sheets with conference QR GUID support and similar sorting/layout features.",
+    "businessPurpose": "Enables administrators to reprint conference attendance sign-in sheets for previously scheduled conferences.",
+    "keyMethods": [
+      "Page_Load - Loads conference schedule data for reprinting with QR code"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Reprint variant of PrintAttendanceConferenceSchedule.",
+    "complexity": "complex",
+    "lineCount": 672
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/DetailedConferenceScheduleResults.aspx.cs",
+    "fileName": "DetailedConferenceScheduleResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_DetailedConferenceScheduleResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for detailed conference schedule reports. Renders conference schedule data with user attendance details, supports Excel export, and handles complex data formatting with AjaxControlToolkit components.",
+    "businessPurpose": "Displays detailed conference schedule report results with attendance data, supporting data export for compliance and analysis purposes.",
+    "keyMethods": [
+      "Page_Load - Loads report parameters and generates conference schedule results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report results with Excel export; high value for compliance reporting.",
+    "complexity": "very-complex",
+    "lineCount": 1482
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/DetailedConferenceTracking.aspx.cs",
+    "fileName": "DetailedConferenceTracking.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_DetailedConferenceTracking",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for detailed conference tracking. Multi-step wizard for selecting date range, conferences, users, and report format. Supports personal data mode and favorite reports.",
+    "businessPurpose": "Provides filter interface for generating detailed conference attendance tracking reports used for compliance monitoring.",
+    "keyMethods": [
+      "Page_Load - Initializes report filter steps and permission checks"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "ConferenceSchedulesManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Multi-step report filter wizard; common pattern across DutyHours reports.",
+    "complexity": "complex",
+    "lineCount": 500
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/IndividualConferenceEvaluation.aspx.cs",
+    "fileName": "IndividualConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_IndividualConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for individual conference evaluation results. Provides filter criteria for selecting specific conferences, evaluation templates, and date ranges.",
+    "businessPurpose": "Allows administrators to set up filters for viewing individual conference evaluation results by specific conferences and dates.",
+    "keyMethods": [
+      "Page_Load - Initializes filter controls and loads available conferences"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report filter page for conference evaluation results.",
+    "complexity": "moderate",
+    "lineCount": 379
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/IndividualConferenceEvaluationResults.aspx.cs",
+    "fileName": "IndividualConferenceEvaluationResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_IndividualConferenceEvaluationResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for individual conference evaluation data. Renders evaluation scores, comments, and speaker ratings with data export capabilities.",
+    "businessPurpose": "Displays individual conference evaluation results showing question-by-question scores, evaluator comments, and speaker ratings.",
+    "keyMethods": [
+      "Page_Load - Loads evaluation data and renders results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Evaluation results report with export support.",
+    "complexity": "moderate",
+    "lineCount": 300
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/MonthlyCalendarResults.aspx.cs",
+    "fileName": "MonthlyCalendarResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_MonthlyCalendarResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page rendering monthly conference calendar view. Displays conferences in a calendar grid format with schedule details, attendance summaries, and export options.",
+    "businessPurpose": "Generates a monthly calendar view of conference schedules for planning and compliance review.",
+    "keyMethods": [
+      "Page_Load - Loads monthly calendar data and renders conference schedule grid"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Calendar-based report view; complex UI rendering.",
+    "complexity": "complex",
+    "lineCount": 751
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/MonthlyCalenderResultsNew.aspx.cs",
+    "fileName": "MonthlyCalenderResultsNew.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_MonthlyCalenderResultsNew",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Updated version of the monthly conference calendar results page with similar structure but newer layout and features.",
+    "businessPurpose": "Generates an updated monthly calendar view of conference schedules with improved formatting.",
+    "keyMethods": [
+      "Page_Load - Loads and renders monthly calendar data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Newer version of MonthlyCalendarResults; may supersede original.",
+    "complexity": "complex",
+    "lineCount": 716
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/MonthlyConferenceSchedule.aspx.cs",
+    "fileName": "MonthlyConferenceSchedule.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_MonthlyConferenceSchedule",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for the monthly conference schedule report. Provides date range, conference selection, and report format filters with favorite reports support.",
+    "businessPurpose": "Allows users to configure filter criteria for generating monthly conference schedule reports.",
+    "keyMethods": [
+      "Page_Load - Initializes filter controls and permission checks"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness",
+      "ConferenceSchedulesManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report filter page; standard wizard pattern.",
+    "complexity": "moderate",
+    "lineCount": 454
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/MonthlyPopupInfo.aspx.cs",
+    "fileName": "MonthlyPopupInfo.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_MonthlyPopupInfo",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Popup page displaying detailed conference schedule information for a specific date in the monthly calendar view. Shows conference details, file attachments, and supports file upload management.",
+    "businessPurpose": "Displays detailed popup information for a conference when clicked in the monthly calendar report view.",
+    "keyMethods": [
+      "Page_Load - Loads conference schedule details and file attachments for popup display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "FileUploadServiceManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Popup detail view for monthly calendar.",
+    "complexity": "moderate",
+    "lineCount": 272
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferenceEvaluation.aspx.cs",
+    "fileName": "SummaryConferenceEvaluation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_SummaryConferenceEvaluation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for summary conference evaluation reports. Multi-step wizard for selecting conferences, evaluation templates, date ranges, and report format with favorite reports support.",
+    "businessPurpose": "Provides filter interface for generating summary conference evaluation reports aggregating scores across multiple evaluations.",
+    "keyMethods": [
+      "Page_Load - Initializes report filter steps"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Summary evaluation report filter; standard pattern.",
+    "complexity": "complex",
+    "lineCount": 1020
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferenceEvaluationResults.aspx.cs",
+    "fileName": "SummaryConferenceEvaluationResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_SummaryConferenceEvaluationResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for summary conference evaluation data. Renders aggregated evaluation scores by question category and speaker with export capabilities.",
+    "businessPurpose": "Displays aggregated conference evaluation results with summary statistics for compliance and quality review.",
+    "keyMethods": [
+      "Page_Load - Loads aggregated evaluation data and renders summary results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Summary evaluation results with aggregation; important compliance report.",
+    "complexity": "moderate",
+    "lineCount": 454
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferencePresentersTrackingResults.aspx.cs",
+    "fileName": "SummaryConferencePresentersTrackingResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_SummaryConferencePresentersTrackingResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for presenter tracking data. Renders conference presenter activity summary including presentation counts, topics, dates, and attendance metrics with export to Excel.",
+    "businessPurpose": "Displays summary tracking of conference presenters showing their activity across conferences for faculty development and compliance.",
+    "keyMethods": [
+      "Page_Load - Loads presenter tracking data and renders results with export"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Presenter tracking report; complex data aggregation and export.",
+    "complexity": "very-complex",
+    "lineCount": 2145
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferenceTracking.aspx.cs",
+    "fileName": "SummaryConferenceTracking.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_SummaryConferenceTracking",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for summary conference tracking reports. Multi-step wizard with date range, conference, and user selection filters, supporting favorite reports.",
+    "businessPurpose": "Allows administrators to configure filters for summary conference tracking reports showing attendance patterns across users and conferences.",
+    "keyMethods": [
+      "Page_Load - Initializes filter steps and permission checks"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Summary tracking report filter; standard wizard pattern.",
+    "complexity": "complex",
+    "lineCount": 690
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/Reports/SummaryConferenceTrackingResults.aspx.cs",
+    "fileName": "SummaryConferenceTrackingResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_Reports_SummaryConferenceTrackingResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for summary conference tracking data. Renders attendance summary grids with user-level conference attendance percentages, topic tracking, and Excel export.",
+    "businessPurpose": "Displays summary conference attendance tracking results used for ACGME compliance monitoring and program reporting.",
+    "keyMethods": [
+      "Page_Load - Loads tracking data and renders attendance summary results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Key compliance report for ACGME conference attendance requirements; complex data aggregation.",
+    "complexity": "very-complex",
+    "lineCount": 1841
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/RestoreManageGroupsParticipants.aspx.cs",
+    "fileName": "RestoreManageGroupsParticipants.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_RestoreManageGroupsParticipants",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for restoring deleted group participants. Displays a grid of archived groups with restore functionality, similar structure to ManageGroupsParticipants.",
+    "businessPurpose": "Allows administrators to view and restore previously deleted participant groups.",
+    "keyMethods": [
+      "Page_Load - Loads archived groups grid",
+      "CheckForPermissions - Validates user privileges including committee member status"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "GroupParticipantsManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Restore functionality for deleted groups; standard grid with action buttons.",
+    "complexity": "moderate",
+    "lineCount": 355
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/ScheduleConference.aspx.cs",
+    "fileName": "ScheduleConference.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_ScheduleConference",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Large code-behind for the conference scheduling form. Handles creating new conference schedule instances including date, time, location, topic, presenters (internal users and guests), document uploads, participant groups, evaluation assignments, and quiz configuration.",
+    "businessPurpose": "Primary form for administrators to create scheduled conference instances with all details including presenters, participants, evaluations, and supporting documents.",
+    "keyMethods": [
+      "Page_Load - Initializes form with conference details, presenters, and scheduling options",
+      "btnSave_Click - Saves new conference schedule instance",
+      "BindPresenters - Loads available presenters from users and guests",
+      "BindParticipantGroups - Loads participant groups for conference"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "ConferenceManager",
+      "AssignmentUsersManager",
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core conference scheduling form with complex multi-section layout; high-priority migration target.",
+    "complexity": "very-complex",
+    "lineCount": 2122
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/UpdateScheduleConference.aspx.cs",
+    "fileName": "UpdateScheduleConference.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_UpdateScheduleConference",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for editing existing conference schedule instances. Similar to ScheduleConference but loads existing data and supports update operations with document file management and logging.",
+    "businessPurpose": "Allows administrators to modify existing conference schedule instances including all scheduling details, presenters, and document attachments.",
+    "keyMethods": [
+      "Page_Load - Loads existing conference schedule for editing",
+      "btnUpdate_Click - Updates conference schedule instance"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "AssignmentUsersManager",
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Conference schedule edit form; mirrors ScheduleConference with update semantics.",
+    "complexity": "very-complex",
+    "lineCount": 2288
+  },
+  {
+    "filePath": "Web/DutyHours/ConferencesAndClinics/UpdateSummaryScheduleConferences.aspx.cs",
+    "fileName": "UpdateSummaryScheduleConferences.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ConferencesAndClinics_UpdateSummaryScheduleConferences",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for bulk-updating summary conference schedule data. Handles batch operations on conference schedules with file upload support, globalization formatting, and logging.",
+    "businessPurpose": "Allows administrators to perform batch updates on multiple conference schedule instances from a summary view.",
+    "keyMethods": [
+      "Page_Load - Initializes batch update form with conference schedule data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceSchedulesManager",
+      "ConferenceBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Batch update form for conference schedules; complex multi-record update.",
+    "complexity": "very-complex",
+    "lineCount": 2300
+  },
+  {
+    "filePath": "Web/DutyHours/DHPopupForViolation.aspx.cs",
+    "fileName": "DHPopupForViolation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHPopupForViolation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Popup page for duty hours violation explanations. Loads department-specific violation explanation options and allows users to select or enter explanations for tracked violations.",
+    "businessPurpose": "Allows trainees or administrators to provide explanations for duty hour violations using pre-defined department explanations or custom text.",
+    "keyMethods": [
+      "Page_Load - Loads department explanations dropdown and pre-fills violation description"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "TimeSheetManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Violation explanation popup; integrates with duty hours tracking and compliance.",
+    "complexity": "simple",
+    "lineCount": 52
+  },
+  {
+    "filePath": "Web/DutyHours/DHUserVerification.aspx.cs",
+    "fileName": "DHUserVerification.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHUserVerification",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Main duty hours user verification page with sortable, paginated grid. Displays verification batches with status indicators (active, pending, completed) and color-coded links, supporting verification workflow management.",
+    "businessPurpose": "Enables program administrators to manage the duty hours verification process where supervising faculty confirm trainee-reported clinical hours.",
+    "keyMethods": [
+      "Page_Load - Initializes verification grid with search and sort",
+      "refreshGrid - Loads verification batch data with status filters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core verification workflow page; critical for duty hours compliance.",
+    "complexity": "complex",
+    "lineCount": 578
+  },
+  {
+    "filePath": "Web/DutyHours/DHUserVerificationAuto.aspx.cs",
+    "fileName": "DHUserVerificationAuto.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHUserVerificationAuto",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Auto-verification page that processes encrypted query string parameters for automated duty hours confirmation. Handles one-click confirm/reject from email links.",
+    "businessPurpose": "Supports email-based one-click verification workflow where faculty can confirm or reject duty hours from email notification links.",
+    "keyMethods": [
+      "Page_Load - Decrypts verification parameters and processes auto-confirmation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "CommonFunctions"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Email-based auto-verification; would need equivalent API endpoint in Node.js.",
+    "complexity": "simple",
+    "lineCount": 150
+  },
+  {
+    "filePath": "Web/DutyHours/DHUserVerificationDetails.aspx.cs",
+    "fileName": "DHUserVerificationDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHUserVerificationDetails",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Detail page for duty hours user verification showing individual trainee hours within a verification batch. Displays activity-level hours data with sorting and pagination for the verifying faculty member.",
+    "businessPurpose": "Shows detailed duty hours entries for a specific trainee within a verification batch, allowing faculty to review individual hours before confirming.",
+    "keyMethods": [
+      "Page_Load - Loads verification detail data for specific batch, user, rotation, and activity"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Verification detail view; part of the core verification workflow.",
+    "complexity": "complex",
+    "lineCount": 652
+  },
+  {
+    "filePath": "Web/DutyHours/DHUserVerificationForUndo.aspx.cs",
+    "fileName": "DHUserVerificationForUndo.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHUserVerificationForUndo",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Page for undoing previously completed duty hours verifications. Similar structure to DHUserVerification but focused on reversal workflow with status-coded links.",
+    "businessPurpose": "Enables administrators to undo previously confirmed verification batches when corrections are needed.",
+    "keyMethods": [
+      "Page_Load - Loads verification data for undo operations with status indicators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Verification undo workflow; part of verification management suite.",
+    "complexity": "complex",
+    "lineCount": 625
+  },
+  {
+    "filePath": "Web/DutyHours/DHUserVerificationWithDateRange.aspx.cs",
+    "fileName": "DHUserVerificationWithDateRange.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHUserVerificationWithDateRange",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Date range-based duty hours verification page. Extends the standard verification workflow with custom date range selection for verification batches, supporting essential activities integration.",
+    "businessPurpose": "Allows administrators to create and manage verification batches for specific date ranges rather than standard rotation periods.",
+    "keyMethods": [
+      "Page_Load - Initializes date range verification with filter controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "EssentialActivitiesManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Date range verification variant; extends standard verification workflow.",
+    "complexity": "complex",
+    "lineCount": 763
+  },
+  {
+    "filePath": "Web/DutyHours/DHViolationReview.aspx.cs",
+    "fileName": "DHViolationReview.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHViolationReview",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Page for reviewing individual duty hours violations. Displays violation details and allows administrators to add review comments for ACGME compliance tracking.",
+    "businessPurpose": "Enables program administrators to review and comment on specific duty hours violations flagged by the system.",
+    "keyMethods": [
+      "Page_Load - Loads violation details for review",
+      "CheckForPermissions - Validates ReviewComments sub-module edit privileges"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core violation review page for ACGME compliance.",
+    "complexity": "simple",
+    "lineCount": 113
+  },
+  {
+    "filePath": "Web/DutyHours/DHViolationReviewList.aspx.cs",
+    "fileName": "DHViolationReviewList.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DHViolationReviewList",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Listing page for duty hours violations requiring review. Displays sortable, paginated grid of violations with status indicators, color-coded links, and option separators for action selection.",
+    "businessPurpose": "Provides administrators with a central list of all duty hours violations requiring review and comment for ACGME compliance.",
+    "keyMethods": [
+      "Page_Load - Initializes violation review grid with filters and sorting"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "EvaluationsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Violation review list; key compliance monitoring interface.",
+    "complexity": "complex",
+    "lineCount": 659
+  },
+  {
+    "filePath": "Web/DutyHours/DutyHoursExport.aspx.cs",
+    "fileName": "DutyHoursExport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DutyHoursExport",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Code-behind for exporting duty hours data. Provides interface for selecting export criteria and generating data exports for external systems or compliance reporting.",
+    "businessPurpose": "Allows administrators to export duty hours data for integration with external systems or compliance documentation.",
+    "keyMethods": [
+      "Page_Load - Initializes export form",
+      "CheckPermissions - Validates DutyHoursExportData sub-module privileges"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data export page; could be replaced with API-based export endpoint.",
+    "complexity": "simple",
+    "lineCount": 154
+  },
+  {
+    "filePath": "Web/DutyHours/DutyHoursMain.aspx.cs",
+    "fileName": "DutyHoursMain.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_DutyHoursMain",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Main navigation/dashboard page for the DutyHours module. Conditionally displays menu items and feature sections based on user role (admin vs. personal data), department configuration, and feature flags. Acts as the entry point for all duty hours functionality.",
+    "businessPurpose": "Serves as the primary landing page and navigation hub for the entire DutyHours module, routing users to appropriate sub-features based on their role and department configuration.",
+    "keyMethods": [
+      "Page_Load - Initializes menu visibility based on role, department config, and personal data mode"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Navigation hub; would be replaced by React-based module routing and menu system.",
+    "complexity": "very-complex",
+    "lineCount": 1104
+  },
+  {
+    "filePath": "Web/DutyHours/GeofenceLocations.aspx.cs",
+    "fileName": "GeofenceLocations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_GeofenceLocations",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Page for displaying geofence location data on a map. Loads entered/exited location coordinates and activity name for displaying location verification data.",
+    "businessPurpose": "Displays geographic location data for duty hours entries where geofencing is used to verify physical presence at clinical locations.",
+    "keyMethods": [
+      "Page_Load - Loads geofence coordinates and activity details from query parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ReviewgeofenceHistoryManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Geofence visualization page; uses client-side map rendering.",
+    "complexity": "simple",
+    "lineCount": 32
+  },
+  {
+    "filePath": "Web/DutyHours/ImportClinicalHours.aspx.cs",
+    "fileName": "ImportClinicalHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ImportClinicalHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Page for importing clinical hours from Paylocity. Restricted to department 1671, validates access and sets department context for the import process.",
+    "businessPurpose": "Enables authorized departments to import clinical hours data from the Paylocity payroll/HR system into the duty hours tracking system.",
+    "keyMethods": [
+      "Page_Load - Validates department access (1671 only) and sets department context"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Department-specific Paylocity import; likely client-side driven with API calls.",
+    "complexity": "trivial",
+    "lineCount": 31
+  },
+  {
+    "filePath": "Web/DutyHours/ImportDataSettings.aspx.cs",
+    "fileName": "ImportDataSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ImportDataSettings",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Configuration page for duty hours data import settings. Manages department-specific import configurations including Chamberlain department settings, schedule management enablement, preceptor registration, and API credentials for external systems.",
+    "businessPurpose": "Allows administrators to configure how duty hours data is imported from external scheduling and clinical systems, including API integrations.",
+    "keyMethods": [
+      "Page_Load - Loads department configuration and import settings"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DepartmentManager",
+      "UserManager",
+      "DutyHoursManager",
+      "TimeSheetManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Import configuration with external system integration settings.",
+    "complexity": "complex",
+    "lineCount": 1005
+  },
+  {
+    "filePath": "Web/DutyHours/LockCHModifications.aspx.cs",
+    "fileName": "LockCHModifications.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_LockCHModifications",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Page for locking clinical hours modifications. Manages the lock/unlock status for clinical hours across departments, preventing retroactive changes after verification periods.",
+    "businessPurpose": "Allows administrators to lock clinical hours modifications for specific date ranges across departments to ensure data integrity after verification.",
+    "keyMethods": [
+      "Page_Load - Checks permissions, loads department list, and shows lock settings status",
+      "BindDepartments - Loads available departments for lock configuration"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data integrity feature for clinical hours; administrative function.",
+    "complexity": "moderate",
+    "lineCount": 204
+  },
+  {
+    "filePath": "Web/DutyHours/ManageDHVerification.aspx.cs",
+    "fileName": "ManageDHVerification.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ManageDHVerification",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Configuration page for managing duty hours verification settings. Configures verification parameters including rotation selection, program year (PGY) levels, and senior PGY minimum levels for the department.",
+    "businessPurpose": "Allows program administrators to configure the verification workflow parameters for their department's duty hours tracking system.",
+    "keyMethods": [
+      "Page_Load - Checks permissions, binds department rotations and PGY level dropdowns",
+      "BindDepartmentRotations - Loads available rotations for verification configuration",
+      "BindProgramYear - Populates PGY year selection",
+      "BindMinSeniorPGYLevel - Sets minimum senior PGY level for verification"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Verification configuration page; administrative settings.",
+    "complexity": "moderate",
+    "lineCount": 312
+  },
+  {
+    "filePath": "Web/DutyHours/MyEvaluationsHelpNew.aspx.cs",
+    "fileName": "MyEvaluationsHelpNew.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyEvaluationsHelpNew",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Context-sensitive help page that displays help content based on key and section values. Supports search/filter across help sections and renders help content from the help content management system.",
+    "businessPurpose": "Provides context-sensitive help to users within the DutyHours module, displaying relevant documentation and guidance.",
+    "keyMethods": [
+      "Page_Load - Loads help content based on key/section parameters and builds search filter list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SectionInfoBusiness",
+      "HelpGroupManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Help content display page; would be replaced by modern help/docs system.",
+    "complexity": "moderate",
+    "lineCount": 215
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DailyBSNDutyHoursReport.aspx.cs",
+    "fileName": "DailyBSNDutyHoursReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DailyBSNDutyHoursReport",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for daily BSN (nursing) duty hours reports. Provides training level (PGY) and user selection filters for generating nursing-specific duty hours reports.",
+    "businessPurpose": "Allows nursing program administrators to configure filters for daily BSN duty hours reports.",
+    "keyMethods": [
+      "Page_Load - Loads training levels and user type-specific filters for BSN programs"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Nursing-specific report filter; specialized variant of standard DH reports.",
+    "complexity": "simple",
+    "lineCount": 59
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DailyBSNDutyHoursReportResults.aspx.cs",
+    "fileName": "DailyBSNDutyHoursReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DailyBSNDutyHoursReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for daily BSN duty hours. Renders nursing student duty hours data with course, activity, and session breakdowns. Supports direct response output (non-buffered) for large datasets.",
+    "businessPurpose": "Displays daily BSN duty hours report results with detailed activity breakdowns for nursing program compliance.",
+    "keyMethods": [
+      "Page_Load - Loads BSN duty hours data via DutyHourReportManager and renders results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DepartmentManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "BSN-specific report results; specialized reporting variant.",
+    "complexity": "complex",
+    "lineCount": 492
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DailySummaryDutyHours.aspx.cs",
+    "fileName": "DailySummaryDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DailySummaryDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Multi-step report filter page for daily summary duty hours reports. Provides PGY level, rotation block, and user selection steps with personal data mode support.",
+    "businessPurpose": "Allows administrators and users to configure filters for daily summary duty hours reports used for compliance monitoring.",
+    "keyMethods": [
+      "Page_Load - Initializes multi-step filter wizard with PGY and rotation options"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard multi-step report filter; common DutyHours report pattern.",
+    "complexity": "moderate",
+    "lineCount": 361
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DailySummaryDutyHoursResults.aspx.cs",
+    "fileName": "DailySummaryDutyHoursResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DailySummaryDutyHoursResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for daily summary duty hours. Renders daily hour totals, rotation block summaries, and date range breakdowns with complex formatting and violation highlighting.",
+    "businessPurpose": "Displays daily summary duty hours report results showing hour totals and violation indicators for ACGME compliance review.",
+    "keyMethods": [
+      "Page_Load - Loads daily summary data and renders results with violation highlighting"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Key daily compliance report; complex data rendering with violation indicators.",
+    "complexity": "very-complex",
+    "lineCount": 934
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DetailedBSNDutyHours.aspx.cs",
+    "fileName": "DetailedBSNDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DetailedBSNDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report filter page for detailed BSN duty hours reports. Similar to DailyBSNDutyHoursReport but for detailed breakdowns with training level and verification status filters.",
+    "businessPurpose": "Allows nursing program administrators to configure filters for detailed BSN duty hours reports.",
+    "keyMethods": [
+      "Page_Load - Loads training levels and verification status filters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "BSN-specific detailed report filter.",
+    "complexity": "simple",
+    "lineCount": 62
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DetailedBSNDutyHoursReportResult.aspx.cs",
+    "fileName": "DetailedBSNDutyHoursReportResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DetailedBSNDutyHoursReportResult",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report results page for detailed BSN duty hours. Renders detailed nursing student clinical hours with course, activity, and session breakdowns and export support.",
+    "businessPurpose": "Displays detailed BSN duty hours report results with granular activity data for nursing program compliance.",
+    "keyMethods": [
+      "Page_Load - Loads detailed BSN hours data and renders results with export"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "BSN-specific detailed report results.",
+    "complexity": "moderate",
+    "lineCount": 296
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DetailedDutyHours.aspx.cs",
+    "fileName": "DetailedDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DetailedDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Multi-step report filter page for detailed duty hours reports. Complex wizard with report format, PGY level, rotation block, filter options, and user selection steps. Supports personal data and favorite reports.",
+    "businessPurpose": "Provides the most comprehensive filter interface for generating detailed duty hours reports used for ACGME compliance review.",
+    "keyMethods": [
+      "Page_Load - Initializes multi-step filter wizard with report format, PGY, rotation, and user options"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Primary detailed DH report filter; most comprehensive report wizard in the module.",
+    "complexity": "moderate",
+    "lineCount": 413
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DetailedDutyHoursResults.aspx.cs",
+    "fileName": "DetailedDutyHoursResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DetailedDutyHoursResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Large report results page for detailed duty hours. Renders comprehensive duty hours data with date-by-date breakdowns, violation indicators, rotation block summaries, and multiple formatting modes. Heaviest report rendering page in the module.",
+    "businessPurpose": "Displays the most detailed duty hours report results showing day-by-day hour entries, activity breakdowns, and ACGME violation indicators.",
+    "keyMethods": [
+      "Page_Load - Loads comprehensive duty hours data and renders detailed results"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Most complex DH report; critical for ACGME compliance documentation. High-priority migration target.",
+    "complexity": "very-complex",
+    "lineCount": 2346
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatus.aspx.cs",
+    "fileName": "DutyHourCompletionStatus.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourCompletionStatus",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Report page for duty hour completion status. Displays completion rates against a configurable threshold (default 100%) with personal data mode and favorite reports support.",
+    "businessPurpose": "Shows duty hour logging completion rates for trainees, helping administrators identify non-compliant users who haven't submitted their hours.",
+    "keyMethods": [
+      "Page_Load - Initializes completion status report with configurable threshold"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Compliance monitoring report for hour submission rates.",
+    "complexity": "moderate",
+    "lineCount": 269
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusBeta.aspx.cs",
+    "fileName": "DutyHourCompletionStatusBeta.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourCompletionStatusBeta",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Beta version of the duty hour completion status report with updated UI and filter panels. Similar to DutyHourCompletionStatus but with revised layout and personal data filtering.",
+    "businessPurpose": "Updated version of the duty hour completion status report with improved filtering and display capabilities.",
+    "keyMethods": [
+      "Page_Load - Checks permissions, sets personal data mode, initializes filter panels",
+      "InitializePage - Sets up completion status display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Beta version of completion status report; may supersede original.",
+    "complexity": "simple",
+    "lineCount": 130
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusResult.aspx.cs",
+    "fileName": "DutyHourCompletionStatusResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourCompletionStatusResult",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders the Clinical Hour Completion Report results as raw HTML via Response.Write. Displays completion rates per trainee or rotation, showing confirmed vs scheduled shifts and moonlighting, with percentage reviewed and color-coded compliance indicators.",
+    "businessPurpose": "Allows program directors and administrators to view how completely trainees have logged their clinical hours against scheduled shifts, identifying non-compliant residents who are behind on duty hour submissions.",
+    "keyMethods": [
+      "Page_Load - Parses filter parameters (date range, PGY level, completion rate, sort options) from query string or saved report settings, queries DutyHourReportManager.GetCompletionStatusReportData, and renders the full HTML report with summary/detailed views"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report rendering via Response.Write is a legacy pattern. The report logic and data queries in DutyHourReportManager would need to be replicated in Node.js, but the HTML rendering approach should be modernized.",
+    "complexity": "complex",
+    "lineCount": 634
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourCompletionStatusResultBeta.aspx.cs",
+    "fileName": "DutyHourCompletionStatusResultBeta.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourCompletionStatusResultBeta",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Beta version of the Clinical Hour Completion Report results page. Nearly identical to DutyHourCompletionStatusResult but calls GetCompletionStatusReportDataBeta and lacks saved report settings support (ReportSettingID). Simpler parameter handling.",
+    "businessPurpose": "Alternative/beta completion status report for testing updated report logic before promoting to the main version.",
+    "keyMethods": [
+      "Page_Load - Simplified version that reads filter parameters directly from Request, calls GetCompletionStatusReportDataBeta, and renders HTML report"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Beta version likely superseded by the main report. May not need migration.",
+    "complexity": "complex",
+    "lineCount": 518
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourCompliance.aspx.cs",
+    "fileName": "DutyHourCompliance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourCompliance",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Duty Hour Compliance Report. Provides multi-step wizard filters for PGY level, rotation blocks, user selection, compliance status/settings, and date filtering. Supports preceptor views and favorite report settings.",
+    "businessPurpose": "Enables administrators and program directors to configure filters for generating ACGME-compliant duty hour compliance reports, checking whether residents meet work hour rules (80-hour week, 1-in-7 day off, etc.).",
+    "keyMethods": [
+      "Page_Load - Initializes filter wizard steps, handles permissions for different user types, loads rotation blocks",
+      "CheckForPermissions - Role-based access control checking user type against allowed report access",
+      "SetFilterPanels - Configures visible filter steps based on whether user has personal-data-only access",
+      "LoadRotationBlocksUsingPGY - Loads rotation block date ranges filtered by PGY level",
+      "PrepareFormForEditMode - Restores saved favorite report settings to form controls",
+      "FillInfoFromDB - Deserializes ReportsDutyHoursInfo from saved settings and populates all filter controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "UserManager",
+      "BlockManager",
+      "DutyHoursManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core ACGME compliance reporting filter. The compliance rule definitions and report generation logic are critical business rules that must be preserved during migration.",
+    "complexity": "complex",
+    "lineCount": 562
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourComplianceResults.aspx.cs",
+    "fileName": "DutyHourComplianceResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourComplianceResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders the Duty Hour Compliance Report results showing ACGME rule violations. Displays compliance data including 80-hour work week, 1-in-7 day off, 10-hour rest, 24+4 hour limits, and call frequency rules. Supports summary and detailed views with graphs.",
+    "businessPurpose": "Presents the actual compliance analysis results showing which residents have violated ACGME duty hour rules, enabling programs to identify and address work hour compliance issues.",
+    "keyMethods": [
+      "Page_Load - Parses extensive filter parameters (rotation blocks, PGY, users, rotations, compliance settings, rule types, date filters), retrieves compliance data, and renders detailed HTML report with violation tracking"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core ACGME compliance results. The violation calculation rules (80-hr, 1-in-7, 10-hr rest, 24+4, call frequency) are critical regulatory requirements.",
+    "complexity": "very-complex",
+    "lineCount": 1607
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstCompletionStatus.aspx.cs",
+    "fileName": "DutyHourInstCompletionStatus.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstCompletionStatus",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Institutional Clinical Hour Completion Status report. Allows selecting date range, departments, completion rate threshold, display format, and archived user inclusion. Supports favorite report settings.",
+    "businessPurpose": "Enables institutional-level administrators to generate completion status reports across multiple departments, monitoring which programs have adequate clinical hour logging compliance.",
+    "keyMethods": [
+      "Page_Load - Permission check and page initialization",
+      "InitializePage - Sets default dates, loads completion rates, binds departments, handles favorite report mode",
+      "PrepareFormForEditMode - Restores saved report filter settings",
+      "FillInfoFromDB - Populates form from saved ReportsDutyHoursInfo",
+      "BindAvailableDepartments - Loads institution departments via DocDetailsManager",
+      "LoadCompletionRates - Generates 10-100% completion rate dropdown in 5% increments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationsReportManager",
+      "DetailedConferenceTrackingReportManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Institutional-level report filter. The cross-department reporting capability is important for GME office oversight.",
+    "complexity": "moderate",
+    "lineCount": 242
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstCompletionStatusResult.aspx.cs",
+    "fileName": "DutyHourInstCompletionStatusResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstCompletionStatusResult",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders institutional-level Clinical Hour Completion Status report results. Shows completion data across multiple departments with summary, detailed by rotation, or detailed by training level views. Supports optional graph output.",
+    "businessPurpose": "Provides institutional administrators a cross-departmental view of clinical hour completion rates, helping identify programs where trainees are not adequately logging their duty hours.",
+    "keyMethods": [
+      "Page_Load - Parses filter parameters from request or saved settings, renders multi-department completion report via Response.Write"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Institutional-level report results. The aggregation logic across departments is important for GME oversight.",
+    "complexity": "very-complex",
+    "lineCount": 1120
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstScheduleDiscrepancy.aspx.cs",
+    "fileName": "DutyHourInstScheduleDiscrepancy.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstScheduleDiscrepancy",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Institutional Schedule Discrepancy report. Allows selecting date range, departments, and archived users. Compares scheduled rotations against actual clinical hour entries across departments to find mismatches.",
+    "businessPurpose": "Enables institutional administrators to identify discrepancies between scheduled rotations and actual clinical hour logging across multiple departments.",
+    "keyMethods": [
+      "Page_Load - Permission check and initialization",
+      "InitializePage - Sets academic year dates, binds departments, handles favorite report mode",
+      "PrepareFormForEditMode - Restores saved report settings",
+      "FillInfoFromDB - Populates form from saved ReportsDutyHoursInfo",
+      "BindAvailableDepartments - Loads departments via DocDetailsManager"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationsReportManager",
+      "DetailedConferenceTrackingReportManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Institutional schedule discrepancy analysis helps detect data quality issues.",
+    "complexity": "moderate",
+    "lineCount": 201
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstScheduleDiscrepancyResults.aspx.cs",
+    "fileName": "DutyHourInstScheduleDiscrepancyResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstScheduleDiscrepancyResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders institutional schedule discrepancy report results showing trainee-level mismatches between scheduled rotations and clinical hour entries across departments. Groups results by department with scheduled vs actual rotation names and dates.",
+    "businessPurpose": "Shows institutional administrators where scheduled rotations do not match actual clinical hour logging, helping identify data entry errors or scheduling issues across departments.",
+    "keyMethods": [
+      "Page_Load - Parses parameters, calls DutyHourReportManager.GetDiscrepancyReportData (overload with dept IDs), renders per-department discrepancy tables",
+      "GetServerExecutionURL - Resolves URL for back-to-menu navigation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Institutional discrepancy report results. Data quality monitoring tool.",
+    "complexity": "moderate",
+    "lineCount": 254
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstitutionScheduleImplementationStatus.aspx.cs",
+    "fileName": "DutyHourInstitutionScheduleImplementationStatus.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstitutionScheduleImplementationStatus",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for Institutional Schedule Implementation Status report. Allows selecting academic year, departments (local or all), compliance status, sorting options, and whether to include user/rotation synchronization data.",
+    "businessPurpose": "Enables institutional administrators to monitor which departments have implemented scheduling in the system, when schedules were last updated, and sync status with external scheduling systems.",
+    "keyMethods": [
+      "Page_Load - Permission check, initializes form, handles favorite report settings",
+      "PrepareFormForEditMode - Restores saved settings",
+      "FillInfoFromDB - Populates form from ReportsDutyHoursInfo including department selection and sync options",
+      "BindDepartments - Loads departments using GetDepartmentDetailsForInstitutionalStatusReport",
+      "BindAcademicYear - Loads academic year dropdown",
+      "rdlDepts_CheckedChanged - Reloads departments when local/all toggle changes"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "EvaluationsTemplateManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Institutional oversight report for schedule implementation tracking.",
+    "complexity": "moderate",
+    "lineCount": 290
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourInstitutionSystemImplementationStatus.aspx.cs",
+    "fileName": "DutyHourInstitutionSystemImplementationStatus.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourInstitutionSystemImplementationStatus",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for Institutional System Implementation Status report. Similar to schedule implementation but tracks which system modules (evaluations, clinical hours, etc.) are implemented across departments. Supports module selection and report format options.",
+    "businessPurpose": "Allows institutional administrators to track which MyEvaluations system modules are actively used by each department, supporting system adoption oversight.",
+    "keyMethods": [
+      "Page_Load - Permission check, form initialization, favorite report handling",
+      "PrepareFormForEditMode - Restores saved settings",
+      "FillInfoFromDB - Populates form including system module selections",
+      "BindDepartments - Loads departments and system modules via GetInstitutionalSystemImplementationStatusReport",
+      "BindAcademicYear - Academic year dropdown population"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "EvaluationsTemplateManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Institutional adoption tracking report. Lower priority for migration.",
+    "complexity": "moderate",
+    "lineCount": 331
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourScheduleDiscrepancy.aspx.cs",
+    "fileName": "DutyHourScheduleDiscrepancy.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourScheduleDiscrepancy",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Simple filter page for the department-level Schedule Discrepancy report. Provides date range selection with academic year defaults. Minimal logic compared to institutional version.",
+    "businessPurpose": "Allows department administrators to set date filters for generating a report that compares scheduled rotations against actual clinical hour entries within their department.",
+    "keyMethods": [
+      "Page_Load - Permission check and initialization",
+      "InitializePage - Sets default start/end dates from academic year",
+      "btnCancel_Click - Navigation back to main menu"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DetailedConferenceTrackingReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Simple filter page for department-level discrepancy report.",
+    "complexity": "simple",
+    "lineCount": 67
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourScheduleDiscrepancyResults.aspx.cs",
+    "fileName": "DutyHourScheduleDiscrepancyResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourScheduleDiscrepancyResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders department-level schedule discrepancy report results. Shows trainee name, scheduled rotation vs clinical hour rotation, dates, and number of discrepant days using IDataReader streaming.",
+    "businessPurpose": "Displays mismatches between scheduled and logged clinical hour rotations at the department level, helping identify data entry errors.",
+    "keyMethods": [
+      "Page_Load - Parses date/PGY/archived filters, calls DutyHourReportManager.GetDiscrepancyReportData (department-level overload), renders results using IDataReader"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses IDataReader for streaming results, which is a more efficient pattern than DataTable.",
+    "complexity": "moderate",
+    "lineCount": 185
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourSummaryCompliance.aspx.cs",
+    "fileName": "DutyHourSummaryCompliance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourSummaryCompliance",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Summary Compliance Report. Provides filters for date range, rotations, PGY levels, compliance status, display options (summary/detailed), calculation rules (rotation dates vs block dates), graph inclusion, and user violation report options. Supports attending tracking.",
+    "businessPurpose": "Enables administrators to configure filters for generating summary-level ACGME compliance reports showing work hour rule adherence across rotations and PGY levels.",
+    "keyMethods": [
+      "Page_Load - Permission check, initializes filters, sets calculation rule based on department config, handles favorite reports",
+      "Page_LoadComplete - Adds 'Attendings' option to PGY dropdown if department has attending tracking enabled",
+      "PrepareFormForEditMode - Restores saved favorite report settings",
+      "FillInfoFromDB - Populates all filter controls from saved settings including rotation, PGY, compliance, and display options",
+      "GetRotationListBoxClientID - Gets client-side ID for rotation selection control"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHoursManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Key compliance report filter page. The calculation rule options (rotation dates vs block dates) represent important business logic.",
+    "complexity": "moderate",
+    "lineCount": 229
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/DutyHourSummaryComplianceResults.aspx.cs",
+    "fileName": "DutyHourSummaryComplianceResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_DutyHourSummaryComplianceResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders Summary Compliance Report results showing ACGME rule compliance across rotations. Calculates and displays 80-hour work week, 1-in-7 day off, 10-hour rest, 24-hour shift, call frequency, and night float rule adherence. Supports summary and detailed views with optional graphs and user violation reports.",
+    "businessPurpose": "Presents summary-level ACGME compliance analysis with violation counts per rule, enabling programs to quickly identify which duty hour rules are most commonly violated.",
+    "keyMethods": [
+      "Page_Load - Parses extensive filter parameters, retrieves and renders compliance data with violation tracking across multiple ACGME rules"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core ACGME compliance summary report. Critical for regulatory compliance. All rule calculations must be preserved.",
+    "complexity": "very-complex",
+    "lineCount": 1086
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/InstitutionScheduleImplementationStatusResults.aspx.cs",
+    "fileName": "InstitutionScheduleImplementationStatusResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_InstitutionScheduleImplementationStatusResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders the Institution Schedule Implementation Status report showing per-department schedule adoption data. Displays implementation dates, last update dates, days since last update (with compliance highlighting), and optional user/rotation sync counts with drill-down links.",
+    "businessPurpose": "Shows institutional administrators which departments have active schedules, when they were last updated, and their synchronization status with external systems like AMION or QGenda.",
+    "keyMethods": [
+      "Page_Load - Delegates to InitializePage",
+      "InitializePage - Orchestrates StorePageParams, GetRequestedComplianceStatusDays, ProcessReportOutput",
+      "StorePageParams - Reads filter params from form or saved report settings",
+      "ProcessReportOutput - Renders report HTML with department implementation status table, sync counts, and departments without schedules",
+      "GetRequestedComplianceStatusDays - Maps compliance status options to day thresholds"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "DutyHourReportManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Administrative oversight report for schedule implementation tracking.",
+    "complexity": "complex",
+    "lineCount": 408
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/InstitutionSystemImplementationStatusResults.aspx.cs",
+    "fileName": "InstitutionSystemImplementationStatusResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_InstitutionSystemImplementationStatusResults",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Renders the Institution System Implementation Status report showing which system modules are implemented across departments. Supports multiple report formats and includes sync status data. Inherits from Page directly (not BasePage).",
+    "businessPurpose": "Displays cross-departmental system module adoption status for institutional administrators, tracking which features each department uses.",
+    "keyMethods": [
+      "Page_Load - Delegates to InitializePage",
+      "StorePageParams - Reads filter params including department IDs, module IDs, academic year, sync options",
+      "ProcessReportOutput - Renders HTML report with module implementation status per department"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Institutional adoption tracking report. Note: inherits from Page directly, not BasePage.",
+    "complexity": "complex",
+    "lineCount": 617
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/InstitutionalDHCompliance.aspx.cs",
+    "fileName": "InstitutionalDHCompliance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_InstitutionalDHCompliance",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Institutional Duty Hour Compliance report. Allows selecting date range, departments, compliance status, display options (summary/detailed by rotation/detailed by resident), compliance settings, graph inclusion, and user violation options.",
+    "businessPurpose": "Enables institutional administrators to configure filters for cross-departmental ACGME compliance analysis, monitoring work hour rule adherence across the entire institution.",
+    "keyMethods": [
+      "Page_Load - Permission check and initialization",
+      "InitializePage - Sets default dates, binds departments, handles favorite reports",
+      "PrepareFormForEditMode - Restores saved settings",
+      "FillInfoFromDB - Populates all filter controls from saved ReportsDutyHoursInfo",
+      "BindAvailableDepartments - Loads institution departments via DocDetailsManager"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationsReportManager",
+      "DetailedConferenceTrackingReportManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Institutional-level ACGME compliance report filter. Critical for GME office oversight.",
+    "complexity": "moderate",
+    "lineCount": 218
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/InstitutionalDHComplianceResults.aspx.cs",
+    "fileName": "InstitutionalDHComplianceResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_InstitutionalDHComplianceResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders institutional-level Duty Hour Compliance results across multiple departments. Calculates ACGME rule violations (80-hr, 1-in-7, 10-hr rest, 24-hr shift, call frequency, night float) aggregated by department, rotation, and resident. Supports summary, detailed-by-rotation, and detailed-by-resident views.",
+    "businessPurpose": "Presents cross-departmental ACGME compliance analysis enabling institutional administrators to compare duty hour compliance across programs and identify systemic issues.",
+    "keyMethods": [
+      "Page_Load - Parses extensive filter parameters, retrieves multi-department compliance data, renders detailed HTML reports with violation tracking"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Institutional compliance results with ACGME rule calculations across departments. Critical regulatory report.",
+    "complexity": "very-complex",
+    "lineCount": 2223
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/InstitutionalDetailedDutyHoursResults.aspx.cs",
+    "fileName": "InstitutionalDetailedDutyHoursResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_InstitutionalDetailedDutyHoursResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders institutional-level Detailed Duty Hours report results. Displays granular clinical hour data across departments including shifts, activities, verification status, and violation explanations. Supports multiple report formats, sorting, and extensive filter parameters.",
+    "businessPurpose": "Provides institutional administrators detailed clinical hour data across departments, including individual shift entries, activity breakdowns, and verification status for audit and oversight purposes.",
+    "keyMethods": [
+      "Page_Load - Parses extensive filter parameters from saved settings or request, retrieves and renders detailed duty hour data across departments"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DutyHoursManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Largest institutional report. Complex rendering with many report format variations. Critical for institutional audit.",
+    "complexity": "very-complex",
+    "lineCount": 2505
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/RecordOfRotationResults.aspx.cs",
+    "fileName": "RecordOfRotationResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_RecordOfRotationResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders Record of Rotations report results showing rotation assignments per user. Displays rotation names, dates, PGY levels, and optionally clinics and call services. Supports HTML, Excel (ClosedXML), and PDF-like formats. Includes page-break logic for printable output.",
+    "businessPurpose": "Generates official records of resident rotation assignments for documentation, accreditation, and portfolio purposes, showing where each trainee completed their clinical rotations.",
+    "keyMethods": [
+      "Page_Load - Parses selected users, year, sort order, report format; renders rotation records with optional clinic/call data; supports multi-format output including Excel export"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHourReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Official rotation records used for accreditation. Excel export via ClosedXML. Important for resident portfolio and training documentation.",
+    "complexity": "very-complex",
+    "lineCount": 1057
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/RecordOfRotations.aspx.cs",
+    "fileName": "RecordOfRotations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_RecordOfRotations",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Record of Rotations report. Provides user selection, academic year, sort order, report format (HTML/detailed with clinics+calls), and first-time rotator filtering. Supports preceptor views and department training type configuration.",
+    "businessPurpose": "Allows administrators to configure filters for generating official rotation records, selecting which users, years, and report formats to include.",
+    "keyMethods": [
+      "Page_Load - Permission check, sets up user filter controls, handles preceptor view, detects student training type settings",
+      "OnLoadComplete - Sets current academic year as default after all controls loaded",
+      "CheckForPermissions - Role-based access control with user type checking",
+      "StorePageParmsToState - Stores user type parameter for preceptor access",
+      "btnCancel_Click - Navigation back to duty hours menu"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationsManager",
+      "DutyHoursManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Important filter page for rotation records. Supports multiple user types and training configurations.",
+    "complexity": "moderate",
+    "lineCount": 244
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/RecordOfRotators.aspx.cs",
+    "fileName": "RecordOfRotators.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_RecordOfRotators",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Record of Rotators report. Provides filters for user types, program dates, and configurable field selections for employee health, certificates, licenses, medical education, custom fields, and demographics. Supports first-time rotator filtering and local/all user scope.",
+    "businessPurpose": "Enables administrators to generate comprehensive reports about rotating residents/users including their credentials, certifications, and demographic information for compliance and onboarding purposes.",
+    "keyMethods": [
+      "Page_Load - Initializes form, handles favorite report settings",
+      "InitializeRotators - Loads user types, employee health fields, certificates, licenses, medical education, custom fields, and demographics from database",
+      "PrepareFormForEditMode - Restores saved report settings",
+      "FillInfoFromDB - Populates all field selection lists from saved settings"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "GetQuizUsers",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Comprehensive user credential report. Useful for onboarding and compliance verification.",
+    "complexity": "complex",
+    "lineCount": 358
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/RecordofRotatorsReport.aspx.cs",
+    "fileName": "RecordofRotatorsReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_RecordofRotatorsReport",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders the Record of Rotators report results. Reads filter parameters (user types, dates, credential fields) from request or saved settings, then generates the report output with user credential data.",
+    "businessPurpose": "Displays the rotator credential report showing selected user and credential information for compliance and documentation.",
+    "keyMethods": [
+      "Page_Load - Parses all filter parameters from request or saved report settings, passes to report generation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationsReportManager",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report results rendering for rotator credentials.",
+    "complexity": "moderate",
+    "lineCount": 391
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/SynchedDataDetails.aspx.cs",
+    "fileName": "SynchedDataDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_SynchedDataDetails",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Popup page that shows details of synced and unsynced users or rotations for a specific department. Builds HTML lists showing which users/rotations are synced vs not synced with external scheduling systems.",
+    "businessPurpose": "Provides drill-down detail from institutional reports showing exactly which users or rotations are synchronized vs not synchronized with external scheduling systems (AMION/QGenda).",
+    "keyMethods": [
+      "Page_Load - Reads department ID, academic year, and rotation flag from query string; retrieves sync details",
+      "BuildHtml - Generates HTML lists of synced and unsynced items from DataSet tables"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple drill-down popup for sync status details.",
+    "complexity": "simple",
+    "lineCount": 89
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/WeeklyBSNDutyHoursReport.aspx.cs",
+    "fileName": "WeeklyBSNDutyHoursReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_WeeklyBSNDutyHoursReport",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Weekly BSN (nursing) Clinical Learning Hours report. Provides session, course, activity, student, and level selection. Handles back-to-filter restoration from session state. Detects BSN-specific user types for personal report mode.",
+    "businessPurpose": "Allows BSN program administrators and students to configure filters for weekly clinical learning hour reports specific to nursing education programs.",
+    "keyMethods": [
+      "Page_Load - Initializes session/course/activity bindings via JavaScript, handles back-to-filter state restoration, detects personal report mode for students"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN-specific report. Custom filter page for nursing program clinical hours.",
+    "complexity": "simple",
+    "lineCount": 56
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/WeeklyBSNDutyHoursReportResults.aspx.cs",
+    "fileName": "WeeklyBSNDutyHoursReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_WeeklyBSNDutyHoursReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders Weekly BSN Clinical Learning Hours report results. Shows weekly summary of clinical hours for nursing students with activity categories and individual activity breakdowns. Uses Response.Write for HTML rendering.",
+    "businessPurpose": "Displays weekly clinical learning hour data for BSN nursing students, showing hours broken down by activity categories for each week.",
+    "keyMethods": [
+      "Page_Load - Parses student/course/session selections, retrieves clinical hour data, renders weekly summary report"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "DepartmentManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN-specific weekly report results. Nursing program specific.",
+    "complexity": "complex",
+    "lineCount": 616
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/WeeklySummaryDutyHours.aspx.cs",
+    "fileName": "WeeklySummaryDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_WeeklySummaryDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Filter page for the Weekly Summary Clinical Hours report. Provides rotation block selection, user filter, rotation selection, and calculation rule options. Supports personal data only mode with reduced filter steps. Handles favorite report settings.",
+    "businessPurpose": "Enables administrators and trainees to configure filters for weekly clinical hour summary reports showing time worked per rotation block period.",
+    "keyMethods": [
+      "Page_Load - Permission check, filter panel setup, calculation rule initialization, favorite report handling",
+      "PrepareFormForEditMode - Restores saved report settings",
+      "FillInfoFromDB - Populates rotation blocks, rotations, users from saved settings",
+      "SetFilterPanels - Configures wizard steps based on personal data access",
+      "GetRotationListBoxClientID - Gets client ID for rotation list control"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHoursManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Weekly summary filter page. Standard duty hour report with rotation block filtering.",
+    "complexity": "moderate",
+    "lineCount": 233
+  },
+  {
+    "filePath": "Web/DutyHours/Reports/WeeklySummaryDutyHoursResults.aspx.cs",
+    "fileName": "WeeklySummaryDutyHoursResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Reports_WeeklySummaryDutyHoursResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Renders Weekly Summary Clinical Hours report results showing weekly hour totals per user with activity category breakdowns. Parses rotation block, user, and rotation filter parameters from request or saved settings.",
+    "businessPurpose": "Displays weekly clinical hour summaries per user, broken down by activity categories, for the selected rotation block period.",
+    "keyMethods": [
+      "page_load - Parses extensive filter parameters from saved settings or request, retrieves and renders weekly summary data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHourReportManager",
+      "SessionManager",
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Weekly summary report results. Standard reporting pattern.",
+    "complexity": "complex",
+    "lineCount": 820
+  },
+  {
+    "filePath": "Web/DutyHours/ReviewgeofenceHistory.aspx.cs",
+    "fileName": "ReviewgeofenceHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ReviewgeofenceHistory",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Empty placeholder page for reviewing geofence history. Has only an empty Page_Load handler. Inherits from Page directly, not BasePage.",
+    "businessPurpose": "Intended as a container page for geofence location history review functionality, likely driven by client-side JavaScript.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Empty page shell. Client-side functionality likely handles all logic.",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/DutyHours/ReviewusergeofenceHistory.aspx.cs",
+    "fileName": "ReviewusergeofenceHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_ReviewusergeofenceHistory",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Empty placeholder page for reviewing user-specific geofence history. Has only an empty Page_Load handler. Inherits from Page directly.",
+    "businessPurpose": "Container page for user-specific geofence location tracking history, likely driven by client-side JavaScript.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Empty page shell. Client-side driven.",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/DutyHours/RotationVerificationSettings.aspx.cs",
+    "fileName": "RotationVerificationSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_RotationVerificationSettings",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays a printable report of rotation-to-clinical-hour verification settings. Shows linked activity names, PGY levels, and verification source/type for each rotation. Generates HTML table via StringBuilder with loading screen.",
+    "businessPurpose": "Allows administrators to view and print the current verification settings that determine how clinical hours are verified against rotations, including which activities and verification methods are configured per rotation.",
+    "keyMethods": [
+      "Page_Load - Permission check, renders loading screen, initializes page",
+      "InitializePage - Sets report header and generates linked rotation activities",
+      "GenerateLinkedRotationActivities - Builds HTML table of rotation verification settings from RotationManager.GetManageDutyHourVerificationSettings",
+      "GetActivityTimeAndFrequency - Formats activity schedule information"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "RotationManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Verification settings display. Important configuration reference for clinical hour validation rules.",
+    "complexity": "moderate",
+    "lineCount": 165
+  },
+  {
+    "filePath": "Web/DutyHours/SelectDutyHoursAdmins.aspx.cs",
+    "fileName": "SelectDutyHoursAdmins.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_SelectDutyHoursAdmins",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Page for selecting duty hours administrators and configuring non-submitter/violation check email notifications. Manages checkboxes for enabling non-submitter checks, no-violation checks, and potential violation alerts. Reads department configuration settings.",
+    "businessPurpose": "Allows administrators to designate which users should receive duty hour administrative notifications and configure automated compliance check email settings.",
+    "keyMethods": [
+      "Page_Load - Permission check, initializes page, reads department non-submitter and violation check settings",
+      "CheckForPermissions - Ensures user is not personal-data-only",
+      "InitializePage - Page setup and control initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Admin selection and notification configuration page for duty hours.",
+    "complexity": "complex",
+    "lineCount": 694
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/Activity.aspx.cs",
+    "fileName": "Activity.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_Activity",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Add/Edit page for individual clinical hour activity definitions. Supports add and edit modes with activity category, setting, and schedule configuration. Standard CRUD page pattern with permission checks.",
+    "businessPurpose": "Allows administrators to create and modify clinical hour activity types (e.g., 'Day Shift', 'Night Call', 'Moonlighting') that trainees select when logging their hours.",
+    "keyMethods": [
+      "Page_Load - Sets page mode, permission check, initializes page",
+      "BindActivitySettings - Loads activity settings by category",
+      "InitializePage - Sets up form fields and page title based on add/edit mode"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ActivityManager",
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Activity CRUD page. Activity definitions are fundamental to clinical hour logging.",
+    "complexity": "moderate",
+    "lineCount": 276
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ActivityTypeQRCodes.aspx.cs",
+    "fileName": "ActivityTypeQRCodes.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ActivityTypeQRCodes",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Generates and displays QR codes for clinical hour activity types. Retrieves QR code GUID from database and renders it using JavaScript QRCode library. Includes department branding and copyright information.",
+    "businessPurpose": "Enables generation of printable QR codes for activity types that can be scanned by mobile devices to quickly log clinical hours for a specific activity.",
+    "keyMethods": [
+      "Page_Load - Loads activity QR code details from database, sets department branding, registers QR code generation script"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ActivityManager",
+      "SessionManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QR code feature for mobile clinical hour logging. Modern feature that may already be handled by mobile app.",
+    "complexity": "simple",
+    "lineCount": 62
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/AddDepartmentViolation.aspx.cs",
+    "fileName": "AddDepartmentViolation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_AddDepartmentViolation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Add/Edit page for department-specific violation explanation definitions. Standard CRUD page pattern with permission checks and add/edit mode support.",
+    "businessPurpose": "Allows administrators to create and modify pre-defined violation explanation texts that trainees can select when explaining duty hour violations.",
+    "keyMethods": [
+      "Page_Load - Sets page mode, permission check, initializes page",
+      "CheckForPermissions - Checks PatientLog module violation explanation privileges",
+      "InitializePage - Sets page title and loads form data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Violation explanation CRUD. Part of compliance workflow.",
+    "complexity": "moderate",
+    "lineCount": 208
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/DHRotationsRestore.aspx.cs",
+    "fileName": "DHRotationsRestore.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_DHRotationsRestore",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Handles restoration of deleted duty hour rotations. Displays rotation details and allows restoring via RotationInfo.RestoreRotations. Redirects back to ManageRotationNames after restore. Inherits from Page directly.",
+    "businessPurpose": "Allows administrators to restore previously deleted rotation definitions, recovering accidentally removed configuration.",
+    "keyMethods": [
+      "Page_Load - Loads rotation details by ID via RotationInfo.GetRotationDetailsByID",
+      "btnOK_Click - Restores rotation via RotationInfo.RestoreRotations and redirects"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "RotationInfo"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple restore functionality. Part of rotation management.",
+    "complexity": "simple",
+    "lineCount": 71
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/DutyHoursSettings.aspx.cs",
+    "fileName": "DutyHoursSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_DutyHoursSettings",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Comprehensive duty hours settings/configuration page. Manages ACGME compliance rule constants (80-hr week, 24+6 shift, 1-in-7, 10-hr rest, call frequency, shift break, night float), preceptor settings, and department-specific compliance configurations. Large page with many rule-related constants and row type enumerations.",
+    "businessPurpose": "Central configuration page for all ACGME duty hour compliance rules and department-specific settings, defining thresholds and rule parameters that drive violation detection.",
+    "keyMethods": [
+      "Page_Load - Initializes settings page with compliance rule configurations"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "PreceptorManager",
+      "SessionManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Critical configuration page defining ACGME compliance rule parameters. All rule constants must be preserved during migration.",
+    "complexity": "very-complex",
+    "lineCount": 1684
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/DutyHoursSetup.aspx.cs",
+    "fileName": "DutyHoursSetup.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_DutyHoursSetup",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Main setup landing page for the Duty Hours module. Manages visibility of all setup menu items (rotation names, activity types, compliance settings, sync options, reminders, etc.) based on user permissions. Handles BSN-specific menu visibility. Large page with many help icon and feature flag toggles.",
+    "businessPurpose": "Serves as the central navigation hub for all duty hours configuration options, showing administrators only the setup features they have permission to access.",
+    "keyMethods": [
+      "Page_Load - Checks permissions, initializes page, configures control visibility",
+      "HideHelpIconBSN - Hides irrelevant help icons for BSN department (ID 2531)",
+      "InitializePage - Sets up menu items and feature flags",
+      "InitControls - Initializes form controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Setup navigation hub. Menu structure and permission logic need to be replicated.",
+    "complexity": "very-complex",
+    "lineCount": 1835
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/GeofenceLocations.aspx.cs",
+    "fileName": "GeofenceLocations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_GeofenceLocations",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Displays geofence entry/exit location details on a map. Retrieves latitude/longitude and activity name for a specific department location from the database. Supports admin view mode. Inherits from Page directly.",
+    "businessPurpose": "Shows the geographic entry and exit location data for a specific geofence-tracked clinical hour entry, allowing verification of location-based attendance.",
+    "keyMethods": [
+      "Page_Load - Retrieves geofence coordinates and activity name via ReviewgeofenceHistoryManager.GetEntriedExitLocDetails"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ReviewgeofenceHistoryManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Geofence location display. Likely deprecated or handled by mobile app.",
+    "complexity": "simple",
+    "lineCount": 32
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/GeofenceNames.aspx.cs",
+    "fileName": "GeofenceNames.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_GeofenceNames",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Add/Edit page for geofence name definitions. Configures geofence names with associated activities, institutions, user types, and preceptor sites. Supports departmental and institutional geofence modes. Includes encrypted department/user IDs for secure API calls.",
+    "businessPurpose": "Allows administrators to create and manage named geofence locations that can be used to automatically track clinical hour attendance via GPS/location services.",
+    "keyMethods": [
+      "Page_Load - Loads activities, institutions, user types, site names; handles departmental vs institutional mode; supports edit mode via JavaScript"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "ConferenceManager",
+      "DepartmentManager",
+      "UserManager",
+      "PreceptorModuleManager",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Geofence configuration for location-based clinical hour tracking.",
+    "complexity": "simple",
+    "lineCount": 84
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/LightingBoltIntegration.aspx.cs",
+    "fileName": "LightingBoltIntegration.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_LightingBoltIntegration",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Integration page for Lightning Bolt scheduling system. Connects to Lightning Bolt REST API using OAuth token authentication to retrieve assignments, departments, personnel, and schedule data. Uses RestSharp for HTTP calls. Inherits from Page directly.",
+    "businessPurpose": "Synchronizes scheduling data from the Lightning Bolt external scheduling system into MyEvaluations for clinical hour tracking alignment.",
+    "keyMethods": [
+      "Page_Load - Authenticates with Lightning Bolt API, retrieves assignments/departments/personnel/schedules, converts JSON to DataTables"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "External system integration via REST API. Credentials stored in AppSettings. Would need Node.js HTTP client equivalent.",
+    "complexity": "complex",
+    "lineCount": 325
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/LightningBoltRoles.aspx.cs",
+    "fileName": "LightningBoltRoles.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_LightningBoltRoles",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Manages mapping of Lightning Bolt scheduling roles to MyEvaluations tasks. Provides available/selected task role management for the Lightning Bolt integration.",
+    "businessPurpose": "Allows administrators to map Lightning Bolt scheduling system roles to corresponding duty hour tasks in MyEvaluations.",
+    "keyMethods": [
+      "Page_Load - Handles initial load and role selection state",
+      "BindAvailableTasks - Loads available tasks for mapping",
+      "BindSelectedTasks - Loads currently mapped tasks"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Lightning Bolt role mapping. External system integration configuration.",
+    "complexity": "simple",
+    "lineCount": 102
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/LinkRotationsDutyHourActivities.aspx.cs",
+    "fileName": "LinkRotationsDutyHourActivities.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_LinkRotationsDutyHourActivities",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Printable report showing the current linkage between rotations and clinical hour activities. Generates an HTML table of rotation-to-activity mappings with loading screen. Similar to RotationVerificationSettings but focused on activity linkages.",
+    "businessPurpose": "Displays which clinical hour activities are associated with each rotation, helping administrators verify that the correct activity types are available for each rotation assignment.",
+    "keyMethods": [
+      "Page_Load - Permission check, loading screen, initializes page",
+      "InitializePage - Sets report header and generates linked rotation/activity display"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Rotation-activity linkage display. Important configuration reference.",
+    "complexity": "moderate",
+    "lineCount": 201
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/LinkRotationsDutyHours.aspx.cs",
+    "fileName": "LinkRotationsDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_LinkRotationsDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Configuration page for linking rotations to clinical hour activities. Provides rotation selection, PGY-level binding, activity management with start/end times, and AMION on-call service label support. Core setup page for defining what activities are available per rotation.",
+    "businessPurpose": "Allows administrators to configure which clinical hour activities are available for each rotation, including scheduling details (start/end times, frequencies), forming the foundation of the duty hour logging workflow.",
+    "keyMethods": [
+      "Page_Load - Initializes page",
+      "InitializePage - Permission check, binds rotations, PGY levels, activities, start/end times",
+      "initControls - Replaces on-call service labels"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "SyncAmionOnCallManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core configuration for rotation-to-activity linkage. Fundamental to clinical hour logging workflow.",
+    "complexity": "complex",
+    "lineCount": 537
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageActivityTypes.aspx.cs",
+    "fileName": "ManageActivityTypes.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageActivityTypes",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for clinical hour activity types organized by category. Displays a grid of activity types with add/edit/delete/restore capabilities. Differentiates between default (system) and custom (department) activities with visual styling.",
+    "businessPurpose": "Allows administrators to manage the catalog of clinical hour activity types that trainees select when logging hours, organized by category (e.g., shifts, calls, moonlighting).",
+    "keyMethods": [
+      "SetPanelVisibilty - Shows/hides grid and buttons based on category selection"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Activity type management CRUD. Fundamental to clinical hour logging configuration.",
+    "complexity": "complex",
+    "lineCount": 517
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageClinicalHoursGeofence.aspx.cs",
+    "fileName": "ManageClinicalHoursGeofence.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageClinicalHoursGeofence",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Simple container page for managing clinical hours geofences. Sets heading text and hidden field based on institutional vs departmental mode. Most logic is client-side JavaScript.",
+    "businessPurpose": "Provides the management interface for viewing, adding, editing, and deleting geofence locations used for location-based clinical hour attendance tracking.",
+    "keyMethods": [
+      "Page_Load - Sets heading text and mode flag based on institutional vs departmental parameter"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple container page. Client-side driven geofence management.",
+    "complexity": "trivial",
+    "lineCount": 32
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageComplianceSettings.aspx.cs",
+    "fileName": "ManageComplianceSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageComplianceSettings",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Comprehensive page for managing ACGME compliance rule settings at the department level. Defines constants for all duty hour rules (80-hr, 24+0/30+0, 1-in-7, 10-hr rest, call frequency, shift break) with their various PGY-level-specific configurations. Supports view/edit modes for compliance thresholds.",
+    "businessPurpose": "Allows department administrators to customize ACGME compliance rule parameters (thresholds, PGY-level variations) that determine when duty hour violations are triggered for their program.",
+    "keyMethods": [
+      "Page initialization and compliance rule management"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Critical compliance rule configuration. All ACGME rule constants and PGY-level variations must be preserved.",
+    "complexity": "very-complex",
+    "lineCount": 1660
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageProgramDHRules.aspx.cs",
+    "fileName": "ManageProgramDHRules.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageProgramDHRules",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for default program-level duty hour rules. Provides CRUD operations for program-specific rule configurations that can override institution defaults.",
+    "businessPurpose": "Allows program administrators to manage default duty hour rules specific to their program, providing customization beyond institution-wide settings.",
+    "keyMethods": [
+      "Page_Load - Permission check and page initialization",
+      "CheckPermissions - Validates DefaultProgramDutyHourRules access",
+      "InitializePage - Initializes rule management form"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Program-level rule management. Part of compliance configuration hierarchy.",
+    "complexity": "moderate",
+    "lineCount": 426
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageRotationNames.aspx.cs",
+    "fileName": "ManageRotationNames.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageRotationNames",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for rotation name definitions. Provides grid-based CRUD for rotation names filtered by academic year. Includes year binding, permission checks, and evaluation template business logic integration.",
+    "businessPurpose": "Allows administrators to create, edit, and manage the rotation name catalog used throughout the clinical hours and scheduling system.",
+    "keyMethods": [
+      "Page_Load - Permission check, initializes page",
+      "BindYears - Loads academic year dropdown for filtering"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Rotation name management. Fundamental to clinical hours, scheduling, and evaluation systems.",
+    "complexity": "complex",
+    "lineCount": 491
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ManageViolations.aspx.cs",
+    "fileName": "ManageViolations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ManageViolations",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Management page for violation explanation definitions. Provides grid view with sorting, paging, and CRUD operations for pre-defined violation explanation texts used by trainees when explaining duty hour violations.",
+    "businessPurpose": "Allows administrators to manage the catalog of standard violation explanation options available to trainees when they need to justify or explain duty hour rule violations.",
+    "keyMethods": [
+      "Grid sorting and paging management via ViewState"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Violation explanation catalog management. Part of compliance workflow.",
+    "complexity": "moderate",
+    "lineCount": 350
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/MomentumIntegration.aspx.cs",
+    "fileName": "MomentumIntegration.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_MomentumIntegration",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Integration page for the Momentum scheduling system. Connects to Momentum REST API using HMAC authentication with public/private key pair. Retrieves staff data via RestSharp HTTP calls. Inherits from Page directly.",
+    "businessPurpose": "Synchronizes staff/scheduling data from the Momentum external scheduling system into MyEvaluations for clinical hour tracking alignment.",
+    "keyMethods": [
+      "Page_Load - Authenticates with Momentum API using HMAC signature, retrieves staff data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "External system integration. Credentials hardcoded (should be in config). Needs Node.js HTTP client equivalent.",
+    "complexity": "moderate",
+    "lineCount": 235
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/MomentumTaskRoles.aspx.cs",
+    "fileName": "MomentumTaskRoles.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_MomentumTaskRoles",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "DutyHours",
+    "summary": "Manages mapping of Momentum scheduling roles to MyEvaluations tasks. Provides available/selected task role management for the Momentum integration. Inherits from Page directly.",
+    "businessPurpose": "Allows administrators to map Momentum scheduling system roles to corresponding duty hour tasks in MyEvaluations.",
+    "keyMethods": [
+      "Page_Load - Handles initial load and role selection state",
+      "BindAvailableTasks - Loads available tasks for mapping",
+      "BindSelectedTasks - Loads currently mapped tasks"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Momentum role mapping configuration. External system integration.",
+    "complexity": "simple",
+    "lineCount": 102
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/QGendaDefaultMessagePage.aspx.cs",
+    "fileName": "QGendaDefaultMessagePage.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_QGendaDefaultMessagePage",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Simple placeholder page that displays a message indicating QGenda schedule view is not currently available.",
+    "businessPurpose": "Displays a fallback message when QGenda scheduling integration is not configured or unavailable for the department.",
+    "keyMethods": [
+      "Page_Load - Shows 'QGenda schedule view is not currently available' success message"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Placeholder page. No business logic.",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/QgendaTaskRoles.aspx.cs",
+    "fileName": "QgendaTaskRoles.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_QgendaTaskRoles",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Manages mapping of QGenda scheduling roles to MyEvaluations duty hour tasks. Provides role-to-task mapping with save functionality and error logging.",
+    "businessPurpose": "Allows administrators to configure how QGenda scheduling system roles map to MyEvaluations clinical hour tasks for automated schedule synchronization.",
+    "keyMethods": [
+      "Page_Load - Binds available tasks on initial load",
+      "btnSaveData_Click - Saves task role mappings",
+      "BindAvailableTasks - Loads QGenda tasks for mapping"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QGenda role mapping. Important for institutions using QGenda scheduling.",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/Rotation.aspx.cs",
+    "fileName": "Rotation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_Rotation",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Add/Edit page for individual rotation definitions. Supports add and edit modes with academic year selection, rotation name, and evaluation template business integration. Standard CRUD pattern.",
+    "businessPurpose": "Allows administrators to create and modify individual rotation definitions that are used for scheduling, clinical hour logging, and evaluation purposes.",
+    "keyMethods": [
+      "Page_Load - Sets page mode, permission check, initializes page",
+      "BindYears - Loads academic year dropdown",
+      "CheckForPermissions - Validates rotation management access"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Rotation CRUD page. Rotations are fundamental entities used across modules.",
+    "complexity": "complex",
+    "lineCount": 496
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SetupDutyHourRotationBlocks.aspx.cs",
+    "fileName": "SetupDutyHourRotationBlocks.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SetupDutyHourRotationBlocks",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Configuration page for duty hour rotation blocks (time periods). Manages block definitions with date ranges, PGY levels, and academic year associations. Supports up to 15 block numbers with descriptive names. Includes validation for minimum academic year (2005).",
+    "businessPurpose": "Allows administrators to define the rotation block schedule (time periods throughout the academic year) that structures how clinical hours are organized and reported.",
+    "keyMethods": [
+      "Block configuration and management"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Rotation block definitions are fundamental to clinical hour organization and reporting periods.",
+    "complexity": "very-complex",
+    "lineCount": 857
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncCallServices.aspx.cs",
+    "fileName": "SyncCallServices.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncCallServices",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for AMION call service data. Retrieves on-call service schedules from AMION external system and maps them to MyEvaluations clinical hour activities. Supports grouped item display with separator formatting.",
+    "businessPurpose": "Synchronizes on-call service schedules from the AMION scheduling system into MyEvaluations, ensuring clinical hour activities reflect the latest scheduling data.",
+    "keyMethods": [
+      "Page_Load - Permission check, help icons, initializes sync page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "AMION call service synchronization. Part of external scheduling integration.",
+    "complexity": "complex",
+    "lineCount": 712
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncCallServicesReportResults.aspx.cs",
+    "fileName": "SyncCallServicesReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncCallServicesReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays report results of call service synchronization operations. Shows department information, academic year, and sync status with loading screen.",
+    "businessPurpose": "Provides a summary report of the most recent call service synchronization operation, helping administrators verify that scheduling data was correctly imported.",
+    "keyMethods": [
+      "Page_Load - Displays department info, academic year, and sync results with loading screen"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Sync report results display. Part of AMION integration.",
+    "complexity": "moderate",
+    "lineCount": 211
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncClinics.aspx.cs",
+    "fileName": "SyncClinics.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncClinics",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for AMION clinic data. Maps AMION clinic schedules to MyEvaluations clinical activities with duplicate rotation/shift name detection (highlighted in red) and grouped item display.",
+    "businessPurpose": "Synchronizes clinic schedules from AMION into MyEvaluations, enabling automated clinical hour schedule alignment.",
+    "keyMethods": [
+      "Page_Load - Permission check, help icons, initializes clinic sync page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "AMION clinic synchronization. Part of external scheduling integration.",
+    "complexity": "complex",
+    "lineCount": 935
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncClinicsReportResults.aspx.cs",
+    "fileName": "SyncClinicsReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncClinicsReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays report results of clinic synchronization operations. Shows department info, academic year, and sync status.",
+    "businessPurpose": "Summary report of clinic sync operations for administrator verification.",
+    "keyMethods": [
+      "Page_Load - Displays sync results with department info and loading screen"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Sync report display. Part of AMION integration.",
+    "complexity": "moderate",
+    "lineCount": 211
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncQGendaCallServices.aspx.cs",
+    "fileName": "SyncQGendaCallServices.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncQGendaCallServices",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for QGenda call service data. Similar to AMION SyncCallServices but interfaces with QGenda API. Maps QGenda call schedules to MyEvaluations activities.",
+    "businessPurpose": "Synchronizes on-call service schedules from QGenda scheduling system into MyEvaluations for clinical hour tracking.",
+    "keyMethods": [
+      "Page_Load - Permission check, help icons, initializes QGenda call service sync"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QGenda call service synchronization. Parallel to AMION version.",
+    "complexity": "complex",
+    "lineCount": 676
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncQGendaClinics.aspx.cs",
+    "fileName": "SyncQGendaClinics.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncQGendaClinics",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for QGenda clinic data. Maps QGenda clinic schedules to MyEvaluations clinical activities. Similar to AMION SyncClinics but for QGenda.",
+    "businessPurpose": "Synchronizes clinic schedules from QGenda into MyEvaluations for automated clinical hour alignment.",
+    "keyMethods": [
+      "Page_Load - Permission check, initializes QGenda clinic sync"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QGenda clinic synchronization. Parallel to AMION version.",
+    "complexity": "complex",
+    "lineCount": 727
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncQGendaRotations.aspx.cs",
+    "fileName": "SyncQGendaRotations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncQGendaRotations",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for QGenda rotation data. Maps QGenda rotation definitions to MyEvaluations rotations with duplicate detection. Uses SyncAmionOnCallManager for on-call service ID retrieval.",
+    "businessPurpose": "Synchronizes rotation definitions from QGenda scheduling system into MyEvaluations, maintaining alignment between external scheduling and clinical hour tracking.",
+    "keyMethods": [
+      "OnCallServiceID property - Gets department on-call service ID via SyncAmionOnCallManager"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "SyncAmionOnCallManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QGenda rotation synchronization. Important for institutions using QGenda.",
+    "complexity": "very-complex",
+    "lineCount": 1070
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncRotations.aspx.cs",
+    "fileName": "SyncRotations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncRotations",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for AMION rotation data. Maps AMION rotation definitions to MyEvaluations rotations with duplicate name detection and grouped item display. Largest AMION sync page.",
+    "businessPurpose": "Synchronizes rotation definitions from the AMION scheduling system into MyEvaluations, enabling automated alignment between scheduling and clinical hour tracking systems.",
+    "keyMethods": [
+      "OnCallServiceID property - Gets department on-call service ID"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "SyncAmionOnCallManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "AMION rotation synchronization. Core external scheduling integration.",
+    "complexity": "very-complex",
+    "lineCount": 1398
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncRotationsDiscrepancy.aspx.cs",
+    "fileName": "SyncRotationsDiscrepancy.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncRotationsDiscrepancy",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays discrepancies between synced rotation names and on-call rotation names for the current academic year. Renders an HTML table showing mismatched rotation names from DutyHoursManager.GetSyncRotationsDiscrepancyList.",
+    "businessPurpose": "Helps administrators identify rotation name mismatches between external scheduling systems (AMION/QGenda) and MyEvaluations after synchronization.",
+    "keyMethods": [
+      "Page_Load - Delegates to InitializePage",
+      "InitializePage - Retrieves discrepancy data and renders comparison table"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Sync discrepancy reporting. Diagnostic tool for external integration.",
+    "complexity": "simple",
+    "lineCount": 59
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncRotationsReportResults.aspx.cs",
+    "fileName": "SyncRotationsReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncRotationsReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays report results of rotation synchronization operations. Shows department info, academic year, and sync status with loading screen.",
+    "businessPurpose": "Summary report of rotation sync operations for administrator verification.",
+    "keyMethods": [
+      "Page_Load - Displays sync results with department info and loading screen"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Sync report display. Part of AMION integration.",
+    "complexity": "moderate",
+    "lineCount": 221
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncUsers.aspx.cs",
+    "fileName": "SyncUsers.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncUsers",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for AMION user data. Maps AMION personnel to MyEvaluations users using email matching. Handles grouped edit mode with color coding. Integrates with TimeSheet business layer.",
+    "businessPurpose": "Synchronizes user/personnel data from AMION scheduling system into MyEvaluations, ensuring that residents and faculty in both systems are properly linked for schedule-to-clinical-hour alignment.",
+    "keyMethods": [
+      "User synchronization with AMION via SyncAMIONUsers submodule"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "AMION user synchronization. Core external integration for user matching.",
+    "complexity": "very-complex",
+    "lineCount": 1368
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SyncUsersReportResults.aspx.cs",
+    "fileName": "SyncUsersReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SyncUsersReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays report results of user synchronization operations. Shows department info, academic year, and sync status. Supports department ID override via query string.",
+    "businessPurpose": "Summary report of user sync operations for administrator verification.",
+    "keyMethods": [
+      "Page_Load - Displays sync results with optional department override"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Sync report display. Part of AMION integration.",
+    "complexity": "moderate",
+    "lineCount": 213
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/SynchQGendaUsers.aspx.cs",
+    "fileName": "SynchQGendaUsers.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_SynchQGendaUsers",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Synchronization page for QGenda user data. Maps QGenda personnel to MyEvaluations users. Similar to AMION SyncUsers but for QGenda scheduling system.",
+    "businessPurpose": "Synchronizes user/personnel data from QGenda scheduling system into MyEvaluations for proper schedule-to-clinical-hour alignment.",
+    "keyMethods": [
+      "QGenda user synchronization via SyncAMIONUsers submodule"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "EvaluationTemplateBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "QGenda user synchronization. Parallel to AMION version.",
+    "complexity": "very-complex",
+    "lineCount": 1022
+  },
+  {
+    "filePath": "Web/DutyHours/Setup/ViewCurrentTaskRoles.aspx.cs",
+    "fileName": "ViewCurrentTaskRoles.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Setup_ViewCurrentTaskRoles",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Displays a printable report of current QGenda task-to-role mappings. Uses Repeater controls to show roles and their associated tasks. Supports different service types via query string parameter.",
+    "businessPurpose": "Provides a reference view of how QGenda scheduling system tasks are mapped to MyEvaluations roles, helping administrators verify integration configuration.",
+    "keyMethods": [
+      "Page_Load - Loading screen, delegates to getPage",
+      "getPage - Retrieves QGenda roles and task mappings, binds to Repeater",
+      "rptRotations_ItemDataBound - Binds nested task data for each role",
+      "GetLoadingScript/LoadReportLoadingScreen - Loading screen utilities"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager",
+      "SessionManager",
+      "DepartmentManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "QGenda integration configuration view.",
+    "complexity": "moderate",
+    "lineCount": 135
+  },
+  {
+    "filePath": "Web/DutyHours/SubmitDutyHours.aspx.cs",
+    "fileName": "SubmitDutyHours.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_SubmitDutyHours",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Main page for submitting and reviewing duty hours (clinical hours). Provides helper methods for department ID, CSS path, and user ID. Checks permissions including archived user status and BSN department (ID 2531) special handling.",
+    "businessPurpose": "The primary interface where trainees log their clinical hours/duty hours. This is the core data entry page for the entire duty hours tracking system.",
+    "keyMethods": [
+      "Page_Load - Permission check and page initialization",
+      "GetDepartmentID - Returns logged-in user's department ID",
+      "GetUserID - Returns logged-in user's ID",
+      "GetCSSPath - Returns CSS files path for dynamic styling",
+      "CheckForPermissions - Validates SubmitReviewDutyHours access, blocks archived users"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core duty hour submission page. Most business logic likely in client-side JavaScript. Critical for the clinical hours workflow.",
+    "complexity": "moderate",
+    "lineCount": 245
+  },
+  {
+    "filePath": "Web/DutyHours/Test1.aspx.cs",
+    "fileName": "Test1.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DutyHours_Test1",
+    "inheritsFrom": "BasePage",
+    "module": "DutyHours",
+    "summary": "Empty test page with no functionality. Contains only an empty Page_Load handler with a lone semicolon statement.",
+    "businessPurpose": "Development test page with no production functionality.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Test page. No migration needed.",
+    "complexity": "trivial",
+    "lineCount": 19
+  }
+]}
+  directoryOverview="Web/DutyHours contains pages for ACGME-compliant duty hours tracking. Residents log work hours, programs monitor compliance with 80-hour work week rules, and administrators generate compliance reports."
+  keyWorkflows={["Resident duty hour logging","ACGME compliance monitoring","Duty hours verification","Compliance violation reporting","Schedule management","Moonlighting tracking","Duty hours analytics","Institutional compliance oversight","External scheduling system synchronization (AMION, QGenda, Lightning Bolt, Momentum)","Rotation block and rotation name management","Geofence-based location tracking","Clinical hour completion monitoring","Schedule-to-clinical-hour discrepancy analysis","BSN nursing program clinical learning hours","Record of rotations and rotators reporting","Favorite report settings management"]}
+/>

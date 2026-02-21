@@ -1,0 +1,199 @@
+{
+  "projectName": "SendImmersionNotificationToStudents",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SendImmersionNotificationToStudents",
+  "parsedAt": "2026-02-20T17:11:06.220Z",
+  "fileCount": 5,
+  "totalLines": 307,
+  "files": [
+    {
+      "fileName": "FNPBusiness.cs",
+      "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/FNPBusiness.cs",
+      "lineCount": 44,
+      "className": "FNPBusiness",
+      "namespace": "SendImmersionNotificationToStudents",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.Logging",
+        "System.Data",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "OnSendImmersionNotificationToStudents",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FNPManager.cs",
+      "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/FNPManager.cs",
+      "lineCount": 52,
+      "className": "FNPManager",
+      "namespace": "SendImmersionNotificationToStudents",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SendImmersionNotificationToStudents",
+          "returnType": "\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertSchedulerJobHistory",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string ScheduledName",
+            "DateTime StartDate",
+            "DateTime EndDate",
+            "string LogInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "SendImmersionNotificationToStudents",
+        "InsertSchedulerJobHistory"
+      ]
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/Program.cs",
+      "lineCount": 27,
+      "className": "Program",
+      "namespace": "SendImmersionNotificationToStudents",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

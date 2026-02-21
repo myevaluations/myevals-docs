@@ -1,0 +1,1144 @@
+{
+  "projectName": "ImportFNPBannerLogs",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/ImportFNPBannerLogs",
+  "parsedAt": "2026-02-20T17:11:05.515Z",
+  "fileCount": 4,
+  "totalLines": 905,
+  "files": [
+    {
+      "fileName": "ImportData.cs",
+      "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/ImportData.cs",
+      "lineCount": 664,
+      "className": "ImportData",
+      "namespace": "ImportFNPBannerLogs",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Xml",
+        "System.Data",
+        "MyEvaluations.Business.EssentialActivities",
+        "System.Net",
+        "RestSharp",
+        "System.Configuration",
+        "System.IO"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities"
+      ],
+      "methods": [
+        {
+          "name": "DNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCourseInfo",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string programType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "responseData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFNPStudentInfo",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string programType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "responseData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "System.String"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"PrimaryID\"",
+            "typeof(int"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtImportData.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtImportData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPreceptorInfo",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string programType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "responseData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FirstName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"LastName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Email\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Role\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentEmail\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentDSI\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ClinicalSite\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"SiteState\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"PreceptorCredentials\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UnitType\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Phone\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Title\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseTitle\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseNumber\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CRN\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Session\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Program\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CancelledIncident\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Id\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"PreceptorUniqueID\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UnitType\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CRN\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"PrimaryID\"",
+            "typeof(int"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtResult.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtResult"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPreceptorInfoWithLastUpdatedDate",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string programType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "responseData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FirstName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"LastName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Email\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Role\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentName\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentEmail\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentDSI\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StudentActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ClinicalSite\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"SiteState\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"PreceptorCredentials\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UnitType\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Phone\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Title\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseTitle\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseNumber\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CRN\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Session\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Program\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CourseActivityDate\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CancelledIncident\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Id\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UnitType\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CRN\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"PrimaryID\"",
+            "typeof(int"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtResult.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtResult"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendOnboardingEmails",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/Program.cs",
+      "lineCount": 57,
+      "className": "Program",
+      "namespace": "ImportFNPBannerLogs",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Data",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ImportData",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/ImportFNPBannerLogs/ImportFNPBannerLogs/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

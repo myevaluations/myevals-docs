@@ -1,0 +1,98 @@
+{
+  "projectName": "InitiateProcedureMVCApplication",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/InitiateProcedureMVCApplication",
+  "parsedAt": "2026-02-20T17:11:05.558Z",
+  "fileCount": 2,
+  "totalLines": 85,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/InitiateProcedureMVCApplication/InitiateProcedureMVCApplication/Program.cs",
+      "lineCount": 48,
+      "className": "Program",
+      "namespace": "InitiateProcedureMVCApplication",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Configuration",
+        "SAMLServiceProvider",
+        "RestSharp",
+        "log4net",
+        "System.Net"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtToken",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "applicationURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"Home/Index?token=\" + token"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"Procedures/Index?token=\" + token"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/InitiateProcedureMVCApplication/InitiateProcedureMVCApplication/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

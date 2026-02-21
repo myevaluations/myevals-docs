@@ -1,0 +1,265 @@
+{
+  "projectName": "SalesForceIntegation",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SalesForceIntegation",
+  "parsedAt": "2026-02-20T17:11:06.136Z",
+  "fileCount": 4,
+  "totalLines": 348,
+  "files": [
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/Program.cs",
+      "lineCount": 46,
+      "className": "Program",
+      "namespace": "SalesForceIntegation",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.Business.EssentialActivities",
+        "System.Configuration",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities"
+      ],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SalesForceExport",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SalesForceExport.cs",
+      "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/SalesForceExport.cs",
+      "lineCount": 118,
+      "className": "SalesForceExport",
+      "namespace": "SalesForceIntegation",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Xml",
+        "System.Data",
+        "System.Net",
+        "RestSharp",
+        "System.Configuration",
+        "MyEvaluations.Logging",
+        "System.IO",
+        "MyEvaluations.Business.EssentialActivities",
+        "System.Xml.Linq"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities"
+      ],
+      "methods": [
+        {
+          "name": "DNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExportDataToSalesForce",
+          "returnType": "        \n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int32"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var res in results1"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}

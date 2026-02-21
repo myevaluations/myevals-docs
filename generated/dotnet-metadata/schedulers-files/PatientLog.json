@@ -1,0 +1,474 @@
+{
+  "projectName": "PatientLog",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/PatientLog",
+  "parsedAt": "2026-02-20T17:11:06.116Z",
+  "fileCount": 5,
+  "totalLines": 674,
+  "files": [
+    {
+      "fileName": "Business.cs",
+      "filePath": "Schedulers/PatientLog/PatientLog/Business.cs",
+      "lineCount": 187,
+      "className": "Business",
+      "namespace": "PatientLog",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.Configuration",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.DataAccess.SQL",
+        "System.IO"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "EncryptValue",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SsnValues",
+          "returnType": "\n        public DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow Birthcity in dtSsn.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in updatedUserData.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetDepartmentIdsForSsn",
+        "GetpatientidLog",
+        "UpdatePatientLog"
+      ]
+    },
+    {
+      "fileName": "EncryptValue.cs",
+      "filePath": "Schedulers/PatientLog/PatientLog/EncryptValue.cs",
+      "lineCount": 259,
+      "className": "EncryptValue",
+      "namespace": "PatientLog",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Collections",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Security",
+        "System.Security.Cryptography",
+        "System.Configuration",
+        "System.Data",
+        "System.Text.RegularExpressions",
+        "System.IO"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "InitializeValues",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AesCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "\n\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEncryptedValues",
+          "returnType": "Encrypt the values by using vektor key.\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string valueToEncrypt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeValues",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsBase64String",
+          "returnType": "\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "string value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDecryptedValues",
+          "returnType": "Decrypt the values by using vektor key.\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeValues",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeValues",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptStringToBytes_Aes",
+          "returnType": "\n\n        static byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string plainText",
+            "byte[] Key",
+            "byte[] IV"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"plainText\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Key\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"IV\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptStringFromBytes_Aes",
+          "returnType": "\n        static string",
+          "visibility": "private",
+          "parameters": [
+            "byte[] cipherText",
+            "byte[] Key",
+            "byte[] IV"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"cipherText\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Key\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"IV\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEncryptedValue",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string valueToEncrypt"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeValues",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/PatientLog/PatientLog/MyEvalLogs.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "PatientLog",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "Microsoft.Practices.EnterpriseLibrary.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/PatientLog/PatientLog/Program.cs",
+      "lineCount": 44,
+      "className": "Program",
+      "namespace": "PatientLog",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n            static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Business",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dt.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/PatientLog/PatientLog/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

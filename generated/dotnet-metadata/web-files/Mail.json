@@ -1,0 +1,3571 @@
+{
+  "directory": "Mail",
+  "directoryPath": "Web/Mail",
+  "parsedAt": "2026-02-20T17:10:58.740Z",
+  "fileCount": 21,
+  "totalLines": 4667,
+  "files": [
+    {
+      "fileName": "AddTrainingSeminar.aspx.cs",
+      "filePath": "Web/Mail/AddTrainingSeminar.aspx.cs",
+      "lineCount": 270,
+      "className": "Mail_AddTrainingSeminar",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Portfolio",
+        "System.IO",
+        "System.Configuration",
+        "System.Collections.Generic"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Mail",
+        "Utilities",
+        "Portfolio"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEventsInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Page.IsPostBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Boolean postBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageTitle",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "currentPageMode",
+            "litPageTitle",
+            "currentPageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"pageMode\"",
+            "currentPageMode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFile",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "fileExactPath",
+            "fileName",
+            "originalFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "txtStartDate_TextChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"EventID\"",
+            "Request.QueryString[\"ID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r\n   \r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "mailDistributionManager.GetTrainingEventsByEventID(Int64.Parse(RetrievePageState(\"EventID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingEventsInfo eventsInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromForm",
+          "returnType": "\r\n    private TrainingEventsInfo",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEventsInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFile",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string folderName",
+            "string fileName",
+            "string originalFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "funDownloadFile",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + folderName + \"'",
+            "'\" + fileName + \"'",
+            "'\" + originalFileName + \"'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSave_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnUpdate_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "region btnCancel_Click\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AvailableSeminars.aspx.cs",
+      "filePath": "Web/Mail/AvailableSeminars.aspx.cs",
+      "lineCount": 84,
+      "className": "Mail_AvailableSeminars",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "Obout.Grid"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "param>\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateURL",
+          "returnType": "returns>\n    protected String",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "summary>\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ContactCustomerSupport.aspx.cs",
+      "filePath": "Web/Mail/ContactCustomerSupport.aspx.cs",
+      "lineCount": 96,
+      "className": "Mail_ContactCustomerSupport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Mail",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendEmail_Click",
+          "returnType": "Emergency\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ContactTechnicalSupport.aspx.cs",
+      "filePath": "Web/Mail/ContactTechnicalSupport.aspx.cs",
+      "lineCount": 109,
+      "className": "Mail_ContactTechnicalSupport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail",
+        "System.Management"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BrowserDetails",
+          "returnType": "Emergency\r\n    public static string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendEmail_Click",
+          "returnType": "    \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "\r\n    \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "EvalReminder.aspx.cs",
+      "filePath": "Web/Mail/EvalReminder.aspx.cs",
+      "lineCount": 40,
+      "className": "Mail_EvalReminder",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Mail",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Mail.aspx.cs",
+      "filePath": "Web/Mail/Mail.aspx.cs",
+      "lineCount": 373,
+      "className": "Mail_Mail",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Evaluations",
+        "Security",
+        "Utilities",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "generateSecretKey",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "generateSecretKey",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\n    \r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "generateSecretKey",
+          "returnType": "Emergency\r\n    protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Random",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastUpdatedDateForManualEMailAssignmentReminders",
+          "returnType": "returns>\r\n    public DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "summary>\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "int key in PageMainKeyIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MailDistribution.aspx.cs",
+      "filePath": "Web/Mail/MailDistribution.aspx.cs",
+      "lineCount": 230,
+      "className": "Mail_MailDistribution",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "System.Text.RegularExpressions",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security",
+        "Portfolio"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n   \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlTemplates_SelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSchedule_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSend_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSelectUsers_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnExitUsers_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "\r\n\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDummyRefreshTemplate_click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReBindTemplate",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReBindTemplate",
+          "returnType": "Bind Template dropdown\r\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"Select Template\"",
+            "\"-1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MailTemplate.aspx.cs",
+      "filePath": "Web/Mail/MailTemplate.aspx.cs",
+      "lineCount": 174,
+      "className": "Mail_MailTemplate",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "System.Text.RegularExpressions",
+        "MyEvaluations.Business.Portfolio"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Portfolio"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlTemplates_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveDocument_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "\r\n   \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "\r\n\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDeleteTemplate_click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReBindTemplate",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReBindTemplate",
+          "returnType": "Bind Template dropdown\r\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"Select Template\"",
+            "\"-1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageMailDistributionSchedules.aspx.cs",
+      "filePath": "Web/Mail/ManageMailDistributionSchedules.aspx.cs",
+      "lineCount": 98,
+      "className": "Mail_ManageMailDistributionSchedules",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Security",
+        "Obout.Grid"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnRefresh_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdMailSchedules_RowDataBound",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lkBtnDelete_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lkBtnResend_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageMessageDistribution.aspx.cs",
+      "filePath": "Web/Mail/ManageMessageDistribution.aspx.cs",
+      "lineCount": 30,
+      "className": "Mail_ManageMessageDistribution",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageTrainingSeminar.aspx.cs",
+      "filePath": "Web/Mail/ManageTrainingSeminar.aspx.cs",
+      "lineCount": 182,
+      "className": "Mail_ManageTrainingSeminar",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "Obout.Grid"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEvents_RowCommand",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "CommandEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "refreshGrid",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "refreshGrid",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "refreshGrid",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewTrainingSeminarList_RowDataBound",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddNewTrainingSeminar_Click",
+          "returnType": "\r\n\r\n\r\n            \r\n        \r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateURL",
+          "returnType": "\r\n    protected String",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewTrainingSeminarList_OnColumnsCreated",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Meeting.aspx.cs",
+      "filePath": "Web/Mail/Meeting.aspx.cs",
+      "lineCount": 56,
+      "className": "Mail_Meeting",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserHasPrivilege",
+          "returnType": "\r\n\r\n    public static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "SubModule currentSubModule",
+            "RolePrivilegesRequired privilegeRequired"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MenuSupport.aspx.cs",
+      "filePath": "Web/Mail/MenuSupport.aspx.cs",
+      "lineCount": 485,
+      "className": "Mail_MenuSupport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "System.Xml",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Security.Cryptography",
+        "SAMLServiceProvider",
+        "System.Security.Cryptography.Xml",
+        "System.Text",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Net",
+        "RestSharp",
+        "RestSharp.Authenticators",
+        "Newtonsoft.Json.Linq"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateUserAccount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSamlResponse",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateUserAccount",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "happyFoxAPIUrl + \"json/users/\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpBasicAuthenticator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "happyFoxApiKey",
+            "happyFoxAuthCode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"\"",
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSamlResponse",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "X509Certificate2",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cerPath",
+            "pfxPassword",
+            "X509KeyStorageFlags.Exportable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AssetionElement",
+          "returnType": "\r\n\r\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string requestID",
+            "string responseTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "X509Certificate2",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cerPath",
+            "pfxPassword",
+            "X509KeyStorageFlags.Exportable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "WriteAttributeStatements",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "XmlWriter xw"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "var k in attrs.Keys"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "summary>\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "int key in PageMainKeyIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MessageDistribution.aspx.cs",
+      "filePath": "Web/Mail/MessageDistribution.aspx.cs",
+      "lineCount": 327,
+      "className": "Mail_MessageDistribution",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Mail",
+        "System.Web.Services"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Evaluations",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MessageDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "Rajesh\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Page.IsPostBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindUserRoles",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MessageDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindUserRoles",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MessageDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "LookUpManager.GetLookUpList(Lookups.UserTypes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Boolean postBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageFilters",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParmsToState",
+          "returnType": "2012\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "EvaluationsReportManager.USERTYPEPARAM",
+            "Request.QueryString[EvaluationsReportManager.USERTYPEPARAM].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PageFilter",
+          "returnType": "Setting",
+          "visibility": "private",
+          "parameters": [
+            "Step 2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageFilters",
+          "returnType": "2012\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcon",
+          "returnType": "void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendEmail_Click",
+          "returnType": "2012\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": " Cancel Button Click Event\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "2015\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserList",
+          "returnType": "\n\n    [WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string userTypeID",
+            "string isArchived"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserSearchCriteria",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n        return",
+          "visibility": "private",
+          "parameters": [
+            "dtUsers"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n    private static string",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserListByRole",
+          "returnType": "\n    [WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userTypeID",
+            "string isArchived",
+            "string roleId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserSearchCriteria",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "       \n        return",
+          "visibility": "private",
+          "parameters": [
+            "dtUsers"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RedirectMessage.aspx.cs",
+      "filePath": "Web/Mail/RedirectMessage.aspx.cs",
+      "lineCount": 19,
+      "className": "Mail_RedirectMessage",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ResendMail.aspx.cs",
+      "filePath": "Web/Mail/ResendMail.aspx.cs",
+      "lineCount": 46,
+      "className": "Mail_ResendMail",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSchedule_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Training.aspx.cs",
+      "filePath": "Web/Mail/Training.aspx.cs",
+      "lineCount": 191,
+      "className": "Mail_Training",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "Obout.Grid",
+        "System.Text",
+        "System.IO"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"EventID\"",
+            "Request.QueryString[\"ID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewPayeeList_RowDataBound",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PayeeList_RowCommand",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "CommandEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "refreshGrid",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "refreshGrid",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnPrintList_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "Page,",
+          "visibility": "private",
+          "parameters": [
+            "Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnReturn_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnPrintExcel_Click",
+          "returnType": "\r\n\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GridView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlTextWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "sw"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyRenderingInServerForm",
+          "returnType": "\r\n\r\n    public override void",
+          "visibility": "private",
+          "parameters": [
+            "Control control"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnRegister_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "TrainingList.aspx.cs",
+      "filePath": "Web/Mail/TrainingList.aspx.cs",
+      "lineCount": 173,
+      "className": "Mail_TrainingList",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "Obout.Grid",
+        "System.Linq"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForViewMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"EventID\"",
+            "Request.QueryString[\"ID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"TrainingID\"",
+            "Request.QueryString[\"ID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForViewMode",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "_mailDistributionManager.GetTrainingSeminar(Int64.Parse(RetrievePageState(\"TrainingID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingSeminarInfo seminarInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "TrainingSeminar.aspx.cs",
+      "filePath": "Web/Mail/TrainingSeminar.aspx.cs",
+      "lineCount": 1030,
+      "className": "Mail_TrainingSeminar",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Page.IsPostBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Boolean postBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindLunchMenu",
+          "returnType": "Binding Lunch Menu based on EventID",
+          "visibility": "private",
+          "parameters": [
+            "EventID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"TrainingID\"",
+            "TrainingID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"pageMode\"",
+            "_currentPageMode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForViewMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"TrainingID\"",
+            "Request.QueryString[\"ID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "_mailDistributionManager.GetTrainingSeminar(Int64.Parse(RetrievePageState(\"TrainingID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForViewMode",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "_mailDistributionManager.GetTrainingSeminar(Int64.Parse(RetrievePageState(\"TrainingID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingSeminarInfo seminarInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindLunchMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "EventID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetType",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingSeminarInfo seminarInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromForm",
+          "returnType": "\r\n    private TrainingSeminarInfo",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingSeminarInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSubmitRegistration_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetType",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetType",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnUpdateRegistration_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetType",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlEventsTitle_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindLunchMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "EventID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"TrainingID\"",
+            "TrainingID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"TrainingID\"",
+            "TrainingID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnReturnToList_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnPrintRegistration_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "Page,",
+          "visibility": "private",
+          "parameters": [
+            "Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDepartment_SelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlUser_SelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsSeminarSubmittedForUser",
+          "returnType": "returns>\r\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Int64 eventID",
+            "Int64 userID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindLunchMenu",
+          "returnType": "param>\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 EventID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "TrainingSeminarForNonUser.aspx.cs",
+      "filePath": "Web/Mail/TrainingSeminarForNonUser.aspx.cs",
+      "lineCount": 389,
+      "className": "Mail_TrainingSeminarForNonUser",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Page.IsPostBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "Binding page for selected Event in Login page\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Boolean postBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParamsToState",
+          "returnType": "Save TraingId in ViewState\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForEditMode",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "_mailDistributionManager.GetTrainingSeminar(Int64.Parse(ViewState[\"TrainingID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PrepareFormForViewMode",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "_mailDistributionManager.GetTrainingSeminar(Int64.Parse(ViewState[\"TrainingID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Hide buttons\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromDB",
+          "returnType": "Binding page controls in Edit mode\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingSeminarInfo seminarInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfo",
+          "returnType": "Binding page controls in view mode\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "TrainingSeminarInfo seminarInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillInfoFromForm",
+          "returnType": "Binding Seminar entity\n    private TrainingSeminarInfo",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingSeminarInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSubmitRegistration_Click",
+          "returnType": "Save the Registration\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnUpdateRegistration_Click",
+          "returnType": "This is not yet implemented\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlEventsTitle_SelectedIndexChanged",
+          "returnType": "Binding Description for selected Event\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnReturnToList_Click",
+          "returnType": "This is System Admin fetaure, not yet implemnted for this page\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": "Redirected to login page\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnPrintRegistration_Click",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "Page,",
+          "visibility": "private",
+          "parameters": [
+            "Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "UsertypeMail.aspx.cs",
+      "filePath": "Web/Mail/UsertypeMail.aspx.cs",
+      "lineCount": 265,
+      "className": "Mail_UsertypeMail",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Evaluations",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "Rajesh\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Page.IsPostBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializePage",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Boolean postBack"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParmsToState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageFilters",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageParmsToState",
+          "returnType": "2012\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "EvaluationsReportManager.USERTYPEPARAM",
+            "Request.QueryString[EvaluationsReportManager.USERTYPEPARAM].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PageFilter",
+          "returnType": "Setting",
+          "visibility": "private",
+          "parameters": [
+            "Step 2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPageFilters",
+          "returnType": "2012\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcon",
+          "returnType": "void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendEmail_Click",
+          "returnType": "2012\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnCancel_Click",
+          "returnType": " Cancel Button Click Event\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "2015\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "int key in PageMainKeyIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

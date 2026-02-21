@@ -1,0 +1,227 @@
+{
+  "projectName": "SendDevryArchivedNotices",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SendDevryArchivedNotices",
+  "parsedAt": "2026-02-20T17:11:06.217Z",
+  "fileCount": 4,
+  "totalLines": 320,
+  "files": [
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/SendDevryArchivedNotices/SendDevryArchivedNotices/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SendDevryArchivedNotices/SendDevryArchivedNotices/Program.cs",
+      "lineCount": 61,
+      "className": "Program",
+      "namespace": "SendDevryArchivedNotices",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.Business.EssentialActivities",
+        "System.Configuration",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities"
+      ],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DNPLogManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEmails",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendDevryArchivedNotices/SendDevryArchivedNotices/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SendEmails.cs",
+      "filePath": "Schedulers/SendDevryArchivedNotices/SendDevryArchivedNotices/SendEmails.cs",
+      "lineCount": 75,
+      "className": "SendEmails",
+      "namespace": "SendDevryArchivedNotices",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Configuration",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArchiveDevryUsers",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArchiveDevryFNPUsers",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArchiveDevryUsers",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArchiveDevryFNPUsers",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "ArchiveDevryUsers",
+        "ArchiveDevryFNPUsers"
+      ]
+    }
+  ]
+}

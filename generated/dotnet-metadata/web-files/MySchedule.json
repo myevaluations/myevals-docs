@@ -1,0 +1,953 @@
+{
+  "directory": "MySchedule",
+  "directoryPath": "Web/MySchedule",
+  "parsedAt": "2026-02-20T17:10:59.190Z",
+  "fileCount": 8,
+  "totalLines": 902,
+  "files": [
+    {
+      "fileName": "AddAffiliateAgreements.aspx.cs",
+      "filePath": "Web/MySchedule/AddAffiliateAgreements.aspx.cs",
+      "lineCount": 176,
+      "className": "MySchedule_AddAffiliateAgreements",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindDirectors",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSponcerName",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindParticipatingName",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindDirectors",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DocDetailsManager.GetDirectorsList(SessionManager.GetLoggedInUserPrimaryDepartmentID("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSponcerName",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindParticipatingName",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AddCampuses.aspx.cs",
+      "filePath": "Web/MySchedule/AddCampuses.aspx.cs",
+      "lineCount": 50,
+      "className": "MySchedule_AddCampuses",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtCohorts"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AddScheduleTemplate.aspx.cs",
+      "filePath": "Web/MySchedule/AddScheduleTemplate.aspx.cs",
+      "lineCount": 55,
+      "className": "MySchedule_AddScheduleTemplate",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampusNames",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampusNames",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AddUsers.aspx.cs",
+      "filePath": "Web/MySchedule/AddUsers.aspx.cs",
+      "lineCount": 156,
+      "className": "MySchedule_AddUsers",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "DutyHours",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindUserTypes",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindGroups",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSpecialityTypes",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAffiliation",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "SessionManager.GetLoggedInUserPrimaryDepartmentID("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAffiliation",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DepartmentManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsInstitutionDetails.Tables[0]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindUserTypes",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSpecialityTypes",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindGroups",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampus",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCalenderYears",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "out currentAcademicYear",
+            "true",
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCalenderYears",
+          "returnType": "\n\n    public static List<ListItem>",
+          "visibility": "private",
+          "parameters": [
+            "out Int32 currentAcademicYear",
+            "Boolean getAllYears",
+            "Boolean showFutureYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "String.Format(\"{0}\"",
+            "i.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AffiliateAgreementReport.aspx.cs",
+      "filePath": "Web/MySchedule/AffiliateAgreementReport.aspx.cs",
+      "lineCount": 22,
+      "className": "MySchedule_AffiliateAgreementReport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "EditSettings.aspx.cs",
+      "filePath": "Web/MySchedule/EditSettings.aspx.cs",
+      "lineCount": 99,
+      "className": "MySchedule_EditSettings",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PopulateTimeSlots",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ddlStartTime",
+            "Convert.ToDateTime(\"01/01/2000 12:00:00 AM\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TimeSpan",
+          "returnType": ", new",
+          "visibility": "private",
+          "parameters": [
+            "0",
+            "15",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "> new",
+          "visibility": "private",
+          "parameters": [
+            "ev.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "ActivityManager.GetDepartmentActivitiesByCategory(-1",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": "ActivitySettingID",
+          "visibility": "private",
+          "parameters": [
+            "1",
+            "2",
+            "3"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": " OR ActivityCategoryID",
+          "visibility": "private",
+          "parameters": [
+            "5"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PopulateTimeSlots",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "DropDownList dropdown",
+            "DateTime startTime",
+            "DateTime endTime",
+            "TimeSpan interval"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "time.ToString(\"hh:mm tt\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "time.ToString(\"HH:mm tt\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ScheduleSettings.aspx.cs",
+      "filePath": "Web/MySchedule/ScheduleSettings.aspx.cs",
+      "lineCount": 141,
+      "className": "Preceptor_ScheduleSettings",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "DepartmentManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "isEnableScheduleManagement"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 isEnableScheduleManagement"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationTemplateBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Settings.aspx.cs",
+      "filePath": "Web/MySchedule/Settings.aspx.cs",
+      "lineCount": 203,
+      "className": "MySchedule_Settings",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.TimeSheet",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "TimeSheet"
+      ],
+      "methods": [
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampus",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSites",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindPGYList",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDepartmentDefaultDays",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDepartmentDefaultDays",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSites",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorModuleManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "preceptorModuleManager.GetPrepSites("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindPGYList",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPGYCategoryTable",
+          "returnType": "\n\n    private DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"PGYNUmber\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"PGYCategoryName\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorePageState",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"PGYCategoryTable\"",
+            "dtPGYCategory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindCampus",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCalenderYears",
+          "returnType": "\n\n    public static List<ListItem>",
+          "visibility": "private",
+          "parameters": [
+            "out Int32 currentAcademicYear",
+            "Boolean getAllYears",
+            "Boolean showFutureYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "String.Format(\"{0}\"",
+            "i.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

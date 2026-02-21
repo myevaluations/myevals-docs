@@ -1,0 +1,155 @@
+{
+  "projectName": "MyEvaluations.Logging",
+  "layer": "supporting",
+  "projectPath": "MyEvaluations.Logging",
+  "parsedAt": "2026-02-20T17:11:06.580Z",
+  "fileCount": 4,
+  "totalLines": 311,
+  "files": [
+    {
+      "fileName": "APILogger.Designer.cs",
+      "filePath": "MyEvaluations.Logging/APILogger.Designer.cs",
+      "lineCount": 37,
+      "className": "APILogger",
+      "namespace": "MyEvaluations.Logging",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Dispose",
+          "returnType": "param>\n        protected override void",
+          "visibility": "private",
+          "parameters": [
+            "bool disposing"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeComponent",
+          "returnType": "summary>\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "APILogger.cs",
+      "filePath": "MyEvaluations.Logging/APILogger.cs",
+      "lineCount": 26,
+      "className": "APILogger",
+      "namespace": "MyEvaluations.Logging",
+      "baseClass": "Component",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.ComponentModel",
+        "System.Diagnostics",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "InitializeComponent",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitializeComponent",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalLog.cs",
+      "filePath": "MyEvaluations.Logging/MyEvalLog.cs",
+      "lineCount": 211,
+      "className": "MyEvalLog",
+      "namespace": "MyEvaluations.Logging",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "MyEvaluations.Logging/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

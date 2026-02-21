@@ -1,0 +1,705 @@
+{
+  "directory": "New",
+  "directoryPath": "Web/New",
+  "parsedAt": "2026-02-20T17:10:59.196Z",
+  "fileCount": 11,
+  "totalLines": 324,
+  "files": [
+    {
+      "fileName": "Report.aspx.cs",
+      "filePath": "Web/New/AccreditationDocumentation/Report.aspx.cs",
+      "lineCount": 28,
+      "className": "New_AccreditationDocumentationReport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AccreditationDocumentation.aspx.cs",
+      "filePath": "Web/New/AccreditationDocumentation.aspx.cs",
+      "lineCount": 29,
+      "className": "New_AccreditationDocumentation",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "BasePage.aspx.cs",
+      "filePath": "Web/New/BasePage.aspx.cs",
+      "lineCount": 17,
+      "className": "New_BasePage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Report.aspx.cs",
+      "filePath": "Web/New/CorePersonnel/Report.aspx.cs",
+      "lineCount": 36,
+      "className": "New_CorePersonnelReport",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Evaluations"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "CorePersonnel.aspx.cs",
+      "filePath": "Web/New/CorePersonnel.aspx.cs",
+      "lineCount": 32,
+      "className": "New_CorePersonnelPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Evaluations",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "InstitutionalProgramAssessments.aspx.cs",
+      "filePath": "Web/New/InstitutionalProgramAssessments.aspx.cs",
+      "lineCount": 40,
+      "className": "New_InstitutionalProgramAssessmentsPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Evaluations",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "PrintBasePage.aspx.cs",
+      "filePath": "Web/New/PrintBasePage.aspx.cs",
+      "lineCount": 13,
+      "className": "New_PrintBasePage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Web"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ProgramAssessment.aspx.cs",
+      "filePath": "Web/New/ProgramAssessment.aspx.cs",
+      "lineCount": 42,
+      "className": "New_ProgramAssessmentPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Evaluations",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RequirementSet.aspx.cs",
+      "filePath": "Web/New/ProgramAssessmentSettings/RequirementSet.aspx.cs",
+      "lineCount": 29,
+      "className": "New_RequirementSet",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ProgramAssessmentSettingsPage.aspx.cs",
+      "filePath": "Web/New/ProgramAssessmentSettingsPage.aspx.cs",
+      "lineCount": 29,
+      "className": "New_ProgramAssessmentSettingsPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "SimplImport.aspx.cs",
+      "filePath": "Web/New/SimplImport.aspx.cs",
+      "lineCount": 29,
+      "className": "New_SimplImportPage",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Web",
+        "MyEvaluations.Logging",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "NewFrontend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "New_Auth",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

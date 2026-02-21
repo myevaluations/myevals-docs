@@ -1,0 +1,3412 @@
+{
+  "projectName": "FileUploadService",
+  "layer": "supporting",
+  "projectPath": "FileUploadService",
+  "parsedAt": "2026-02-20T17:11:06.756Z",
+  "fileCount": 3,
+  "totalLines": 5198,
+  "files": [
+    {
+      "fileName": "ExcelProcess.cs",
+      "filePath": "FileUploadService/App_Code/ExcelProcess.cs",
+      "lineCount": 1861,
+      "className": "ExcelProcess",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data",
+        "System.Data.SqlClient",
+        "org.in2bits.MyXls",
+        "org.in2bits.MyXls.ByteUtil",
+        "System.Data.Common",
+        "System.Xml",
+        "MyEvaluations.Logging",
+        "ICSharpCode.SharpZipLib",
+        "ICSharpCode",
+        "Excel",
+        "System.Configuration",
+        "System.Data.OleDb",
+        "System.IO",
+        "System.Text.RegularExpressions"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetWorksSheetsCount",
+          "returnType": "returns>\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNames",
+          "returnType": "returns>\r\n        public List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string  excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNames",
+          "returnType": "returns>\r\n        public List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string uploadFileExtension",
+            "string fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "connString"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Guid",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " Add the sheet name to the string array.",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dt.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeaders",
+          "returnType": "returns>\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtExcelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeaders",
+          "returnType": "returns>\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "SourceConstr"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in dtAllExcelHeaders.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtExcelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelACGMEFileHeaders",
+          "returnType": "        \r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Driver",
+          "returnType": "Microsoft Excel",
+          "visibility": "private",
+          "parameters": [
+            "*.xls",
+            "*.xlsx"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "SourceConstr"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OdbcConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "SourceConstr"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OdbcDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in dtAllExcelHeaders.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtExcelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "name",
+          "returnType": "Validating the column",
+          "visibility": "private",
+          "parameters": [
+            "verifying whether the column has letter F with any Number"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidSheetNameVerifying",
+          "returnType": "\r\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string columnName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMatchingHeaders",
+          "returnType": "returns>\r\n        public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataSet templateDataSet",
+            "DataTable excelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dataRow in excelHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow myevalsRow in myEvalsHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow aliasRow in aliasRows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeaders",
+          "returnType": "returns>\r\n        public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataTable myEvalsHeaders",
+            "DataTable excelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "sync ACLS Expiration Date.",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dataRow in excelHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow myevalsRow in myEvalsHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dataRow in excelHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow myevalsRow in myEvalsHeaders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetData",
+          "returnType": "returns>\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn dc in dtExcelSheetData.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetXmlOfExcelData",
+          "returnType": "returns>\r\n        public StringBuilder",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns",
+            "TemplateType templateType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetXmlOfExcelDataTable",
+          "returnType": "returns>\r\n        public StringBuilder",
+          "visibility": "private",
+          "parameters": [
+            "DataTable Data",
+            "TemplateType templateType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow _dr in Data.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUser",
+          "returnType": "returns>\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUser",
+          "returnType": " To get the xlsx data of the data table\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomACGMEExcelDataForUser",
+          "returnType": " To get the xlsx data of the data table\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row1 in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "connectionString"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtExcelData.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drColumns in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingCustomExcelDataForUser",
+          "returnType": "\r\n\r\n\r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow DRow in dtExcelSheetData1.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingExcelDataForUser",
+          "returnType": "\r\n\r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in dtExcelSheetData.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtExcelHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizExcelDataForUser",
+          "returnType": "\r\n\r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelData",
+          "returnType": "returns>\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrative",
+          "returnType": "\r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomACGMEExcelDataForScholarlyActivities",
+          "returnType": "\r\n\r\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string SheetName",
+            "DataTable ExcelColumns",
+            "DataTable DataBaseColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XlsDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row1 in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "connectionString"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OleDbDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtExcelData.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drColumns in DataBaseColumns.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FileUploadComponent.cs",
+      "filePath": "FileUploadService/App_Code/FileUploadComponent.cs",
+      "lineCount": 2417,
+      "className": "FileUploadComponent",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.IO",
+        "System.Drawing",
+        "System.Drawing.Drawing2D",
+        "System.Drawing.Imaging",
+        "System.Text",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "UploadFile",
+          "returnType": "returns>\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string originalFileName",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "int Video",
+            "int acceptedFileSize = 10"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "\n                return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strVideoUploadServer",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "\n                return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strUploadVirtualFolder",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "Video",
+            "acceptedFileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDUploadFile",
+          "returnType": "returns>\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string originalFileName",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "int Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDFileUploading",
+          "returnType": "\n                return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strVideoUploadServer",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDFileUploading",
+          "returnType": "\n                return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strUploadVirtualFolder",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFile",
+          "returnType": "returns>\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string originalFileName",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "out string OriginalFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "\n            return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strUploadVirtualFolder",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "out OriginalFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateFolder",
+          "returnType": "param>\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string Path",
+            "string FolderName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileNameSpecialCharacterReplace",
+          "returnType": "returns>\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifying",
+          "returnType": "returns>\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileExtention",
+            "bool IsImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileNameAndFolderSetup",
+          "returnType": "param>    \n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string FileNameWithPath",
+            "string RootFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateFolder",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "strRootPath",
+            "Folders[folderCounter]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Validation",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string originalFileName",
+            "bool IsImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "int Video",
+            "int acceptedFileSize = 10"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDValidation",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string originalFileName",
+            "bool IsImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "int Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Validation",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileName",
+            "long FileSize",
+            "string FileExtention",
+            "out string Message",
+            "int acceptedFileSize = 10"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileValidation",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileName",
+            "string FileExtention",
+            "long FileSize",
+            "out string Message",
+            "bool IsImage",
+            "int Video",
+            "int acceptedFileSize = 10"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDFileValidation",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileName",
+            "string FileExtention",
+            "long FileSize",
+            "out string Message",
+            "bool IsImage",
+            "int Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocumentUpload",
+          "returnType": "bool",
+          "visibility": "public",
+          "parameters": [
+            "string FileNameWithPath",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "    return",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string OriginalFileName",
+            "string SaveFileNameWithOutExt",
+            "string VirtualFolder",
+            "string ServerUrl",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "bool isImage",
+            "out string SavedFileNameExtention",
+            "out long FileSize",
+            "int Video",
+            "int acceptedFileSize = 10"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileNameAndFolderSetup",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "strServerUrlName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DocumentFileNameWithPath",
+            "FileMode.Create"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocumentUpload",
+          "returnType": "bool",
+          "visibility": "public",
+          "parameters": [
+            "string FileNameWithPath",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "    return",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDFileUploading",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string OriginalFileName",
+            "string SaveFileNameWithOutExt",
+            "string VirtualFolder",
+            "string ServerUrl",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "bool isImage",
+            "out string SavedFileNameExtention",
+            "out long FileSize",
+            "int Video"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileNameAndFolderSetup",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "strServerUrlName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DocumentFileNameWithPath",
+            "FileMode.Create"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string OriginalFileName",
+            "string SaveFileNameWithOutExt",
+            "string VirtualFolder",
+            "string ServerUrl",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "bool isImage",
+            "out string SavedFileNameExtention",
+            "out long FileSize",
+            "Int32 cropx",
+            "Int32 cropy",
+            "Int32 cropwidth",
+            "Int32 cropheight",
+            "Int32 rescalewidth",
+            "Int32 rescaleheight",
+            "Boolean isImageCropped"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileNameAndFolderSetup",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "strServerUrlName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DocumentFileNameWithPath",
+            "FileMode.Create"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "returns>\n    private bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string OriginalFileName",
+            "string SaveFileNameWithOutExt",
+            "string VirtualFolder",
+            "string ServerUrl",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "bool isImage",
+            "out string SavedFileNameExtention",
+            "out long FileSize",
+            "out string OriginalFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileNameAndFolderSetup",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileNameWithPath",
+            "strServerUrlName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DocumentFileNameWithPath",
+            "FileMode.Create"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileInformation",
+          "returnType": "returns>\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "Page page",
+            "string ControlID",
+            "out string FileName",
+            "out long FileSize",
+            "out string Message"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUpload",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PhotoUploading",
+          "returnType": "returns>\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string originalFileName",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "\n\n        return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strUploadVirtualFolder",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PhotoUploading",
+          "returnType": "returns>\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "string FileNameWithPath",
+            "string originalFileName",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "Int32 cropx",
+            "Int32 cropy",
+            "Int32 cropwidth",
+            "Int32 cropheight",
+            "Int32 rescalewidth",
+            "Int32 rescaleheight",
+            "Boolean isImageCropped"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploading",
+          "returnType": "\n\n        return",
+          "visibility": "private",
+          "parameters": [
+            "file",
+            "FileNameWithPath",
+            "originalFileName",
+            "SaveFileNameWithOutExt",
+            "strUploadVirtualFolder",
+            "strUploadServerUrl",
+            "IsPhotoUpload",
+            "IsJpegImage",
+            "out Message",
+            "out FileName",
+            "false",
+            "out SavedFileNameExtention",
+            "out FileSize",
+            "cropx",
+            "cropy",
+            "cropwidth",
+            "cropheight",
+            "rescalewidth",
+            "rescaleheight",
+            "isImageCropped"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetRootPath",
+          "returnType": "returns>\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileDelete",
+          "returnType": "param>\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFile",
+          "returnType": " this will not work for  methods. so we need to declare as a non method.\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string DownloadableFileName",
+            "ref string fileExactPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFile",
+          "returnType": "\n\n\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strRootPath + \"\\\\\" + FolderPath + \"\\\\\" + FileName",
+            "FileMode.Open",
+            "FileAccess.Read"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BinaryReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fsFileInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadVideoFile",
+          "returnType": "\n\n\n\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strRootPath + \"\\\\\" + FolderPath + \"\\\\\" + FileName",
+            "FileMode.Open",
+            "FileAccess.Read"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BinaryReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fsFileInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FileUploadComponentWebService.cs",
+      "filePath": "FileUploadService/App_Code/FileUploadComponentWebService.cs",
+      "lineCount": 920,
+      "className": "FileUploadComponentWebService",
+      "namespace": "",
+      "baseClass": "System.Web.Services.WebService",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Web",
+        "System.Web.Services",
+        "System.Web.Services.Protocols",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Utilities",
+        "System.Data",
+        "System.Drawing",
+        "System.Drawing.Drawing2D",
+        "System.Drawing.Imaging",
+        "System.Text",
+        "System.IO",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "ExcelProcess",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFile",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFileWithDynamicSize",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "int acceptedFileSize",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OCDUploadFile",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadVideo",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadCropFile",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "Int32 cropx",
+            "Int32 cropy",
+            "Int32 cropwidth",
+            "Int32 cropheight",
+            "Int32 rescalewidth",
+            "Int32 rescaleheight",
+            "Boolean isImageCropped",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUpload",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "out string Message",
+            "out string FileName",
+            "out long FileSize",
+            "out string OriginalFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteFile",
+          "returnType": "]\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFile",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string DownloadableFileName",
+            "ref string fileExactPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFile",
+          "returnType": "]\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadVideoFile",
+          "returnType": "]\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DefaultImageOverLapping",
+          "returnType": "]\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "bool IsJpegImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyFile",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyfileSourceToDestination",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifying",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileExtention",
+            "bool IsImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileByPath",
+          "returnType": "]\n    public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFileAccessDateTime",
+          "returnType": "\n\n    public Int32",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetServerRootPath",
+          "returnType": "]\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNames",
+          "returnType": "]\n    public List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomWorksSheetsNames",
+          "returnType": "]\n    public List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string uploadFileExtension",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeaders",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelFileHeaders",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelACGMEFileHeaders",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeaders",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataSet dsInputTables"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomACGMEExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomACGMEExcelDataForScholarlyActivities",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingCustomExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingExcelDataForUser",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizImportingMatchingHeaders",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "DataSet DsTemplateHeaders",
+            "DataTable DtWorksSheetHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForQuiz",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrative",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyFileByPath",
+          "returnType": "]\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetData",
+          "returnType": "]\n    public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "String excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}

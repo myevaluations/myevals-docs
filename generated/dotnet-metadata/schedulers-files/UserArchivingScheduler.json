@@ -1,0 +1,556 @@
+{
+  "projectName": "UserArchivingScheduler",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/UserArchivingScheduler",
+  "parsedAt": "2026-02-20T17:11:06.495Z",
+  "fileCount": 8,
+  "totalLines": 863,
+  "files": [
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/MyEvalLogs.cs",
+      "lineCount": 145,
+      "className": "MyEvalLogs",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ProcessUserArchiving.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/ProcessUserArchiving.cs",
+      "lineCount": 241,
+      "className": "ProcessUserArchiving",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.DataAccess.SQL",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Data",
+        "System.IO",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserArchivingProcess",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserArchivingProcess",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEmailValidationForUserAfterArchiving",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentUser",
+            "2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEmailValidationForUserAfterArchiving",
+          "returnType": "\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "string userIds",
+            "int noticeType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow rowEmail in dtUsers.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string toEmail in toEmailIds"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "\n\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUsersDetailsByNoticeType",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string userIds",
+            "int noticeType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetArchivedUserEmailInformation",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String UserID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AutoArchivingSchedule",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationTemplate",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String userName",
+            "String password",
+            "String email",
+            "String encryptText",
+            "string islogin = \"1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetUsersDetailsByNoticeType",
+        "GetArchivedUserEmailnotificationInformation",
+        "AutoArchivingSchedule",
+        "GetEmailVerificationTemplate"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/Program.cs",
+      "lineCount": 18,
+      "className": "Program",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ProcessUserArchiving",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/Properties/AssemblyInfo.cs",
+      "lineCount": 34,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/UserArchivingScheduler/MyEvalLogs.cs",
+      "lineCount": 145,
+      "className": "MyEvalLogs",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ProcessUserArchiving.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/UserArchivingScheduler/ProcessUserArchiving.cs",
+      "lineCount": 228,
+      "className": "ProcessUserArchiving",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.DataAccess.SQL",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Data",
+        "System.IO",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserArchivingProcess",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserArchivingProcess",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEmailValidationForUserAfterArchiving",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentUser",
+            "2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendPIPReEvaluationReminder",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEmailValidationForUserAfterArchiving",
+          "returnType": "\n\n\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "string userIds",
+            "int noticeType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow rowEmail in dtUsers.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string toEmail in toEmailIds"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "\n\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUsersDetailsByNoticeType",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string userIds",
+            "int noticeType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AutoArchivingSchedule",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationTemplate",
+          "returnType": "\n\n        public DataTable",
+          "visibility": "private",
+          "parameters": [
+            "String userName",
+            "String password",
+            "String email",
+            "String encryptText",
+            "string islogin = \"1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetQueueListForArchiving",
+        "GetUsersDetailsByNoticeType",
+        "AutoArchivingSchedule",
+        "GetEmailVerificationTemplate"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/UserArchivingScheduler/Program.cs",
+      "lineCount": 18,
+      "className": "Program",
+      "namespace": "UserArchivingScheduler",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ProcessUserArchiving",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/UserArchivingScheduler/Properties/AssemblyInfo.cs",
+      "lineCount": 34,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

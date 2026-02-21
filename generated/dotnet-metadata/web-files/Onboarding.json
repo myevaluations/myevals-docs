@@ -1,0 +1,2769 @@
+{
+  "directory": "Onboarding",
+  "directoryPath": "Web/Onboarding",
+  "parsedAt": "2026-02-20T17:10:59.293Z",
+  "fileCount": 13,
+  "totalLines": 5364,
+  "files": [
+    {
+      "fileName": "CropUserImage.aspx.cs",
+      "filePath": "Web/Onboarding/CropUserImage.aspx.cs",
+      "lineCount": 39,
+      "className": "Onboarding_CropUserImage",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "DownloadOnboardingDocuments.aspx.cs",
+      "filePath": "Web/Onboarding/DownloadOnboardingDocuments.aspx.cs",
+      "lineCount": 213,
+      "className": "Onboarding_DownloadOnboardingDocuments",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "Ionic.Zip",
+        "System.IO",
+        "HelloSign",
+        "System.Configuration",
+        "System.Net",
+        "System.Text.RegularExpressions"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Client",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ZipFile",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drItem in dtAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fileBytes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsBase64String",
+          "returnType": "\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFileFromURL",
+          "returnType": "\n\n    private byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string url"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "OnboardingDashboard.aspx.cs",
+      "filePath": "Web/Onboarding/OnboardingDashboard.aspx.cs",
+      "lineCount": 225,
+      "className": "Onboarding_OnboardingDashboard",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.EssentialActivities",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BSNProgramManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroupDepartment_OnSelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlOnboardingDepartments_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroup_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "OnboardingNotes.aspx.cs",
+      "filePath": "Web/Onboarding/OnboardingNotes.aspx.cs",
+      "lineCount": 137,
+      "className": "Onboarding_OnboardingNotes",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "System.Text"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAdminNotes.Tables[0]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drRow in dsAdminNotes.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendMessage_Click",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "OnboardingReviewNotes.aspx.cs",
+      "filePath": "Web/Onboarding/OnboardingReviewNotes.aspx.cs",
+      "lineCount": 134,
+      "className": "Onboarding_OnboardingReviewNotes",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "System.Text"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAdminNotes.Tables[0]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drRow in dsAdminNotes.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSendMessage_Click",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "PrintOnboardingDashboard.aspx.cs",
+      "filePath": "Web/Onboarding/PrintOnboardingDashboard.aspx.cs",
+      "lineCount": 682,
+      "className": "Onboarding_PrintOnboardingDashboard",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.HtmlControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "System.Data",
+        "System.Text",
+        "iTextSharp.text",
+        "iTextSharp.text.html.simpleparser",
+        "iTextSharp.text.pdf",
+        "System.IO",
+        "System.Text.RegularExpressions",
+        "Ionic.Zip",
+        "System.Reflection",
+        "MyEvaluations.Business.Common",
+        "HelloSign",
+        "System.Configuration",
+        "System.Net"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocumentTypeInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string item in strRequirementGroupOrder.Split('",
+            "'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "select",
+          "returnType": " equals p.Value",
+          "visibility": "private",
+          "parameters": [
+            "new\n                                         {\n                                             RequirementGroupID = row.Field<Int64>(\"RequirementGroupID\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAssignments.Tables[1]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAssignments.Tables[2]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAssignments.Tables[3]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": "CustomFormFieldID",
+          "visibility": "private",
+          "parameters": [
+            "\" + strFormIDs + \""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dvCustomForms1.ToTable("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsAssignments.Tables[4]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drGroup in dtRequireGroups.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvPriod in dvPeriods"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvAssignment in dvUserAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvForms in dvCustomForms"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocumentTypeInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPDFHeader",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "string departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPDFFooter",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateFoldersForPDF",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSavePDF_Click",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateFoldersForPDF",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ViewState[\"DepartmentID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlToPdfBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "PageSize.A4.Rotate("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlPdfPage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFile",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "_pdfPath + STRDOUBLESLASHES + departmentID + STRDOUBLESLASHES + _strDATETIMEFOLDER + STRDOUBLESLASHES + strFileName",
+            "strFileName",
+            "file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDownloadDocuments_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Client",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ZipFile",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DocumentTypeInfo documentTypeInfo in listDocumentTypeInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fileBytes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFileFromURL",
+          "returnType": "\n\n    private byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string url"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownLoadFile",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string pdfFileName",
+            "byte[] file"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "T rec in varlist"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "PropertyInfo pi in oProps"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataColumn",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "pi.Name",
+            "colType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "PropertyInfo pi in oProps"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RestoreAssignments.aspx.cs",
+      "filePath": "Web/Onboarding/RestoreAssignments.aspx.cs",
+      "lineCount": 118,
+      "className": "Onboarding_RestoreAssignments",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAssignments",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAssignments",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnRestore_click",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "RepeaterItem rptItem in rptAssignments.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAssignments",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "SpouseDependentsEmergency.ascx.cs",
+      "filePath": "Web/Onboarding/SpouseDependentsEmergency.ascx.cs",
+      "lineCount": 70,
+      "className": "Onboarding_SpouseDependentsEmergency",
+      "namespace": "",
+      "baseClass": "System.Web.UI.UserControl",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "OnboardingCredentialingBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDependentType",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDependentType",
+          "returnType": "\n    public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "user-control"
+    },
+    {
+      "fileName": "TrainingGapHistory.ascx.cs",
+      "filePath": "Web/Onboarding/TrainingGapHistory.ascx.cs",
+      "lineCount": 105,
+      "className": "Onboarding_TrainingGapHistory",
+      "namespace": "",
+      "baseClass": "System.Web.UI.UserControl",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnboardingCredentialingBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "user-control"
+    },
+    {
+      "fileName": "UpdateOBCDocumentStatus.aspx.cs",
+      "filePath": "Web/Onboarding/UpdateOBCDocumentStatus.aspx.cs",
+      "lineCount": 45,
+      "className": "Onboarding_UpdateOBCDocumentStatus",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "System.Data",
+        "System.IO",
+        "MyEvaluations.Business.Common"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSave_Click",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtDocuments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "UploadMissingCertifications.aspx.cs",
+      "filePath": "Web/Onboarding/UploadMissingCertifications.aspx.cs",
+      "lineCount": 91,
+      "className": "Onboarding_UploadMissingCertifications",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.Business.Portfolio.FileUploadComponent",
+        "MyEvaluations.Business.Common",
+        "System.IO",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Portfolio",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnUpload_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtDocuments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ViewCustomFormDetails.aspx.cs",
+      "filePath": "Web/Onboarding/ViewCustomFormDetails.aspx.cs",
+      "lineCount": 3469,
+      "className": "Onboarding_ViewCustomFormDetails",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.HtmlControls",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio.FileUploadComponent",
+        "System.Configuration",
+        "MyEvaluations.Business.Common",
+        "System.IO",
+        "System.Text",
+        "MyEvaluations.Business.RightSignature",
+        "System.Xml",
+        "HelloSign",
+        "System.Net",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Collections"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Security",
+        "Portfolio",
+        "Common",
+        "RightSignature"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnboardingCredentialingManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnboardingCredentialingBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptValue",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FieldsLookupManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Init",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "completed",
+          "returnType": " Yes, even if admin has completed the form the status should be",
+          "visibility": "private",
+          "parameters": [
+            "green"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateSignatureStatus",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "reqSignatureDocumentID",
+            "requirementGroupAssignmentID",
+            "isUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsForms.Tables[4]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dsForms.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "funDownloadOnboardingFile",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "\" + strDownloadParameters + \""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnViewDocument",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "\" + strDownloadParameters + \""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Client",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnOpenSignature",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + loginUserSignature[0].SignatureId + \"'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnSendReminder",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + row[\"DocumentTypeID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnAuditTrail",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + signatureDocumentID + \"'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnDownloadSignatureDocument",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + strDownloadParameters + \"'",
+            "0",
+            "'\" + signatureDocumentID + \"'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnDownloadSignatureDocument",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "'\" + strDownloadParameters + \"'",
+            "1",
+            "'\" + signatureDocumentID + \"'"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocumentApi",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PostBackTrigger",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PostBackTrigger",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSignatureAuditTrail",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string documentID",
+            "HtmlGenericControl divSignatureDetails",
+            "HtmlTableRow trSignatureDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Client",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Signature signature in signatures"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsStatusVisible",
+          "returnType": "\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string isVerified"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateSignatureStatus",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string signatureUniqueID",
+            "Int64 requirementGroupAssignmentID",
+            "Int16 isUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Client",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSignature_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateSignatureStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "hdnSignatureDocumentID.Value",
+            "requirementGroupAssignmentID",
+            "isUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnFinish_OnClick",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "0",
+            "isCustom"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "rptDocumentDetails_OnItemDataBound",
+          "returnType": "\n\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "RepeaterItemEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindSignatureAuditTrail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "drv[\"SignatureUniqueID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArrayList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"N/A\"",
+            "\"N/A\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DropDownList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArrayList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DropDownList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStartDateHeader",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "drv[\"VerifiedDocumentLocationID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStartDateHeader",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "drv[\"VerifiedDocumentLocationID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStartDateHeader",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "drv[\"VerifiedDocumentLocationID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindDrivingLicenseStates",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ddlDriverLicenseState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStartDateHeader",
+          "returnType": "\n\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string verifiedDocumentLocationID",
+            "string sectionCode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "rptCustomDetails_OnItemDataBound",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "RepeaterItemEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextBox",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextBox",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RegularExpressionValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Literal",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "tcal",
+          "returnType": "\n\t                    new",
+          "visibility": "private",
+          "parameters": [
+            "{\n\t\t                    // form name\n\t\t                    'formname': 'form1'",
+            "// input name\n\t\t                    'controlname': '\" + txtInput.ClientID + @\"'\n\t                    }"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextBox",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnOnlyNumsAllowedInteger",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "event"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextBox",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnOnlyNumsAllowedFloat",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "event"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DropDownList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtLookUpData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "\"(Select One"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Image",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HiddenField",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUpload",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlInputButton",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnUploadUserImage",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "\" + ViewState[\"RequirementGroupAssignmentID\"] + \"",
+            "\\\"\" + \"flUserImage\" + drv[\"CustomFieldID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlInputButton",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnCropImage",
+          "returnType": "return",
+          "visibility": "private",
+          "parameters": [
+            "\" + ViewState[\"RequirementGroupAssignmentID\"] + \"",
+            "\\\"\" + \"flUserImage\" + drv[\"CustomFieldID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextBox",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RequiredFieldValidator",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Label",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtLookUpData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveLater_OnClick",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "1",
+            "isCustom"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveData",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Int16 isFinishAndLater",
+            "Int16 isCustom"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int64"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int16"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "RepeaterItem rptItem in rptCustomDetails.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "spouseXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "RepeaterItem rptItem in rptDocumentDetails.Items"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DisableTBTestResults",
+          "returnType": "\n\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string code",
+            "string locationID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DisableTBTestResultsViewMode",
+          "returnType": "\n\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string code",
+            "string locationID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DisableSSNNumber",
+          "returnType": "\n\n\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string code"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DisableDrivingLicense",
+          "returnType": "\n\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string code"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DisableSuperVisorResultsViewMode",
+          "returnType": "\n\n    public Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string code",
+            "string locationID",
+            "string view"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetPFCreditRequiredDetails",
+        "GetMaxPGYByUserIDOrDepartmentID"
+      ],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ViewDocumentDetails.aspx.cs",
+      "filePath": "Web/Onboarding/ViewDocumentDetails.aspx.cs",
+      "lineCount": 36,
+      "className": "Onboarding_ViewDocumentDetails",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

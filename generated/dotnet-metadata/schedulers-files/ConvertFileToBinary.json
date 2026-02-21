@@ -1,0 +1,264 @@
+{
+  "projectName": "ConvertFileToBinary",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/ConvertFileToBinary",
+  "parsedAt": "2026-02-20T17:11:05.258Z",
+  "fileCount": 4,
+  "totalLines": 420,
+  "files": [
+    {
+      "fileName": "Documents.cs",
+      "filePath": "Schedulers/ConvertFileToBinary/Convert/Documents.cs",
+      "lineCount": 66,
+      "className": "Documents",
+      "namespace": "Convert",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.DataAccess.SQL"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetPFDocuentsData",
+          "returnType": "\n        public DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBinaryData",
+          "returnType": "\n\n        public DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string AffiliateAgreementID",
+            "Byte[] file",
+            "string contentType",
+            "string DocumentSectionCode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBinaryData",
+          "returnType": " Error ocurred while executing the scheduler process for",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetPFDocumentsForBinaryConvertion",
+        "UpdateBinaryData"
+      ]
+    },
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/ConvertFileToBinary/Convert/MyEvalLogs.cs",
+      "lineCount": 144,
+      "className": "MyEvalLogs",
+      "namespace": "Convert",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/ConvertFileToBinary/Convert/Program.cs",
+      "lineCount": 173,
+      "className": "Program",
+      "namespace": "Convert",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.IO",
+        "System.Web",
+        "System.Web.UI",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Documents",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in data.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Pathinfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "_pdfPath",
+            "FileMode.Open",
+            "FileAccess.Read"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "conversion",
+          "returnType": " foreachloop Error ocurred while executing the scheduler process for",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "conversion",
+          "returnType": " Error ocurred while executing the scheduler process for",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReturnFilebyte",
+          "returnType": "\n     \n        public static Byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string filename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileToByteArray",
+          "returnType": "returns>\n        public static byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string _FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/ConvertFileToBinary/Convert/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

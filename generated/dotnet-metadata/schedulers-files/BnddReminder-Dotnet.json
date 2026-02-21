@@ -1,0 +1,324 @@
+{
+  "projectName": "BnddReminder-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/BnddReminder-Dotnet",
+  "parsedAt": "2026-02-20T17:11:05.221Z",
+  "fileCount": 4,
+  "totalLines": 545,
+  "files": [
+    {
+      "fileName": "BnddReminder.cs",
+      "filePath": "Schedulers/BnddReminder-Dotnet/BnddReminder.cs",
+      "lineCount": 335,
+      "className": "BnddReminder",
+      "namespace": "BnddReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.DataAccess.SQL",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Data",
+        "System.IO",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "summary>\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateBnddReminder",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendLogAsMail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"MYEVALUATIONS.COM: JOB LOG: BNDD Emails\"",
+            "\"system@myevaluations.com\"",
+            "\"david@myevaluations.com",
+            "myevals@jivainfotech.com\"",
+            "strLog"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateBnddReminder",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drDepartment in dtDepartments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drUser in dtUserExpiryDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drStaff in dtStaffInfo.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "at",
+          "returnType": "td><td>Customer Support",
+          "visibility": "private",
+          "parameters": [
+            "646"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertApplicationEmailSchedules",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FromEmail",
+            "ToEmailID",
+            "Subject",
+            "strHTML",
+            "1",
+            "1",
+            "1",
+            "departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AgreementInfoExpiredDate",
+          "returnType": "\n        private DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertApplicationEmailSchedules",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string fromEmailAddress",
+            "string toEmailAddress",
+            "string subject",
+            "string htmlBody",
+            "Int64 loggedInUserID",
+            "Int64 userID",
+            "Int32 emailPriority",
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendLogAsMail",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "string Subject",
+            "string FromAddress",
+            "string ToAddress",
+            "string strFileData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string emailId in emailAddresses"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "ReminderDepartments",
+        "StaffAdminInfo",
+        "AgreementInfoExpiredDate",
+        "InsertApplicationEmailSchedules"
+      ]
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/BnddReminder-Dotnet/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/BnddReminder-Dotnet/Program.cs",
+      "lineCount": 26,
+      "className": "Program",
+      "namespace": "BnddReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BnddReminder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/BnddReminder-Dotnet/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

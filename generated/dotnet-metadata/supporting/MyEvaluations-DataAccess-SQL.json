@@ -1,0 +1,461 @@
+{
+  "projectName": "MyEvaluations.DataAccess.SQL",
+  "layer": "supporting",
+  "projectPath": "MyEvaluations.DataAccess.SQL",
+  "parsedAt": "2026-02-20T17:11:06.568Z",
+  "fileCount": 4,
+  "totalLines": 561,
+  "files": [
+    {
+      "fileName": "ApplicationCustomErrorEvent.cs",
+      "filePath": "MyEvaluations.DataAccess.SQL/ApplicationCustomErrorEvent.cs",
+      "lineCount": 23,
+      "className": "ApplicationCustomErrorEvent",
+      "namespace": "MyEvaluations.DataAccess.SQL",
+      "baseClass": "System.Web.Management.WebErrorEvent",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "FormatCustomEventDetails",
+          "returnType": "\r\n        public override void",
+          "visibility": "private",
+          "parameters": [
+            "System.Web.Management.WebEventFormatter formatter"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "CustomCommand.cs",
+      "filePath": "MyEvaluations.DataAccess.SQL/CustomCommand.cs",
+      "lineCount": 154,
+      "className": "CustomCommand",
+      "namespace": "MyEvaluations.DataAccess.SQL",
+      "baseClass": null,
+      "interfaces": [
+        "IDisposable"
+      ],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data.SqlClient",
+        "System.Data.Common",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Dispose",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddParameterWithValue",
+          "returnType": "\r\n\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetParameterWithValue",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string parameterName",
+            "object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "parameterName",
+            "value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsNullValue",
+          "returnType": "\r\n\r\n        private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCommand",
+          "returnType": "\r\n\r\n        internal SqlCommand",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddOutParameterWithValue",
+          "returnType": "returns>\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "DBDataAccess.cs",
+      "filePath": "MyEvaluations.DataAccess.SQL/DBDataAccess.cs",
+      "lineCount": 348,
+      "className": "DBDataAccess",
+      "namespace": "MyEvaluations.DataAccess.SQL",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data.SqlClient",
+        "System.Data",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetConnectionString",
+          "returnType": "\r\n        public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTransaction",
+          "returnType": "\r\n\r\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand commandParent",
+            "CustomCommand[] commandChildren",
+            "String foreignKeyColumnName",
+            "out Int32 primaryKeyID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand childCommand in commandChildren"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTransaction",
+          "returnType": "\r\n\r\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand[] commandList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand Command in commandList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTable",
+          "returnType": "\r\n\r\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTableEvalReminder",
+          "returnType": "\r\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteDataReader",
+          "returnType": "\r\n        public static IDataReader",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "GetConnectionString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteDataSet",
+          "returnType": "\r\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteScalar",
+          "returnType": "\r\n\r\n        public static Object",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TempLogErrorMessage",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "command",
+            "er"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteNonQuery",
+          "returnType": "\r\n\r\n        public static int",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteNonQuery",
+          "returnType": "\r\n\r\n        public static Int32",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command",
+            "bool throwOnExceptions"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TempLogErrorMessage",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "command",
+            "ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateDataSet",
+          "returnType": "Added By  JIVA for Updating through DataSet.\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "SqlCommand command",
+            "DataSet ds"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOutParameterValue",
+          "returnType": "\r\n\r\n        public static Object",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command",
+            "String parameterName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TempLogErrorMessage",
+          "returnType": "\r\n\r\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ApplicationCustomErrorEvent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"DB: \" + ex.Message",
+            "null",
+            "\"\"",
+            "ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "SqlParameter param in command.GetCommand("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTableBool",
+          "returnType": "2015\r\n        public static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "MyEvaluations.DataAccess.SQL/Properties/AssemblyInfo.cs",
+      "lineCount": 36,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "directory": "MyGME",
+  "directoryPath": "Web/MyGME",
+  "parsedAt": "2026-02-20T17:10:58.774Z",
+  "fileCount": 1,
+  "totalLines": 167,
+  "files": [
+    {
+      "fileName": "MyGMELogin.aspx.cs",
+      "filePath": "Web/MyGME/MyGMELogin.aspx.cs",
+      "lineCount": 167,
+      "className": "MyGME_MyGMELogin",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "System.Net",
+        "System.IO",
+        "System.Text",
+        "RC4EnDeCrypt",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "receiveStream",
+            "Encoding.UTF8"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RC4",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strKey",
+            "strResponce"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetKeyValue",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "URlDecode",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string str"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

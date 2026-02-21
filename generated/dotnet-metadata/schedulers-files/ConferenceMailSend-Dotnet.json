@@ -1,0 +1,572 @@
+{
+  "projectName": "ConferenceMailSend-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/ConferenceMailSend-Dotnet",
+  "parsedAt": "2026-02-20T17:11:05.248Z",
+  "fileCount": 6,
+  "totalLines": 946,
+  "files": [
+    {
+      "fileName": "ConferenceMailSend.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/ConferenceMailSend.cs",
+      "lineCount": 553,
+      "className": "ConferenceMailSend",
+      "namespace": "ConferenceMailSend",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.IO",
+        "System.Net.Mail",
+        "System.Configuration",
+        "System.Net",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Common"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "summary>\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateConferenceEvaluationStatus",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateMailForConference",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateMailForConference",
+          "returnType": "summary>\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsNull",
+          "returnType": "D.DepartmentID where CA.AttendanceSubmitDate is Not null  and",
+          "visibility": "private",
+          "parameters": [
+            "CCE.IsEmailSent",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "1  and CCE.EMailSentDate is null and CCE.CompletedDate is NULL  and CCE.DeclinedDate is NULL AND",
+          "visibility": "private",
+          "parameters": [
+            "CCE.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "1 and",
+          "visibility": "private",
+          "parameters": [
+            "cs.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "0 and",
+          "visibility": "private",
+          "parameters": [
+            "dc.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr1 in dtResult1.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr2 in dtResult2.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "convert",
+          "returnType": "SELECT CT.Name as EvaluationName, DC.Name as ConferenceName,",
+          "visibility": "private",
+          "parameters": [
+            "varchar(15"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "convert",
+          "returnType": " ConferenceDate ,",
+          "visibility": "private",
+          "parameters": [
+            "varchar(15"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": " CCE.ScheduleID WHERE",
+          "visibility": "private",
+          "parameters": [
+            "CCE.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "0  AND",
+          "visibility": "private",
+          "parameters": [
+            "DC.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "0 AND",
+          "visibility": "private",
+          "parameters": [
+            "CS.IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SQLNumVal",
+          "returnType": "returns>\r\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SQLStrVal",
+          "returnType": "returns>\r\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\r\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Status",
+          "returnType": " Update Conference  Evaluation",
+          "visibility": "private",
+          "parameters": [
+            "Closing the Conference evaluations based on the department Setting"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateConferenceEvaluationStatus",
+          "returnType": "summary>\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": "summary>\r\n        private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "SELECT CASE WHEN DeclinedDate IS NULL THEN 0 ELSE 1 END  Decline, DeclinedDate FROM DH_CCEvaluation WHERE",
+          "visibility": "private",
+          "parameters": [
+            "IsDeleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": " 4 AND U.UserID",
+          "visibility": "private",
+          "parameters": [
+            "SELECT UserID FROM SEC_UserRoles WHERE RoleID IN (2",
+            "4",
+            "7"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtResult6.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "at",
+          "returnType": "td><td>Customer Support",
+          "visibility": "private",
+          "parameters": [
+            "646"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "at",
+          "returnType": "td><td>Customer Support",
+          "visibility": "private",
+          "parameters": [
+            "646"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailMessage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "ConfigurationManager.AppSettings[\"FromEmailAddress\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NetworkCredential",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "ConfigurationManager.AppSettings[\"SMTP_EmailAddress\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnGetEmailReminderStatus",
+          "returnType": "\r\n\r\n        private int",
+          "visibility": "private",
+          "parameters": [
+            "String nDepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "UpdateConferenceEvaluationStatusFromScheduler"
+      ]
+    },
+    {
+      "fileName": "CustomCommand.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/CustomCommand.cs",
+      "lineCount": 154,
+      "className": "CustomCommand",
+      "namespace": "ConferenceMailSend",
+      "baseClass": null,
+      "interfaces": [
+        "IDisposable"
+      ],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data.SqlClient",
+        "System.Data.Common",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Dispose",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddParameterWithValue",
+          "returnType": "\r\n\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsNullValue",
+          "returnType": "\r\n\r\n        private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCommand",
+          "returnType": "\r\n\r\n        internal SqlCommand",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddOutParameterWithValue",
+          "returnType": "returns>\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "ConferenceMailSend",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConferenceMailSend",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Settings.Designer.cs",
+      "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/Properties/Settings.Designer.cs",
+      "lineCount": 38,
+      "className": "Settings",
+      "namespace": "ConferenceMailSend.Properties",
+      "baseClass": "global::System.Configuration.ApplicationSettingsBase",
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

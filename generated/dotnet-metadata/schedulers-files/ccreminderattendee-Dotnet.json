@@ -1,0 +1,286 @@
+{
+  "projectName": "ccreminderattendee-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/ccreminderattendee-Dotnet",
+  "parsedAt": "2026-02-20T17:11:06.508Z",
+  "fileCount": 4,
+  "totalLines": 438,
+  "files": [
+    {
+      "fileName": "ConferenceAttendeeLogger.cs",
+      "filePath": "Schedulers/ccreminderattendee-Dotnet/ccreminderattendee/ccreminderattendee/ConferenceAttendeeLogger.cs",
+      "lineCount": 145,
+      "className": "MyEvalsConferenceReminderLogs",
+      "namespace": "ccreminderattendee",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ConferenceAttendeeReminders.cs",
+      "filePath": "Schedulers/ccreminderattendee-Dotnet/ccreminderattendee/ccreminderattendee/ConferenceAttendeeReminders.cs",
+      "lineCount": 239,
+      "className": "ConferenceAttendeeReminders",
+      "namespace": "ccreminderattendee",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration",
+        "System.IO",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Common"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateConferenceEvaluationStatusFromScheduler",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateConferenceAssignmentReminders",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateConferenceAssignmentReminders",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr1 in dtdepts.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drAssignment in dtResultAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEmailTemplates.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertApplicationEmailSchedules",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dr",
+            "dr[\"Subject\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateConferenceEvaluationStatusFromScheduler",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertApplicationEmailSchedules",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr",
+            "String Subject",
+            "Int64 DepartmentID",
+            "Int64 LoggedinUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": "\n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetConferenceAssignmentsForScheduler",
+        "GetEmailTemplateForConferenceAssignment",
+        "UpdateConferenceEvaluationStatusFromScheduler",
+        "InsertApplicationEmailSchedules"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/ccreminderattendee-Dotnet/ccreminderattendee/ccreminderattendee/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "ccreminderattendee",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConferenceAttendeeReminders",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/ccreminderattendee-Dotnet/ccreminderattendee/ccreminderattendee/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

@@ -1,0 +1,2063 @@
+{
+  "projectName": "OnCallAutoAssignment-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/OnCallAutoAssignment-Dotnet",
+  "parsedAt": "2026-02-20T17:11:06.087Z",
+  "fileCount": 4,
+  "totalLines": 5029,
+  "files": [
+    {
+      "fileName": "OnCallBusiness.cs",
+      "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/OnCallBusiness.cs",
+      "lineCount": 3686,
+      "className": "OnCallBusiness",
+      "namespace": "OnCallAutoAssignment_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Data",
+        "System.Text",
+        "MyEvaluations.Logging",
+        "MyEvaluations.DataAccess.SQL",
+        "RestSharp",
+        "System.IO",
+        "System.Configuration",
+        "System.Threading",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtDepartmentListForAutoAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignments",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtPendingEvaluationQueuesForAuto",
+            "ProgramcategoryID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtPendingEvaluationQueuesForAuto"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drAssignment in distinctValues.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "sendEmails",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "string strDepartmentIDsForLog"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEmailTemplate.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignments",
+          "returnType": " Generate Auto OnCall evaluation assignments.\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtPendingEvalsInfo",
+            "int ProgramcategoryID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drEval in dtPendingEvalsInfo.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignmentsForEachTemplate",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtTemplateList",
+            "templateID",
+            "spInfoTypeID",
+            "overLapDays",
+            "callClinicOverlap",
+            "rotationID",
+            "departmentID",
+            "batchStartDate",
+            "batchEndDate",
+            "deptValidFrom",
+            "deptValidTo",
+            "academicYear",
+            "evaluationScheduleID",
+            "isExcluded",
+            "adminUserID",
+            "strAuto",
+            "callClinic",
+            "ProgramcategoryID",
+            "strAutoCall",
+            "strAutoClinic",
+            "dtRotationAssignments",
+            "shiftID",
+            "clinicID",
+            "callID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignmentsForEachTemplate",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtTemplateList",
+            "templateID",
+            "spInfoTypeID",
+            "overLapDays",
+            "callClinicOverlap",
+            "rotationID",
+            "departmentID",
+            "batchStartDate",
+            "batchEndDate",
+            "deptValidFrom",
+            "deptValidTo",
+            "academicYear",
+            "evaluationScheduleID",
+            "isExcluded",
+            "adminUserID",
+            "strAuto",
+            "callClinic",
+            "ProgramcategoryID",
+            "strAutoCall",
+            "strAutoClinic",
+            "dtRotationAssignments",
+            "shiftID",
+            "clinicID",
+            "callID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignmentsForEachTemplate",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtTemplateList",
+            "templateID",
+            "spInfoTypeID",
+            "overLapDays",
+            "callClinicOverlap",
+            "rotationID",
+            "departmentID",
+            "batchStartDate",
+            "batchEndDate",
+            "deptValidFrom",
+            "deptValidTo",
+            "academicYear",
+            "evaluationScheduleID",
+            "isExcluded",
+            "adminUserID",
+            "strAuto",
+            "callClinic",
+            "ProgramcategoryID",
+            "strAutoCall",
+            "strAutoClinic",
+            "dtRotationAssignments",
+            "shiftID",
+            "clinicID",
+            "callID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignmentsForEachTemplate",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtTemplateList",
+            "templateID",
+            "spInfoTypeID",
+            "overLapDays",
+            "callClinicOverlap",
+            "rotationID",
+            "departmentID",
+            "batchStartDate",
+            "batchEndDate",
+            "deptValidFrom",
+            "deptValidTo",
+            "academicYear",
+            "evaluationScheduleID",
+            "isExcluded",
+            "adminUserID",
+            "strAuto",
+            "callClinic",
+            "ProgramcategoryID",
+            "strAutoCall",
+            "strAutoClinic",
+            "dtRotationAssignments",
+            "shiftID",
+            "clinicID",
+            "callID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAssignmentsForEachTemplate",
+          "returnType": "\n        protected void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtTemplateList",
+            "Int64 templateID",
+            "Int32 spInfoTypeID",
+            "Int32 overLapDays",
+            "Int32 callClinicOverlap",
+            "Int64 rotationID",
+            "Int64 departmentID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate",
+            "DateTime deptValidFrom",
+            "DateTime deptValidTo",
+            "Int64 academicYear",
+            "Int64 evaluationScheduleID",
+            "Int16 isExcluded",
+            "Int64 adminUserID",
+            "Int16 strAuto",
+            "Int32 callClinic",
+            "Int32 ProgramcategoryID",
+            "Int16 strAutoCall",
+            "Int16 strAutoClinic",
+            "DataTable dtRotationAssignments",
+            "Int64 shiftId",
+            "Int64 clinicId",
+            "Int64 callId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drAssign in dtTemplateList.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildQuery in dtBuildSQLQuery.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtBuildSQLQueryCallClinic.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtBuildSQLQueryCallClinic.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Resident",
+          "returnType": "Attending of",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Fellow",
+          "returnType": " Attending of",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildQuery in dtBuildSQLQuery.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtBuildSQLQueryCallClinic.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtBuildSQLQueryCallClinic.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildQuery in dtBuildSQLQuery.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextQuery in dtBuildNextSQLQuery.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnGetIntersectionDates",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtselStartDate",
+            "dtselEndDate",
+            "dtSubjectStartDate",
+            "dtSubjectEndDate",
+            "ref dtStartDate",
+            "ref dtEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildSql in dtBuildSql.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drBuildNextSQL in dtBuildNextSQL.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "\n\n        protected static DateTime",
+          "visibility": "private",
+          "parameters": [
+            "String inputDateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsProgramEval",
+          "returnType": " False\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 rotationID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "1,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsProgramEvalByShift",
+          "returnType": "\n\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 shiftID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "1,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsProgramEvalbyClinic",
+          "returnType": "\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 clinicID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "1,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsProgramEvalbyCall",
+          "returnType": "\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 callID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "1,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsClinicProgramEval",
+          "returnType": " False\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 rotationID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "1,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExists",
+          "returnType": " False\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "Int64 subjectID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 rotationID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "departmentID, userID, subjectID,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsbyShift",
+          "returnType": "\n\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "Int64 subjectID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 shiftID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "departmentID, userID, subjectID,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsbyClinic",
+          "returnType": "\n\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "Int64 subjectID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 clinicID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "departmentID, userID, subjectID,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckExistsbyCall",
+          "returnType": "\n\n\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 userID",
+            "Int64 templateID",
+            "Int64 subjectID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 departmentID",
+            "Int64 loginUserID",
+            "bool isFirstMailSent",
+            "Int16 isAssignmentFound",
+            "Int64 callID",
+            "Int16 isExcluded",
+            "Int64 SpInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Right",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "\"0\" & Month(EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": "departmentID, userID, subjectID,",
+          "visibility": "private",
+          "parameters": [
+            "SQLStartDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToDateTime",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SQLEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckDate",
+          "returnType": " False\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "DateTime dtselStartDate",
+            "DateTime dtselEndDate",
+            "DateTime StartDate",
+            "DateTime EndDate",
+            "Int32 OverlapDays",
+            "DataTable dtUserAssignments",
+            "Int64 sourceUserID",
+            "Int64 destUserID",
+            "Int64 rotationUniqueID",
+            "Int64 rotationID",
+            "Int64 shiftId",
+            "Int64 clinicId",
+            "Int64 callId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtUserAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtUserAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckCallDate",
+          "returnType": " False and Reference value ExactDays as numeric\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 CallUniqueID",
+            "Int64 UserID",
+            "Int64 SubjectID",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int32 OverlapDays"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drFirstCallServiceDetails in dtFirstCallServiceDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drSecondCallServiceDetails in dtSecondCallServiceDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckClinicDate",
+          "returnType": " False and Reference value ExactDays as numeric\n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 ClinicUniqueID",
+            "Int64 UserID",
+            "Int64 SubjectID",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int32 OverlapDays"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drFirstCallServiceDetails in dtFirstCallServiceDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drSecondCallServiceDetails in dtSecondCallServiceDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnCheckDateRange",
+          "returnType": " \n        protected bool",
+          "visibility": "private",
+          "parameters": [
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "DateTime dtCheckDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnGetIntersectionDates",
+          "returnType": " fnGetIntersectionDates\n        protected void",
+          "visibility": "private",
+          "parameters": [
+            "DateTime dtUserStartDate",
+            "DateTime dtUserEndDate",
+            "DateTime dtSubjectStartDate",
+            "DateTime dtSubjectEndDate",
+            "ref DateTime dtFinalStartDate",
+            "ref DateTime dtFinalEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "OnCallManager.cs",
+      "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/OnCallManager.cs",
+      "lineCount": 1288,
+      "className": "OnCallManager",
+      "namespace": "OnCallAutoAssignment_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "MyEvaluations.Logging",
+        "MyEvaluations.DataAccess.SQL",
+        "RestSharp",
+        "System.IO",
+        "System.Configuration",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetDepartmentListForAutoAssignments",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateLastRunDateForDepartment",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "int DepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckScheduleUpdated",
+          "returnType": "returns>\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "int academicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateEvaluationSchedulesForAuto",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "int academicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPendingEvaluationQueuesForAuto",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateLogofAssignments",
+          "returnType": "\n\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int32 academicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendNoAttendingOverlapNotifications",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DropIndexesForRotationAssignmentDetailAuto",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteOnCallTempTablesData",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateEvaluationScheduleStatus",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 evaluationScheduleID",
+            "string StatusType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteEvaluations",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 rotationID",
+            "Int64 templateID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteEvaluationsbyShift",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 shiftID",
+            "Int64 templateID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteEvaluationsbyClinic",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 clinicID",
+            "Int64 templateID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteEvaluationsbyCall",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 callID",
+            "Int64 templateID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestoreDeletedEvaluations",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 rotationID",
+            "Int64 templateID",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAcademicDateRange",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 academicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLatestAmionScheduleforAcadYear",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 academicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateRotationInfo",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 rotationID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertOnCallTempTablesData",
+          "returnType": " Insert OnCall Temp Tables Data\n        public static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 amionScheduleID",
+            "Int64 amionUniqueRotationID",
+            "Int64 academicYear",
+            "DateTime batchStartDate",
+            "DateTime batchEndDate",
+            "Int64 evaluationScheduleID",
+            "Int32 rotationGapDays",
+            "Int64 rotationID",
+            "Int32 callClinic",
+            "Int64 shiftID",
+            "Int64 clinicID",
+            "Int64 callID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateIndexesForRotationAssignmentDetailAuto",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallTemplateListByRotation",
+          "returnType": "returns>\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 rotationID",
+            "Int64 templateID",
+            "Int32 spInfoTypeID",
+            "Int64 evaluationScheduleID",
+            "Int64 academicYear = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallTemplateListByShift",
+          "returnType": "\n\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 shiftID",
+            "Int64 templateID",
+            "Int32 spInfoTypeID",
+            "Int64 evaluationScheduleID",
+            "Int64 academicYear = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallTemplateListByClinic",
+          "returnType": "\n\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 clinicID",
+            "Int64 templateID",
+            "Int32 spInfoTypeID",
+            "Int64 evaluationScheduleID",
+            "Int64 academicYear = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallTemplateListByCall",
+          "returnType": "\n\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 callID",
+            "Int64 templateID",
+            "Int32 spInfoTypeID",
+            "Int64 evaluationScheduleID",
+            "Int64 academicYear = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallAudienceCode",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 TemplateID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildSQLQuery",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "int intTypeNumber",
+            "Int64 lngSpinfo",
+            "Int64 intEnOverLapDays",
+            "Int64 intCallClinicOverlap",
+            "Int64 intEnRotationID",
+            "Int64 lngTemplateID",
+            "Int64 intDepartmentID",
+            "DateTime dtEnStartDate",
+            "DateTime dtEnEndDate",
+            "DateTime dtValidFrom",
+            "DateTime dtValidTo",
+            "Int64 intAcademicYear",
+            "Int64 IsPGYSpecific",
+            "Int64 EvaluatorPGYLevel",
+            "Int64 EvaluateePGYLevel",
+            "Int64 intEnShiftID",
+            "Int64 intEnClinicID",
+            "Int64 intEnCallID",
+            "Int32 CheckYear = 0",
+            "Int16 AddOneMore = 0",
+            "Int64 evaluationScheduleID = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildSQLQuery",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "int intTypeNumber",
+            "Int64 lngSpinfo",
+            "Int64 intEnOverLapDays",
+            "Int64 intCallClinicOverlap",
+            "Int64 intEnRotationID",
+            "Int64 lngTemplateID",
+            "Int64 intDepartmentID",
+            "DateTime dtEnStartDate",
+            "DateTime dtEnEndDate",
+            "DateTime dtValidFrom",
+            "DateTime dtValidTo",
+            "Int64 intAcademicYear",
+            "Int64 IsPGYSpecific",
+            "Int64 EvaluatorPGYLevel",
+            "Int64 EvaluateePGYLevel",
+            "Int64 intEnShiftID",
+            "Int64 intEnClinicID",
+            "Int64 intEnCallID",
+            "Int32 FirstYear",
+            "Int64 UserID",
+            "Int16 CheckYear = 0",
+            "Int16 AddOneMore = 0",
+            "Int64 evaluationScheduleID = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildSQLQuery",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string CreatedBy",
+            "DateTime CreatedDate",
+            "Int32 TargetUserID",
+            "Int32 TemplateID",
+            "Int32 SubjectUserID",
+            "Int64 EvaluationPeriodID",
+            "DateTime StartDate",
+            "DateTime ExpirationDate",
+            "bool IsVoluntary",
+            "Int64 DepartmentRotationID",
+            "bool Is360Evaluation",
+            "DateTime OverlapStartDate",
+            "DateTime OverlapEndDate",
+            "Int32 EvaluatorPGYLevel",
+            "Int32 EvaluateePGYLevel",
+            "Int64 intEnShiftID",
+            "Int64 intEnClinicID",
+            "Int64 intEnCallID",
+            "bool IsAuto",
+            "Int64 EvaluationScheduleId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAutoAssignments",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AdminUserId",
+            "DateTime dtAdded",
+            "Int64 UserID",
+            "Int64 TemplateID",
+            "Int64 SubjectID",
+            "Int16 EvalPeriod",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int16 Voluntary",
+            "Int64 MERotationID",
+            "Int16 Eval360",
+            "DateTime OverlapStartDate",
+            "DateTime OverlapEndDate",
+            "Int16 strAuto",
+            "Int64 EvaluationScheduleId",
+            "Int64 ShiftId",
+            "Int64 ClinicId",
+            "Int64 CallId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAutoAssignmentsbyShift",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AdminUserId",
+            "DateTime dtAdded",
+            "Int64 UserID",
+            "Int64 TemplateID",
+            "Int64 SubjectID",
+            "Int16 EvalPeriod",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int16 Voluntary",
+            "Int64 MERotationID",
+            "Int16 Eval360",
+            "DateTime OverlapStartDate",
+            "DateTime OverlapEndDate",
+            "Int16 strAuto",
+            "Int64 EvaluationScheduleId",
+            "Int64 ShiftId",
+            "Int64 ClinicId",
+            "Int64 CallId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAutoAssignmentsbyClinic",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AdminUserId",
+            "DateTime dtAdded",
+            "Int64 UserID",
+            "Int64 TemplateID",
+            "Int64 SubjectID",
+            "Int16 EvalPeriod",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int16 Voluntary",
+            "Int64 MERotationID",
+            "Int16 Eval360",
+            "DateTime OverlapStartDate",
+            "DateTime OverlapEndDate",
+            "Int16 strAuto",
+            "Int64 EvaluationScheduleId",
+            "Int64 ShiftId",
+            "Int64 ClinicId",
+            "Int64 CallId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAutoAssignmentsbyCall",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AdminUserId",
+            "DateTime dtAdded",
+            "Int64 UserID",
+            "Int64 TemplateID",
+            "Int64 SubjectID",
+            "Int16 EvalPeriod",
+            "DateTime dtStartDate",
+            "DateTime dtEndDate",
+            "Int16 Voluntary",
+            "Int64 MERotationID",
+            "Int16 Eval360",
+            "DateTime OverlapStartDate",
+            "DateTime OverlapEndDate",
+            "Int16 strAuto",
+            "Int64 EvaluationScheduleId",
+            "Int64 ShiftId",
+            "Int64 ClinicId",
+            "Int64 CallId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationExistByCriteria",
+          "returnType": "returns>\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 targetUserID",
+            "Int64 subjectUserID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 rotationID",
+            "Int64 templateID",
+            "Int16 isExclude",
+            "Int64 spInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationExistByCriteriabyShift",
+          "returnType": "\n\n\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 targetUserID",
+            "Int64 subjectUserID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 shiftID",
+            "Int64 templateID",
+            "Int16 isExclude",
+            "Int64 spInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationExistByCriteriabyClinic",
+          "returnType": "\n\n\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 targetUserID",
+            "Int64 subjectUserID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 clinicID",
+            "Int64 templateID",
+            "Int16 isExclude",
+            "Int64 spInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationExistByCriteriabyCall",
+          "returnType": "\n\n\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 targetUserID",
+            "Int64 subjectUserID",
+            "DateTime startDate",
+            "DateTime endDate",
+            "Int64 callID",
+            "Int64 templateID",
+            "Int16 isExclude",
+            "Int64 spInfoTypeID",
+            "Int64 adminID",
+            "Int64 evaluationScheduleID",
+            "DateTime createdDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSpInfotypeNameByID",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 SpInfoTypeId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetMaxPGYforDepartment",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 DepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCallServiceDetails",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AMIONcalluniqueid",
+            "Int64 UserId",
+            "DateTime StartDate",
+            "DateTime EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetClinicServiceDetails",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 AMIONclinicuniqueid",
+            "Int64 UserId",
+            "DateTime StartDate",
+            "DateTime EndDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOnCallAutoAssignmentEmailTemplate",
+          "returnType": "returns>\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string DepartmentIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertApplicationEmailSchedules",
+          "returnType": "returns>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string fromEmailAddress",
+            "string toEmailAddress",
+            "string subject",
+            "string htmlBody",
+            "Int64 loggedInUserID",
+            "Int64 userID",
+            "Int32 emailPriority"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetDepartmentListForAutoAssignments",
+        "UpdateLastRunDateForDepartment",
+        "SearchEvalAmionSchedule",
+        "GenerateEvaluationSchedulesForAuto",
+        "GetPendingEvaluationQueuesForAuto",
+        "GetLogOfEvaluationAssignments",
+        "SendNoAttendingOverlapNotifications",
+        "DropIndexesForRotationAssignmentDetailAuto",
+        "DeleteOnCallTempTablesData",
+        "UpdateEvaluationScheduleStatus",
+        "DeleteEvaluations",
+        "DeleteEvaluationsbyShift",
+        "DeleteEvaluationsbyClinic",
+        "DeleteEvaluationsbyCall",
+        "RestoreDeletedEvaluations",
+        "GetAcademicDateRange",
+        "GetLatestAmionScheduleforAcadYear",
+        "GetTemplateRotationInfo",
+        "InsertOnCallTempTablesData",
+        "CreateIndexesForRotationAssignmentDetailAuto",
+        "GetOnCallTemplateListByRotation",
+        "GetOnCallTemplateListByShift",
+        "GetOnCallTemplateListByClinic",
+        "GetOnCallTemplateListByCall",
+        "GetOnCallAudienceCode",
+        "BuildQueryForAutoAssignmentOnCall",
+        "GenerateAutoAssignments",
+        "GenerateAutoAssignmentsbyShift",
+        "GenerateAutoAssignmentsbyClinic",
+        "GenerateAutoAssignmentsbyCall",
+        "GetEvaluationExistByCriteria",
+        "GetEvaluationExistByCriteriabyShift",
+        "GetEvaluationExistByCriteriabyClinic",
+        "GetEvaluationExistByCriteriabyCall",
+        "GetSpInfotypeNameByID",
+        "GetMaxPGYforDepartment",
+        "GetCallServiceDetails",
+        "GetClinicServiceDetails",
+        "GetOnCallAutoAssignmentEmailTemplate",
+        "InsertApplicationEmailSchedules"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/Program.cs",
+      "lineCount": 18,
+      "className": "Program",
+      "namespace": "OnCallAutoAssignment_Dotnet",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "RestSharp"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnCallBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/OnCallAutoAssignment-Dotnet/OnCallAutoAssignment-Dotnet/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

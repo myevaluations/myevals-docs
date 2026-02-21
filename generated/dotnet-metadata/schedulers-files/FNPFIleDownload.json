@@ -1,0 +1,542 @@
+{
+  "projectName": "FNPFIleDownload",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/FNPFIleDownload",
+  "parsedAt": "2026-02-20T17:11:05.438Z",
+  "fileCount": 1,
+  "totalLines": 551,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/FNPFIleDownload/FNPFIleDownload/Program.cs",
+      "lineCount": 551,
+      "className": "Program",
+      "namespace": "FNPFIleDownload",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "Microsoft.EntityFrameworkCore",
+        "Microsoft.Extensions.DependencyInjection",
+        "System.IO",
+        "System.Data",
+        "MyEvaluations.Business.EssentialActivities",
+        "System.Data.SqlClient",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Xml",
+        "System.Xml.Linq",
+        "ClosedXML.Excel",
+        "Serilog"
+      ],
+      "businessModuleRefs": [
+        "EssentialActivities"
+      ],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigurationBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggerConfiguration",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetCaseLogSessions\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drSession in dsPendingSessions.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GenerateFNPCaseLogJSONBySession\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd1"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetClinicalLogDownloadRequests\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drRequest in dtFNPDownLoadRequests.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drSession in dtSessions.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "ToStringWithoutCharacterChecking(logElement"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "ToStringWithoutCharacterChecking(logElement"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string columnName in unwantedColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"CaseLogs\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string columnName in unwantedColumns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamRootChildDoc",
+          "returnType": " from xFi in",
+          "visibility": "private",
+          "parameters": [
+            "fileReadLocation + \"/\" + drSession[\"CalenderYear\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XLWorkbook",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DirectoryInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "folderPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateDocumentStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "connectionString",
+            "clinicalReportRequestID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteExistingDownloadedFiles",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "deletedFileLocation"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " Delete All Expired Documents",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drRequest in dtDeleteRequests.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteRequestedFiles",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "fileSavedLocation + \"/\" + drRequest[\"FNPClinicalReportRequestID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ToStringWithoutCharacterChecking",
+          "returnType": "\n\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "XElement xElement"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateDocumentStatus",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "string connectionString",
+            "string fnpClinicalReportRequestIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"UpdateFNPClinicalLogRequest\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSessions",
+          "returnType": "\n\n        private static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "string connectionString",
+            "string studentIDs",
+            "string courseIDs",
+            "string sessionIDs",
+            "string preceptorIDs",
+            "string fileType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetFNPStudentLogsForExport\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamRootChildDoc",
+          "returnType": "\n\n        static IEnumerable<XElement>",
+          "visibility": "private",
+          "parameters": [
+            "string filepath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteExistingDownloadedFiles",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "string fileLocation"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strDirectory in Directory.GetDirectories(pdfPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DirectoryInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileInfo fiFile in fiInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteRequestedFiles",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "string fileLocation"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DirectoryInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "pdfPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "FileInfo fiFile in fiInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigureServices",
+          "returnType": "\n\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "string keyName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigurationBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigurationBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "Caselog",
+        "SessionID",
+        "null"
+      ]
+    }
+  ]
+}

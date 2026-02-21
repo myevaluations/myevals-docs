@@ -1,0 +1,227 @@
+{
+  "projectName": "GoogleConsole",
+  "layer": "supporting",
+  "projectPath": "GoogleConsole",
+  "parsedAt": "2026-02-20T17:11:06.691Z",
+  "fileCount": 3,
+  "totalLines": 334,
+  "files": [
+    {
+      "fileName": "Class1.cs",
+      "filePath": "GoogleConsole/Class1.cs",
+      "lineCount": 13,
+      "className": "Class1",
+      "namespace": "GoogleConsole",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "GoogleAPIAuthentication.cs",
+      "filePath": "GoogleConsole/GoogleAPIAuthentication.cs",
+      "lineCount": 284,
+      "className": "GoogleAPIAuthentication",
+      "namespace": "GoogleConsole",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "Google.Apis.Auth.OAuth2.Flows",
+        "Google.Apis.Auth.OAuth2.Responses",
+        "Google.Apis.Auth.OAuth2.Web",
+        "Google.Apis.Calendar.v3",
+        "Google.Apis.Oauth2.v2",
+        "Google.Apis.Services",
+        "Google.Apis.Util.Store",
+        "RestSharp",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.IO",
+        "System.Linq",
+        "System.Net",
+        "System.Reflection",
+        "System.Text",
+        "System.Threading",
+        "System.Threading.Tasks",
+        "System.Web"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "ManualResetEvent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RefreshToken",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "RefreshTokenURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetRequestStreamCallback",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "IAsyncResult asynchronousResult"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AsyncCallback",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "GetResponseCallback"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetResponseCallback",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "IAsyncResult asynchronousResult"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "streamResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyAuthentication",
+          "returnType": "\n\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string userID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GoogleAuthorizationCodeFlow",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "new GoogleAuthorizationCodeFlow.Initializer\n                        {\n                            ClientSecrets = new ClientSecrets { ClientId = ClientID",
+            "ClientSecret = ClientSecret }",
+            "DataStore = new FileDataStore(folder"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthorizationCodeWebApp",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "flow",
+            "uri",
+            "uri"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "new BaseClientService.Initializer("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "new BaseClientService.Initializer("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "GoogleConsole/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

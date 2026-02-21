@@ -1,0 +1,1024 @@
+---
+title: "BSNProgram Files"
+sidebar_label: "BSNProgram"
+description: "Per-file reference for Web/BSNProgram (41 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# BSNProgram File Reference
+
+> **41 files** | **22,489 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/BSNProgram/AddCourseCampusMembers.aspx.cs",
+    "fileName": "AddCourseCampusMembers.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_AddCourseCampusMembers",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Form for adding course campus members in the BSN program. Initializes BSNProgramManager and PreceptorModuleManager, loads state dropdown (filtered by US country ID 224), and provides campus/course member assignment functionality. Includes client-side script registration for form updates.",
+    "businessPurpose": "Allows BSN program administrators to assign faculty and staff members to specific campus locations for course management.",
+    "keyMethods": [
+      "Page_Load - Initializes managers, loads state dropdown, binds campus data",
+      "BindStates - Loads US states from FieldsLookupManager filtered by CountryID=224"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "PreceptorModuleManager",
+      "FieldsLookupManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN-specific campus member assignment; nursing program feature",
+    "complexity": "moderate",
+    "lineCount": 161
+  },
+  {
+    "filePath": "Web/BSNProgram/AssignBSNEvaluations.aspx.cs",
+    "fileName": "AssignBSNEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_AssignBSNEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Highly complex evaluation assignment page for BSN programs with extensive filtering capabilities. Supports assignment of evaluations by course, session, faculty, clinical site, and preceptor. Contains 30+ methods for binding various data sources including students, faculty, preceptors, clinical sites, courses, and sessions. Manages subject/target ID pairs for evaluation relationships with dual-listbox user selection.",
+    "businessPurpose": "Core evaluation assignment interface for BSN nursing programs, enabling administrators to create evaluation assignments between students, faculty, preceptors, and clinical sites across courses and sessions.",
+    "keyMethods": [
+      "Page_Load - Initializes subject/target IDs, stores page state, binds initial filters",
+      "BindFilters - Orchestrates loading of all filter dropdowns",
+      "BindCourses - Loads course list for BSN program",
+      "BindSessions - Loads academic sessions by year",
+      "BindStudentUsers/BindAllUsers - Loads student and all user lists",
+      "BindFaculty/BindFacultys/BindFacultysByName - Various faculty binding methods",
+      "BindPreceptors/BindPreceptorsByCourse/BindPreceptorsByCourseID - Preceptor data loading",
+      "BindClinicalSite/BindClinicalSiteByCourseName - Clinical site data loading",
+      "FillTemplateList - Loads evaluation template list for assignment",
+      "PrepareForEditMode - Loads existing assignment data for editing",
+      "SelectUsersAfterSave - Re-selects users after save operation",
+      "btnSave_Click - Handles evaluation assignment save",
+      "PrepareIDList - Builds comma-separated ID list from listbox selections"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "EvaluationsTemplateManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core BSN evaluation assignment with very complex filter logic; high priority for modernization",
+    "complexity": "very-complex",
+    "lineCount": 1762
+  },
+  {
+    "filePath": "Web/BSNProgram/AssignBSNManualCLCAssignment.aspx.cs",
+    "fileName": "AssignBSNManualCLCAssignment.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_AssignBSNManualCLCAssignment",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Manual Clinical Learning Contract (CLC) assignment page for BSN programs. Provides academic year, session, course, and student selection filters for manually creating CLC evaluation assignments.",
+    "businessPurpose": "Enables BSN program administrators to manually assign Clinical Learning Contract evaluations when automatic assignment is not appropriate.",
+    "keyMethods": [
+      "Page_Load - Initializes year, session, course, student filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for selected year",
+      "BindCourses - Loads BSN courses",
+      "BindStudents - Loads student list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Manual CLC assignment workflow for BSN nursing programs",
+    "complexity": "moderate",
+    "lineCount": 134
+  },
+  {
+    "filePath": "Web/BSNProgram/AssignEvaluations.aspx.cs",
+    "fileName": "AssignEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_AssignEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Evaluation assignment page that initializes multiple managers (FNPLogManager, FieldsLookupManager, PatientLogManager, ProceduresManager) and sets up hidden fields for department, user, role, and campus information. Most assignment logic is delegated to client-side JavaScript.",
+    "businessPurpose": "Container page for BSN evaluation assignment with server-side initialization of context data for client-side processing.",
+    "keyMethods": [
+      "Page_Load - Sets hidden fields for department ID, user ID, role ID, campus role, user type"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FieldsLookupManager",
+      "PatientLogManager",
+      "ProceduresManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Evaluation assignment initialization; actual logic in client-side code",
+    "complexity": "simple",
+    "lineCount": 99
+  },
+  {
+    "filePath": "Web/BSNProgram/BSNActiveStudents.aspx.cs",
+    "fileName": "BSNActiveStudents.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_BSNActiveStudents",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Empty shell page for displaying active BSN students. Contains only an empty Page_Load handler; all rendering is handled client-side.",
+    "businessPurpose": "Container page for the active BSN student list view.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Shell page with client-side logic only",
+    "complexity": "trivial",
+    "lineCount": 18
+  },
+  {
+    "filePath": "Web/BSNProgram/BSNDashboard.aspx.cs",
+    "fileName": "BSNDashboard.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_BSNDashboard",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "BSN program dashboard page that loads academic year filter and stores department ID, user ID, and role ID in hidden fields for client-side dashboard rendering.",
+    "businessPurpose": "Provides the main dashboard view for BSN nursing program administrators with summary metrics and navigation.",
+    "keyMethods": [
+      "Page_Load - Initializes years, department ID, user ID, role ID",
+      "BindYears - Populates academic year dropdown"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN program dashboard; navigation hub for nursing module",
+    "complexity": "simple",
+    "lineCount": 81
+  },
+  {
+    "filePath": "Web/BSNProgram/BSNProgramActivities.aspx.cs",
+    "fileName": "BSNProgramActivities.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_BSNProgramActivities",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Main activity hub page for BSN programs that dynamically configures the side menu based on user role and permissions. Sets menu visibility for inbox, evaluations to review/sign, completed evaluations, duty hours verification, pending procedures, and procedures to review. Also provides schedule update date information.",
+    "businessPurpose": "Central activity page for BSN program users that shows role-appropriate menu items and pending action counts for evaluations, procedures, and duty hours.",
+    "keyMethods": [
+      "Page_Load - Initializes all menu items based on user role/type/permissions",
+      "SetInboxMenu - Configures inbox visibility and count",
+      "SetEvaluationsToReviewMenu - Sets evaluation review count",
+      "SetEvaluationsToSignMenu - Sets evaluation signing count",
+      "SetCompletedEvaluationsMenu - Configures completed eval visibility",
+      "SetDutyHoursVerificationMenu - Sets duty hours verification visibility",
+      "SetPendingProceduresCount - Sets pending procedure count",
+      "SetProceduresToReviewCount - Sets procedure review count",
+      "GetLastupdatedDatesForSchedules - Returns schedule update dates"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "ProceduresManager",
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Main BSN activity hub; role-based menu logic is important for migration",
+    "complexity": "complex",
+    "lineCount": 823
+  },
+  {
+    "filePath": "Web/BSNProgram/BSNRoasterPage.aspx.cs",
+    "fileName": "BSNRoasterPage.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_BSNRoasterPage",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Roster management page for BSN programs with filters for academic year, sessions, courses, campus codes, instructional methods, students, preceptors, and faculties. Provides comprehensive data binding for roster list generation.",
+    "businessPurpose": "Displays and manages the BSN program roster showing which students, preceptors, and faculty are assigned to which courses, sessions, and campus locations.",
+    "keyMethods": [
+      "Page_Load - Initializes all roster filters with change event handlers",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for selected year",
+      "BindCourses - Loads BSN courses",
+      "BindCapusCodes - Loads campus code list",
+      "BindInstructionalMethod - Loads instructional method options",
+      "BindStudents - Loads student list",
+      "BindPreceptors - Loads preceptor list",
+      "BindFaculties - Loads faculty list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN roster management; important for program administration",
+    "complexity": "moderate",
+    "lineCount": 251
+  },
+  {
+    "filePath": "Web/BSNProgram/CLCFormBuilder.aspx.cs",
+    "fileName": "CLCFormBuilder.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_CLCFormBuilder",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Shell page for the Clinical Learning Contract (CLC) form builder. Sets department ID hidden field on load; form building logic is handled client-side.",
+    "businessPurpose": "Container page for the CLC form builder interface where administrators design clinical learning contract evaluation forms.",
+    "keyMethods": [
+      "Page_Load - Sets department ID hidden field"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "CLC form builder; client-side form designer",
+    "complexity": "trivial",
+    "lineCount": 16
+  },
+  {
+    "filePath": "Web/BSNProgram/CLCSubmissionForm.aspx.cs",
+    "fileName": "CLCSubmissionForm.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_CLCSubmissionForm",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Clinical Learning Contract submission form that loads evaluation assignment details, CLC form data, and user information. Uses BSNProgramManager to retrieve CLC form content and configures the submission interface based on the evaluation assignment ID from querystring.",
+    "businessPurpose": "Enables students and preceptors to submit Clinical Learning Contract evaluation forms for BSN clinical rotations.",
+    "keyMethods": [
+      "Page_Load - Loads evaluation assignment details, CLC form data, user info from querystring"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "CLC form submission; student/preceptor facing",
+    "complexity": "moderate",
+    "lineCount": 76
+  },
+  {
+    "filePath": "Web/BSNProgram/ClinicalSiteEvaluationReport.aspx.cs",
+    "fileName": "ClinicalSiteEvaluationReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ClinicalSiteEvaluationReport",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Report filter page for clinical site evaluations in the BSN program. Loads BSN course and clinical site data for filter selection. Supports favourite report settings for saved configurations.",
+    "businessPurpose": "Filter interface for generating clinical site evaluation reports showing how BSN clinical sites are performing based on evaluation feedback.",
+    "keyMethods": [
+      "Page_Load - Initializes course and clinical site filters",
+      "PrepareFormForEditMode - Loads saved report settings"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN clinical site evaluation report filter",
+    "complexity": "simple",
+    "lineCount": 72
+  },
+  {
+    "filePath": "Web/BSNProgram/ClinicalSiteEvaluationReportResults.aspx.cs",
+    "fileName": "ClinicalSiteEvaluationReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ClinicalSiteEvaluationReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Extremely complex report results page that generates detailed clinical site evaluation reports. Contains extensive report rendering logic with question formatting, answer type printing, milestone formatting, category grouping, sub-competency display, free-form comments, burn-out scale interpretation, and summary report generation. Uses StringBuilder for HTML report construction.",
+    "businessPurpose": "Renders comprehensive clinical site evaluation reports with detailed question-by-question analysis, statistical summaries, and comment aggregation for BSN program quality assessment.",
+    "keyMethods": [
+      "Page_Load - Initializes report with department info and filter parameters",
+      "GenerateReport - Main report generation orchestrator",
+      "GenerateSummaryReport - Generates summary statistics report",
+      "GetReportHeaderHtml - Creates report header with department info",
+      "PrintQuestionInfo - Renders individual question with answers",
+      "PrintAnswerTypes - Renders answer type statistics",
+      "PrintQuestionsCategoryInfo - Renders question category groupings",
+      "PrintSubCompetency - Renders sub-competency sections",
+      "PrintFreeFormAnswerComments - Renders free-form text responses",
+      "PrintBurnOutScaleInterpretation - Renders burnout scale analysis",
+      "GetQuestionFormat/GetQuestionFormatForMilestones - Question HTML formatting"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Complex report rendering with extensive HTML generation; high priority for React-based report replacement",
+    "complexity": "very-complex",
+    "lineCount": 1397
+  },
+  {
+    "filePath": "Web/BSNProgram/CoursePerformanceDashboard.aspx.cs",
+    "fileName": "CoursePerformanceDashboard.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_CoursePerformanceDashboard",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Course performance dashboard page with academic year filter. Stores department ID and role ID in hidden fields for client-side dashboard rendering.",
+    "businessPurpose": "Provides a dashboard view of BSN course performance metrics across academic years.",
+    "keyMethods": [
+      "Page_Load - Initializes years, department ID, role ID",
+      "BindYears - Populates academic year dropdown"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN performance dashboard; analytics feature",
+    "complexity": "simple",
+    "lineCount": 54
+  },
+  {
+    "filePath": "Web/BSNProgram/ExportBSNSalesforceData.aspx.cs",
+    "fileName": "ExportBSNSalesforceData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ExportBSNSalesforceData",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Salesforce data export page for BSN programs. Exports attendance tracking data and email notification data to Salesforce format. Uses BSNProgramManager and DNPLogManager for data retrieval and creates downloadable export files.",
+    "businessPurpose": "Enables BSN program administrators to export student attendance tracking and email notification data for integration with Salesforce CRM.",
+    "keyMethods": [
+      "Page_Load - Initializes export page",
+      "btnAttendanceTracking_Click - Exports attendance data to Salesforce format",
+      "btnEmailNotifications_Click - Exports email notification data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Salesforce integration export; CRM data sync",
+    "complexity": "moderate",
+    "lineCount": 284
+  },
+  {
+    "filePath": "Web/BSNProgram/ImportBSNPreceptorData.aspx.cs",
+    "fileName": "ImportBSNPreceptorData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ImportBSNBannerData",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Preceptor data import page for BSN programs. Supports file upload for importing preceptor information, generates XML from uploaded data, and provides a downloadable template. Also supports clinical group import. Note: class name references 'BannerData' suggesting integration with Banner student information system.",
+    "businessPurpose": "Enables bulk import of BSN preceptor data from external systems (likely Banner SIS) via file upload, reducing manual data entry for preceptor management.",
+    "keyMethods": [
+      "Page_Load - Initializes import page",
+      "btnImport_Click - Processes preceptor data file upload",
+      "btnClinicalGroup_Click - Processes clinical group data import",
+      "btnDownload_Click - Downloads import template",
+      "ImportPreceptorData - Core data import processing",
+      "GETXML - Converts uploaded data to XML format",
+      "GetDownloadBSNPreceptorInfo - Generates downloadable preceptor template"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Data import from external SIS (Banner); critical integration point",
+    "complexity": "complex",
+    "lineCount": 471
+  },
+  {
+    "filePath": "Web/BSNProgram/ImportBSNStudentData.aspx.cs",
+    "fileName": "ImportBSNStudentData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ImportBSNStudentData",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Student and faculty data import page for BSN programs. Supports separate file uploads for student data and faculty data, provides downloadable templates for both, and processes bulk imports via BSNProgramManager.",
+    "businessPurpose": "Enables bulk import of BSN student and faculty data from external systems, reducing manual data entry for program roster management.",
+    "keyMethods": [
+      "Page_Load - Initializes import page",
+      "btnImport_Click - Processes student data file upload",
+      "btnImportFaculty_Click - Processes faculty data file upload",
+      "btnDownload_Click - Downloads student import template",
+      "btnDownloadFaculty_Click - Downloads faculty import template",
+      "ImportData - Core data import processing",
+      "GetDownloadBSNStudentInfo - Generates student import template",
+      "GetDownloadBSNFacultyInfo - Generates faculty import template"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Bulk data import for students and faculty; critical for program onboarding",
+    "complexity": "complex",
+    "lineCount": 579
+  },
+  {
+    "filePath": "Web/BSNProgram/LinkCoursetoReturnDemonstration.aspx.cs",
+    "fileName": "LinkCoursetoReturnDemonstration.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_LinkCoursetoReturnDemonstration",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Configuration page for linking BSN courses to return demonstration forms. Loads evaluation template list and course data for mapping return demonstration requirements to specific courses.",
+    "businessPurpose": "Allows administrators to associate return demonstration evaluation forms with specific BSN courses, defining which skills demonstrations are required per course.",
+    "keyMethods": [
+      "Page_Load - Initializes course and evaluation template data",
+      "FetchEvaluationList - Loads available evaluation templates for linking"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Course-to-return-demonstration mapping; nursing skills assessment configuration",
+    "complexity": "moderate",
+    "lineCount": 158
+  },
+  {
+    "filePath": "Web/BSNProgram/LinkEvaluationstoClinicalSite.aspx.cs",
+    "fileName": "LinkEvaluationstoClinicalSite.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_LinkEvaluationstoClinicalSite",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Configuration page for linking evaluation templates to clinical sites. Loads evaluation template list and clinical site data for establishing which evaluations are used at which clinical placement sites.",
+    "businessPurpose": "Allows administrators to associate evaluation templates with specific clinical sites, defining which evaluations are administered at each placement location.",
+    "keyMethods": [
+      "Page_Load - Initializes clinical site and evaluation template data",
+      "FetchEvaluationList - Loads available evaluation templates for linking"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Evaluation-to-site mapping configuration",
+    "complexity": "simple",
+    "lineCount": 45
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageBSNPreceptors.aspx.cs",
+    "fileName": "ManageBSNPreceptors.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageBSNPreceptors",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Simple management page for BSN preceptors. Stores department ID in hidden field and initializes BSNProgramManager; list rendering is handled client-side.",
+    "businessPurpose": "Provides the list view for managing preceptor records within the BSN nursing program.",
+    "keyMethods": [
+      "Page_Load - Sets department ID hidden field"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "BSN preceptor management list; client-side rendering",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageCLCAssignments.aspx.cs",
+    "fileName": "ManageCLCAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageCLCAssignments",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Management page for Clinical Learning Contract (CLC) assignments with filters for academic year, sessions, courses, and students. Provides comprehensive filter binding for viewing and managing CLC evaluation assignments.",
+    "businessPurpose": "Allows BSN administrators to view and manage Clinical Learning Contract evaluation assignments across academic years, sessions, courses, and students.",
+    "keyMethods": [
+      "Page_Load - Initializes all CLC assignment filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for selected year",
+      "BindCourses - Loads BSN courses",
+      "BindStudents - Loads student list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "CLC assignment management; BSN nursing evaluation workflow",
+    "complexity": "moderate",
+    "lineCount": 157
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageCourseCampusMembers.aspx.cs",
+    "fileName": "ManageCourseCampusMembers.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageCourseCampusMembers",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Simple management page for course campus members. Stores department ID in hidden field; list rendering is handled client-side.",
+    "businessPurpose": "Provides the list view for managing course campus member assignments in the BSN program.",
+    "keyMethods": [
+      "Page_Load - Sets department ID hidden field"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Thin wrapper page; client-side rendering",
+    "complexity": "trivial",
+    "lineCount": 23
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageEvaluationAssignments.aspx.cs",
+    "fileName": "ManageEvaluationAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageEvaluationAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Complex evaluation assignment management page with multiple filter modes: by course, by session, by faculty, by student, and by administrator. Supports academic year selection, course/session cascade filtering, dual-listbox student selection, and evaluation template list loading. Contains 15+ data binding methods and multiple postback event handlers.",
+    "businessPurpose": "Central interface for managing BSN evaluation assignments with flexible filtering by course, session, faculty, student, or administrator to find and modify evaluation relationships.",
+    "keyMethods": [
+      "Page_Load - Initializes filters based on selected filter mode",
+      "BindYears - Populates academic year dropdown",
+      "BindSessions - Loads sessions for year",
+      "BindCourse - Loads BSN courses",
+      "BindStudents - Loads student dual-listbox",
+      "BindFaculty - Loads faculty list",
+      "BindAdministrators - Loads administrator list",
+      "FillTemplateList - Loads evaluation templates",
+      "rbtnlistby_SelectedIndexChanged - Changes filter mode",
+      "lstLookupByCourse_SelectedIndexChanged - Cascades course selection",
+      "lstLookupbyCourseSession_SelectedIndexChanged - Cascades session selection",
+      "ddlLookupbyFaculty_SelectedIndexChanged - Cascades faculty selection"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Complex evaluation management with multiple filter modes; high priority for modernization",
+    "complexity": "complex",
+    "lineCount": 309
+  },
+  {
+    "filePath": "Web/BSNProgram/ManagePreceptorCommitmentAssignments.aspx.cs",
+    "fileName": "ManagePreceptorCommitmentAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManagePreceptorCommitmentAssignments",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Management page for preceptor commitment assignments with academic year and session filters. Loads sessions by year for filtering commitment assignment records.",
+    "businessPurpose": "Allows BSN administrators to view and manage preceptor commitment assignments that track preceptor availability and teaching commitments across sessions.",
+    "keyMethods": [
+      "Page_Load - Initializes year and session filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for selected year"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Preceptor commitment tracking; BSN program management",
+    "complexity": "simple",
+    "lineCount": 95
+  },
+  {
+    "filePath": "Web/BSNProgram/ManagePreceptorQualificationRequirements.aspx.cs",
+    "fileName": "ManagePreceptorQualificationRequirements.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManagePreceptorQualificationRequirements",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Management page for preceptor qualification requirements. Initializes BSNProgramManager and FieldsLookupManager, stores department ID for client-side processing.",
+    "businessPurpose": "Allows BSN administrators to define and manage the qualification requirements that preceptors must meet for clinical teaching eligibility.",
+    "keyMethods": [
+      "Page_Load - Sets department ID hidden field and initializes managers"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "FieldsLookupManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Preceptor qualification management; compliance feature",
+    "complexity": "trivial",
+    "lineCount": 31
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageReturnDemonstrationAssignments.aspx.cs",
+    "fileName": "ManageReturnDemonstrationAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageReturnDemonstrationAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Management page for return demonstration assignments with filters for academic year, sessions, courses, students, return demonstration forms, and attempt numbers. Provides comprehensive filter binding for viewing skills demonstration assignment records.",
+    "businessPurpose": "Enables BSN administrators to view and manage return demonstration (skills competency) assignments, tracking which students need to demonstrate clinical skills.",
+    "keyMethods": [
+      "Page_Load - Initializes all return demonstration filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for year",
+      "BindCourses - Loads BSN courses",
+      "BindStudents - Loads student list",
+      "BindReturnDemonstrationForms - Loads available demonstration forms",
+      "BindAttempts - Loads attempt number options"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Return demonstration assignment management; nursing skills assessment",
+    "complexity": "moderate",
+    "lineCount": 189
+  },
+  {
+    "filePath": "Web/BSNProgram/ManageReturnDemonstrationForms.aspx.cs",
+    "fileName": "ManageReturnDemonstrationForms.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManageReturnDemonstrationForms",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Simple management page for return demonstration form definitions. Stores department ID in hidden field; form list rendering is handled client-side.",
+    "businessPurpose": "Provides the list view for managing return demonstration form templates used for BSN skills assessment.",
+    "keyMethods": [
+      "Page_Load - Sets department ID hidden field"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Thin wrapper page; client-side rendering",
+    "complexity": "trivial",
+    "lineCount": 17
+  },
+  {
+    "filePath": "Web/BSNProgram/ManualCSEEvaluationAssignment.aspx.cs",
+    "fileName": "ManualCSEEvaluationAssignment.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ManualCSEEvaluationAssignment",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Manual Clinical Site Evaluation (CSE) assignment page with filters for academic year, campus codes, courses, and sessions. Includes server-side methods for fetching evaluation lists and saving faculty evaluation assignments. Contains submit and cancel button handlers.",
+    "businessPurpose": "Enables BSN administrators to manually create clinical site evaluation assignments when automatic assignment logic does not apply.",
+    "keyMethods": [
+      "Page_Load - Initializes academic year, campus, course, session filters",
+      "BindAcademicYear - Populates academic year dropdown",
+      "BindCampusCodes - Loads campus code list",
+      "BindCourse - Loads BSN courses",
+      "BindSessions - Loads sessions by year",
+      "FetchEvaluationList - Loads evaluation templates",
+      "saveFacultyEvalautions - Saves faculty evaluation assignments",
+      "btnSubmit_Click - Triggers save operation",
+      "ddlAcademicYear_SelectedIndexChanged - Cascades year change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Manual CSE assignment with server-side save logic",
+    "complexity": "moderate",
+    "lineCount": 267
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnClinicalLearningEvaluationsReport.aspx.cs",
+    "fileName": "ReturnClinicalLearningEvaluationsReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnClinicalLearningEvaluationsReport",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Extremely large and complex report generation page (11,806 lines) for clinical learning evaluation reports. Contains 50+ methods for rendering evaluation report output with multiple layouts: individual, summary, comparison, department comparison, and program evaluation variants. Handles question formatting, answer statistics, milestone rendering, sub-competency grouping, free-form comments, burnout scale interpretation, and multi-template report generation. Supports both standard and program evaluation report types.",
+    "businessPurpose": "Master evaluation report rendering engine for BSN programs that generates comprehensive, multi-format evaluation reports including individual performance reports, summary statistics, departmental comparisons, and program evaluation aggregations.",
+    "keyMethods": [
+      "Page_Load - Initializes report parameters from form post/querystring",
+      "InitializePage - Sets up report configuration",
+      "ProcessReportOutput - Main report generation for standard evaluations",
+      "ProgramEvaluationsProcessReportOutput - Program evaluation report generation",
+      "ProcessDetailedProgramReportOutput - Detailed program report generation",
+      "PrintsingleTemplatesResult - Single template report rendering",
+      "PrintMultipleTemplatesResult - Multi-template report rendering",
+      "PrintCompareLayOut/PrintCompareLayOutDept - Comparison report layouts",
+      "PrintSummaryLayoutNew/PrintSummaryLayoutAllDepartments - Summary layouts",
+      "PrintQuestionInfo/PrintQuestionsCategoryInfo - Question rendering",
+      "PrintAnswerTypes/PrintProgEvalAnswerTypes - Answer statistics rendering",
+      "PrintSubCompetency/PrintProgEvalSubCompetency - Competency section rendering",
+      "PrintStatistics/PrintIndividualStatistics - Statistical analysis sections",
+      "GetReportHeaderHtml/ProgEvalGetReportHeaderHtml - Report header generation",
+      "StripHtml - HTML tag removal utility"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "Largest file in BSNProgram; massive report rendering engine that is a prime candidate for complete replacement with modern reporting framework",
+    "complexity": "very-complex",
+    "lineCount": 11806
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnDemonstrationForm.aspx.cs",
+    "fileName": "ReturnDemonstrationForm.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnDemonstrationForm",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Return demonstration form viewing page with filters for academic year, sessions, courses, students, and attempt numbers. Loads form data for displaying skills demonstration evaluation results.",
+    "businessPurpose": "Displays return demonstration (clinical skills assessment) forms and their completion status for specific students and courses.",
+    "keyMethods": [
+      "Page_Load - Initializes all demonstration form filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for year",
+      "BindCourses - Loads BSN courses",
+      "BindStudents - Loads student list",
+      "BindAttempts - Loads attempt number options"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Skills assessment form viewer; nursing education feature",
+    "complexity": "moderate",
+    "lineCount": 170
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnDemonstrationFormBuilder.aspx.cs",
+    "fileName": "ReturnDemonstrationFormBuilder.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnDemonstrationFormBuilder",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Form builder page for creating return demonstration evaluation forms. Provides academic year, session, and course filters for scoping the form to specific educational contexts.",
+    "businessPurpose": "Enables BSN administrators to design clinical skills demonstration evaluation forms with questions and rubrics for specific courses.",
+    "keyMethods": [
+      "Page_Load - Initializes year, session, course filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for year",
+      "BindCourses - Loads BSN courses"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Form builder for skills assessment; nursing education feature",
+    "complexity": "moderate",
+    "lineCount": 117
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnDemonstrationReportResults.aspx.cs",
+    "fileName": "ReturnDemonstrationReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnDemonstrationReportResults",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Report results page for return demonstration evaluations. Uses BSNProgramManager to load report data and renders clinical skills demonstration evaluation results with department info header.",
+    "businessPurpose": "Renders return demonstration report results showing student performance on clinical skills assessments.",
+    "keyMethods": [
+      "Page_Load - Loads department info and report data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Skills assessment report rendering",
+    "complexity": "moderate",
+    "lineCount": 180
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnDemonstrationSubmissionForm.aspx.cs",
+    "fileName": "ReturnDemonstrationSubmissionForm.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnDemonstrationSubmissionForm",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Submission form for return demonstrations where evaluators submit clinical skills assessment results. Loads form definition, student/evaluator info, and converts data to JSON for client-side form rendering using DataTableToJSONWithJSONNet.",
+    "businessPurpose": "Enables evaluators to submit clinical skills demonstration assessments, recording student performance on specific skills competencies.",
+    "keyMethods": [
+      "Page_Load - Loads demonstration form data and student info from querystring",
+      "DataTableToJSONWithJSONNet - Serializes data to JSON for client-side"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Skills assessment submission form; evaluator-facing",
+    "complexity": "moderate",
+    "lineCount": 107
+  },
+  {
+    "filePath": "Web/BSNProgram/ReturnDemonstrationVoluntaryAssignments.aspx.cs",
+    "fileName": "ReturnDemonstrationVoluntaryAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ReturnDemonstrationVoluntaryAssignments",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Page for managing voluntary return demonstration assignments with filters for academic year, sessions, courses, students, and return demonstration forms. Allows students to voluntarily sign up for additional skills demonstrations.",
+    "businessPurpose": "Enables BSN students to voluntarily self-assign return demonstration evaluations for additional practice and skills verification beyond required assessments.",
+    "keyMethods": [
+      "Page_Load - Initializes all voluntary assignment filters",
+      "BindYears - Populates academic year dropdown",
+      "BindSessionsByYear - Loads sessions for year",
+      "BindCourses - Loads BSN courses",
+      "BindStudents - Loads student list",
+      "BindReturnDemonstrationForms - Loads available demonstration forms"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Voluntary self-assessment assignment; student-initiated skills practice",
+    "complexity": "moderate",
+    "lineCount": 148
+  },
+  {
+    "filePath": "Web/BSNProgram/SeeCurrentEvaluationLinks.aspx.cs",
+    "fileName": "SeeCurrentEvaluationLinks.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_SeeCurrentEvaluationLinks",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Report page showing current evaluation-to-rotation/site links. Uses repeater controls for nested data display (rotations containing evaluations). Includes loading screen utilities and data binding for repeater items.",
+    "businessPurpose": "Displays the current evaluation template assignments across rotations and clinical sites for BSN program oversight.",
+    "keyMethods": [
+      "Page_Load - Initializes evaluation link report",
+      "OnViewInitializeEvaluationRotation - Loads evaluation-rotation data",
+      "rptRotations_ItemDataBound - Binds rotation repeater items",
+      "rptEvaluations_ItemDataBound - Binds evaluation repeater items",
+      "Rotations_ItemDataBound - Alternative rotation binding",
+      "GetLoadingScript/LoadReportLoadingScreen - Loading UI utilities"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Configuration overview report; read-only display",
+    "complexity": "moderate",
+    "lineCount": 181
+  },
+  {
+    "filePath": "Web/BSNProgram/StudentCountReport.aspx.cs",
+    "fileName": "StudentCountReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_StudentCountReport",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Simple report page for BSN student counts with academic year filter. Stores department ID and role ID for client-side report rendering.",
+    "businessPurpose": "Generates student count reports showing enrollment numbers across BSN program years and sessions.",
+    "keyMethods": [
+      "Page_Load - Initializes years, department ID, role ID",
+      "BindYears - Populates academic year dropdown"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Simple enrollment count report",
+    "complexity": "simple",
+    "lineCount": 57
+  },
+  {
+    "filePath": "Web/BSNProgram/SubmitClinicalLearningEvaluationCourses.aspx.cs",
+    "fileName": "SubmitClinicalLearningEvaluationCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_SubmitClinicalLearningEvaluationCourses",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Minimal shell page for submitting clinical learning evaluation courses. Contains only empty Page_Load; all logic is client-side.",
+    "businessPurpose": "Container page for the clinical learning evaluation course submission interface.",
+    "keyMethods": [
+      "Page_Load - Empty handler"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Shell page with client-side logic only",
+    "complexity": "trivial",
+    "lineCount": 13
+  },
+  {
+    "filePath": "Web/BSNProgram/SubmitPreceptorCommitmentAssignment.aspx.cs",
+    "fileName": "SubmitPreceptorCommitmentAssignment.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_SubmitPreceptorCommitmentAssignment",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Preceptor commitment assignment submission page that loads preceptor-specific data for the logged-in user. Uses BSNProgramManager to retrieve commitment data and configures the form based on department and user context.",
+    "businessPurpose": "Enables preceptors to submit and manage their teaching commitment assignments, specifying their availability for BSN clinical supervision.",
+    "keyMethods": [
+      "Page_Load - Loads preceptor commitment data and user context"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Preceptor commitment submission; preceptor-facing form",
+    "complexity": "moderate",
+    "lineCount": 126
+  },
+  {
+    "filePath": "Web/BSNProgram/ViewClinicalSitesandClinicalUnits.aspx.cs",
+    "fileName": "ViewClinicalSitesandClinicalUnits.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ViewClinicalSitesandClinicalUnits",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "View page for clinical sites and clinical units with academic year and campus code filters. Loads BSN program site and unit data for the selected academic year and campus.",
+    "businessPurpose": "Displays clinical sites and their associated clinical units for BSN program administrators to review placement locations.",
+    "keyMethods": [
+      "Page_Load - Initializes year and campus code filters",
+      "BindYears - Populates academic year dropdown",
+      "BindCapusCodes - Loads campus code list"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Clinical site/unit viewer; program administration",
+    "complexity": "simple",
+    "lineCount": 77
+  },
+  {
+    "filePath": "Web/BSNProgram/ViewPastDueClinicalSiteEvaluations.aspx.cs",
+    "fileName": "ViewPastDueClinicalSiteEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ViewPastDueClinicalSiteEvaluations",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Page for viewing past-due clinical site evaluations with academic year filter. Stores department ID, user ID, and role ID for client-side data loading.",
+    "businessPurpose": "Provides administrators visibility into overdue clinical site evaluation submissions, supporting compliance tracking for BSN program accreditation.",
+    "keyMethods": [
+      "Page_Load - Initializes years, department ID, user ID, role ID",
+      "BindYears - Populates academic year dropdown"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Past-due evaluation tracking; compliance monitoring",
+    "complexity": "simple",
+    "lineCount": 53
+  },
+  {
+    "filePath": "Web/BSNProgram/ViewSalesforceData.aspx.cs",
+    "fileName": "ViewSalesforceData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_ViewSalesforceData",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "BSNProgram",
+    "summary": "Page for viewing Salesforce data synchronized with the BSN program. Uses BSNProgramManager to load Salesforce integration data and provides viewing/filtering capabilities for imported CRM records.",
+    "businessPurpose": "Allows BSN program administrators to view and review data synchronized from Salesforce CRM, providing visibility into the CRM integration.",
+    "keyMethods": [
+      "Page_Load - Loads Salesforce data view with department context"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Salesforce data viewer; CRM integration display",
+    "complexity": "moderate",
+    "lineCount": 119
+  },
+  {
+    "filePath": "Web/BSNProgram/VoluntarySelfAssessment.aspx.cs",
+    "fileName": "VoluntarySelfAssessment.aspx.cs",
+    "fileType": "code-behind",
+    "className": "BSNProgram_VoluntarySelfAssessment",
+    "inheritsFrom": "BasePage",
+    "module": "BSNProgram",
+    "summary": "Highly complex voluntary self-assessment evaluation assignment page, structurally very similar to AssignBSNEvaluations. Contains 35+ methods for binding courses, sessions, faculty, preceptors, clinical sites, students, and evaluation templates. Adds voluntary self-assessment-specific features including date defaults, template binding, and an IsEvaluationAssignment check. Supports multiple filter modes and subject/target ID management.",
+    "businessPurpose": "Enables creation of voluntary self-assessment evaluation assignments in BSN programs, allowing students to self-assess their clinical competencies with optional faculty/preceptor oversight.",
+    "keyMethods": [
+      "Page_Load - Initializes complex filter system with subject/target IDs",
+      "BindFilters/BindFiltersData - Orchestrates all filter data loading",
+      "BindCourses - Loads BSN courses",
+      "BindTemplates - Loads self-assessment evaluation templates",
+      "BindStudentUsers/BindAllUsers - Loads user lists",
+      "BindFaculty/BindPreceptors - Loads evaluator lists",
+      "BindClinicalSite - Loads clinical site data",
+      "FillTemplateList - Loads evaluation template options",
+      "CheckIsEvaluationAssignment - Validates evaluation assignment existence",
+      "SetDefaultDate - Sets default assessment date range",
+      "PrepareForEditMode - Loads existing assignment for editing",
+      "btnSave_Click/btnSubmit_Click - Handles save operations"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "BSNProgramManager",
+      "EvaluationsTemplateManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Complex self-assessment assignment with extensive filter logic; mirrors AssignBSNEvaluations complexity",
+    "complexity": "very-complex",
+    "lineCount": 1740
+  }
+]}
+  directoryOverview=""
+  keyWorkflows={[]}
+/>

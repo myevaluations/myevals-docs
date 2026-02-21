@@ -1,0 +1,2578 @@
+---
+title: "MyPortfolio Files"
+sidebar_label: "MyPortfolio"
+description: "Per-file reference for Web/MyPortfolio (95 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyPortfolio File Reference
+
+> **95 files** | **32,536 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/MyPortfolio/AccredComplianceEmailsAdmin.aspx.cs",
+    "fileName": "AccredComplianceEmailsAdmin.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AccredComplianceEmailsAdmin",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages accreditation compliance email notification administrators. Allows adding/removing administrators who receive compliance-related emails.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnAdd_Click - Handles Add button click event",
+      "btnRemove_Click - Handles Remove button click event",
+      "btnAddAll_Click - Handles AddAll button click event",
+      "btnRemoveAll_Click - Handles RemoveAll button click event",
+      "btnUpdateChanges_Click - Handles UpdateChanges button click event",
+      "ddlDepartmentName_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 178
+  },
+  {
+    "filePath": "Web/MyPortfolio/AccreditationComplianceEmailNotice.aspx.cs",
+    "fileName": "AccreditationComplianceEmailNotice.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AccreditationComplianceEmailNotice",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Displays accreditation compliance email notice details by initializing document business logic.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 31
+  },
+  {
+    "filePath": "Web/MyPortfolio/AccreditationComplianceResults.aspx.cs",
+    "fileName": "AccreditationComplianceResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AccredetationsDetailsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays accreditation compliance documentation results in a grid with export capabilities.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grdCurrentAccreditationDocumentation_RowDataBound - Custom formatting for grid row data binding",
+      "grdCurrentAccreditationDocumentation_RowExported - Handles grid row export formatting"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 115
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddACGMEDefinations.aspx.cs",
+    "fileName": "AddACGMEDefinations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddACGMEDefinations",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages ACGME (Accreditation Council for Graduate Medical Education) definitions. Allows adding and editing ACGME competency definitions.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "btnCreateNewRecord_Click - Handles CreateNewRecord button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 104
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddAccreditationDocument.aspx.cs",
+    "fileName": "AddAccreditationDocument.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddAccreditationDocumentation",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles uploading and managing accreditation documentation with citation categories and department filtering.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindCitationCategories - Binds data to CitationCategories controls",
+      "btnUploadCreateDocumentation_Click - Handles UploadCreateDocumentation button click event",
+      "btnEditLetterofNotification_Click - Handles EditLetterofNotification button click event",
+      "btnUploadDocument_Click - Handles UploadDocument button click event",
+      "lnbtnDownload_Click - Handles link button click event",
+      "lnbtnDelete_Click - Handles link button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "grvDocuments_RowDataBound - Handles grvDocuments RowDataBound operation",
+      "lnbtnAccreditationEditDelete_Click - Handles link button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsManager",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 597
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddAffiliateAgreementDocument.aspx.cs",
+    "fileName": "AddAffiliateAgreementDocument.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddAffiliateAgreement",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages affiliate agreement documents including state selection, campus name binding, and document upload.",
+    "businessPurpose": "Manages affiliate agreement documentation and compliance for clinical partnerships",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindCampusName - Binds data to CampusName controls",
+      "btnUploadCreateAgreement_Click - Handles UploadCreateAgreement button click event",
+      "lnbtnDownload_Click - Handles link button click event",
+      "lnbtnDelete_Click - Handles link button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "grvDocuments_RowDataBound - Handles grvDocuments RowDataBound operation",
+      "BindddlSponsoringStatus - Binds data to ddlSponsoringStatus controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "PreceptorManager",
+      "LookUpManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 223
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddCertificates.aspx.cs",
+    "fileName": "AddCertificates.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CertificationsTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages trainee certification records including pass dates, expiration dates, and certificate types like Brain Death Determination.",
+    "businessPurpose": "Tracks trainee certifications and employee health compliance records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "DownLoadFile - Handles file download to client browser",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 170
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddComplianceCorrespondence.aspx.cs",
+    "fileName": "AddComplianceCorrespondence.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddComplianceCore",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles adding compliance correspondence documents with file upload support.",
+    "businessPurpose": "Tracks compliance correspondence and concern management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnUpload_Click - Handles Upload button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 117
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddDocumentSettings.aspx.cs",
+    "fileName": "AddDocumentSettings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_DepartmentSettings",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages department-level document settings with dynamic HTML table creation for subject configuration.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "ArrayList - Handles ArrayList operation",
+      "Page_Init - Pre-initialization of dynamic controls",
+      "OnLoad - Handles OnLoad operation",
+      "OnInit - Handles OnInit operation",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GridRuntimeTemplate - Handles GridRuntimeTemplate operation",
+      "Column - Handles Column operation",
+      "CreateEditAddressTemplate - Handles CreateEditAddressTemplate operation",
+      "Literal - Handles Literal operation",
+      "EventHandler - Handles EventHandler operation",
+      "DataBindEditAddressTemplate - Handles DataBindEditAddressTemplate operation"
+    ],
+    "storedProcedures": [
+      "GetSubjectIDs();"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 421
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddEmployeHelath.aspx.cs",
+    "fileName": "AddEmployeHelath.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddEmployeHelathTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages employee health records including vaccination dates, expiration tracking, and health certificate types.",
+    "businessPurpose": "Tracks trainee certifications and employee health compliance records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "DownLoadFile - Handles file download to client browser",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 150
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddGeneralDocumentation.aspx.cs",
+    "fileName": "AddGeneralDocumentation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_GeneralDocumentationTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles uploading general documentation for various competency categories (Patient Care, Medical Knowledge, etc.) with access level controls.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CustomValidator - Handles CustomValidator operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()",
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 214
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddLearningAppraisalandPlan.aspx.cs",
+    "fileName": "AddLearningAppraisalandPlan.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddLearningTasks",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages creation of learning appraisal and plan documents supporting both add and performance review modes.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "chkUnUsedCategories_CheckedChanged - Handles chkUnUsedCategories CheckedChanged operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 141
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddLearningAssignments.aspx.cs",
+    "fileName": "AddLearningAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddLearningAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles creation and management of learning assignment documents with quiz integration.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "ddlLearningModule_SelectedIndexChanged - Handles dropdown selection change",
+      "lnk_View_Click - Handles lnk View Click operation",
+      "RemoveExtaSpaces - Handles RemoveExtaSpaces operation",
+      "Regex - Handles Regex operation",
+      "side - Handles side operation",
+      "lbtnVIDView_Click - Handles lbtnVIDView Click operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DesignQuizManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 194
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddMoonlightingHistory.aspx.cs",
+    "fileName": "AddMoonlightingHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_MoonlightingHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages trainee moonlighting history records including location, hours, and payment details.",
+    "businessPurpose": "Tracks trainee external medical activities and moonlighting history",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CheckKeyCode - Handles CheckKeyCode operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "supMoon_ModeChanged - Handles supMoon ModeChanged operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 186
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddNotes.aspx.cs",
+    "fileName": "AddNotes.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddNotes",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles adding notes to trainee portfolios with access level controls and confidential CAW (Corrective Action Warning) support.",
+    "businessPurpose": "Supports adding notes and confidential action warnings to trainee portfolios",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()"
+    ],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 111
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddPaperBasedEvaluations.aspx.cs",
+    "fileName": "AddPaperBasedEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddPaperBasedEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages upload and tracking of paper-based evaluation documents with access level controls.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CustomValidator - Handles CustomValidator operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()",
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 132
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddPersonalObjectsandGoals.aspx.cs",
+    "fileName": "AddPersonalObjectsandGoals.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddPersonalStatements",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages creation of personal learning objectives and goals documents for performance review.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 138
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddPreviousTrainingHistory.aspx.cs",
+    "fileName": "AddPreviousTrainingHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddPreviousTrainingHistory",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles recording of previous training history including PGY level, program, and institution details.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetPGYLevel - Retrieves PGYLevel data",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "ArrayList - Handles ArrayList operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 186
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddProgramHistory.aspx.cs",
+    "fileName": "AddProgramHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ProgramHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages detailed program history records including residency type, department, institution, and employer information.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "ConvertToInt64 - Handles ConvertToInt64 operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "ddlInstituteName_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlInstituteNameEdit_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlProgramName_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlProgramNameEdit_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "UserManager",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 479
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddQuizAssignments.aspx.cs",
+    "fileName": "AddQuizAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddQuizAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages quiz assignment creation for portfolio learning assessments with duplicate detection.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 102
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddScholarlyActivitiesDocument.aspx.cs",
+    "fileName": "AddScholarlyActivitiesDocument.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddScholarlyActivitiesDocument",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles scholarly activities document upload with topic categories, user associations, and browser-specific styling.",
+    "businessPurpose": "Tracks scholarly activities and research documentation",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindUsers - Binds data to Users controls",
+      "btndummy_Click - Handles dummy button click event",
+      "btnUpload_Click - Handles Upload button click event",
+      "ddlDocSubject_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlApplyToLevel_SelectedIndexChanged - Handles dropdown selection change",
+      "lbtnShowDeletedTopicEmployer_Click - Handles lbtnShowDeletedTopicEmployer Click operation",
+      "lbtnHideDeletedTopicEmployer_Click - Handles lbtnHideDeletedTopicEmployer Click operation",
+      "btnAddTopicCategory_Click - Handles AddTopicCategory button click event",
+      "BindTopicCategory - Binds data to TopicCategory controls",
+      "ddlDocumentDomain_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 629
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddSpecialMedicalActivity.aspx.cs",
+    "fileName": "AddSpecialMedicalActivity.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_TSMAHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages special medical activity records similar to moonlighting with state, hours, and payment tracking.",
+    "businessPurpose": "Tracks trainee external medical activities and moonlighting history",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CheckKeyCode - Handles CheckKeyCode operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "supMoon_ModeChanged - Handles supMoon ModeChanged operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 180
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddSpouseDependantEmergency.aspx.cs",
+    "fileName": "AddSpouseDependantEmergency.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_DependantHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages spouse, dependent, and emergency contact records for trainees.",
+    "businessPurpose": "Manages trainee personal/family information for HR records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 115
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddStipendsDocument.aspx.cs",
+    "fileName": "AddStipendsDocument.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_StipendsTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages trainee stipend records including amounts, monthly calculations, and effective dates.",
+    "businessPurpose": "Manages trainee financial records including contracts, stipends, and supplemental payments",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CheckKeyCodeDollar - Handles CheckKeyCodeDollar operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "supStipends_ModeChaning - Handles supStipends ModeChaning operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "ddlStipendLevelEdit_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlStipendLevel_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 245
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddSupplimentalPayment.aspx.cs",
+    "fileName": "AddSupplimentalPayment.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_SupplementalPaymentsTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles supplemental payment records with amount, hours, and payment date tracking.",
+    "businessPurpose": "Manages trainee financial records including contracts, stipends, and supplemental payments",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CheckKeyCode - Handles CheckKeyCode operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "btnCancel_Click - Handles Cancel button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 140
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddSurveryPerformance.aspx.cs",
+    "fileName": "AddSurveryPerformance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddSurveryPerformance",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages survey performance records with survey source, category, concern number, and admin assignment.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindDropdownsInitially - Binds data to DropdownsInitially controls",
+      "btnUploadCreateDocumentation_Click - Handles UploadCreateDocumentation button click event",
+      "btnAddConcern_Click - Handles AddConcern button click event",
+      "lbtnShowDeletedSurveySource_Click - Handles lbtnShowDeletedSurveySource Click operation",
+      "BindDropdownvalues - Binds data to Dropdownvalues controls",
+      "btnAddSurveySource_Click - Handles AddSurveySource button click event",
+      "btnUploadDocument_Click - Handles UploadDocument button click event",
+      "btnSaveSurveySource_Click - Handles SaveSurveySource button click event",
+      "ConvertToInteger - Handles ConvertToInteger operation",
+      "btnDeleteSurveySource_Click - Handles DeleteSurveySource button click event",
+      "btnRestoreSurveySource_Click - Handles RestoreSurveySource button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsManager",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 718
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddTrainingCommentsHistory.aspx.cs",
+    "fileName": "AddTrainingCommentsHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_TrainingCommentsHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Records training comment history entries with date and comments in add/edit/view modes.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddTrainingGapHistory.aspx.cs",
+    "fileName": "AddTrainingGapHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_TrainingGapHistoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages leave of absence and training gap records with type, employer, and date tracking.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "ConvertToInt64 - Handles ConvertToInt64 operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "ValidateDates - Handles ValidateDates operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "FieldsLookupManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 184
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddTransferDocumentation.aspx.cs",
+    "fileName": "AddTransferDocumentation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddTransferDocumentation",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles transfer documentation upload with file validation and permission checks.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "CustomValidator - Handles CustomValidator operation",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 150
+  },
+  {
+    "filePath": "Web/MyPortfolio/AddUniformsInventory.aspx.cs",
+    "fileName": "AddUniformsInventory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_UniformsInventoryTab",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages uniform inventory records including issue dates, types, and status tracking.",
+    "businessPurpose": "Tracks uniform inventory issuance and status",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAddNew_Click - Handles AddNew button click event",
+      "supMoon_ModeChanged - Handles supMoon ModeChanged operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 178
+  },
+  {
+    "filePath": "Web/MyPortfolio/AffiliateAgreementEamilNotice.aspx.cs",
+    "fileName": "AffiliateAgreementEamilNotice.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AffiliateAgreementEamilNotice",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Displays affiliate agreement email notification details.",
+    "businessPurpose": "Manages affiliate agreement documentation and compliance for clinical partnerships",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 28
+  },
+  {
+    "filePath": "Web/MyPortfolio/AffiliateAgreementsComplianceEmailsAdmin.aspx.cs",
+    "fileName": "AffiliateAgreementsComplianceEmailsAdmin.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AffiliateAgreementsComplianceEmailsAdmin",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages email administrators for affiliate agreement compliance notifications.",
+    "businessPurpose": "Manages affiliate agreement documentation and compliance for clinical partnerships",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnAdd_Click - Handles Add button click event",
+      "btnRemove_Click - Handles Remove button click event",
+      "btnAddAll_Click - Handles AddAll button click event",
+      "btnRemoveAll_Click - Handles RemoveAll button click event",
+      "btnUpdateChanges_Click - Handles UpdateChanges button click event",
+      "ddlDepartmentName_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 213
+  },
+  {
+    "filePath": "Web/MyPortfolio/AffiliateAgreementsResults.aspx.cs",
+    "fileName": "AffiliateAgreementsResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AfiliateDetailsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays affiliate agreements results with department sponsoring, participating, and rotation data plus CSV export.",
+    "businessPurpose": "Manages affiliate agreement documentation and compliance for clinical partnerships",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnExportCsv_Click - Handles ExportCsv button click event",
+      "ExportGridToCSV - Exports data to external format",
+      "grdAffiliateAgreementsDocumentation_DataBound - Handles grdAffiliateAgreementsDocumentation DataBound operation",
+      "rptSponcerNames_ItemDataBound - Handles rptSponcerNames ItemDataBound operation",
+      "rptSubSponcerNames_ItemDataBound - Handles rptSubSponcerNames ItemDataBound operation",
+      "rptParticipant_ItemDataBound - Handles rptParticipant ItemDataBound operation",
+      "rptSubParticipant_ItemDataBound - Handles rptSubParticipant ItemDataBound operation",
+      "rptRotation_ItemDataBound - Handles rptRotation ItemDataBound operation",
+      "rptSubRotation_ItemDataBound - Handles rptSubRotation ItemDataBound operation",
+      "grdAffiliateAgreementsDocumentation_RowExported - Handles grid row export formatting"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 282
+  },
+  {
+    "filePath": "Web/MyPortfolio/CEMDDepartmentReport.aspx.cs",
+    "fileName": "CEMDDepartmentReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CEMDDepartmentReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates Curricula and Reading Material department report with date range, subjects, and rotations filtering.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindSubjects - Binds data to Subjects controls",
+      "BindRotations - Binds data to Rotations controls",
+      "btnOk_Click - Handles Ok button click event",
+      "rbtnSelectedDates_Changed - Handles rbtnSelectedDates Changed operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 155
+  },
+  {
+    "filePath": "Web/MyPortfolio/Changephoto.aspx.cs",
+    "fileName": "Changephoto.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_Changephoto",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles trainee photo upload, cropping, and management with custom/default image options.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "UploadPhoto_Click - Handles photo upload and processing",
+      "btnSaveCroppedImage_Click - Handles SaveCroppedImage button click event",
+      "ResizeImage_Changed - Handles ResizeImage Changed operation",
+      "btnsaveimage_Click - Handles saveimage button click event",
+      "upd - Handles upd operation",
+      "savebtn - Handles savebtn operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 429
+  },
+  {
+    "filePath": "Web/MyPortfolio/CirriculaDetailsResult.aspx.cs",
+    "fileName": "CirriculaDetailsResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CirriculaDetailsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays curricula document report results with department-level reporting and loading screen.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetPFCurriculaDepartmentReportInfo - Retrieves PFCurriculaDepartmentReportInfo data",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "parentRepeater_ItemDataBound - Handles parentRepeater ItemDataBound operation",
+      "ParentSummaryRepeaterDataBound - Handles ParentSummaryRepeaterDataBound operation",
+      "Rotations - Handles Rotations operation",
+      "grdCurriculaReport_RowDataBound - Custom formatting for grid row data binding",
+      "grdPoliciesandDocumentationReport_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 268
+  },
+  {
+    "filePath": "Web/MyPortfolio/CirriculaVideoDetailsResult.aspx.cs",
+    "fileName": "CirriculaVideoDetailsResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CirriculaVideoDetailsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays curricula video report results with custom grid row data binding.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grdCurriculaVideoReport_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 85
+  },
+  {
+    "filePath": "Web/MyPortfolio/CirriculaVideoEdit.aspx.cs",
+    "fileName": "CirriculaVideoEdit.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CirriculaVideoEdit",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages editing of curricula video records including YouTube upload integration with Google API.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetCurrentPagePath - Retrieves CurrentPagePath data",
+      "VideoUpload - Handles VideoUpload operation",
+      "RemoveSessions - Handles RemoveSessions operation",
+      "btnUpdate_click - Handles btnUpdate click operation",
+      "SendUploadingVideoEmailToTeam - Handles SendUploadingVideoEmailToTeam operation",
+      "UpdateData - Updates Data records"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText();",
+      "GetAccessLevelsText"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains YouTube/Google API integration that needs modern API replacement.",
+    "complexity": "complex",
+    "lineCount": 445
+  },
+  {
+    "filePath": "Web/MyPortfolio/CitationHistoryDetails.aspx.cs",
+    "fileName": "CitationHistoryDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CitationHistoryDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays citation history details for accreditation tracking with permission checks.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 70
+  },
+  {
+    "filePath": "Web/MyPortfolio/ComplianceCorrespondenceResults.aspx.cs",
+    "fileName": "ComplianceCorrespondenceResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ComplianceDetailsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays compliance correspondence report results in a grid with row data binding.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grdComplianceCorreReport_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 82
+  },
+  {
+    "filePath": "Web/MyPortfolio/ConcernHistoryDetails.aspx.cs",
+    "fileName": "ConcernHistoryDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ConcernHistoryDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays concern history details for survey performance tracking.",
+    "businessPurpose": "Tracks compliance correspondence and concern management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 46
+  },
+  {
+    "filePath": "Web/MyPortfolio/ContractDetails.aspx.cs",
+    "fileName": "ContractDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ContractDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays contract document details with file download capability.",
+    "businessPurpose": "Manages trainee financial records including contracts, stipends, and supplemental payments",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DownLoadFile - Handles file download to client browser",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "btnBack_Click - Handles Back button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 127
+  },
+  {
+    "filePath": "Web/MyPortfolio/ContractEmailNotice.aspx.cs",
+    "fileName": "ContractEmailNotice.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ContractEmailNotice",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Shows contract-related email notification details and recipients.",
+    "businessPurpose": "Manages trainee financial records including contracts, stipends, and supplemental payments",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 31
+  },
+  {
+    "filePath": "Web/MyPortfolio/CurriculaDocumentDetails.aspx.cs",
+    "fileName": "CurriculaDocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CurriculaDocumentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays curricula document details with file download capability.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DownLoadFile - Handles file download to client browser",
+      "btnDownload_Click - Handles Download button click event",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "btnBack_Click - Handles Back button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 129
+  },
+  {
+    "filePath": "Web/MyPortfolio/CurriculaDocumentEdit.aspx.cs",
+    "fileName": "CurriculaDocumentEdit.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CurriculaDocumentEdit",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages editing of curricula documents with access level controls.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnUpdate_Click - Handles Update button click event",
+      "btnUpload_Click - Handles Upload button click event",
+      "ddlRotation_SelectedIndexChanged - Handles dropdown selection change",
+      "lbtnCEMDDelete_Click - Handles lbtnCEMDDelete Click operation",
+      "grdCirruculaandEvaluationsmeasures_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()",
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 257
+  },
+  {
+    "filePath": "Web/MyPortfolio/CurriculaVideoDetails.aspx.cs",
+    "fileName": "CurriculaVideoDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_CurriculaVideoDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays curricula video details including playback capability.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnPlayVideo_Click - Handles PlayVideo button click event",
+      "btnDownload_Click - Handles Download button click event",
+      "DownLoadFile - Handles file download to client browser",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "btnBack_Click - Handles Back button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 150
+  },
+  {
+    "filePath": "Web/MyPortfolio/DepartmentReport.aspx.cs",
+    "fileName": "DepartmentReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_DepartmentReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Main department report page with user type selection and parameter initialization for portfolio reports.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "Page_LoadComplete - Post-load processing",
+      "btnOk_Click - Handles Ok button click event",
+      "rbtnSelectedDates_Changed - Handles rbtnSelectedDates Changed operation",
+      "rbtnDetailed_SelectedIndexChanged - Handles rbtnDetailed SelectedIndexChanged operation",
+      "rbtnSectionType_SelectedIndexChanged - Handles rbtnSectionType SelectedIndexChanged operation",
+      "rbtnDetailedACGME_Changed - Handles rbtnDetailedACGME Changed operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 178
+  },
+  {
+    "filePath": "Web/MyPortfolio/DepartmentResults.aspx.cs",
+    "fileName": "DepartmentResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_DepartmentResults",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Empty placeholder page for department results display.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Web/MyPortfolio/DocumentDetails.aspx.cs",
+    "fileName": "DocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_DocumentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays general document details with section-specific visibility (driver license, SSC, membership) and role-based edit access.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DownLoadFile - Handles file download to client browser",
+      "btnEdit_Click - Handles Edit button click event",
+      "btnDownload_Click - Handles Download button click event",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "btnDeleteAll_Click - Handles DeleteAll button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 191
+  },
+  {
+    "filePath": "Web/MyPortfolio/EditCitation.aspx.cs",
+    "fileName": "EditCitation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_AddCitation",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages editing of accreditation citation records with citation type-dependent details.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "ddlProgramRequirement_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCitationType_SelectedIndexChanged - Handles dropdown selection change",
+      "btnUpdateCitation_Click - Handles UpdateCitation button click event",
+      "btnCancel_Click - Handles Cancel button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 128
+  },
+  {
+    "filePath": "Web/MyPortfolio/EditComplianceCorrespondence.aspx.cs",
+    "fileName": "EditComplianceCorrespondence.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_EditComplianceCorrespondence",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles editing of compliance correspondence documents.",
+    "businessPurpose": "Tracks compliance correspondence and concern management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnUpload_Click - Handles Upload button click event",
+      "lbtnCCDOCDownload_Click - Handles lbtnCCDOCDownload Click operation",
+      "lbtnCCDOCDelete_Click - Handles lbtnCCDOCDelete Click operation",
+      "grdComplianceCorreEdit_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 177
+  },
+  {
+    "filePath": "Web/MyPortfolio/EditConcern.aspx.cs",
+    "fileName": "EditConcern.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_EditConcern",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages editing of survey concern records with update and cancel operations.",
+    "businessPurpose": "Tracks compliance correspondence and concern management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnUpdateConcern_Click - Handles UpdateConcern button click event",
+      "btnCancel_Click - Handles Cancel button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 77
+  },
+  {
+    "filePath": "Web/MyPortfolio/EditDocumentDetails.aspx.cs",
+    "fileName": "EditDocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_EditDocumentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Comprehensive document editing page with section-specific fields (driver license, SSC, membership, organization).",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindDrivingLicenseStates - Binds data to DrivingLicenseStates controls",
+      "DownLoadFile - Handles file download to client browser",
+      "btnUpload_Click - Handles Upload button click event",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "btnHiddenSchool_Click - Handles HiddenSchool button click event"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();",
+      "GetAccessLevelsText()"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 291
+  },
+  {
+    "filePath": "Web/MyPortfolio/EmployeeHealthDemographicsReport.aspx.cs",
+    "fileName": "EmployeeHealthDemographicsReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_EmployeeHealthDemographicsReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates employee health demographics report with loading screen.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Init - Pre-initialization of dynamic controls",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetCustomFields - Retrieves CustomFields data",
+      "rptUserDetails_Bound - Handles rptUserDetails Bound operation",
+      "rptGeneralDemographics_Bound - Handles rptGeneralDemographics Bound operation",
+      "rptLicenses_Bound - Handles rptLicenses Bound operation",
+      "rptPostGraduation_Bound - Handles rptPostGraduation Bound operation",
+      "rptDegree_Bound - Handles rptDegree Bound operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 645
+  },
+  {
+    "filePath": "Web/MyPortfolio/ExaminationScores.aspx.cs",
+    "fileName": "ExaminationScores.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Reports_ExaminationScores",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays examination scores filtered by academic year with permission checks.",
+    "businessPurpose": "Tracks trainee examination scores and results",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 60
+  },
+  {
+    "filePath": "Web/MyPortfolio/ExaminationScoresResult.aspx.cs",
+    "fileName": "ExaminationScoresResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ExaminationScoresResult",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Empty placeholder page for examination scores results.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Web/MyPortfolio/GenDepartmentReport.aspx.cs",
+    "fileName": "GenDepartmentReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_GenDepartmentReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates cross-page scholarly activities department report with detailed and ACGME format options.",
+    "businessPurpose": "Tracks scholarly activities and research documentation",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "RadioButtonList - Handles RadioButtonList operation",
+      "grAcgmeFormatdheader_Exported - Handles grAcgmeFormatdheader Exported operation",
+      "AddGridToExportedFile - Adds new GridToExportedFile record",
+      "TableRow - Handles TableRow operation",
+      "TableCell - Handles TableCell operation",
+      "number - Handles number operation",
+      "grAcgmeFormatdheader_Exporting - Handles grAcgmeFormatdheader Exporting operation",
+      "rptDepartmentReports_ItemDataBound - Handles rptDepartmentReports ItemDataBound operation",
+      "grdDepartmentReports_ColumnsCreated - Handles grdDepartmentReports ColumnsCreated operation",
+      "GetLoadingScript - Retrieves LoadingScript data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 331
+  },
+  {
+    "filePath": "Web/MyPortfolio/GeneralDemographicsResults.aspx.cs",
+    "fileName": "GeneralDemographicsResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_GeneralDemographicsReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates general demographics report with loading screen display.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Init - Pre-initialization of dynamic controls",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetCustomFields - Retrieves CustomFields data",
+      "rptUserDetails_Bound - Handles rptUserDetails Bound operation",
+      "rptGeneralDemographics_Bound - Handles rptGeneralDemographics Bound operation",
+      "rptLicenses_Bound - Handles rptLicenses Bound operation",
+      "rptPostGraduation_Bound - Handles rptPostGraduation Bound operation",
+      "rptDegree_Bound - Handles rptDegree Bound operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 654
+  },
+  {
+    "filePath": "Web/MyPortfolio/GeneralDocumentationResult.aspx.cs",
+    "fileName": "GeneralDocumentationResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_GeneralDocumentationReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays general documentation report results in a grid with row data binding.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grdGeneralDoc_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 81
+  },
+  {
+    "filePath": "Web/MyPortfolio/ImageViewPortfolio.aspx.cs",
+    "fileName": "ImageViewPortfolio.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ImageViewPortfolio",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Displays portfolio document images.",
+    "businessPurpose": "Handles trainee profile photo management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 21
+  },
+  {
+    "filePath": "Web/MyPortfolio/LearningAssignmentDetails.aspx.cs",
+    "fileName": "LearningAssignmentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_LearningAssignmentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays learning assignment details with quiz integration, comments, and download capabilities.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "ImgbtnLADownload_Click - Handles ImgbtnLADownload Click operation",
+      "GetCommentRowCSSClass - Retrieves CommentRowCSSClass data",
+      "dlistReviewComments_ItemDataBound - Handles dlistReviewComments ItemDataBound operation",
+      "btnSubmitforReview_Click - Handles SubmitforReview button click event",
+      "btnSaveSendLater_Click - Handles SaveSendLater button click event",
+      "btnReviewClose_Click - Handles ReviewClose button click event",
+      "lnkQuizName_OnClick - Handles lnkQuizName OnClick operation",
+      "btnReviewOpen_Click - Handles ReviewOpen button click event",
+      "QuizResults - Handles QuizResults operation",
+      "QuizAssignmentUsersLog - Handles QuizAssignmentUsersLog operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "LearningAssignmentManager",
+      "ManageQuizAssignmentsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 566
+  },
+  {
+    "filePath": "Web/MyPortfolio/MyPAssign.aspx.cs",
+    "fileName": "MyPAssign.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_MyPAssign",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages MyPortfolio department assignment for users.",
+    "businessPurpose": "Manages MyPortfolio department assignment configuration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnUpdate_Click - Handles Update button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 44
+  },
+  {
+    "filePath": "Web/MyPortfolio/MyPortfolioMain.aspx.cs",
+    "fileName": "MyPortfolioMain.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_MyPortfolioMain",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Main portfolio page serving as the dashboard for trainee portfolios with photo management, menu navigation, and comprehensive portfolio data display.",
+    "businessPurpose": "Serves as the main portfolio dashboard for viewing and managing all trainee portfolio data",
+    "keyMethods": [
+      "CheckForPermissions - Validates user access privileges for the page",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckKeyCode - Handles CheckKeyCode operation",
+      "User - Handles User operation",
+      "SetNoRecordText - Configures NoRecordText settings",
+      "AutoLoginCEMDsection - Handles AutoLoginCEMDsection operation",
+      "AutoLoginAccreditionsection - Handles AutoLoginAccreditionsection operation",
+      "AutoLoginVideosSection - Handles AutoLoginVideosSection operation",
+      "AutoLoginPublicationsAndResearchsection - Handles AutoLoginPublicationsAndResearchsection operation",
+      "AutoLoginPersonalPresentationsection - Handles AutoLoginPersonalPresentationsection operation",
+      "AutoLoginQualityImprovmentsection - Handles AutoLoginQualityImprovmentsection operation",
+      "ProgramHistoryForArchivedResidentsandFellows - Handles ProgramHistoryForArchivedResidentsandFellows operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness",
+      "UserManager",
+      "DocDetailsManager",
+      "DetailedConferenceTrackingReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "High-value page with many integrations; prioritize for React migration.",
+    "complexity": "very-complex",
+    "lineCount": 9732
+  },
+  {
+    "filePath": "Web/MyPortfolio/MyPortfolioSummaryResults.aspx.cs",
+    "fileName": "MyPortfolioSummaryResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_MyPortfolioSummaryReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates comprehensive portfolio summary report with loading screen and print capability.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Init - Pre-initialization of dynamic controls",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "GetCustomFields - Retrieves CustomFields data",
+      "rptUserDetails_Bound - Handles rptUserDetails Bound operation",
+      "GetUserImagePath - Retrieves UserImagePath data",
+      "grdLearningObjectiveGoals_RowDataBound - Custom formatting for grid row data binding",
+      "grdLearningAppraisalandPlan_RowDataBound - Custom formatting for grid row data binding",
+      "grdLearningAssignments_RowDataBound - Custom formatting for grid row data binding",
+      "grdCertificatesLicensesContracts_RowDataBound - Custom formatting for grid row data binding",
+      "BindCustomFields - Binds data to CustomFields controls",
+      "rptCustomFields_OnItemDataBound - Handles rptCustomFields OnItemDataBound operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 819
+  },
+  {
+    "filePath": "Web/MyPortfolio/PersonalDocuments/CurriculaEmailNotice.aspx.cs",
+    "fileName": "CurriculaEmailNotice.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PersonalDocuments_CurriculaEmailNotice",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages curricula email notice operations within the MyPortfolio module.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 28
+  },
+  {
+    "filePath": "Web/MyPortfolio/PortfolioAddContracts.aspx.cs",
+    "fileName": "PortfolioAddContracts.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PortfolioAddContracts",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages adding and editing trainee contracts with stipend, employer, and contract details.",
+    "businessPurpose": "Manages trainee financial records including contracts, stipends, and supplemental payments",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnDelete_Click - Handles Delete button click event",
+      "btnSave_Click - Handles Save button click event",
+      "grvPFDocuments_DataBound - Handles grvPFDocuments DataBound operation",
+      "lnbtnDownload_Click - Handles link button click event",
+      "lnbtnDelete_Click - Handles link button click event",
+      "btnDummy_Click - Handles Dummy button click event",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "GetIsStipendAmountOverriden - Retrieves IsStipendAmountOverriden data",
+      "upnltxtStipend_Unload - Handles upnltxtStipend Unload operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 416
+  },
+  {
+    "filePath": "Web/MyPortfolio/PortfolioDocumentEditEMN.aspx.cs",
+    "fileName": "PortfolioDocumentEditEMN.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PortfolioDocumentEditEMN",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Handles document editing for EMN (Email Notification) related portfolio documents.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DownLoadFile - Handles file download to client browser",
+      "btnUpload_Click - Handles Upload button click event",
+      "funDownloadFile - Handles funDownloadFile operation"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 141
+  },
+  {
+    "filePath": "Web/MyPortfolio/PortfolioDocumentUpload.aspx.cs",
+    "fileName": "PortfolioDocumentUpload.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_Upload",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Main portfolio document upload page supporting multiple document types and section-specific handling.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Items - Handles Items operation",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindDrivingLicenseStates - Binds data to DrivingLicenseStates controls",
+      "BrowserDetails - Handles BrowserDetails operation",
+      "btnUpload_Click - Handles Upload button click event"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 444
+  },
+  {
+    "filePath": "Web/MyPortfolio/PortfolioDocumentUploadEMN.aspx.cs",
+    "fileName": "PortfolioDocumentUploadEMN.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PortfolioDocumentUploadEMN",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages portfolio document upload with multi-department distribution option.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnUpload_Click - Handles Upload button click event",
+      "btnAdd_Click - Handles Add button click event",
+      "btnRemove_Click - Handles Remove button click event",
+      "btnAddAll_Click - Handles AddAll button click event",
+      "btnRemoveAll_Click - Handles RemoveAll button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 199
+  },
+  {
+    "filePath": "Web/MyPortfolio/PortfolioMaintenance.aspx.cs",
+    "fileName": "PortfolioMaintenance.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PortfolioMaintenance",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Empty placeholder page for portfolio maintenance operations.",
+    "businessPurpose": "Provides portfolio maintenance operations",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 19
+  },
+  {
+    "filePath": "Web/MyPortfolio/PrintDocumentResults.aspx.cs",
+    "fileName": "PrintDocumentResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PrintDocumentResults",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates printable view of scholarly activities documents with grid data binding.",
+    "businessPurpose": "Supports portfolio document upload, download, and management workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grdPublicationsResearchProjects_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 80
+  },
+  {
+    "filePath": "Web/MyPortfolio/PrintQIProjectDepartmentReport.aspx.cs",
+    "fileName": "PrintQIProjectDepartmentReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PrintQIProjectDepartmentReport",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Generates printable QI project department report with category, status, and date filtering.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "DateTime - Handles DateTime operation",
+      "Grid1_RowDataBound - Handles Grid1 RowDataBound operation",
+      "ConvertStringToDateTime - Handles ConvertStringToDateTime operation",
+      "default - Handles default operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 175
+  },
+  {
+    "filePath": "Web/MyPortfolio/PrintQIProjects.aspx.cs",
+    "fileName": "PrintQIProjects.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_PrintQIProjects",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Generates printable view of personal QI project submissions.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 67
+  },
+  {
+    "filePath": "Web/MyPortfolio/QIProjectDepartmentReport.aspx.cs",
+    "fileName": "QIProjectDepartmentReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_QIProjectDepartmentReport",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "QI project department report filter page with program status and date range selection.",
+    "businessPurpose": "Generates portfolio reports and printable summaries for program administrators",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindddlProgramStatus - Binds data to ddlProgramStatus controls",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindddlProgramCategory - Binds data to ddlProgramCategory controls",
+      "Page_LoadComplete - Post-load processing",
+      "btnOk_Click - Handles Ok button click event",
+      "rbtnSelectedDates_Changed - Handles rbtnSelectedDates Changed operation",
+      "rbtnDetailed_SelectedIndexChanged - Handles rbtnDetailed SelectedIndexChanged operation",
+      "btnClickOK_Click - Handles ClickOK button click event",
+      "StorePageState - Handles StorePageState operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "AnnualProgramEvaluationManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 209
+  },
+  {
+    "filePath": "Web/MyPortfolio/QualityImprovementProjects.aspx.cs",
+    "fileName": "QualityImprovementProjects.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_QualityImprovementProjects",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Comprehensive QI projects management page with project creation, take-action items, admin assignment, and APE integration.",
+    "businessPurpose": "Manages Quality Improvement project documentation and tracking",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindddlProgramAdminAssignedTo - Binds data to ddlProgramAdminAssignedTo controls",
+      "BindddlProgramStatus - Binds data to ddlProgramStatus controls",
+      "BindUsers - Binds data to Users controls",
+      "AnnualProgramEvaluationInfo - Handles AnnualProgramEvaluationInfo operation",
+      "SetMainDetails - Configures MainDetails settings",
+      "funDownloadFile1 - Handles funDownloadFile1 operation",
+      "BindDocGrid - Binds data to DocGrid controls",
+      "LoadTabsForSection - Loads TabsForSection data",
+      "FillAvailableUsersWhenSectionChanged - Populates form fields with data",
+      "BindAPE - Binds data to APE controls",
+      "ClearTakeActions - Handles ClearTakeActions operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager",
+      "UserManager",
+      "AnnualProgramEvaluationBusiness",
+      "AnnualProgramEvaluationManager",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 3507
+  },
+  {
+    "filePath": "Web/MyPortfolio/QualityImprovementProjectsDetails.aspx.cs",
+    "fileName": "QualityImprovementProjectsDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_QualityImprovementProjectsDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays detailed QI project information including initiator, dates, descriptions, and action items.",
+    "businessPurpose": "Manages Quality Improvement project documentation and tracking",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "GetProjectDetails - Retrieves ProjectDetails data",
+      "btnEdit_Click - Handles Edit button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "AnnualProgramEvaluationManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 167
+  },
+  {
+    "filePath": "Web/MyPortfolio/QuizDetails.aspx.cs",
+    "fileName": "QuizDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_QuizDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays quiz assignment details within the portfolio context.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 55
+  },
+  {
+    "filePath": "Web/MyPortfolio/RecordRotationResults.aspx.cs",
+    "fileName": "RecordRotationResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_RecordofRotationsResult",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays record of rotations results report.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "simple",
+    "lineCount": 62
+  },
+  {
+    "filePath": "Web/MyPortfolio/ReviewLearningAppraisalandPlan.aspx.cs",
+    "fileName": "ReviewLearningAppraisalandPlan.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ReviewLearningAppraisalandPlan",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages review and editing of learning appraisal documents with view/edit mode support.",
+    "businessPurpose": "Supports trainee learning assessment and quiz assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "btnSubmitReview_Click - Handles SubmitReview button click event",
+      "grvLearningAppraisalPlanDocuments_DataBound - Handles grvLearningAppraisalPlanDocuments DataBound operation",
+      "btnUpload_Click - Handles Upload button click event",
+      "lnbtnDelete_Click - Handles link button click event",
+      "lnbtnDownload_Click - Handles link button click event",
+      "btnGoalComplete_Click - Handles GoalComplete button click event",
+      "btnCancel_Click - Handles Cancel button click event",
+      "btnGoalInComplete_Click - Handles GoalInComplete button click event",
+      "btnUpdate_Click - Handles Update button click event",
+      "btnContinue_Click - Handles Continue button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 553
+  },
+  {
+    "filePath": "Web/MyPortfolio/ReviewPersonalObjectsandGoals.aspx.cs",
+    "fileName": "ReviewPersonalObjectsandGoals.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ReviewPersonalObjectsandGoals",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages review of personal objectives and goals documents with download and delete capabilities.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "grvPersonalStatementDocuments_DataBound - Handles grvPersonalStatementDocuments DataBound operation",
+      "lnbtnDelete_Click - Handles link button click event",
+      "EncryptString - Handles EncryptString operation",
+      "lnbtnDownload_Click - Handles link button click event",
+      "btnUpload_Click - Handles Upload button click event",
+      "btnSubmitReview_Click - Handles SubmitReview button click event",
+      "btnGoalComplete_Click - Handles GoalComplete button click event",
+      "btnCancel_Click - Handles Cancel button click event",
+      "btnGoalInComplete_Click - Handles GoalInComplete button click event",
+      "btnUpdate_Click - Handles Update button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 515
+  },
+  {
+    "filePath": "Web/MyPortfolio/ScholarlyActivitiesDocumentDetails.aspx.cs",
+    "fileName": "ScholarlyActivitiesDocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ScholarlyActivitiesDocumentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Displays scholarly activities document details with download and edit options.",
+    "businessPurpose": "Tracks scholarly activities and research documentation",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "DownLoadFile - Handles file download to client browser",
+      "btnEdit_Click - Handles Edit button click event",
+      "btnDownload_Click - Handles Download button click event",
+      "funDownloadFile - Handles funDownloadFile operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 143
+  },
+  {
+    "filePath": "Web/MyPortfolio/ScholarlyActivitiesEditDocumentDetails.aspx.cs",
+    "fileName": "ScholarlyActivitiesEditDocumentDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ScholarlyActivitiesEditDocumentDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages editing of scholarly activities documents.",
+    "businessPurpose": "Tracks scholarly activities and research documentation",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindUsers - Binds data to Users controls",
+      "DownLoadFile - Handles file download to client browser",
+      "btndummy_Click - Handles dummy button click event",
+      "btnUpload_Click - Handles Upload button click event",
+      "ddlDocSubject_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlApplyToLevel_SelectedIndexChanged - Handles dropdown selection change",
+      "lnkbnFileName_Click - Handles lnkbnFileName Click operation",
+      "funDownloadFile - Handles funDownloadFile operation",
+      "ddlDocumentDomain_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 253
+  },
+  {
+    "filePath": "Web/MyPortfolio/ShowImage.aspx.cs",
+    "fileName": "ShowImage.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ShowImage",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages show image operations within the MyPortfolio module.",
+    "businessPurpose": "Handles trainee profile photo management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "NoUserImage - Handles NoUserImage operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 280
+  },
+  {
+    "filePath": "Web/MyPortfolio/SurveyPerformaceHistory.aspx.cs",
+    "fileName": "SurveyPerformaceHistory.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_SurveyPerformaceHistory",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages survey performace history operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 45
+  },
+  {
+    "filePath": "Web/MyPortfolio/SurveyPerformanceDetails.aspx.cs",
+    "fileName": "SurveyPerformanceDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_SurveyPerformanceDetails",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages survey performance details operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/MyPortfolio/TrainingAgreement.aspx.cs",
+    "fileName": "TrainingAgreement.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_TrainingAgreement",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages training agreement operations within the MyPortfolio module.",
+    "businessPurpose": "Manages trainee training history, program assignments, and rotation records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnUpdate_Click - Handles Update button click event",
+      "btnDelete_Click - Handles Delete button click event",
+      "lnbtnDelete_Click - Handles link button click event",
+      "lnbtnDownload_Click - Handles link button click event",
+      "grvDocuments_DataBound - Handles grvDocuments DataBound operation",
+      "EncryptString - Handles EncryptString operation",
+      "DecryptString - Decrypts encrypted query string parameters"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 153
+  },
+  {
+    "filePath": "Web/MyPortfolio/UpdatePermanentEmail.aspx.cs",
+    "fileName": "UpdatePermanentEmail.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_UpdatePermanentEmail",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages update permanent email operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnUpdate_Click - Handles Update button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 34
+  },
+  {
+    "filePath": "Web/MyPortfolio/UploadCirricula.aspx.cs",
+    "fileName": "UploadCirricula.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_UploadCirricula",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages upload cirricula operations within the MyPortfolio module.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "BindRotationData - Binds data to RotationData controls",
+      "DecryptString - Decrypts encrypted query string parameters",
+      "grdCirruculaandEvaluationsmeasures_RowDataBound - Custom formatting for grid row data binding",
+      "btnUpload_Click - Handles Upload button click event",
+      "ddlRotation_SelectedIndexChanged - Handles dropdown selection change",
+      "lbtnCEMDDelete_Click - Handles lbtnCEMDDelete Click operation"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText()",
+      "GetAccessLevelsText",
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 322
+  },
+  {
+    "filePath": "Web/MyPortfolio/UploadCirriculaVideo.aspx.cs",
+    "fileName": "UploadCirriculaVideo.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_UploadCirriculaVideo",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages upload cirricula video operations within the MyPortfolio module.",
+    "businessPurpose": "Manages curricula and reading material documentation and reports",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "GetCurrentPagePath - Retrieves CurrentPagePath data",
+      "VideoUpload - Handles VideoUpload operation",
+      "RemoveSessions - Handles RemoveSessions operation",
+      "btnUpload_Click - Handles Upload button click event",
+      "FileUpload - Handles FileUpload operation",
+      "SendUploadingVideoEmailToTeam - Handles SendUploadingVideoEmailToTeam operation"
+    ],
+    "storedProcedures": [
+      "GetAccessLevelsText();"
+    ],
+    "businessManagersUsed": [
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains YouTube/Google API integration that needs modern API replacement.",
+    "complexity": "complex",
+    "lineCount": 412
+  },
+  {
+    "filePath": "Web/MyPortfolio/VideoPlay.aspx.cs",
+    "fileName": "VideoPlay.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_VideoPlay",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "MyPortfolio",
+    "summary": "Manages video play operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "jwplayer - Handles jwplayer operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains YouTube/Google API integration that needs modern API replacement.",
+    "complexity": "moderate",
+    "lineCount": 98
+  },
+  {
+    "filePath": "Web/MyPortfolio/ViewACGMEDefinations.aspx.cs",
+    "fileName": "ViewACGMEDefinations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ViewACGMEDefinations",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages view a c g m e definations operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 59
+  },
+  {
+    "filePath": "Web/MyPortfolio/ViewCitation.aspx.cs",
+    "fileName": "ViewCitation.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ViewCitation",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages view citation operations within the MyPortfolio module.",
+    "businessPurpose": "Supports accreditation compliance tracking and documentation for GME programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 56
+  },
+  {
+    "filePath": "Web/MyPortfolio/ViewConcern.aspx.cs",
+    "fileName": "ViewConcern.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_ViewConcern",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages view concern operations within the MyPortfolio module.",
+    "businessPurpose": "Tracks compliance correspondence and concern management",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 44
+  },
+  {
+    "filePath": "Web/MyPortfolio/WebADSImportDetails.aspx.cs",
+    "fileName": "WebADSImportDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_WebADSImportDetails",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages web a d s import details operations within the MyPortfolio module.",
+    "businessPurpose": "Supports portfolio documentation management for trainee records",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "StorePageState - Handles StorePageState operation",
+      "BindDetails - Binds data to Details controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "moderate",
+    "lineCount": 91
+  },
+  {
+    "filePath": "Web/MyPortfolio/WebADSScholarlyActivityImporting.aspx.cs",
+    "fileName": "WebADSScholarlyActivityImporting.aspx.cs",
+    "fileType": "code-behind",
+    "className": "MyPortfolio_WebADSScholarlyActivityImporting",
+    "inheritsFrom": "BasePage",
+    "module": "MyPortfolio",
+    "summary": "Manages web a d s scholarly activity importing operations within the MyPortfolio module.",
+    "businessPurpose": "Tracks scholarly activities and research documentation",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "CheckForPermissions - Validates user access privileges for the page",
+      "SetPageDesignSettings - Configures PageDesignSettings settings",
+      "OnViewWebAdsImportingInitialization - Handles OnViewWebAdsImportingInitialization operation",
+      "StorePageState - Handles StorePageState operation",
+      "btnStep1Next_Click - Handles Step1Next button click event",
+      "btnStep2Next_Click - Handles Step2Next button click event",
+      "btnStep3Next_Click - Handles Step3Next button click event",
+      "btnConfirmDataImport_Click - Handles ConfirmDataImport button click event",
+      "btnStep2Cancel_Click - Handles Step2Cancel button click event",
+      "Logout - Handles Logout operation",
+      "btnMatch_Click - Handles Match button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MainPageBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "complex",
+    "lineCount": 390
+  }
+]}
+  directoryOverview="MyPortfolio is the trainee portfolio management module providing comprehensive document management, demographics tracking, training history, financial records (stipends/contracts), accreditation compliance, scholarly activities, quality improvement projects, curricula management, and report generation. It serves as the central hub for managing all aspects of a trainee's academic and professional portfolio in GME and nursing programs."
+  keyWorkflows={["Portfolio document upload and management workflow","Accreditation compliance documentation and email notifications","Trainee contract and stipend management","Training history and program history tracking","Scholarly activities and curricula documentation","Quality Improvement project lifecycle management","Department-level report generation and export","Certificate and employee health tracking","Learning appraisal and quiz assignment workflows","Affiliate agreement management and compliance"]}
+/>

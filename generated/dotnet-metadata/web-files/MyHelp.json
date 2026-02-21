@@ -1,0 +1,1771 @@
+{
+  "directory": "MyHelp",
+  "directoryPath": "Web/MyHelp",
+  "parsedAt": "2026-02-20T17:10:58.800Z",
+  "fileCount": 14,
+  "totalLines": 2482,
+  "files": [
+    {
+      "fileName": "AddSection.aspx.cs",
+      "filePath": "Web/MyHelp/AddSection.aspx.cs",
+      "lineCount": 97,
+      "className": "MyHelp_AddSection",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "MyHelp"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddSection_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ReviewBehaviorAnchors.aspx.cs",
+      "filePath": "Web/MyHelp/GeneralSurgery/ReviewBehaviorAnchors.aspx.cs",
+      "lineCount": 60,
+      "className": "MyHelp_GeneralSurgery_ReviewBehaviorAnchors",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Evaluations",
+        "Portfolio",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindResults",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDepartments_SelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindResults",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindResults",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageChapters.aspx.cs",
+      "filePath": "Web/MyHelp/ManageChapters.aspx.cs",
+      "lineCount": 211,
+      "className": "MyHelp_ManageChapters",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "Obout.Grid",
+        "System.Collections.Generic"
+      ],
+      "businessModuleRefs": [
+        "MyHelp"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddChapterTop_Click",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddChapterBottom_Click",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlSelectSection_SelectedIndexChanged",
+          "returnType": "region ddlSelectSection_SelectedIndexChanged\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteRecord",
+          "returnType": "region DeleteRecord\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRecordEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnEdit_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnDelete_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnView_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptQueryString",
+          "returnType": "returns>\r\n    public  string",
+          "visibility": "private",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewChapters_RowDataBound",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManagePages.aspx.cs",
+      "filePath": "Web/MyHelp/ManagePages.aspx.cs",
+      "lineCount": 45,
+      "className": "MyHelp_ManagePages",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Data.SqlClient",
+        "OboutInc",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.MyHelp"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "MyHelp"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddPageTop_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddPageBottom_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageSections.aspx.cs",
+      "filePath": "Web/MyHelp/ManageSections.aspx.cs",
+      "lineCount": 234,
+      "className": "MyHelp_ManageSections",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.MyHelp",
+        "MyEvaluations.Business.Utilities",
+        "Obout.Grid",
+        "System.Collections.Generic",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "MyHelp",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddSectionTop_Click",
+          "returnType": "\r\n    \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnEdit_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnView_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnManage_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lbtnDelete_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewSections_RowDataBound",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "grdViewSections_RowCreated",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "GridRowEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MyHelpContents.aspx.cs",
+      "filePath": "Web/MyHelp/MyHelpContents.aspx.cs",
+      "lineCount": 325,
+      "className": "MyHelp_MyHelpContents",
+      "namespace": "",
+      "baseClass": "BasePage_Ajax",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Data.SqlClient",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "obout_ASPTreeView_2_NET",
+        "OboutInc"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnNodeDrop",
+          "returnType": "\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string src",
+            "string dst"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnBeforeNodeDrop",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string src",
+            "string dst"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnNodeSelect",
+          "returnType": "\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string id",
+            "string name",
+            "string cid"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Redirect",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "\"MyHelpContents.aspx?Mode=2&ID=\" + EncryptString(id"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSavePageBottom_Click",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddChapter_Click",
+          "returnType": "\r\n\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnAddPage_Click",
+          "returnType": "\r\n\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveChapter_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSavePage_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDeleteChapter_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDeletePage_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "String errorMessage in errorMessages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "txtPageTitle_TextChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MyHelpIndex.aspx.cs",
+      "filePath": "Web/MyHelp/MyHelpIndex.aspx.cs",
+      "lineCount": 134,
+      "className": "MyHelp_MyHelpIndex",
+      "namespace": "",
+      "baseClass": "BasePage_Ajax",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "obout_ASPTreeView_2_NET",
+        "OboutInc"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnNodeSelect",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string id",
+            "string name",
+            "string cid"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnContents_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnIndex_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSearch_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptString",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MyHelpLanding.aspx.cs",
+      "filePath": "Web/MyHelp/MyHelpLanding.aspx.cs",
+      "lineCount": 493,
+      "className": "ItemPrivilege",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "obout_ASPTreeView_2_NET",
+        "OboutInc",
+        "System.Xml",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Security.Cryptography",
+        "SAMLServiceProvider",
+        "System.Security.Cryptography.Xml",
+        "System.Text",
+        "System.Linq",
+        "System.Net",
+        "RestSharp",
+        "RestSharp.Authenticators",
+        "Newtonsoft.Json",
+        "Newtonsoft.Json.Linq"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security"
+      ],
+      "methods": [],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MyHelpMain.aspx.cs",
+      "filePath": "Web/MyHelp/MyHelpMain.aspx.cs",
+      "lineCount": 45,
+      "className": "MyHelp_MyHelpMain",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "    \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MyHelpSearch.aspx.cs",
+      "filePath": "Web/MyHelp/MyHelpSearch.aspx.cs",
+      "lineCount": 135,
+      "className": "MyHelp_MyHelpSearch",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "obout_ASPTreeView_2_NET",
+        "OboutInc",
+        "MyEvaluations.Business.Quiz"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security",
+        "Quiz"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSearch_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": "returns>\r\n    public  string",
+          "visibility": "private",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnContents_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnIndex_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSearchTop_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "PrintPageContent.aspx.cs",
+      "filePath": "Web/MyHelp/PrintPageContent.aspx.cs",
+      "lineCount": 37,
+      "className": "MyHelp_PrintPageContent",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RocketChatConnect.aspx.cs",
+      "filePath": "Web/MyHelp/RocketChatConnect.aspx.cs",
+      "lineCount": 314,
+      "className": "MyHelp_RocketChatConnect",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "Newtonsoft.Json",
+        "Newtonsoft.Json.Linq",
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Net.Http",
+        "System.Net.Http.Headers",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthenticateAndEmbed",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "UserName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthenticateAndEmbed",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string userNamefromAgent"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chat",
+          "returnType": "s",
+          "visibility": "private",
+          "parameters": [
+            "e.g.",
+            "David"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateDMInBackground",
+          "returnType": "await needed",
+          "visibility": "private",
+          "parameters": [
+            "AuthToken",
+            "UserId",
+            "otherUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateDMInBackground",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "string authToken",
+            "string userId",
+            "string targetUsername"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "RocketChatBaseUrl"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MediaTypeWithQualityHeaderValue",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringContent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "json",
+            "Encoding.UTF8",
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "call",
+          "returnType": " Make synchronous",
+          "visibility": "private",
+          "parameters": [
+            "block until complete"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUsernamesWithRoles",
+          "returnType": "\n    public List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string[] wanted",
+            "string adminToken",
+            "string adminUserId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var u in responseJson[\"users\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAdminToken",
+          "returnType": "\n    public Tuple<string, string>",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringContent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "json",
+            "Encoding.UTF8",
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RocketChatUserExists",
+          "returnType": "\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string username",
+            "string adminToken",
+            "string adminUserId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CreateRocketChatUser",
+          "returnType": "\n\n    public bool",
+          "visibility": "private",
+          "parameters": [
+            "string name",
+            "string username",
+            "string email",
+            "string password",
+            "string adminToken",
+            "string adminUserId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringContent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "json",
+            "Encoding.UTF8",
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RocketChatLogin",
+          "returnType": "\n\n    public Tuple<string, string>",
+          "visibility": "private",
+          "parameters": [
+            "string username",
+            "string password"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringContent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "json",
+            "Encoding.UTF8",
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RocketChatMembers.aspx.cs",
+      "filePath": "Web/MyHelp/RocketChatMembers.aspx.cs",
+      "lineCount": 184,
+      "className": "MyHelp_RocketChatMembers",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "Newtonsoft.Json",
+        "Newtonsoft.Json.Linq",
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Net.Http",
+        "System.Text",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAdminToken",
+          "returnType": "\n    public Tuple<string, string>",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringContent",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "json",
+            "Encoding.UTF8",
+            "\"application/json\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTeamMembersFromRocketChat",
+          "returnType": "\n\n    public List<TeamMember>",
+          "visibility": "private",
+          "parameters": [
+            "string[] targetRoles",
+            "string adminToken",
+            "string adminUserId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var u in responseJson[\"users\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStatusText",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string status"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetStatusCssClass",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string status"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCurrentUserFullName",
+          "returnType": "\n\n\n    private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ViewSections.aspx.cs",
+      "filePath": "Web/MyHelp/ViewSections.aspx.cs",
+      "lineCount": 168,
+      "className": "MyHelp_ViewSections",
+      "namespace": "",
+      "baseClass": "BasePage_Ajax",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.MyHelp",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "obout_ASPTreeView_2_NET",
+        "OboutInc"
+      ],
+      "businessModuleRefs": [
+        "MyHelp",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "SectionInfoBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateAllPanels",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Logout",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnNodeSelect",
+          "returnType": "\r\n\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "string id",
+            "string name",
+            "string cid"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnPrint_Click",
+          "returnType": "void",
+          "visibility": "protected",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptString",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": "string",
+          "visibility": "public",
+          "parameters": [
+            "string data"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnContents_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnIndex_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSearch_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

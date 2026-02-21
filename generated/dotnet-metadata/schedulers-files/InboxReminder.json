@@ -1,0 +1,536 @@
+{
+  "projectName": "InboxReminder",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/InboxReminder",
+  "parsedAt": "2026-02-20T17:11:05.556Z",
+  "fileCount": 4,
+  "totalLines": 716,
+  "files": [
+    {
+      "fileName": "InboxReminder.cs",
+      "filePath": "Schedulers/InboxReminder/InboxReminder/InboxReminder.cs",
+      "lineCount": 515,
+      "className": "InboxReminder",
+      "namespace": "InboxReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.IO",
+        "System.Configuration",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "summary>\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInboxEmailReminders",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInboxEmailReminders",
+          "returnType": "\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drDepartment in dtDepartments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertNewEvaluationID",
+          "returnType": "Update evaluationid in to Eval_EvaluationsCount table",
+          "visibility": "private",
+          "parameters": [
+            "departmentID",
+            "newEvaluationID",
+            "isOldEvalExists"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailTemplate",
+          "returnType": "Sending mails to user",
+          "visibility": "private",
+          "parameters": [
+            "oldEvaluationID",
+            "departmentID",
+            "drDepartment[\"Name\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOldEvaluationID",
+          "returnType": "\r\n\r\n        private Int64",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLastScheduleDate",
+          "returnType": "\r\n\r\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MAX",
+          "returnType": "SELECT",
+          "visibility": "private",
+          "parameters": [
+            "LastDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetNewEvaluationID",
+          "returnType": "\r\n\r\n        private Int64",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MAX",
+          "returnType": "SELECT",
+          "visibility": "private",
+          "parameters": [
+            "E.EvaluationID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "T",
+          "returnType": " as EvaluationID FROM Eval_Templates",
+          "visibility": "private",
+          "parameters": [
+            "NOLOCK"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "E",
+          "returnType": " INNER JOIN EVAL_Evaluations",
+          "visibility": "private",
+          "parameters": [
+            "NOLOCK"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": " AND",
+          "visibility": "private",
+          "parameters": [
+            "E.IsExempted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": " 0 AND",
+          "visibility": "private",
+          "parameters": [
+            "E.IsPartialCompleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertNewEvaluationID",
+          "returnType": "\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID",
+            "Int64 evaluationID",
+            "Boolean isOldEvaluationExist"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Eval_EvaluationsCount",
+          "returnType": "INSERT INTO",
+          "visibility": "private",
+          "parameters": [
+            "DepartmentID",
+            "EvaluationID",
+            "LastDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailTemplate",
+          "returnType": "\r\n\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 oldEvaluationID",
+            "Int64 departmentID",
+            "string departmentName",
+            "string isEMailLogin",
+            "string isEMailPassword",
+            "DateTime lastScheduleDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": "2 AND U.UserTypeID <> 4 AND U.MainEmail IS NOT NULL AND",
+          "visibility": "private",
+          "parameters": [
+            "U.EnablePDAReminders",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dtUsers in dtProgramDirectors.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "COUNT",
+          "returnType": "SELECT",
+          "visibility": "private",
+          "parameters": [
+            "E.EvaluationID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": " AND",
+          "visibility": "private",
+          "parameters": [
+            "E.IsExempted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ISNULL",
+          "returnType": " 0 AND",
+          "visibility": "private",
+          "parameters": [
+            "E.IsPartialCompleted",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": "AND E.EvaluationID NOT",
+          "visibility": "private",
+          "parameters": [
+            "SELECT EvaluationID FROM Eval_UserInbox WHERE UserRoleID = \" + dtUsers[\"UserRoleID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationURL in dtSettings.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationURL in dtSettings.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "signature",
+          "returnType": "s review",
+          "visibility": "private",
+          "parameters": [
+            "if available"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IN",
+          "returnType": " AND UR.RoleID",
+          "visibility": "private",
+          "parameters": [
+            "2",
+            "4",
+            "7"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drUserInfo in dtContactInfo.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "at",
+          "returnType": "td><td>Customer Support",
+          "visibility": "private",
+          "parameters": [
+            "646"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\r\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetNewEvaluations",
+        "GetUserInboxCount"
+      ]
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/InboxReminder/InboxReminder/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/InboxReminder/InboxReminder/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "InboxReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InboxReminder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/InboxReminder/InboxReminder/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

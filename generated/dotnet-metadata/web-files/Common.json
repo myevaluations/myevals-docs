@@ -1,0 +1,3461 @@
+{
+  "directory": "Common",
+  "directoryPath": "Web/Common",
+  "parsedAt": "2026-02-20T17:10:52.359Z",
+  "fileCount": 9,
+  "totalLines": 10543,
+  "files": [
+    {
+      "fileName": "EpicService.aspx.cs",
+      "filePath": "Web/Common/EpicService.aspx.cs",
+      "lineCount": 187,
+      "className": "Common_EPICService",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Net",
+        "Newtonsoft.Json.Linq",
+        "RestSharp",
+        "HtmlAgilityPack",
+        "System.IdentityModel.Tokens.Jwt",
+        "MyEvaluations.Business.Security",
+        "System.Configuration",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "iss"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtSecurityTokenHandler",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/DSTU2/metadata\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseURL + action"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient/\" + patientName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/oauth2/userinfo\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "JToken item in objTokens"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/DSTU2/Patient/\" + patientName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Method.GET"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Main.aspx.cs",
+      "filePath": "Web/Common/Main.aspx.cs",
+      "lineCount": 3765,
+      "className": "Common_Main",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.HtmlControls",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.CMETracking",
+        "MyEvaluations.Business.Quiz",
+        "MyEvaluations.Business.LearningAssignment",
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.Mail",
+        "System.Linq",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Portfolio",
+        "Evaluations",
+        "CMETracking",
+        "Quiz",
+        "LearningAssignment",
+        "DutyHours",
+        "Mail",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "DepartmentManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEventsInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MainPageBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DesignQuizManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorModuleManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAcademicYear",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PreceptorManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "int i in metroDepartmentIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetNoRecordText",
+          "returnType": "Ended by sardeep",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptString",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "SectionCode"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "acSystemImplementation_listSelectedIndexChangeHandler",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EnableNewInterface",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateNewInterfaceUrl",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateNewInterfaceUrl",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetNewInterfaceUrl",
+          "returnType": "\r\n\r\n    private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDepartments_SelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroupDepartment_OnSelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlInstitutionDepartments_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursVerificationMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToSignMenu",
+          "returnType": "2016",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToReviewMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedCMEEvaluationsMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetQuizToCompleteMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowDepartmentSummaryProfile",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowInstitutionDepartments",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "setCompleteLearningAssignmentReviewMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetLearningAssignmentSubmitCount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PatientCasesToReviewCount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitConferencesAttendance",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursToSubmitMenu",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMessagesAndInterimEvaluations",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetTrainingSeminarEventCount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitPatientLogLink",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowAdministrative",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetProceduresToReviewCount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPendingProceduresCount",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetVerifyProcedureCertification",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitProcedureLogLink",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificDashBoard",
+          "returnType": "\r\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificMenuItems",
+          "returnType": "\r\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lstAcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardDepartments_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlSystemImplementation_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlOnboardingDepartments_OnSelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroup_OnSelectedIndexChanged",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardSelectedUser_SelectedIndexChanged",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "bool isDepartmentSelected"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindOutcomeGroups",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt64(ddlDashboardDepartments.SelectedValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowAdministrative",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindOutcomeGroups1",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt64(SessionManager.GetLoggedInUserPrimaryDepartmentID("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt32(dtDepartments.Rows[0][\"PendingCount\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CountLenghtValue",
+          "returnType": "\r\n\r\n    public int",
+          "visibility": "private",
+          "parameters": [
+            "int Count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "summary>\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\r\n\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MainNew.aspx.cs",
+      "filePath": "Web/Common/MainNew.aspx.cs",
+      "lineCount": 3045,
+      "className": "Common_Main",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Collections",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.CMETracking",
+        "MyEvaluations.Business.Quiz",
+        "MyEvaluations.Business.LearningAssignment",
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.Procedures",
+        "MyEvaluations.Business.PatientLog",
+        "MyEvaluations.Business.Mail",
+        "System.IO",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Portfolio",
+        "Evaluations",
+        "CMETracking",
+        "Quiz",
+        "LearningAssignment",
+        "DutyHours",
+        "Procedures",
+        "PatientLog",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "DepartmentManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEventsInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MainPageBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DesignQuizManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAcademicYear",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "acSystemImplementation_listSelectedIndexChangeHandler",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroupDepartment_OnSelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlInstitutionDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowAdministrative",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursVerificationMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToSignMenu",
+          "returnType": "2016",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedCMEEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetQuizToCompleteMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowDepartmentSummaryProfile",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowInstitutionDepartments",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "setCompleteLearningAssignmentReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetLearningAssignmentSubmitCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetProceduresToReviewCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPendingProceduresCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetVerifyProcedureCertification",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PatientCasesToReviewCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitConferencesAttendance",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursToSubmitMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMessagesAndInterimEvaluations",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetTrainingSeminarEventCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitProcedureLogLink",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitPatientLogLink",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificDashBoard",
+          "returnType": "\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificMenuItems",
+          "returnType": "\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lstAcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlSystemImplementation_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlOnboardingDepartments_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroup_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardSelectedUser_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "bool isDepartmentSelected"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindOutcomeGroups",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt64(ddlDashboardDepartments.SelectedValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowAdministrative",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindOutcomeGroups1",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt64(SessionManager.GetLoggedInUserPrimaryDepartmentID("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt32(dtDepartments.Rows[0][\"PendingCount\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CountLenghtValue",
+          "returnType": "\n\n    public int",
+          "visibility": "private",
+          "parameters": [
+            "int Count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "summary>\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MainOldFile0407.aspx.cs",
+      "filePath": "Web/Common/MainOldFile0407.aspx.cs",
+      "lineCount": 2858,
+      "className": "Common_Main",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Data",
+        "System.Configuration",
+        "System.Collections",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "System.Web.UI.HtmlControls",
+        "System.Collections.Generic",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Portfolio",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.CMETracking",
+        "MyEvaluations.Business.Quiz",
+        "MyEvaluations.Business.LearningAssignment",
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.Procedures",
+        "MyEvaluations.Business.PatientLog",
+        "MyEvaluations.Business.Mail",
+        "System.IO",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Portfolio",
+        "Evaluations",
+        "CMETracking",
+        "Quiz",
+        "LearningAssignment",
+        "DutyHours",
+        "Procedures",
+        "PatientLog",
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "DepartmentManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistributionManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrainingEventsInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MainPageBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DesignQuizManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EvaluationsTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindAcademicYear",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "0, new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToString(dtDepartmentDetail.Rows[0][\"DepartmentName\"]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FillCountDetails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "currentDepartment"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetHelpIcons",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "acSystemImplementation_listSelectedIndexChangeHandler",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroupDepartment_OnSelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlInstitutionDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMenuItems",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursVerificationMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToSignMenu",
+          "returnType": "2016",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsToReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedCMEEvaluationsMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetQuizToCompleteMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowDepartmentSummaryProfile",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ShowInstitutionDepartments",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "setCompleteLearningAssignmentReviewMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetLearningAssignmentSubmitCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetProceduresToReviewCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetPendingProceduresCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetVerifyProcedureCertification",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PatientCasesToReviewCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitConferencesAttendance",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursToSubmitMenu",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMessagesAndInterimEvaluations",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetTrainingSeminarEventCount",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitProcedureLogLink",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetSubmitPatientLogLink",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificDashBoard",
+          "returnType": "\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsDeptSpecificMenuItems",
+          "returnType": "\n    private bool",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboard",
+          "returnType": "\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lstAcademicYear_listSelectedIndexChangeHandler",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "String value",
+            "String text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardDepartments_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "true"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlSystemImplementation_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlOnboardingDepartments_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlRequirementGroup_OnSelectedIndexChanged",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadDashBoardScripts",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlDashboardSelectedUser_SelectedIndexChanged",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDashboardData",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "bool isDepartmentSelected"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DocDetailsManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindOutcomeGroups",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt64(ddlDashboardDepartments.SelectedValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetInboxMenu",
+          "returnType": "\n\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFormattedNumber",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToInt32(dtDepartments.Rows[0][\"PendingCount\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CountLenghtValue",
+          "returnType": "\n\n    public int",
+          "visibility": "private",
+          "parameters": [
+            "int Count"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetEvaluationsCompleteByProxyMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetCompletedEvaluationsMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetArchieveCompletedEvaluationsMenu",
+          "returnType": "summary>\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDutyHoursViolationToReviewMenu",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Messages.aspx.cs",
+      "filePath": "Web/Common/Messages.aspx.cs",
+      "lineCount": 31,
+      "className": "Common_Messages",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ScheduleIcal.aspx.cs",
+      "filePath": "Web/Common/ScheduleIcal.aspx.cs",
+      "lineCount": 418,
+      "className": "Common_ScheduleIcal",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "Newtonsoft.Json",
+        "System.Data",
+        "DDay.iCal",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Security",
+        "DDay.iCal.Serialization.iCalendar",
+        "System.Text",
+        "System.IO",
+        "System.Configuration",
+        "System.Reflection",
+        "GoogleConsole",
+        "Google.Apis.Auth.OAuth2",
+        "Google.Apis.Auth.OAuth2.Responses",
+        "MyEvaluations.Business.DutyHours"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Security",
+        "DutyHours"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GoogleAPIAuthentication",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserCredential",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "flow",
+            "userID",
+            "token"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dsMyScheduleDetails.Tables[1]"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendar",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtUsers.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendar",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarProperty",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"X-WR-CALNAME\"",
+            "\"Calendar - \" + dr[\"MainEmail\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarProperty",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"X-WR-RELCALID\"",
+            "dr[\"UserID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvr in dvSchedules"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "TimeZoneInfo.ConvertTime(startDate.ToUniversalTime("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "TimeZoneInfo.ConvertTime(endDate.ToUniversalTime("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dvr[\"ActualStartTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dvr[\"ActualEndTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Organizer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dvr[\"FromAddress\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var entry in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendarSerializer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendar",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarProperty",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"X-WR-CALNAME\"",
+            "\"Calendar - \" + SessionManager.GetLoggedInEmail("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalendarProperty",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"X-WR-RELCALID\"",
+            "SessionManager.GetLoggedInUserID("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtMyScheduleDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendar",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dr[\"ActualStartTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "(DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "(DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dr[\"ActualEndTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "(DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "(DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "(DateTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "TimeZoneInfo.ConvertTime(startDate.ToUniversalTime("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "TimeZoneInfo.ConvertTime(endDate.ToUniversalTime("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Organizer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dr[\"FromAddress\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "easternTime"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now.ToString(\"yyyyMMdd\\\\THHmmss\\\\Z\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalDateTime",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "iCalendarSerializer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtMyScheduleDetails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTimeOffset",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dr[\"ActualStartTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DateTimeOffset",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Convert.ToDateTime(dr[\"ActualEndTime\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EventAttendee",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ServiceProviderRequest.aspx.cs",
+      "filePath": "Web/Common/ServiceProviderRequest.aspx.cs",
+      "lineCount": 131,
+      "className": "Common_ServiceProviderRequest",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "SAMLServiceProvider",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Logging",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConsumeResponse",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "issuerName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConsumeResponse",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "issuerName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HttpCookie",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"singlesignon\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TimeSpan",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "24",
+            "0",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "SingleSignOn.aspx.cs",
+      "filePath": "Web/Common/SingleSignOn.aspx.cs",
+      "lineCount": 32,
+      "className": "Common_SingleSignOn",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "SAMLServiceProvider",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthnRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "issuerName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "UserMailMessageDetails.aspx.cs",
+      "filePath": "Web/Common/UserMailMessageDetails.aspx.cs",
+      "lineCount": 76,
+      "className": "Common_UserMailMessageDetails",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Evaluations",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "lnkDelete_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+---
+title: "MyEvaluations.Web Files"
+sidebar_label: "MyEvaluations.Web"
+description: "Per-file reference for MyEvaluations.Web (4 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# MyEvaluations.Web File Reference
+
+> **4 files** | **3,240 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "MyEvaluations.Web/HomeRedirect.cs",
+    "fileName": "HomeRedirect.cs",
+    "fileType": "service",
+    "className": "HomeRedirect",
+    "inheritsFrom": null,
+    "module": "Navigation / Routing",
+    "summary": "Determines the home page redirect path based on the logged-in user's department, role, and user type. Handles special routing for MEDCOM/procedure departments (dept 1433), Chamberlain departments (2175, 2207), BSN programs (2531), and role-specific pages (ProcedureVerif, portfolio roles).",
+    "businessPurpose": "Post-login routing engine that directs users to the correct landing page based on their institutional context. Critical for multi-institution support where different departments have different home experiences (EssentialActivities, BSNProgram, Procedures, Portfolio).",
+    "keyMethods": [
+      "getRedirectPath - Main routing logic evaluating department ID, user role, and Chamberlain flags to determine home page URL",
+      "GenerateAndStoreToken - Generates JWT token via SessionManager and stores in session for procedure module SSO"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "This routing logic needs to be replicated in the React frontend or Node.js API. Hardcoded department IDs (1433, 2175, 2207, 2531, 2606) should be moved to configuration.",
+    "complexity": "simple",
+    "lineCount": 91
+  },
+  {
+    "filePath": "MyEvaluations.Web/NewFrontend.cs",
+    "fileName": "NewFrontend.cs",
+    "fileType": "service",
+    "className": "NewFrontend",
+    "inheritsFrom": null,
+    "module": "Frontend Integration",
+    "summary": "Bridge class enabling the strangler fig migration pattern by fetching React frontend HTML partial content from Azure CDN and serving it within the .NET WebForms shell. Manages CDN URLs, versioning, caching, and revalidation for 20+ React-migrated pages (home, caw, onboarding, EPA reports, program assessments, etc.).",
+    "businessPurpose": "Core infrastructure for the React frontend migration. Enables new React pages to be embedded within the legacy .NET shell by fetching pre-rendered HTML partials from Azure Blob Storage/CDN. The pages list documents which features have been migrated to React.",
+    "keyMethods": [
+      "GetAssetsUrl - Constructs the versioned CDN URL for frontend assets",
+      "GetPagePartialContent - Fetches and caches HTML partial for a given React page name",
+      "Revalidate - Invalidates all cached page content and version (called when frontend is redeployed)",
+      "FetchVersion - HTTP GET to Azure Blob to get current frontend version hash",
+      "FetchPagePartialContent - HTTP GET to CDN to fetch the HTML partial for a specific page"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CacheManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "This class IS the migration bridge. The list of 20 pages represents completed React migrations. Once all pages are migrated, this class and the .NET shell can be retired. Key reference for understanding the strangler fig architecture.",
+    "complexity": "simple",
+    "lineCount": 147
+  },
+  {
+    "filePath": "MyEvaluations.Web/UserAuthentication.cs",
+    "fileName": "UserAuthentication.cs",
+    "fileType": "service",
+    "className": "UserAuthentication",
+    "inheritsFrom": null,
+    "module": "Authentication / Security",
+    "summary": "Comprehensive user authentication service handling login flow, account lockout, password expiration, first-login workflows (agreement, photo upload, password change), department-specific access rules (Chamberlain/DeVry student restrictions, MEDCOM registration), SSO redirects, service message display, QR code login, and mobile app authentication. Contains UserAuthenticationLoginResult as a result pattern class.",
+    "businessPurpose": "The central authentication orchestrator for the entire platform. Handles the complex multi-institution login flow where different departments (900+ institutions) have different rules for account lockout, password policies, first-login requirements, SSO integration, and access restrictions. Supports both web and mobile authentication.",
+    "keyMethods": [
+      "login - Main username/password authentication with lockout handling, password expiration checks, and institution-specific post-login routing",
+      "loginWithToken - Token-based authentication for SSO and cross-system redirects",
+      "loginWithQRCode - QR code-based authentication for mobile app and quick-login scenarios",
+      "loginForMobileApp - Mobile app-specific login flow",
+      "formatTimeDuration - Utility to format lockout duration for user messages"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "SessionManager",
+      "PasswordManager",
+      "UserManager",
+      "EvaluationsManager",
+      "DepartmentManager",
+      "ServiceMessageManager",
+      "EmailUtility",
+      "EmailValidation"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Authentication is being progressively migrated to the Node.js backend. The complex department-specific login rules and account lockout logic need careful migration. Many hardcoded department IDs (1433, 2175, 2207, 2531, 2606) need to be configuration-driven.",
+    "complexity": "very-complex",
+    "lineCount": 2888
+  },
+  {
+    "filePath": "MyEvaluations.Web/UserAuthenticationLegacy.cs",
+    "fileName": "UserAuthenticationLegacy.cs",
+    "fileType": "service",
+    "className": "UserAuthenticationLegacy",
+    "inheritsFrom": null,
+    "module": "Authentication / Security",
+    "summary": "Legacy WebForms-specific authentication handler that manages the login page UI initialization, including session expiration messages, encrypted token-based auto-login (crypt query parameter), and OnCall interactive login. Delegates actual authentication to UserAuthentication class.",
+    "businessPurpose": "WebForms-specific login page controller that bridges the ASPX page lifecycle with the UserAuthentication service. Handles session expiry notifications and auto-login via encrypted tokens for cross-system redirects.",
+    "keyMethods": [
+      "LoginOnViewInitialize - Initializes the login page, handles session expiry display, encrypted token login, and OnCall interactive login"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "SessionManager",
+      "ServiceMessageManager",
+      "UserAuthentication"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "This WebForms-specific code will be retired when the React login page fully replaces the ASPX login. The encrypted token login (crypt parameter) pattern needs to be maintained for backward compatibility.",
+    "complexity": "simple",
+    "lineCount": 114
+  }
+]}
+  directoryOverview="Web infrastructure layer containing authentication, navigation routing, and the critical React frontend integration bridge. UserAuthentication.cs (2888 lines) is the most complex file, orchestrating the entire login flow with institution-specific rules for 900+ institutions. NewFrontend.cs enables the strangler fig migration by embedding React partials in the .NET shell, with 20 pages already migrated. HomeRedirect handles post-login routing based on department and role."
+  keyWorkflows={["User login flow with account lockout, password expiration, and institution-specific rules","Post-login routing based on department ID, role, and user type","React frontend HTML partial loading from Azure CDN with caching and versioning","SSO/token-based cross-system authentication","Session expiry handling and auto-login via encrypted tokens","Mobile app and QR code authentication"]}
+/>

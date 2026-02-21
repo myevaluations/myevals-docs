@@ -1,0 +1,248 @@
+{
+  "projectName": "AutoPopulateExcusedRotationFromPreviousYear",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear",
+  "parsedAt": "2026-02-20T17:11:05.193Z",
+  "fileCount": 4,
+  "totalLines": 359,
+  "files": [
+    {
+      "fileName": "ExcusedConferenceRotations.cs",
+      "filePath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear/AutoPopulateExcusedRotationFromPreviousYear/ExcusedConferenceRotations.cs",
+      "lineCount": 157,
+      "className": "ExcusedConferenceRotations",
+      "namespace": "AutoPopulateExcusedRotationFromPreviousYear",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.IO",
+        "System.Configuration",
+        "System.Xml",
+        "System.Data.SqlClient",
+        "OnboardingAssignmentReminder",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyConferenceExcusedRotationsFromPreviousYear",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyConferenceExcusedRotationsFromPreviousYear",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drdepts in dtDepartments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyConferenceExcusedRotaionsByDepartmentID",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDepartmentIDsByDate",
+          "returnType": "\n        public DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyConferenceExcusedRotaionsByDepartmentID",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetDepartmentIDsByDate",
+        "CopyConferenceExcusedRotaionsByDepartmentID",
+        "DepartmentID"
+      ]
+    },
+    {
+      "fileName": "MyEvalsExcusedConferenceRoationsLogs.cs",
+      "filePath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear/AutoPopulateExcusedRotationFromPreviousYear/MyEvalsExcusedConferenceRoationsLogs.cs",
+      "lineCount": 148,
+      "className": "MyEvalsExcusedConferenceRoationsLogs",
+      "namespace": "OnboardingAssignmentReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear/AutoPopulateExcusedRotationFromPreviousYear/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "AutoPopulateExcusedRotationFromPreviousYear",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExcusedConferenceRotations",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear/AutoPopulateExcusedRotationFromPreviousYear/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "projectName": "MyEvaluations.NotificationService",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/MyEvaluations.NotificationService",
+  "parsedAt": "2026-02-20T17:11:05.717Z",
+  "fileCount": 22,
+  "totalLines": 643,
+  "files": [
+    {
+      "fileName": "AndroidNotificationSender.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Android/AndroidNotificationSender.cs",
+      "lineCount": 111,
+      "className": "AndroidNotificationSender",
+      "namespace": "MyEvaluations.NotificationService.Android",
+      "baseClass": "BaseNotificationSender",
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Linq",
+        "System.Net",
+        "System.Text",
+        "System.Web.Script.Serialization"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SendNotification",
+          "returnType": "\n        protected override NotificationSendResult",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Notifications",
+          "returnType": "Adding New Api for Pushing",
+          "visibility": "private",
+          "parameters": [
+            "04/16/2025"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "myevaluationsDEVEntities1",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "WebClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JavaScriptSerializer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Notifications",
+          "returnType": "Adding New Api for Pushing",
+          "visibility": "private",
+          "parameters": [
+            "04/16/2025"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JavaScriptSerializer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "response.GetResponseStream("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NotificationSendResult",
+          "returnType": "\n            return new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "IAndroidNotification.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Android/IAndroidNotification.cs",
+      "lineCount": 13,
+      "className": null,
+      "namespace": "MyEvaluations.NotificationService.Android",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "BaseNotificationSender.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/BaseNotificationSender.cs",
+      "lineCount": 36,
+      "className": "BaseNotificationSender",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Execute",
+          "returnType": "\n\n        public NotificationSendResult",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendNotification",
+          "returnType": "\n\n        protected virtual NotificationSendResult",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NotificationSendResult",
+          "returnType": "\n            return new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnNotificationSend",
+          "returnType": "\n\n        protected void",
+          "visibility": "private",
+          "parameters": [
+            "NotificationSendResult result"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NotificationSendResultEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "INotification.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/INotification.cs",
+      "lineCount": 17,
+      "className": null,
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "INotificationSendResult.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/INotificationSendResult.cs",
+      "lineCount": 13,
+      "className": null,
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Notification.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/Notification.cs",
+      "lineCount": 19,
+      "className": "Notification",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": "GetSysNotificationsForSending_Result",
+      "interfaces": [
+        "INotification",
+        "INotificationSendResult"
+      ],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "NotificationSendResult",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "NotificationSendResult.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationSendResult.cs",
+      "lineCount": 14,
+      "className": "NotificationSendResult",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "NotificationSendResultEventArgs.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationSendResultEventArgs.cs",
+      "lineCount": 13,
+      "className": "NotificationSendResultEventArgs",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": "EventArgs",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "NotificationStatuses.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Base/NotificationStatuses.cs",
+      "lineCount": 15,
+      "className": null,
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "NotificationSenderManager.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/CommonImpl/NotificationSenderManager.cs",
+      "lineCount": 47,
+      "className": "NotificationSenderManager",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Send",
+          "returnType": "\n\n        public Notification",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NotificationSendResult",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSender",
+          "returnType": "\n\n        BaseNotificationSender",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AndroidNotificationSender",
+          "returnType": "\n                    return new",
+          "visibility": "private",
+          "parameters": [
+            "notification"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AndroidNotificationSender",
+          "returnType": "\n                    return new",
+          "visibility": "private",
+          "parameters": [
+            "notification"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "GetSysNotificationsForSending_Result.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/GetSysNotificationsForSending_Result.cs",
+      "lineCount": 26,
+      "className": "GetSysNotificationsForSending_Result",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvaluationsModel.Context.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/MyEvaluationsModel.Context.cs",
+      "lineCount": 56,
+      "className": "myevaluationsDEVEntities1",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": "DbContext",
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "OnModelCreating",
+          "returnType": "\n    \n        protected override void",
+          "visibility": "private",
+          "parameters": [
+            "DbModelBuilder modelBuilder"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UnintentionalCodeFirstException",
+          "returnType": "\n            throw new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "error_register",
+          "returnType": "\n    \n        public virtual int",
+          "visibility": "private",
+          "parameters": [
+            "string message",
+            "string stack_trace"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ObjectParameter",
+          "returnType": " null ?\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"message\"",
+            "message"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ObjectParameter",
+          "returnType": "\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"message\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ObjectParameter",
+          "returnType": " null ?\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"stack_trace\"",
+            "stack_trace"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ObjectParameter",
+          "returnType": "\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"stack_trace\"",
+            "typeof(string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSysNotificationsForSending",
+          "returnType": "\n    \n        public virtual ObjectResult<GetSysNotificationsForSending_Result>",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvaluationsModel.Designer.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/MyEvaluationsModel.Designer.cs",
+      "lineCount": 10,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvaluationsModel.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/MyEvaluationsModel.cs",
+      "lineCount": 10,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_NotificationServices.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationServices.cs",
+      "lineCount": 22,
+      "className": "SYS_NotificationServices",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_NotificationStatuses.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationStatuses.cs",
+      "lineCount": 22,
+      "className": "SYS_NotificationStatuses",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_Notifications.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_Notifications.cs",
+      "lineCount": 24,
+      "className": "SYS_Notifications",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_NotificationsLog.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_NotificationsLog.cs",
+      "lineCount": 24,
+      "className": "SYS_NotificationsLog",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_SystemNotificationSettings.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_SystemNotificationSettings.cs",
+      "lineCount": 22,
+      "className": "SYS_SystemNotificationSettings",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SYS_UserNotificationSettings.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Models/SYS_UserNotificationSettings.cs",
+      "lineCount": 24,
+      "className": "SYS_UserNotificationSettings",
+      "namespace": "MyEvaluations.NotificationService.Models",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Program.cs",
+      "lineCount": 68,
+      "className": "Program",
+      "namespace": "MyEvaluations.NotificationService",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Linq",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        \n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Process",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Process",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Notification",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "item"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NotificationSenderManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "n"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SYS_NotificationsLog",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/MyEvaluations.NotificationService/MyEvaluations.NotificationService/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

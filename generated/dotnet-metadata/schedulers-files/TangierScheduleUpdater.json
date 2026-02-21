@@ -1,0 +1,947 @@
+{
+  "projectName": "TangierScheduleUpdater",
+  "layer": "scheduler",
+  "projectPath": "TangierScheduleUpdater",
+  "parsedAt": "2026-02-20T17:11:06.557Z",
+  "fileCount": 2,
+  "totalLines": 458,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "TangierScheduleUpdater/Program.cs",
+      "lineCount": 421,
+      "className": "Program",
+      "namespace": "TangierScheduleUpdater",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "MyEvaluations.Business.DutyHours",
+        "MyEvaluations.Business.TimeSheet",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Diagnostics",
+        "System.Data.SqlClient",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [
+        "DutyHours",
+        "TimeSheet"
+      ],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitTraceListener",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TangierSchedulesUpdateQueue",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InitTraceListener",
+          "returnType": "\r\n\r\n        private static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TextWriterTraceListener",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "filename",
+            "\"tangierLogListener\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConsoleTraceListener",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TangierSchedulesUpdateQueue",
+          "returnType": "\r\n\r\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow departmentToUpdate in scheduleUpdateQueue.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierShcedule",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "departmentToUpdate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"TangierScheduleUpdater: No departments for update.\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "executeQuery",
+          "returnType": "\r\n\r\n\r\n        public static Int32",
+          "visibility": "private",
+          "parameters": [
+            "string query"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "query",
+            "conn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierShceduleDBQuery",
+          "returnType": "\r\n\r\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "DataRow departmentToUpdate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n                    throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Error: Can't generate DB query. Department \" + departmentToUpdate[\"DepartmentID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierShcedule",
+          "returnType": "\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "DataRow departmentToUpdate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierSchedules",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "departmentID",
+            "dtTangierScheduleResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n                    throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Error: Can't generate Tangier Schedule for Department \" + departmentToUpdate[\"DepartmentID\"].ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierLocationTmpTable",
+          "returnType": "\r\n\r\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "int DepartmentId",
+            "Int32 year"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": "AmionRotationName",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", AmionUniqueID",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierLocationsLocation locationItem in locationResponse.locations"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTangierScheduleResponse",
+          "returnType": "\r\n\r\n        public static TangierServiceModel.tangier",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "Int32 year",
+            "string login",
+            "string password",
+            "string SiteID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Error while get tangier response\"",
+            "ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInnerTableByCredentials",
+          "returnType": "\r\n\r\n        private static string",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "Int32 year"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow credential in departmentCredentials.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInnerScheduleTable",
+          "returnType": "\r\n\r\n        private static string",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangier scheduleResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierSchedule scheduleItem in scheduleResponse.schedule"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierScheduleDatesDate scheduleDate in scheduleItem.dates"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierScheduleDatesDateShiftsShift scheduleShift in scheduleDate.shifts"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInnerDataTableByCredentials",
+          "returnType": "\r\n        private static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "Int32 year"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow credential in departmentCredentials.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateInnerScheduleDataTable",
+          "returnType": "\r\n        private static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangier scheduleResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierSchedule scheduleItem in scheduleResponse.schedule"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierScheduleDatesDate scheduleDate in scheduleItem.dates"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TangierServiceModel.tangierScheduleDatesDateShiftsShift scheduleShift in scheduleDate.shifts"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierScheduleTmpTable",
+          "returnType": "\r\n\r\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "Int32 departmentID",
+            "Int32 year"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCreateTableQuery",
+          "returnType": "\r\n\r\n        static string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": "daterangeend",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", daterangestart",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ",\r\n                                                                     end_date",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", requestempid",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", requestsiteid",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ",\r\n                                                                     site_id",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", shiftdate",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", start_date",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", actualendtime",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", actualstarttime",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", empid",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", location",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", payrollshiftcode",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", plannedendtime",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ",\r\n                                    plannedstarttime",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", providername",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", providerstafftypecode",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", reportedminutes",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", shiftname",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ",shiftstafftypecode",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "varchar",
+          "returnType": ", AMIONRotationID",
+          "visibility": "private",
+          "parameters": [
+            "255"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTangierSchedules",
+          "returnType": "\r\n\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "DataTable TangierScheduleData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "GetCreateTableQuery("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn column in TangierScheduleData.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "TangierScheduleUpdater/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

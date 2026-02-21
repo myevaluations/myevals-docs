@@ -1,0 +1,2106 @@
+{
+  "projectName": "MailDistribution-Dotnet",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/MailDistribution-Dotnet",
+  "parsedAt": "2026-02-20T17:11:05.651Z",
+  "fileCount": 5,
+  "totalLines": 2442,
+  "files": [
+    {
+      "fileName": "MailDistribution.cs",
+      "filePath": "Schedulers/MailDistribution-Dotnet/MailDistribution.cs",
+      "lineCount": 436,
+      "className": "MailDistribution",
+      "namespace": "MailDistribution",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.DataAccess.SQL",
+        "System",
+        "System.Collections.Generic",
+        "System.Configuration",
+        "System.Data",
+        "System.IO",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Net",
+        "System.Net.Mail",
+        "MyEvaluations.Business.Utilities.FileUploadComponent"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "summary>\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateMailDistribution",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendLogAsMail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"JOB LOG: Mail Distribution Emails\"",
+            "\"system@myevaluations.com\"",
+            "\"myevals@jivainfotech.com\"",
+            "strLog"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateMailDistribution",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drMail in dtMailDistribution.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strMail in strMailTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMailForMailDistribution",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "emailFrom",
+            "strMail.ToLower("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateMailSendDate",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "mailID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateMailSendDate",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 mailID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendLogAsMail",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "string Subject",
+            "string FromAddress",
+            "string ToAddress",
+            "string strFileData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string emailId in emailAddresses"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMailForMailDistribution",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string fromEmailAddress",
+            "string toEmailAddress",
+            "string subject",
+            "string htmlBody",
+            "bool isSendDepartmentImage",
+            "string FolderPath",
+            "string FileName",
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EmailClientSettings",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NetworkCredential",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "settings.SmtpFromAddress",
+            "settings.SmtpFromAddressAuthenticationPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailMessage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fromEmailAddress",
+            "toEmailAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailMessage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fromEmailAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strToemail in liToemails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "strToemail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AuthHeader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "byteData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Attachment",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "ms",
+            "FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "mailMessage",
+            "settings",
+            "smtpClient",
+            "false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCompositeEmails",
+          "returnType": "\n        public static List<string>",
+          "visibility": "private",
+          "parameters": [
+            "string toEmailAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strTo in strToAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strCommaSeperatedTo in strCommaSeperatedToAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strCommaAddress in strCommaSepToAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string strSemiSeperatedTo in strSemiSeperatedToAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": "\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "MailMessage mailMessage",
+            "EmailClientSettings settings",
+            "SmtpClient smtpClient",
+            "bool isAlternateSMTP"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fromMail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "fromMail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailAddress",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "settings.SystemEmailAddress"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "newSmtpMail",
+            "settings",
+            "smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "mailMessage",
+            "settings",
+            "smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "mailMessage",
+            "settings",
+            "smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "newSmtpMail",
+            "settings",
+            "smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "mailMessage",
+            "settings",
+            "smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateToEmailsForDomain",
+          "returnType": "\n        private static MailMessage",
+          "visibility": "private",
+          "parameters": [
+            "MailMessage mailMessage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailMessage",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "AlternateView alv in mailMessage.AlternateViews"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "Attachment attachment in mailMessage.Attachments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "String toDomain in toEmailDomains"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "MailAddress mAddress in mailMessage.To"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "MailAddress mAddress in mailMessage.Bcc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AlternateEmailSend",
+          "returnType": "\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "MailMessage mailMessage",
+            "EmailClientSettings settings",
+            "SmtpClient smtpClient"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "NetworkCredential",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "settings.AlternateFromEmailId",
+            "settings.AlternateSmtpFromAddressAuthenticationPassword"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetMailDistributionSchedulersInfo",
+        "UpdateMailDistributionInfo"
+      ]
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/MailDistribution-Dotnet/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/MailDistribution-Dotnet/Program.cs",
+      "lineCount": 26,
+      "className": "Program",
+      "namespace": "MailDistribution",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MailDistribution",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/MailDistribution-Dotnet/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Reference.cs",
+      "filePath": "Schedulers/MailDistribution-Dotnet/Web References/FileUploadComponent/Reference.cs",
+      "lineCount": 1796,
+      "className": "FileUploadComponentWebService",
+      "namespace": "MyEvaluations.Business.Utilities.FileUploadComponent",
+      "baseClass": "System.Web.Services.Protocols.SoapHttpClientProtocol",
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "UploadFile",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "[System.Xml.Serialization.XmlElementAttribute(DataType=\"base64Binary\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnUploadFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadFileCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadCropFile",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "[System.Xml.Serialization.XmlElementAttribute(DataType=\"base64Binary\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadCropFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "int cropx",
+            "int cropy",
+            "int cropwidth",
+            "int cropheight",
+            "int rescalewidth",
+            "int rescaleheight",
+            "bool isImageCropped"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadCropFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "int cropx",
+            "int cropy",
+            "int cropwidth",
+            "int cropheight",
+            "int rescalewidth",
+            "int rescaleheight",
+            "bool isImageCropped",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnUploadCropFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadCropFileCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUpload",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "[System.Xml.Serialization.XmlElementAttribute(DataType=\"base64Binary\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] File",
+            "string OriginalFileName",
+            "string FolderPath",
+            "string SaveFileNameWithOutExt",
+            "bool IsPhotoUpload",
+            "bool IsJpegImage",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnFileUploadOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteFile",
+          "returnType": "]\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnDeleteFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFile",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string DownloadableFileName",
+            "ref string fileExactPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string DownloadableFileName",
+            "string fileExactPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string DownloadableFileName",
+            "string fileExactPath",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnDownloadSelectedFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DownloadSelectedFileCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFile",
+          "returnType": "]\n        public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string ReadFileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnReadFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DefaultImageOverLapping",
+          "returnType": "]\n        public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "[System.Xml.Serialization.XmlElementAttribute(DataType=\"base64Binary\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DefaultImageOverLappingAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "bool IsJpegImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DefaultImageOverLappingAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "byte[] file",
+            "bool IsJpegImage",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnDefaultImageOverLappingOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DefaultImageOverLappingCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyFile",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyFileAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnCopyFileOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyFileCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyfileSourceToDestination",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyfileSourceToDestinationAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyfileSourceToDestinationAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string SourceFolderPath",
+            "string DestinationFolderPath",
+            "string FileName",
+            "string SavingFileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnCopyfileSourceToDestinationOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CopyfileSourceToDestinationCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifying",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string FileExtention",
+            "bool IsImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifyingAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FileExtention",
+            "bool IsImage"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifyingAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FileExtention",
+            "bool IsImage",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnFileExtentionVerifyingOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileExtentionVerifyingCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileByPath",
+          "returnType": "]\n        public byte[]",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileByPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string ReadFileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileByPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "string ReadFileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnReadFileByPathOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadFileByPathCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetServerRootPath",
+          "returnType": "]\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetServerRootPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetServerRootPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FilePath",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetServerRootPathOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetServerRootPathCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNames",
+          "returnType": "]\n        public string[]",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNamesAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNamesAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetWorksSheetsNamesOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWorksSheetsNamesCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomWorksSheetsNames",
+          "returnType": "]\n        public string[]",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string uploadFileExtension",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomWorksSheetsNamesAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string uploadFileExtension",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomWorksSheetsNamesAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string uploadFileExtension",
+            "string FileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetCustomWorksSheetsNamesOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomWorksSheetsNamesCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeaders",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetExcelFileHeadersOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelFileHeadersCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelFileHeaders",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelFileHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName",
+            "string upldFilename"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelFileHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName",
+            "string upldFilename",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetCustomExcelFileHeadersOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelFileHeadersCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeaders",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet dsInputTables"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet dsInputTables"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet dsInputTables",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetUserImportingMatchingHeadersOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserImportingMatchingHeadersCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUser",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUserAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUserAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetExcelDataForUserOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForUserCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUser",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUserAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUserAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetCustomExcelDataForUserOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCustomExcelDataForUserCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizImportingMatchingHeaders",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet DsTemplateHeaders",
+            "System.Data.DataTable DtWorksSheetHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizImportingMatchingHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet DsTemplateHeaders",
+            "System.Data.DataTable DtWorksSheetHeaders"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizImportingMatchingHeadersAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "System.Data.DataSet DsTemplateHeaders",
+            "System.Data.DataTable DtWorksSheetHeaders",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetQuizImportingMatchingHeadersOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQuizImportingMatchingHeadersCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForQuiz",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForQuizAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForQuizAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetExcelDataForQuizOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForQuizCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrative",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrativeAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrativeAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string filePath",
+            "string selectedWorkSheet",
+            "System.Data.DataSet dsInput",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetExcelDataForOutcomeNarrativeOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelDataForOutcomeNarrativeCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyFileByPath",
+          "returnType": "]\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyFileByPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyFileByPathAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string FolderPath",
+            "string FileName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnVerifyFileByPathOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyFileByPathCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetData",
+          "returnType": "]\n        public System.Data.DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetDataAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetDataAsync",
+          "returnType": ">\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string excelFilePath",
+            "string worksSheetName",
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OnGetExcelSheetDataOperationCompleted",
+          "returnType": "\n        \n        private void",
+          "visibility": "private",
+          "parameters": [
+            "object arg"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExcelSheetDataCompletedEventArgs",
+          "returnType": "this, new",
+          "visibility": "private",
+          "parameters": [
+            "invokeArgs.Results",
+            "invokeArgs.Error",
+            "invokeArgs.Cancelled",
+            "invokeArgs.UserState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CancelAsync",
+          "returnType": ">\n        public new void",
+          "visibility": "private",
+          "parameters": [
+            "object userState"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsLocalFileSystemWebService",
+          "returnType": "\n        \n        private bool",
+          "visibility": "private",
+          "parameters": [
+            "string url"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}

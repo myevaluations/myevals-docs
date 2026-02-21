@@ -1,0 +1,848 @@
+{
+  "directory": "MailMerge",
+  "directoryPath": "Web/MailMerge",
+  "parsedAt": "2026-02-20T17:10:58.754Z",
+  "fileCount": 6,
+  "totalLines": 833,
+  "files": [
+    {
+      "fileName": "DesignDataMerge.aspx.cs",
+      "filePath": "Web/MailMerge/DesignDataMerge.aspx.cs",
+      "lineCount": 139,
+      "className": "MailMerge_DesignDataMerge",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "System.Text.RegularExpressions",
+        "MyEvaluations.Business.Evaluations",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Evaluations",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CheckForPermissions",
+          "returnType": "Emergency\r\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlTemplate_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "returns>\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlCategory_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MailMergeDocument.aspx.cs",
+      "filePath": "Web/MailMerge/MailMergeDocument.aspx.cs",
+      "lineCount": 291,
+      "className": "MailMerge_MailMergeDocument",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "System.Text",
+        "System.IO",
+        "MyEvaluations.Business.Security"
+      ],
+      "businessModuleRefs": [
+        "Mail",
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n       \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "this,",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLoadingScript",
+          "returnType": "region GetLoadingScript\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HideWait",
+          "returnType": "function",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLoadPrintScript",
+          "returnType": "\r\n\r\n    public String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnPrintScreen",
+          "returnType": "function",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLoadingSaveWord",
+          "returnType": "String",
+          "visibility": "public",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnSaveWord",
+          "returnType": "function",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLoadingSaveXML",
+          "returnType": "String",
+          "visibility": "public",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fnSaveXML",
+          "returnType": "function",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoadReportLoadingScreen",
+          "returnType": "region LoadReportLoadingScreen\r\n\r\n    public static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "rptUsers_ItemDataBound",
+          "returnType": "endregion\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Object Sender",
+            "RepeaterItemEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "Request.Url.GetLeftPart(UriPartial.Path"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveToXML_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlTextWriter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "new StringWriter(sbHeader"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveToWord_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnHidden_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "HtmlTextWriter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "new StringWriter(sbHeader"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "Page,",
+          "visibility": "private",
+          "parameters": [
+            "Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageCustomFieldTemplates.aspx.cs",
+      "filePath": "Web/MailMerge/ManageCustomFieldTemplates.aspx.cs",
+      "lineCount": 147,
+      "className": "MailMerge_ManageCustomFieldTemplates",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Mail",
+        "System.Text.RegularExpressions"
+      ],
+      "businessModuleRefs": [
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "   \r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlTemplate_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlCategory_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnSaveCustom_Click",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDeleteCustom_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnHidden_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageMailMergeTemplates.aspx.cs",
+      "filePath": "Web/MailMerge/ManageMailMergeTemplates.aspx.cs",
+      "lineCount": 174,
+      "className": "MailMerge_ManageMailMergeTemplates",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail",
+        "System.Text.RegularExpressions"
+      ],
+      "businessModuleRefs": [
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlTemplate_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ddlCategory_SelectedIndexChanged",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnUpdateTemplate_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RemoveExtaSpaces",
+          "returnType": "returns>\r\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string text"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s{2",
+            "}\"",
+            "Options"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Regex",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@\"\\s(\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "side",
+          "returnType": " whill check for space near all puntuation marks in",
+          "visibility": "private",
+          "parameters": [
+            "\\!|\\.|\\?|\\;|\\",
+            "|\\:"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnDeleteTemplate_Click",
+          "returnType": "param>\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnHidden_Click",
+          "returnType": "\r\n\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RestoreMailMergeCustomTemplates.aspx.cs",
+      "filePath": "Web/MailMerge/RestoreMailMergeCustomTemplates.aspx.cs",
+      "lineCount": 39,
+      "className": "MailMerge_RestoreMailMergeCustomTemplates",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "gvTemplates_RowCommand",
+          "returnType": "\r\n\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "GridViewCommandEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "RestoreMailMergeTemplates.aspx.cs",
+      "filePath": "Web/MailMerge/RestoreMailMergeTemplates.aspx.cs",
+      "lineCount": 43,
+      "className": "MailMerge_RestoreMailMergeTemplates",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections",
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.Security",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "System.Web.UI.WebControls.WebParts",
+        "MyEvaluations.Business.Mail"
+      ],
+      "businessModuleRefs": [
+        "Mail"
+      ],
+      "methods": [
+        {
+          "name": "MailDistributionBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\r\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "gvTemplates_RowCommand",
+          "returnType": "\r\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Object sender",
+            "GridViewCommandEventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

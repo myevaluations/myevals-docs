@@ -1,0 +1,1120 @@
+{
+  "projectName": "SendApplicationEmails",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SendApplicationEmails",
+  "parsedAt": "2026-02-20T17:11:06.211Z",
+  "fileCount": 5,
+  "totalLines": 3137,
+  "files": [
+    {
+      "fileName": "EmailClientSettings.cs",
+      "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/EmailClientSettings.cs",
+      "lineCount": 133,
+      "className": "EmailClientSettings",
+      "namespace": "MyEvaluations.Business.Utilities",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalLogs.cs",
+      "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/MyEvalLogs.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "SendApplicationEmails",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmails",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SendApplicationEmails.cs",
+      "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/SendApplicationEmails.cs",
+      "lineCount": 2803,
+      "className": "SendApplicationEmails",
+      "namespace": "SendApplicationEmails",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.IO",
+        "System.Configuration",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Net.Mail",
+        "System.Net",
+        "MyEvaluations.Business.Utilities.FileUploadComponent",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Utilities",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Start",
+          "returnType": "summary>\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ThreadStart",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "ProcessApplicationEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Thread",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "oThreadStarter"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ProcessApplicationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ProcessApplicationEmails",
+          "returnType": "\n        protected void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendVerificationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtOnCallAutoAssignmentEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendDeleteUser",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDelete"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtPIPEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtProcedureEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendIncorrectSyncAdminEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtAddDepartmentDefaultValues",
+            "\"ImportFNPBannerLogs\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "dtSendBNDDExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendSendSelfAssessmentEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "dtSendCertificateExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendDEAExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendLiabilityExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendDutyExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendStateLic1ExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendStateLic2ExpirationReminderEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendCertificateLogsEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendFinalEvaluationRemEmailEmail",
+            "\"Send Midterm And Final Evaluation Rem Email\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendMidtermAndFinalEvaluationRemEmail4",
+            "\"Send Midterm And Final Evaluation Rem Email Week 4\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendFNPClinicalLogsReminderEmailWeek4",
+            "\"Send Clinical Logs Reminder Email Week 4\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendMidtermAndFinalEvaluationRemEmail",
+            "\"Send Midterm And Final Evaluation Rem Email\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendFNPClinicalLogsReminderEmailWeek8",
+            "\"FR13: Daily notification of log review\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendMidtermAndFinalEvaluationEmail",
+            "\"FR13: Daily notification of log review\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtSendPIPReEvaluationEmail",
+            "\"SendPIPReEvaluationEmail\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryPracticumLogsReminder"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDHVerificationEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryWelcomeEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryReviewLog"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryArchivingEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryStudentandFacultyEmails",
+            "\"Clinical Hours Fulfilled\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtDevryFacultyEmails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtOnCallAutoAssignmentEmail"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtManaualEvaluationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationReminderEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtManualEvalReminderEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailAssignment",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtLearningEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendAutoEvalReminderEmailAssignment",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtAutoEvalReminderEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendPromotedUserEmailAssignment",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtPromotedUserEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendArchivedUserEmailAssignment",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtArchivedUserEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationRequirementGroupAssignmentEmail",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtRequirementGroupAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforUpdatedRequirement",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtUpdatedRequirementGroupAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforOnboardingUserSubmission",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtOnboardingUserSubmission"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforOnboardingUserNotesSubmission",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtOnboardingUserNotes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationRequirementGroupAssignmentReminder",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtOnboardingAssignmentReminder"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualSubmitAttendanceReminderEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtManualConferenceAttendanceSubmit"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEvaluationMissingReminders",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtMissingReminder"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteApplicationOlderMails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ProcessApplicationEmails",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmailsWithReplyTo",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments",
+            "string Schedulername"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationEmails",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendVerificationEmails",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendDeleteUser",
+          "returnType": "\n\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualEvaluationReminderEmails",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationManualSubmitAttendanceReminderEmails",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailAssignment",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Thread",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "starterUser"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Thread",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "starterAdmin"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendAutoEvalReminderEmailAssignment",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendPromotedUserEmailAssignment",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendArchivedUserEmailAssignment",
+          "returnType": "\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationRequirementGroupAssignmentEmail",
+          "returnType": "Added by Adilakshmi\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforUpdatedRequirement",
+          "returnType": "Added by Adilakshmi\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforOnboardingUserSubmission",
+          "returnType": "Added by Adilakshmi\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationEmailforOnboardingUserNotesSubmission",
+          "returnType": "Added by Adilakshmi\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendApplicationRequirementGroupAssignmentReminder",
+          "returnType": "Added by Adilakshmi\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendEvaluationMissingReminders",
+          "returnType": "\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtApplicationEmailAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationEmail in dtApplicationEmailAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetApplicationEmails",
+          "returnType": "returns>\n        private DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteApplicationOlderMails",
+          "returnType": "returns>\n        private DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToBoolean",
+          "returnType": "\n        protected static Boolean",
+          "visibility": "private",
+          "parameters": [
+            "String booleanValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInteger",
+          "returnType": "\n        protected static Int32",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConvertToInt64",
+          "returnType": "\n\n        protected static Int64",
+          "visibility": "private",
+          "parameters": [
+            "String inputValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "UpdateApplicationEmailSend",
+        "GetApplicationEmailSend",
+        "DeleteApplicationOlderMails"
+      ]
+    }
+  ]
+}

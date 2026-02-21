@@ -1,0 +1,299 @@
+{
+  "projectName": "MyEvaluations.Web",
+  "layer": "supporting",
+  "projectPath": "MyEvaluations.Web",
+  "parsedAt": "2026-02-20T17:11:06.593Z",
+  "fileCount": 4,
+  "totalLines": 3240,
+  "files": [
+    {
+      "fileName": "HomeRedirect.cs",
+      "filePath": "MyEvaluations.Web/HomeRedirect.cs",
+      "lineCount": 91,
+      "className": "HomeRedirect",
+      "namespace": "MyEvaluations.Web",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Configuration",
+        "System.Data",
+        "System.Web"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "getRedirectPath",
+          "returnType": "\n        \n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateAndStoreToken",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "NewFrontend.cs",
+      "filePath": "MyEvaluations.Web/NewFrontend.cs",
+      "lineCount": 147,
+      "className": "NewFrontend",
+      "namespace": "MyEvaluations.Web",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Configuration",
+        "MyEvaluations.Logging",
+        "System.Net",
+        "System.Net.Http",
+        "MyEvaluations.Business.Common",
+        "System.Collections"
+      ],
+      "businessModuleRefs": [
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "HttpClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArrayList",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAssetsUrl",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPagePartialContent",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string pageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentException",
+          "returnType": "\n                throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"unknown pageName: \" + pageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Revalidate",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string pageName in pages"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCdnUrl",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetVersionFileUrl",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetVersion",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FetchVersion",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FetchPagePartialContent",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [
+            "string pageName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "UserAuthentication.cs",
+      "filePath": "MyEvaluations.Web/UserAuthentication.cs",
+      "lineCount": 2888,
+      "className": "UserAuthenticationLoginResult",
+      "namespace": "MyEvaluations.Web",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Evaluations",
+        "System.Linq"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Common",
+        "Utilities",
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "Success",
+          "returnType": "\n\n        public static UserAuthenticationLoginResult",
+          "visibility": "private",
+          "parameters": [
+            "string redirectPath",
+            "bool mobileAppRedirect = false"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Error",
+          "returnType": "\n\n        public static UserAuthenticationLoginResult",
+          "visibility": "private",
+          "parameters": [
+            "string title",
+            "string description"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Error",
+          "returnType": "\n\n        public static UserAuthenticationLoginResult",
+          "visibility": "private",
+          "parameters": [
+            "string title",
+            "string description",
+            "string redirectPath",
+            "string username",
+            "bool mobileAppRedirect"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "UserAuthenticationLegacy.cs",
+      "filePath": "MyEvaluations.Web/UserAuthenticationLegacy.cs",
+      "lineCount": 114,
+      "className": "UserAuthenticationLegacy",
+      "namespace": "MyEvaluations.Web",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Configuration",
+        "System.Data",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.HtmlControls",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "System.Threading"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoginOnViewInitialize",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "Page page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ServiceMessageManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserAuthentication",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}

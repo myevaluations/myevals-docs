@@ -1,0 +1,1947 @@
+---
+title: "Schedulers (Batch 3) Files"
+sidebar_label: "Schedulers (Batch 3)"
+description: "Per-file reference for Schedulers (Batch 3) (74 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Schedulers (Batch 3) File Reference
+
+> **74 files** | **20,399 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Schedulers/APEReminder/APEReminder/APEReminder/EmailBody.cs",
+    "fileName": "EmailBody.cs",
+    "fileType": "helper",
+    "className": "EmailBody",
+    "inheritsFrom": null,
+    "module": "Scheduler - APE (Annual Program Evaluation)",
+    "summary": "Builds the HTML email body for APE take-action reminder emails by merging reminder data into an email template.",
+    "businessPurpose": "Constructs formatted email content for Annual Program Evaluation reminders sent to department and institutional users.",
+    "keyMethods": [
+      "BuildBody - Merges APE_TakeActionReminder list into a template string to produce the email HTML body"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Evaluations"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "APE reminder emails could be replaced by a NestJS BullMQ worker sending emails via templating engine.",
+    "complexity": "trivial",
+    "lineCount": 21
+  },
+  {
+    "filePath": "Schedulers/APEReminder/APEReminder/APEReminder/EmailTemplateManager.cs",
+    "fileName": "EmailTemplateManager.cs",
+    "fileType": "manager",
+    "className": "EmailTemplateManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - APE (Annual Program Evaluation)",
+    "summary": "Retrieves and manages email templates for APE reminder notifications. Loads templates from the AnnualProgramEvaluationBusiness layer and provides methods to get both HTML and plain text template bodies.",
+    "businessPurpose": "Provides email template retrieval for APE reminders, supporting both HTML and plain-text email formats for different email clients.",
+    "keyMethods": [
+      "GetEmailTemplate - Retrieves an email template entity by template type from the evaluations business layer",
+      "GetEmailTemplateBody - Returns the HTML or plain-text body for a specific email template type"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Evaluations.AnnualProgramEvaluationBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Email templates are likely stored in SQL Server. Migration would involve moving templates to Node.js email service with Handlebars/EJS templating.",
+    "complexity": "simple",
+    "lineCount": 88
+  },
+  {
+    "filePath": "Schedulers/APEReminder/APEReminder/APEReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "entry-point",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - APE (Annual Program Evaluation)",
+    "summary": "Console application entry point that instantiates and runs the APE Reminder scheduler.",
+    "businessPurpose": "Entry point for the Annual Program Evaluation reminder Windows scheduled task.",
+    "keyMethods": [
+      "Main - Creates Reminder instance and calls Start() to send APE take-action reminders"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Entry point would be replaced by a NestJS cron job or BullMQ worker.",
+    "complexity": "trivial",
+    "lineCount": 25
+  },
+  {
+    "filePath": "Schedulers/APEReminder/APEReminder/APEReminder/Properties/AssemblyInfo.cs",
+    "fileName": "AssemblyInfo.cs",
+    "fileType": "config",
+    "className": null,
+    "inheritsFrom": null,
+    "module": "Scheduler - APE (Annual Program Evaluation)",
+    "summary": "Standard .NET assembly metadata file with version info and COM visibility settings.",
+    "businessPurpose": "Assembly configuration for the APEReminder console application.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "No migration needed; .NET assembly metadata has no Node.js equivalent.",
+    "complexity": "trivial",
+    "lineCount": 37
+  },
+  {
+    "filePath": "Schedulers/APEReminder/APEReminder/APEReminder/Reminder.cs",
+    "fileName": "Reminder.cs",
+    "fileType": "service",
+    "className": "Reminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - APE (Annual Program Evaluation)",
+    "summary": "Core scheduler logic that sends Annual Program Evaluation take-action reminder emails. Reads encryption keys from file, retrieves pending APE reminders via AnnualProgramEvaluationBusiness, builds both departmental and institutional reminder emails, sends them via EmailUtility, and updates mail-sent status in the database.",
+    "businessPurpose": "Automates sending reminder emails to department and institutional users who have pending take-action items on Annual Program Evaluations, ensuring compliance deadlines are not missed.",
+    "keyMethods": [
+      "Start - Entry point that initiates the APE reminder process with logging",
+      "TakeActionReminderMail - Main workflow: retrieves pending reminders, builds departmental and institutional emails, sends them, and updates sent status",
+      "ReadKeyFromFile - Reads the encryption key from a file path for secure email link generation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Evaluations.AnnualProgramEvaluationBusiness",
+      "MyEvaluations.Business.Utilities.EmailUtility"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Core APE reminder logic should be migrated to a NestJS BullMQ worker. The AnnualProgramEvaluationBusiness dependency wraps stored procedures that need to be replicated.",
+    "complexity": "moderate",
+    "lineCount": 121
+  },
+  {
+    "filePath": "Schedulers/AccreditationComplianceEmailNotice-Dotnet/AccreditationComplianceEmailNotice-Dotnet/AccreditationBusiness.cs",
+    "fileName": "AccreditationBusiness.cs",
+    "fileType": "service",
+    "className": "AccreditationBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Accreditation Compliance",
+    "summary": "Handles the business logic for sending accreditation compliance email notices. Retrieves department details and upcoming accreditation events, builds HTML email bodies, sends emails via utility classes, and logs the job execution with email summaries.",
+    "businessPurpose": "Sends automated email notifications about upcoming accreditation compliance deadlines across departments, including citation and adverse action information for GMEA and non-GMEA programs.",
+    "keyMethods": [
+      "OnViewInitializeAccreditationEmailNotice - Main workflow that iterates departments, builds accreditation email content, and sends notifications",
+      "SendLogAsMail - Sends job execution logs as email to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Accreditation compliance notifications are critical for healthcare education programs. Migrate to NestJS worker with proper email templating.",
+    "complexity": "moderate",
+    "lineCount": 188
+  },
+  {
+    "filePath": "Schedulers/AccreditationComplianceEmailNotice-Dotnet/AccreditationComplianceEmailNotice-Dotnet/AccreditationManager.cs",
+    "fileName": "AccreditationManager.cs",
+    "fileType": "data-access",
+    "className": "AccreditationManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Accreditation Compliance",
+    "summary": "Data access layer for accreditation compliance email scheduler. Retrieves department details, upcoming accreditation information, citation details, and adverse action data via stored procedures. Also logs scheduler job history.",
+    "businessPurpose": "Provides database operations for retrieving accreditation compliance data including department lists, upcoming accreditation events, citations, and adverse actions.",
+    "keyMethods": [
+      "GetAccreditationDepartmentDetails - Retrieves list of departments with accreditation tracking enabled",
+      "GetAccrediationUpComingEmailInformation - Gets upcoming accreditation events for a department",
+      "GetAccrediationCitationUpComingEmailInformation - Gets upcoming citation events for a department",
+      "InsertSchedulerJobHistory - Records scheduler execution history"
+    ],
+    "storedProcedures": [
+      "GetAccreditationDepartmentDetails",
+      "GetAccrediationUpComingEmailInformation",
+      "GetAccrediationCitationUpComingEmailInformation",
+      "GetAccrediationAdverseUpComingEmailInformation",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Five stored procedures need migration. The accreditation data model must be replicated in PostgreSQL/MikroORM.",
+    "complexity": "moderate",
+    "lineCount": 138
+  },
+  {
+    "filePath": "Schedulers/AccreditationComplianceEmailNotice-Dotnet/AccreditationComplianceEmailNotice-Dotnet/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "entry-point",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - Accreditation Compliance",
+    "summary": "Console application entry point for the Accreditation Compliance email scheduler.",
+    "businessPurpose": "Launches the accreditation compliance email notification scheduled task.",
+    "keyMethods": [
+      "Main - Initializes logging and calls AccreditationBusiness.OnViewInitializeAccreditationEmailNotice()"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Replace with NestJS cron job or BullMQ scheduled worker.",
+    "complexity": "trivial",
+    "lineCount": 26
+  },
+  {
+    "filePath": "Schedulers/AffiliateAgreementEamilNotice-Dotnet/AffiliateAgreementEamilNotice-Dotnet/AffiliateAgreementBusiness.cs",
+    "fileName": "AffiliateAgreementBusiness.cs",
+    "fileType": "service",
+    "className": "AffiliateAgreementBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Affiliate Agreement Notices",
+    "summary": "Business logic for sending affiliate agreement expiration email notices. Retrieves departments with affiliate agreements, builds email notifications for upcoming expirations, and sends notifications to relevant administrators.",
+    "businessPurpose": "Automates notifications about expiring affiliate agreements between healthcare education institutions and their clinical training sites, ensuring timely renewals.",
+    "keyMethods": [
+      "OnViewInitializeAffiliateAgreementEmailNotice - Main workflow that processes departments and sends affiliate agreement expiration notices",
+      "SendLogAsMail - Emails job execution logs to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Affiliate agreements are legally important documents. This scheduler's logic needs careful migration to ensure no notification gaps during transition.",
+    "complexity": "moderate",
+    "lineCount": 184
+  },
+  {
+    "filePath": "Schedulers/AffiliateAgreementEamilNotice-Dotnet/AffiliateAgreementEamilNotice-Dotnet/AffiliateAgreementManager.cs",
+    "fileName": "AffiliateAgreementManager.cs",
+    "fileType": "data-access",
+    "className": "AffiliateAgreementManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Affiliate Agreement Notices",
+    "summary": "Data access layer for affiliate agreement email notifications. Retrieves department details, institutional and departmental affiliate agreement information, and upcoming agreement expirations via stored procedures.",
+    "businessPurpose": "Provides database queries for affiliate agreement expiration tracking including department lists, GMEA and non-GMEA institutional agreements, and upcoming expiration details.",
+    "keyMethods": [
+      "GetAffiliateAgreementDepartmentDetails - Gets departments with affiliate agreement tracking",
+      "GetInstitutionalAffiliateEmailInformationForNonGMEA - Gets non-GMEA institutional affiliate agreements",
+      "GetAffiliateAgreementsUpComingEmailInformation - Gets upcoming affiliate agreement expirations",
+      "GetInstitutionalAffiliateEmailInformation - Gets institutional-level affiliate information",
+      "InsertSchedulerJobHistory - Records job execution history"
+    ],
+    "storedProcedures": [
+      "GetAffiliateAgreementDepartmentDetails",
+      "GetInstitutionalAffiliateEmailInformationForNonGMEA",
+      "GetAffiliateAgreementsUpComingEmailInformation",
+      "GetInstitutionalAffiliateEmailInformation",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Five stored procedures handle affiliate agreement queries. Need to map these to MikroORM entities for the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 131
+  },
+  {
+    "filePath": "Schedulers/AssignmentsReminderScheduler-Dotnet/AssignmentsReminderScheduler-Dotnet/AssignmentsReminderBusiness.cs",
+    "fileName": "AssignmentsReminderBusiness.cs",
+    "fileType": "service",
+    "className": "AssignmentsReminderBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Learning Assignments Reminder",
+    "summary": "Business logic for sending learning assignment reminder emails to assessors and preceptors. Iterates through departments, retrieves pending assignment reminders, builds personalized email content with assignment details tables, and sends notifications to both assessors (admins) and preceptors.",
+    "businessPurpose": "Ensures assessors and preceptors receive timely email reminders about pending learning module assignments they need to complete or review, improving assignment completion rates.",
+    "keyMethods": [
+      "OnViewInitializeLearningAssignmentScheduler - Main workflow iterating departments and sending reminders",
+      "GetReminderAssignmentsForPreceptors - Retrieves and processes assignment reminders for preceptors or assessors",
+      "SendEmailToAssessorsAndPreceptors - Builds and sends personalized reminder emails with assignment detail tables",
+      "SendMail - Sends individual reminder emails using email templates"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Assignment reminders are a core workflow. The email templating logic with dynamic HTML tables needs to be migrated to a modern templating solution.",
+    "complexity": "moderate",
+    "lineCount": 276
+  },
+  {
+    "filePath": "Schedulers/AssignmentsReminderScheduler-Dotnet/AssignmentsReminderScheduler-Dotnet/AssignmentsReminderManager.cs",
+    "fileName": "AssignmentsReminderManager.cs",
+    "fileType": "data-access",
+    "className": "AssignmentsReminderManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Learning Assignments Reminder",
+    "summary": "Data access layer for learning assignment reminders. Retrieves assignment email notice data, department details, preceptor details, reminder assignments, and email templates via stored procedures. Also includes encryption key generation for secure email links.",
+    "businessPurpose": "Provides all database operations for the learning assignments reminder system including department lookups, preceptor-specific assignments, admin assignments, and email template retrieval.",
+    "keyMethods": [
+      "GetLearningModuleAssignmentEmailNoticeInformation - Gets email notice data for learning module assignments by department",
+      "GetLearningAssignmentDepartmentDetails - Retrieves departments with learning assignment reminders enabled",
+      "GetPreceptorDetailsByDepartmentID - Gets preceptor information for a department",
+      "GetReminderAssignmentsForPreceptors - Gets pending assignment reminders for preceptors",
+      "GetReminderAssignmentsforAdmin - Gets pending assignment reminders for administrators",
+      "GetTemplatesForAssessorsAndPreceptors - Retrieves email templates with personalized assignment details"
+    ],
+    "storedProcedures": [
+      "GetLearningModuleAssignmentEmailNoticeInformation",
+      "GetLearningAssignmentDepartmentDetails",
+      "GetPreceptorDetailsByDepartmentID",
+      "InsertSchedulerJobHistory",
+      "GetReminderAssignmentsForPreceptors",
+      "GetReminderAssignmentsforAdmin",
+      "GetTemplatesForAssessorsAndPreceptors"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Seven stored procedures handle assignment reminder data. Complex data model involving departments, preceptors, assessors, and learning modules.",
+    "complexity": "moderate",
+    "lineCount": 195
+  },
+  {
+    "filePath": "Schedulers/AutoFileEvaluations/AutoFileEvaluations/AutoFileEvaluations.cs",
+    "fileName": "AutoFileEvaluations.cs",
+    "fileType": "service",
+    "className": "AutoFileEvaluations",
+    "inheritsFrom": null,
+    "module": "Scheduler - Auto-File Evaluations",
+    "summary": "Automatically files (closes) evaluations that have reached their scheduled end date. Queries for evaluations within a configured date range, filters by start and expiration dates, and batch-processes them for automatic filing via stored procedures.",
+    "businessPurpose": "Automates the closing/filing of completed evaluations based on their scheduled dates, reducing manual administrative work and ensuring evaluations are properly archived on time.",
+    "keyMethods": [
+      "Start - Entry point that triggers the evaluation filing process",
+      "PrepareQueueToFileEvaluations - Filters evaluations by date range and submits them for batch filing",
+      "GetRequiredEvaluationsData - Retrieves scheduler configuration and evaluation data from the database"
+    ],
+    "storedProcedures": [
+      "GetAutoFileEvaluations",
+      "AutoFileEvaluations"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Common",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Auto-filing evaluations is a critical business process. The stored procedures handle batch evaluation status updates and need careful migration.",
+    "complexity": "moderate",
+    "lineCount": 111
+  },
+  {
+    "filePath": "Schedulers/AutoPopulateExcusedRotationFromPreviousYear/AutoPopulateExcusedRotationFromPreviousYear/ExcusedConferenceRotations.cs",
+    "fileName": "ExcusedConferenceRotations.cs",
+    "fileType": "service",
+    "className": "ExcusedConferenceRotations",
+    "inheritsFrom": null,
+    "module": "Scheduler - Excused Rotation Auto-Populate",
+    "summary": "Automatically copies conference excused rotation records from the previous academic year to the current year. Retrieves departments with active rotation schedules, then batch-copies their excused conference rotation configurations by department ID.",
+    "businessPurpose": "Reduces administrative burden by automatically carrying forward excused conference rotation settings from one academic year to the next, ensuring continuity in rotation scheduling.",
+    "keyMethods": [
+      "Start - Entry point for the excused rotation copy process",
+      "CopyConferenceExcusedRotationsFromPreviousYear - Main workflow that iterates departments and copies excused rotations",
+      "GetDepartmentIDsByDate - Retrieves departments with active rotation date ranges",
+      "CopyConferenceExcusedRotaionsByDepartmentID - Copies excused rotation records for a specific department"
+    ],
+    "storedProcedures": [
+      "GetDepartmentIDsByDate",
+      "CopyConferenceExcusedRotaionsByDepartmentID"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Year-over-year data copy logic. Stored procedures handle the bulk copy; migration requires understanding the rotation scheduling data model.",
+    "complexity": "moderate",
+    "lineCount": 157
+  },
+  {
+    "filePath": "Schedulers/AutomaticFNPEvaluationAssignments/AutomaticFNPEvaluationAssignments/FNPAssignmentsBusiness.cs",
+    "fileName": "FNPAssignmentsBusiness.cs",
+    "fileType": "service",
+    "className": "FNPAssignmentsBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNP Evaluation Assignments",
+    "summary": "Business logic for automatically creating Family Nurse Practitioner (FNP) evaluation assignments. Calls the data manager to execute the assignment creation stored procedure and logs results.",
+    "businessPurpose": "Automates the creation of evaluation assignments for FNP (Family Nurse Practitioner) program students, ensuring evaluations are assigned on schedule without manual intervention.",
+    "keyMethods": [
+      "OnAutomaticFNPEvaluationAssignments - Triggers automatic FNP evaluation assignment creation via stored procedure"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "FNP-specific scheduler. The assignment creation logic is mostly in the stored procedure. Migration requires understanding FNP program evaluation workflows.",
+    "complexity": "simple",
+    "lineCount": 42
+  },
+  {
+    "filePath": "Schedulers/AutomaticFNPEvaluationAssignments/AutomaticFNPEvaluationAssignments/FNPAssignmentsManager.cs",
+    "fileName": "FNPAssignmentsManager.cs",
+    "fileType": "data-access",
+    "className": "FNPAssignmentsManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNP Evaluation Assignments",
+    "summary": "Data access layer for FNP automatic evaluation assignments. Executes the stored procedure to create evaluation assignments and records scheduler job history.",
+    "businessPurpose": "Provides database operations for automatic FNP evaluation assignment creation and job history tracking.",
+    "keyMethods": [
+      "AutomaticFNPEvaluationAssignments - Executes the stored procedure to auto-create FNP evaluation assignments",
+      "InsertSchedulerJobHistory - Records scheduler execution history in the database"
+    ],
+    "storedProcedures": [
+      "AutomaticFNPEvaluationAssignments",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "The AutomaticFNPEvaluationAssignments stored procedure contains the core business logic for assignment creation. Must be analyzed and migrated carefully.",
+    "complexity": "simple",
+    "lineCount": 53
+  },
+  {
+    "filePath": "Schedulers/BSNImporting/BSNImporting/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - BSN Banner Integration",
+    "summary": "Imports faculty, student, and preceptor data from an external Banner SIS (Student Information System) API into MyEvaluations for BSN (Bachelor of Science in Nursing) programs. Uses RestSharp to call Banner API endpoints, parses XML responses into DataSets, and bulk-inserts data via stored procedures. Includes status tracking and error handling with Serilog logging.",
+    "businessPurpose": "Synchronizes BSN program user data (faculties, students, preceptors) from the Ellucian Banner student information system into MyEvaluations, keeping the evaluation platform in sync with the institution's enrollment and staffing records.",
+    "keyMethods": [
+      "Main - Orchestrates the full import: gets date range, imports faculties, students, and preceptors sequentially",
+      "ImportFaculties - Calls Banner API getCourseInfo endpoint and bulk-inserts faculty data via ImportBSNFacultyData stored proc",
+      "ImportStudents - Calls Banner API and bulk-inserts student data via ImportBSNStudentData stored proc",
+      "ImportPreceptors - Calls Banner API and bulk-inserts preceptor data via ImportBSNPreceptorData stored proc with PrimaryID dedup",
+      "UpdateBSNImportingStatus - Updates import status in DB with error messages and response data",
+      "GetBSNImportingDates - Retrieves the configured date range for the current import cycle",
+      "ConfigureServices - Reads configuration from appsettings.json using Microsoft.Extensions.Configuration"
+    ],
+    "storedProcedures": [
+      "ImportBSNFacultyData",
+      "ImportBSNStudentData",
+      "ImportBSNPreceptorData",
+      "UpdateBSNImportingStatus",
+      "GetBSNImportingDates"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "External API integration (Banner SIS). Uses .NET Core configuration and Serilog (more modern than other schedulers). Migration should use NestJS HttpService and MikroORM bulk operations.",
+    "complexity": "complex",
+    "lineCount": 692
+  },
+  {
+    "filePath": "Schedulers/BnddReminder-Dotnet/BnddReminder.cs",
+    "fileName": "BnddReminder.cs",
+    "fileType": "service",
+    "className": "BnddReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - BNDD License Reminder",
+    "summary": "Sends reminder emails for expiring BNDD (Bureau of Narcotics and Dangerous Drugs) licenses. Iterates through departments, retrieves users with expiring BNDD credentials, builds HTML email notifications with expiration details, and queues them via the application email scheduler.",
+    "businessPurpose": "Ensures healthcare providers are notified before their BNDD (controlled substance) licenses expire, which is critical for regulatory compliance in medical education programs.",
+    "keyMethods": [
+      "Start - Entry point that triggers BNDD reminder generation with logging",
+      "GenerateBnddReminder - Iterates departments, retrieves expiring licenses, builds email HTML, and queues notifications",
+      "AgreementInfoExpiredDate - Retrieves BNDD expiration data for a department",
+      "InsertApplicationEmailSchedules - Queues emails in the application email scheduler table",
+      "ReadKeyFromFile - Reads encryption key for secure email links"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo",
+      "AgreementInfoExpiredDate",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Regulatory compliance scheduler. BNDD license tracking is legally required. Must ensure no notification gaps during migration to Node.js.",
+    "complexity": "complex",
+    "lineCount": 335
+  },
+  {
+    "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailBusiness.cs",
+    "fileName": "CMEEvaluationReminderEmailBusiness.cs",
+    "fileType": "service",
+    "className": "CMEEvaluationReminderEmailBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - CME Evaluation Reminder",
+    "summary": "Sends reminder emails for pending CME (Continuing Medical Education) evaluation assignments. Retrieves departments with CME reminders enabled, iterates through CME assignments per department, builds personalized email content using templates, and sends via the common email utility.",
+    "businessPurpose": "Automates reminder emails for CME conference evaluation assignments, ensuring healthcare professionals complete their required evaluations for continuing education credits.",
+    "keyMethods": [
+      "OnViewInitializeCMEEvaluationReminderEmailScheduler - Main workflow: gets CME reminder departments, iterates assignments, builds emails from templates, and sends",
+      "ConvertToInteger - Utility method for safe integer conversion from database objects"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "CME is a major module. Reminder emails are essential for CME credit compliance. Template-based email system needs migration to Node.js email service.",
+    "complexity": "moderate",
+    "lineCount": 138
+  },
+  {
+    "filePath": "Schedulers/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailScheduler-Dotnet/CMEEvaluationReminderEmailManager.cs",
+    "fileName": "CMEEvaluationReminderEmailManager.cs",
+    "fileType": "data-access",
+    "className": "CMEEvaluationReminderEmailManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - CME Evaluation Reminder",
+    "summary": "Data access layer for CME evaluation reminder emails. Retrieves CME reminder configuration, assignment details, email templates, and updates mail-sent status via stored procedures.",
+    "businessPurpose": "Provides database operations for CME evaluation reminders including department configuration, assignment queries, email template retrieval, and sent-status tracking.",
+    "keyMethods": [
+      "CmeReminderInfo - Gets departments with CME reminders enabled",
+      "CMEAssignmentInfo - Gets CME evaluation assignments for a department",
+      "GetCMEAssignmentEmail - Retrieves email template and user data for CME assignments",
+      "UpdateCMEScheduleMailStatusByUserID - Updates mail-sent status for a CME assignment"
+    ],
+    "storedProcedures": [
+      "CmeReminderInfo",
+      "CMEAssignmentInfo",
+      "GetCMEEval_NotRequired_Attendence_Email_Summary",
+      "UpdateCMEScheduleMailStatusByUserID"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Four stored procedures for CME email operations. The CME data model (schedules, assignments, attendance) is complex and needs thorough analysis for migration.",
+    "complexity": "simple",
+    "lineCount": 77
+  },
+  {
+    "filePath": "Schedulers/CertificateExpirationReminder-Dotnet/CertificateExpirationReminderBusiness.cs",
+    "fileName": "CertificateExpirationReminderBusiness.cs",
+    "fileType": "service",
+    "className": "CertificateExpirationReminderBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Certificate Expiration Reminder",
+    "summary": "Business logic for sending certificate expiration reminder emails. Calls the manager layer to retrieve certificate template details and generate reminder notifications for expiring certificates.",
+    "businessPurpose": "Automates notifications about expiring professional certificates (e.g., board certifications, specialty certificates) for healthcare education program participants.",
+    "keyMethods": [
+      "GenerateCertificateExpirationReminders - Triggers certificate expiration reminder email generation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Certificate tracking is part of the portfolio/credentials module. Migration should align with the broader credentials management migration.",
+    "complexity": "simple",
+    "lineCount": 37
+  },
+  {
+    "filePath": "Schedulers/CertificateExpirationReminder-Dotnet/CertificateExpirationReminderManager.cs",
+    "fileName": "CertificateExpirationReminderManager.cs",
+    "fileType": "data-access",
+    "className": "CertificateExpirationReminderManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Certificate Expiration Reminder",
+    "summary": "Data access layer for certificate expiration reminders. Retrieves certificate template details for generating expiration reminders and records scheduler job history.",
+    "businessPurpose": "Provides stored procedure access for certificate expiration tracking and reminder generation.",
+    "keyMethods": [
+      "SendCertificateExpirationReminderEmail - Retrieves certificate template details for reminder generation",
+      "InsertSchedulerJobHistory - Records scheduler execution history"
+    ],
+    "storedProcedures": [
+      "GetCertificateTemplateDetails",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Two stored procedures. The GetCertificateTemplateDetails proc likely handles the bulk of the reminder logic server-side.",
+    "complexity": "simple",
+    "lineCount": 51
+  },
+  {
+    "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/ConferenceMailSend.cs",
+    "fileName": "ConferenceMailSend.cs",
+    "fileType": "service",
+    "className": "ConferenceMailSend",
+    "inheritsFrom": null,
+    "module": "Scheduler - Conference Evaluation Emails",
+    "summary": "Sends conference evaluation assignment emails and manages conference evaluation lifecycle. Uses inline SQL queries (not stored procedures) to find pending conference evaluations, retrieves user details, builds personalized HTML emails with evaluation links (complete/decline), and sends them via SMTP. Also auto-closes expired conference evaluations based on department settings.",
+    "businessPurpose": "Automates the conference evaluation workflow by sending evaluation assignment emails to attendees after conferences and auto-closing expired evaluations, which is essential for CME/conference tracking.",
+    "keyMethods": [
+      "Start - Entry point that first closes expired evaluations, then sends pending evaluation emails",
+      "GenerateMailForConference - Queries pending conference evaluations with inline SQL, builds personalized emails with encrypted action links",
+      "UpdateConferenceEvaluationStatus - Auto-closes expired conference evaluations based on department settings",
+      "SendMail - Sends notification emails to conference admins with evaluation status summaries",
+      "fnGetEmailReminderStatus - Checks department-level email reminder configuration"
+    ],
+    "storedProcedures": [
+      "UpdateConferenceEvaluationStatusFromScheduler"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains extensive inline SQL (not stored procedures) which makes migration more complex. The conference evaluation workflow with encrypted action links needs careful reimplementation. One of the more complex schedulers.",
+    "complexity": "complex",
+    "lineCount": 553
+  },
+  {
+    "filePath": "Schedulers/ConferenceMailSend-Dotnet/ConferenceMailSend/CustomCommand.cs",
+    "fileName": "CustomCommand.cs",
+    "fileType": "data-access",
+    "className": "CustomCommand",
+    "inheritsFrom": null,
+    "module": "Scheduler - Conference Evaluation Emails",
+    "summary": "Custom wrapper around SqlCommand that implements IDisposable for proper resource management. Provides helper methods for adding parameters with automatic DBNull handling and supports both input and output parameters.",
+    "businessPurpose": "Provides a reusable SQL command abstraction for database operations within the ConferenceMailSend scheduler, ensuring proper parameter handling and resource cleanup.",
+    "keyMethods": [
+      "AddParameterWithValue - Adds a SQL parameter with automatic DBNull conversion for null values",
+      "AddOutParameterWithValue - Adds an output SQL parameter with automatic DBNull handling",
+      "GetCommand - Returns the underlying SqlCommand instance",
+      "Dispose - Cleans up the SqlCommand resource"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Infrastructure class. No equivalent needed in Node.js as MikroORM handles parameterized queries natively.",
+    "complexity": "moderate",
+    "lineCount": 154
+  },
+  {
+    "filePath": "Schedulers/ContractEmailNotice-Dotnet/ContractEmailNotice-Dotnet/ContractEmailNoticeBusiness.cs",
+    "fileName": "ContractEmailNoticeBusiness.cs",
+    "fileType": "service",
+    "className": "ContractEmailNoticeBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Contract Expiration Notice",
+    "summary": "Business logic for sending contract expiration email notifications. Retrieves users with expiring contracts, builds notification emails with contract details, and sends them through the common email utility.",
+    "businessPurpose": "Notifies administrators and users about expiring employment or training contracts, ensuring timely renewals and preventing lapses in contractual coverage.",
+    "keyMethods": [
+      "OnViewInitializeContractUsers - Main workflow that retrieves expiring contracts and sends email notifications",
+      "SendLogAsMail - Sends job execution logs to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.Common"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Contract management notifications. Relatively straightforward email scheduler that can be migrated to a NestJS worker.",
+    "complexity": "moderate",
+    "lineCount": 121
+  },
+  {
+    "filePath": "Schedulers/ContractEmailNotice-Dotnet/ContractEmailNotice-Dotnet/ContractEmailNoticeManager.cs",
+    "fileName": "ContractEmailNoticeManager.cs",
+    "fileType": "data-access",
+    "className": "ContractEmailNoticeManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Contract Expiration Notice",
+    "summary": "Data access layer for contract expiration notices. Retrieves expiring contract information, user details, and records scheduler job history via stored procedures.",
+    "businessPurpose": "Provides database queries for contract expiration tracking including user contract details and user info lookup.",
+    "keyMethods": [
+      "GetUserExpiringContractEmailNoticeInformation - Gets list of users with expiring contracts",
+      "GetUserInfo - Retrieves user details by UserID for email personalization",
+      "InsertSchedulerJobHistory - Records scheduler execution history"
+    ],
+    "storedProcedures": [
+      "GetUserExpiringContractEmailNoticeInformation",
+      "GetUserInfo",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Three stored procedures. The contract data model is simpler than evaluations, making migration more straightforward.",
+    "complexity": "simple",
+    "lineCount": 87
+  },
+  {
+    "filePath": "Schedulers/ConvertFileToBinary/Convert/Documents.cs",
+    "fileName": "Documents.cs",
+    "fileType": "data-access",
+    "className": "Documents",
+    "inheritsFrom": null,
+    "module": "Scheduler - File to Binary Conversion",
+    "summary": "Data access layer for the file-to-binary conversion scheduler. Retrieves portfolio/affiliate agreement documents that need binary conversion and updates document records with the converted binary data.",
+    "businessPurpose": "Provides database operations for converting file-based documents (PDFs, etc.) to binary storage in the database, supporting the transition from file-system to database document storage.",
+    "keyMethods": [
+      "GetPFDocuentsData - Retrieves documents pending binary conversion via GetPFDocumentsForBinaryConvertion stored proc",
+      "UpdateBinaryData - Updates a document record with binary data, content type, and section code"
+    ],
+    "storedProcedures": [
+      "GetPFDocumentsForBinaryConvertion",
+      "UpdateBinaryData"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "One-time migration utility. May no longer be actively used. New Node.js backend uses Azure Blob Storage for documents.",
+    "complexity": "simple",
+    "lineCount": 66
+  },
+  {
+    "filePath": "Schedulers/ConvertFileToBinary/Convert/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - File to Binary Conversion",
+    "summary": "Console application that converts file-system documents to binary database storage. Reads document files from disk (portfolio/affiliate agreement documents), converts them to byte arrays, and stores them as binary data in SQL Server. Handles multiple file path resolution strategies.",
+    "businessPurpose": "Migrates document files from the server file system into database binary storage for better portability, backup, and centralized document management.",
+    "keyMethods": [
+      "Main - Iterates documents, resolves file paths with fallback strategies, reads files as binary, and updates database records",
+      "ReturnFilebyte - Converts a file to a byte array using BinaryReader",
+      "FileToByteArray - Alternative file-to-byte-array conversion using FileStream"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "One-time data migration utility. Likely already completed its purpose. No migration needed.",
+    "complexity": "moderate",
+    "lineCount": 173
+  },
+  {
+    "filePath": "Schedulers/CurriculaEmailScheduler-Dotnet/CurriculaEmailScheduler-Dotnet/CurriculaEmailBusiness.cs",
+    "fileName": "CurriculaEmailBusiness.cs",
+    "fileType": "service",
+    "className": "CurriculaEmailBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Curricula Email Notifications",
+    "summary": "Business logic for sending curricula-related email notifications. Processes portfolio document assignments, on-call curricula assignments, and self-assessment reminders. Iterates through departments and users to send personalized curricula notifications.",
+    "businessPurpose": "Automates email notifications for curricula assignments including document reviews, rotation-based curricula assignments, and self-assessment reminders for educational program participants.",
+    "keyMethods": [
+      "OnViewInitializeCurriculaEmailNotice - Main workflow that processes curricula assignments and sends email notifications",
+      "SendLogAsMail - Sends job execution logs to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.Business.Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Curricula management is a core feature. Complex notification logic involving documents, rotations, and self-assessments.",
+    "complexity": "moderate",
+    "lineCount": 181
+  },
+  {
+    "filePath": "Schedulers/CurriculaEmailScheduler-Dotnet/CurriculaEmailScheduler-Dotnet/CurriculaEmailManager.cs",
+    "fileName": "CurriculaEmailManager.cs",
+    "fileType": "data-access",
+    "className": "CurriculaEmailManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Curricula Email Notifications",
+    "summary": "Data access layer for curricula email notifications. Manages portfolio document retrieval, on-call curricula assignments, rotation history updates, self-assessment reminders, and temporary email data staging via stored procedures.",
+    "businessPurpose": "Provides comprehensive database operations for the curricula notification system including document assignments, rotation-based curricula, milestone tracking, and email staging.",
+    "keyMethods": [
+      "InsertSchedulerJobHistory - Records scheduler execution history",
+      "UpdateMilestionRotationHistoryAndAuditTrail - Updates milestone rotation history with audit trail",
+      "DeleteTempCurriculaEmailData - Cleans up temporary curricula email staging data",
+      "GetPFUserDocuments - Retrieves portfolio user documents for curricula assignments",
+      "GetONCallCurriculaAssignments - Gets on-call curricula assignment details",
+      "GetPFTempCurriculaEmailData - Gets staged curricula email data for sending",
+      "GetCurriculaEmailNoticeInformation - Retrieves email notice data with user credentials",
+      "SendSelfAssessmentReminder - Triggers self-assessment reminder generation"
+    ],
+    "storedProcedures": [
+      "InsertSchedulerJobHistory",
+      "UpdateMilestionRotationHistoryAndAuditTrail",
+      "DeleteTempCurriculaEmailData",
+      "GetPFUserDocuments",
+      "GetONCallCurriculaAssignments",
+      "GetPFTempCurriculaEmailData",
+      "GetCurriculaEmailNoticeInformation",
+      "SendSelfAssessmentReminder"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Eight stored procedures covering curricula, portfolios, milestones, and rotations. One of the most complex data access layers among the schedulers.",
+    "complexity": "moderate",
+    "lineCount": 244
+  },
+  {
+    "filePath": "Schedulers/DeaReminder-Dotnet/DeaReminder.cs",
+    "fileName": "DeaReminder.cs",
+    "fileType": "service",
+    "className": "DeaReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - DEA License Reminder",
+    "summary": "Sends reminder emails for expiring DEA (Drug Enforcement Administration) licenses. Iterates through departments, retrieves users with expiring DEA credentials, builds HTML email notifications with expiration details and support contact info, and queues them via the application email scheduler.",
+    "businessPurpose": "Ensures healthcare providers receive timely notifications about expiring DEA licenses, which are legally required for prescribing controlled substances in medical education settings.",
+    "keyMethods": [
+      "Start - Entry point that triggers DEA reminder generation",
+      "GenerateDeaReminder - Iterates departments, retrieves expiring DEA licenses, builds emails, and queues notifications",
+      "AgreementInfoExpiredDate - Retrieves DEA expiration data for a department",
+      "InsertApplicationEmailSchedules - Queues emails in the application email scheduler",
+      "ReadKeyFromFile - Reads encryption key for secure email links"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo",
+      "AgreementInfoExpiredDate",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Regulatory compliance scheduler nearly identical to BnddReminder. DEA license tracking is federally mandated. Can be migrated alongside BNDD reminder as they share the same pattern.",
+    "complexity": "complex",
+    "lineCount": 334
+  },
+  {
+    "filePath": "Schedulers/DotNetEvaluationReminder/DotNetEvaluationReminder/EvaluationReminder.cs",
+    "fileName": "EvaluationReminder.cs",
+    "fileType": "service",
+    "className": "EvaluationReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - Evaluation Reminder (Core)",
+    "summary": "The primary evaluation reminder scheduler and one of the most complex schedulers in the system. Handles the complete evaluation reminder lifecycle: auto-closes expired evaluations, processes reminder queue in batches of 50 departments, generates XML-based evaluation data per department, builds personalized HTML emails with evaluation tables and action links, bulk-inserts email records using SQL Server temp tables, and tracks email-sent status. Uses inline SQL for temp table creation and bulk operations.",
+    "businessPurpose": "Core scheduler that sends evaluation reminder emails to all users with pending evaluations across all departments. This is the primary driver for evaluation completion rates across the entire MyEvaluations platform.",
+    "keyMethods": [
+      "Start - Entry point: reads encryption key, closes expired evaluations, processes department queue in batches",
+      "UpdateEvaluationStatus - Auto-closes expired evaluations via stored procedure",
+      "GenerateEvaluationReminder - Main workflow: generates XML evaluation data, builds email HTML, bulk-inserts email records",
+      "UpdateEvaluationEmailSentStatus - Marks evaluations as email-sent after processing",
+      "UpdateAutoEvalRemindersQueueDepartments - Updates the department processing queue",
+      "GetAutoEvalRemindersQueueDepartments - Retrieves next batch of departments to process",
+      "GenerateXMLForEvaluationsByDepartmentID - Creates XML document from evaluation data for template processing",
+      "WriteEmailScheduleUsingBulk - Bulk-inserts email records using SqlBulkCopy",
+      "InsertAssignmentEmailsInApplicationScheduler - Batch inserts email records into the application scheduler table",
+      "GetEvaluationUsers - Extracts user information from evaluation DataTable for email personalization",
+      "GetAdminEmails - Retrieves admin email addresses for BCC notifications"
+    ],
+    "storedProcedures": [
+      "UpdateEvaluationStatusFromScheduler",
+      "UpdateEvaluationEmailSentStatusFromScheduler",
+      "UpdateAutoEvalRemindersQueueDepartments",
+      "GenerateEvaluationReminderDetails",
+      "InsertAutoEvalRemainderAssignmentEmailsInApplicationScheduler",
+      "GetAutoEvalRemindersQueueDepartments"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Common",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "CRITICAL scheduler - the most important and complex scheduler in the system. Uses XML processing, bulk SQL operations, temp tables, and inline SQL. Migration requires extensive testing and parallel running. Already partially handled by the Node.js notification service.",
+    "complexity": "very-complex",
+    "lineCount": 1263
+  },
+  {
+    "filePath": "Schedulers/DotNetPatientLogReminder/DotNetPatientLogReminder/DotNetPatientLogReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "PatientLogReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - Patient Log Reminder",
+    "summary": "Sends reminder emails to users who have submitted patient logs that require review or follow-up action. Retrieves pending patient log submissions, builds HTML email notifications with department-specific branding, sends emails, and updates the reminder-sent date to prevent duplicate notifications.",
+    "businessPurpose": "Ensures timely review of patient encounter logs by sending reminders to reviewers, which is essential for clinical training documentation and accreditation compliance.",
+    "keyMethods": [
+      "Main - Retrieves pending patient logs, iterates users, builds emails, sends notifications, and updates sent dates",
+      "SendMail - Sends individual reminder emails using the EmailUtility with department-specific configuration",
+      "ReadKeyFromFile - Reads encryption key for secure email links",
+      "UpdatePatientLogReminderSentDate - Marks patient log reminders as sent to prevent duplicates"
+    ],
+    "storedProcedures": [
+      "GetPatientLogEmailReminderSend",
+      "UpdatePatientLogReminderSentDate"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Patient log reminders are essential for clinical training documentation. The stored procedures handle the reminder logic; migration should leverage the existing Node.js patient log module.",
+    "complexity": "moderate",
+    "lineCount": 238
+  },
+  {
+    "filePath": "Schedulers/DotNetProcedureReminder/DotNetProcedureReminder/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "ProcedureReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - Procedure Log Reminder",
+    "summary": "Sends reminder emails for pending procedure log submissions. Very similar to PatientLogReminder but focused on procedure logs. Retrieves pending procedures, builds HTML emails with department branding, sends notifications, and updates reminder-sent dates.",
+    "businessPurpose": "Ensures timely submission and review of medical procedure logs by sending reminders to users, which is required for tracking procedural competencies in medical education.",
+    "keyMethods": [
+      "Main - Retrieves pending procedure logs, builds and sends reminder emails, updates sent status",
+      "SendMail - Sends procedure reminder emails with department-specific configuration",
+      "ReadKeyFromFile - Reads encryption key for secure email links",
+      "UpdateProcedureReminderSentDate - Marks procedure reminders as sent to prevent duplicates"
+    ],
+    "storedProcedures": [
+      "GetProcedureEmailReminderSend",
+      "UpdateProcedureReminderSentDate"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL",
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Nearly identical pattern to PatientLogReminder. Can be migrated together as a single parameterized reminder worker in Node.js.",
+    "complexity": "moderate",
+    "lineCount": 265
+  },
+  {
+    "filePath": "Schedulers/DutyHoursVerificationReminder/DutyHoursVerificationReminder/DutyHoursVerificationBusiness.cs",
+    "fileName": "DutyHoursVerificationBusiness.cs",
+    "fileType": "service",
+    "className": "DutyHoursVerificationBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - Duty Hours Verification Reminder",
+    "summary": "Business logic for sending clinical hours verification reminder emails. Retrieves departments with duty hours verification enabled, triggers email generation for users who need to verify their clinical hours.",
+    "businessPurpose": "Automates reminders for residents and trainees to verify their clinical/duty hours, which is required by ACGME for work-hour compliance in graduate medical education programs.",
+    "keyMethods": [
+      "OnViewInitializeDutyHoursVerificationReminder - Main workflow that processes departments and triggers duty hours verification emails",
+      "SendLogAsMail - Sends job execution logs to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "ACGME-required duty hours verification is a critical compliance feature. Migration must maintain the verification reminder schedule without gaps.",
+    "complexity": "simple",
+    "lineCount": 90
+  },
+  {
+    "filePath": "Schedulers/DutyHoursVerificationReminder/DutyHoursVerificationReminder/DutyHoursVerificationManager.cs",
+    "fileName": "DutyHoursVerificationManager.cs",
+    "fileType": "data-access",
+    "className": "DutyHoursVerificationManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - Duty Hours Verification Reminder",
+    "summary": "Data access layer for duty hours verification reminders. Retrieves departments with verification enabled and triggers the email generation stored procedure for each department.",
+    "businessPurpose": "Provides database operations for duty hours verification including department discovery and reminder email generation.",
+    "keyMethods": [
+      "InsertSchedulerJobHistory - Records scheduler execution history",
+      "GetDHverificationDepartments - Gets departments with duty hours verification enabled",
+      "SendDHVerificationEmail - Triggers verification reminder email generation for a department"
+    ],
+    "storedProcedures": [
+      "InsertSchedulerJobHistory",
+      "GetDHverificationDepartments",
+      "SendDHVerificationEmail"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Three stored procedures. The SendDHVerificationEmail proc likely generates the email content server-side.",
+    "complexity": "simple",
+    "lineCount": 87
+  },
+  {
+    "filePath": "Schedulers/DutyReminder-Dotnet/DutyReminder.cs",
+    "fileName": "DutyReminder.cs",
+    "fileType": "service",
+    "className": "DutyReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - Duty Hours Logging Reminder",
+    "summary": "Sends reminder emails for duty hours logging compliance. Iterates through departments with duty hour tracking enabled, retrieves users with pending duty hour entries based on configurable check dates, builds HTML email notifications with expiration details and support info, and queues them via the application email scheduler.",
+    "businessPurpose": "Ensures residents and trainees log their duty hours on time by sending automated reminders, supporting ACGME work-hour compliance requirements.",
+    "keyMethods": [
+      "Start - Entry point that triggers duty hour reminder generation",
+      "GenerateDutyReminder - Iterates departments, retrieves users with pending duty hours, builds and queues emails",
+      "DutyAgreementInfo - Retrieves duty hour logging status for users in a department with configurable date checking",
+      "InsertApplicationEmailSchedules - Queues emails in the application email scheduler",
+      "ReadKeyFromFile - Reads encryption key for secure email links"
+    ],
+    "storedProcedures": [
+      "DutyReminderDepartments",
+      "ApplicationURL",
+      "PointOfContactUsersForEmail",
+      "DutyAgreementInfo",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities",
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "ACGME compliance-related scheduler. Similar pattern to BNDD/DEA reminders. Five stored procedures handle duty hour tracking. Can be consolidated with DutyHoursVerificationReminder during migration.",
+    "complexity": "complex",
+    "lineCount": 354
+  },
+  {
+    "filePath": "Schedulers/EncryptUserAndPassword/EncryptUserAndPassword/Business.cs",
+    "fileName": "Business.cs",
+    "fileType": "service",
+    "className": "Business",
+    "inheritsFrom": null,
+    "module": "Scheduler - User Data Encryption",
+    "summary": "Batch encrypts user credentials (username, password, email, DSI number) using AES-256-CBC encryption. Retrieves unencrypted user records, applies AES encryption with keys from configuration files, and bulk-updates the encrypted values back to the database.",
+    "businessPurpose": "Provides data-at-rest encryption for sensitive user credentials by batch-processing unencrypted user records and storing encrypted versions, supporting security compliance requirements.",
+    "keyMethods": [
+      "Start - Main workflow: loads encryption keys, retrieves unencrypted users, encrypts data, and bulk-updates database",
+      "GetUsersToEncrypt - Retrieves list of users pending encryption",
+      "GetEncryptedUserInfo - Applies AES encryption to username, password, email, and DSI number for each user",
+      "Encrypt - AES-256-CBC encryption of a single string value",
+      "Decrypt - AES-256-CBC decryption of an encrypted string",
+      "generatekey - Generates AES encryption key bytes",
+      "ReadKeyFromFile - Reads encryption key and IV from configuration files"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "MyEvaluations.Business.Utilities"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "One-time/maintenance encryption utility. The Node.js backend should use its own encryption approach (e.g., bcrypt for passwords, column-level encryption for PII).",
+    "complexity": "complex",
+    "lineCount": 346
+  },
+  {
+    "filePath": "Schedulers/EncryptUserAndPassword/EncryptUserAndPassword/Manager.cs",
+    "fileName": "Manager.cs",
+    "fileType": "data-access",
+    "className": "Manager",
+    "inheritsFrom": null,
+    "module": "Scheduler - User Data Encryption",
+    "summary": "Data access layer for user data encryption. Retrieves user records that need encryption, updates individual user encrypted fields, and supports bulk updates of encrypted user data via stored procedures.",
+    "businessPurpose": "Provides database operations for the user encryption process including retrieving unencrypted users and updating encrypted credential fields.",
+    "keyMethods": [
+      "GetUserInfo - Retrieves user details by ID for encryption",
+      "UpdateUserInfo - Updates encrypted fields for a single user",
+      "UpdateUserInfo (bulk) - Bulk-updates encrypted fields for multiple users using stored procedure",
+      "GetUsersListToEncrypt - Retrieves list of user IDs pending encryption"
+    ],
+    "storedProcedures": [
+      "GetUserInfoByIdForEncryption",
+      "UpdateUserEncyptedInfo",
+      "UpdateUsersEncyptedInfo",
+      "GetUsersIdsToEncrypt"
+    ],
+    "businessManagersUsed": [
+      "MyEvaluations.DataAccess.SQL"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Four stored procedures for encryption data access. This is a maintenance utility and may not need direct migration to Node.js.",
+    "complexity": "moderate",
+    "lineCount": 143
+  },
+  {
+    "filePath": "Schedulers/PatientLog/PatientLog/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "infrastructure",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientLog",
+    "summary": "Entry point for the PatientLog encryption scheduler. Creates a Business instance to retrieve patient log data by department and iterates through results to process encryption.",
+    "businessPurpose": "Orchestrates the batch encryption of patient log data across departments, ensuring sensitive patient information in logs is properly encrypted at rest.",
+    "keyMethods": [
+      "Main - Entry point that instantiates Business class and iterates department data for encryption"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Patient log encryption should be handled at the database or application layer in the Node.js backend, not as a separate scheduled process.",
+    "complexity": "simple",
+    "lineCount": 44
+  },
+  {
+    "filePath": "Schedulers/PatientLog/PatientLog/Business.cs",
+    "fileName": "Business.cs",
+    "fileType": "service",
+    "className": "Business",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientLog",
+    "summary": "Business logic for encrypting patient log data. Retrieves department IDs with SSN data, fetches patient log records, encrypts sensitive values using AES encryption, and updates the encrypted data back to the database.",
+    "businessPurpose": "Ensures patient log entries containing sensitive data (patient IDs, names) are encrypted per department, maintaining HIPAA compliance for patient information stored in clinical logs.",
+    "keyMethods": [
+      "SsnValues - Retrieves departments with SSN data and processes patient log encryption per department",
+      "EncryptValue - Creates encryption instance for AES-based value encryption"
+    ],
+    "storedProcedures": [
+      "GetDepartmentIdsForSsn",
+      "GetpatientidLog",
+      "UpdatePatientLog"
+    ],
+    "businessManagersUsed": [
+      "Security"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Patient log encryption logic should be integrated into the Node.js backend data layer with modern encryption libraries.",
+    "complexity": "moderate",
+    "lineCount": 187
+  },
+  {
+    "filePath": "Schedulers/PatientLog/PatientLog/EncryptValue.cs",
+    "fileName": "EncryptValue.cs",
+    "fileType": "infrastructure",
+    "className": "EncryptValue",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientLog",
+    "summary": "AES encryption/decryption utility class. Reads encryption keys from files, provides methods to encrypt and decrypt string values using AES-CBC with key/IV pairs, and includes Base64 validation.",
+    "businessPurpose": "Provides the cryptographic foundation for encrypting sensitive patient data (SSN, names) in the patient log scheduler. Uses file-based key management for AES encryption.",
+    "keyMethods": [
+      "GetEncryptedValues - Encrypts a string value using AES with file-based keys",
+      "GetDecryptedValues - Decrypts an AES-encrypted string back to plaintext",
+      "GetEncryptedValue - Alternative encryption method",
+      "IsBase64String - Validates whether a string is valid Base64",
+      "ReadKeyFromFile - Reads encryption key material from file system",
+      "EncryptStringToBytes_Aes - Low-level AES byte encryption",
+      "DecryptStringFromBytes_Aes - Low-level AES byte decryption"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Utilities",
+      "Security"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Encryption utilities should use Node.js crypto module with proper key management (Azure Key Vault or similar) instead of file-based keys.",
+    "complexity": "moderate",
+    "lineCount": 259
+  },
+  {
+    "filePath": "Schedulers/PatientLog/PatientLog/MyEvalLogs.cs",
+    "fileName": "MyEvalLogs.cs",
+    "fileType": "infrastructure",
+    "className": "MyEvalLogs",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientLog",
+    "summary": "Local logging utility using Microsoft Enterprise Library. Provides static LoggingIntoText methods with severity-based categorization for the PatientLog scheduler.",
+    "businessPurpose": "Scheduler-specific logging infrastructure for tracking encryption operations and errors.",
+    "keyMethods": [
+      "LoggingIntoText - Logs messages with severity and module categorization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "",
+    "complexity": "moderate",
+    "lineCount": 147
+  },
+  {
+    "filePath": "Schedulers/PatientName/PatientName/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "infrastructure",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientName",
+    "summary": "Entry point for the PatientName encryption scheduler. Nearly identical to PatientLog scheduler but targets patient name/procedure fields for encryption.",
+    "businessPurpose": "Orchestrates batch encryption of patient name data in procedure records across departments for HIPAA compliance.",
+    "keyMethods": [
+      "Main - Entry point that processes patient name encryption per department"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Should be consolidated with PatientLog encryption into a single Node.js encryption service.",
+    "complexity": "simple",
+    "lineCount": 42
+  },
+  {
+    "filePath": "Schedulers/PatientName/PatientName/Business.cs",
+    "fileName": "Business.cs",
+    "fileType": "service",
+    "className": "Business",
+    "inheritsFrom": null,
+    "module": "Scheduler - PatientName",
+    "summary": "Business logic for encrypting patient name data in procedure records. Mirrors PatientLog/Business.cs but targets patient procedure names rather than log entries.",
+    "businessPurpose": "Encrypts patient name fields in procedure records per department, ensuring PII in clinical procedure data is protected at rest.",
+    "keyMethods": [
+      "SsnValues - Retrieves departments and processes patient name encryption",
+      "EncryptValue - Creates encryption instance for value encryption"
+    ],
+    "storedProcedures": [
+      "GetDepartmentIdsForSsn",
+      "Getpatientid",
+      "UpdatePatientProcedureEncrypt"
+    ],
+    "businessManagersUsed": [
+      "Security"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Patient name encryption should be handled transparently by the data access layer in Node.js.",
+    "complexity": "moderate",
+    "lineCount": 184
+  },
+  {
+    "filePath": "Schedulers/QuizAssignmentsReminder-Dotnet/QuizAssignmentsReminder-Dotnet/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "infrastructure",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - QuizReminders",
+    "summary": "Entry point for the quiz assignments reminder scheduler. Calls QuizAssignmentsReminderBusiness to send reminders for pending and partially completed quiz assignments.",
+    "businessPurpose": "Triggers email reminders to users who have pending or incomplete quiz/assessment assignments in their training programs.",
+    "keyMethods": [
+      "Main - Initializes and runs the quiz reminder business logic"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "Quiz reminder functionality is a candidate for BullMQ scheduled jobs in the Node.js backend.",
+    "complexity": "trivial",
+    "lineCount": 25
+  },
+  {
+    "filePath": "Schedulers/QuizAssignmentsReminder-Dotnet/QuizAssignmentsReminder-Dotnet/QuizAssignmentsReminderBusiness.cs",
+    "fileName": "QuizAssignmentsReminderBusiness.cs",
+    "fileType": "service",
+    "className": "QuizAssignmentsReminderBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - QuizReminders",
+    "summary": "Processes quiz assignment reminders by fetching pending and partially completed quiz assignments, generating email notifications for each, and logging job execution history. Sends summary log emails to administrators.",
+    "businessPurpose": "Ensures trainees receive timely reminders about pending quiz assignments and partially completed quizzes, supporting assessment completion rates in education programs.",
+    "keyMethods": [
+      "OnViewInitializeQuizReminder - Main logic that fetches quiz assignments and sends reminder emails",
+      "SendLogAsMail - Sends job execution log summary to administrators"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Common",
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Quiz reminder logic should migrate to BullMQ scheduled workers in the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 180
+  },
+  {
+    "filePath": "Schedulers/QuizAssignmentsReminder-Dotnet/QuizAssignmentsReminder-Dotnet/QuizAssignmentsReminderManager.cs",
+    "fileName": "QuizAssignmentsReminderManager.cs",
+    "fileType": "service",
+    "className": "QuizAssignmentsReminderManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - QuizReminders",
+    "summary": "Data access manager for quiz assignment reminders. Retrieves quiz reminder assignments, email notification details, and partial completion data via stored procedures. Also logs scheduler job history.",
+    "businessPurpose": "Provides the data access layer for quiz reminder operations, fetching assignment data and email templates from SQL Server.",
+    "keyMethods": [
+      "GetQuizReminderAssignments - Retrieves all pending quiz assignments needing reminders",
+      "GetQuizModuleAssignmentEmailNoticeInformation - Gets email template data for a specific assignment",
+      "GetQuizReminderForPartialCompleted - Fetches partially completed quiz assignments",
+      "InsertSchedulerJobHistory - Records scheduler execution history"
+    ],
+    "storedProcedures": [
+      "GetQuizReminderAssignments",
+      "GetQuizModuleAssignmentEmailNoticeInformation",
+      "GetQuizReminderForPartialCompleted",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Stored procedures should be replaced with MikroORM queries in the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 129
+  },
+  {
+    "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "infrastructure",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - SalesForceIntegration",
+    "summary": "Entry point for the SalesForce integration scheduler. Creates a DNPLogManager and SalesForceExport instance to push data to SalesForce via REST API.",
+    "businessPurpose": "Orchestrates scheduled data export from MyEvaluations to SalesForce CRM for the DNP (Doctor of Nursing Practice) program.",
+    "keyMethods": [
+      "Main - Initializes logging and triggers SalesForce data export"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EssentialActivities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "SalesForce integration could be rebuilt as a Node.js integration service or handled by a modern iPaaS solution.",
+    "complexity": "simple",
+    "lineCount": 46
+  },
+  {
+    "filePath": "Schedulers/SalesForceIntegation/SalesForceIntegation/SalesForceExport.cs",
+    "fileName": "SalesForceExport.cs",
+    "fileType": "service",
+    "className": "SalesForceExport",
+    "inheritsFrom": null,
+    "module": "Scheduler - SalesForceIntegration",
+    "summary": "Exports data to SalesForce via REST API using RestSharp. Constructs data tables, makes authenticated POST requests to a SalesForce API endpoint, and processes XML/JSON responses.",
+    "businessPurpose": "Pushes essential activities data (clinical hours, competency metrics) from MyEvaluations to SalesForce CRM for program tracking and reporting.",
+    "keyMethods": [
+      "ExportDataToSalesForce - Main export method that builds data payload and sends to SalesForce REST API"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EssentialActivities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "SalesForce REST integration should use a modern HTTP client in Node.js with proper OAuth2 authentication.",
+    "complexity": "moderate",
+    "lineCount": 118
+  },
+  {
+    "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/SendApplicationEmails.cs",
+    "fileName": "SendApplicationEmails.cs",
+    "fileType": "service",
+    "className": "SendApplicationEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - ApplicationEmails",
+    "summary": "Central email dispatch scheduler that processes 30+ different email types from a queued email table. Handles evaluation reminders, verification emails, user deletion notices, PIP re-evaluation notices, onboarding assignments, clinical log reminders, duty hour verifications, archived user notices, requirement group assignments, conference attendance reminders, and missing evaluation reminders. Uses threading for parallel processing.",
+    "businessPurpose": "The primary email sending engine for the entire platform. Reads queued emails from the database and dispatches them via SMTP, covering virtually every notification type in the system including evaluations, compliance reminders, onboarding, and administrative notices.",
+    "keyMethods": [
+      "Start - Initializes threaded email processing",
+      "ProcessApplicationEmails - Main loop that fetches and dispatches all queued email types",
+      "SendApplicationManualEvaluationEmails - Sends standard evaluation notification emails",
+      "SendApplicationManualEvaluationEmailsWithReplyTo - Sends emails with reply-to address for specific schedulers",
+      "SendVerificationEmails - Sends email verification notices",
+      "SendDeleteUser - Sends user deletion notification emails",
+      "SendApplicationEmailAssignment - Sends learning assignment notification emails",
+      "SendAutoEvalReminderEmailAssignment - Sends automatic evaluation reminder emails",
+      "SendPromotedUserEmailAssignment - Sends promotion notification emails",
+      "SendArchivedUserEmailAssignment - Sends archiving notification emails",
+      "SendApplicationRequirementGroupAssignmentEmail - Sends onboarding requirement group assignment emails",
+      "SendApplicationRequirementGroupAssignmentReminder - Sends onboarding assignment reminder emails",
+      "SendEvaluationMissingReminders - Sends reminders for missing evaluations",
+      "DeleteApplicationOlderMails - Cleans up old email records from the queue",
+      "GetApplicationEmails - Retrieves queued emails from database"
+    ],
+    "storedProcedures": [
+      "UpdateApplicationEmailSend",
+      "GetApplicationEmailSend",
+      "DeleteApplicationOlderMails"
+    ],
+    "businessManagersUsed": [
+      "Utilities",
+      "Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "This is the central email dispatch system. In the Node.js backend, this should be replaced by BullMQ email workers with template-based email sending via a service like SendGrid or Mailgun.",
+    "complexity": "very-complex",
+    "lineCount": 2803
+  },
+  {
+    "filePath": "Schedulers/SendApplicationEmails/SendApplicationEmails/EmailClientSettings.cs",
+    "fileName": "EmailClientSettings.cs",
+    "fileType": "infrastructure",
+    "className": "EmailClientSettings",
+    "inheritsFrom": null,
+    "module": "Scheduler - ApplicationEmails",
+    "summary": "Configuration class for email client settings including SMTP server, port, credentials, and SSL settings. Reads values from application configuration.",
+    "businessPurpose": "Provides SMTP configuration for the email dispatch scheduler, supporting multiple email providers.",
+    "keyMethods": [],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Email configuration in Node.js backend should use environment variables and a dedicated email service provider.",
+    "complexity": "moderate",
+    "lineCount": 133
+  },
+  {
+    "filePath": "Schedulers/SendDevryArchivedNotices/SendDevryArchivedNotices/SendEmails.cs",
+    "fileName": "SendEmails.cs",
+    "fileType": "service",
+    "className": "SendEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - DevryArchiving",
+    "summary": "Archives DeVry university users and FNP (Family Nurse Practitioner) users by calling stored procedures, then sends notification emails about the archiving actions.",
+    "businessPurpose": "Automates user archiving for DeVry University programs (both standard and FNP tracks), ensuring graduated or inactive students are properly archived with email notifications.",
+    "keyMethods": [
+      "Start - Initiates archiving for both DeVry and FNP users",
+      "ArchiveDevryUsers - Archives standard DeVry program users",
+      "ArchiveDevryFNPUsers - Archives DeVry FNP program users"
+    ],
+    "storedProcedures": [
+      "ArchiveDevryUsers",
+      "ArchiveDevryFNPUsers"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Client-specific archiving logic. May not need migration if DeVry program is no longer active.",
+    "complexity": "simple",
+    "lineCount": 75
+  },
+  {
+    "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/FNPBusiness.cs",
+    "fileName": "FNPBusiness.cs",
+    "fileType": "service",
+    "className": "FNPBusiness",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPImmersionNotification",
+    "summary": "Business logic for sending immersion notification emails to FNP students. Retrieves pending notifications from the database and sends emails using the Utilities email infrastructure.",
+    "businessPurpose": "Notifies FNP (Family Nurse Practitioner) students about upcoming immersion experiences, which are required in-person clinical training sessions.",
+    "keyMethods": [
+      "OnSendImmersionNotificationToStudents - Retrieves and sends immersion notifications to students"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "FNP immersion notifications should be part of the Node.js notification service.",
+    "complexity": "simple",
+    "lineCount": 44
+  },
+  {
+    "filePath": "Schedulers/SendImmersionNotificationToStudents/SendImmersionNotificationToStudents/FNPManager.cs",
+    "fileName": "FNPManager.cs",
+    "fileType": "service",
+    "className": "FNPManager",
+    "inheritsFrom": null,
+    "module": "Scheduler - FNPImmersionNotification",
+    "summary": "Data access manager for FNP immersion notifications. Retrieves pending notification data and records scheduler job history via stored procedures.",
+    "businessPurpose": "Provides database access for the FNP immersion notification workflow, including fetching pending notifications and logging execution history.",
+    "keyMethods": [
+      "SendImmersionNotificationToStudents - Retrieves pending immersion notifications from database",
+      "InsertSchedulerJobHistory - Records scheduler execution in job history table"
+    ],
+    "storedProcedures": [
+      "SendImmersionNotificationToStudents",
+      "InsertSchedulerJobHistory"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Stored procedures should be replaced with MikroORM queries.",
+    "complexity": "simple",
+    "lineCount": 52
+  },
+  {
+    "filePath": "Schedulers/SendManualAssignments/SendManualAssignments/SendAssignments.cs",
+    "fileName": "SendAssignments.cs",
+    "fileType": "service",
+    "className": "SendAssignments",
+    "inheritsFrom": null,
+    "module": "Scheduler - ManualAssignments",
+    "summary": "Processes manual evaluation assignment reminders. Retrieves pending manual assignments from the database, fetches department-specific email templates and reminder configurations, generates personalized HTML emails, and sends them via the application email queue. Includes its own data access layer with custom SQL command handling.",
+    "businessPurpose": "Ensures evaluators receive reminder emails about manually-created evaluation assignments that are pending completion, with department-specific reminder schedules and email templates.",
+    "keyMethods": [
+      "Start - Entry point that triggers manual assignment reminder processing",
+      "SendManualAssignmentReminders - Iterates assignments, generates emails, and queues them for sending",
+      "GetManualAssignments - Retrieves pending manual assignments from database",
+      "GetEvaluationReminders - Gets department-specific reminder configuration"
+    ],
+    "storedProcedures": [
+      "InsertManualAssignmentHistory",
+      "UpdateManualAssignmentEmailStatus",
+      "GetManualAssignments",
+      "SendManualEvaluationReminders"
+    ],
+    "businessManagersUsed": [
+      "Common",
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Manual assignment reminder logic is a prime candidate for BullMQ scheduled workers in the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 284
+  },
+  {
+    "filePath": "Schedulers/SendManualAssignments/MyEvaluations.DataAccess.SQL/DBDataAccess.cs",
+    "fileName": "DBDataAccess.cs",
+    "fileType": "infrastructure",
+    "className": "DBDataAccess",
+    "inheritsFrom": null,
+    "module": "Scheduler - ManualAssignments",
+    "summary": "Local copy of the shared DBDataAccess class providing SQL Server database operations. Includes methods for executing stored procedures, transactions, data readers, and scalar queries. This project bundles its own data access layer rather than referencing the shared library.",
+    "businessPurpose": "Infrastructure data access layer for the manual assignments scheduler. Provides the SQL Server connectivity and command execution framework.",
+    "keyMethods": [
+      "ExecuteTable - Executes a stored procedure and returns a DataTable",
+      "ExecuteTransaction - Executes parent/child commands in a transaction",
+      "ExecuteNonQuery - Executes a command with no result set",
+      "ExecuteScalar - Returns a single scalar value",
+      "ExecuteDataSet - Returns a full DataSet from a command"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Infrastructure code replaced by MikroORM in the Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 286
+  },
+  {
+    "filePath": "Schedulers/SendManualAssignments/MyEvaluations.DataAccess.SQL/CustomCommand.cs",
+    "fileName": "CustomCommand.cs",
+    "fileType": "infrastructure",
+    "className": "CustomCommand",
+    "inheritsFrom": null,
+    "module": "Scheduler - ManualAssignments",
+    "summary": "Wrapper around SqlCommand that implements IDisposable. Provides parameter management (input and output) and command construction for stored procedure calls.",
+    "businessPurpose": "Infrastructure wrapper for SQL command parameter handling, bundled locally with the manual assignments scheduler.",
+    "keyMethods": [
+      "AddParameterWithValue - Adds an input parameter to the command",
+      "AddOutParameterWithValue - Adds an output parameter to the command",
+      "GetCommand - Returns the underlying SqlCommand",
+      "Dispose - Cleans up the SqlCommand resources"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Infrastructure code not needed in Node.js backend.",
+    "complexity": "moderate",
+    "lineCount": 154
+  },
+  {
+    "filePath": "Schedulers/SendPIPReEvaluationNotices/SendPIPReEvaluationNotices/SendEmails.cs",
+    "fileName": "SendEmails.cs",
+    "fileType": "service",
+    "className": "SendEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - PIPReEvaluation",
+    "summary": "Sends PIP (Performance Improvement Plan) re-evaluation reminder emails for a specific department (hardcoded department ID 2207). Queries the database for pending PIP re-evaluations and dispatches reminder notifications.",
+    "businessPurpose": "Ensures that faculty and program directors receive timely reminders about pending PIP re-evaluations for residents/trainees who are on performance improvement plans.",
+    "keyMethods": [
+      "Start - Initiates PIP re-evaluation reminders for the configured department",
+      "SendPIPReEvaluationReminder - Queries and sends PIP re-evaluation reminder emails for a department"
+    ],
+    "storedProcedures": [
+      "SendPIPReEvaluationReminder"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "PIP re-evaluation reminders are critical compliance functionality and should be migrated to Node.js BullMQ workers with configurable department targeting.",
+    "complexity": "simple",
+    "lineCount": 44
+  },
+  {
+    "filePath": "Schedulers/SendPercentageOfPracticumHoursForStudent/SendPercentageOfPracticumHoursForStudent/SendEmails.cs",
+    "fileName": "SendEmails.cs",
+    "fileType": "service",
+    "className": "SendEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - PracticumHours",
+    "summary": "Sends notifications to students about their practicum hours completion percentage. Retrieves pending notifications via stored procedure and dispatches emails with hours tracking information.",
+    "businessPurpose": "Keeps nursing/FNP students informed about their clinical practicum hours progress, which is required for program completion and accreditation.",
+    "keyMethods": [
+      "Start - Initiates practicum hours notification process",
+      "SendPercentageOfPracticumHoursForStudent - Retrieves and sends practicum hours percentage emails"
+    ],
+    "storedProcedures": [
+      "SendPercentageOfPracticumHoursForStudent"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Practicum hours tracking notifications should be part of the Node.js notification service.",
+    "complexity": "simple",
+    "lineCount": 48
+  },
+  {
+    "filePath": "Schedulers/SendRotationRequirements/SendRotationRequirements/SendRotationRequirements.cs",
+    "fileName": "SendRotationRequirements.cs",
+    "fileType": "service",
+    "className": "SendRotationRequirements",
+    "inheritsFrom": null,
+    "module": "Scheduler - RotationRequirements",
+    "summary": "Multi-purpose scheduler that handles rotation milestone requirements, learning document uploads, and PIP evaluation notifications. Retrieves milestone rotation requirements, generates personalized email notifications with user-specific data, uploads pending learning assignment documents via a file upload web service, and sends PIP evaluation notices.",
+    "businessPurpose": "Manages rotation-based milestone requirement tracking and notifications for GME programs. Ensures trainees and faculty are notified about rotation requirements, learning documents are uploaded to the file server, and PIP evaluations are triggered when needed.",
+    "keyMethods": [
+      "Start - Orchestrates all three functions: rotation requirements, document uploads, and PIP notices",
+      "UploadLearningDocuments - Uploads pending auto-assignment learning documents via web service",
+      "SendPIPEvalNotifications - Sends PIP evaluation notification emails to relevant parties",
+      "SendMail - Sends individual emails with department-specific branding",
+      "UserTypeName - Maps user type IDs to human-readable names (Resident, Fellow, etc.)"
+    ],
+    "storedProcedures": [
+      "GetMilestoneRotationRequirements",
+      "GetMilestoneRotationUserDetails",
+      "GetMilestoneRotationRequirementTemplate",
+      "UpdateMilestionRotationHistoryAndAuditTrail",
+      "GetPendingAutoLearningAssignmentDocuments",
+      "GenerateEvalPIPNotifications"
+    ],
+    "businessManagersUsed": [
+      "Security",
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Rotation requirements, milestone tracking, and PIP notifications are core GME functionality. Should be migrated to Node.js with proper separation of concerns.",
+    "complexity": "complex",
+    "lineCount": 365
+  },
+  {
+    "filePath": "Schedulers/SendStudentReviewLog/SendStudentReviewLog/SendEmails.cs",
+    "fileName": "SendEmails.cs",
+    "fileType": "service",
+    "className": "SendEmails",
+    "inheritsFrom": null,
+    "module": "Scheduler - StudentReviewLog",
+    "summary": "Sends student log review notification emails. Retrieves pending student log reviews from the database and dispatches email notifications to faculty/preceptors who need to review student clinical logs.",
+    "businessPurpose": "Ensures faculty preceptors receive daily notifications about student clinical logs awaiting their review, supporting timely feedback in nursing/FNP programs.",
+    "keyMethods": [
+      "Start - Initiates the student review log notification process",
+      "GetStudentLogReview - Retrieves pending student log reviews and sends notification emails"
+    ],
+    "storedProcedures": [
+      "GetStudentLogReview"
+    ],
+    "businessManagersUsed": [
+      "Utilities",
+      "EssentialActivities"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Student log review notifications should be part of the Node.js notification service.",
+    "complexity": "simple",
+    "lineCount": 67
+  },
+  {
+    "filePath": "Schedulers/SendSystemComments/SendSystemComments/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - SystemComments (AI/MyInsights)",
+    "summary": "Massive AI-powered scheduler that generates system comments and milestone score predictions using an external AI API. Handles multiple AI insight types: NPV (Narrative Performance Value) score predictions for milestones, resident/faculty summary insights, rotation summary insights, survey insights, APE (Annual Program Evaluation) schedules, and CAW (Clinical Assessment Worksheet) comments. Builds detailed prompts with competency data, narrative evaluations, and scoring criteria, then sends them to the AI API for analysis. Also manages updating incorrect attending comments and re-sending failed AI responses.",
+    "businessPurpose": "The AI/MyInsights engine for the platform. Generates AI-powered narrative analysis, milestone score predictions (NPV), and competency-based comments by sending evaluation data to an external AI service. This is critical for the MyInsights feature that provides data-driven insights to program directors about resident/student performance.",
+    "keyMethods": [
+      "Main - Orchestrates all AI insight generation tasks",
+      "GetPendingSystemComments - Processes pending system comment generation requests",
+      "GetNPVPendingSchedules - Processes NPV score prediction schedules",
+      "GetAPEPendingSchedules - Processes APE insight generation schedules",
+      "GetResidentFacultyMyInsightsHistory - Processes resident/faculty summary insights",
+      "GetRotationSummaryMyInsightsHistory - Processes rotation summary insights",
+      "GetSurveyMyInsightsHistory - Processes ACGME survey insights",
+      "SendAPESchedules - Sends APE data to AI API for analysis",
+      "GenerateResidentFacultySummaryInsights - Sends resident/faculty data to AI for summary",
+      "GenerateRotationSummaryMyInsights - Sends rotation data to AI for summary",
+      "GenerateSurveyInsights - Sends survey data to AI for ACGME analysis",
+      "SendNPVComments - Sends narrative data to AI for NPV score prediction",
+      "SendComments - Sends evaluation comments to AI for analysis",
+      "ExportMilestoneData2 - Builds detailed prompt with milestone/competency data for AI",
+      "ExportMilestoneData1 - Alternative prompt builder with different scoring criteria",
+      "ExportMilestoneData - Original prompt builder for milestone data export",
+      "GetLawDepartmentNPVPrompt - Specialized prompt for law department NPV predictions",
+      "ExportAttendingMilestoneData2 - Builds attending/faculty milestone data prompt",
+      "InsertCAWComments - Inserts AI-generated CAW comments back into database",
+      "UpdateExistingComments - Re-processes existing comments through AI",
+      "UpdateAttendingIncorrectComments - Fixes incorrect attending mappings in AI comments",
+      "RemoveAllHtmlCharacters - Strips HTML from narrative text before AI processing",
+      "RemoveUnNecessaryJSONTags - Cleans JSON response from AI"
+    ],
+    "storedProcedures": [
+      "GetSystemComments",
+      "GetPendingSystemCommentsScheules",
+      "GetMyInsightsIncorrectAttendings",
+      "GetAIResponsesForResend",
+      "UpdateSystemCommentsScheuleStatus",
+      "InsertMyInsightCompetencyComments",
+      "GetCAWMyInsights"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "This is the AI/MyInsights engine. The Node.js backend likely already has or should have a modern AI integration service. The prompt engineering and milestone data formatting logic is critical to preserve.",
+    "complexity": "very-complex",
+    "lineCount": 2078
+  },
+  {
+    "filePath": "Schedulers/SignatureDocumentsScheduler/SignatureDocumentsScheduler/UploadSignatureDocuments.cs",
+    "fileName": "UploadSignatureDocuments.cs",
+    "fileType": "service",
+    "className": "UploadSignatureDocuments",
+    "inheritsFrom": null,
+    "module": "Scheduler - SignatureDocuments",
+    "summary": "Downloads completed signature documents from RightSignature and HelloSign e-signature services, then uploads them to the MyEvaluations file server. Retrieves all pending signature documents from the database, checks their completion status via the e-signature APIs, and when complete, downloads the signed PDFs and uploads them via the FileUploadComponent web service.",
+    "businessPurpose": "Automates the collection of electronically signed onboarding/credentialing documents. Integrates with RightSignature and HelloSign APIs to retrieve completed documents and store them in the institution's file system for compliance records.",
+    "keyMethods": [
+      "Start - Main loop that processes all pending signature documents from both services",
+      "GetOBCAllSignatureDocuments - Retrieves pending signature documents from database"
+    ],
+    "storedProcedures": [
+      "GetOBCAllSignatureDocuments"
+    ],
+    "businessManagersUsed": [
+      "Security",
+      "RightSignature",
+      "Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "E-signature integration should migrate to Node.js with modern API clients. HelloSign API is now Dropbox Sign. Consider consolidating to a single e-signature provider.",
+    "complexity": "moderate",
+    "lineCount": 259
+  },
+  {
+    "filePath": "Schedulers/SignatureDocumentsScheduler/SignatureDocumentsScheduler/Web References/FileUploadComponent/Reference.cs",
+    "fileName": "Reference.cs",
+    "fileType": "infrastructure",
+    "className": "FileUploadComponentWebService",
+    "inheritsFrom": "System.Web.Services.Protocols.SoapHttpClientProtocol",
+    "module": "Scheduler - SignatureDocuments",
+    "summary": "Auto-generated SOAP web service proxy for the FileUploadComponent service. Provides methods for file upload, download, deletion, cropping, video handling, Excel parsing, and file verification. All methods have async variants.",
+    "businessPurpose": "Infrastructure proxy for communicating with the file upload web service. Used by the signature documents scheduler to upload downloaded signed documents to the file server.",
+    "keyMethods": [
+      "UploadFile - Uploads a file to the file server",
+      "ReadFile - Reads a file from the file server",
+      "DeleteFile - Deletes a file from the file server",
+      "DownloadSelectedFile - Downloads a file for local processing",
+      "CopyFile - Copies a file between server locations",
+      "GetWorksSheetsNames - Gets Excel worksheet names for data import",
+      "GetExcelFileHeaders - Reads Excel headers for import mapping"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "none",
+    "migrationNote": "Auto-generated SOAP proxy. Node.js backend should use Azure Blob Storage or similar cloud file storage.",
+    "complexity": "very-complex",
+    "lineCount": 2249
+  },
+  {
+    "filePath": "Schedulers/SsnEncrypt/SsnEncryption/SsnEncryption/Business.cs",
+    "fileName": "Business.cs",
+    "fileType": "service",
+    "className": "Business",
+    "inheritsFrom": null,
+    "module": "Scheduler - SSNEncryption",
+    "summary": "Encrypts Social Security Numbers (SSN) stored in the database. Retrieves departments with SSN data, fetches unencrypted SSN values per department, applies AES encryption, and updates the encrypted values back to the database.",
+    "businessPurpose": "Critical HIPAA compliance scheduler that ensures all Social Security Numbers in the system are encrypted at rest. Processes SSNs by department to encrypt any newly entered or unencrypted values.",
+    "keyMethods": [
+      "SsnValues - Main method that retrieves departments and encrypts SSN data per department"
+    ],
+    "storedProcedures": [
+      "GetDepartmentIdsForSsn",
+      "GetUsersSsnByDept",
+      "UpdateSSNEncyptedInfo"
+    ],
+    "businessManagersUsed": [
+      "Security"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "SSN encryption is a critical compliance requirement. The Node.js backend should handle SSN encryption at the data access layer with proper key management.",
+    "complexity": "moderate",
+    "lineCount": 177
+  },
+  {
+    "filePath": "Schedulers/SsnEncrypt/SsnEncryption/SsnEncryption/EncryptValue.cs",
+    "fileName": "EncryptValue.cs",
+    "fileType": "infrastructure",
+    "className": "EncryptValue",
+    "inheritsFrom": null,
+    "module": "Scheduler - SSNEncryption",
+    "summary": "AES encryption/decryption utility identical to the PatientLog/PatientName EncryptValue classes. Provides file-based key management and AES-CBC encryption for SSN data.",
+    "businessPurpose": "Cryptographic foundation for SSN encryption using AES with file-based key storage.",
+    "keyMethods": [
+      "GetEncryptedValues - Encrypts SSN value using AES",
+      "GetDecryptedValues - Decrypts an encrypted SSN value",
+      "GetEncryptedValue - Alternative encryption entry point",
+      "IsBase64String - Validates Base64 encoding",
+      "ReadKeyFromFile - Reads encryption keys from file system"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Should use Node.js crypto with centralized key management (Azure Key Vault).",
+    "complexity": "moderate",
+    "lineCount": 259
+  },
+  {
+    "filePath": "Schedulers/Statelic1Reminder-Dotnet/Statelic1Reminder.cs",
+    "fileName": "Statelic1Reminder.cs",
+    "fileType": "service",
+    "className": "Statelic1Reminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - StateLicenseReminders",
+    "summary": "Generates State License #1 expiration reminder emails. Iterates through all departments with reminder settings enabled, checks users whose state license is expiring, generates HTML email notifications with expiration details, and queues them via InsertApplicationEmailSchedules.",
+    "businessPurpose": "Ensures healthcare providers receive timely reminders about upcoming state license expirations. State licensure is a mandatory compliance requirement for medical practice, and expired licenses can result in inability to practice.",
+    "keyMethods": [
+      "Start - Entry point that triggers reminder generation and sends job log",
+      "GenerateStatelic1Reminder - Iterates departments and users to generate license expiration emails",
+      "AgreementInfoExpiredDate - Retrieves license expiration dates for a department",
+      "InsertApplicationEmailSchedules - Queues generated emails for sending",
+      "SendLogAsMail - Sends execution log to administrators"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo",
+      "AgreementInfoExpiredDate",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "State license reminders are critical compliance functionality. Should be migrated to Node.js BullMQ workers with the credential tracking module.",
+    "complexity": "complex",
+    "lineCount": 338
+  },
+  {
+    "filePath": "Schedulers/Statelic2Reminder-Dotnet/Statelic2Reminder.cs",
+    "fileName": "Statelic2Reminder.cs",
+    "fileType": "service",
+    "className": "Statelic2Reminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - StateLicenseReminders",
+    "summary": "Generates State License #2 expiration reminder emails. Identical structure to Statelic1Reminder but targets the second state license field, for providers licensed in multiple states.",
+    "businessPurpose": "Handles expiration reminders for secondary state licenses. Many healthcare providers hold licenses in multiple states, and each must be tracked independently for compliance.",
+    "keyMethods": [
+      "Start - Entry point that triggers reminder generation and sends job log",
+      "GenerateStatelic2Reminder - Iterates departments and users for second license expiration emails",
+      "AgreementInfoExpiredDate - Retrieves license expiration dates for a department",
+      "InsertApplicationEmailSchedules - Queues generated emails for sending",
+      "SendLogAsMail - Sends execution log to administrators"
+    ],
+    "storedProcedures": [
+      "ReminderDepartments",
+      "StaffAdminInfo",
+      "AgreementInfoExpiredDate",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "Utilities"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Should be consolidated with Statelic1Reminder into a single configurable license reminder service in Node.js.",
+    "complexity": "complex",
+    "lineCount": 339
+  },
+  {
+    "filePath": "TangierScheduleUpdater/Program.cs",
+    "fileName": "Program.cs",
+    "fileType": "service",
+    "className": "Program",
+    "inheritsFrom": null,
+    "module": "Scheduler - TangierScheduleSync",
+    "summary": "Integrates with the Tangier scheduling system to import shift/schedule data into MyEvaluations. Processes a queue of departments needing schedule updates, fetches schedule data from the Tangier REST API using department-specific credentials, transforms the XML/object response into SQL temp tables, and executes stored procedures to merge the schedule data. Handles complex schedule mapping including shifts, locations, provider names, and date ranges.",
+    "businessPurpose": "Synchronizes resident/provider schedules from the Tangier scheduling platform into MyEvaluations. Tangier is a third-party duty hours and scheduling system used by GME programs. This integration ensures schedule data is current for evaluation assignments and duty hours tracking.",
+    "keyMethods": [
+      "Main - Entry point that initializes logging and processes the update queue",
+      "TangierSchedulesUpdateQueue - Processes all departments pending schedule updates",
+      "GenerateTangierShcedule - Generates schedule for a single department",
+      "GetTangierScheduleResponse - Calls Tangier REST API to get schedule data",
+      "GenerateTangierScheduleTmpTable - Creates SQL temp table insert statements from schedule data",
+      "GenerateTangierLocationTmpTable - Creates SQL temp table for location mapping",
+      "GenerateTangierSchedules - Executes the schedule merge via bulk SQL operations",
+      "GenerateInnerScheduleTable - Builds SQL insert statements for schedule items",
+      "GenerateInnerScheduleDataTable - Builds DataTable representation of schedule data",
+      "executeQuery - Direct SQL query execution helper"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DutyHours",
+      "TimeSheet"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Tangier schedule integration is critical for GME programs. Should be rebuilt as a Node.js integration service with proper error handling and incremental sync.",
+    "complexity": "complex",
+    "lineCount": 421
+  },
+  {
+    "filePath": "Schedulers/UpdateMilestoneNarrativeScores/UpdateMilestoneNarrativeScores/UpdateMilestoneScores.cs",
+    "fileName": "UpdateMilestoneScores.cs",
+    "fileType": "service",
+    "className": "UpdateMilestoneScores",
+    "inheritsFrom": null,
+    "module": "Scheduler - MilestoneScores",
+    "summary": "Updates milestone narrative scores by delegating to the EvaluationsTemplateManager business class. Retrieves users needing score updates and processes them through the evaluation scoring engine.",
+    "businessPurpose": "Recalculates and updates milestone narrative scores for residents/trainees, ensuring ACGME milestone assessments reflect the latest evaluation data.",
+    "keyMethods": [
+      "UpdateUserScores - Retrieves users and triggers milestone score recalculation via EvaluationsTemplateManager"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "Evaluations"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Milestone score calculation is core ACGME functionality. The scoring logic in EvaluationsTemplateManager needs careful migration.",
+    "complexity": "simple",
+    "lineCount": 32
+  },
+  {
+    "filePath": "Schedulers/UserArchivingScheduler/UserArchivingScheduler/ProcessUserArchiving.cs",
+    "fileName": "ProcessUserArchiving.cs",
+    "fileType": "service",
+    "className": "ProcessUserArchiving",
+    "inheritsFrom": null,
+    "module": "Scheduler - UserArchiving",
+    "summary": "Automates user archiving based on scheduled rules. Retrieves the auto-archiving queue from the database, processes each user for archiving, sends email verification/notification to archived users and administrators, and generates archiving confirmation emails with login information.",
+    "businessPurpose": "Automates the lifecycle management of user accounts. When trainees graduate, transfer, or become inactive, this scheduler archives their accounts according to predefined rules, sends notification emails, and ensures proper audit trail documentation.",
+    "keyMethods": [
+      "Start - Entry point that triggers the archiving process",
+      "UserArchivingProcess - Main archiving logic that processes the queue and archives users",
+      "SendEmailValidationForUserAfterArchiving - Sends notification emails after archiving",
+      "AutoArchivingSchedule - Retrieves the auto-archiving queue",
+      "GetUsersDetailsByNoticeType - Gets user details for notification emails",
+      "GetArchivedUserEmailInformation - Gets email information for archived users",
+      "GetEmailVerificationTemplate - Retrieves email template for verification notices"
+    ],
+    "storedProcedures": [
+      "GetUsersDetailsByNoticeType",
+      "GetArchivedUserEmailnotificationInformation",
+      "AutoArchivingSchedule",
+      "GetEmailVerificationTemplate"
+    ],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "User lifecycle management including auto-archiving should be migrated to Node.js with proper queue-based processing.",
+    "complexity": "moderate",
+    "lineCount": 241
+  },
+  {
+    "filePath": "Schedulers/ccreminderattendee-Dotnet/ccreminderattendee/ccreminderattendee/ConferenceAttendeeReminders.cs",
+    "fileName": "ConferenceAttendeeReminders.cs",
+    "fileType": "service",
+    "className": "ConferenceAttendeeReminders",
+    "inheritsFrom": null,
+    "module": "Scheduler - ConferenceReminders",
+    "summary": "Generates conference evaluation reminder emails for attendees. Iterates through departments, retrieves pending conference assignments, fetches email templates for each assignment, and queues reminder emails. Also updates conference evaluation status to mark pending evaluations.",
+    "businessPurpose": "Ensures conference attendees receive timely reminders to complete their evaluation forms for conferences and grand rounds they attended. Supports GME conference attendance tracking and evaluation compliance.",
+    "keyMethods": [
+      "Start - Entry point that updates statuses and generates reminders",
+      "GenerateConferenceAssignmentReminders - Iterates departments and assignments to generate attendee reminder emails",
+      "UpdateConferenceEvaluationStatusFromScheduler - Updates evaluation status for conferences that have ended",
+      "InsertApplicationEmailSchedules - Queues generated emails for sending",
+      "SendMail - Direct email sending method (fallback)"
+    ],
+    "storedProcedures": [
+      "GetConferenceAssignmentsForScheduler",
+      "GetEmailTemplateForConferenceAssignment",
+      "UpdateConferenceEvaluationStatusFromScheduler",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "Utilities",
+      "Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Conference evaluation reminders are part of the conference/scholarly activity module. Should migrate to Node.js BullMQ workers.",
+    "complexity": "moderate",
+    "lineCount": 239
+  },
+  {
+    "filePath": "Schedulers/ccreminderpresenter-Dotnet/ccreminderpresenter/ccreminderpresenter.cs",
+    "fileName": "ccreminderpresenter.cs",
+    "fileType": "service",
+    "className": "ConferencePresenterReminder",
+    "inheritsFrom": null,
+    "module": "Scheduler - ConferenceReminders",
+    "summary": "Generates conference evaluation reminder emails for presenters. Nearly identical to ConferenceAttendeeReminders but targets conference presenters who need to be evaluated by attendees. Iterates through departments and pending conference assignments to generate presenter-specific reminder emails.",
+    "businessPurpose": "Ensures conference presenters are reminded about pending evaluations of their presentations. In GME programs, presenters at grand rounds and conferences are evaluated for teaching quality.",
+    "keyMethods": [
+      "Start - Entry point that generates presenter reminder emails",
+      "GenerateConferenceAssignmentReminders - Iterates departments to generate presenter-specific reminders",
+      "UpdateConferenceEvaluationStatusFromScheduler - Updates evaluation status for ended conferences",
+      "InsertApplicationEmailSchedules - Queues generated emails for sending",
+      "SendMail - Direct email sending method (fallback)"
+    ],
+    "storedProcedures": [
+      "GetConferenceAssignmentsForScheduler",
+      "GetEmailTemplateForConferenceAssignment",
+      "UpdateConferenceEvaluationStatusFromScheduler",
+      "InsertApplicationEmailSchedules"
+    ],
+    "businessManagersUsed": [
+      "Utilities",
+      "Common"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Should be consolidated with the attendee reminder into a single conference reminder service with role-based targeting in Node.js.",
+    "complexity": "moderate",
+    "lineCount": 229
+  }
+]}
+  directoryOverview="Batch 3 of the scheduler projects covers 22 scheduler applications spanning patient data encryption (PatientLog, PatientName, SsnEncrypt), email dispatch (SendApplicationEmails - the central 2800-line email engine), AI/ML-powered insights (SendSystemComments - the 2000-line MyInsights AI engine), external integrations (SalesForce, Tangier, HelloSign/RightSignature), compliance reminders (state license, PIP re-evaluation, quiz assignments), program-specific notifications (FNP immersion, practicum hours, student review logs), user lifecycle management (archiving, DeVry archiving), milestone score processing, conference evaluation reminders (attendee and presenter), and manual assignment reminders. The most critical schedulers in this batch are SendApplicationEmails (central email dispatch), SendSystemComments (AI insights engine), and the credential/compliance reminder schedulers."
+  keyWorkflows={["Central Email Dispatch - SendApplicationEmails reads from a queued email table and dispatches 30+ email types using threaded processing, covering virtually every notification in the platform.","AI/MyInsights Generation - SendSystemComments generates AI-powered narrative analysis, NPV milestone score predictions, and competency comments by sending evaluation data to an external AI API service. Handles APE, rotation, survey, and resident/faculty insights.","Patient Data Encryption - PatientLog, PatientName, and SsnEncrypt schedulers ensure sensitive patient and user data (SSN, patient names, log entries) are encrypted at rest using AES encryption with file-based key management.","Compliance Credential Reminders - State License #1 and #2 reminders, PIP re-evaluation notices, and quiz assignment reminders ensure healthcare providers maintain current credentials and complete required assessments.","External System Integration - TangierScheduleUpdater syncs shift schedules from Tangier, SalesForceIntegration exports data to CRM, and SignatureDocumentsScheduler retrieves signed documents from RightSignature/HelloSign.","Conference Evaluation Reminders - Separate schedulers for attendee and presenter conference evaluation reminders, with status tracking and department-specific email templates.","User Lifecycle Management - UserArchivingScheduler automates account archiving based on rules, while SendDevryArchivedNotices handles DeVry-specific user archiving. Both send notification emails.","Nursing Program Notifications - FNP-specific schedulers for immersion notifications, practicum hours tracking, student log review reminders, and rotation requirement tracking."]}
+/>

@@ -1,0 +1,3771 @@
+{
+  "projectName": "FusionChartLibrary",
+  "layer": "supporting",
+  "projectPath": "FusionChartLibrary",
+  "parsedAt": "2026-02-20T17:11:06.684Z",
+  "fileCount": 20,
+  "totalLines": 3814,
+  "files": [
+    {
+      "fileName": "Annotations.cs",
+      "filePath": "FusionChartLibrary/Annotations.cs",
+      "lineCount": 60,
+      "className": "Annotations",
+      "namespace": "FusionChartLibrary",
+      "baseClass": "BaseChart",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r\n       \r\n\r\n       private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildBaseExml",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": "\r\n       \r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "BaseChart.cs",
+      "filePath": "FusionChartLibrary/BaseChart.cs",
+      "lineCount": 561,
+      "className": "BaseChart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetSwf",
+          "returnType": "region GetSwf\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "ScrollChartsTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSwf",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "XYPlotChartTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSwf",
+          "returnType": "\r\n\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "MultiSeriesChartTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSwf",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "CombinationChartTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n            throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Invalid Chart Type\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSwf",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "MultiSeriesStackedChartTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Exception",
+          "returnType": "\r\n            throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"Invalid Chart Type\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetSwf",
+          "returnType": "\r\n        \r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "SingleSeriesChartTypes charttype"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildChartTag",
+          "returnType": "endregion \r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", DecimalPrecision,",
+          "visibility": "private",
+          "parameters": [
+            "ShowNames"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", NumberPrefix,",
+          "visibility": "private",
+          "parameters": [
+            "ShowValues"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "ShowExportDataMenuItem"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "ShowLimtis"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", CanvasBorderThickness,",
+          "visibility": "private",
+          "parameters": [
+            "ShowAnchors"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "ShowDivLineValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", this.XAxisName, this.YAxisName, this.PYAxisName, this.SYAxisName,",
+          "visibility": "private",
+          "parameters": [
+            "UseRoundEdges"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "bool val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddTrendLine",
+          "returnType": "\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string startValue",
+            "string endValue",
+            "string color",
+            "string displayValue",
+            "bool IsDashed",
+            "int alpha",
+            "bool showOnTop",
+            "string toolText",
+            "int linewidth",
+            "bool blnValueRight",
+            "bool blnValueLeft"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TrendLine",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMaxValue",
+          "returnType": "\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dt",
+            "string setField"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustChartMaxValue",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "MaxValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustChartMaxValue",
+          "returnType": "\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "double MaxValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildTrendLines",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TrendLine trendLine in TrendLines"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", trendLine.StartValue, trendLine.EndValue, trendLine.Color, trendLine.DisplayValue, trendLine.IsDashed, trendLine.Thickness, trendLine.alpha,",
+          "visibility": "private",
+          "parameters": [
+            "trendLine.showOnTop"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "trendLine.valueOnRight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildJSTrendLines",
+          "returnType": "\r\n\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "TrendLine trendLine in TrendLines"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", trendLine.StartValue, trendLine.EndValue, trendLine.Color, trendLine.DisplayValue, trendLine.IsDashed, trendLine.Thickness, trendLine.alpha,",
+          "visibility": "private",
+          "parameters": [
+            "trendLine.showOnTop"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "trendLine.valueOnRight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "trendLine.valueOnLeft"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddFontStyle",
+          "returnType": "\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "FontStyleAreaType fontStyleAreaType",
+            "FontStyle fontStyle"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildFontStyles",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "FontStyle fontStyle in FontStyles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "fontStyle.Italic"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "fontStyle.Underline"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "FontStyle fontStyle in FontStyles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildJSFontStyles",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "FontStyle fontStyle in FontStyles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", fontStyle.Name, fontStyle.Type, fontStyle.Color, fontStyle.Font, fontStyle.Size,",
+          "visibility": "private",
+          "parameters": [
+            "fontStyle.Bold"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "fontStyle.Italic"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "fontStyle.Underline"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "FontStyle fontStyle in FontStyles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "BulletedChart.cs",
+      "filePath": "FusionChartLibrary/BulletedChart.cs",
+      "lineCount": 313,
+      "className": "BulletedChart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": "BaseChart",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildBaseExml",
+          "returnType": "endregion\r\n\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildColourRange",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ColorRange",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustLowerLimitForBulletChart",
+          "returnType": "int",
+          "visibility": "public",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildQuartiles",
+          "returnType": "\r\n\r\n       public void",
+          "visibility": "private",
+          "parameters": [
+            "double q1",
+            "double q2",
+            "double q3",
+            "double q4"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ColorRange",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildValueTarget",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalculateInterval",
+          "returnType": "\r\n\r\n       public int",
+          "visibility": "private",
+          "parameters": [
+            "double dblMinValue",
+            "double dblMaxValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustLowerLimit",
+          "returnType": "\r\n\r\n       public int",
+          "visibility": "private",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustUpperLimit",
+          "returnType": "\r\n\r\n       public int",
+          "visibility": "private",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r\n\r\n\r\n       private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ChartTypes.cs",
+      "filePath": "FusionChartLibrary/ChartTypes.cs",
+      "lineCount": 67,
+      "className": null,
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Charts.cs",
+      "filePath": "FusionChartLibrary/Charts.cs",
+      "lineCount": 849,
+      "className": "Chart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [
+        "ICloneable"
+      ],
+      "usingStatements": [
+        "System.Collections",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundColor\"",
+            "bgColor"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundColor\"",
+            "bgColor"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundOpacity\"",
+            "bgOpacity"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataSource\"",
+            "timeSeries"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "returns>\n        private string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionCharts",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "{1}"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddEvent",
+          "returnType": "param>\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string eventName",
+            "string funcName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddMessage",
+          "returnType": "param>\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string messageAttribute",
+            "string messageAttributeValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"message\"",
+            "messageHTML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Clone",
+          "returnType": "summary>\n        public object",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth",
+            "string chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth",
+            "string chartHeight",
+            "string dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth",
+            "string chartHeight",
+            "string dataFormat",
+            "string dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth",
+            "string chartHeight",
+            "string dataFormat",
+            "string dataSource",
+            "string bgColor"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundColor\"",
+            "bgColor"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended width for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "chart",
+          "returnType": ">Intended height for the",
+          "visibility": "private",
+          "parameters": [
+            "in pixels"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Render",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType",
+            "string chartId",
+            "string chartWidth",
+            "string chartHeight",
+            "string dataFormat",
+            "string dataSource",
+            "string bgColor",
+            "string bgOpacity"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"type\"",
+            "chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "dataFormat"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"id\"",
+            "chartId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"width\"",
+            "chartWidth"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"height\"",
+            "chartHeight"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundColor\"",
+            "bgColor"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"containerBackgroundOpacity\"",
+            "bgOpacity"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChartALL",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "param>\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "ChartParameter param",
+            "object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "__PARAMMAP__[param.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetChartParameter",
+          "returnType": "returns>\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "ChartParameter param"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetChartParameter",
+          "returnType": "\n            return",
+          "visibility": "private",
+          "parameters": [
+            "__PARAMMAP__[param.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "param>\n\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataSource\"",
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetData",
+          "returnType": "param>\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "string dataSource",
+            "DataFormat format"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataSource\"",
+            "dataSource"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"dataFormat\"",
+            "format.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetChartParameter",
+          "returnType": "param>\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "string setting",
+            "object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetParamsMap",
+          "returnType": "\n\n\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Hashtable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "StringComparer.InvariantCultureIgnoreCase"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "__INIT",
+          "returnType": "\n\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Hashtable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "StringComparer.InvariantCultureIgnoreCase"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Hashtable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "StringComparer.InvariantCultureIgnoreCase"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetParamsMap",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "boolToNum",
+          "returnType": "returns>\n        private static int",
+          "visibility": "private",
+          "parameters": [
+            "bool value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "result,",
+          "visibility": "private",
+          "parameters": [
+            "T"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": "null,",
+          "visibility": "private",
+          "parameters": [
+            "T"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetChartParameter",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [
+            "string setting"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "fc_encodeJSON",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [
+            "Hashtable json",
+            "bool enclosed",
+            "TimeSeries timeSeries"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DictionaryEntry ds in json"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetConfigurationGroup",
+          "returnType": "\n\n        private Hashtable",
+          "visibility": "private",
+          "parameters": [
+            "string setting"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ColorRange.cs",
+      "filePath": "FusionChartLibrary/ColorRange.cs",
+      "lineCount": 25,
+      "className": "ColorRange",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Configuration.cs",
+      "filePath": "FusionChartLibrary/Configuration.cs",
+      "lineCount": 41,
+      "className": "Configuration",
+      "namespace": "CodeFactory",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetInstance",
+          "returnType": "\r\n\r\n        public static Configuration",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "DataAccess.cs",
+      "filePath": "FusionChartLibrary/DataAccess.cs",
+      "lineCount": 147,
+      "className": "DataReaderAdapter",
+      "namespace": "CodeFactory",
+      "baseClass": "System.Data.Common.DataAdapter",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data.Common",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "FillFromReader",
+          "returnType": "\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dataTable",
+            "IDataReader dataReader"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "DataBuilder.cs",
+      "filePath": "FusionChartLibrary/DataBuilder.cs",
+      "lineCount": 76,
+      "className": "DataBuilder",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "DataTable",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildCategories",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "builddatasets",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildCategories",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "builddatasets",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildDataSet",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "s"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildDataSet",
+          "returnType": "\r\n      \r\n      public void",
+          "visibility": "private",
+          "parameters": [
+            "string dataCondition"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FustionDataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string c in Categories"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string d in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FontStyle.cs",
+      "filePath": "FusionChartLibrary/FontStyle.cs",
+      "lineCount": 43,
+      "className": "FontStyle",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FusionChartUtility.cs",
+      "filePath": "FusionChartLibrary/FusionChartUtility.cs",
+      "lineCount": 103,
+      "className": "FusionChartUtility",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "getFCColor",
+          "returnType": "maintained in FC_ColorCounter\r\n\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FusionCharts.cs",
+      "filePath": "FusionChartLibrary/FusionCharts.cs",
+      "lineCount": 285,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "FustionDataSet.cs",
+      "filePath": "FusionChartLibrary/FustionDataSet.cs",
+      "lineCount": 19,
+      "className": "FustionDataSet",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "IChartType.cs",
+      "filePath": "FusionChartLibrary/IChartType.cs",
+      "lineCount": 12,
+      "className": null,
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MultiSeriesChart.cs",
+      "filePath": "FusionChartLibrary/MultiSeriesChart.cs",
+      "lineCount": 319,
+      "className": "MultiSeriesChart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": "BaseChart",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "DataTable",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetMaxValue",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "dataTable",
+            "setField"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r\n\r\n        \r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildCategories",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "builddatasets",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildCategories",
+          "returnType": "\r\n     \r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "builddatasets",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildDataSet",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "s"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddLineDataSet",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dataTable",
+            "string seriesName",
+            "string valueFieldName",
+            "int lineThickness"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FustionDataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dataTable.AsEnumerable("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildDataSet",
+          "returnType": "\r\n\r\n     \r\n            \r\n      public void",
+          "visibility": "private",
+          "parameters": [
+            "string dataCondition"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FustionDataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string c in Categories"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string d in results"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string s in Categories"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "FustionDataSet fs in dataSets"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "string drData in fs.sets"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "CombinationChartTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "MultiSeriesChartTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "MultiSeriesStackedChartTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "ScrollChartsTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "FusionChartLibrary/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SerisDataSet.cs",
+      "filePath": "FusionChartLibrary/SerisDataSet.cs",
+      "lineCount": 18,
+      "className": "SerisDataSet",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SingleSeriesChart.cs",
+      "filePath": "FusionChartLibrary/SingleSeriesChart.cs",
+      "lineCount": 340,
+      "className": "SingleSeriesChart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": "BaseChart",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "DataTable",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": "\r\n\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "bool val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r\n     \r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in FusionDataTable.AsEnumerable("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SerisDataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", this.YAxisName, this.XAxisName, this.plotSpacePercent,",
+          "visibility": "private",
+          "parameters": [
+            "this.ShowValues"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "SerisDataSet serisDataSet in dataSets"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildJavaScriptXml",
+          "returnType": "\r\n\r\n      public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildData",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBoolValue",
+          "returnType": ", this.YAxisName, this.XAxisName, this.plotSpacePercent,",
+          "visibility": "private",
+          "parameters": [
+            "this.ShowValues"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "SerisDataSet serisDataSet in dataSets"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      \r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "SingleSeriesChartTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderJavaScriptChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "SingleSeriesChartTypes ChartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n      public string",
+          "visibility": "private",
+          "parameters": [
+            "SingleSeriesChartTypes ChartType",
+            "string SwfPath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r\n      public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "TrendLine.cs",
+      "filePath": "FusionChartLibrary/TrendLine.cs",
+      "lineCount": 26,
+      "className": "TrendLine",
+      "namespace": "FusionChartLibrary",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "WidgetChart.cs",
+      "filePath": "FusionChartLibrary/WidgetChart.cs",
+      "lineCount": 473,
+      "className": "WidgetChart",
+      "namespace": "FusionChartLibrary",
+      "baseClass": "BaseChart",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SetDefaultValues",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildBaseExml",
+          "returnType": "\r\n\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildBaseExmlForAngular",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustGuageUpperLimit",
+          "returnType": "\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "double MaxValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CalculateInterval",
+          "returnType": "\r\n\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "double dblMinValue",
+            "double dblMaxValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustLowerLimit",
+          "returnType": "\r\n\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustUpperLimit",
+          "returnType": "\r\n\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CountTMNumber",
+          "returnType": "\r\n\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "int UpperLimit"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AdjustLowerGaugeLimit",
+          "returnType": "\r\n        public int",
+          "visibility": "private",
+          "parameters": [
+            "double Val"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildQuartiles",
+          "returnType": "\r\n        public void",
+          "visibility": "private",
+          "parameters": [
+            "double  q1",
+            "double  q2",
+            "double  q3",
+            "double q4"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildColourRange",
+          "returnType": "\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "colorRangeForAngular",
+          "returnType": "\r\n       public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "buildDialXml",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SetDefaultValues",
+          "returnType": " endregion\r\n\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml",
+          "returnType": "\r\n        \r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildXml1",
+          "returnType": "\r\n          public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FusionChartUtility",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart",
+          "returnType": "\r\n        \r\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RenderChart1",
+          "returnType": "\r\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "string chartType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}

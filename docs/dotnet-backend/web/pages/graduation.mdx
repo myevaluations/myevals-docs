@@ -1,0 +1,122 @@
+---
+title: "Graduation Files"
+sidebar_label: "Graduation"
+description: "Per-file reference for Web/Graduation (5 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# Graduation File Reference
+
+> **5 files** | **246 lines** | Generated 2/20/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/Graduation/AddCertificateTemplate.aspx.cs",
+    "fileName": "AddCertificateTemplate.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Graduation_AddCertificateTemplate",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Graduation",
+    "summary": "Handles the creation of graduation certificate templates. Initializes role-based access via UserManager and populates role lookup data for template configuration.",
+    "businessPurpose": "Allows administrators to create certificate templates for program completion/graduation",
+    "keyMethods": [
+      "Page_Load - Initializes page with user roles and lookup data for certificate template creation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserManager",
+      "LookUpManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 39
+  },
+  {
+    "filePath": "Web/Graduation/AssignCertificateTemplate.aspx.cs",
+    "fileName": "AssignCertificateTemplate.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Graduation_AssignCertificateTemplate",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Graduation",
+    "summary": "Manages assignment of certificate templates to programs/departments. Binds academic years, uses CertificateTemplateManager for template operations, and serializes data to JSON for client-side rendering.",
+    "businessPurpose": "Assigns graduation certificate templates to specific academic years and programs",
+    "keyMethods": [
+      "Page_Load - Initializes certificate assignment page with year bindings",
+      "BindYears - Populates academic year dropdown",
+      "DataTableToJSONWithJSONNet - Serializes DataTable to JSON for client consumption",
+      "GetCalenderYears - Generates list of academic years for selection"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CertificateTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 76
+  },
+  {
+    "filePath": "Web/Graduation/EditUserCertificate.aspx.cs",
+    "fileName": "EditUserCertificate.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Graduation_EditUserCertificate",
+    "inheritsFrom": "BasePage",
+    "module": "Graduation",
+    "summary": "Enables editing of individual user certificates. Uses CertificateTemplateManager for data operations and inherits from BasePage for authentication and session management.",
+    "businessPurpose": "Allows editing of graduation certificates issued to individual users/residents",
+    "keyMethods": [
+      "Page_Load - Loads user certificate data for editing"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CertificateTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 51
+  },
+  {
+    "filePath": "Web/Graduation/ManageCertificationTemplates.aspx.cs",
+    "fileName": "ManageCertificationTemplates.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Graduation_ManageCertificationTemplates",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Graduation",
+    "summary": "Minimal code-behind for the certificate template management page. Likely relies on client-side logic for template CRUD operations.",
+    "businessPurpose": "Listing and management interface for graduation certificate templates",
+    "keyMethods": [
+      "Page_Load - Default page initialization"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/Graduation/ManageCertificationofCompletion.aspx.cs",
+    "fileName": "ManageCertificationofCompletion.aspx.cs",
+    "fileType": "code-behind",
+    "className": "Graduation_ManageCertificationofCompletion",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "Graduation",
+    "summary": "Manages certificates of completion for program graduates. Binds academic years, uses CertificateTemplateManager for completion certificate operations.",
+    "businessPurpose": "Manages issuance and tracking of program completion certificates for residents/trainees",
+    "keyMethods": [
+      "Page_Load - Initializes completion certificate management",
+      "BindYears - Populates academic year selection dropdown",
+      "GetCalenderYears - Generates list of academic years"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "CertificateTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "complexity": "simple",
+    "lineCount": 66
+  }
+]}
+  directoryOverview="Graduation module handling certificate template management and issuance for program completion. Supports creating, assigning, and editing graduation certificates tied to academic years and departments. Most logic is relatively simple with the CertificateTemplateManager handling business operations."
+  keyWorkflows={["Create and manage graduation certificate templates with role-based access","Assign certificate templates to academic years and programs","Edit individual user certificates and manage completion certifications"]}
+/>

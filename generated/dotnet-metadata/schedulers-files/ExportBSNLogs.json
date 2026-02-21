@@ -1,0 +1,486 @@
+{
+  "projectName": "ExportBSNLogs",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/ExportBSNLogs",
+  "parsedAt": "2026-02-20T17:11:05.399Z",
+  "fileCount": 1,
+  "totalLines": 333,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/ExportBSNLogs/ExportBSNLogs/Program.cs",
+      "lineCount": 333,
+      "className": "Program",
+      "namespace": "ExportBSNLogs",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Collections.Generic",
+        "System.Net",
+        "RestSharp",
+        "Microsoft.Extensions.Configuration",
+        "System.Text",
+        "System.IO",
+        "Serilog",
+        "System.Data.SqlClient",
+        "System.Web",
+        "System.Linq",
+        "System.Xml.Linq",
+        "Newtonsoft.Json.Linq"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggerConfiguration",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExportNotificationsToSalesForce",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExportAttendenceLogs",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExportAttendenceLogs",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "Int32"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "string"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var param in request.Parameters"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNAttendanceTrackingStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var res in results1"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNAttendanceTrackingStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNAttendanceTrackingStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExportNotificationsToSalesForce",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "apiURL"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RestRequest",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "urlParameters",
+            "Method.POST"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var param in request.Parameters"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNSalesforceStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "JObject root in objects"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "KeyValuePair<String",
+            "JToken> app in root"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNSalesforceStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNSalesforceStatus",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "dtFailedReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNSalesforceStatus",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtFailureReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"UpdateBSNSalesforceStatus\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateBSNAttendanceTrackingStatus",
+          "returnType": "\n\n        private static void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtFailureReasons"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"UpdateBSNAttendanceTrackingStatus\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetNotificationLogs",
+          "returnType": "\n\n        private static DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"ExportBSNDatatoSalesforce\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBSNAttendanceLogs",
+          "returnType": "\n\n        private static DataSet",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"ExportBSNAttendanceTracking\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigureServices",
+          "returnType": "\n\n        public static string",
+          "visibility": "private",
+          "parameters": [
+            "string keyName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ConfigurationBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "UpdateBSNAttendanceTrackingStatus",
+        "ExportBSNDatatoSalesforce",
+        "ExportBSNAttendanceTracking",
+        "ASPNETCORE_ENVIRONMENT"
+      ]
+    }
+  ]
+}

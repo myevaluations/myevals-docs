@@ -1,0 +1,3791 @@
+{
+  "projectName": "MyEvalsExportImportService",
+  "layer": "supporting",
+  "projectPath": "MyEvalsExportImportService",
+  "parsedAt": "2026-02-20T17:11:06.930Z",
+  "fileCount": 5,
+  "totalLines": 4889,
+  "files": [
+    {
+      "fileName": "EvaluationService.cs",
+      "filePath": "MyEvalsExportImportService/App_Code/EvaluationService.cs",
+      "lineCount": 1730,
+      "className": "EvaluationService",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [
+        "IEvaluationService"
+      ],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Text",
+        "System.Xml",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.Security.Cryptography",
+        "System.Xml.Schema",
+        "System.ServiceModel.Web",
+        "System.ServiceModel",
+        "System.ServiceModel.Activation",
+        "System.Security",
+        "System.IO",
+        "System.Globalization"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetEvaluations",
+          "returnType": "\n\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string evaluationInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestions",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string evaluationInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleTemplateInfo",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string evaluationInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateInfo",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string evaluationInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplates",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string departmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserDetails",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string UserDetailsInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateDate",
+          "returnType": "\n\n    private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string strdate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationResponse",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlCompletedDate in xmlCompletedDateBetweenDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtDescriptorCriteria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEvaluations.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn dc in dtEvaluations.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvr in dvDescriptorData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView drvQuestion in dvQuestion"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<EvaluationDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplatesResponse",
+          "returnType": "      \n    \n   \n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEvaluations.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserDetailsResponse",
+          "returnType": "\n\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<UserDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestionsResponse",
+          "returnType": "\n\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateResponse",
+          "returnType": "\n\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleTemplateResponse",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleData",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string strUserName",
+            "string strUserEmail",
+            "string strFirstName",
+            "string strLastName",
+            "string strDepartmentName",
+            "string strTemplateName",
+            "string strInstitutionName",
+            "Int32 Departmentcount"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPendingReviewCounts",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "IEvaluationService.cs",
+      "filePath": "MyEvalsExportImportService/App_Code/IEvaluationService.cs",
+      "lineCount": 90,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Runtime.Serialization",
+        "System.ServiceModel",
+        "System.ServiceModel.Web",
+        "System.Text",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "IService.cs",
+      "filePath": "MyEvalsExportImportService/App_Code/IService.cs",
+      "lineCount": 92,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Linq",
+        "System.Runtime.Serialization",
+        "System.ServiceModel",
+        "System.ServiceModel.Web",
+        "System.Text",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Service.cs",
+      "filePath": "MyEvalsExportImportService/App_Code/Service.cs",
+      "lineCount": 2056,
+      "className": "Service",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [
+        "IService"
+      ],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Text",
+        "System.Xml",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.Security.Cryptography",
+        "System.Xml.Schema",
+        "System.ServiceModel.Web",
+        "System.ServiceModel",
+        "System.ServiceModel.Activation",
+        "System.Security",
+        "System.IO",
+        "System.Globalization"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetEvaluations",
+          "returnType": "\n\n   \n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestions",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses on log",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleTemplateInfo",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses on log",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateInfo",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses on log",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplates",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses on log",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserDetails",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "Stream stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "stream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses on log",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strRsponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateDate",
+          "returnType": "\n    \n    private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "string strdate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationResponse",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlCompletedDate in xmlCompletedDateBetweenDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtDescriptorCriteria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEvaluations.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataColumn dc in dtEvaluations.Columns"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView dvr in dvDescriptorData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRowView drvQuestion in dvQuestion"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<EvaluationDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExportData",
+          "returnType": "\n\n    private DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string templateName",
+            "string startDate",
+            "string endDate",
+            "string completedDateFrom",
+            "string completedDateTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StartDate\"",
+            "startDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"EndDate\"",
+            "endDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CompletedDateFrom\"",
+            "completedDateFrom"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CompletedDateTo\"",
+            "completedDateTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateName\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddServiceRequestLog",
+          "returnType": "\n\n    private Int64",
+          "visibility": "private",
+          "parameters": [
+            "string ServiceName",
+            "string InputXml"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ServiceName\"",
+            "ServiceName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InputXml\"",
+            "InputXml"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"RequestedTime\"",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 serviceLogID",
+            "string response"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ServiceLogID\"",
+            "serviceLogID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ResponsesData\"",
+            "response"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ResponedTime\"",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestionsByDepartments_old",
+          "returnType": "DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "strConn"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "\"GetTemplateQuestionDetailsByDepartments\"",
+            "con"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestionsByDepartments",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string strTemplateCritiria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateCritiria\"",
+            "strTemplateCritiria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerSclaeTemplateDetails",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateNames\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateDetails",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateNames\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplatesByDepartments",
+          "returnType": "\n    private DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUsersByDepartment",
+          "returnType": "\n    private String",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string UserTypeName",
+            "int flag"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserTypeName\"",
+            "UserTypeName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Flag\"",
+            "flag"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplatesResponse",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtEvaluations.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUserDetailsResponse",
+          "returnType": "\n\n   \n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<UserDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestionsResponse",
+          "returnType": "\n\n    \n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": " ",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateResponse",
+          "returnType": "\n    \n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleTemplateResponse",
+          "returnType": "\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string inputData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartment in xmlDepartmentDetails"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlDepartmentInfoChildNode in xmlDepartmentInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlTemplateInfoChildNodes in xmlTemplateInfo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerScaleData",
+          "returnType": "\n\n    private string",
+          "visibility": "private",
+          "parameters": [
+            "string strUserName",
+            "string strUserEmail",
+            "string strFirstName",
+            "string strLastName",
+            "string strDepartmentName",
+            "string strTemplateName",
+            "string strInstitutionName",
+            "Int32 Departmentcount"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Username",
+          "returnType": "<TemplateDetails><ErrorMessage>Invalid",
+          "visibility": "private",
+          "parameters": [
+            "or"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBSNPendingReviewCount",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string userName",
+            "string password"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserName\"",
+            "userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Password\"",
+            "password"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPendingReviewCounts",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "StartDate",
+        "ServiceName",
+        "ServiceLogID",
+        "DepartmentName",
+        "UserName"
+      ]
+    },
+    {
+      "fileName": "Utilities.cs",
+      "filePath": "MyEvalsExportImportService/App_Code/Utilities.cs",
+      "lineCount": 921,
+      "className": "Utilities",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.IO",
+        "System.Linq",
+        "System.Security.Cryptography",
+        "System.Text",
+        "System.Web",
+        "System.Xml",
+        "System.Xml.Schema"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "BuildXmlResponse",
+          "returnType": "\n\n    public static XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string xml"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddServiceRequestLog",
+          "returnType": "\n\n    public static Int64",
+          "visibility": "private",
+          "parameters": [
+            "string ServiceName",
+            "string InputXml"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ServiceName\"",
+            "ServiceName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InputXml\"",
+            "InputXml"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"RequestedTime\"",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "\n\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "Int64 serviceLogID",
+            "string response"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ServiceLogID\"",
+            "serviceLogID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ResponsesData\"",
+            "response"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"ResponedTime\"",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplateQuestionsByDepartments",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string strTemplateCritiria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateCritiria\"",
+            "strTemplateCritiria"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAnswerSclaeTemplateDetails",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateNames\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetFinalGradeTemplateDetails",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string strInstitutionName",
+            "string templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"InstitutionName\"",
+            "strInstitutionName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateNames\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetTemplatesByDepartments",
+          "returnType": "\n    public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetUsersByDepartment",
+          "returnType": "\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string UserTypeName",
+            "int flag"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserTypeName\"",
+            "UserTypeName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Flag\"",
+            "flag"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExportData",
+          "returnType": "\n    public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "string departmentName",
+            "string templateName",
+            "string startDate",
+            "string endDate",
+            "string completedDateFrom",
+            "string completedDateTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"StartDate\"",
+            "startDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"EndDate\"",
+            "endDate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CompletedDateFrom\"",
+            "completedDateFrom"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"CompletedDateTo\"",
+            "completedDateTo"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"TemplateName\"",
+            "templateName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyLogin",
+          "returnType": "\n\n    public static bool",
+          "visibility": "private",
+          "parameters": [
+            "string userName",
+            "string email",
+            "string firstName",
+            "string lastName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserName\"",
+            "userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Email\"",
+            "email"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"FirstName\"",
+            "firstName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"LastName\"",
+            "lastName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyDepartmentPrivileges",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string userName",
+            "string departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserName\"",
+            "userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentName\"",
+            "departmentName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "department",
+          "returnType": "You have no privileges to access the",
+          "visibility": "private",
+          "parameters": [
+            "s"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drDepartment in dsDepartments.Tables[0].Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "VerifyUserPrivileges",
+          "returnType": "\n    public static bool",
+          "visibility": "private",
+          "parameters": [
+            "string userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserName\"",
+            "userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"SubModuleID\"",
+            "724"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Encrypt",
+          "returnType": "\n    public static String",
+          "visibility": "private",
+          "parameters": [
+            "String toEncrypt",
+            "Boolean useHashing"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MD5CryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TripleDESCryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateXML",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"EvalValidation.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateDepartmentXML",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"DepartmentValidation.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateUserDetailsXML",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"UserDetailValidation.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateTemplateQuestionsXML",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"TemplateQuestionValidation.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateAnswerscaleTemplateXML",
+          "returnType": "\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"AnswerScaleTemplateValidation.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptStringFromBytes",
+          "returnType": "       \n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "byte[] cipherText",
+            "byte[] key",
+            "byte[] iv"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n            throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"cipherText\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n            throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"key\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ArgumentNullException",
+          "returnType": "\n            throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"key\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DecryptStringAES",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string cipherText"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "string",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "'='",
+            "4 - mod4"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateBSNCounts",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSchemaSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "AppDomain.CurrentDomain.BaseDirectory"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "baseSchema",
+            "\"BSNCounts.xsd\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlTextReader",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "mySchema"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPendingReviewCounts",
+          "returnType": "\n\n    public XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "string inputXML"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlNode in xmlEvaluationNodes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "XmlNode xmlChildNode in xmlChildNodeList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateServiceResponsesLog",
+          "returnType": "updating service responses",
+          "visibility": "private",
+          "parameters": [
+            "serviceLogId",
+            "strResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetBSNPendingReviewCount",
+          "returnType": "\n\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string userName",
+            "string password"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserName\"",
+            "userName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "\"Password\"",
+            "password"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "usp_ValidateUser",
+        "ServiceName",
+        "ServiceLogID",
+        "DepartmentName",
+        "StartDate",
+        "UserName"
+      ]
+    }
+  ]
+}

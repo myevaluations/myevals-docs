@@ -1,0 +1,205 @@
+{
+  "projectName": "InCorrectSyncReminderToAdmins",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/InCorrectSyncReminderToAdmins",
+  "parsedAt": "2026-02-20T17:11:05.540Z",
+  "fileCount": 4,
+  "totalLines": 382,
+  "files": [
+    {
+      "fileName": "InCorrectSyncBusiness.cs",
+      "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/InCorrectSyncBusiness.cs",
+      "lineCount": 248,
+      "className": "InCorrectSyncBusiness",
+      "namespace": "InCorrectSyncReminderToAdmins",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.IO",
+        "System.Data",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Logging",
+        "System.Web"
+      ],
+      "businessModuleRefs": [
+        "Utilities",
+        "Common"
+      ],
+      "methods": [
+        {
+          "name": "OnViewInitializeInCorrectSync",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtDepartmentListForIncorrectSync.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtUsers.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtRotations.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtCalls.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dtClinics.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "InCorrectSyncManager.cs",
+      "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/InCorrectSyncManager.cs",
+      "lineCount": 70,
+      "className": "InCorrectSyncManager",
+      "namespace": "InCorrectSyncReminderToAdmins",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "MyEvaluations.DataAccess.SQL",
+        "System.Data",
+        "System.Configuration",
+        "System.IO",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetWrongSyncEntireData",
+          "returnType": "\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "Int32 DepartmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDepartmentListForIncorrectSync",
+          "returnType": "\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendRemindersForIncorrectSync",
+          "returnType": "\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "int DepartmentID",
+            "string IncorrectSyncData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetWrongSyncAndWrongSyncText",
+        "GetDepartmentListForIncorrectSync",
+        "SendRemindersForIncorrectSync"
+      ]
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/Program.cs",
+      "lineCount": 27,
+      "className": "Program",
+      "namespace": "InCorrectSyncReminderToAdmins",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/InCorrectSyncReminderToAdmins/InCorrectSyncReminderToAdmins/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

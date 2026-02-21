@@ -1,0 +1,579 @@
+{
+  "projectName": "SendManualAssignments",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SendManualAssignments",
+  "parsedAt": "2026-02-20T17:11:06.233Z",
+  "fileCount": 7,
+  "totalLines": 961,
+  "files": [
+    {
+      "fileName": "CustomCommand.cs",
+      "filePath": "Schedulers/SendManualAssignments/MyEvaluations.DataAccess.SQL/CustomCommand.cs",
+      "lineCount": 154,
+      "className": "CustomCommand",
+      "namespace": "MyEvaluations.DataAccess.SQL",
+      "baseClass": null,
+      "interfaces": [
+        "IDisposable"
+      ],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data.SqlClient",
+        "System.Data.Common",
+        "System.Data"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Dispose",
+          "returnType": "\r\n\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddParameterWithValue",
+          "returnType": "\r\n\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "IsNullValue",
+          "returnType": "\r\n\r\n        private Boolean",
+          "visibility": "private",
+          "parameters": [
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCommand",
+          "returnType": "\r\n\r\n        internal SqlCommand",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddOutParameterWithValue",
+          "returnType": "returns>\r\n        public DbParameter",
+          "visibility": "private",
+          "parameters": [
+            "String parameterName",
+            "Object value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlParameter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "DBDataAccess.cs",
+      "filePath": "Schedulers/SendManualAssignments/MyEvaluations.DataAccess.SQL/DBDataAccess.cs",
+      "lineCount": 286,
+      "className": "DBDataAccess",
+      "namespace": "MyEvaluations.DataAccess.SQL",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Data.SqlClient",
+        "System.Data",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetConnectionString",
+          "returnType": "\r\n        private static String",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTransaction",
+          "returnType": "\r\n\r\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand commandParent",
+            "CustomCommand[] commandChildren",
+            "String foreignKeyColumnName",
+            "out Int32 primaryKeyID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand childCommand in commandChildren"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTransaction",
+          "returnType": "\r\n\r\n        public static bool",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand[] commandList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand Command in commandList"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTable",
+          "returnType": "\r\n\r\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteTableEvalReminder",
+          "returnType": "\r\n        public static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteDataReader",
+          "returnType": "\r\n        public static IDataReader",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "GetConnectionString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteDataSet",
+          "returnType": "\r\n        public static DataSet",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "cmd"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteScalar",
+          "returnType": "\r\n\r\n        public static Object",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ExecuteNonQuery",
+          "returnType": "\r\n\r\n        public static Int32",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateDataSet",
+          "returnType": "Added By  JIVA for Updating through DataSet.\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "SqlCommand command",
+            "DataSet ds"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlDataAdapter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetOutParameterValue",
+          "returnType": "\r\n\r\n        public static Object",
+          "visibility": "private",
+          "parameters": [
+            "CustomCommand command",
+            "String parameterName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendManualAssignments/MyEvaluations.DataAccess.SQL/Properties/AssemblyInfo.cs",
+      "lineCount": 36,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "MyEvalsLogger.cs",
+      "filePath": "Schedulers/SendManualAssignments/SendManualAssignments/MyEvalsLogger.cs",
+      "lineCount": 147,
+      "className": "MyEvalLogs",
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.Configuration",
+        "System.Linq",
+        "System.Web",
+        "Microsoft.Practices.EnterpriseLibrary.Logging",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.ExtraInformation",
+        "Microsoft.Practices.EnterpriseLibrary.Logging.Filters",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LoggingIntoText",
+          "returnType": "param>\r\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string Msg",
+            "string MethodName",
+            "LogType lt",
+            "LogFor task",
+            "Exception ex"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LogEntry",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SendManualAssignments/SendManualAssignments/Program.cs",
+      "lineCount": 17,
+      "className": "Program",
+      "namespace": "SendManualAssignments",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendAssignments",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendManualAssignments/SendManualAssignments/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SendAssignments.cs",
+      "filePath": "Schedulers/SendManualAssignments/SendManualAssignments/SendAssignments.cs",
+      "lineCount": 284,
+      "className": "SendAssignments",
+      "namespace": "SendManualAssignments",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Data",
+        "System.IO",
+        "System.Configuration",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Utilities"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "summary>\r\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendManualAssignmentReminders",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "dtManualAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendManualAssignmentReminders",
+          "returnType": "\r\n\r\n\r\n        private void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable dtManualAssignments"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drApplicationURL in dtSettings.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtManualAssignments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drReminder in dtReminders.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetManualAssignments",
+          "returnType": "returns>\r\n        private DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEvaluationReminders",
+          "returnType": "\r\n\r\n        private DataTable",
+          "visibility": "private",
+          "parameters": [
+            "Int64 departmentID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\r\n        private String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "InsertManualAssignmentHistory",
+        "UpdateManualAssignmentEmailStatus",
+        "GetManualAssignments",
+        "SendManualEvaluationReminders"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,726 @@
+{
+  "directory": "CommercialNew",
+  "directoryPath": "Web/CommercialNew",
+  "parsedAt": "2026-02-20T17:10:52.200Z",
+  "fileCount": 10,
+  "totalLines": 1466,
+  "files": [
+    {
+      "fileName": "AccessibilityStatement.aspx.cs",
+      "filePath": "Web/CommercialNew/AccessibilityStatement.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_AccessibilityStatement",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Contact.aspx.cs",
+      "filePath": "Web/CommercialNew/Contact.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_Contact",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Features.aspx.cs",
+      "filePath": "Web/CommercialNew/Features.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_Features",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ForgotPassword.aspx.cs",
+      "filePath": "Web/CommercialNew/ForgotPassword.aspx.cs",
+      "lineCount": 387,
+      "className": "CommercialNew_ForgotPassword",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "System.Data",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LiteralControl",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnLogin_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataSet",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationEmailTemplateFromPasswordRequest",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "userid",
+            "Mail",
+            "\"0\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendForgotUserNamePassword",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "this.Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationEmailTemplateFromPasswordRequest",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "userid",
+            "Mail",
+            "\"0\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendForgotUserNamePassword",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "this.Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationEmailTemplateFromPasswordRequest",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "userid",
+            "Mail",
+            "\"0\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendForgotUserNamePassword",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "this.Page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendForgotUserNamePassword",
+          "returnType": "\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Page page"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetEmailVerificationEmailTemplateFromPasswordRequest",
+          "returnType": "\n\n    public void",
+          "visibility": "private",
+          "parameters": [
+            "Int32 strUserID",
+            "string strToEmail",
+            "string Islogin = \"1\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptKeyGen",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string toEmail in toEmailIds"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Home.aspx.cs",
+      "filePath": "Web/CommercialNew/Home.aspx.cs",
+      "lineCount": 477,
+      "className": "CommercialNew_Home",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "System",
+        "System.Data",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnLogin_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Guid",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "antiforgery.Value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SecurityException",
+          "returnType": "        throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"XSRF Attack Detected!\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PasswordInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in DtSendLockMail.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in DtSendLockMailPOCAdmin.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWaitTime",
+          "returnType": "\n    private String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 minutes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Login.aspx.cs",
+      "filePath": "Web/CommercialNew/Login.aspx.cs",
+      "lineCount": 503,
+      "className": "CommercialNew_Login",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Data",
+        "System.IO",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "MyEvaluations.Business.Common",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging",
+        "System.Configuration"
+      ],
+      "businessModuleRefs": [
+        "Common",
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "UserBusiness",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "LiteralControl",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "btnLogin_Click",
+          "returnType": "\n\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Guid",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "antiforgery.Value"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SecurityException",
+          "returnType": "        throw new",
+          "visibility": "private",
+          "parameters": [
+            "\"XSRF Attack Detected!\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PasswordInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in DtSendLockMail.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in DtSendLockMailPOCAdmin.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetWaitTime",
+          "returnType": "\n    private String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 minutes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "MasterPage.master.cs",
+      "filePath": "Web/CommercialNew/MasterPage.master.cs",
+      "lineCount": 15,
+      "className": "CommercialNew_MasterPage",
+      "namespace": "",
+      "baseClass": "System.Web.UI.MasterPage",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "NeedHelp.aspx.cs",
+      "filePath": "Web/CommercialNew/NeedHelp.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_NeedHelp",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "Pricing.aspx.cs",
+      "filePath": "Web/CommercialNew/Pricing.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_Pricing",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "PrivacyPolicy.aspx.cs",
+      "filePath": "Web/CommercialNew/PrivacyPolicy.aspx.cs",
+      "lineCount": 14,
+      "className": "CommercialNew_PrivacyPolicy",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

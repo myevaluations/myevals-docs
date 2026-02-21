@@ -1,0 +1,257 @@
+{
+  "projectName": "SendRotationRequirements",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/SendRotationRequirements",
+  "parsedAt": "2026-02-20T17:11:06.253Z",
+  "fileCount": 3,
+  "totalLines": 426,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/SendRotationRequirements/SendRotationRequirements/Program.cs",
+      "lineCount": 24,
+      "className": "RotationRequirement",
+      "namespace": "SendRotationRequirements",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendRotationRequirements",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/SendRotationRequirements/SendRotationRequirements/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SendRotationRequirements.cs",
+      "filePath": "Schedulers/SendRotationRequirements/SendRotationRequirements/SendRotationRequirements.cs",
+      "lineCount": 365,
+      "className": "SendRotationRequirements",
+      "namespace": "SendRotationRequirements",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.IO",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.Data.Sql",
+        "System.Configuration",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Logging",
+        "MyEvaluations.Business.Security.FileUploadComponent"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Start",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtRotationRequirements.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dtrow in dtMilestoneRotationUserData.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dtSendrow in dtSendRotationEmails.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UploadLearningDocuments",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "FileUploadComponentWebService",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drRow in dtDocuments.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendPIPEvalNotifications",
+          "returnType": "\n\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow drUsers in dtPIPNotifications.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": " Sending Email\n        private static bool",
+          "visibility": "private",
+          "parameters": [
+            "string fromEmail",
+            "string toEmail",
+            "string subject",
+            "string htmlBody",
+            "string departmentId",
+            "string strDeptName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\n        private static String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserTypeName",
+          "returnType": "\n\n       \n        private String",
+          "visibility": "private",
+          "parameters": [
+            "Int32 UserTypeID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetMilestoneRotationRequirements",
+        "GetMilestoneRotationUserDetails",
+        "GetMilestoneRotationRequirementTemplate",
+        "UpdateMilestionRotationHistoryAndAuditTrail",
+        "GetPendingAutoLearningAssignmentDocuments",
+        "GenerateEvalPIPNotifications"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2471 @@
+---
+title: "EssentialActivities Files"
+sidebar_label: "EssentialActivities"
+description: "Per-file reference for Web/EssentialActivities (85 files)"
+---
+
+import FileReference from '@site/src/components/FileReference';
+
+# EssentialActivities File Reference
+
+> **85 files** | **40,662 lines** | Generated 2/21/2026
+
+<FileReference
+  files={[
+  {
+    "filePath": "Web/EssentialActivities/AddCourse.aspx.cs",
+    "fileName": "AddCourse.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AddCourse",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages creation and editing of courses with academic year, session, faculty, and preceptor assignment for nursing/clinical programs.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessions - Binds data to Sessions controls",
+      "BindFacultiesAndPreceptors - Binds data to FacultiesAndPreceptors controls",
+      "FillInfoFromDataBase - Populates form fields with data",
+      "btnSave_Click - Handles Save button click event",
+      "ddlAcademicYear_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 212
+  },
+  {
+    "filePath": "Web/EssentialActivities/AddCourseObjective.aspx.cs",
+    "fileName": "AddCourseObjective.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AddCourseObjective",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Handles creation and editing of course objectives linked to specific courses.",
+    "businessPurpose": "Manages course objective definitions and reporting for clinical programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnSave_Click - Handles Save button click event",
+      "ddlCourse_OnSelectedIndexChanged - Handles ddlCourse OnSelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 91
+  },
+  {
+    "filePath": "Web/EssentialActivities/AddEditManageSessionNames.aspx.cs",
+    "fileName": "AddEditManageSessionNames.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AddEditManageSessionNames",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages clinical session names and batch editing with schedule management, calendar year filtering, and JSON serialization.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "GetDNPCourseDetailsBySessionAndID - Retrieves DNPCourseDetailsBySessionAndID data",
+      "btnUpdateValues_Click - Handles UpdateValues button click event",
+      "UpdateMyPQualityImprovementProjects - Updates MyPQualityImprovementProjects records",
+      "BindMultiGrids - Binds data to MultiGrids controls",
+      "refreshgrid - Refreshes grid data display",
+      "lstAcademicYears_OnSelectedIndexChanged - Handles lstAcademicYears OnSelectedIndexChanged operation",
+      "ddlMaxmonths_OnSelectedIndexChanged - Handles ddlMaxmonths OnSelectedIndexChanged operation",
+      "grdManageSession_RowDataBound - Custom formatting for grid row data binding",
+      "DataTableToJSONWithJSONNet - Serializes DataTable to JSON"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 557
+  },
+  {
+    "filePath": "Web/EssentialActivities/AddGroupSession.aspx.cs",
+    "fileName": "AddGroupSession.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AddGroupSession",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Empty placeholder page for group session management.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 14
+  },
+  {
+    "filePath": "Web/EssentialActivities/AdminLog.aspx.cs",
+    "fileName": "AdminLog.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AdminLog",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays and manages DNP (Doctor of Nursing Practice) administrator accounts with filtering and CRUD operations.",
+    "businessPurpose": "Administrative functions for managing program accounts and configurations",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindData - Binds data to Data controls",
+      "BindDataWithFilter - Binds data to DataWithFilter controls",
+      "GenerateURL - Generates URL output",
+      "btnRefresh_Click - Handles Refresh button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 108
+  },
+  {
+    "filePath": "Web/EssentialActivities/AssignCourses.aspx.cs",
+    "fileName": "AssignCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AssignCourses",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages course-to-student assignment with academic year, session, course, and faculty/student selection.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "BindCourses - Binds data to Courses controls",
+      "GetFacultyStudents - Retrieves FacultyStudents data",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "btnSave_Click - Handles Save button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 290
+  },
+  {
+    "filePath": "Web/EssentialActivities/AssignFNPEvaluations.aspx.cs",
+    "fileName": "AssignFNPEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AssignFNPEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages FNP (Family Nurse Practitioner) evaluation assignments with batch support, session/course/faculty/student filtering.",
+    "businessPurpose": "Manages clinical evaluation assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "PrepareForEditMode - Handles PrepareForEditMode operation",
+      "BindFilters - Binds data to Filters controls",
+      "FillTemplateList - Populates form fields with data",
+      "BindSessions - Binds data to Sessions controls",
+      "BindCourses - Binds data to Courses controls",
+      "BindClinicalSite - Binds data to ClinicalSite controls",
+      "BindTraineesByCourse - Binds data to TraineesByCourse controls",
+      "BindFaculty - Binds data to Faculty controls",
+      "BindPrceptorClinicalSite - Binds data to PrceptorClinicalSite controls",
+      "BindPreceptorsByCourse - Binds data to PreceptorsByCourse controls",
+      "BindPreceptorsByCourseID - Binds data to PreceptorsByCourseID controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationsTemplateManager",
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 1900
+  },
+  {
+    "filePath": "Web/EssentialActivities/AssignFNPVoluntaryEvaluations.aspx.cs",
+    "fileName": "AssignFNPVoluntaryEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AssignFNPVoluntaryEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages voluntary FNP evaluation assignments with batch edit capability and multi-student selection.",
+    "businessPurpose": "Manages clinical evaluation assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnCancel_Click - Handles Cancel button click event",
+      "FillinSavedForm - Populates form fields with data",
+      "FNPLogData - Handles FNPLogData operation",
+      "btnSave_Click - Handles Save button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationsTemplateManager",
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 210
+  },
+  {
+    "filePath": "Web/EssentialActivities/AssignSessionCourses.aspx.cs",
+    "fileName": "AssignSessionCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_AssignSessionCourses",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Assigns session courses to students with year/session/course/faculty filtering and student selection.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "BindCourses - Binds data to Courses controls",
+      "GetFacultyStudents - Retrieves FacultyStudents data",
+      "FillInfoFromDataBase - Populates form fields with data",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "btnSave_Click - Handles Save button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 344
+  },
+  {
+    "filePath": "Web/EssentialActivities/ClincalAlternativeLogs.aspx.cs",
+    "fileName": "ClincalAlternativeLogs.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ClincalAlternativeLogs",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages clinical alternative log entries with session/course filtering, summary/detail view modes, and delete/restore operations.",
+    "businessPurpose": "Supports clinical activity tracking and management for nursing/medical education programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls",
+      "BindGrid - Binds data to Grid controls",
+      "Page_Unload - Handles Page Unload operation",
+      "btnRestore_Click - Handles Restore button click event",
+      "BindDetailedGrid - Binds data to DetailedGrid controls",
+      "BindData - Binds data to Data controls",
+      "btnShow_Click - Handles Show button click event",
+      "GenerateURL - Generates URL output",
+      "lbtnVIDDelete_Click - Handles lbtnVIDDelete Click operation",
+      "StudentDetailedMode - Handles StudentDetailedMode operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "FNPInfoBusiness",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 930
+  },
+  {
+    "filePath": "Web/EssentialActivities/ClinicalLogDataExport.aspx.cs",
+    "fileName": "ClinicalLogDataExport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ClinicalLogDataExportaspx",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Provides data export filters for clinical log data with year, session, and user filtering.",
+    "businessPurpose": "Manages clinical log entry, review, and export for tracking student clinical hours",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DNPLogManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 170
+  },
+  {
+    "filePath": "Web/EssentialActivities/ClinicalLogDataExportResults.aspx.cs",
+    "fileName": "ClinicalLogDataExportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ClinicalLogDataExportResults",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Processes and exports clinical log data to Excel/ZIP files with multi-format support.",
+    "businessPurpose": "Manages clinical log entry, review, and export for tracking student clinical hours",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "DownLoadFile - Handles file download to client browser",
+      "XmlReaderSettings - Handles XmlReaderSettings operation",
+      "StreamRootChildDoc - Handles StreamRootChildDoc operation",
+      "XDocument - Handles XDocument operation",
+      "JavaScriptSerializer - Handles JavaScriptSerializer operation",
+      "JsonSerializerSettings - Handles JsonSerializerSettings operation",
+      "Workbook - Handles Workbook operation",
+      "CellsFactory - Handles CellsFactory operation",
+      "JsonLayoutOptions - Handles JsonLayoutOptions operation",
+      "DirectoryInfo - Handles DirectoryInfo operation",
+      "DownLoadXML - Handles DownLoadXML operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains Excel export logic that should use modern library (e.g., ExcelJS in Node.js).",
+    "complexity": "very-complex",
+    "lineCount": 541
+  },
+  {
+    "filePath": "Web/EssentialActivities/ClinicalLogReviews.aspx.cs",
+    "fileName": "ClinicalLogReviews.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ClinicalLogReviews",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Primary clinical log review page with session/course/student filtering, grid pagination, and faculty/preceptor-specific views.",
+    "businessPurpose": "Manages clinical log entry, review, and export for tracking student clinical hours",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls",
+      "refreshGrid - Handles refreshGrid operation",
+      "ButtonStatus - Handles ButtonStatus operation",
+      "BindYears - Binds data to Years controls",
+      "SetVal - Configures Val settings",
+      "SetSelectedIndex - Configures SelectedIndex settings",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "BindPreceptors - Binds data to Preceptors controls",
+      "ddlSession_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "PatientLogManager",
+      "ProceduresManager",
+      "FieldsLookupManager",
+      "FNPLogManager",
+      "EvaluationTemplateBusiness",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 2780
+  },
+  {
+    "filePath": "Web/EssentialActivities/ClinicalPerformanceImprovementPlan.aspx.cs",
+    "fileName": "ClinicalPerformanceImprovementPlan.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ClinicalPerformanceImprovementPlan",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages Clinical Performance Improvement Plans (PIP) with session, course, student, faculty, and clinical site assignment.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindCourses - Binds data to Courses controls",
+      "BindStudents - Binds data to Students controls",
+      "BindFaculty - Binds data to Faculty controls",
+      "BindClinicalSites - Binds data to ClinicalSites controls",
+      "BindBehaviors - Binds data to Behaviors controls",
+      "ddlSession_OnSelectedIndexChanged - Handles ddlSession OnSelectedIndexChanged operation",
+      "BindPrecetors - Binds data to Precetors controls",
+      "ddlCourse_OnSelectedIndexChanged - Handles ddlCourse OnSelectedIndexChanged operation",
+      "ddlStudent_OnSelectedIndexChanged - Handles ddlStudent OnSelectedIndexChanged operation",
+      "ddlClinicalSite_OnSelectedIndexChanged - Handles ddlClinicalSite OnSelectedIndexChanged operation",
+      "btnCopy_Click - Handles Copy button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "FNPLogManager",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 736
+  },
+  {
+    "filePath": "Web/EssentialActivities/CourseObjectiveReport.aspx.cs",
+    "fileName": "CourseObjectiveReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_CourseObjectiveReport",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Generates course objective reports with session, course, preceptor, and status filtering.",
+    "businessPurpose": "Manages course objective definitions and reporting for clinical programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 215
+  },
+  {
+    "filePath": "Web/EssentialActivities/CourseObjectiveReportResults.aspx.cs",
+    "fileName": "CourseObjectiveReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_CourseObjectiveReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays course objective report results with department info, status filtering, and data rendering.",
+    "businessPurpose": "Manages course objective definitions and reporting for clinical programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "Course - Handles Course operation",
+      "Preceptors - Handles Preceptors operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 204
+  },
+  {
+    "filePath": "Web/EssentialActivities/CourseStudentMapping.aspx.cs",
+    "fileName": "CourseStudentMapping.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_CourseStudentMapping",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages mapping of students and preceptors to courses with year/session/course filtering.",
+    "businessPurpose": "Manages course-to-student and course-to-preceptor mapping",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessions - Binds data to Sessions controls",
+      "BindCourses - Binds data to Courses controls",
+      "BindStudents - Binds data to Students controls",
+      "FillDataBaseData - Populates form fields with data",
+      "BindPreceptors - Binds data to Preceptors controls",
+      "ddlCourses_OnSelectedIndexChanged - Handles ddlCourses OnSelectedIndexChanged operation",
+      "btnSave_Click - Handles Save button click event",
+      "ddlAcademicYear_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCourseSession_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlStudents_OnSelectedIndexChanged - Handles ddlStudents OnSelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 332
+  },
+  {
+    "filePath": "Web/EssentialActivities/DNPLogForm.aspx.cs",
+    "fileName": "DNPLogForm.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_DNPLogForm",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Clinical log entry form for DNP program with role-based fields, student/faculty views, course instructor, and program selection.",
+    "businessPurpose": "Manages DNP (Doctor of Nursing Practice) program clinical activities",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "AddDNPEssentials - Adds new DNPEssentials record",
+      "FillCourseDetails - Populates form fields with data",
+      "FillEssentials - Populates form fields with data",
+      "BindActivityLogDate - Binds data to ActivityLogDate controls",
+      "BindStudentActivityLogData - Binds data to StudentActivityLogData controls",
+      "BindCourseCustomAttributes - Binds data to CourseCustomAttributes controls",
+      "BindInstructorProgramByCourseID - Binds data to InstructorProgramByCourseID controls",
+      "fnValidateCourse - Handles fnValidateCourse operation",
+      "ddlsname_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlDNPlist_SelectedIndexChanged - Handles dropdown selection change",
+      "BindUsers - Binds data to Users controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 1134
+  },
+  {
+    "filePath": "Web/EssentialActivities/DNPReport.aspx.cs",
+    "fileName": "DNPReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DNPReports_DNPReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "DNP activity report filter page with year, session, user, essential activities, and status filtering.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "DetailedConferenceTrackingReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 186
+  },
+  {
+    "filePath": "Web/EssentialActivities/DNPReportResults.aspx.cs",
+    "fileName": "DNPReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "DNPReports_DNPReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays DNP report results with department info, multi-filter display, and HTML content processing.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "AutoCloseHtmlTags - Handles AutoCloseHtmlTags operation",
+      "Regex - Handles Regex operation",
+      "HtmlDocument - Handles HtmlDocument operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 373
+  },
+  {
+    "filePath": "Web/EssentialActivities/DevClinicalLogReviews.aspx.cs",
+    "fileName": "DevClinicalLogReviews.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_DevClinicalLogReviews",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Development variant of clinical log reviews with alternative log support and summary/detail toggle.",
+    "businessPurpose": "Manages clinical log entry, review, and export for tracking student clinical hours",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls",
+      "refreshGrid - Handles refreshGrid operation",
+      "BindYears - Binds data to Years controls",
+      "SetVal - Configures Val settings",
+      "SetSelectedIndex - Configures SelectedIndex settings",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "BindPreceptors - Binds data to Preceptors controls",
+      "ddlSession_SelectedIndexChanged - Handles dropdown selection change",
+      "FillCourseDetails - Populates form fields with data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DevManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 2317
+  },
+  {
+    "filePath": "Web/EssentialActivities/DevFNPRecords.aspx.cs",
+    "fileName": "DevFNPRecords.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_DevFNPRecords",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Multi-purpose admin page for managing immersion faculty accounts, administrator accounts, student log details, and preceptor records.",
+    "businessPurpose": "Manages FNP (Family Nurse Practitioner) program clinical records and evaluations",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindManageSessionNames - Binds data to ManageSessionNames controls",
+      "GetAcceptConfirmScript - Retrieves AcceptConfirmScript data",
+      "confirm - Handles confirm operation",
+      "GetNotAcceptedConfirmScript - Retrieves NotAcceptedConfirmScript data",
+      "btnBackToMain_Click - Handles BackToMain button click event",
+      "BuildAMFMPoliciesAndDocumentsHTML - Handles BuildAMFMPoliciesAndDocumentsHTML operation",
+      "funDownloadCEMDFile - Handles funDownloadCEMDFile operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "PatientLogManager",
+      "ProceduresManager",
+      "FieldsLookupManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 230
+  },
+  {
+    "filePath": "Web/EssentialActivities/DisplayDetails.aspx.cs",
+    "fileName": "DisplayDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_DisplayDetails",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays detailed student log information by session in a dynamically generated HTML table.",
+    "businessPurpose": "Displays detailed clinical log information",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindManageSessionNames - Binds data to ManageSessionNames controls",
+      "BuildAMFMPoliciesAndDocumentsHTML - Handles BuildAMFMPoliciesAndDocumentsHTML operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 98
+  },
+  {
+    "filePath": "Web/EssentialActivities/DownloadDocument.aspx.cs",
+    "fileName": "DownloadDocument.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_DownloadDocument",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Handles file download for Essential Activities documents from server-side storage.",
+    "businessPurpose": "Handles document download for clinical activity files",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "DirectoryInfo - Handles DirectoryInfo operation",
+      "DownLoadFile - Handles file download to client browser"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "simple",
+    "lineCount": 61
+  },
+  {
+    "filePath": "Web/EssentialActivities/EditAdmin.aspx.cs",
+    "fileName": "EditAdmin.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_EditAdmin",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages editing of DNP administrator account details including name, email, DSI, and role assignment.",
+    "businessPurpose": "Administrative functions for managing program accounts and configurations",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindData - Binds data to Data controls",
+      "BindRoles - Binds data to Roles controls",
+      "btnUpdate_Click - Handles Update button click event",
+      "btnCancel_Click - Handles Cancel button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 88
+  },
+  {
+    "filePath": "Web/EssentialActivities/EssentialActivitiesMain.aspx.cs",
+    "fileName": "EssentialActivitiesMain.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_EssentialActivitiesMain",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Main landing page for Essential Activities module with department-specific routing and menu configuration.",
+    "businessPurpose": "Serves as the main landing page for the Essential Activities clinical tracking module",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "SetHelpIcons - Configures HelpIcons settings",
+      "SetCompletedEvaluationsMenu - Configures CompletedEvaluationsMenu settings",
+      "SetEvaluationsToSignMenu - Configures EvaluationsToSignMenu settings",
+      "SetEvaluationsToReviewMenu - Configures EvaluationsToReviewMenu settings",
+      "SetInboxMenu - Configures InboxMenu settings",
+      "GetFormattedNumber - Retrieves FormattedNumber data",
+      "clearLink - Handles clearLink operation",
+      "DisplayProceduresModuleMenu - Handles DisplayProceduresModuleMenu operation",
+      "GetLastupdatedDatesForSchedules - Retrieves LastupdatedDatesForSchedules data",
+      "AutomaticFNPEvaluationAssignments - Handles AutomaticFNPEvaluationAssignments operation",
+      "FNPAutomaticEvaluationAssignments - Handles FNPAutomaticEvaluationAssignments operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "High-value page with many integrations; prioritize for React migration.",
+    "complexity": "very-complex",
+    "lineCount": 1161
+  },
+  {
+    "filePath": "Web/EssentialActivities/EvaluationsAssignments.aspx.cs",
+    "fileName": "EvaluationsAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_EvaluationsAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages evaluation assignment workflows for clinical courses.",
+    "businessPurpose": "Manages clinical evaluation assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "PatientLogManager",
+      "ProceduresManager",
+      "FieldsLookupManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 89
+  },
+  {
+    "filePath": "Web/EssentialActivities/ExportFNPSalesForceData.aspx.cs",
+    "fileName": "ExportFNPSalesForceData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ExportFNPSalesForceData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Exports FNP program data to SalesForce format.",
+    "businessPurpose": "Exports clinical program data for external system integration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "parseresponse - Handles parseresponse operation",
+      "RemoveInvalidXmlChars - Handles RemoveInvalidXmlChars operation",
+      "string - Handles string operation",
+      "btnExport_Click - Handles Export button click event",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "FNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 256
+  },
+  {
+    "filePath": "Web/EssentialActivities/ExportSalesForceData.aspx.cs",
+    "fileName": "ExportSalesForceData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ExportSalesForceData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Exports clinical program data to SalesForce integration format.",
+    "businessPurpose": "Exports clinical program data for external system integration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnExport_Click - Handles Export button click event",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 173
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPClinicalLogForm.aspx.cs",
+    "fileName": "FNPClinicalLogForm.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPClinicalLogForm",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Clinical log entry form specific to FNP (Family Nurse Practitioner) programs.",
+    "businessPurpose": "Manages clinical log entry, review, and export for tracking student clinical hours",
+    "keyMethods": [
+      "ArrayList - Handles ArrayList operation",
+      "DefaultPageLoad - Handles DefaultPageLoad operation",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "FillCoursesforAlternativeLog - Populates form fields with data",
+      "BindAlternativeLogData - Binds data to AlternativeLogData controls",
+      "BindAlternativeInstructorProgramByCourseID - Binds data to AlternativeInstructorProgramByCourseID controls",
+      "FillAltPreceptorByStudent - Populates form fields with data",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "FillCourseDetails - Populates form fields with data",
+      "BindData - Binds data to Data controls",
+      "BindClinicalLogData - Binds data to ClinicalLogData controls",
+      "FillPreceptorByStudent - Populates form fields with data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "PatientLogManager",
+      "ProceduresManager",
+      "FieldsLookupManager",
+      "FNPLogManager",
+      "DNPLogManager",
+      "DiagnosesTabManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 4050
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPRecords.aspx.cs",
+    "fileName": "FNPRecords.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPRecords",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages FNP student records and clinical log data with multi-view support.",
+    "businessPurpose": "Manages FNP (Family Nurse Practitioner) program clinical records and evaluations",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindManageSessionNames - Binds data to ManageSessionNames controls",
+      "GetAcceptConfirmScript - Retrieves AcceptConfirmScript data",
+      "confirm - Handles confirm operation",
+      "GetNotAcceptedConfirmScript - Retrieves NotAcceptedConfirmScript data",
+      "btnBackToMain_Click - Handles BackToMain button click event",
+      "BuildAMFMPoliciesAndDocumentsHTML - Handles BuildAMFMPoliciesAndDocumentsHTML operation",
+      "funDownloadCEMDFile - Handles funDownloadCEMDFile operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "PatientLogManager",
+      "ProceduresManager",
+      "FieldsLookupManager",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 242
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReport.aspx.cs",
+    "fileName": "FNPReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "FNP-specific report filter page with session, course, and student filtering.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DNPLogManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 245
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReportResults.aspx.cs",
+    "fileName": "FNPReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays FNP report results with clinical data visualization.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "ReplaceParentheses - Handles ReplaceParentheses operation",
+      "AutoCloseHtmlTags - Handles AutoCloseHtmlTags operation",
+      "BrowserDetails - Handles BrowserDetails operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data",
+      "Regex - Handles Regex operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 627
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/PreceptorHoursMarketingReport.aspx.cs",
+    "fileName": "PreceptorHoursMarketingReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReports_PreceptorHoursMarketingReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages preceptor hours marketing report operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 219
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/PreceptorHoursMarketingReportResults.aspx.cs",
+    "fileName": "PreceptorHoursMarketingReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReports_PreceptorHoursMarketingReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages preceptor hours marketing report results operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "Preceptor - Handles Preceptor operation",
+      "AutoCloseHtmlTags - Handles AutoCloseHtmlTags operation",
+      "RemoveHTMLComments - Handles RemoveHTMLComments operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data",
+      "Regex - Handles Regex operation",
+      "HtmlDocument - Handles HtmlDocument operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 318
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/PreceptorHoursReport.aspx.cs",
+    "fileName": "PreceptorHoursReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReports_PreceptorHoursReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages preceptor hours report operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "DNPInfoBusiness",
+      "DetailedConferenceTrackingReportManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "moderate",
+    "lineCount": 168
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/PreceptorHoursReportResult.aspx.cs",
+    "fileName": "PreceptorHoursReportResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReports_PreceptorHoursReportResult",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages preceptor hours report result operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "Session - Handles Session operation",
+      "Course - Handles Course operation",
+      "Preceptor - Handles Preceptor operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 320
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/StudentTallyReport.aspx.cs",
+    "fileName": "StudentTallyReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNP_Reports_StudentTallyReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages student tally report operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 220
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPReports/StudentTallyReportResults.aspx.cs",
+    "fileName": "StudentTallyReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPReports_StudentTallyReportResult",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages student tally report results operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "Session - Handles Session operation",
+      "Course - Handles Course operation",
+      "Users - Handles Users operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 307
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPStudentLogCombinedReport.aspx.cs",
+    "fileName": "FNPStudentLogCombinedReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPStudentLogCombinedReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Generates combined student log reports for FNP programs.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "AutoCloseHtmlTags - Handles AutoCloseHtmlTags operation",
+      "ReplaceParentheses - Handles ReplaceParentheses operation",
+      "GetExcelSessionKey - Retrieves ExcelSessionKey data",
+      "GetPDFSessionKey - Retrieves PDFSessionKey data",
+      "BrowserDetails - Handles BrowserDetails operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 814
+  },
+  {
+    "filePath": "Web/EssentialActivities/FNPStudentLogReportResults.aspx.cs",
+    "fileName": "FNPStudentLogReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FNPStudentLogReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays FNP student log report results.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "AutoCloseHtmlTags - Handles AutoCloseHtmlTags operation",
+      "ReplaceParentheses - Handles ReplaceParentheses operation",
+      "BrowserDetails - Handles BrowserDetails operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "ExportExcel - Exports data to external format",
+      "function - Handles function operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 1106
+  },
+  {
+    "filePath": "Web/EssentialActivities/FacultyEvaluationAndPreceptorReport.aspx.cs",
+    "fileName": "FacultyEvaluationAndPreceptorReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FacultyEvaluationAndPreceptorReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Generates faculty evaluation and preceptor report with multi-filter support.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "FillTemplateList - Populates form fields with data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPLogManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 266
+  },
+  {
+    "filePath": "Web/EssentialActivities/FacultyEvaluationAndPreceptorReportResult.aspx.cs",
+    "fileName": "FacultyEvaluationAndPreceptorReportResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FacultyEvaluationAndPreceptorReportResult",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays faculty evaluation and preceptor report results.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "Evaluation - Handles Evaluation operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 245
+  },
+  {
+    "filePath": "Web/EssentialActivities/FacultyEvaluationReport.aspx.cs",
+    "fileName": "FacultyEvaluationReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FacultyEvaluationReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Faculty evaluation report filter page.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "FillTemplateList - Populates form fields with data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "DNPInfoBusiness",
+      "DNPLogManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 248
+  },
+  {
+    "filePath": "Web/EssentialActivities/FacultyEvaluationReportResults.aspx.cs",
+    "fileName": "FacultyEvaluationReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FacultyEvaluationReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays faculty evaluation report results.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "Session - Handles Session operation",
+      "Course - Handles Course operation",
+      "User - Handles User operation",
+      "Evaluation - Handles Evaluation operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 304
+  },
+  {
+    "filePath": "Web/EssentialActivities/FacultyLog.aspx.cs",
+    "fileName": "FacultyLog.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FacultyLog",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Faculty-specific clinical log view and management.",
+    "businessPurpose": "Manages faculty evaluation and clinical log tracking",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls",
+      "BindSummaryGridWithFilters - Binds data to SummaryGridWithFilters controls",
+      "Page_Unload - Handles Page Unload operation",
+      "BindSummaryGrid - Binds data to SummaryGrid controls",
+      "BindDetailedGrid - Binds data to DetailedGrid controls",
+      "BindDetailedGridWithFilters - Binds data to DetailedGridWithFilters controls",
+      "ISNULL - Handles ISNULL operation",
+      "GenerateURL - Generates URL output",
+      "lstLookupByName_SelectedIndexChanged - Handles lstLookupByName SelectedIndexChanged operation",
+      "grddeletedManageStudentLogDetails_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 1507
+  },
+  {
+    "filePath": "Web/EssentialActivities/FnpManualImport.aspx.cs",
+    "fileName": "FnpManualImport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_FnpManualImport",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Handles manual import of FNP student data from external sources.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "ImportPreceptorInfoFromExcel - Handles ImportPreceptorInfoFromExcel operation",
+      "btnImportCourse_Click - Handles ImportCourse button click event",
+      "ImportFacultyData - Handles ImportFacultyData operation",
+      "StringReader - Handles StringReader operation",
+      "ImportStudentBannerData - Handles ImportStudentBannerData operation",
+      "FileUploadComponentWebService - Handles FileUploadComponentWebService operation",
+      "AuthHeader - Handles AuthHeader operation",
+      "ImportPreceptorData - Handles ImportPreceptorData operation",
+      "ImportStudentInfoFromExcel - Handles ImportStudentInfoFromExcel operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "complex",
+    "lineCount": 487
+  },
+  {
+    "filePath": "Web/EssentialActivities/GeneratePIPAssignments.aspx.cs",
+    "fileName": "GeneratePIPAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_GeneratePIPAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Generates Performance Improvement Plan assignments for clinical students.",
+    "businessPurpose": "Supports assignment of courses, evaluations, or sessions to students/faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindStudents - Binds data to Students controls",
+      "ddlSession_SelectedIndexChanged - Handles dropdown selection change",
+      "BindData - Binds data to Data controls",
+      "ddlAcademicYears_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCourse_OnSelectedIndexChanged - Handles ddlCourse OnSelectedIndexChanged operation",
+      "ddlEvaluationPeriod_OnSelectedIndexChanged - Handles ddlEvaluationPeriod OnSelectedIndexChanged operation",
+      "ddlThreshold_OnSelectedIndexChanged - Handles ddlThreshold OnSelectedIndexChanged operation",
+      "btnGenerateAssignments_Click - Handles GenerateAssignments button click event",
+      "GenerateAssignments - Generates Assignments output",
+      "btnSubmit_Click - Handles Submit button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 333
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportBannerData.aspx.cs",
+    "fileName": "ImportBannerData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportBannerData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Imports student data from Banner system integration.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "GetCourseInfo - Retrieves CourseInfo data",
+      "GetStudentInfo - Retrieves StudentInfo data",
+      "btnDownLoad_Click - Handles DownLoad button click event",
+      "DownloadStudentInfo - Handles DownloadStudentInfo operation",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation",
+      "StringReader - Handles StringReader operation",
+      "GetFNPStudentInfo - Retrieves FNPStudentInfo data",
+      "ImportFromExcel - Handles ImportFromExcel operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "very-complex",
+    "lineCount": 611
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportCaselogData.aspx.cs",
+    "fileName": "ImportCaselogData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportCaselogData",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Imports clinical caselog data from external files.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "XLWorkbook - Handles XLWorkbook operation",
+      "Workbook - Handles Workbook operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Contains Excel export logic that should use modern library (e.g., ExcelJS in Node.js).",
+    "complexity": "moderate",
+    "lineCount": 135
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportFNPData.aspx.cs",
+    "fileName": "ImportFNPData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportFNPData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Imports FNP program data from external sources.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "GetCourseInfo - Retrieves CourseInfo data",
+      "GetFNPStudentInfo - Retrieves FNPStudentInfo data",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation",
+      "StringReader - Handles StringReader operation",
+      "btnDownload_Click - Handles Download button click event",
+      "GetDownloadFNPStudentInfo - Retrieves DownloadFNPStudentInfo data",
+      "ImportFNPDataFromExcel - Handles ImportFNPDataFromExcel operation",
+      "FileUploadComponentWebService - Handles FileUploadComponentWebService operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "very-complex",
+    "lineCount": 522
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportFNPStudentFailedData.aspx.cs",
+    "fileName": "ImportFNPStudentFailedData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportFNPStudentFailedData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Handles import of failed FNP student data records.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "FileUploadComponentWebService - Handles FileUploadComponentWebService operation",
+      "AuthHeader - Handles AuthHeader operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "moderate",
+    "lineCount": 100
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportPreceptorData.aspx.cs",
+    "fileName": "ImportPreceptorData.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportPreceptorData",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Imports preceptor information from external data files.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "GetStudentInfo - Retrieves StudentInfo data",
+      "btnDownLoad_Click - Handles DownLoad button click event",
+      "DownloadStudentInfo - Handles DownloadStudentInfo operation",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation",
+      "StringReader - Handles StringReader operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "complex",
+    "lineCount": 308
+  },
+  {
+    "filePath": "Web/EssentialActivities/ImportPreceptorUniqueID.aspx.cs",
+    "fileName": "ImportPreceptorUniqueID.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ImportPreceptorUniqueID",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages import of unique preceptor identifiers.",
+    "businessPurpose": "Handles bulk data import from external systems (Banner, SalesForce, etc.)",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnImport_Click - Handles Import button click event",
+      "GetStudentInfo - Retrieves StudentInfo data",
+      "RestClient - Handles RestClient operation",
+      "Uri - Handles Uri operation",
+      "RestRequest - Handles RestRequest operation",
+      "StringReader - Handles StringReader operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "ServicePointManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Data import logic should be migrated to NestJS BullMQ worker for async processing.",
+    "complexity": "complex",
+    "lineCount": 221
+  },
+  {
+    "filePath": "Web/EssentialActivities/IsDeleteActivity.aspx.cs",
+    "fileName": "IsDeleteActivity.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_IsDeleteActivity",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Handles soft-delete operations for essential activities.",
+    "businessPurpose": "Handles soft-delete operations for clinical activities",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnOK_Click - Handles OK button click event",
+      "AddDNPEssentials - Adds new DNPEssentials record"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 101
+  },
+  {
+    "filePath": "Web/EssentialActivities/LedgerofEvaluations.aspx.cs",
+    "fileName": "LedgerofEvaluations.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_LedgerofEvaluations",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Evaluation ledger filter page for tracking evaluation assignments and completions.",
+    "businessPurpose": "Tracks evaluation assignment and completion ledger",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "complex",
+    "lineCount": 229
+  },
+  {
+    "filePath": "Web/EssentialActivities/LedgerofEvaluationsResult.aspx.cs",
+    "fileName": "LedgerofEvaluationsResult.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_LedgerofEvaluationsResult",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Displays evaluation ledger results.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "ProcessReportOutput - Handles ProcessReportOutput operation",
+      "StorePageStateParams - Handles StorePageStateParams operation",
+      "ReportInfo - Handles ReportInfo operation",
+      "StorePageState - Handles StorePageState operation",
+      "PrintReportTopHeader - Prepares print view",
+      "DataRelation - Handles DataRelation operation",
+      "PrintReportSubHeader - Prepares print view",
+      "PrintEvaluationsCompletedBy - Prepares print view",
+      "PrintEvaluationsCompletedOn - Prepares print view",
+      "PrintEvaluationsClosed - Prepares print view",
+      "PrintEvaluationsPending - Prepares print view"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationsReportManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "very-complex",
+    "lineCount": 1062
+  },
+  {
+    "filePath": "Web/EssentialActivities/LinkEvaluationtoCourses.aspx.cs",
+    "fileName": "LinkEvaluationtoCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_LinkEvaluationtoCourses",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages linking evaluation templates to specific courses.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindCourses - Binds data to Courses controls",
+      "FetchEvaluationList - Handles FetchEvaluationList operation",
+      "btnUpdate_Click - Handles Update button click event",
+      "LinkEvaluationtoCoursesEntity - Handles LinkEvaluationtoCoursesEntity operation",
+      "ConvertListToDataTable - Handles ConvertListToDataTable operation",
+      "lstCourses_SelectedIndexChanged - Handles lstCourses SelectedIndexChanged operation",
+      "Student - Handles Student operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 367
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageClinicalPerformanceImprovementPlan.aspx.cs",
+    "fileName": "ManageClinicalPerformanceImprovementPlan.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageClinicalPerformanceImprovementPlan",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Admin page for managing all Clinical Performance Improvement Plans.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindCourses - Binds data to Courses controls",
+      "BindStudents - Binds data to Students controls",
+      "RefreshGrid - Handles RefreshGrid operation",
+      "ddlSession_OnSelectedIndexChanged - Handles ddlSession OnSelectedIndexChanged operation",
+      "ddlCourse_OnSelectedIndexChanged - Handles ddlCourse OnSelectedIndexChanged operation",
+      "ddlStudent_OnSelectedIndexChanged - Handles ddlStudent OnSelectedIndexChanged operation",
+      "grdBehaviors_RowCommand - Handles grdBehaviors RowCommand operation",
+      "isShowDelete - Handles isShowDelete operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 250
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageCourseMappings.aspx.cs",
+    "fileName": "ManageCourseMappings.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageCourseMappings",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages course mapping configurations.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessions - Binds data to Sessions controls",
+      "BindCourses - Binds data to Courses controls",
+      "BindData - Binds data to Data controls",
+      "ddlAcademicYear_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCourseSession_SelectedIndexChanged - Handles dropdown selection change",
+      "grdCourses_RowCommand - Handles grdCourses RowCommand operation",
+      "grvDeletedCourses_RowCommand - Handles grvDeletedCourses RowCommand operation",
+      "ddlCourses_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 221
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageCourseObjectives.aspx.cs",
+    "fileName": "ManageCourseObjectives.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageCourseObjectives",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Admin page for managing course objectives across programs.",
+    "businessPurpose": "Manages course objective definitions and reporting for clinical programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "ddlCourse_OnSelectedIndexChanged - Handles ddlCourse OnSelectedIndexChanged operation",
+      "BindCourseObjectives - Binds data to CourseObjectives controls",
+      "GenerateURL - Generates URL output",
+      "CourseObjective_RowCommand - Handles CourseObjective RowCommand operation",
+      "btnRefreshGrid_Click - Handles RefreshGrid button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 108
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageCourses.aspx.cs",
+    "fileName": "ManageCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageCourses",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage courses operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessions - Binds data to Sessions controls",
+      "BindData - Binds data to Data controls",
+      "grdCourses_RowCommand - Handles grdCourses RowCommand operation",
+      "grvDeletedCourses_RowCommand - Handles grvDeletedCourses RowCommand operation",
+      "ddlAcademicYear_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCourseSession_SelectedIndexChanged - Handles dropdown selection change"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 192
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageCoursesNames.aspx.cs",
+    "fileName": "ManageCoursesNames.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageCoursesNames",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage courses names operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindCourses - Binds data to Courses controls",
+      "BuildManageCourses - Handles BuildManageCourses operation",
+      "BindYears - Binds data to Years controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 232
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageDetailedLogActivities.aspx.cs",
+    "fileName": "ManageDetailedLogActivities.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageDetailedLogActivities",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage detailed log activities operations within the EssentialActivities module.",
+    "businessPurpose": "Administrative management functions for clinical program configuration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindData - Binds data to Data controls",
+      "btnRestore_Click - Handles Restore button click event",
+      "btnShow_Click - Handles Show button click event",
+      "btnBackToMain_Click - Handles BackToMain button click event",
+      "DeleteMoonHistory - Deletes MoonHistory record",
+      "AddDNPEssentials - Adds new DNPEssentials record",
+      "GenerateURL - Generates URL output",
+      "StudentDeleteDetailedMode - Handles StudentDeleteDetailedMode operation",
+      "grddeletedManageStudentLogDetails_RowDataBound - Custom formatting for grid row data binding",
+      "StudentDetailedMode - Handles StudentDetailedMode operation",
+      "grdStudentDetailedMode_RowDataBound - Custom formatting for grid row data binding"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 418
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageEssentialActivities.aspx.cs",
+    "fileName": "ManageEssentialActivities.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageEssentialActivities",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage essential activities operations within the EssentialActivities module.",
+    "businessPurpose": "Administrative management functions for clinical program configuration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindGrid - Binds data to Grid controls",
+      "GenerateURL - Generates URL output",
+      "GrandTotal - Handles GrandTotal operation",
+      "lbtnDelete_Click - Handles lbtnDelete Click operation",
+      "AddDNPEssentials - Adds new DNPEssentials record",
+      "DeleteStudentEssentials - Deletes StudentEssentials record",
+      "ddlFilterColumn_SelectedIndexChanged - Handles dropdown selection change",
+      "BindEmpGrid - Binds data to EmpGrid controls",
+      "grdViewCourseData_RowDataBound - Custom formatting for grid row data binding",
+      "btnRefresh_Click - Handles Refresh button click event",
+      "btnClear_Click - Handles Clear button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DocDetailsManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 267
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageFNPEvaluationAssignments.aspx.cs",
+    "fileName": "ManageFNPEvaluationAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageFNPEvaluationAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage f n p evaluation assignments operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical evaluation assignment workflows",
+    "keyMethods": [
+      "SearchCriteria - Handles SearchCriteria operation",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindFilters - Binds data to Filters controls",
+      "refreshGrid - Handles refreshGrid operation",
+      "Assignments - Handles Assignments operation",
+      "BindSessions - Binds data to Sessions controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "FillTemplateList - Populates form fields with data",
+      "FillCourseDetails - Populates form fields with data",
+      "BindAdministrators - Binds data to Administrators controls",
+      "BindUsers - Binds data to Users controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "EvaluationsTemplateManager",
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "EvaluationTemplateBusiness",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 1529
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageGroupSessions.aspx.cs",
+    "fileName": "ManageGroupSessions.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageGroupSessions",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages manage group sessions operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "BindYears - Binds data to Years controls",
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindCourses - Binds data to Courses controls",
+      "BuildManageCourses - Handles BuildManageCourses operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 302
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageLogActivities.aspx.cs",
+    "fileName": "ManageLogActivities.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageLogActivities",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages clinical log activities and configurations.",
+    "businessPurpose": "Administrative management functions for clinical program configuration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls",
+      "BindGrid - Binds data to Grid controls",
+      "Page_Unload - Handles Page Unload operation",
+      "btnRestore_Click - Handles Restore button click event",
+      "BindDetailedGrid - Binds data to DetailedGrid controls",
+      "BindData - Binds data to Data controls",
+      "btnShow_Click - Handles Show button click event",
+      "GenerateURL - Generates URL output",
+      "lbtnVIDDelete_Click - Handles lbtnVIDDelete Click operation",
+      "StudentDetailedMode - Handles StudentDetailedMode operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "DNPLogManager",
+      "DocDetailsBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 1057
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageLogActivitiesandRoster.aspx.cs",
+    "fileName": "ManageLogActivitiesandRoster.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageLogActivitiesandRoster",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages manage log activitiesand roster operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical rotation rosters and scheduling",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindFiltersForPostback - Binds data to FiltersForPostback controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "complex",
+    "lineCount": 226
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManagePIPAssignmentUsers.aspx.cs",
+    "fileName": "ManagePIPAssignmentUsers.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManagePIPAssignmentUsers",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage p i p assignment users operations within the EssentialActivities module.",
+    "businessPurpose": "Supports assignment of courses, evaluations, or sessions to students/faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnDeleteAll_Click - Handles DeleteAll button click event",
+      "refreshGrid - Handles refreshGrid operation",
+      "StorePageStateToParm - Handles StorePageStateToParm operation",
+      "confirm - Handles confirm operation",
+      "btnRefreshGrid_Click - Handles RefreshGrid button click event",
+      "Midterm - Handles Midterm operation",
+      "GetDeleteConfirmScript - Retrieves DeleteConfirmScript data",
+      "GetRestoreConfirmScript - Retrieves RestoreConfirmScript data",
+      "Delete_RowCommand - Deletes _RowCommand record",
+      "Restore_RowCommand - Handles Restore RowCommand operation",
+      "Restore1_RowCommand - Handles Restore1 RowCommand operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "FNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 332
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManagePIPEvaluationAssignments.aspx.cs",
+    "fileName": "ManagePIPEvaluationAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManagePIPEvaluationAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage p i p evaluation assignments operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical evaluation assignment workflows",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindFilters - Binds data to Filters controls",
+      "refreshGrid - Handles refreshGrid operation",
+      "FillCourseDetails - Populates form fields with data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "BindPreceptors - Binds data to Preceptors controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation",
+      "Delete_RowCommand - Deletes _RowCommand record",
+      "Restore_RowCommand - Handles Restore RowCommand operation",
+      "GetRestoreConfirmScript - Retrieves RestoreConfirmScript data",
+      "confirm - Handles confirm operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Uses ASP.NET Session state; needs JWT/Redis-based session handling in Node.js.",
+    "complexity": "very-complex",
+    "lineCount": 1221
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManagePIPFields.aspx.cs",
+    "fileName": "ManagePIPFields.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManagePIPFields",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages manage p i p fields operations within the EssentialActivities module.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BuildBehaviourHTML - Handles BuildBehaviourHTML operation",
+      "btnSave_Click - Handles Save button click event",
+      "StringReader - Handles StringReader operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 200
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageSessionCourses.aspx.cs",
+    "fileName": "ManageSessionCourses.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageSessionCourses",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages manage session courses operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindSessions - Binds data to Sessions controls",
+      "BindCourses - Binds data to Courses controls",
+      "BindFaculty - Binds data to Faculty controls",
+      "BindStudents - Binds data to Students controls",
+      "BindData - Binds data to Data controls",
+      "ddlSession_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlFaculty_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlCourse_SelectedIndexChanged - Handles dropdown selection change",
+      "ddlStudents_SelectedIndexChanged - Handles dropdown selection change",
+      "grdCourses_RowCommand - Handles grdCourses RowCommand operation",
+      "grvDeletedCourses_RowCommand - Handles grvDeletedCourses RowCommand operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness",
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 221
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageSessionNames.aspx.cs",
+    "fileName": "ManageSessionNames.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageSessionNames",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Admin page for managing clinical session name configurations.",
+    "businessPurpose": "Manages clinical course and session configurations for nursing programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindCampusLocations - Binds data to CampusLocations controls",
+      "BindManageSessionNames - Binds data to ManageSessionNames controls",
+      "ddlCampusLocation_SelectedIndexChanged - Handles dropdown selection change",
+      "BuildAMFMPoliciesAndDocumentsHTML - Handles BuildAMFMPoliciesAndDocumentsHTML operation",
+      "funDownloadCEMDFile - Handles funDownloadCEMDFile operation",
+      "lstAcademicYears_OnSelectedIndexChanged - Handles lstAcademicYears OnSelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "PreceptorManager",
+      "DutyHoursManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "complex",
+    "lineCount": 286
+  },
+  {
+    "filePath": "Web/EssentialActivities/ManageStudentLogDetails.aspx.cs",
+    "fileName": "ManageStudentLogDetails.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ManageStudentLogDetails",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages detailed student log entries and reviews.",
+    "businessPurpose": "Administrative management functions for clinical program configuration",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindData - Binds data to Data controls",
+      "GenerateURL - Generates URL output",
+      "btnTopApproveAll_Click - Handles TopApproveAll button click event",
+      "btnBackToMain_Click - Handles BackToMain button click event",
+      "btnSendEmailReminderstoSelected_Click - Handles SendEmailReminderstoSelected button click event",
+      "btnTopRejectAll_Click - Handles TopRejectAll button click event",
+      "lnkUndo_RowCommand - Handles lnkUndo RowCommand operation",
+      "grdStudentDetailedMode_RowDataBound - Custom formatting for grid row data binding",
+      "GetRestoreConfirmScript - Retrieves RestoreConfirmScript data",
+      "confirm - Handles confirm operation",
+      "GetAcceptConfirmScript - Retrieves AcceptConfirmScript data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness"
+    ],
+    "migrationRelevance": "high",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "very-complex",
+    "lineCount": 620
+  },
+  {
+    "filePath": "Web/EssentialActivities/PIPReport.aspx.cs",
+    "fileName": "PIPReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_PIPReport",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages p i p report operations within the EssentialActivities module.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPInfoBusiness",
+      "FNPLogManager",
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 210
+  },
+  {
+    "filePath": "Web/EssentialActivities/PIPReportResults.aspx.cs",
+    "fileName": "PIPReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_PIPReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages p i p report results operations within the EssentialActivities module.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 248
+  },
+  {
+    "filePath": "Web/EssentialActivities/SchedulePIPAssignments.aspx.cs",
+    "fileName": "SchedulePIPAssignments.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_SchedulePIPAssignments",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages schedule p i p assignments operations within the EssentialActivities module.",
+    "businessPurpose": "Supports assignment of courses, evaluations, or sessions to students/faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "low",
+    "migrationNote": "Minimal code; may be deprecated or unused. Verify before migrating.",
+    "complexity": "trivial",
+    "lineCount": 21
+  },
+  {
+    "filePath": "Web/EssentialActivities/SchedulerSetup.aspx.cs",
+    "fileName": "SchedulerSetup.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_SchedulerSetup",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages scheduler setup operations within the EssentialActivities module.",
+    "businessPurpose": "Manages clinical rotation rosters and scheduling",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "FillSettings - Populates form fields with data",
+      "btnSaveSettings_Click - Handles SaveSettings button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "DNPLogManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 100
+  },
+  {
+    "filePath": "Web/EssentialActivities/SeeCurrentEvaluationLinks.aspx.cs",
+    "fileName": "SeeCurrentEvaluationLinks.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_SeeCurrentEvaluationLinks",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages see current evaluation links operations within the EssentialActivities module.",
+    "businessPurpose": "Manages linking evaluation templates to courses",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "OnViewInitializeEvaluationRotation - Handles OnViewInitializeEvaluationRotation operation",
+      "rptEvaluations_ItemDataBound - Handles rptEvaluations ItemDataBound operation",
+      "rptRotations_ItemDataBound - Handles rptRotations ItemDataBound operation",
+      "Rotations_ItemDataBound - Handles Rotations ItemDataBound operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "moderate",
+    "lineCount": 175
+  },
+  {
+    "filePath": "Web/EssentialActivities/StudentDashboard.aspx.cs",
+    "fileName": "StudentDashboard.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_StudentDashboard",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages student dashboard operations within the EssentialActivities module.",
+    "businessPurpose": "Provides student-facing dashboard for clinical activity progress tracking",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [],
+    "migrationRelevance": "high",
+    "migrationNote": "High-value page with many integrations; prioritize for React migration.",
+    "complexity": "simple",
+    "lineCount": 57
+  },
+  {
+    "filePath": "Web/EssentialActivities/StudentEvaluationReport.aspx.cs",
+    "fileName": "StudentEvaluationReport.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_StudentEvaluationReport",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages student evaluation report operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindYears - Binds data to Years controls",
+      "BindSessionsByYear - Binds data to SessionsByYear controls",
+      "FillTemplateList - Populates form fields with data",
+      "lstAcademicYears_SelectedIndexChanged - Handles lstAcademicYears SelectedIndexChanged operation"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPLogManager",
+      "FNPInfoBusiness",
+      "DNPInfoBusiness",
+      "DNPLogManager",
+      "EvaluationsTemplateManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Report generation should be migrated to NestJS with modern frontend rendering.",
+    "complexity": "complex",
+    "lineCount": 201
+  },
+  {
+    "filePath": "Web/EssentialActivities/StudentEvaluationReportResults.aspx.cs",
+    "fileName": "StudentEvaluationReportResults.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_StudentEvaluationReportResults",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages student evaluation report results operations within the EssentialActivities module.",
+    "businessPurpose": "Generates clinical activity reports for program administrators and faculty",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "HtmlTextWriter - Handles HtmlTextWriter operation",
+      "User - Handles User operation",
+      "Course - Handles Course operation",
+      "Session - Handles Session operation",
+      "Evaluation - Handles Evaluation operation",
+      "GetLoadingScript - Retrieves LoadingScript data",
+      "HideWait - Handles HideWait operation",
+      "LoadReportLoadingScreen - Loads ReportLoadingScreen data"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Uses legacy HTML-injection loading screen pattern; replace with modern async loading.",
+    "complexity": "complex",
+    "lineCount": 247
+  },
+  {
+    "filePath": "Web/EssentialActivities/UserAcknowledgement.aspx.cs",
+    "fileName": "UserAcknowledgement.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_UserAcknowledgement",
+    "inheritsFrom": "System.Web.UI.Page",
+    "module": "EssentialActivities",
+    "summary": "Manages user acknowledgement operations within the EssentialActivities module.",
+    "businessPurpose": "Supports clinical activity tracking and management for nursing/medical education programs",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "btnAgree_Click - Handles Agree button click event",
+      "btnDisagree_Click - Handles Disagree button click event"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "UserBusiness",
+      "UserManager"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 83
+  },
+  {
+    "filePath": "Web/EssentialActivities/ViewPerformanceImprovementPlan.aspx.cs",
+    "fileName": "ViewPerformanceImprovementPlan.aspx.cs",
+    "fileType": "code-behind",
+    "className": "EssentialActivities_ViewPerformanceImprovementPlan",
+    "inheritsFrom": "BasePage",
+    "module": "EssentialActivities",
+    "summary": "Manages view performance improvement plan operations within the EssentialActivities module.",
+    "businessPurpose": "Manages Clinical Performance Improvement Plans for underperforming students",
+    "keyMethods": [
+      "Page_Load - Initializes page on load, checks permissions and loads data",
+      "BindBehaviors - Binds data to Behaviors controls"
+    ],
+    "storedProcedures": [],
+    "businessManagersUsed": [
+      "FNPInfoBusiness"
+    ],
+    "migrationRelevance": "medium",
+    "migrationNote": "Standard WebForms code-behind; migrate business logic to NestJS service, UI to React.",
+    "complexity": "moderate",
+    "lineCount": 156
+  }
+]}
+  directoryOverview="EssentialActivities is the clinical activity tracking module for nursing programs (FNP, DNP, BSN). It manages clinical log entry and review, course/session/student management, evaluation assignments, clinical performance improvement plans, roster management, faculty log tracking, data import/export (Banner, SalesForce), and comprehensive reporting for clinical hours and competencies."
+  keyWorkflows={["Clinical log entry and faculty/admin review workflow","Course management and student enrollment","Evaluation assignment and tracking (FNP, DNP)","Clinical Performance Improvement Plan (PIP) lifecycle","Session and roster management","Clinical data export and SalesForce integration","Faculty and preceptor evaluation reporting","DNP/FNP program-specific report generation","Banner data import and student synchronization","Course objective tracking and reporting"]}
+/>

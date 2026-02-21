@@ -1,0 +1,190 @@
+{
+  "projectName": "DotNetProcedureReminder",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/DotNetProcedureReminder",
+  "parsedAt": "2026-02-20T17:11:05.361Z",
+  "fileCount": 2,
+  "totalLines": 302,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/DotNetProcedureReminder/DotNetProcedureReminder/Program.cs",
+      "lineCount": 265,
+      "className": "ProcedureReminder",
+      "namespace": "DotNetProcedureReminder",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.IO",
+        "System.Data",
+        "System.Data.SqlClient",
+        "System.Data.Sql",
+        "System.Configuration",
+        "MyEvaluations.DataAccess.SQL",
+        "MyEvaluations.Business.Utilities",
+        "MyEvaluations.Logging"
+      ],
+      "businessModuleRefs": [
+        "Utilities"
+      ],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\r\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlConnection",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "@System.Configuration.ConfigurationManager.ConnectionStrings[\"MyEvalsConnectionString\"].ConnectionString"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "DataRow dr in dtUserList.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateProcedureReminderSentDate",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ProceduresSubmittedIDs.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateProcedureReminderSentDate",
+          "returnType": "\r",
+          "visibility": "private",
+          "parameters": [
+            "ProceduresSubmittedIDs.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SendMail",
+          "returnType": " Sending Email\r\n        private static bool",
+          "visibility": "private",
+          "parameters": [
+            "string fromEmail",
+            "string toEmail",
+            "string subject",
+            "string htmlBody",
+            "string departmentId",
+            "string strDeptName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ReadKeyFromFile",
+          "returnType": "returns>\r\n        private static String",
+          "visibility": "private",
+          "parameters": [
+            "String fileName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateProcedureReminderSentDate",
+          "returnType": "s ReminderSentDate column\r\n        public static void",
+          "visibility": "private",
+          "parameters": [
+            "string ProceduresSubmittedIDs"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SqlCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "GetProcedureEmailReminderSend",
+        "UpdateProcedureReminderSentDate"
+      ]
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/DotNetProcedureReminder/DotNetProcedureReminder/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

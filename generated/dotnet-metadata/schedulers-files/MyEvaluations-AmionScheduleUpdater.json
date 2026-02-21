@@ -1,0 +1,516 @@
+{
+  "projectName": "MyEvaluations.AmionScheduleUpdater",
+  "layer": "scheduler",
+  "projectPath": "MyEvaluations.AmionScheduleUpdater",
+  "parsedAt": "2026-02-20T17:11:06.531Z",
+  "fileCount": 2,
+  "totalLines": 217,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "MyEvaluations.AmionScheduleUpdater/Program.cs",
+      "lineCount": 180,
+      "className": "Program",
+      "namespace": "MyEvaluations.AmionScheduleUpdater",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "MyEvaluations.Business.DutyHours",
+        "System.Data",
+        "MyEvaluations.Business.TimeSheet",
+        "MyEvaluations.DataAccess.SQL"
+      ],
+      "businessModuleRefs": [
+        "DutyHours",
+        "TimeSheet"
+      ],
+      "methods": [
+        {
+          "name": "StringBuilder",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Main",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "process",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now + \" An error occured: \" + ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "\"Elapsed execution time: \" + sw.ElapsedMilliseconds + \" ms\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "WriteLogFile",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLogFileName",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string message"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "WriteLogFile",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "process",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetLogFileName",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDepartemntsQueue",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in departemntsQueue.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "getDepartmentDataByYear",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "departmentId",
+            "AcademicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQGendaDepartemntsQueue",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in QGendadepartemntsQueue.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "getQGendaDepartmentDataByYear",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "departmentId",
+            "AcademicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in common.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{2} Start: Refresh Required Departments Schedule Data DepartmentId = {0}",
+            "Academic year = {1}\"",
+            "departmentId",
+            "AcademicYear",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetRefreshRequiredDepartmentsForScheduleData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "departmentId",
+            "AcademicYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetDepartemntsQueue",
+          "returnType": "\n\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetQGendaDepartemntsQueue",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "getDepartmentDataByYear",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "int departmentId",
+            "int AcademicStartYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{2} Start: Get data for DepartmentId = {0}",
+            "Academic year = {1}\"",
+            "departmentId",
+            "AcademicStartYear",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now + \": \" + RetrieveOnCall_ScheduleManager.RetrieveOnCallScheduleByDepartmentID(departmentId",
+            "AcademicStartYear",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now + \": Momentum: \" + RetrieveQGendaScheduleManager.RetriveMomentumDataByDepartmentID(departmentId",
+            "AcademicStartYear",
+            "1",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now + \": LightingBolt Bolt: \" + RetrieveQGendaScheduleManager.RetriveLightningBoltDataByDepartmentID(departmentId",
+            "AcademicStartYear",
+            "1",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{1} Procees info: {0}\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{2} Completed: Get data for DepartmentId = {0}",
+            "Academic year = {1}\"",
+            "departmentId",
+            "AcademicStartYear",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "getQGendaDepartmentDataByYear",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "int departmentId",
+            "int AcademicStartYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{2} Start: Get QGenda data for DepartmentId = {0}",
+            "Academic year = {1}\"",
+            "departmentId",
+            "AcademicStartYear",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DateTime.Now + \": \" + RetrieveQGendaScheduleManager.RetrieveQGendaDataByDepartmentID(departmentId",
+            "AcademicStartYear",
+            "0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{1} Procees QGenda info: {0}\"",
+            "ex.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Log",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "string.Format(\"{2} Completed: Get QGenda data for DepartmentId = {0}",
+            "Academic year = {1}\"",
+            "departmentId",
+            "AcademicStartYear",
+            "DateTime.Now"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetRefreshRequiredDepartmentsForScheduleData",
+          "returnType": "\n        private static string",
+          "visibility": "private",
+          "parameters": [
+            "int departmentID",
+            "int AcademicYear = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "type",
+          "returnType": " Unknown result",
+          "visibility": "private",
+          "parameters": [
+            "might be due to invalid IL or missing references"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "CustomCommand",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCombinedUniqueRowsF",
+          "returnType": "\n        private static DataTable",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table1",
+            "DataTable table2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "int"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "typeof",
+          "returnType": ",",
+          "visibility": "private",
+          "parameters": [
+            "int"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddTableRows",
+          "returnType": "\n            void",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in table.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddTableRows",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "table1"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "AddTableRows",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "table2"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "usp_GetRefreshRequiredDepartmentsForScheduleData"
+      ]
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "MyEvaluations.AmionScheduleUpdater/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

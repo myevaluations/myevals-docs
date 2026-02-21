@@ -1,0 +1,1197 @@
+{
+  "projectName": "SAMLServiceProvider",
+  "layer": "supporting",
+  "projectPath": "SAMLServiceProvider",
+  "parsedAt": "2026-02-20T17:11:06.627Z",
+  "fileCount": 18,
+  "totalLines": 8340,
+  "files": [
+    {
+      "fileName": "IIntegrationConfiguration.cs",
+      "filePath": "SAMLServiceProvider/Data/IIntegrationConfiguration.cs",
+      "lineCount": 14,
+      "className": null,
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "IUserDataRepository.cs",
+      "filePath": "SAMLServiceProvider/Data/IUserDataRepository.cs",
+      "lineCount": 19,
+      "className": null,
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ISamlAssertionAlgorithms.cs",
+      "filePath": "SAMLServiceProvider/Helpers/ISamlAssertionAlgorithms.cs",
+      "lineCount": 12,
+      "className": null,
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ISamlResponseAlgorithms.cs",
+      "filePath": "SAMLServiceProvider/Helpers/ISamlResponseAlgorithms.cs",
+      "lineCount": 12,
+      "className": null,
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlAssertionAlgorithms.cs",
+      "filePath": "SAMLServiceProvider/Helpers/SamlAssertionAlgorithms.cs",
+      "lineCount": 218,
+      "className": "SamlAssertionAlgorithms",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [
+        "ISamlAssertionAlgorithms"
+      ],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Security.Cryptography.Xml",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Create",
+          "returnType": "\n\n        public AssertionType",
+          "visibility": "private",
+          "parameters": [
+            "SamlIntegrationSettings settings",
+            "IUserDataRepository userData"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var attribute in settings.Attributes"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "OneTimeUseType",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Sign",
+          "returnType": "\n\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string thumbprint",
+            "string responseId",
+            "ref XmlElement xmlAssertion"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Encrypt",
+          "returnType": "\n\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string thumbprint",
+            "ref XmlDocument xmlDocument"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlNamespaceManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "xmlDocument.NameTable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "EncryptedXml",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InvalidOperationException",
+          "returnType": "xmlAssertionSource ?? throw new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlResponseAlgorithms.cs",
+      "filePath": "SAMLServiceProvider/Helpers/SamlResponseAlgorithms.cs",
+      "lineCount": 128,
+      "className": "SamlResponseAlgorithms",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [
+        "ISamlResponseAlgorithms"
+      ],
+      "usingStatements": [
+        "System.Globalization",
+        "System.IO",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Xml",
+        "System.Xml.Serialization"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Create",
+          "returnType": "\n\n        public ResponseType",
+          "visibility": "private",
+          "parameters": [
+            "SamlIntegrationSettings samlResponseSpecification",
+            "AssertionType assertion"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Sign",
+          "returnType": "\n\n        public bool",
+          "visibility": "private",
+          "parameters": [
+            "string thumbprint",
+            "string responseId",
+            "ref XmlDocument xmlSamlResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SerializeToXml",
+          "returnType": "\n\n        public XmlDocument",
+          "visibility": "private",
+          "parameters": [
+            "ResponseType samlResponse"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSerializerNamespaces",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlSerializer",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "samlResponse.GetType("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDocument",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlSignedXml.cs",
+      "filePath": "SAMLServiceProvider/Helpers/SamlSignedXml.cs",
+      "lineCount": 30,
+      "className": "SamlSignedXml",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": "SignedXml",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetIdElement",
+          "returnType": "\n\n        public override XmlElement",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument document",
+            "string idValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SigningHelper.cs",
+      "filePath": "SAMLServiceProvider/Helpers/SigningHelper.cs",
+      "lineCount": 70,
+      "className": "SigningHelper",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Security.Cryptography.X509Certificates",
+        "System.Security.Cryptography.Xml",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "SignXml",
+          "returnType": "exception>\n        public static SamlSignedXml",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "X509Certificate2 certificate",
+            "string referenceId",
+            "string referenceValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SamlSignedXml",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "doc",
+            "referenceId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SignXml",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [
+            "samlSignedXml",
+            "certificate",
+            "referenceValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SignXml",
+          "returnType": "exception>\n        public static SamlSignedXml",
+          "visibility": "private",
+          "parameters": [
+            "XmlElement element",
+            "X509Certificate2 certificate",
+            "string referenceId",
+            "string referenceValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SamlSignedXml",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "element",
+            "referenceId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SignXml",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [
+            "samlSignedXml",
+            "certificate",
+            "referenceValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SignXml",
+          "returnType": "\n\n        private static SamlSignedXml",
+          "visibility": "private",
+          "parameters": [
+            "SamlSignedXml samlSignedXml",
+            "X509Certificate2 certificate",
+            "string referenceValue"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDsigEnvelopedSignatureTransform",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDsigExcC14NTransform",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "KeyInfo",
+          "returnType": " Add an RSAKeyValue",
+          "visibility": "private",
+          "parameters": [
+            "optional; helps recipient find key to validate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "KeyInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "KeyInfoX509Data",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "certificate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "X509CertificateHelper.cs",
+      "filePath": "SAMLServiceProvider/Helpers/X509CertificateHelper.cs",
+      "lineCount": 42,
+      "className": "X509CertificateHelper",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Security.Cryptography",
+        "System.Security.Cryptography.X509Certificates"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "GetCertificateByThumbprint",
+          "returnType": "exception>\n        public static X509Certificate2",
+          "visibility": "private",
+          "parameters": [
+            "string thumbprint",
+            "StoreName storeName",
+            "StoreLocation storeLocation"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "X509Store",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "storeName",
+            "storeLocation"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "ISamlIntegrationSteps.cs",
+      "filePath": "SAMLServiceProvider/ISamlIntegrationSteps.cs",
+      "lineCount": 13,
+      "className": null,
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "JwtToken.cs",
+      "filePath": "SAMLServiceProvider/JwtToken.cs",
+      "lineCount": 152,
+      "className": "JwtToken",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System",
+        "System.Collections.Generic",
+        "System.IdentityModel.Tokens.Jwt",
+        "System.Security.Claims",
+        "System.Text",
+        "System.Web"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "ValidateToken",
+          "returnType": "\n\n        public ClaimsPrincipal",
+          "visibility": "private",
+          "parameters": [
+            "HttpCookie cookie"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TokenValidationParameters",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtSecurityTokenHandler",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ValidateExternal",
+          "returnType": "\n        public ClaimsPrincipal",
+          "visibility": "private",
+          "parameters": [
+            "HttpCookie cookie"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TokenValidationParameters",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtSecurityTokenHandler",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateToken",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "long departmentID",
+            "long userID",
+            "long roleID",
+            "Int32 userTypeID",
+            "long qrCodeID = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTokenFromIdentity",
+          "returnType": "\n            return",
+          "visibility": "private",
+          "parameters": [
+            "identity",
+            "AuthOptions.GetSymmetricSecurityKey("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateExternalToken",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "long userID",
+            "long procedureID",
+            "long departmentID",
+            "long roleID",
+            "long userTypeID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTokenFromIdentity",
+          "returnType": "\n            return",
+          "visibility": "private",
+          "parameters": [
+            "identity",
+            "AuthOptions.GetSymmetricSecuritySupervisorKey("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateTokenFromIdentity",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "ClaimsIdentity identity",
+            "SymmetricSecurityKey key"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtSecurityToken",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "issuer: AuthOptions.ISSUER",
+            "audience: AuthOptions.AUDIENCE",
+            "notBefore: now",
+            "claims: identity.Claims",
+            "expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SigningCredentials",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "key",
+            "SecurityAlgorithms.HmacSha256"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "JwtSecurityTokenHandler",
+          "returnType": "\n\n            return new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetIdentity",
+          "returnType": "\n\n        public ClaimsIdentity",
+          "visibility": "private",
+          "parameters": [
+            "long departmentID",
+            "long userID",
+            "long roleID",
+            "int userTypeID",
+            "long qrCodeID = 0",
+            "long isReview = 0"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": "\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserID\"",
+            "userID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "departmentID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"RoleID\"",
+            "roleID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserTypeID\"",
+            "userTypeID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"QRCodeID\"",
+            "qrCodeID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"IsReview\"",
+            "isReview.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ClaimsIdentity",
+          "returnType": "\n            new",
+          "visibility": "private",
+          "parameters": [
+            "claims",
+            "\"Token\"",
+            "ClaimsIdentity.DefaultNameClaimType",
+            "ClaimsIdentity.DefaultRoleClaimType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetExtrenalSupervisorIdentity",
+          "returnType": "\n        private ClaimsIdentity",
+          "visibility": "private",
+          "parameters": [
+            "string userID",
+            "string procedureID",
+            "string departmentID",
+            "string roleID",
+            "string userTypeID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": "\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"ExternalSupervisorID\"",
+            "userID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"Role\"",
+            "\"ExternalSupervisor\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"Procedure\"",
+            "procedureID"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserID\"",
+            "userID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"DepartmentID\"",
+            "departmentID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"RoleID\"",
+            "roleID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Claim",
+          "returnType": ",\n                new",
+          "visibility": "private",
+          "parameters": [
+            "\"UserTypeID\"",
+            "userTypeID.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ClaimsIdentity",
+          "returnType": "\n            new",
+          "visibility": "private",
+          "parameters": [
+            "claims",
+            "\"Token\"",
+            "ClaimsIdentity.DefaultNameClaimType",
+            "ClaimsIdentity.DefaultRoleClaimType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "LoadProperties.cs",
+      "filePath": "SAMLServiceProvider/LoadProperties.cs",
+      "lineCount": 47,
+      "className": "LoadProperties",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.IO",
+        "System.Web"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "initProperties",
+          "returnType": "\n\n        public static void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "var row in File.ReadAllLines(strHttpRuntimePath + \"\\\\Documents\\\\Certificates\\\\\" + IssuerName + \"\\\\config.properties\""
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "SAMLServiceProvider/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SAMLServiceProviderRequest.cs",
+      "filePath": "SAMLServiceProvider/SAMLServiceProviderRequest.cs",
+      "lineCount": 238,
+      "className": "SAMLServiceProviderRequest",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Xml",
+        "System.Security.Cryptography.Xml",
+        "System.IO",
+        "System.IO.Compression",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Web",
+        "System.Security.Cryptography",
+        "System.Deployment.Internal.CodeSigning"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlIntegrationSettings.cs",
+      "filePath": "SAMLServiceProvider/SamlIntegrationSettings.cs",
+      "lineCount": 42,
+      "className": "SamlIntegrationSettings",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "id",
+          "returnType": ">Defines prefix to be added in response",
+          "visibility": "private",
+          "parameters": [
+            "leave empty or avoid parameter if prefix is not necessary"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlIntegrationSteps.cs",
+      "filePath": "SAMLServiceProvider/SamlIntegrationSteps.cs",
+      "lineCount": 119,
+      "className": "SamlIntegrationSteps",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [
+        "ISamlIntegrationSteps"
+      ],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "BuildEncodedSamlResponse",
+          "returnType": "returns>\n        public string",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Uri",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "_configuration.ServiceProviderUri"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SamlIntegrationSettings",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "_configuration.ServiceProviderUri",
+            "_configuration.IssuerUri",
+            "string.Format(UriFormat",
+            "audienceUri.Scheme",
+            "audienceUri.Host"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildAndSignSamlResponse",
+          "returnType": "\n\n            return",
+          "visibility": "private",
+          "parameters": [
+            "settings"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BuildAndSignSamlResponse",
+          "returnType": "\n\n        private string",
+          "visibility": "private",
+          "parameters": [
+            "SamlIntegrationSettings settings"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlNamespaceManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "xmlSamlResponse.NameTable"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlResponse.cs",
+      "filePath": "SAMLServiceProvider/SamlResponse.cs",
+      "lineCount": 92,
+      "className": "SamlResponse",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "Org.BouncyCastle.Crypto.Parameters",
+        "Org.BouncyCastle.OpenSsl",
+        "Org.BouncyCastle.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.IO",
+        "System.Linq",
+        "System.Security.Cryptography",
+        "System.Security.Cryptography.X509Certificates",
+        "System.Security.Cryptography.Xml",
+        "System.Text",
+        "System.Threading.Tasks",
+        "System.Xml"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "ImportPublicKey",
+          "returnType": "\n\n        public RSACryptoServiceProvider",
+          "visibility": "private",
+          "parameters": [
+            "string pem"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PemReader",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "new StringReader(pem"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "RSACryptoServiceProvider",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Sign",
+          "returnType": "\n\n        public SignedXml",
+          "visibility": "private",
+          "parameters": [
+            "XmlDocument doc",
+            "string pemKey",
+            "string referenceID",
+            "X509Certificate2 certificate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SignedXml",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "doc"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "TransformChain",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDsigC14NTransform",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "XmlDsigEnvelopedSignatureTransform",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "KeyInfo",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "KeyInfoX509Data",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "certificate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetPemKey",
+          "returnType": "\n\n        public string",
+          "visibility": "private",
+          "parameters": [
+            "X509Certificate2 certificate"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "MemoryStream",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StreamWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "memoryStream"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "PemWriter",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "streamWriter"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "SamlSchemas.cs",
+      "filePath": "SAMLServiceProvider/Schemas/SamlSchemas.cs",
+      "lineCount": 7055,
+      "className": "SignatureType",
+      "namespace": "SAMLServiceProvider",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    }
+  ]
+}

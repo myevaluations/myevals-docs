@@ -1,0 +1,322 @@
+{
+  "directory": "Graduation",
+  "directoryPath": "Web/Graduation",
+  "parsedAt": "2026-02-20T17:10:58.564Z",
+  "fileCount": 5,
+  "totalLines": 246,
+  "files": [
+    {
+      "fileName": "AddCertificateTemplate.aspx.cs",
+      "filePath": "Web/Graduation/AddCertificateTemplate.aspx.cs",
+      "lineCount": 39,
+      "className": "Graduation_AddCertificateTemplate",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UserManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "LookUpManager.GetLookUpList(Lookups.Roles"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "AssignCertificateTemplate.aspx.cs",
+      "filePath": "Web/Graduation/AssignCertificateTemplate.aspx.cs",
+      "lineCount": 76,
+      "className": "Graduation_AssignCertificateTemplate",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "Newtonsoft.Json",
+        "Newtonsoft.Json.Linq",
+        "System.Web.UI.WebControls",
+        "MyEvaluations.Business.Security",
+        "MyEvaluations.Business.DutyHours"
+      ],
+      "businessModuleRefs": [
+        "Security",
+        "DutyHours"
+      ],
+      "methods": [
+        {
+          "name": "CertificateTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTableToJSONWithJSONNet",
+          "returnType": "\n\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "DataTable table"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCalenderYears",
+          "returnType": "\n\n    public static List<ListItem>",
+          "visibility": "private",
+          "parameters": [
+            "out Int32 currentAcademicYear",
+            "Boolean getAllYears",
+            "Boolean showFutureYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "String.Format(\"{0}\"",
+            "i.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "EditUserCertificate.aspx.cs",
+      "filePath": "Web/Graduation/EditUserCertificate.aspx.cs",
+      "lineCount": 51,
+      "className": "Graduation_EditUserCertificate",
+      "namespace": "",
+      "baseClass": "BasePage",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "CertificateTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageCertificationTemplates.aspx.cs",
+      "filePath": "Web/Graduation/ManageCertificationTemplates.aspx.cs",
+      "lineCount": 14,
+      "className": "Graduation_ManageCertificationTemplates",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ManageCertificationofCompletion.aspx.cs",
+      "filePath": "Web/Graduation/ManageCertificationofCompletion.aspx.cs",
+      "lineCount": 66,
+      "className": "Graduation_ManageCertificationofCompletion",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "MyEvaluations.Business.Security",
+        "System",
+        "System.Collections.Generic",
+        "System.Data",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [
+        "Security"
+      ],
+      "methods": [
+        {
+          "name": "CertificateTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BindYears",
+          "returnType": "\n\n    private void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetCalenderYears",
+          "returnType": "\n\n    public static List<ListItem>",
+          "visibility": "private",
+          "parameters": [
+            "out Int32 currentAcademicYear",
+            "Boolean getAllYears",
+            "Boolean showFutureYear"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "ListItem",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "String.Format(\"{0}\"",
+            "i.ToString("
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    }
+  ]
+}

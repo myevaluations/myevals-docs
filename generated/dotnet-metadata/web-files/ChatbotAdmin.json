@@ -1,0 +1,404 @@
+{
+  "directory": "ChatbotAdmin",
+  "directoryPath": "Web/ChatbotAdmin",
+  "parsedAt": "2026-02-20T17:10:52.174Z",
+  "fileCount": 5,
+  "totalLines": 312,
+  "files": [
+    {
+      "fileName": "ChatbotAdminFeedback.aspx.cs",
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminFeedback.aspx.cs",
+      "lineCount": 14,
+      "className": "ChatbotAdmin_ChatbotAdminFeedback",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ChatbotAdminHistory.aspx.cs",
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminHistory.aspx.cs",
+      "lineCount": 14,
+      "className": "ChatbotAdmin_ChatbotAdminHistory",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ChatbotAdminSettings.aspx.cs",
+      "filePath": "Web/ChatbotAdmin/ChatbotAdminSettings.aspx.cs",
+      "lineCount": 14,
+      "className": "ChatbotAdmin_ChatbotAdminSettings",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ChatbotIndex.aspx.cs",
+      "filePath": "Web/ChatbotAdmin/ChatbotIndex.aspx.cs",
+      "lineCount": 14,
+      "className": "ChatbotAdmin_ChatbotIndex",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [],
+      "fileType": "code-behind"
+    },
+    {
+      "fileName": "ChatbotUploadFiles.aspx.cs",
+      "filePath": "Web/ChatbotAdmin/ChatbotUploadFiles.aspx.cs",
+      "lineCount": 256,
+      "className": "ChatbotAdmin_ChatbotUploadFiles",
+      "namespace": "",
+      "baseClass": "System.Web.UI.Page",
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Web",
+        "System.Web.UI",
+        "System.Web.UI.WebControls",
+        "Azure.Storage",
+        "Azure.Storage.Blobs",
+        "Azure.Storage.Sas",
+        "System.Data",
+        "MyEvaluations.DataAccess.SQL",
+        "System.IO"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Page_Load",
+          "returnType": "\n    protected void",
+          "visibility": "private",
+          "parameters": [
+            "object sender",
+            "EventArgs e"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GenerateSasToken",
+          "returnType": "\n\n    public string",
+          "visibility": "private",
+          "parameters": [
+            "string blobName",
+            "string module",
+            "string role"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "BlobServiceClient",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "new Uri(string.Format(\"https://{0}.blob.core.windows.net\"",
+            "accountName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorageSharedKeyCredential",
+          "returnType": ",\n            new",
+          "visibility": "private",
+          "parameters": [
+            "accountName",
+            "accountKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "StorageSharedKeyCredential",
+          "returnType": "new",
+          "visibility": "private",
+          "parameters": [
+            "accountName",
+            "accountKey"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveVideoData",
+          "returnType": "\n\n    [System.Web.Services.WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFileName",
+            "string ChatbotFileURL",
+            "string ChatbotFileDescrption",
+            "string ChatbotFileModule",
+            "string ChatbotFileAccessRole",
+            "string ChatbotVideoId",
+            "string ChatbotDocumentType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertAdminChatbotData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ChatbotFileName",
+            "ChatbotFileURL",
+            "ChatbotFileDescrption",
+            "ChatbotFileModule",
+            "ChatbotFileAccessRole",
+            "ChatbotVideoId",
+            "ChatbotDocumentType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "InsertAdminChatbotData",
+          "returnType": "\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFileName",
+            "string ChatbotFileURL",
+            "string ChatbotFileDescrption",
+            "string ChatbotFileModule",
+            "string ChatbotFileAccessRole",
+            "string ChatbotVideoId",
+            "string ChatbotDocumentType"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetChatbotData",
+          "returnType": "\n\n    public static DataTable",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "GetAllUploadedVideos",
+          "returnType": "\n\n    [System.Web.Services.WebMethod]\n    public static List<ChatbotVideoData>",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataTable",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DB",
+          "returnType": " Load your data from",
+          "visibility": "private",
+          "parameters": [
+            "replace with your logic"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "foreach",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "DataRow row in dt.Rows"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateVideoData",
+          "returnType": "\n\n    [System.Web.Services.WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFileName",
+            "string ChatbotVideoId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateAdminChatbotData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ChatbotFileName",
+            "ChatbotVideoId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateAdminChatbotData",
+          "returnType": "\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFileName",
+            "string ChatbotVideoId"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteData",
+          "returnType": "\n\n    [System.Web.Services.WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteAdminChatbotData",
+          "returnType": "\n",
+          "visibility": "private",
+          "parameters": [
+            "ChatbotFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DeleteAdminChatbotData",
+          "returnType": "\n    public static void",
+          "visibility": "private",
+          "parameters": [
+            "string ChatbotFilePath"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "SaveUploadedFile",
+          "returnType": "\n\n    [System.Web.Services.WebMethod]\n    public static string",
+          "visibility": "private",
+          "parameters": [
+            "string fileName",
+            "string base64Data",
+            "string fullName"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "metadata",
+          "returnType": " save",
+          "visibility": "private",
+          "parameters": [
+            "e.g.",
+            "description"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": [
+        "InsertAdminChatbotData",
+        "GetChatbotData",
+        "UpdateAdminChatbotData",
+        "DeleteAdminChatbotData",
+        "CreatedDate"
+      ],
+      "fileType": "code-behind"
+    }
+  ]
+}

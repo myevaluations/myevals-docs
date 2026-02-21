@@ -1,0 +1,112 @@
+{
+  "projectName": "UpdateMilestoneNarrativeScores",
+  "layer": "scheduler",
+  "projectPath": "Schedulers/UpdateMilestoneNarrativeScores",
+  "parsedAt": "2026-02-20T17:11:06.473Z",
+  "fileCount": 3,
+  "totalLines": 87,
+  "files": [
+    {
+      "fileName": "Program.cs",
+      "filePath": "Schedulers/UpdateMilestoneNarrativeScores/UpdateMilestoneNarrativeScores/Program.cs",
+      "lineCount": 18,
+      "className": "Program",
+      "namespace": "UpdateMilestoneNarrativeScores",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks"
+      ],
+      "businessModuleRefs": [],
+      "methods": [
+        {
+          "name": "Main",
+          "returnType": "\n        static void",
+          "visibility": "private",
+          "parameters": [
+            "string[] args"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateMilestoneScores",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "AssemblyInfo.cs",
+      "filePath": "Schedulers/UpdateMilestoneNarrativeScores/UpdateMilestoneNarrativeScores/Properties/AssemblyInfo.cs",
+      "lineCount": 37,
+      "className": null,
+      "namespace": "",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Runtime.CompilerServices",
+        "System.Runtime.InteropServices"
+      ],
+      "businessModuleRefs": [],
+      "methods": [],
+      "storedProcedureCalls": []
+    },
+    {
+      "fileName": "UpdateMilestoneScores.cs",
+      "filePath": "Schedulers/UpdateMilestoneNarrativeScores/UpdateMilestoneNarrativeScores/UpdateMilestoneScores.cs",
+      "lineCount": 32,
+      "className": "UpdateMilestoneScores",
+      "namespace": "UpdateMilestoneNarrativeScores",
+      "baseClass": null,
+      "interfaces": [],
+      "usingStatements": [
+        "System.Collections.Generic",
+        "System.Linq",
+        "System.Text",
+        "System.Threading.Tasks",
+        "MyEvaluations.Business.Evaluations",
+        "System.Data"
+      ],
+      "businessModuleRefs": [
+        "Evaluations"
+      ],
+      "methods": [
+        {
+          "name": "EvaluationsTemplateManager",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "UpdateUserScores",
+          "returnType": "\n        public void",
+          "visibility": "private",
+          "parameters": [],
+          "isStatic": false,
+          "isAsync": false
+        },
+        {
+          "name": "DataView",
+          "returnType": " new",
+          "visibility": "private",
+          "parameters": [
+            "dtUsers"
+          ],
+          "isStatic": false,
+          "isAsync": false
+        }
+      ],
+      "storedProcedureCalls": []
+    }
+  ]
+}
