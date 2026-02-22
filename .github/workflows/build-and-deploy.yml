@@ -60,7 +60,7 @@ jobs:
           ssh-keyscan -H 194.195.112.179 >> ~/.ssh/known_hosts 2>/dev/null
 
           # Trigger Coolify deployment via artisan tinker
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no root@194.195.112.179 \
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no deploy@194.195.112.179 \
             "docker exec coolify php artisan tinker --execute=\"\\\$app = App\\\Models\\\Application::where('uuid', '${COOLIFY_APP_UUID}')->first(); if(!\\\$app) { echo 'App not found'; exit(1); } queue_application_deployment(application: \\\$app, deployment_uuid: (string) \\\Illuminate\\\Support\\\Str::uuid(), force_rebuild: true); echo 'Deployment queued';\""
 
           echo "Deployment triggered successfully"
@@ -74,7 +74,7 @@ jobs:
 
           # Check deployment status (poll up to 5 minutes)
           for i in $(seq 1 10); do
-            STATUS=$(ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no root@194.195.112.179 \
+            STATUS=$(ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no deploy@194.195.112.179 \
               "docker exec coolify php artisan tinker --execute=\"\\\$d = App\\\Models\\\ApplicationDeploymentQueue::latest()->first(); echo \\\$d->status;\"" 2>/dev/null || echo "unknown")
 
             echo "Attempt $i/10 - Deployment status: $STATUS"
