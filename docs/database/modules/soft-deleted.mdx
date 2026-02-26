@@ -1,0 +1,24 @@
+---
+title: "Soft-Deleted Tables"
+sidebar_label: "Soft-Deleted (_DEL__)"
+sidebar_position: 23
+description: "Database tables for the Soft-Deleted module (2 tables)"
+---
+
+import TableDetail from '@site/src/components/TableDetail';
+
+# Soft-Deleted Database Tables
+
+**2 tables** · **2 with PK** (100.0%) · **0 FKs** · **5 indexes**
+
+## Entity Relationships
+
+*No foreign key relationships found between tables in this module.*
+
+
+## Table Reference
+
+<TableDetail
+  tables={[{"name":"_DEL_ARCH_PF_PersonalStatementsAssessorReviewComments","schema":"dbo","fullName":"dbo._DEL_ARCH_PF_PersonalStatementsAssessorReviewComments","hasPrimaryKey":true,"primaryKeyColumns":["PersonalStatementsAssessorReviewCommentID"],"foreignKeys":[],"indexes":[{"name":"PK_ARCH_PF_PersonalStatementsAssessorReviewComments","type":"CLUSTERED","isPrimaryKey":true,"isUnique":true,"isDisabled":false,"keyColumns":["PersonalStatementsAssessorReviewCommentID"],"includedColumns":[]}],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"_DEL_ARCH_PRC_ProceduresSubmitted","schema":"dbo","fullName":"dbo._DEL_ARCH_PRC_ProceduresSubmitted","hasPrimaryKey":true,"primaryKeyColumns":["ProceduresSubmittedID"],"foreignKeys":[],"indexes":[{"name":"ARCH_PRC_ProceduresSubmitted_PK","type":"CLUSTERED","isPrimaryKey":true,"isUnique":true,"isDisabled":false,"keyColumns":["ProceduresSubmittedID"],"includedColumns":[]},{"name":"IX_ARCH_PRC_ProceduresSubmitted","type":"NONCLUSTERED","isPrimaryKey":false,"isUnique":false,"isDisabled":false,"keyColumns":["DepartmentID","ComplicationTypeID","ParticipationTypeID","ProcedureID","ProceduresStatusID","UserID"],"includedColumns":[]},{"name":"IX_ARCH_PRC_ProceduresSubmitted_1","type":"NONCLUSTERED","isPrimaryKey":false,"isUnique":false,"isDisabled":false,"keyColumns":["UserID","ProceduresStatusID"],"includedColumns":["ProcedureID"]},{"name":"IX_ARCH_PRC_ProceduresSubmitted_2","type":"NONCLUSTERED","isPrimaryKey":false,"isUnique":false,"isDisabled":false,"keyColumns":["ProceduresStatusID"],"includedColumns":["ProcedureID","UserID"]}],"checkConstraints":[],"defaultConstraints":5,"triggers":[]}]}
+  generatedAt="2026-02-26T17:19:19.959Z"
+/>

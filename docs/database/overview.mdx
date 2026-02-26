@@ -1,0 +1,58 @@
+---
+title: "Database Schema Overview"
+sidebar_label: "Overview"
+sidebar_position: 1
+description: "MyEvaluations database schema overview — 2,284 tables, 6,169 stored procedures"
+---
+
+import SchemaHealth from '@site/src/components/SchemaHealth';
+
+# Database Schema Overview
+
+The MyEvaluations database contains **2,284 tables**, **6,169 stored procedures**, **595 functions**, **112 views**, and **17 triggers** across 2 schemas (`dbo`, `perf`).
+
+## Schema Health Dashboard
+
+<SchemaHealth />
+
+## Module Breakdown
+
+| Module | Tables | PK Coverage | FKs | Indexes |
+|--------|-------:|:-----------:|----:|--------:|
+| [Uncategorized](./modules/uncategorized) | 391 | 54/391 (13.8%) | 15 | 118 |
+| [Security](./modules/security) | 346 | 264/346 (76.3%) | 169 | 726 |
+| [Evaluations](./modules/evaluations) | 331 | 229/331 (69.2%) | 245 | 649 |
+| [Duty Hours](./modules/duty-hours) | 182 | 117/182 (64.3%) | 82 | 413 |
+| [Performance Schema](./modules/performance-schema) | 139 | 115/139 (82.7%) | 194 | 292 |
+| [Annual Program Evaluation](./modules/annual-program-evaluation) | 124 | 99/124 (79.8%) | 86 | 162 |
+| [Nursing](./modules/nursing) | 111 | 100/111 (90.1%) | 93 | 139 |
+| [Procedures](./modules/procedures) | 107 | 63/107 (58.9%) | 63 | 174 |
+| [Activity Logs](./modules/activity-logs) | 80 | 53/80 (66.3%) | 42 | 168 |
+| [Portfolio](./modules/portfolio) | 67 | 54/67 (80.6%) | 19 | 113 |
+| [Clinical Assessment](./modules/clinical-assessment) | 65 | 45/65 (69.2%) | 58 | 133 |
+| [CME Credits](./modules/cme-credits) | 61 | 50/61 (82.0%) | 53 | 86 |
+| [Prep/Onboarding](./modules/prep-onboarding) | 54 | 49/54 (90.7%) | 11 | 125 |
+| [MyEval Platform](./modules/myeval-platform) | 46 | 44/46 (95.7%) | 13 | 114 |
+| [APE v2](./modules/ape-v2) | 42 | 41/42 (97.6%) | 119 | 55 |
+| [Patient Logs](./modules/patient-logs) | 38 | 32/38 (84.2%) | 39 | 81 |
+| [Quizzes](./modules/quizzes) | 25 | 14/25 (56.0%) | 16 | 49 |
+| [Scheduling](./modules/scheduling) | 19 | 8/19 (42.1%) | 6 | 25 |
+| [System](./modules/system) | 17 | 14/17 (82.4%) | 5 | 17 |
+| [MyGME Integration](./modules/mygme-integration) | 14 | 1/14 (7.1%) | 0 | 2 |
+| [Learning Activities](./modules/learning-activities) | 12 | 12/12 (100.0%) | 13 | 37 |
+| [Post-Graduation](./modules/post-graduation) | 11 | 11/11 (100.0%) | 18 | 20 |
+| [Soft-Deleted](./modules/soft-deleted) | 2 | 2/2 (100.0%) | 0 | 5 |
+
+## Key Statistics
+
+- **1471** of 2284 tables (64.4%) have a primary key
+- **1575** of 2284 tables (69.0%) have at least one index
+- **196** indexes are currently disabled
+- **1,359** foreign key relationships connect the schema
+- **2** tables use monthly partitioning (`Api_Response_Audit`, `Api_Response_Audit_Archive`)
+
+## Explore Further
+
+- [**Schema Explorer**](./explorer) — Interactive D3 graph of tables and FK relationships
+- [**SP Reconciliation**](./sproc-reconciliation) — Gap analysis between DB and code-side SPs
+- [**Schema Health**](./health) — Tables without PKs, disabled indexes, naming issues

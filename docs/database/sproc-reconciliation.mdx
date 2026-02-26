@@ -1,0 +1,17 @@
+---
+title: "Stored Procedure Reconciliation"
+sidebar_label: "SP Reconciliation"
+sidebar_position: 3
+description: "Bidirectional analysis of 6,169 DB-side vs 3,991 code-side stored procedures"
+---
+
+import SprocReconciliation from '@site/src/components/SprocReconciliation';
+
+# Stored Procedure Reconciliation
+
+This analysis compares **6,169 stored procedures** found in the SQL Server schema with **3,991 stored procedures** referenced in the .NET application code.
+
+<SprocReconciliation
+  totalDbSprocs={6169}
+  totalCodeSprocs={3991}
+/>

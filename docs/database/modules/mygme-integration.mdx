@@ -1,0 +1,24 @@
+---
+title: "MyGME Integration Tables"
+sidebar_label: "MyGME Integration (MyGME_)"
+sidebar_position: 20
+description: "Database tables for the MyGME Integration module (14 tables)"
+---
+
+import TableDetail from '@site/src/components/TableDetail';
+
+# MyGME Integration Database Tables
+
+**14 tables** · **1 with PK** (7.1%) · **0 FKs** · **2 indexes**
+
+## Entity Relationships
+
+*No foreign key relationships found between tables in this module.*
+
+
+## Table Reference
+
+<TableDetail
+  tables={[{"name":"MyGME_Last_Sent","schema":"dbo","fullName":"dbo.MyGME_Last_Sent","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGme_Map_AnswerScale","schema":"dbo","fullName":"dbo.MyGme_Map_AnswerScale","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGme_Map_Question","schema":"dbo","fullName":"dbo.MyGme_Map_Question","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGme_Map_QuestionCategory","schema":"dbo","fullName":"dbo.MyGme_Map_QuestionCategory","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGme_Map_Template","schema":"dbo","fullName":"dbo.MyGme_Map_Template","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_ProgramHistoryRequestTrace","schema":"dbo","fullName":"dbo.MyGME_ProgramHistoryRequestTrace","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_Schedule_Last_Imported","schema":"dbo","fullName":"dbo.MyGME_Schedule_Last_Imported","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_TestData","schema":"dbo","fullName":"dbo.MyGME_TestData","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_tmp_Activity_Hours","schema":"dbo","fullName":"dbo.MyGME_tmp_Activity_Hours","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_Transfer_Queue","schema":"dbo","fullName":"dbo.MyGME_Transfer_Queue","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[{"name":"IDX_MissingOn_MyGME_Transfer_Queue_B2BB441BF69B47BCA3E5491541B747EA","type":"NONCLUSTERED","isPrimaryKey":false,"isUnique":false,"isDisabled":false,"keyColumns":["entity_type"],"includedColumns":["MyEvaluations_Id"]}],"checkConstraints":[],"defaultConstraints":1,"triggers":[]},{"name":"MyGME_Transfer_Triggers","schema":"dbo","fullName":"dbo.MyGME_Transfer_Triggers","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":1,"triggers":[{"name":"MDT_MYGMETransferTrigger","isDisabled":false,"isInsteadOf":false}]},{"name":"MYGME_TransferTriggerAudit","schema":"dbo","fullName":"dbo.MYGME_TransferTriggerAudit","hasPrimaryKey":true,"primaryKeyColumns":["TransferTriggerAuditID"],"foreignKeys":[],"indexes":[{"name":"PK__MYGME_Tr__D088603317B66B92","type":"CLUSTERED","isPrimaryKey":true,"isUnique":true,"isDisabled":false,"keyColumns":["TransferTriggerAuditID"],"includedColumns":[]}],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_User_Map","schema":"dbo","fullName":"dbo.MyGME_User_Map","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]},{"name":"MyGME_User_NoSched_Override","schema":"dbo","fullName":"dbo.MyGME_User_NoSched_Override","hasPrimaryKey":false,"primaryKeyColumns":[],"foreignKeys":[],"indexes":[],"checkConstraints":[],"defaultConstraints":0,"triggers":[]}]}
+  generatedAt="2026-02-26T17:19:19.959Z"
+/>
