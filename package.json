@@ -34,6 +34,11 @@
     "generate:tech-debt": "tsx scripts/generate-tech-debt-index.ts",
     "generate:scheduler-timeline": "tsx scripts/generate-scheduler-timeline.ts",
     "generate:reverse-deps": "tsx scripts/generate-reverse-deps.ts && tsx scripts/inject-dependents-panel.ts",
+    "parse:db:schema": "tsx scripts/parse-db-schema.ts",
+    "parse:db:reconcile": "tsx scripts/reconcile-sprocs.ts",
+    "ai:enrich:db": "tsx scripts/ai-enrich-db-schema.ts",
+    "generate:db:pages": "tsx scripts/generate-db-pages.ts",
+    "db:full": "npm run parse:db:schema && npm run parse:db:reconcile && npm run generate:db:pages",
     "prebuild:full": "npm run sync-repos && npm run generate:all",
     "build:full": "npm run prebuild:full && npm run build"
   },
@@ -47,7 +52,8 @@
     "openai": "^6.22.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
