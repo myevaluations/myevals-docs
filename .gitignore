@@ -8,6 +8,12 @@ build/
 # Cloned source repos (for doc generation)
 .repos/
 
+# Generated metadata (rebuilt by scripts)
+generated/
+
+# Input data files (Excel exports, etc.)
+input/
+
 # Environment
 .env
 .env.local
