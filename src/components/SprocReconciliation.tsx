@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 interface SprocMatch {
   sprocName: string;
@@ -18,11 +18,11 @@ interface SprocOrphanCode {
 }
 
 interface SprocReconciliationProps {
-  totalDbSprocs: number;
-  totalCodeSprocs: number;
-  matched: SprocMatch[];
-  orphanDb: SprocOrphanDb[];
-  orphanCode: SprocOrphanCode[];
+  totalDbSprocs?: number;
+  totalCodeSprocs?: number;
+  matched?: SprocMatch[];
+  orphanDb?: SprocOrphanDb[];
+  orphanCode?: SprocOrphanCode[];
 }
 
 type Tab = 'matched' | 'dbOnly' | 'codeOnly';
@@ -44,18 +44,49 @@ function SortArrow({ column, sort }: { column: string; sort: SortState }) {
   );
 }
 
-export default function SprocReconciliation({
-  totalDbSprocs,
-  totalCodeSprocs,
-  matched,
-  orphanDb,
-  orphanCode,
-}: SprocReconciliationProps): React.JSX.Element {
+export default function SprocReconciliation(props: SprocReconciliationProps): React.JSX.Element {
+  const [data, setData] = useState<{
+    totalDbSprocs: number;
+    totalCodeSprocs: number;
+    matched: SprocMatch[];
+    orphanDb: SprocOrphanDb[];
+    orphanCode: SprocOrphanCode[];
+  } | null>(
+    props.matched ? {
+      totalDbSprocs: props.totalDbSprocs ?? 0,
+      totalCodeSprocs: props.totalCodeSprocs ?? 0,
+      matched: props.matched,
+      orphanDb: props.orphanDb ?? [],
+      orphanCode: props.orphanCode ?? [],
+    } : null
+  );
+
+  useEffect(() => {
+    if (!data) {
+      fetch('/sproc-reconciliation-data.json')
+        .then((r) => r.json())
+        .then((d) => setData({
+          totalDbSprocs: d.totalDbSprocs ?? 0,
+          totalCodeSprocs: d.totalCodeSprocs ?? 0,
+          matched: d.crossReference ?? d.matched ?? [],
+          orphanDb: d.orphanDb ?? [],
+          orphanCode: d.orphanCode ?? [],
+        }))
+        .catch(console.error);
+    }
+  }, []);
+
   const [activeTab, setActiveTab] = useState<Tab>('matched');
   const [search, setSearch] = useState('');
   const [matchedSort, setMatchedSort] = useState<SortState>({ column: 'sprocName', dir: 'asc' });
   const [dbSort, setDbSort] = useState<SortState>({ column: 'name', dir: 'asc' });
   const [codeSort, setCodeSort] = useState<SortState>({ column: 'name', dir: 'asc' });
+
+  if (!data) {
+    return <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--ifm-color-emphasis-500)' }}>Loading reconciliation data...</div>;
+  }
+
+  const { totalDbSprocs, totalCodeSprocs, matched, orphanDb, orphanCode } = data;
 
   const matchedPct = totalDbSprocs > 0
     ? ((matched.length / totalDbSprocs) * 100).toFixed(1)
