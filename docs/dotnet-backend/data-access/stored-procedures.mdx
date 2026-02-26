@@ -183,7 +183,19 @@ WHERE definition LIKE '%search_term%'
 ORDER BY OBJECT_NAME(object_id);
 ```
 
+## SP Reconciliation
+
+The code-side parser found **3,991 unique stored procedures** called from .NET code. The database contains **6,169 stored procedures** total. Bidirectional matching reveals:
+
+- **3,894 matched** — confirmed in both code and database
+- **2,234 DB-only** — exist in the database but never called from code (potential dead code)
+- **96 code-only** — called from code but not found in the database schema export
+
+See the full [SP Reconciliation analysis](/docs/database/sproc-reconciliation) for interactive exploration.
+
 ## Related Documentation
 
 - [Data Access Overview](./overview) -- How the DAL calls stored procedures
 - [Connection Management](./connection-management) -- Database connection configuration
+- [SP Reconciliation](/docs/database/sproc-reconciliation) -- DB vs code stored procedure gap analysis
+- [Database Schema Overview](/docs/database/overview) -- Full schema documentation
