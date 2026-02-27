@@ -6,9 +6,22 @@ interface TableEntry {
   fullName: string;
   hasPrimaryKey: boolean;
   primaryKeyColumns: string[];
+  columns?: Array<{
+    name: string;
+    dataType: string;
+    rawType: string;
+    maxLength: string | null;
+    isNullable: boolean;
+    isIdentity: boolean;
+    isPrimaryKey: boolean;
+    defaultValue: string | null;
+    ordinalPosition: number;
+  }>;
   foreignKeys: Array<{
     constraintName: string;
     referencedTable: string;
+    columns?: string[];
+    referencedColumns?: string[];
   }>;
   indexes: Array<{
     name: string;
@@ -106,6 +119,9 @@ function TableDetailRow({ table, isExpanded, onToggle }: {
           <span style={{ marginRight: '4px' }}>{isExpanded ? '▼' : '▶'}</span>
           {table.fullName}
         </td>
+        <td style={{ textAlign: 'right', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)' }}>
+          {table.columns ? table.columns.length : '--'}
+        </td>
         <td style={{ textAlign: 'center' }}>
           {table.hasPrimaryKey ? (
             <span style={{ color: '#22c55e', fontWeight: 600 }} title="Has primary key">Yes</span>
@@ -142,7 +158,61 @@ function TableDetailRow({ table, isExpanded, onToggle }: {
       </tr>
       {isExpanded && (
         <tr>
-          <td colSpan={6} style={{ padding: '12px 16px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)' }}>
+          <td colSpan={7} style={{ padding: '12px 16px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)' }}>
+            {/* Column definitions sub-table */}
+            {table.columns && table.columns.length > 0 && (
+              <details style={{ marginBottom: '10px' }}>
+                <summary style={{ cursor: 'pointer', fontWeight: 600, fontSize: '0.88rem', marginBottom: '4px' }}>
+                  Columns ({table.columns.length})
+                </summary>
+                <div style={{ overflowX: 'auto', marginTop: '4px' }}>
+                  <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '2px solid var(--ifm-color-emphasis-200)', textAlign: 'left' }}>
+                        <th style={{ padding: '4px 8px', width: '30px' }}>#</th>
+                        <th style={{ padding: '4px 8px' }}>Column</th>
+                        <th style={{ padding: '4px 8px' }}>Type</th>
+                        <th style={{ padding: '4px 8px', width: '40px' }}>Null</th>
+                        <th style={{ padding: '4px 8px' }}>Default</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[...table.columns]
+                        .sort((a, b) => a.ordinalPosition - b.ordinalPosition)
+                        .map((col) => (
+                          <tr key={col.name} style={{ borderBottom: '1px solid var(--ifm-color-emphasis-100)' }}>
+                            <td style={{ padding: '3px 8px', color: 'var(--ifm-color-emphasis-500)', fontSize: '0.75rem' }}>
+                              {col.ordinalPosition}
+                            </td>
+                            <td style={{ padding: '3px 8px', fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                              {col.isPrimaryKey && <span title="Primary Key" style={{ marginRight: '2px' }}>&#128273;</span>}
+                              {col.isIdentity && <span title="Identity (auto-increment)" style={{ color: '#722ed1', marginRight: '2px' }}>&#9889;</span>}
+                              {col.name}
+                            </td>
+                            <td style={{ padding: '3px 8px', fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                              {col.dataType}{col.maxLength ? `(${col.maxLength})` : ''}
+                              {col.rawType !== col.dataType && (
+                                <span style={{ color: 'var(--ifm-color-emphasis-500)', marginLeft: '4px', fontSize: '0.75rem' }} title={`UDT: ${col.rawType}`}>
+                                  &larr; {col.rawType}
+                                </span>
+                              )}
+                            </td>
+                            <td style={{ padding: '3px 8px' }}>
+                              {col.isNullable
+                                ? <span style={{ color: 'var(--ifm-color-emphasis-500)' }}>yes</span>
+                                : <span style={{ fontWeight: 600 }}>NO</span>}
+                            </td>
+                            <td style={{ padding: '3px 8px', fontFamily: 'monospace', fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-600)' }}>
+                              {col.defaultValue ?? ''}
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            )}
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               {/* Left column */}
               <div>
@@ -207,13 +277,17 @@ function TableDetailRow({ table, isExpanded, onToggle }: {
                 )}
                 {table.foreignKeys.length > 0 && (
                   <div style={{ marginTop: '4px' }}>
-                    <strong>Foreign Keys:</strong>
+                    <strong>Foreign Keys ({table.foreignKeys.length}):</strong>
                     <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '0.85rem' }}>
                       {table.foreignKeys.slice(0, 10).map((fk, i) => (
                         <li key={`${table.fullName}-fk-${i}`}>
-                          <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{fk.constraintName}</span>
+                          <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                            {fk.columns ? fk.columns.join(', ') : fk.constraintName}
+                          </span>
                           {' '}&rarr;{' '}
-                          <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{fk.referencedTable}</span>
+                          <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                            {fk.referencedTable}{fk.referencedColumns ? `.${fk.referencedColumns.join(', ')}` : ''}
+                          </span>
                         </li>
                       ))}
                       {table.foreignKeys.length > 10 && (
@@ -401,11 +475,12 @@ export default function TableDetail({
     sortField === field ? (sortDir === 'asc' ? ' \u2191' : ' \u2193') : '';
 
   // Summary stats
-  const { pkCount, pkPct, totalFKs, totalIndexes, complexityDist, migrationDist } = useMemo(() => {
+  const { pkCount, pkPct, totalFKs, totalIndexes, totalColumns, complexityDist, migrationDist } = useMemo(() => {
     const pkCount = data.filter((t) => t.hasPrimaryKey).length;
     const pkPct = data.length > 0 ? Math.round((pkCount / data.length) * 100) : 0;
     const totalFKs = data.reduce((s, t) => s + t.foreignKeys.length, 0);
     const totalIndexes = data.reduce((s, t) => s + t.indexes.filter((i) => !i.isPrimaryKey).length, 0);
+    const totalColumns = data.reduce((s, t) => s + (t.columns?.length ?? 0), 0);
     const complexityDist = COMPLEXITY_ORDER.map((c) => ({
       label: c,
       count: data.filter((t) => t.complexity === c).length,
@@ -416,7 +491,7 @@ export default function TableDetail({
       count: data.filter((t) => t.migrationRelevance === m).length,
       color: MIGRATION_COLORS[m],
     })).filter((d) => d.count > 0);
-    return { pkCount, pkPct, totalFKs, totalIndexes, complexityDist, migrationDist };
+    return { pkCount, pkPct, totalFKs, totalIndexes, totalColumns, complexityDist, migrationDist };
   }, [data]);
 
   const enrichedDate = generatedAt ? new Date(generatedAt) : null;
@@ -479,6 +554,17 @@ export default function TableDetail({
             PK coverage: {pkPct}% ({pkCount}/{data.length})
           </div>
         </div>
+
+        {/* Columns card */}
+        {totalColumns > 0 && (
+          <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ifm-color-emphasis-600)', marginBottom: '4px' }}>Columns</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1 }}>{totalColumns.toLocaleString()}</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-600)', marginTop: '2px' }}>
+              avg {data.length > 0 ? Math.round(totalColumns / data.length) : 0} per table
+            </div>
+          </div>
+        )}
 
         {/* FK count card */}
         <div style={{ padding: '10px 14px', backgroundColor: 'var(--ifm-background-surface-color, #f8f9fa)', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-200)' }}>
@@ -628,6 +714,9 @@ export default function TableDetail({
                 onClick={() => handleSort('name')}
               >
                 Table{sortIndicator('name')}
+              </th>
+              <th style={{ textAlign: 'right', padding: '8px' }}>
+                Cols
               </th>
               <th
                 style={{ cursor: 'pointer', textAlign: 'center', padding: '8px' }}
