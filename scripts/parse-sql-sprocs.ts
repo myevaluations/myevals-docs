@@ -53,6 +53,13 @@ interface AntiPatterns {
 type CrudType = 'get' | 'insert' | 'update' | 'delete' | 'report' | 'mixed';
 type Complexity = 'trivial' | 'simple' | 'moderate' | 'complex' | 'very-complex';
 
+interface SpRaw {
+  name: string;
+  schema: string;
+  parameters: SpParameter[];
+  body: string;
+}
+
 // ---------------------------------------------------------------------------
 // Module prefix detection (from parse-sql-schema.ts)
 // ---------------------------------------------------------------------------
@@ -203,6 +210,98 @@ function readAndSplitBlocks(): string[] {
 }
 
 // ---------------------------------------------------------------------------
+// Phase 2: Parse SP name, schema, and parameters
+// ---------------------------------------------------------------------------
+
+function parseSpBlock(block: string): SpRaw | null {
+  // Extract the CREATE PROCEDURE line to get name and schema
+  // Pattern: CREATE PROC[EDURE] [schema].[name] or CREATE PROC[EDURE] schema.name
+  const nameMatch = block.match(
+    /CREATE\s+PROC(?:EDURE)?\s+\[?(\w+)\]?\.\[?(\w+)\]?/i
+  );
+  if (!nameMatch) return null;
+
+  const schema = nameMatch[1];
+  const name = nameMatch[2];
+
+  // Find the parameter block: between the procedure name and AS keyword
+  // The AS keyword should be on its own line or after parameters
+  const nameEnd = nameMatch.index! + nameMatch[0].length;
+  const restAfterName = block.substring(nameEnd);
+
+  // Find AS keyword: must be on its own or preceded by whitespace/newline
+  // Be careful not to match AS inside parameter names or types
+  const asMatch = restAfterName.match(/\n\s*AS\s*\r?\n/i)
+    || restAfterName.match(/\nAS\s*$/im)
+    || restAfterName.match(/\)\s*\r?\nAS\s*\r?\n/i);
+
+  let paramBlock = '';
+  let body = '';
+
+  if (asMatch) {
+    const asIdx = asMatch.index!;
+    paramBlock = restAfterName.substring(0, asIdx);
+    // Body starts after 'AS\n'
+    body = restAfterName.substring(asIdx + asMatch[0].length);
+  } else {
+    // Try a simpler AS pattern: just find first standalone AS
+    const simpleAsMatch = restAfterName.match(/\bAS\b\s*\r?\n/i);
+    if (simpleAsMatch) {
+      paramBlock = restAfterName.substring(0, simpleAsMatch.index!);
+      body = restAfterName.substring(
+        simpleAsMatch.index! + simpleAsMatch[0].length
+      );
+    } else {
+      // No AS found, entire rest is body (unusual)
+      body = restAfterName;
+    }
+  }
+
+  // Parse parameters from paramBlock
+  const parameters = parseParameters(paramBlock);
+
+  return { name, schema, parameters, body };
+}
+
+function parseParameters(paramBlock: string): SpParameter[] {
+  const params: SpParameter[] = [];
+
+  // Match @ParamName datatype[(len)] [= default] [OUTPUT|OUT]
+  // Parameters are separated by commas and/or newlines
+  const paramRegex =
+    /(@\w+)\s+([\w]+(?:\s*\([^)]*\))?(?:\s*\(\s*\w+\s*\))?)\s*(?:=\s*([^,\r\n]*?))?\s*(OUTPUT|OUT)?\s*(?:,|\s*$)/gi;
+
+  let match: RegExpExecArray | null;
+  while ((match = paramRegex.exec(paramBlock)) !== null) {
+    const paramName = match[1];
+    let dataType = match[2].trim();
+    let defaultValue = match[3] ? match[3].trim() : null;
+    const isOutput = !!match[4];
+
+    // Clean up default value
+    if (defaultValue === '' || defaultValue === undefined) {
+      defaultValue = null;
+    }
+    // Remove trailing comma from default value
+    if (defaultValue && defaultValue.endsWith(',')) {
+      defaultValue = defaultValue.slice(0, -1).trim();
+    }
+
+    // Normalize data type (remove extra whitespace)
+    dataType = dataType.replace(/\s+/g, ' ');
+
+    params.push({
+      name: paramName,
+      dataType,
+      direction: isOutput ? 'OUTPUT' : 'IN',
+      defaultValue,
+    });
+  }
+
+  return params;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -216,8 +315,49 @@ async function main(): Promise<void> {
   // Phase 1: Read and split
   const spBlocks = readAndSplitBlocks();
 
-  console.log('\nPhase 1 complete. Found ' + fmt(spBlocks.length) + ' SP blocks.');
-  console.log('Next: parse SP name, schema, and parameters.');
+  // Phase 2: Parse each SP block for name, schema, parameters
+  console.log('\n=== Phase 2: Parse SP name, schema, parameters ===');
+  const parsed: SpRaw[] = [];
+  let parseFailures = 0;
+
+  for (const block of spBlocks) {
+    const raw = parseSpBlock(block);
+    if (!raw) {
+      parseFailures++;
+      continue;
+    }
+    parsed.push(raw);
+  }
+
+  console.log('  Parsed: ' + fmt(parsed.length) + ' SPs');
+  if (parseFailures > 0) {
+    console.log('  Parse failures: ' + fmt(parseFailures));
+  }
+
+  // Parameter stats
+  const paramCounts = parsed.map((sp) => sp.parameters.length);
+  const avgParams =
+    paramCounts.length > 0
+      ? (paramCounts.reduce((a, b) => a + b, 0) / paramCounts.length).toFixed(1)
+      : '0';
+  const maxParams = Math.max(...paramCounts, 0);
+  const withParams = paramCounts.filter((c) => c > 0).length;
+  const outputParams = parsed.reduce(
+    (sum, sp) => sum + sp.parameters.filter((p) => p.direction === 'OUTPUT').length,
+    0
+  );
+
+  console.log('  Average parameters per SP: ' + avgParams);
+  console.log('  Max parameters: ' + maxParams);
+  console.log('  SPs with parameters: ' + fmt(withParams) + ' (' + ((withParams / parsed.length) * 100).toFixed(0) + '%)');
+  console.log('  OUTPUT parameters: ' + fmt(outputParams));
+
+  // Schema distribution
+  const schemas: Record<string, number> = {};
+  for (const sp of parsed) {
+    schemas[sp.schema] = (schemas[sp.schema] || 0) + 1;
+  }
+  console.log('  Schema distribution: ' + JSON.stringify(schemas));
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log('\nDone in ' + elapsed + 's');
