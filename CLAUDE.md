@@ -26,10 +26,12 @@ npm run generate:all            # Run all parsers + generators
 
 # Database schema pipeline
 npm run parse:db:schema         # Parse SQL schema → tables.json (AST-based, node-sql-parser)
+npm run parse:db:sprocs         # Parse SQL stored procedures → stored-procedures-full.json
 npm run parse:db:schema:excel   # Legacy: parse Excel schema (deprecated)
 npm run parse:db:reconcile      # SP reconciliation between DB and code
 npm run generate:db:pages       # Generate database MDX pages from tables.json
-npm run db:full                 # Full DB pipeline: parse + reconcile + generate
+npm run generate:db:sproc-pages # Generate per-module SP reference MDX pages
+npm run db:full                 # Full DB pipeline: parse schema + SPs + reconcile + generate all
 
 # AI enrichment
 npm run ai:enrich               # Claude API enrichment (needs ANTHROPIC_API_KEY)
@@ -48,6 +50,7 @@ npm run build:full              # sync-repos + generate:all + build
 - **Deployment:** Coolify at myevalsdocs.i95dev.com (UUID: `dc6d71e6-1d2e-4563-86bd-d3c9ead30428`)
 - **Source sync:** Shallow-clones 4 source repos at build time
 - **DB schema source:** `input/MyEvaluations_Schema_20260226.sql` (147MB SSMS export, UTF-16LE) → AST-parsed via `node-sql-parser` + regex → `generated/db-schema/tables.json` (2,242 tables with 24,282 columns)
+- **SP analysis:** Same SQL file → `parse-sql-sprocs.ts` → `generated/db-schema/stored-procedures-full.json` (5,028 SPs with parameters, anti-patterns, table refs, complexity)
 - **AI enrichment:** Two modes — Claude API (automated, weekly) + Claude CLI Task agents (bulk, manual)
 
 ## Key Directories
@@ -58,12 +61,15 @@ npm run build:full              # sync-repos + generate:all + build
   - `docs/dotnet-backend/web/pages/` — 32 per-directory web reference pages (generated)
   - `docs/dotnet-backend/schedulers/files/` — 1 scheduler file reference page (generated)
   - `docs/dotnet-backend/supporting/` — 9 supporting project pages (generated)
-- `scripts/` — 15 TypeScript build/parse/enrich scripts
-- `src/components/` — 7 interactive React components (incl. `TableDetail.tsx`, `SchemaHealth.tsx`)
+- `docs/database/modules/sprocs/` — 21 per-module SP reference pages (generated)
+- `static/sproc-detail-data/` — Static JSON data for SprocDetail component (generated)
+- `scripts/` — 17 TypeScript build/parse/enrich scripts
+- `src/components/` — 8 interactive React components (incl. `TableDetail.tsx`, `SprocDetail.tsx`, `SchemaHealth.tsx`)
 - `generated/` — Auto-generated metadata (git-ignored)
   - `generated/dotnet-metadata/` — tree-sitter extraction JSONs
   - `generated/ai-enriched/dotnet/per-file/` — Per-file enrichment JSONs (4 layers)
-  - `generated/db-schema/` — SQL parser output (tables.json, indexes.json, etc.)
+  - `generated/db-schema/` — SQL parser output (tables.json, stored-procedures-full.json, indexes.json, etc.)
+  - `generated/db-schema/sp-bodies/` — Full SP bodies per module for AI enrichment (git-ignored)
 - `.repos/` — Cloned source repos (git-ignored)
 - `docker/` — Dockerfile and nginx config
 - `.github/workflows/` — CI/CD workflows
