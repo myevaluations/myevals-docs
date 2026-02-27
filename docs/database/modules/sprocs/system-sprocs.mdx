@@ -1,0 +1,54 @@
+---
+title: "System — Stored Procedures"
+sidebar_label: "System (117)"
+sidebar_position: 11
+description: "117 stored procedures in the System module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# System — Stored Procedures
+
+> **117** stored procedures | **77** GET | **21** INSERT | **8** UPDATE | **9** DELETE | **2** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 1 | Critical |
+| SELECT * | 27 | High |
+| Dynamic SQL | 1 | High |
+| NOLOCK usage | 5 (49 occurrences) | Medium |
+| Table Variables | 5 | Medium |
+| WHILE Loops | 6 | Medium |
+| Missing SET NOCOUNT ON | 35 | Low |
+| No TRY/CATCH | 117 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **1 procedure use cursors** — replace with set-based operations
+- **1 procedure use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **27 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **5 procedures use NOLOCK** (49 total occurrences) — audit for data consistency risks
+- **5 procedures use table variables** — consider temp tables for large datasets
+- **6 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **35 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **117 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/system.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

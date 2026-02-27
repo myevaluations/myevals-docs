@@ -1,0 +1,54 @@
+---
+title: "Uncategorized — Stored Procedures"
+sidebar_label: "Uncategorized (123)"
+sidebar_position: 10
+description: "123 stored procedures in the Uncategorized module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Uncategorized — Stored Procedures
+
+> **123** stored procedures | **80** GET | **19** INSERT | **9** UPDATE | **7** DELETE | **1** Report | **7** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 10 | Critical |
+| SELECT * | 32 | High |
+| Dynamic SQL | 14 | High |
+| NOLOCK usage | 3 (3 occurrences) | Medium |
+| Table Variables | 9 | Medium |
+| WHILE Loops | 25 | Medium |
+| Missing SET NOCOUNT ON | 56 | Low |
+| No TRY/CATCH | 120 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **10 procedures use cursors** — replace with set-based operations
+- **14 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **32 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **3 procedures use NOLOCK** (3 total occurrences) — audit for data consistency risks
+- **9 procedures use table variables** — consider temp tables for large datasets
+- **25 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **56 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **120 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/uncategorized.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

@@ -1,0 +1,52 @@
+---
+title: "Clinical Assessment — Stored Procedures"
+sidebar_label: "Clinical Assessment (26)"
+sidebar_position: 16
+description: "26 stored procedures in the Clinical Assessment module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Clinical Assessment — Stored Procedures
+
+> **26** stored procedures | **13** GET | **3** INSERT | **2** UPDATE | **3** DELETE | **5** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 8 | High |
+| Dynamic SQL | 2 | High |
+| NOLOCK usage | 1 (16 occurrences) | Medium |
+| Table Variables | 9 | Medium |
+| WHILE Loops | 6 | Medium |
+| Missing SET NOCOUNT ON | 7 | Low |
+| No TRY/CATCH | 26 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **2 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **8 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **1 procedure use NOLOCK** (16 total occurrences) — audit for data consistency risks
+- **9 procedures use table variables** — consider temp tables for large datasets
+- **6 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **7 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **26 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/clinical-assessment.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

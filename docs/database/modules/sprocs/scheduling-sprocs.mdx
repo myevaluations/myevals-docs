@@ -1,0 +1,43 @@
+---
+title: "Scheduling — Stored Procedures"
+sidebar_label: "Scheduling (18)"
+sidebar_position: 17
+description: "18 stored procedures in the Scheduling module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Scheduling — Stored Procedures
+
+> **18** stored procedures | **5** GET | **2** INSERT | **3** UPDATE | **4** DELETE | **4** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 1 | High |
+| Table Variables | 3 | Medium |
+| Missing SET NOCOUNT ON | 1 | Low |
+| No TRY/CATCH | 10 | Low |
+
+## Optimization Priorities
+
+### High Priority
+
+- **1 procedure use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **3 procedures use table variables** — consider temp tables for large datasets
+
+### Low Priority
+
+- **1 procedure missing SET NOCOUNT ON** — add for reduced network traffic
+- **10 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/scheduling.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

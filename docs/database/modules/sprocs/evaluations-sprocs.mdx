@@ -1,0 +1,54 @@
+---
+title: "Evaluations — Stored Procedures"
+sidebar_label: "Evaluations (960)"
+sidebar_position: 2
+description: "960 stored procedures in the Evaluations module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Evaluations — Stored Procedures
+
+> **960** stored procedures | **552** GET | **118** INSERT | **149** UPDATE | **53** DELETE | **3** Report | **85** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 19 | Critical |
+| SELECT * | 268 | High |
+| Dynamic SQL | 29 | High |
+| NOLOCK usage | 74 (2354 occurrences) | Medium |
+| Table Variables | 181 | Medium |
+| WHILE Loops | 200 | Medium |
+| Missing SET NOCOUNT ON | 261 | Low |
+| No TRY/CATCH | 926 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **19 procedures use cursors** — replace with set-based operations
+- **29 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **268 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **74 procedures use NOLOCK** (2354 total occurrences) — audit for data consistency risks
+- **181 procedures use table variables** — consider temp tables for large datasets
+- **200 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **261 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **926 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/evaluations.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

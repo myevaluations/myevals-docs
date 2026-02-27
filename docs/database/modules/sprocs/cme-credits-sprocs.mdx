@@ -1,0 +1,54 @@
+---
+title: "CME Credits — Stored Procedures"
+sidebar_label: "CME Credits (289)"
+sidebar_position: 7
+description: "289 stored procedures in the CME Credits module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# CME Credits — Stored Procedures
+
+> **289** stored procedures | **149** GET | **61** INSERT | **34** UPDATE | **24** DELETE | **2** Report | **19** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 6 | Critical |
+| SELECT * | 57 | High |
+| Dynamic SQL | 2 | High |
+| NOLOCK usage | 26 (726 occurrences) | Medium |
+| Table Variables | 26 | Medium |
+| WHILE Loops | 20 | Medium |
+| Missing SET NOCOUNT ON | 83 | Low |
+| No TRY/CATCH | 287 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **6 procedures use cursors** — replace with set-based operations
+- **2 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **57 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **26 procedures use NOLOCK** (726 total occurrences) — audit for data consistency risks
+- **26 procedures use table variables** — consider temp tables for large datasets
+- **20 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **83 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **287 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/cme-credits.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

@@ -1,0 +1,54 @@
+---
+title: "Duty Hours — Stored Procedures"
+sidebar_label: "Duty Hours (611)"
+sidebar_position: 3
+description: "611 stored procedures in the Duty Hours module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Duty Hours — Stored Procedures
+
+> **611** stored procedures | **355** GET | **90** INSERT | **77** UPDATE | **37** DELETE | **1** Report | **51** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 35 | Critical |
+| SELECT * | 137 | High |
+| Dynamic SQL | 15 | High |
+| NOLOCK usage | 19 (79 occurrences) | Medium |
+| Table Variables | 150 | Medium |
+| WHILE Loops | 161 | Medium |
+| Missing SET NOCOUNT ON | 189 | Low |
+| No TRY/CATCH | 587 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **35 procedures use cursors** — replace with set-based operations
+- **15 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **137 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **19 procedures use NOLOCK** (79 total occurrences) — audit for data consistency risks
+- **150 procedures use table variables** — consider temp tables for large datasets
+- **161 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **189 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **587 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/duty-hours.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>

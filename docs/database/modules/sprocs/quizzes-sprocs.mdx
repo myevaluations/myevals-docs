@@ -1,0 +1,54 @@
+---
+title: "Quizzes — Stored Procedures"
+sidebar_label: "Quizzes (176)"
+sidebar_position: 8
+description: "176 stored procedures in the Quizzes module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Quizzes — Stored Procedures
+
+> **176** stored procedures | **125** GET | **14** INSERT | **20** UPDATE | **10** DELETE | **7** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 22 | Critical |
+| SELECT * | 57 | High |
+| Dynamic SQL | 9 | High |
+| NOLOCK usage | 4 (30 occurrences) | Medium |
+| Table Variables | 13 | Medium |
+| WHILE Loops | 44 | Medium |
+| Missing SET NOCOUNT ON | 122 | Low |
+| No TRY/CATCH | 174 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **22 procedures use cursors** — replace with set-based operations
+- **9 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **57 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **4 procedures use NOLOCK** (30 total occurrences) — audit for data consistency risks
+- **13 procedures use table variables** — consider temp tables for large datasets
+- **44 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **122 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **174 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/quizzes.json"
+  generatedAt="2026-02-27T13:08:31.426Z"
+/>
