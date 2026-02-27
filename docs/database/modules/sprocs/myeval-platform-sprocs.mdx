@@ -1,0 +1,46 @@
+---
+title: "MyEval Platform — Stored Procedures"
+sidebar_label: "MyEval Platform (43)"
+sidebar_position: 14
+description: "43 stored procedures in the MyEval Platform module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# MyEval Platform — Stored Procedures
+
+> **43** stored procedures | **10** GET | **3** INSERT | **1** UPDATE | **3** DELETE | **26** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 3 | High |
+| Dynamic SQL | 1 | High |
+| NOLOCK usage | 6 (16 occurrences) | Medium |
+| No TRY/CATCH | 34 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **1 procedure use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **3 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **6 procedures use NOLOCK** (16 total occurrences) — audit for data consistency risks
+
+### Low Priority
+
+- **34 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/myeval-platform.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

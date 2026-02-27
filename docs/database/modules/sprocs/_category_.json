@@ -1,0 +1,8 @@
+{
+  "label": "Stored Procedures",
+  "position": 50,
+  "link": {
+    "type": "generated-index",
+    "description": "5,028 stored procedures across 21 modules, with anti-pattern analysis and optimization priorities."
+  }
+}

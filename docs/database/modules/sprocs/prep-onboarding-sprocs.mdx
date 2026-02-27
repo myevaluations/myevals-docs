@@ -1,0 +1,50 @@
+---
+title: "Prep/Onboarding — Stored Procedures"
+sidebar_label: "Prep/Onboarding (17)"
+sidebar_position: 18
+description: "17 stored procedures in the Prep/Onboarding module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Prep/Onboarding — Stored Procedures
+
+> **17** stored procedures | **8** GET | **1** INSERT | **3** UPDATE | **5** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 5 | High |
+| Dynamic SQL | 2 | High |
+| NOLOCK usage | 1 (1 occurrences) | Medium |
+| Table Variables | 1 | Medium |
+| Missing SET NOCOUNT ON | 1 | Low |
+| No TRY/CATCH | 15 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **2 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **5 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **1 procedure use NOLOCK** (1 total occurrences) — audit for data consistency risks
+- **1 procedure use table variables** — consider temp tables for large datasets
+
+### Low Priority
+
+- **1 procedure missing SET NOCOUNT ON** — add for reduced network traffic
+- **15 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/prep-onboarding.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

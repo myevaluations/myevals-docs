@@ -1,0 +1,31 @@
+---
+title: "MyGME Integration — Stored Procedures"
+sidebar_label: "MyGME Integration (1)"
+sidebar_position: 21
+description: "1 stored procedure in the MyGME Integration module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# MyGME Integration — Stored Procedures
+
+> **1** stored procedure | **1** INSERT
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| No TRY/CATCH | 1 | Low |
+
+## Optimization Priorities
+
+### Low Priority
+
+- **1 procedure lacks TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/mygme-integration.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

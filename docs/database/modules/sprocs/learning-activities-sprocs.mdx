@@ -1,0 +1,50 @@
+---
+title: "Learning Activities — Stored Procedures"
+sidebar_label: "Learning Activities (83)"
+sidebar_position: 12
+description: "83 stored procedures in the Learning Activities module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Learning Activities — Stored Procedures
+
+> **83** stored procedures | **43** GET | **13** INSERT | **14** UPDATE | **12** DELETE | **1** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 13 | High |
+| Dynamic SQL | 2 | High |
+| Table Variables | 20 | Medium |
+| WHILE Loops | 9 | Medium |
+| Missing SET NOCOUNT ON | 28 | Low |
+| No TRY/CATCH | 81 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **2 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **13 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **20 procedures use table variables** — consider temp tables for large datasets
+- **9 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **28 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **81 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/learning-activities.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

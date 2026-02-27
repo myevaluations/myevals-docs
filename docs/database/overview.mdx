@@ -50,6 +50,19 @@ The MyEvaluations database contains **2,242 tables** with **24,282 columns**, **
 - **0** indexes are currently disabled
 - **1,029** foreign key relationships connect the schema
 
+## Stored Procedure Analysis
+
+**5,028** stored procedures analyzed across 21 modules.
+
+| Anti-Pattern | Count | Severity |
+|-------------|------:|----------|
+| Cursors | 138 | Critical |
+| SELECT * | 976 | High |
+| Dynamic SQL | 205 | High |
+| NOLOCK usage | 212 | Medium |
+| Missing SET NOCOUNT ON | 1365 | Low |
+
+Browse stored procedures by module in the **Stored Procedures** section of the sidebar.
 ## Explore Further
 
 - [**Schema Explorer**](./explorer) — Interactive D3 graph of tables and FK relationships

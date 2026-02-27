@@ -1,0 +1,33 @@
+---
+title: "Post-Graduation — Stored Procedures"
+sidebar_label: "Post-Graduation (2)"
+sidebar_position: 20
+description: "2 stored procedures in the Post-Graduation module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Post-Graduation — Stored Procedures
+
+> **2** stored procedures | **2** UPDATE
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Missing SET NOCOUNT ON | 2 | Low |
+| No TRY/CATCH | 2 | Low |
+
+## Optimization Priorities
+
+### Low Priority
+
+- **2 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **2 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/post-graduation.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

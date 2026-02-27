@@ -1,0 +1,52 @@
+---
+title: "Nursing — Stored Procedures"
+sidebar_label: "Nursing (28)"
+sidebar_position: 15
+description: "28 stored procedures in the Nursing module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Nursing — Stored Procedures
+
+> **28** stored procedures | **14** GET | **5** INSERT | **3** UPDATE | **6** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 6 | High |
+| Dynamic SQL | 3 | High |
+| NOLOCK usage | 1 (2 occurrences) | Medium |
+| Table Variables | 3 | Medium |
+| WHILE Loops | 5 | Medium |
+| Missing SET NOCOUNT ON | 4 | Low |
+| No TRY/CATCH | 28 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **3 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **6 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **1 procedure use NOLOCK** (2 total occurrences) — audit for data consistency risks
+- **3 procedures use table variables** — consider temp tables for large datasets
+- **5 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **4 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **28 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/nursing.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

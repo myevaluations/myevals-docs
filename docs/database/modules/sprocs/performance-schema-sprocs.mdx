@@ -1,0 +1,54 @@
+---
+title: "Performance Schema — Stored Procedures"
+sidebar_label: "Performance Schema (71)"
+sidebar_position: 13
+description: "71 stored procedures in the Performance Schema module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Performance Schema — Stored Procedures
+
+> **71** stored procedures | **23** GET | **20** INSERT | **7** UPDATE | **6** Report | **15** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| Cursors | 3 | Critical |
+| SELECT * | 7 | High |
+| Dynamic SQL | 10 | High |
+| NOLOCK usage | 9 (68 occurrences) | Medium |
+| Table Variables | 2 | Medium |
+| WHILE Loops | 3 | Medium |
+| Missing SET NOCOUNT ON | 37 | Low |
+| No TRY/CATCH | 71 | Low |
+
+## Optimization Priorities
+
+### Critical
+
+- **3 procedures use cursors** — replace with set-based operations
+- **10 procedures use dynamic SQL** — parameterize queries
+
+### High Priority
+
+- **7 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **9 procedures use NOLOCK** (68 total occurrences) — audit for data consistency risks
+- **2 procedures use table variables** — consider temp tables for large datasets
+- **3 procedures use WHILE loops** — evaluate for set-based alternatives
+
+### Low Priority
+
+- **37 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **71 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/performance-schema.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>

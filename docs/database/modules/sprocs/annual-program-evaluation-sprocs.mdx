@@ -1,0 +1,45 @@
+---
+title: "Annual Program Evaluation — Stored Procedures"
+sidebar_label: "Annual Program Evaluation (13)"
+sidebar_position: 19
+description: "13 stored procedures in the Annual Program Evaluation module"
+---
+
+import SprocDetail from '@site/src/components/SprocDetail';
+
+# Annual Program Evaluation — Stored Procedures
+
+> **13** stored procedures | **8** GET | **1** INSERT | **2** UPDATE | **2** Mixed
+
+## Anti-Pattern Summary
+
+| Pattern | Count | Severity |
+|---------|-------|----------|
+| SELECT * | 2 | High |
+| NOLOCK usage | 1 (3 occurrences) | Medium |
+| Table Variables | 3 | Medium |
+| Missing SET NOCOUNT ON | 5 | Low |
+| No TRY/CATCH | 12 | Low |
+
+## Optimization Priorities
+
+### High Priority
+
+- **2 procedures use SELECT \*** — specify column lists
+
+### Medium Priority
+
+- **1 procedure use NOLOCK** (3 total occurrences) — audit for data consistency risks
+- **3 procedures use table variables** — consider temp tables for large datasets
+
+### Low Priority
+
+- **5 procedures missing SET NOCOUNT ON** — add for reduced network traffic
+- **12 procedures lack TRY/CATCH** — add structured error handling
+
+## Stored Procedures
+
+<SprocDetail
+  dataUrl="/sproc-detail-data/annual-program-evaluation.json"
+  generatedAt="2026-02-27T14:03:11.608Z"
+/>
