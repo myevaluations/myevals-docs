@@ -169,6 +169,15 @@ function fmt(n: number): string {
   return n.toLocaleString('en-US');
 }
 
+/** Strip single-line (--) and block comments from SQL body */
+function stripComments(sql: string): string {
+  // Remove block comments (non-greedy, handles nested poorly but sufficient)
+  let result = sql.replace(/\/\*[\s\S]*?\*\//g, '');
+  // Remove single-line comments
+  result = result.replace(/--[^\r\n]*/g, '');
+  return result;
+}
+
 // ---------------------------------------------------------------------------
 // Phase 1: Read file and split into SP blocks
 // ---------------------------------------------------------------------------
@@ -215,7 +224,6 @@ function readAndSplitBlocks(): string[] {
 
 function parseSpBlock(block: string): SpRaw | null {
   // Extract the CREATE PROCEDURE line to get name and schema
-  // Pattern: CREATE PROC[EDURE] [schema].[name] or CREATE PROC[EDURE] schema.name
   const nameMatch = block.match(
     /CREATE\s+PROC(?:EDURE)?\s+\[?(\w+)\]?\.\[?(\w+)\]?/i
   );
@@ -225,12 +233,10 @@ function parseSpBlock(block: string): SpRaw | null {
   const name = nameMatch[2];
 
   // Find the parameter block: between the procedure name and AS keyword
-  // The AS keyword should be on its own line or after parameters
   const nameEnd = nameMatch.index! + nameMatch[0].length;
   const restAfterName = block.substring(nameEnd);
 
   // Find AS keyword: must be on its own or preceded by whitespace/newline
-  // Be careful not to match AS inside parameter names or types
   const asMatch = restAfterName.match(/\n\s*AS\s*\r?\n/i)
     || restAfterName.match(/\nAS\s*$/im)
     || restAfterName.match(/\)\s*\r?\nAS\s*\r?\n/i);
@@ -241,10 +247,8 @@ function parseSpBlock(block: string): SpRaw | null {
   if (asMatch) {
     const asIdx = asMatch.index!;
     paramBlock = restAfterName.substring(0, asIdx);
-    // Body starts after 'AS\n'
     body = restAfterName.substring(asIdx + asMatch[0].length);
   } else {
-    // Try a simpler AS pattern: just find first standalone AS
     const simpleAsMatch = restAfterName.match(/\bAS\b\s*\r?\n/i);
     if (simpleAsMatch) {
       paramBlock = restAfterName.substring(0, simpleAsMatch.index!);
@@ -252,12 +256,10 @@ function parseSpBlock(block: string): SpRaw | null {
         simpleAsMatch.index! + simpleAsMatch[0].length
       );
     } else {
-      // No AS found, entire rest is body (unusual)
       body = restAfterName;
     }
   }
 
-  // Parse parameters from paramBlock
   const parameters = parseParameters(paramBlock);
 
   return { name, schema, parameters, body };
@@ -266,8 +268,6 @@ function parseSpBlock(block: string): SpRaw | null {
 function parseParameters(paramBlock: string): SpParameter[] {
   const params: SpParameter[] = [];
 
-  // Match @ParamName datatype[(len)] [= default] [OUTPUT|OUT]
-  // Parameters are separated by commas and/or newlines
   const paramRegex =
     /(@\w+)\s+([\w]+(?:\s*\([^)]*\))?(?:\s*\(\s*\w+\s*\))?)\s*(?:=\s*([^,\r\n]*?))?\s*(OUTPUT|OUT)?\s*(?:,|\s*$)/gi;
 
@@ -278,16 +278,13 @@ function parseParameters(paramBlock: string): SpParameter[] {
     let defaultValue = match[3] ? match[3].trim() : null;
     const isOutput = !!match[4];
 
-    // Clean up default value
     if (defaultValue === '' || defaultValue === undefined) {
       defaultValue = null;
     }
-    // Remove trailing comma from default value
     if (defaultValue && defaultValue.endsWith(',')) {
       defaultValue = defaultValue.slice(0, -1).trim();
     }
 
-    // Normalize data type (remove extra whitespace)
     dataType = dataType.replace(/\s+/g, ' ');
 
     params.push({
@@ -299,6 +296,63 @@ function parseParameters(paramBlock: string): SpParameter[] {
   }
 
   return params;
+}
+
+// ---------------------------------------------------------------------------
+// Phase 3: Anti-pattern detection
+// ---------------------------------------------------------------------------
+
+function detectAntiPatterns(body: string): AntiPatterns {
+  const cleanBody = stripComments(body);
+  const upperBody = cleanBody.toUpperCase();
+
+  // Cursors: DECLARE ... CURSOR or FETCH NEXT
+  const hasCursor =
+    /DECLARE\s+\S+\s+CURSOR/i.test(cleanBody) ||
+    /FETCH\s+NEXT/i.test(cleanBody);
+
+  // SELECT *: SELECT * FROM (not in comments, already stripped)
+  const hasSelectStar = /SELECT\s+\*\s+FROM/i.test(cleanBody);
+
+  // Dynamic SQL: EXEC( or sp_executesql
+  const hasDynamicSql =
+    /EXEC\s*\(/i.test(cleanBody) ||
+    /sp_executesql/i.test(cleanBody);
+
+  // NOLOCK: WITH (NOLOCK) with occurrence count
+  const nolockMatches = cleanBody.match(/WITH\s*\(\s*NOLOCK\s*\)/gi);
+  const nolockCount = nolockMatches ? nolockMatches.length : 0;
+  const hasNolock = nolockCount > 0;
+
+  // Missing SET NOCOUNT ON
+  const missingSetNocountOn = !upperBody.includes('SET NOCOUNT ON');
+
+  // Table variables: DECLARE @var TABLE
+  const hasTableVariable = /DECLARE\s+@\w+\s+TABLE/i.test(cleanBody);
+
+  // Temp tables: CREATE TABLE # or INTO #
+  const hasTempTable =
+    /CREATE\s+TABLE\s+#/i.test(cleanBody) ||
+    /INTO\s+#/i.test(cleanBody);
+
+  // WHILE loops
+  const hasWhileLoop = /\bWHILE\s+/i.test(cleanBody);
+
+  // No TRY/CATCH: body doesn't contain BEGIN TRY
+  const hasNoTryCatch = !upperBody.includes('BEGIN TRY');
+
+  return {
+    hasCursor,
+    hasSelectStar,
+    hasDynamicSql,
+    hasNolock,
+    nolockCount,
+    missingSetNocountOn,
+    hasTableVariable,
+    hasTempTable,
+    hasWhileLoop,
+    hasNoTryCatch,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -315,7 +369,7 @@ async function main(): Promise<void> {
   // Phase 1: Read and split
   const spBlocks = readAndSplitBlocks();
 
-  // Phase 2: Parse each SP block for name, schema, parameters
+  // Phase 2: Parse each SP block
   console.log('\n=== Phase 2: Parse SP name, schema, parameters ===');
   const parsed: SpRaw[] = [];
   let parseFailures = 0;
@@ -334,30 +388,37 @@ async function main(): Promise<void> {
     console.log('  Parse failures: ' + fmt(parseFailures));
   }
 
-  // Parameter stats
-  const paramCounts = parsed.map((sp) => sp.parameters.length);
-  const avgParams =
-    paramCounts.length > 0
-      ? (paramCounts.reduce((a, b) => a + b, 0) / paramCounts.length).toFixed(1)
-      : '0';
-  const maxParams = Math.max(...paramCounts, 0);
-  const withParams = paramCounts.filter((c) => c > 0).length;
-  const outputParams = parsed.reduce(
-    (sum, sp) => sum + sp.parameters.filter((p) => p.direction === 'OUTPUT').length,
-    0
-  );
+  // Phase 3: Anti-pattern detection
+  console.log('\n=== Phase 3: Anti-pattern detection ===');
+  let cursors = 0, selectStar = 0, dynamicSql = 0, nolockUsage = 0;
+  let missingSetNocountOn = 0, tableVariables = 0, tempTables = 0;
+  let whileLoops = 0, noTryCatch = 0;
+  let totalNolockOccurrences = 0;
 
-  console.log('  Average parameters per SP: ' + avgParams);
-  console.log('  Max parameters: ' + maxParams);
-  console.log('  SPs with parameters: ' + fmt(withParams) + ' (' + ((withParams / parsed.length) * 100).toFixed(0) + '%)');
-  console.log('  OUTPUT parameters: ' + fmt(outputParams));
-
-  // Schema distribution
-  const schemas: Record<string, number> = {};
   for (const sp of parsed) {
-    schemas[sp.schema] = (schemas[sp.schema] || 0) + 1;
+    const ap = detectAntiPatterns(sp.body);
+    if (ap.hasCursor) cursors++;
+    if (ap.hasSelectStar) selectStar++;
+    if (ap.hasDynamicSql) dynamicSql++;
+    if (ap.hasNolock) nolockUsage++;
+    totalNolockOccurrences += ap.nolockCount;
+    if (ap.missingSetNocountOn) missingSetNocountOn++;
+    if (ap.hasTableVariable) tableVariables++;
+    if (ap.hasTempTable) tempTables++;
+    if (ap.hasWhileLoop) whileLoops++;
+    if (ap.hasNoTryCatch) noTryCatch++;
   }
-  console.log('  Schema distribution: ' + JSON.stringify(schemas));
+
+  console.log('  Anti-pattern counts:');
+  console.log('    Cursors: ' + cursors);
+  console.log('    SELECT *: ' + selectStar);
+  console.log('    Dynamic SQL: ' + dynamicSql);
+  console.log('    NOLOCK usage: ' + nolockUsage + ' SPs (' + totalNolockOccurrences + ' occurrences)');
+  console.log('    Missing SET NOCOUNT ON: ' + missingSetNocountOn);
+  console.log('    Table variables: ' + tableVariables);
+  console.log('    Temp tables: ' + tempTables);
+  console.log('    WHILE loops: ' + whileLoops);
+  console.log('    No TRY/CATCH: ' + noTryCatch);
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log('\nDone in ' + elapsed + 's');
