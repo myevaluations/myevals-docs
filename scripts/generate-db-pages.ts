@@ -29,6 +29,7 @@
  */
 
 import * as fs from 'fs/promises';
+import * as fsSync from 'fs';
 import * as path from 'path';
 
 // ── Paths ────────────────────────────────────────────────────────────────────
@@ -751,6 +752,16 @@ function generateModuleMdx(
     }
   }
 
+  // SP cross-link (only if the SP reference page exists)
+  const sprocSlug = slugify(mod.displayName);
+  const sprocPagePath = path.join(MODULES_DIR, 'sprocs', `${sprocSlug}-sprocs.mdx`);
+  const sprocSection = fsSync.existsSync(sprocPagePath)
+    ? `
+## Stored Procedures
+
+See the [${mod.displayName} Stored Procedures](./sprocs/${sprocSlug}-sprocs) reference page for detailed documentation of all stored procedures in this module, including parameters, anti-pattern analysis, and optimization recommendations.`
+    : '';
+
   // Mermaid ER section
   const hasFKRelationships = !mermaidER.includes('No FK relationships');
   const mermaidSection = hasFKRelationships
@@ -787,6 +798,7 @@ ${workflowsSection}${healthNotesSection}
   tables={${tablesJson}}
   generatedAt="${timestamp}"
 />
+${sprocSection}
 `;
 }
 
