@@ -723,7 +723,7 @@ function generateModuleMdx(
       indexes: t.indexes,
       checkConstraints: t.checkConstraints,
       defaultConstraints: t.defaultConstraints,
-      triggers: t.triggers,
+      triggers: (t.triggers ?? []).map((tr: any) => typeof tr === 'string' ? tr : tr.name),
       // AI-enriched fields (optional)
       ...(te?.summary && { summary: te.summary }),
       ...(te?.businessPurpose && { businessPurpose: te.businessPurpose }),

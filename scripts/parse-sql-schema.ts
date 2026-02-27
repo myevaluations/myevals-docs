@@ -427,6 +427,31 @@ function extractTables(
       regexFallback++;
     }
 
+    // Build inline indexes from PK and UNIQUE constraints found in CREATE TABLE
+    const inlineIndexes: IndexOutput[] = [];
+    if (pkColumns.length > 0) {
+      inlineIndexes.push({
+        name: `PK_${tableName}`,
+        type: 'CLUSTERED',
+        isPrimaryKey: true,
+        isUnique: true,
+        isDisabled: false,
+        keyColumns: pkColumns,
+        includedColumns: [],
+      });
+    }
+    for (const uqName of uniqueConstraints) {
+      inlineIndexes.push({
+        name: uqName,
+        type: 'NONCLUSTERED',
+        isPrimaryKey: false,
+        isUnique: true,
+        isDisabled: false,
+        keyColumns: [],
+        includedColumns: [],
+      });
+    }
+
     tables.set(fullName, {
       name: tableName,
       schema,
@@ -435,7 +460,7 @@ function extractTables(
       primaryKeyColumns: pkColumns,
       columns,
       foreignKeys: [],
-      indexes: [],
+      indexes: inlineIndexes,
       checkConstraints: [],
       defaultConstraints: 0,
       uniqueConstraints,
@@ -798,6 +823,46 @@ function extractForeignKeys(
     }
   }
 
+  // Also capture inline FOREIGN KEY constraints in CREATE TABLE bodies
+  // Pattern: FOREIGN KEY (col) REFERENCES [schema].Table(col)
+  const inlineFkRegex =
+    /CREATE TABLE \[(\w+)\]\.\[(\w+)\][\s\S]*?FOREIGN KEY\s*\(([^)]+)\)\s*REFERENCES\s+\[?(\w+)\]?\.(\w+)\(([^)]+)\)/g;
+
+  let inlineMatch: RegExpExecArray | null;
+  while ((inlineMatch = inlineFkRegex.exec(content)) !== null) {
+    const schema = inlineMatch[1];
+    const tableName = inlineMatch[2];
+    const fkColsRaw = inlineMatch[3];
+    const refSchema = inlineMatch[4];
+    const refTable = inlineMatch[5];
+    const refColsRaw = inlineMatch[6];
+
+    const fkCols = fkColsRaw
+      .split(',')
+      .map((c) => c.trim().replace(/^\[|\]$/g, ''));
+    const refCols = refColsRaw
+      .split(',')
+      .map((c) => c.trim().replace(/^\[|\]$/g, ''));
+
+    const fullName = `${schema}.${tableName}`;
+    const table = tables.get(fullName);
+    if (table) {
+      // Avoid duplicates (if ALTER TABLE FK already captured it)
+      const alreadyHas = table.foreignKeys.some(
+        (fk) => fk.columns?.join(',') === fkCols.join(',') && fk.referencedTable === `${refSchema}.${refTable}`
+      );
+      if (!alreadyHas) {
+        table.foreignKeys.push({
+          constraintName: `FK_${tableName}_${refTable}_inline`,
+          columns: fkCols,
+          referencedTable: `${refSchema}.${refTable}`,
+          referencedColumns: refCols,
+        });
+        fkCount++;
+      }
+    }
+  }
+
   console.log(
     `  Phase 3: Extracted ${fmt(fkCount)} foreign key constraints`
   );
@@ -1065,9 +1130,11 @@ function buildSummaryJson(
   phase4: Phase4Results
 ): SummaryJson {
   let totalColumns = 0;
+  let totalAllIndexes = 0;
   for (const mod of tablesJson.modules) {
     for (const t of mod.tables) {
       totalColumns += t.columns.length;
+      totalAllIndexes += t.indexes.length;
     }
   }
 
@@ -1077,7 +1144,7 @@ function buildSummaryJson(
     totalTables: tablesJson.totalTables,
     totalColumns,
     totalForeignKeys: totalFKs,
-    totalIndexes: phase4.standaloneIndexes.length,
+    totalIndexes: totalAllIndexes,
     totalTriggers: phase4.triggerInfos.length,
     totalStoredProcedures: phase4.spCount,
     totalFunctions: phase4.funcCount,
@@ -1106,7 +1173,10 @@ function buildIndexesJson(standaloneIndexes: StandaloneIndex[]) {
     totalIndexes: standaloneIndexes.length,
     byType,
     stats: {
+      totalPrimaryKeys: 0,
+      totalUniqueIndexes: standaloneIndexes.filter((i) => i.isUnique).length,
       totalUnique: standaloneIndexes.filter((i) => i.isUnique).length,
+      totalDisabledIndexes: 0,
       totalWithIncludedColumns: standaloneIndexes.filter(
         (i) => i.includedColumns.length > 0
       ).length,
