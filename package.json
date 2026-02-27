@@ -39,6 +39,7 @@
     "parse:db:sprocs": "tsx scripts/parse-sql-sprocs.ts",
     "parse:db:reconcile": "tsx scripts/reconcile-sprocs.ts",
     "ai:enrich:db": "tsx scripts/ai-enrich-db-schema.ts",
+    "enrich:sprocs": "tsx scripts/enrich-sprocs.ts",
     "generate:db:pages": "tsx scripts/generate-db-pages.ts",
     "generate:db:sproc-pages": "tsx scripts/generate-db-sproc-pages.ts",
     "db:full": "npm run parse:db:schema && npm run parse:db:sprocs && npm run parse:db:reconcile && npm run generate:db:pages && npm run generate:db:sproc-pages",
