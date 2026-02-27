@@ -45,6 +45,20 @@ const STATIC_DIR = path.join(PROJECT_ROOT, 'static');
 interface ForeignKey {
   constraintName: string;
   referencedTable: string;
+  columns?: string[];
+  referencedColumns?: string[];
+}
+
+interface ColumnDef {
+  name: string;
+  dataType: string;
+  rawType: string;
+  maxLength: string | null;
+  isNullable: boolean;
+  isIdentity: boolean;
+  isPrimaryKey: boolean;
+  defaultValue: string | null;
+  ordinalPosition: number;
 }
 
 interface Index {
@@ -63,6 +77,7 @@ interface Table {
   fullName: string;
   hasPrimaryKey: boolean;
   primaryKeyColumns: string[];
+  columns?: ColumnDef[];
   foreignKeys: ForeignKey[];
   indexes: Index[];
   checkConstraints: any[];
@@ -113,11 +128,20 @@ interface SprocReconciliation {
 interface SummaryData {
   exportDate: string;
   source: string;
-  objectCounts: Record<string, number>;
+  objectCounts?: Record<string, number>;
+  // New flat-key format from SQL parser
+  totalStoredProcedures?: number;
+  totalFunctions?: number;
+  totalViews?: number;
+  totalColumns?: number;
+  totalForeignKeys?: number;
+  totalIndexes?: number;
+  totalTriggers?: number;
+  totalDefaultConstraints?: number;
   schemas: string[];
   moduleCount: number;
   modules: { prefix: string; displayName: string; tableCount: number }[];
-  partitions: { tableName: string; partitionScheme: string; partitionFunction: string }[];
+  partitions?: { tableName: string; partitionScheme: string; partitionFunction: string }[];
 }
 
 interface IndexesData {
@@ -228,7 +252,7 @@ function pct(part: number, total: number): string {
  * using the common pattern FK_ChildTable_ParentTable.
  */
 function resolveReferencedTable(fk: ForeignKey, childTableName: string): string | null {
-  const ref = fk.referencedTable;
+  let ref = fk.referencedTable;
 
   // Clearly not a table name
   if (ref === '(system-named)' || !ref) {
@@ -240,7 +264,11 @@ function resolveReferencedTable(fk: ForeignKey, childTableName: string): string 
     return parseTableFromConstraintName(fk.constraintName, childTableName);
   }
 
-  // Otherwise treat it as the actual referenced table name
+  // Strip schema prefix if present (e.g., "dbo.SEC_Users" → "SEC_Users")
+  if (ref.includes('.')) {
+    ref = ref.split('.').pop()!;
+  }
+
   return ref;
 }
 
@@ -290,6 +318,7 @@ function generateExplorerData(tablesData: TablesData): { nodes: any[]; links: an
         name: t.name,
         module: mod.prefix,
         hasPK: t.hasPrimaryKey,
+        columnCount: t.columns?.length ?? 0,
         fkCount: t.foreignKeys.length,
         indexCount: t.indexes.length,
       });
@@ -305,6 +334,8 @@ function generateExplorerData(tablesData: TablesData): { nodes: any[]; links: an
             source: t.fullName,
             target: parentFullName,
             constraintName: fk.constraintName,
+            sourceColumns: fk.columns ?? [],
+            targetColumns: fk.referencedColumns ?? [],
           });
         }
       }
@@ -334,12 +365,12 @@ function generateSchemaHealthData(
 
   // Disabled indexes
   const disabledIndexes = indexesData.indexes
-    .filter((i) => i.isDisabled)
-    .map((i) => ({
+    .filter((i: any) => i.isDisabled)
+    .map((i: any) => ({
       indexName: i.indexName,
       tableName: i.tableName,
       fullTableName: i.fullTableName,
-      type: i.indexType,
+      type: i.indexType ?? (i.isClustered ? 'CLUSTERED' : 'NONCLUSTERED'),
     }));
 
   // Naming convention issues: tables not following ModulePrefix_ pattern
@@ -354,13 +385,13 @@ function generateSchemaHealthData(
     })
     .map((t) => ({ name: t.name, fullName: t.fullName }));
 
-  // Tables with triggers
-  const tablesWithTriggers = triggersData.triggers.map((tr) => ({
+  // Tables with triggers (handle both old and new trigger formats)
+  const tablesWithTriggers = triggersData.triggers.map((tr: any) => ({
     triggerName: tr.name,
-    tableName: tr.parentTable,
+    tableName: tr.parentTable ?? tr.tableName,
     fullTableName: tr.fullParentTable,
-    isDisabled: tr.isDisabled,
-    isInsteadOf: tr.isInsteadOf,
+    isDisabled: tr.isDisabled ?? false,
+    isInsteadOf: tr.isInsteadOf ?? false,
   }));
 
   // Module-level health summary
@@ -383,7 +414,7 @@ function generateSchemaHealthData(
   return {
     generatedAt: new Date().toISOString(),
     totalTables: tablesData.totalTables,
-    objectCounts: summaryData.objectCounts,
+    objectCounts: summaryData.objectCounts ?? {},
     tablesNoPK,
     tablesNoIndex,
     disabledIndexes,
@@ -393,9 +424,10 @@ function generateSchemaHealthData(
     stats: {
       tablesWithPK: allTables.filter((t) => t.hasPrimaryKey).length,
       tablesWithIndex: allTables.filter((t) => t.indexes.length > 0).length,
-      totalFKs: summaryData.objectCounts['Foreign Key Constraints'] || 0,
-      totalDisabledIndexes: indexesData.stats.totalDisabledIndexes,
-      totalTriggers: triggersData.totalTriggers,
+      totalFKs: summaryData.totalForeignKeys ?? (summaryData.objectCounts ?? {})['Foreign Key Constraints'] ?? 0,
+      totalDisabledIndexes: indexesData.stats?.totalDisabledIndexes ?? 0,
+      totalTriggers: summaryData.totalTriggers ?? triggersData.totalTriggers,
+      totalIndexes: indexesData.totalIndexes ?? 0,
     },
   };
 }
@@ -446,8 +478,29 @@ function generateMermaidER(tables: Table[], maxTables: number = 20): string {
     .map(([name]) => name);
   const topSet = new Set(topTables);
 
+  // Build entity attribute blocks (PK + FK columns, max 5 per table)
+  const entityLines: string[] = [];
+  for (const t of tables) {
+    if (!topSet.has(t.name)) continue;
+    if (!t.columns || t.columns.length === 0) continue;
+    const fkColNames = new Set(t.foreignKeys.flatMap((fk) => fk.columns ?? []));
+    const keyColumns = t.columns
+      .filter((c) => c.isPrimaryKey || fkColNames.has(c.name))
+      .slice(0, 5);
+    if (keyColumns.length > 0) {
+      const safe = mermaidSafe(t.name);
+      entityLines.push(`    ${safe} {`);
+      for (const col of keyColumns) {
+        const marker = col.isPrimaryKey ? 'PK' : 'FK';
+        const typeSafe = col.dataType.replace(/[^a-zA-Z0-9]/g, '');
+        entityLines.push(`        ${typeSafe} ${col.name} ${marker}`);
+      }
+      entityLines.push(`    }`);
+    }
+  }
+
   // Build relationship lines
-  const lines: string[] = [];
+  const relLines: string[] = [];
   const seen = new Set<string>();
 
   for (const t of tables) {
@@ -464,23 +517,22 @@ function generateMermaidER(tables: Table[], maxTables: number = 20): string {
       const childSafe = mermaidSafe(t.name);
       const parentSafe = mermaidSafe(parent);
 
-      // Truncate constraint name for readability
-      let label = fk.constraintName;
+      // Use FK column name as label when available, fall back to constraint name
+      let label = fk.columns ? fk.columns.join(',') : fk.constraintName;
       if (label.length > 30) {
         label = label.slice(0, 27) + '...';
       }
-      // Mermaid labels in ER diagrams need to be quoted and safe
       label = label.replace(/"/g, "'");
 
-      lines.push(`    ${parentSafe} ||--o{ ${childSafe} : "${label}"`);
+      relLines.push(`    ${parentSafe} ||--o{ ${childSafe} : "${label}"`);
     }
   }
 
-  if (lines.length === 0) {
+  if (relLines.length === 0) {
     return '    %% No FK relationships in this module';
   }
 
-  return lines.join('\n');
+  return [...entityLines, ...relLines].join('\n');
 }
 
 // ── MDX Page Generators ─────────────────────────────────────────────────────
@@ -493,19 +545,21 @@ function generateOverviewMdx(
 ): string {
   const allTables = tablesData.modules.flatMap((m) => m.tables);
   const totalTables = tablesData.totalTables;
-  const totalSprocs = summaryData.objectCounts['Stored Procedures'] || 0;
-  const totalFunctions =
-    (summaryData.objectCounts['Scalar Functions'] || 0) +
-    (summaryData.objectCounts['Inline Table Valued Functions'] || 0) +
-    (summaryData.objectCounts['Table Valued Functions'] || 0) +
-    (summaryData.objectCounts['CLR Scalar Functions'] || 0);
-  const totalViews = summaryData.objectCounts['Views'] || 0;
-  const totalTriggers = triggersData.totalTriggers;
+  const oc = summaryData.objectCounts ?? {};
+  const totalSprocs = summaryData.totalStoredProcedures ?? oc['Stored Procedures'] ?? 0;
+  const totalFunctions = summaryData.totalFunctions ??
+    ((oc['Scalar Functions'] ?? 0) +
+    (oc['Inline Table Valued Functions'] ?? 0) +
+    (oc['Table Valued Functions'] ?? 0) +
+    (oc['CLR Scalar Functions'] ?? 0));
+  const totalViews = summaryData.totalViews ?? oc['Views'] ?? 0;
+  const totalTriggers = summaryData.totalTriggers ?? triggersData.totalTriggers;
+  const totalColumns = summaryData.totalColumns ?? allTables.reduce((s, t) => s + (t.columns?.length ?? 0), 0);
 
   const tablesWithPK = allTables.filter((t) => t.hasPrimaryKey).length;
   const tablesWithIndex = allTables.filter((t) => t.indexes.length > 0).length;
-  const fkCount = summaryData.objectCounts['Foreign Key Constraints'] || 0;
-  const disabledIndexes = indexesData.stats.totalDisabledIndexes;
+  const fkCount = summaryData.totalForeignKeys ?? oc['Foreign Key Constraints'] ?? 0;
+  const disabledIndexes = indexesData.stats?.totalDisabledIndexes ?? 0;
 
   // Module breakdown table rows
   const moduleRows = tablesData.modules
@@ -529,7 +583,7 @@ import SchemaHealth from '@site/src/components/SchemaHealth';
 
 # Database Schema Overview
 
-The MyEvaluations database contains **${totalTables.toLocaleString()} tables**, **${totalSprocs.toLocaleString()} stored procedures**, **${totalFunctions.toLocaleString()} functions**, **${totalViews.toLocaleString()} views**, and **${totalTriggers} triggers** across ${tablesData.schemas.length} schemas (\`${tablesData.schemas.join('`, `')}\`).
+The MyEvaluations database contains **${totalTables.toLocaleString()} tables** with **${totalColumns.toLocaleString()} columns**, **${totalSprocs.toLocaleString()} stored procedures**, **${totalFunctions.toLocaleString()} functions**, **${totalViews.toLocaleString()} views**, and **${totalTriggers} triggers** across ${tablesData.schemas.length} schemas (\`${tablesData.schemas.join('`, `')}\`).
 
 ## Schema Health Dashboard
 
@@ -546,8 +600,7 @@ ${moduleRows}
 - **${tablesWithPK}** of ${totalTables} tables (${pct(tablesWithPK, totalTables)}%) have a primary key
 - **${tablesWithIndex}** of ${totalTables} tables (${pct(tablesWithIndex, totalTables)}%) have at least one index
 - **${disabledIndexes}** indexes are currently disabled
-- **${fkCount.toLocaleString()}** foreign key relationships connect the schema
-- **${summaryData.partitions.length}** tables use monthly partitioning (\`${summaryData.partitions.map((p) => p.tableName).join('`, `')}\`)
+- **${fkCount.toLocaleString()}** foreign key relationships connect the schema${summaryData.partitions && summaryData.partitions.length > 0 ? `\n- **${summaryData.partitions.length}** tables use monthly partitioning (\`${summaryData.partitions.map((p) => p.tableName).join('`, `')}\`)` : ''}
 
 ## Explore Further
 
@@ -665,6 +718,7 @@ function generateModuleMdx(
       fullName: t.fullName,
       hasPrimaryKey: t.hasPrimaryKey,
       primaryKeyColumns: t.primaryKeyColumns,
+      columns: t.columns ?? [],
       foreignKeys: t.foreignKeys,
       indexes: t.indexes,
       checkConstraints: t.checkConstraints,
@@ -680,9 +734,22 @@ function generateModuleMdx(
     };
   });
 
-  // For very large modules (300+ tables), write inline JSON as a compact string
-  // to keep MDX file sizes reasonable.
-  const tablesJson = JSON.stringify(tablesForComponent);
+  // Size check: if serialized JSON exceeds 1.5MB, trim columns from large tables
+  let tablesJson = JSON.stringify(tablesForComponent);
+  if (tablesJson.length > 1_500_000) {
+    let trimmed = 0;
+    const trimmedTables = tablesForComponent.map((t: any) => {
+      if (t.columns && t.columns.length > 80) {
+        trimmed++;
+        return { ...t, columns: t.columns.slice(0, 80) };
+      }
+      return t;
+    });
+    tablesJson = JSON.stringify(trimmedTables);
+    if (trimmed > 0) {
+      console.log(`    (trimmed columns for ${trimmed} large tables in ${mod.displayName} to keep MDX < 1.5MB)`);
+    }
+  }
 
   // Mermaid ER section
   const hasFKRelationships = !mermaidER.includes('No FK relationships');
