@@ -39,6 +39,7 @@ npm run ai:enrich:dotnet        # .NET-dedicated enrichment pipeline
 npm run enrich:merge            # Merge batch enrichment files into final JSONs
 npm run enrich:pages            # Generate MDX file reference pages from enrichment JSONs
 npm run enrich:build            # enrich:merge + enrich:pages (run after enrichment)
+npm run enrich:sprocs           # Merge SP enrichment JSONs (after Claude CLI agents)
 
 # Full pipeline
 npm run build:full              # sync-repos + generate:all + build
