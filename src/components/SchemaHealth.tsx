@@ -110,8 +110,31 @@ export default function SchemaHealth(props: SchemaHealthProps) {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
-      .then((json: SchemaHealthProps) => {
-        setData(json);
+      .then((json: any) => {
+        // Normalize JSON field names to match component interface
+        const normalized: SchemaHealthProps = {
+          totalTables: json.totalTables ?? 0,
+          tablesWithPK: json.stats?.tablesWithPK ?? json.tablesWithPK ?? 0,
+          tablesWithIndex: json.stats?.tablesWithIndex ?? json.tablesWithIndex ?? 0,
+          disabledIndexes: json.stats?.totalDisabledIndexes ?? (Array.isArray(json.disabledIndexes) ? json.disabledIndexes.length : json.disabledIndexes) ?? 0,
+          totalIndexes: json.stats?.totalIndexes ?? json.totalIndexes ?? 0,
+          totalFKs: json.stats?.totalFKs ?? json.totalFKs ?? 0,
+          namingInconsistencies: (json.namingIssues || json.namingInconsistencies || []).map((n: any) => ({
+            canonical: n.canonical ?? n.name ?? '',
+            variants: n.variants ?? [],
+            counts: n.counts ?? {},
+          })),
+          tablesWithoutPK: (json.tablesNoPK || json.tablesWithoutPK || []).map((t: any) => ({
+            name: t.name,
+            module: t.module ?? t.schema ?? '',
+          })),
+          tablesWithoutIndex: (json.tablesNoIndex || json.tablesWithoutIndex || []).map((t: any) => ({
+            name: t.name,
+            module: t.module ?? t.schema ?? '',
+          })),
+          moduleHealth: json.moduleHealth ?? [],
+        };
+        setData(normalized);
         setLoading(false);
       })
       .catch((e) => {

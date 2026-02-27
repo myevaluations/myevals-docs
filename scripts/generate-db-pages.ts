@@ -369,16 +369,14 @@ function generateSchemaHealthData(
     const totalFKs = mod.tables.reduce((s, t) => s + t.foreignKeys.length, 0);
     const totalIndexes = mod.tables.reduce((s, t) => s + t.indexes.length, 0);
     const withIndex = mod.tables.filter((t) => t.indexes.length > 0).length;
+    const avgIndexesPerTable = mod.tableCount > 0 ? totalIndexes / mod.tableCount : 0;
     return {
-      prefix: mod.prefix,
-      displayName: mod.displayName,
+      module: `${mod.displayName} (${mod.prefix}_)`,
       tableCount: mod.tableCount,
-      withPK,
-      pkPct: parseFloat(pct(withPK, mod.tableCount)),
-      totalFKs,
-      totalIndexes,
-      withIndex,
-      indexPct: parseFloat(pct(withIndex, mod.tableCount)),
+      pkCoverage: parseFloat(pct(withPK, mod.tableCount)),
+      indexCoverage: parseFloat(pct(withIndex, mod.tableCount)),
+      avgIndexesPerTable,
+      fkCount: totalFKs,
     };
   });
 

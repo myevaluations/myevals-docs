@@ -82,11 +82,12 @@ export default function SprocReconciliation(props: SprocReconciliationProps): Re
   const [dbSort, setDbSort] = useState<SortState>({ column: 'name', dir: 'asc' });
   const [codeSort, setCodeSort] = useState<SortState>({ column: 'name', dir: 'asc' });
 
-  if (!data) {
-    return <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--ifm-color-emphasis-500)' }}>Loading reconciliation data...</div>;
-  }
-
-  const { totalDbSprocs, totalCodeSprocs, matched, orphanDb, orphanCode } = data;
+  // Extract data with safe defaults so all hooks run unconditionally
+  const totalDbSprocs = data?.totalDbSprocs ?? 0;
+  const totalCodeSprocs = data?.totalCodeSprocs ?? 0;
+  const matched = data?.matched ?? [];
+  const orphanDb = data?.orphanDb ?? [];
+  const orphanCode = data?.orphanCode ?? [];
 
   const matchedPct = totalDbSprocs > 0
     ? ((matched.length / totalDbSprocs) * 100).toFixed(1)
@@ -124,7 +125,7 @@ export default function SprocReconciliation(props: SprocReconciliationProps): Re
     );
   }, [orphanCode, query]);
 
-  // --- Sorting ---
+  // --- Sorting helpers ---
   function toggleSort(
     current: SortState,
     setter: React.Dispatch<React.SetStateAction<SortState>>,
@@ -202,6 +203,10 @@ export default function SprocReconciliation(props: SprocReconciliationProps): Re
     });
     return arr;
   }, [filteredCodeOnly, codeSort]);
+
+  if (!data) {
+    return <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--ifm-color-emphasis-500)' }}>Loading reconciliation data...</div>;
+  }
 
   // --- Styles ---
   const statCardBase: React.CSSProperties = {
