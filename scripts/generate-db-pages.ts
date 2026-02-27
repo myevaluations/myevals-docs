@@ -160,6 +160,16 @@ interface TriggersData {
   }[];
 }
 
+interface TableEnrichmentDetail {
+  name: string;
+  summary?: string;
+  businessPurpose?: string;
+  dataSensitivity?: string;
+  migrationRelevance?: string;
+  migrationNote?: string;
+  complexity?: string;
+}
+
 interface ModuleEnrichment {
   module: string;
   displayName: string;
@@ -168,6 +178,7 @@ interface ModuleEnrichment {
   keyWorkflows?: string[];
   schemaHealthNotes?: string[];
   tableAnnotations?: Record<string, { purpose?: string; migrationNote?: string }>;
+  tableDetail?: TableEnrichmentDetail[];
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -640,18 +651,36 @@ function generateModuleMdx(
 
   // Prepare tables data for the TableDetail component.
   // Include only the fields the component needs to keep MDX size manageable.
-  const tablesForComponent = mod.tables.map((t) => ({
-    name: t.name,
-    schema: t.schema,
-    fullName: t.fullName,
-    hasPrimaryKey: t.hasPrimaryKey,
-    primaryKeyColumns: t.primaryKeyColumns,
-    foreignKeys: t.foreignKeys,
-    indexes: t.indexes,
-    checkConstraints: t.checkConstraints,
-    defaultConstraints: t.defaultConstraints,
-    triggers: t.triggers,
-  }));
+  // Merge per-table AI enrichment when available.
+  const enrichmentByName = new Map<string, TableEnrichmentDetail>();
+  if (enrichment?.tableDetail) {
+    for (const td of enrichment.tableDetail) {
+      enrichmentByName.set(td.name, td);
+    }
+  }
+
+  const tablesForComponent = mod.tables.map((t) => {
+    const te = enrichmentByName.get(t.name);
+    return {
+      name: t.name,
+      schema: t.schema,
+      fullName: t.fullName,
+      hasPrimaryKey: t.hasPrimaryKey,
+      primaryKeyColumns: t.primaryKeyColumns,
+      foreignKeys: t.foreignKeys,
+      indexes: t.indexes,
+      checkConstraints: t.checkConstraints,
+      defaultConstraints: t.defaultConstraints,
+      triggers: t.triggers,
+      // AI-enriched fields (optional)
+      ...(te?.summary && { summary: te.summary }),
+      ...(te?.businessPurpose && { businessPurpose: te.businessPurpose }),
+      ...(te?.dataSensitivity && { dataSensitivity: te.dataSensitivity }),
+      ...(te?.migrationRelevance && { migrationRelevance: te.migrationRelevance }),
+      ...(te?.migrationNote && { migrationNote: te.migrationNote }),
+      ...(te?.complexity && { complexity: te.complexity }),
+    };
+  });
 
   // For very large modules (300+ tables), write inline JSON as a compact string
   // to keep MDX file sizes reasonable.
