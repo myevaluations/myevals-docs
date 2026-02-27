@@ -367,10 +367,11 @@ function generateStaticJson(
   // and merge enrichment data when available
   const procedures = mod.procedures.map((p) => {
     const { bodyPreview, ...rest } = p;
+    const base = { ...rest, module: mod.prefix };
     const enrichment = enrichmentMap.get(p.name);
     if (enrichment) {
       return {
-        ...rest,
+        ...base,
         ...(enrichment.summary && { summary: enrichment.summary }),
         ...(enrichment.businessPurpose && { businessPurpose: enrichment.businessPurpose }),
         ...(enrichment.optimizationRecommendations && {
@@ -379,7 +380,7 @@ function generateStaticJson(
         ...(enrichment.migrationRelevance && { migrationRelevance: enrichment.migrationRelevance }),
       };
     }
-    return rest;
+    return base;
   });
 
   return {
