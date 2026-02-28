@@ -24,6 +24,7 @@
  *   - static/db-explorer-data.json
  *   - static/sproc-reconciliation-data.json
  *   - static/schema-health-data.json
+ *   - static/table-detail-data/<slug>.json  (one per module, loaded at runtime)
  *
  * Usage: tsx scripts/generate-db-pages.ts
  */
@@ -40,6 +41,7 @@ const ENRICHED_DIR = path.join(PROJECT_ROOT, 'generated', 'ai-enriched', 'db-sch
 const DOCS_DIR = path.join(PROJECT_ROOT, 'docs', 'database');
 const MODULES_DIR = path.join(DOCS_DIR, 'modules');
 const STATIC_DIR = path.join(PROJECT_ROOT, 'static');
+const TABLE_DETAIL_DATA_DIR = path.join(STATIC_DIR, 'table-detail-data');
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -476,6 +478,30 @@ function generateSprocReconciliationData(sprocData: SprocReconciliation): any {
   };
 }
 
+/**
+ * Write per-module static JSON for the TableDetail component.
+ * Mirrors the pattern used by SprocDetail (static/sproc-detail-data/).
+ */
+async function generateTableDetailStaticJson(
+  slug: string,
+  mod: Module,
+  tablesForComponent: any[],
+  timestamp: string,
+): Promise<void> {
+  const payload = {
+    module: mod.prefix,
+    displayName: mod.displayName,
+    tableCount: mod.tableCount,
+    generatedAt: timestamp,
+    tables: tablesForComponent,
+  };
+  await fs.writeFile(
+    path.join(TABLE_DETAIL_DATA_DIR, `${slug}.json`),
+    JSON.stringify(payload),
+    'utf-8',
+  );
+}
+
 // ── Mermaid ER Diagram ──────────────────────────────────────────────────────
 
 function generateMermaidER(tables: Table[], maxTables: number = 20): string {
@@ -643,7 +669,33 @@ ${sprocFullData ? `## Stored Procedure Analysis
 | Missing SET NOCOUNT ON | ${sprocFullData.stats?.antiPatternCounts?.missingSetNocountOn ?? 0} | Low |
 
 Browse stored procedures by module in the **Stored Procedures** section of the sidebar.
-` : ''}## Explore Further
+${(() => {
+  const byComplexity = sprocFullData.stats?.byComplexity as Record<string, number> | undefined;
+  if (!byComplexity) return '';
+  const total = sprocFullData.totalProcedures ?? 0;
+  const order = ['trivial', 'simple', 'moderate', 'complex', 'very-complex'];
+  const labels: Record<string, string> = { 'trivial': 'Trivial', 'simple': 'Simple', 'moderate': 'Moderate', 'complex': 'Complex', 'very-complex': 'Very Complex' };
+  const complexRows = order
+    .filter((k) => byComplexity[k] > 0)
+    .map((k) => `| ${labels[k]} | ${byComplexity[k].toLocaleString()} | ${pct(byComplexity[k], total)}% |`)
+    .join('\n');
+  return `
+## AI Enrichment Summary
+
+All ${total.toLocaleString()} stored procedures have been analyzed using Claude AI enrichment, providing:
+- **Plain-language summary** and **business purpose** for every SP
+- **Optimization recommendations** with specific SQL Server improvements
+- **Migration relevance** scoring for the .NET → Node.js transition
+
+### Complexity Distribution
+
+| Complexity | Count | Percentage |
+|-----------|------:|----------:|
+${complexRows}
+
+Browse enriched SP details in the **Stored Procedures** sidebar section — each module page includes AI-generated summaries, business purpose descriptions, and optimization recommendations for every procedure.
+`;
+})()}` : ''}## Explore Further
 
 - [**Schema Explorer**](./explorer) — Interactive D3 graph of tables and FK relationships
 - [**SP Reconciliation**](./sproc-reconciliation) — Gap analysis between DB and code-side SPs
@@ -710,8 +762,45 @@ Comprehensive analysis of database schema quality across ${totalTables.toLocaleS
 `;
 }
 
+/**
+ * Prepare table data for the TableDetail component, merging AI enrichment.
+ */
+function prepareTablesForComponent(mod: Module, enrichment: ModuleEnrichment | null): any[] {
+  const enrichmentByName = new Map<string, TableEnrichmentDetail>();
+  if (enrichment?.tableDetail) {
+    for (const td of enrichment.tableDetail) {
+      enrichmentByName.set(td.name, td);
+    }
+  }
+
+  return mod.tables.map((t) => {
+    const te = enrichmentByName.get(t.name);
+    return {
+      name: t.name,
+      schema: t.schema,
+      fullName: t.fullName,
+      hasPrimaryKey: t.hasPrimaryKey,
+      primaryKeyColumns: t.primaryKeyColumns,
+      columns: t.columns ?? [],
+      foreignKeys: t.foreignKeys,
+      indexes: t.indexes,
+      checkConstraints: t.checkConstraints,
+      defaultConstraints: t.defaultConstraints,
+      triggers: (t.triggers ?? []).map((tr: any) => typeof tr === 'string' ? tr : tr.name),
+      // AI-enriched fields (optional)
+      ...(te?.summary && { summary: te.summary }),
+      ...(te?.businessPurpose && { businessPurpose: te.businessPurpose }),
+      ...(te?.dataSensitivity && { dataSensitivity: te.dataSensitivity }),
+      ...(te?.migrationRelevance && { migrationRelevance: te.migrationRelevance }),
+      ...(te?.migrationNote && { migrationNote: te.migrationNote }),
+      ...(te?.complexity && { complexity: te.complexity }),
+    };
+  });
+}
+
 function generateModuleMdx(
   mod: Module,
+  slug: string,
   position: number,
   enrichment: ModuleEnrichment | null,
   timestamp: string,
@@ -739,57 +828,6 @@ function generateModuleMdx(
   if (enrichment?.schemaHealthNotes && enrichment.schemaHealthNotes.length > 0) {
     const items = enrichment.schemaHealthNotes.map((n) => `- ${n}`).join('\n');
     healthNotesSection = `\n## Schema Health Notes\n\n${items}\n`;
-  }
-
-  // Prepare tables data for the TableDetail component.
-  // Include only the fields the component needs to keep MDX size manageable.
-  // Merge per-table AI enrichment when available.
-  const enrichmentByName = new Map<string, TableEnrichmentDetail>();
-  if (enrichment?.tableDetail) {
-    for (const td of enrichment.tableDetail) {
-      enrichmentByName.set(td.name, td);
-    }
-  }
-
-  const tablesForComponent = mod.tables.map((t) => {
-    const te = enrichmentByName.get(t.name);
-    return {
-      name: t.name,
-      schema: t.schema,
-      fullName: t.fullName,
-      hasPrimaryKey: t.hasPrimaryKey,
-      primaryKeyColumns: t.primaryKeyColumns,
-      columns: t.columns ?? [],
-      foreignKeys: t.foreignKeys,
-      indexes: t.indexes,
-      checkConstraints: t.checkConstraints,
-      defaultConstraints: t.defaultConstraints,
-      triggers: (t.triggers ?? []).map((tr: any) => typeof tr === 'string' ? tr : tr.name),
-      // AI-enriched fields (optional)
-      ...(te?.summary && { summary: te.summary }),
-      ...(te?.businessPurpose && { businessPurpose: te.businessPurpose }),
-      ...(te?.dataSensitivity && { dataSensitivity: te.dataSensitivity }),
-      ...(te?.migrationRelevance && { migrationRelevance: te.migrationRelevance }),
-      ...(te?.migrationNote && { migrationNote: te.migrationNote }),
-      ...(te?.complexity && { complexity: te.complexity }),
-    };
-  });
-
-  // Size check: if serialized JSON exceeds 1.5MB, trim columns from large tables
-  let tablesJson = JSON.stringify(tablesForComponent);
-  if (tablesJson.length > 1_500_000) {
-    let trimmed = 0;
-    const trimmedTables = tablesForComponent.map((t: any) => {
-      if (t.columns && t.columns.length > 80) {
-        trimmed++;
-        return { ...t, columns: t.columns.slice(0, 80) };
-      }
-      return t;
-    });
-    tablesJson = JSON.stringify(trimmedTables);
-    if (trimmed > 0) {
-      console.log(`    (trimmed columns for ${trimmed} large tables in ${mod.displayName} to keep MDX < 1.5MB)`);
-    }
   }
 
   // SP cross-link (only if the SP reference page exists)
@@ -845,7 +883,7 @@ ${workflowsSection}${healthNotesSection}
 ## Table Reference
 
 <TableDetail
-  tables={${tablesJson}}
+  dataUrl="/table-detail-data/${slug}.json"
   generatedAt="${timestamp}"
 />
 ${sprocSection}
@@ -916,6 +954,7 @@ async function main(): Promise<void> {
 
   await fs.mkdir(DOCS_DIR, { recursive: true });
   await fs.mkdir(MODULES_DIR, { recursive: true });
+  await fs.mkdir(TABLE_DETAIL_DATA_DIR, { recursive: true });
 
   const timestamp = new Date().toISOString();
 
@@ -951,7 +990,11 @@ async function main(): Promise<void> {
     const enrichment = enrichmentMap.get(mod.prefix) || null;
     const position = i + 1;
 
-    const moduleMdx = generateModuleMdx(mod, position, enrichment, timestamp);
+    // Prepare table data and write static JSON (loaded at runtime via dataUrl)
+    const tablesForComponent = prepareTablesForComponent(mod, enrichment);
+    await generateTableDetailStaticJson(slug, mod, tablesForComponent, timestamp);
+
+    const moduleMdx = generateModuleMdx(mod, slug, position, enrichment, timestamp);
     await fs.writeFile(path.join(MODULES_DIR, `${slug}.mdx`), moduleMdx, 'utf-8');
 
     // Count FK relationships in the ER diagram
