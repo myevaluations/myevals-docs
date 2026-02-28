@@ -7,7 +7,7 @@ description: Database architecture documentation covering the shared MSSQL schem
 # Database Schema
 
 :::tip Full Database Documentation
-For interactive schema exploration, per-module table references, and SP reconciliation, see the **[Database Schema](/docs/database/overview)** section — 2,284 tables across 23 modules with Mermaid ER diagrams and expandable detail.
+For interactive schema exploration, per-module table references, and SP reconciliation, see the **[Database Schema](/docs/database/overview)** section — 2,242 tables across 23 modules with Mermaid ER diagrams and expandable detail.
 :::
 
 MyEvaluations uses a dual-database architecture: a shared **SQL Server** database that both the .NET and Node.js backends access, and a **PostgreSQL** database used exclusively by the Node.js backend for new features.
@@ -78,11 +78,11 @@ graph TB
 
 ## MSSQL Schema Overview
 
-The SQL Server database is the primary data store, shared between the .NET and Node.js backends. It has evolved over 17+ years and contains **2,284 tables** across 2 schemas (`dbo`, `perf`), organized into 23 modules by naming prefix.
+The SQL Server database is the primary data store, shared between the .NET and Node.js backends. It has evolved over 17+ years and contains **2,242 tables** across 2 schemas (`dbo`, `perf`), organized into 23 modules by naming prefix.
 
 ### Core Entity Groups
 
-> **Real counts from schema analysis (Feb 2026):** 2,284 tables · 6,169 stored procedures · 3,703 indexes · 1,359 foreign keys · 17 triggers
+> **Real counts from schema analysis (Feb 2026):** 2,242 tables · 5,028 stored procedures · 3,703 indexes · 1,029 foreign keys · 17 triggers
 
 #### User & Organization
 
@@ -225,20 +225,21 @@ The Node.js backend uses MikroORM with two separate database connections:
 
 ## Stored Procedures Overview
 
-The .NET backend uses **6,169 stored procedures** for all data access. These are the primary API contract between the application and database. Of these, **3,894 are confirmed called from .NET code** (matched via [SP Reconciliation](/docs/database/sproc-reconciliation)), while 2,234 exist only in the database (potential dead code or archive-only).
+The .NET backend uses **5,028 stored procedures** for all data access. These are the primary API contract between the application and database. Of these, **3,894 are confirmed called from .NET code** (matched via [SP Reconciliation](/docs/database/sproc-reconciliation)), while 1,134 exist only in the database (potential dead code or archive-only).
 
 ### Stored Procedure Categories
 
 > **From schema analysis:** 81% of SPs use plain names (no `usp_` prefix). Only 282 use the `usp_` convention.
 
-| Category | SP Count (DB) | Matched to Code | Key Examples |
-|----------|:------------:|:---------------:|--------------|
-| Security (`SEC_`) | ~1,492 | ~1,200 | `GetUsersByDepartment`, `AuthenticateUser` |
-| Evaluations (`EVAL_`) | ~1,008 | ~850 | `GetEvaluationsByTemplate`, `SaveEvaluation` |
-| Duty Hours (`DH_`) | ~562 | ~470 | `GetDutyHoursForUser`, `SaveDutyHourEntry` |
-| Procedures (`PRC_`) | ~350 | ~280 | `GetProceduresByUser`, `SaveProcedureLog` |
-| CME (`CME_`) | ~250 | ~200 | `GetCMECredits`, `SaveCMEActivity` |
-| Other modules | ~2,507 | ~894 | Various across 18+ modules |
+| Category | SP Count | Key Examples |
+|----------|:--------:|--------------|
+| Security (`SEC_`) | 1,261 | `GetUsersByDepartment`, `AuthenticateUser` |
+| Evaluations (`EVAL_`) | 960 | `GetEvaluationsByTemplate`, `SaveEvaluation` |
+| Duty Hours (`DH_`) | 611 | `GetDutyHoursForUser`, `SaveDutyHourEntry` |
+| Portfolio (`PF_`) | 388 | `GetPortfolioByUser`, `SavePortfolioEntry` |
+| Procedures (`PRC_`) | 321 | `GetProceduresByUser`, `SaveProcedureLog` |
+| CME (`CME_`) | 289 | `GetCMECredits`, `SaveCMEActivity` |
+| Other 15 modules | 1,198 | Various across scheduling, quizzes, patient logs, etc. |
 
 ### Stored Procedure Naming Conventions
 
@@ -365,5 +366,5 @@ The SQL Server database has extensive indexing due to its 25+ year history. Key 
 - New indexes require careful evaluation due to the high write volume from 70+ schedulers
 - **3,703 indexes** exist (2,235 nonclustered, 1,468 clustered)
 - **196 indexes are disabled** (all nonclustered, all on `SEC_Users` — appear to be SQL Server missing index recommendations that were created but disabled)
-- **813 tables (35.6%) lack a primary key** — see [Schema Health](/docs/database/health) for the full list
+- **813 tables (36.3%) lack a primary key** — see [Schema Health](/docs/database/health) for the full list
 - **2 tables** use monthly partitioning (`Api_Response_Audit`, `Api_Response_Audit_Archive`)
