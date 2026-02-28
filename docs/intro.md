@@ -60,6 +60,7 @@ See the [Architecture Overview](/docs/architecture/overview) for detailed diagra
 | Section | Description |
 |---------|-------------|
 | [Architecture](/docs/architecture/overview) | System-wide architecture, data flow, deployment, auth, and database schema |
+| [Database Schema](/docs/database/overview) | Interactive schema explorer — 2,242 tables, 5,028 stored procedures with AI enrichment |
 | [.NET Backend](/docs/dotnet-backend/overview) | Comprehensive docs for the legacy monolith (primary focus) |
 | [Node.js Backend](/docs/nodejs-backend/overview) | NestJS backend documentation |
 | [React Frontend](/docs/react-frontend/overview) | Next.js + Plasmic frontend docs |
@@ -86,5 +87,6 @@ npm run parse:dotnet:sprocs      # Catalog stored procedures
 
 - **New developer?** Start with [.NET Getting Started](/docs/dotnet-backend/getting-started)
 - **Need architecture context?** See [Architecture Overview](/docs/architecture/overview)
+- **Understanding the database?** See [Database Schema](/docs/database/overview)
 - **Debugging an issue?** Check [Debugging Guide](/docs/guides/debugging)
 - **Understanding data flow?** See [Data Flow](/docs/architecture/data-flow)
