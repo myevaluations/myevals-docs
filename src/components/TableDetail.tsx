@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 interface TableEntry {
   name: string;
@@ -49,7 +49,8 @@ interface TableEntry {
 }
 
 interface TableDetailProps {
-  tables: TableEntry[];
+  tables?: TableEntry[];
+  dataUrl?: string;
   moduleOverview?: string;
   keyWorkflows?: string[];
   schemaHealthNotes?: string[];
@@ -367,12 +368,36 @@ type SortField = 'name' | 'hasPrimaryKey' | 'foreignKeys' | 'indexes' | 'complex
 
 export default function TableDetail({
   tables,
+  dataUrl,
   moduleOverview,
   keyWorkflows,
   schemaHealthNotes,
   generatedAt,
 }: TableDetailProps) {
-  const data = tables && tables.length > 0 ? tables : [];
+  const [fetchedData, setFetchedData] = useState<TableEntry[] | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!tables && dataUrl) {
+      setLoading(true);
+      fetch(dataUrl)
+        .then((r) => r.json())
+        .then((d) => {
+          setFetchedData(d.tables ?? d ?? []);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error('Failed to load table data:', err);
+          setLoading(false);
+        });
+    }
+  }, [tables, dataUrl]);
+
+  if (loading) {
+    return <div style={{ padding: '24px', textAlign: 'center', color: 'var(--ifm-color-emphasis-600)' }}>Loading table data...</div>;
+  }
+
+  const data: TableEntry[] = tables ?? fetchedData ?? [];
 
   const [search, setSearch] = useState('');
   const [sortField, setSortField] = useState<SortField>('name');
