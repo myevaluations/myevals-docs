@@ -106,11 +106,13 @@ function ProjectCardComponent({ project }: { project: ProjectCard }) {
 function QuickLinks() {
   const links = [
     { label: 'Architecture Overview', to: '/docs/architecture/overview' },
+    { label: 'Database Schema', to: '/docs/database/overview' },
     { label: 'Migration Status', to: '/docs/cross-cutting/migration-status' },
     { label: 'Onboarding Guide', to: '/docs/cross-cutting/onboarding' },
     { label: 'Debugging Guide', to: '/docs/guides/debugging' },
     { label: '.NET Project Map', to: '/docs/dotnet-backend/project-map' },
     { label: 'Scheduler Catalog', to: '/docs/dotnet-backend/schedulers/' },
+    { label: 'SP Documentation', to: '/docs/database/sproc-reconciliation' },
   ];
 
   return (

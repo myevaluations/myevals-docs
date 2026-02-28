@@ -63,6 +63,35 @@ The MyEvaluations database contains **2,242 tables** with **24,282 columns**, **
 | Missing SET NOCOUNT ON | 1365 | Low |
 
 Browse stored procedures by module in the **Stored Procedures** section of the sidebar.
+
+## AI Enrichment Summary
+
+All 5,028 stored procedures have been analyzed using Claude AI enrichment, providing:
+- **Plain-language summary** and **business purpose** for every SP
+- **Optimization recommendations** with specific SQL Server improvements
+- **Migration relevance** scoring for the .NET → Node.js transition
+
+### Complexity Distribution
+
+| Complexity | Count | Percentage |
+|-----------|------:|----------:|
+| Trivial | 1,672 | 33.3% |
+| Simple | 1,353 | 26.9% |
+| Moderate | 886 | 17.6% |
+| Complex | 654 | 13.0% |
+| Very Complex | 461 | 9.2% |
+
+### Migration Relevance
+
+| Relevance | Count | Percentage |
+|-----------|------:|----------:|
+| High | 1,387 | 27.6% |
+| Medium | 2,736 | 54.4% |
+| Low | 859 | 17.1% |
+| None | 46 | 0.9% |
+
+Browse enriched SP details in the **Stored Procedures** sidebar section — each module page includes AI-generated summaries, business purpose descriptions, and optimization recommendations for every procedure.
+
 ## Explore Further
 
 - [**Schema Explorer**](./explorer) — Interactive D3 graph of tables and FK relationships
