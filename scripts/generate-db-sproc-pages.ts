@@ -333,6 +333,8 @@ ${antiPatternRows.join('\n')}
   if (crud.mixed > 0) crudParts.push(`**${crud.mixed}** Mixed`);
   const crudLine = crudParts.join(' | ');
 
+  const tablePageSlug = slugify(mod.displayName);
+
   return `---
 title: "${mod.displayName} — Stored Procedures"
 sidebar_label: "${mod.displayName} (${mod.procedureCount})"
@@ -345,6 +347,8 @@ import SprocDetail from '@site/src/components/SprocDetail';
 # ${mod.displayName} — Stored Procedures
 
 > **${mod.procedureCount}** stored procedure${mod.procedureCount !== 1 ? 's' : ''} | ${crudLine}
+
+> Related: [${mod.displayName} Tables](../${tablePageSlug}) — view the database tables for this module
 
 ${antiPatternSection}
 ${optimizationSection}
