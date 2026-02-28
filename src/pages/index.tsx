@@ -112,7 +112,7 @@ function QuickLinks() {
     { label: 'Debugging Guide', to: '/docs/guides/debugging' },
     { label: '.NET Project Map', to: '/docs/dotnet-backend/project-map' },
     { label: 'Scheduler Catalog', to: '/docs/dotnet-backend/schedulers/' },
-    { label: 'SP Documentation', to: '/docs/database/modules/sprocs/' },
+    { label: 'SP Documentation', to: '/docs/database/sproc-reconciliation' },
   ];
 
   return (
