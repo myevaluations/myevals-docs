@@ -129,7 +129,7 @@ const config: Config = {
           title: '.NET Deep Dive',
           items: [
             { label: 'Project Map', to: '/docs/dotnet-backend/project-map' },
-            { label: 'Business Modules', to: '/docs/dotnet-backend/business/security' },
+            { label: 'Business Modules', to: '/docs/dotnet-backend/business/' },
             { label: 'Schedulers', to: '/docs/dotnet-backend/schedulers/' },
             { label: 'Data Access', to: '/docs/dotnet-backend/data-access/overview' },
           ],
