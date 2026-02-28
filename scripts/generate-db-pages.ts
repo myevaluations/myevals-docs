@@ -241,6 +241,32 @@ function pct(part: number, total: number): string {
 }
 
 /**
+ * Maps DB module prefix to corresponding .NET business module page(s).
+ * Only includes modules where a matching MDX file exists under
+ * docs/dotnet-backend/business/.
+ */
+const MODULE_TO_DOTNET_BUSINESS: Record<string, { label: string; slug: string }[]> = {
+  'SEC':   [{ label: 'Security', slug: 'security' }],
+  'EVAL':  [{ label: 'Evaluations', slug: 'evaluations' }],
+  'DH':    [{ label: 'Duty Hours', slug: 'duty-hours' }],
+  'PRC':   [{ label: 'Procedures', slug: 'procedures' }],
+  'BSN':   [{ label: 'Nurse Notify', slug: 'nurse-notify' }],
+  'ACT':   [{ label: 'Essential Activities', slug: 'essential-activities' }],
+  'PF':    [{ label: 'Portfolio', slug: 'portfolio' }],
+  'OBC':   [{ label: 'ICC / Clinical Assessment', slug: 'icc' }],
+  'CME':   [{ label: 'CME Tracking', slug: 'cme-tracking' }],
+  'PTL':   [{ label: 'Patient Log', slug: 'patient-log' }],
+  'QUIZ':  [{ label: 'Quiz', slug: 'quiz' }],
+  'LA':    [{ label: 'Learning Assignment', slug: 'learning-assignment' }],
+  'SYS':   [{ label: 'Common', slug: 'common' }, { label: 'Utilities', slug: 'utilities' }],
+  'SCHE':  [{ label: 'Common', slug: 'common' }],
+  'Prep':  [{ label: 'Common', slug: 'common' }],
+  'POST':  [{ label: 'Common', slug: 'common' }],
+  'MYEVAL':[{ label: 'Common', slug: 'common' }, { label: 'Evaluations', slug: 'evaluations' }],
+  'MyGME': [{ label: 'Common', slug: 'common' }],
+};
+
+/**
  * Determine the referenced parent table name from an FK constraint.
  *
  * The parsed data has a `referencedTable` field that is sometimes:
@@ -776,6 +802,16 @@ function generateModuleMdx(
 See the [${mod.displayName} Stored Procedures](./sprocs/${sprocSlug}-sprocs) reference page for detailed documentation of all stored procedures in this module, including parameters, anti-pattern analysis, and optimization recommendations.`
     : '';
 
+  // Related .NET business module cross-link
+  const dotnetLinks = MODULE_TO_DOTNET_BUSINESS[mod.prefix] || [];
+  const relatedCodeSection = dotnetLinks.length > 0
+    ? `
+## Related Code Documentation
+
+${dotnetLinks.map(link => `- [${link.label} (.NET Business Module)](/docs/dotnet-backend/business/${link.slug})`).join('\n')}
+`
+    : '';
+
   // Mermaid ER section
   const hasFKRelationships = !mermaidER.includes('No FK relationships');
   const mermaidSection = hasFKRelationships
@@ -813,7 +849,7 @@ ${workflowsSection}${healthNotesSection}
   generatedAt="${timestamp}"
 />
 ${sprocSection}
-`;
+${relatedCodeSection}`;
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
